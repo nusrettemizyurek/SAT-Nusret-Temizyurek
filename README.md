@@ -11,7 +11,7 @@ Web sitemiz: [teknogundem.com](https://www.teknogundem.com/)
 ## 🚀 Özellikler
 
 - 📰 Güncel teknoloji haberleri
-- 📱 Mobil cihaz incelemeleri
+- 📱 Donanım İle İlgili  Konular 
 - 🧠 Yapay zeka, yazılım ve donanım içerikleri
 - 📊 SEO uyumlu içerik yapısı
 
