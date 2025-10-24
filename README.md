@@ -6,7 +6,7 @@
 
 Teknogündem, teknoloji meraklıları için hazırlanmış bir haber ve içerik platformudur. Amacımız; en yeni teknolojik gelişmeleri, ürün duyurularını, sistem gereksinimlerini ve dijital trendleri kullanıcı dostu bir şekilde sunmaktır.
 
-Web sitemiz: [teknogundem.com](https://www.teknogundem.com/)
+Web sitemiz: 
 
 ## 🚀 Özellikler
 
