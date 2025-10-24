@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yapay Zeka Makaleleri - TeknoGündem</title>
+  <style>
+    body {
+      background-color: #0d1117;
+      color: #f0f0f0;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #161b22;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #30363d;
+    }
+
+    .logo {
+      font-size: 1.6em;
+      font-weight: 700;
+      color: #00c6ff;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover, nav .active {
+      color: #00c6ff;
+    }
+
+    .articles-section {
+      padding: 60px 8%;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .articles-section h1 {
+      font-size: 2.2em;
+      margin-bottom: 30px;
+      color: #00c6ff;
+      text-align: center;
+    }
+
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background-color: #161b22;
+      color: #ccc;
+      border: 1px solid #30363d;
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background-color: #00c6ff;
+      color: #fff;
+      border-color: #00c6ff;
+    }
+
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .article-card {
+      background-color: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 20px;
+      transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+    }
+
+    .article-card.hide {
+      opacity: 0;
+      transform: scale(0.95);
+      pointer-events: none;
+    }
+
+    .article-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px rgba(0,198,255,0.3);
+    }
+
+    .article-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.2em;
+      color: #00c6ff;
+    }
+
+    .article-card h3 a {
+      color: #00c6ff;
+      text-decoration: none;
+    }
+
+    .article-card h3 a:hover {
+      text-decoration: underline;
+    }
+
+    .article-card p {
+      font-size: 0.9em;
+      color: #aaa;
+      line-height: 1.5em;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #30363d;
+      background-color: #0d1117;
+      color: #777;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">TeknoGündem</div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Ana Sayfa</a></li>
+      <li><a href="yazılım.html">Yazılım</a></li>
+      <li><a href="donanım.html">Donanım</a></li>
+      <li><a href="ai-makaleler.html" class="active">AI Makaleleri</a></li>
+      <li><a href="hakkimizda.html">Hakkımızda</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="articles-section">
+  <h1>🧠 Yapay Zeka & Makine Öğrenimi Makaleleri</h1>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">Tümü</button>
+    <button class="filter-btn" data-filter="llm">LLM</button>
+    <button class="filter-btn" data-filter="cv">Computer Vision</button>
+    <button class="filter-btn" data-filter="etik">Etik</button>
+    <button class="filter-btn" data-filter="ml">Makine Öğrenimi</button>
+  </div>
+
+  <div class="article-grid">
+
+    <div class="article-card" data-category="llm">
+      <h3><a href="makale1.html">GPT-5 ve Doğal Dil İşleme'nin Geleceği</a></h3>
+      <p>Büyük dil modelleri (LLM) metin üretiminde insan benzeri düşünme biçimlerine yaklaşıyor. Bu gelişmelerin gelecekteki etkileri inceleniyor.</p>
+    </div>
+
+    <div class="article-card" data-category="cv">
+      <h3><a href="makale2.html">Bilgisayarlı Görü: Nesne Tespiti 2025 Trendleri</a></h3>
+      <p>YOLOv8, DETR ve Segment Anything modellerinin modern görsel tanıma sistemlerinde nasıl devrim yarattığını keşfedin.</p>
+    </div>
+
+    <div class="article-card" data-category="etik">
+      <h3><a href="makale3.html">Yapay Zeka Etiği: Veriden Sorumluluğa</a></h3>
+      <p>Algoritmik önyargı, veri gizliliği ve adalet sorunlarını ele alan derinlemesine bir analiz.</p>
+    </div>
+
+    <div class="article-card" data-category="ml">
+      <h3><a href="makale4.html">Makine Öğrenimi ile Tahminsel Analiz</a></h3>
+      <p>Finans, sağlık ve teknoloji alanlarında makine öğrenimi tabanlı tahmin modelleri nasıl fark yaratıyor?</p>
+    </div>
+
+    <div class="article-card" data-category="llm">
+      <h3><a href="makale5.html">ChatGPT ve Yeni Nesil Konuşma Modelleri</a></h3>
+      <p>Chatbot teknolojisinin gelişimi ve bağlamsal farkındalık kazanan yapay zeka sistemleri.</p>
+    </div>
+
+    <div class="article-card" data-category="cv">
+      <h3><a href="makale6.html">Otonom Araçlarda Görü Sistemleri</a></h3>
+      <p>Kamera ve sensör verilerinin derin öğrenme ile nasıl işlendiğini keşfedin.</p>
+    </div>
+
+    <div class="article-card" data-category="ml">
+      <h3><a href="makale7.html">Veri Setlerinden Öğrenmek: Feature Engineering</a></h3>
+      <p>Veri temizleme ve öznitelik mühendisliği, makine öğrenimi başarısında neden kritik?</p>
+    </div>
+
+    <div class="article-card" data-category="etik">
+      <h3><a href="makale8.html">AI ve Toplumsal Etkiler</a></h3>
+      <p>Yapay zekâ sistemlerinin iş gücü, sanat ve eğitim üzerindeki uzun vadeli etkileri.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2025 TeknoGündem. Tüm Hakları Saklıdır.</p>
+</footer>
+
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.article-card');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+
+      cards.forEach(card => {
+        card.classList.remove('hide');
+        if (filter !== 'all' && card.getAttribute('data-category') !== filter) {
+          card.classList.add('hide');
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
