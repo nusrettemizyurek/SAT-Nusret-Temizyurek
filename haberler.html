@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teknogündem | Güncel Donanım Haberleri</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>TEKNOGÜNDEM<span class="logo-dot">.</span>DONANIM</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">ANA SAYFA</a></li>
+                    <li><a href="haberler.html">HABERLER</a></li>
+                    <li><a href="incelemeler.html">İNCELEMELER</a></li>
+                    <li><a href="fiyatlar.html">FİYAT LİSTELERİ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-body-container">
+        <section class="page-title-section">
+            <h2>⚡ GÜNCEL DONANIM HABERLERİ & ANALİZLER</h2>
+            <p>AMD, Intel ve NVIDIA'dan en son sızıntılar ve teknolojik gelişmeler.</p>
+        </section>
+        
+        <section class="news-grid-section" id="guncel-haberler">
+            <div class="news-grid">
+                <article class="grid-card news-type" data-news-id="intel-arrow-lake">
+                    <h4>Intel Arrow Lake: Performans Sızıntıları ve Yeni Soket Zorunluluğu</h4>
+                    <p>15. Nesil işlemcilerin sızdırılan tek çekirdek test sonuçları, IPC artışının beklentilerin üzerinde olduğunu gösteriyor. Ancak yeni soket yapısı kullanıcıları üzebilir.</p>
+                    <button class="news-link-btn">Ayrıntılı Rapor</button>
+                </article>
+                
+                <article class="grid-card review-type" data-news-id="amd-rdna4">
+                    <h4>AMD RDNA 4 Sınıf Atlama Planı: Orta Segmentin Yeni Kralı Geliyor</h4>
+                    <p>AMD'nin yaklaşan RDNA 4 mimarisi, üst seviyeye odaklanmak yerine, fiyat/performans alanında liderliği hedefliyor. İlk benchmark sonuçları incelemede.</p>
+                    <button class="news-link-btn">Benchmark Verileri</button>
+                </article>
+
+                <article class="grid-card tech-type" data-news-id="pcie-6-ssd">
+                    <h4>PCIe 6.0: Veri Merkezinden Masaüstüne Transfer Hızında Patlama</h4>
+                    <p>PCIe 6.0'ı destekleyen ilk depolama çözümleri ortaya çıktı. 28 GB/s'lik hızlar, veri aktarımını saniyelerle ifade ediyor.</p>
+                    <button class="news-link-btn">Teknolojik İnceleme</button>
+                </article>
+            </div>
+        </section>
+    </div>
+
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h3 id="modal-title"></h3>
+        <div id="modal-body"></div>
+      </div>
+    </div>
+    
+    <script src="js/"></script> 
+</body>
+</html>

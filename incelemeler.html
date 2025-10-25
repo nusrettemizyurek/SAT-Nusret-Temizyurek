@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İncelemeler | Teknogündem Donanım</title>
+    <link rel="stylesheet" href="css/style.css"> 
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>TEKNOGÜNDEM<span class="logo-dot">.</span>DONANIM</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">ANA SAYFA</a></li>
+                    <li class="dropdown">
+                        <a href="#">HABERLER ▼</a>
+                        <div class="dropdown-content">
+                            <a href="guncel-haberler.html">Güncel</a>
+                            <a href="ekran-karti-haberleri.html">Ekran Kartları</a>
+                            <a href="islemci-haberleri.html">İşlemciler</a>
+                            <a href="anakart-ram-haberleri.html">Anakart ve RAM</a>
+                            <a href="sizintilar.html">Sızıntılar</a>
+                            <a href="yapay-zeka.html">Yapay Zeka</a>
+                        </div>
+                    </li>
+                    <li><a href="incelemeler.html" class="active">İNCELEMELER</a></li>
+                    <li><a href="fiyatlar.html">FİYAT LİSTELERİ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-body-container">
+        
+        <section class="page-title-section">
+            <h2 class="page-title">✅ TÜM DETAYLI İNCELEMELERİMİZ</h2>
+            <p class="subtitle">Yeni çıkan ekran kartları, işlemciler ve tüm donanımların bağımsız test sonuçları burada.</p>
+        </section>
+
+        <section class="review-filters">
+            <div class="filter-bar">
+                <input type="text" id="review-search" placeholder="İnceleme Ara (Örn: RTX 5080, Ryzen 9)">
+                <select id="category-filter">
+                    <option value="all">Tüm Kategoriler</option>
+                    <option value="gpu">Ekran Kartları</option>
+                    <option value="cpu">İşlemciler</option>
+                    <option value="motherboard">Anakartlar</option>
+                    <option value="storage">Depolama (SSD/HDD)</option>
+                </select>
+                <button class="cta-button filter-btn">Filtrele</button>
+            </div>
+        </section>
+
+        <section class="review-grid-section">
+            <div class="review-grid">
+                
+                <article class="review-card" data-category="gpu">
+                    <span class="review-tag gpu-color">EKRAN KARTI</span>
+                    <h3>NVIDIA RTX 5090 Kurucu Sürümü</h3>
+                    <p>8K Oyun Performansı ve DLSS 4.0 Testleri</p>
+                    <div class="review-meta">
+                        <span class="score">⭐ 9.8/10</span>
+                        <a href="#" class="read-more">İncelemeyi Oku &raquo;</a>
+                    </div>
+                </article>
+
+                <article class="review-card" data-category="cpu">
+                    <span class="review-tag cpu-color">İŞLEMCİ</span>
+                    <h3>Intel Core i9-15900K (Arrow Lake)</h3>
+                    <p>Yeni IPC Mimarisi ve Çoklu Çekirdek Gücü</p>
+                    <div class="review-meta">
+                        <span class="score">⭐ 9.5/10</span>
+                        <a href="#" class="read-more">İncelemeyi Oku &raquo;</a>
+                    </div>
+                </article>
+
+                <article class="review-card" data-category="storage">
+                    <span class="review-tag storage-color">DEPOLAMA</span>
+                    <h3>PCIe 6.0 NVMe SSD (28 GB/s Hız)</h3>
+                    <p>Veri aktarımında yeni bir çağ: Isınma ve gecikme sorunları</p>
+                    <div class="review-meta">
+                        <span class="score">⭐ 9.0/10</span>
+                        <a href="#" class="read-more">İncelemeyi Oku &raquo;</a>
+                    </div>
+                </article>
+                
+                </div>
+            
+            <div class="load-more-container">
+                <button class="cta-button load-more-btn">Daha Fazla İnceleme Yükle</button>
+            </div>
+
+        </section>
+
+    </div>
+
+    <script src="js/script.js"></script> 
+</body>
+</html>

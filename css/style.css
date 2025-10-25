@@ -201,22 +201,6 @@ header, main, footer {
     z-index: 1;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* INDEX.HTML İÇİN EKLENEN KART STİLLERİ (DÜZENİ BOZAN EKSİK STİLLER) */
 .summary-section h2 {
     font-size: 2rem;
@@ -405,6 +389,413 @@ header, main, footer {
     font-size: 1.1rem;
     margin-bottom: 25px;
 }
+
+/* Donanım Sayfası CSS */
+/* Genel Stil Resetleri (Mevcut CSS'inizin başına ekleyebilirsiniz) */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212; /* Koyu Tema Arkaplan */
+    color: #f0f0f0;
+}
+a {
+    text-decoration: none;
+    color: #00bcd4; /* Açık mavi link rengi */
+}
+.main-body-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* HEADER ve NAV Stilleri (Önceki HTML'den gelen üst kısım) */
+header {
+    background-color: #1f1f1f;
+    border-bottom: 3px solid #00bcd4;
+    padding: 15px 0;
+}
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    /* Bu kod, başlığı sola, menüyü sağa iter. */
+    justify-content: space-between; 
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* header h1 BOYUTUNU KÜÇÜK TUTUYORUZ */
+header h1 {
+    font-size: 1.8em; 
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #f0f0f0;
+    margin: 0;
+    /* Başlığın sol kenara yapışmasını garantilemek için padding'i kaldırıyoruz (zaten .header-content padding'i var) */
+}
+.logo-dot {
+    color: #e91e63; /* Pembe nokta vurgusu */
+    font-size: 1.2em;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+nav ul li {
+    /* Menü elemanları arasındaki mesafeyi ayarlar */
+    margin-left: 25px; 
+    position: relative;
+}
+nav ul li a {
+    color: #ccc;
+    font-weight: 600;
+    padding: 10px 0;
+    display: block;
+    transition: color 0.3s;
+}
+nav ul li a:hover {
+    color: #00bcd4;
+}
+
+/* Dropdown Menü Stilleri */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #2a2a2a;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    z-index: 1;
+    border-top: 3px solid #e91e63;
+}
+.dropdown-content a {
+    color: #f0f0f0;
+    padding: 12px 16px;
+    display: block;
+}
+.dropdown-content a:hover {
+    background-color: #333;
+    color: #00bcd4;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* CTA Buton Stili (Ortak Kullanım) */
+.cta-button {
+    background-color: #e91e63;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 20px;
+}
+.cta-button:hover {
+    background-color: #d81b60;
+    transform: translateY(-2px);
+}
+
+/* ======================================= */
+/* YENİ ANA SAYFA BÖLÜM STİLLERİ */
+/* ======================================= */
+
+/* 1. Sadeleştirilmiş Ana Slogan Alanı (.simple-hero) */
+.simple-hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #1f1f1f, #2a2a2a); /* Hafif gradyan */
+    border-bottom: 1px solid #333;
+    margin-bottom: 40px;
+}
+.simple-hero h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #00bcd4;
+    font-weight: 300;
+}
+.simple-hero p {
+    font-size: 1.1em;
+    color: #ccc;
+    max-width: 600px;
+    margin: 0 auto 20px;
+}
+
+/* 2. Öne Çıkan Kategoriler (.featured-categories) */
+.featured-categories h2 {
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    color: #f0f0f0;
+}
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+.category-card {
+    background-color: #1f1f1f;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-left: 5px solid transparent;
+}
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* Kategorilere Renkli Kenarlıklar */
+.category-card[data-category="haberler"] { border-left-color: #e91e63; } /* Pembe */
+.category-card[data-category="incelemeler"] { border-left-color: #00bcd4; } /* Mavi */
+.category-card[data-category="fiyat-listeleri"] { border-left-color: #8bc34a; } /* Yeşil */
+
+.category-card h3 {
+    font-size: 1.4em;
+    margin-top: 0;
+    color: #f0f0f0;
+}
+.category-card p {
+    color: #b0b0b0;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+.category-card a {
+    display: inline-block;
+    color: #e91e63;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.category-card a:hover {
+    text-decoration: underline;
+}
+
+/* 3. Son Eklenen İçerik Bölümü (.latest-content) */
+.latest-content h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    color: #f0f0f0;
+}
+.content-list-placeholder {
+    background-color: #1f1f1f;
+    padding: 40px;
+    border: 1px dashed #444;
+    text-align: center;
+    border-radius: 8px;
+}
+.content-list-placeholder p {
+    color: #888;
+    font-style: italic;
+}
+
+
+/* ======================================= */
+/* İNCELEMELER SAYFASI STİLLERİ */
+/* ======================================= */
+
+.page-title-section {
+    text-align: center;
+    padding: 20px 0 40px;
+    border-bottom: 2px solid #333;
+    margin-bottom: 40px;
+}
+.page-title {
+    font-size: 2.8em;
+    color: #00bcd4; /* Mavi vurgu */
+    margin: 0;
+    font-weight: 700;
+}
+.subtitle {
+    font-size: 1.1em;
+    color: #ccc;
+    margin-top: 10px;
+}
+
+/* Filtreleme Çubuğu Stilleri */
+.review-filters {
+    margin-bottom: 40px;
+}
+.filter-bar {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #1f1f1f;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+#review-search, #category-filter {
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+    font-size: 1em;
+    flex-grow: 1;
+    max-width: 300px;
+}
+.filter-btn {
+    padding: 10px 20px;
+    margin-top: 0; /* cta-button'ın default margin'ini sıfırlıyoruz */
+}
+
+/* İnceleme Kartları (Grid) */
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.review-card {
+    background-color: #1f1f1f;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-left: 5px solid #555; /* Varsayılan koyu kenarlık */
+}
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+.review-card h3 {
+    font-size: 1.5em;
+    color: #f0f0f0;
+    margin: 10px 0;
+}
+.review-card p {
+    color: #b0b0b0;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+.review-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px dashed #333;
+    padding-top: 15px;
+}
+.score {
+    font-weight: bold;
+    color: #ffc107; /* Sarı puan vurgusu */
+    font-size: 1.1em;
+}
+.read-more {
+    color: #e91e63; /* Pembe oku */
+    font-weight: bold;
+}
+.read-more:hover {
+    text-decoration: underline;
+}
+
+/* Etiket Renkleri */
+.review-tag {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #1f1f1f;
+}
+.gpu-color { background-color: #00bcd4; } /* Mavi */
+.cpu-color { background-color: #e91e63; } /* Pembe */
+.storage-color { background-color: #8bc34a; } /* Yeşil */
+
+/* Kart Kenarlık Renkleri (Etiketle Eşleşmeli) */
+.review-card[data-category="gpu"] { border-left-color: #00bcd4; }
+.review-card[data-category="cpu"] { border-left-color: #e91e63; }
+.review-card[data-category="storage"] { border-left-color: #8bc34a; }
+
+/* Daha Fazla Yükle Butonu */
+.load-more-container {
+    text-align: center;
+    margin-top: 30px;
+}
+.load-more-btn {
+    padding: 15px 30px;
+}
+
+/* Mobil Uyumluluk */
+@media (max-width: 768px) {
+    .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    #review-search, #category-filter {
+        max-width: none;
+    }
+    .review-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* Fiyatlar  Html  */ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

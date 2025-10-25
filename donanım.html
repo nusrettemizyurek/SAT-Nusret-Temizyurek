@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teknogündem | Donanım Merkezi V2.0</title>
+    <link rel="stylesheet" href="css/style.css"> 
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>TEKNOGÜNDEM<span class="logo-dot"></span></h1>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="#">HABERLER ▼</a>
+                        <div class="dropdown-content">
+                            <a href="guncel-haberler.html">Güncel</a>
+                            <a href="ekran-karti-haberleri.html">Ekran Kartları</a>
+                            <a href="islemci-haberleri.html">İşlemciler</a>
+                            <a href="anakart-ram-haberleri.html">Anakart ve RAM</a>
+                            <a href="sizintilar.html">Sızıntılar</a>
+                            <a href="yapay-zeka.html">Yapay Zeka</a>
+                        </div>
+                    </li>
+                    <li><a href="incelemeler.html">İNCELEMELER</a></li>
+                    <li><a href="fiyatlar.html">FİYAT LİSTELERİ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="simple-hero">
+        <div class="hero-text">
+            <h2>Geleceğin Teknolojisi, Bugünden Seninle.</h2>
+            <p>En güncel donanım haberleri, detaylı incelemeler ve 2025 fiyat analizleri Teknogündem'de.</p>
+            <button class="cta-button">En Son Haberlere Git</button>
+        </div>
+    </section>
+
+    <div class="main-body-container">
+        
+        <section class="featured-categories">
+            <h2>Sitedeki Ana Kategoriler</h2>
+            <div class="category-grid">
+                <article class="category-card" data-category="haberler">
+                    <h3>🔥 Güncel Haberler</h3>
+                    <p>Intel, AMD ve NVIDIA'dan en son sızıntılar ve resmi duyurular.</p>
+                    <a href="guncel-haberler.html">Haber Akışını Gör</a>
+                </article>
+                
+                <article class="category-card" data-category="incelemeler">
+                    <h3>🔬 Detaylı Testler</h3>
+                    <p>Ekran kartı, işlemci ve depolama birimlerinin derinlemesine performans incelemeleri.</p>
+                    <a href="incelemeler.html">Tüm İncelemeler</a>
+                </article>
+
+                <article class="category-card" data-category="fiyat-listeleri">
+                    <h3>💰 2025 Fiyat Analizi</h3>
+                    <p>Piyasadaki donanımların güncel ve beklenen 2025 fiyat listeleri.</p>
+                    <a href="fiyat-listeleri-2025.html">Fiyatlara Göz At</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="latest-content">
+            <h2>⚡ Son Eklenenler</h2>
+            <div class="content-list-placeholder">
+                <p>Buraya, yapacağımız geliştirmelerde veri çekilerek gösterilecek olan en yeni 3 haber veya inceleme kartı gelecek.</p>
+            </div>
+        </section>
+        
+    </div>
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h3 id="modal-title"></h3>
+        <div id="modal-body"></div>
+      </div>
+    </div>
+    
+    <script src="js/script.js"></script> 
+</body>
+</html>
