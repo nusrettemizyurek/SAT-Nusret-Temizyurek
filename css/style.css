@@ -27,12 +27,22 @@
     box-sizing: border-box;
 }
 
+/* 👇 DÜZELTME: Sticky Footer için HTML ve BODY ayarları */
+html {
+    height: 100%; /* Tarayıcı penceresinin yüksekliğini tam alır */
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--color-background);
     color: var(--color-text);
     line-height: 1.6;
     transition: background-color 0.5s, color 0.5s; /* Karanlık mod geçişi */
+
+    /* Altbilgiyi aşağı itmek için Flexbox ayarları */
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; /* Ekran yüksekliğinin tamamını kapla */
 }
 
 .container {
@@ -40,6 +50,12 @@ body {
     margin: 0 auto;
     padding: 20px;
 }
+
+/* 🚨 EKLE: Ana içeriğin (main) kalan tüm boşluğu doldurması */
+main {
+    flex-grow: 1; 
+}
+/* 👆 DÜZELTME SONU 👆 */
 
 /* 2. HEADER VE NAVİGASYON */
 header { /* DÜZELTME: class yerine element seçici kullanılmış, düzeltildi */
@@ -193,6 +209,7 @@ body.index #bg-animation {
 body.index {
     color: var(--color-text);
     background-color: #0a0a0a; /* koyu arka plan */
+    /* Flexbox kuralları yukarıda body'de olduğu için burada tekrar yazmaya gerek yok. */
 }
 
 /* İçerikler canvas’ın üzerinde kalacak */
@@ -392,22 +409,24 @@ header, main, footer {
 
 /* Donanım Sayfası CSS */
 /* Genel Stil Resetleri (Mevcut CSS'inizin başına ekleyebilirsiniz) */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #121212; /* Koyu Tema Arkaplan */
-    color: #f0f0f0;
-}
-a {
-    text-decoration: none;
-    color: #00bcd4; /* Açık mavi link rengi */
-}
 .main-body-container {
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
 }
+a {
+    text-decoration: none;
+    color: #00bcd4; /* Açık mavi link rengi */
+}
+
+
+/* DÜZELTME: HTML'deki 'donanim-sayfasi' sınıfını hedefleyen stil eklendi */
+body.donanim-sayfasi {
+    background-color: #181818; /* Koyu arka plan rengi */
+    color: #f0f0f0; /* Açık metin rengi */
+}
+
+
 
 /* HEADER ve NAV Stilleri (Önceki HTML'den gelen üst kısım) */
 header {
@@ -531,7 +550,7 @@ nav ul li a:hover {
     text-align: center;
     font-size: 1.8em;
     margin-bottom: 30px;
-    color: #f0f0f0;
+    color:  #f0f0f0; /* Donanım sayfasında arka plan koyu olduğu için rengi değiştirdim */
 }
 .category-grid {
     display: grid;
@@ -620,41 +639,26 @@ nav ul li a:hover {
     margin-top: 10px;
 }
 
-/* Filtreleme Çubuğu Stilleri */
-.review-filters {
-    margin-bottom: 40px;
-}
-.filter-bar {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: #1f1f1f;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-}
-#review-search, #category-filter {
-    padding: 10px;
-    border: 1px solid #444;
-    border-radius: 5px;
-    background-color: #2a2a2a;
-    color: #f0f0f0;
-    font-size: 1em;
-    flex-grow: 1;
-    max-width: 300px;
-}
-.filter-btn {
-    padding: 10px 20px;
-    margin-top: 0; /* cta-button'ın default margin'ini sıfırlıyoruz */
+
+
+/* İnceleme Kartları (Grid) - 3'LÜ YATAY DÜZEN BURAYA EKLENDİ */
+.review-grid {
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 25px;
+    display: grid;
 }
 
-/* İnceleme Kartları (Grid) */
-.review-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
-    margin-bottom: 50px;
+/* Ekran küçüldüğünde otomatik ayarlama (Duyarlılık/Responsive Tasarım) */
+@media (max-width: 1024px) {
+    .review-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .review-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .review-card {
@@ -663,7 +667,8 @@ nav ul li a:hover {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s, box-shadow 0.3s;
-    border-left: 5px solid #555; /* Varsayılan koyu kenarlık */
+    border-left: 5px solid #555; 
+    position: relative; /* Etiket konumlandırması için önemli */
 }
 .review-card:hover {
     transform: translateY(-5px);
@@ -700,23 +705,31 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
-/* Etiket Renkleri */
+/* Etiketler - KONUMLANDIRMA VE RENK */
 .review-tag {
     display: inline-block;
     padding: 5px 10px;
     border-radius: 3px;
     font-size: 0.8em;
     font-weight: bold;
-    color: #1f1f1f;
+    color: #fff; /* Etiket içindeki metin beyaz olsun */
+    
+    position: absolute; 
+    top: -10px; 
+    right: 15px; 
+    z-index: 2;
 }
+
 .gpu-color { background-color: #00bcd4; } /* Mavi */
 .cpu-color { background-color: #e91e63; } /* Pembe */
 .storage-color { background-color: #8bc34a; } /* Yeşil */
+.motherboard-color { background-color: #9c27b0; } /* Mor - YENİ EKLENDİ */
 
 /* Kart Kenarlık Renkleri (Etiketle Eşleşmeli) */
 .review-card[data-category="gpu"] { border-left-color: #00bcd4; }
 .review-card[data-category="cpu"] { border-left-color: #e91e63; }
 .review-card[data-category="storage"] { border-left-color: #8bc34a; }
+.review-card[data-category="motherboard"] { border-left-color: #9c27b0; } /* Anakart/RAM için mor renk */
 
 /* Daha Fazla Yükle Butonu */
 .load-more-container {
@@ -736,69 +749,200 @@ nav ul li a:hover {
     #review-search, #category-filter {
         max-width: none;
     }
-    .review-grid {
+    /* review-grid mobil uyum yukarıda genel medya sorgularına taşındı */
+}
+/* ================================================= */
+/* 9. İNCELEME DETAY SAYFASI (REVIEW-DETAIL) STİLLERİ */
+/* ================================================= */
+
+/* GENEL DÜZELTMELER: HTML'deki inline body stilinin kaldırılması için bu satırlar gereklidir. */
+/* Eğer tüm site dark-mode kullanıyorsa bu gereksiz olabilir ancak tutarlılık için eklenmiştir. */
+/* NOT: Body arka planını #181818 olarak HTML'de tutmaya devam edin. */
+.main-body-container {
+    padding-top: 50px;
+}
+
+/* Genel Konteynerler ve Başlıklar */
+.detail-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--color-border); /* #333 */
+}
+
+.detail-header h1 {
+    font-size: 3em;
+    color: #00bcd4; /* Sabit belirgin renk */
+    margin-bottom: 10px;
+}
+
+.detail-header .subtitle {
+    font-size: 1.2em;
+    color: var(--color-text); /* #e0e0e0 */
+}
+
+/* Büyük Puan Gösterimi */
+.score-large {
+    font-size: 3em;
+    color: var(--color-secondary); /* #ffc107 */
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Ana İçerik Grid Yapısı */
+.review-content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* İçerik solda (Geniş), Özellikler sağda (Dar) */
+    gap: 40px;
+    margin-top: 30px;
+}
+
+/* Alt Başlıklar ve Ayırıcılar */
+/* Alt Başlıklar ve Ayırıcılar */
+.main-content h2, .technical-specs-box h2 {
+    /* Renkler HTML'de inline olarak atanmış olabilir, burada sadece biçimlendirme yapılır */
+    border-bottom: 3px solid #3a3a3a; /* Daha kalın ve koyu ayırıcı */
+    padding-bottom: 15px; 
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    font-weight: 800; /* Metni çok kalın (daha belirgin) yaptık */
+    padding-left: 0; 
+}
+/* Detaylı İnceleme Metni Paragrafları */
+.detail-review-body p {
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: var(--color-text); /* #e0e0e0 */
+}
+
+
+/* Artıları ve Eksileri Listeleri */
+.main-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.main-content ul li {
+    background-color: #2a2a2a; /* Koyudan biraz daha açık */
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    /* Artılar için varsayılan renk (Mavi Vurgu) */
+    border-left: 5px solid #00bcd4; 
+}
+
+/* Eksiler için özel stil (li'ye 'negative' class'ı eklenirse çalışır) */
+.main-content ul li.negative {
+    border-left-color: #e91e63 !important; /* Pembe Vurgu */
+}
+
+
+
+
+
+
+/* Teknik Özellikler ve Puan Kutusu (Sağ Sütun) */
+.technical-specs-box {
+    background-color: var(--color-card-background); /* #1e1e1e (Dark Mode) */
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px var(--color-shadow);
+    height: fit-content;
+}
+
+.specs-list {
+    list-style: none;
+    padding: 0;
+}
+
+.specs-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--color-border);
+    font-size: 1.1em;
+}
+
+.specs-list li span:first-child {
+    color: #ccc;
+}
+
+.specs-list li span:last-child {
+    font-weight: bold;
+    color: #00bcd4;
+}
+
+/* Editörün Yorumu / Sonuç Kutusu */
+.conclusion-box {
+    background-color: #2a2a2a;
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: 30px;
+    border: 2px solid #e91e63;
+}
+
+/* ================================================= */
+/* 10. İNCELEME VİDEO STİLLERİ */
+/* ================================================= */
+
+/* Responsive video yapısı için (16:9 oranını korur) */
+.video-container {
+    position: relative;
+    width: 100%;
+    /* 16:9 oranı */
+    padding-bottom: 56.25%; 
+    height: 0;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+
+
+
+/* ================================================= */
+/* 11. MOBİL UYUM (REVIEW-DETAIL) */
+/* ================================================= */
+
+@media (max-width: 900px) {
+    /* Orta ölçekli cihazlar için (Tablet) grid yapısını tek sütuna düşür */
+    .review-content-grid {
         grid-template-columns: 1fr;
+    }
+    .detail-header h1 {
+        font-size: 2.5em;
+    }
+}
+@media (max-width: 500px) {
+    /* Küçük cihazlar için (Telefon) */
+    .detail-header h1 {
+        font-size: 2em;
+    }
+    .score-large {
+        font-size: 2.5em;
+    }
+    .main-content h2, .technical-specs-box h2 {
+        font-size: 1.5em;
     }
 }
 
 
 
-/* Fiyatlar  Html  */ 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*İnceme sayfası Sonu */ 
 
 
 /* HAKKIMIZDA.HTML İÇİN EKLENEN STİLLER */
@@ -887,14 +1031,14 @@ nav ul li a:hover {
 }
 
 /* =========================
-   Hakkımızda sayfası özel stil /// arka plan ha 
-   ========================= */
+    Hakkımızda sayfası özel stil /// arka plan ha 
+    ========================= */
 body.hakkimizda {
     background: linear-gradient(135deg, #6a11cb, #2575fc, #1f8ef1, #6a11cb);
     background-size: 300% 300%;
     animation: gradientShift 20s ease infinite;
     color: #ffffff;
-    min-height: 100vh;
+    /* min-height: 100vh; kuralı genel body'de olduğu için burada gerek kalmadı */
     font-family: 'Arial', sans-serif;
 }
 
@@ -942,8 +1086,6 @@ body.hakkimizda h2 {
 
 
 
-
-
 /* ÖNE ÇIKAN MAKALE (FEATURED ARTICLE) - Mevcut, olduğu gibi bırakıldı */
 .featured-article {
     display: grid;
@@ -959,12 +1101,12 @@ body.hakkimizda h2 {
 /* ... [Diğer Mevcut Stiller] ... */
 
 /* 5. FOOTER */
-footer { /* DÜZELTME: class yerine element seçici kullanılmış, düzeltildi */
+footer { 
     text-align: center;
     padding: 20px 0;
     background-color: var(--color-footer);
     color: #ccc;
-    margin-top: 60px;
+    margin-top: 0; /* 🚨 Siyah boşluk kalmaması için sıfırlandı */
     font-size: 0.9rem;
 }
 

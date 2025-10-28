@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCIe 6.0 NVMe SSD İncelemesi | Teknogündem</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    
+    <style>
+        body { 
+            background-color: #0a0a0a; /* Koyu arka plan */
+            color: #f0f0f0; /* 👈 Metin rengi #e0e0e0'dan #f0f0f0'a (daha parlak) yükseltildi. */
+            font-family: 'Poppins', sans-serif;
+        }
+        .main-body-container { 
+            background-color: transparent; 
+            padding-top: 50px; 
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        
+        /* DEPOLAMA İNCELEMESİ İÇİN ÖZEL RENK VURGULARI (Mor/Pembe) */
+        
+        /* 1. Başlık Rengi */
+        .detail-header h1 {
+            color: #e91e63; /* Mor/Pembe Vurgu */
+            text-shadow: 0 0 10px rgba(233, 30, 99, 0.7);
+        }
+        
+        /* 2. Ana Puan Vurgusu (Sarı uyarı veren -webkit- satırları temizlendi) */
+        .score-large {
+            background: linear-gradient(45deg, #e91e63, #ffc107);
+        
+            background-clip: text; /* Standart kural korundu */
+            -webkit-background-clip: text; /* Eski kural bırakıldı, ancak çoğu tarayıcı bunu yok sayar */
+        
+            color: transparent; /* Textin rengini gradyanın göstermesi için şeffaf yapar */
+        
+            font-size: 3.5em;
+            font-weight: 900;
+            padding: 10px 0;
+            border-bottom: 3px solid #e91e63;
+        }
+        /* 3. Sonuç Kutusu Rengi */
+        .conclusion-box {
+            border: 3px solid #e91e63; /* Pembe Sınır */
+            background-color: #1e1e2d; /* Koyu Mavi Tonu */
+        }
+        
+        /* 4. İnceleme Başlıkları */
+        .detail-review-body h2 span, 
+        .technical-specs-box h2 {
+            color: #e91e63; /* Pembe Vurgusu */
+        }
+        
+        /* 5. Artı ve Eksiler */
+        #detail-pros li { color: #76ff03; } /* Artılar Yeşil */
+        #detail-cons li { color: #ffc107; } /* Eksiler Sarı/Turuncu */
+        
+        /* Teknik özellikler tablosu */
+        .specs-list span:first-child {
+            color: #999;
+        }
+        
+        /* METİN OKUNAKLILIĞI DÜZELTİLDİ */
+        .detail-review-body p {
+            color: #f0f0f0; /* Paragraf metinleri daha parlak hale getirildi. */
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>TEKNOGÜNDEM<span class="logo-dot">.</span>DONANIM</h1>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="#">HABERLER ▼</a>
+                        <div class="dropdown-content">
+                            <a href="guncel-haberler.html">Güncel</a>
+                            <a href="ekran-karti-haberleri.html">Ekran Kartları</a>
+                            <a href="islemci-haberleri.html">İşlemciler</a>
+                            <a href="anakart-ram-haberleri.html">Anakart ve RAM</a>
+                            <a href="sizintilar.html">Sızıntılar</a>
+                            <a href="yapay-zeka.html">Yapay Zeka</a>
+                        </div>
+                    </li>
+                    <li><a href="incelemeler.html" class="active">İNCELEMELER</a></li>
+                    <li><a href="fiyatlar.html">FİYAT LİSTELERİ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+<div class="main-body-container">
+        
+    <section id="review-detail-section">
+        <div class="detail-header">
+            <h1>PCIe 6.0 NVMe SSD (2TB)</h1>
+            <p class="subtitle">Depolamada Sınır Tanımayan Yeni Nesil Hızlar</p>
+            <div class="score-large">⭐ 9.2/10</div>
+        </div>
+
+        <div class="review-content-grid">
+            
+            <div class="main-content">
+                
+                <div class="video-container">
+                    <iframe 
+                        width="100%" 
+                        height="450" 
+                        src="https://www.youtube-nocookie.com/embed/qwfB4YSW9Ek" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <div class="detail-review-body">
+                ```
+
+
+        
+                    <div class="detail-review-body">
+                        
+                        <h2 style="margin-top: 0;"><span style="color: #e91e63;">🚀 Teorik Hızdan Gerçek Performansa</span></h2>
+                        <p>
+                            PCIe 6.0 arayüzü, 5.0'ın zaten şaşırtıcı olan hızını ikiye katlayarak 2TB'lık bu canavarı, okuma ve yazma işlemlerinde 20 GB/sn seviyelerine taşıyor. Bu, yalnızca profesyonel video düzenleme ve büyük veri işleme için değil, aynı zamanda DirectStorage teknolojisi sayesinde oyun yükleme sürelerinde de devrim niteliğinde bir kısalma anlamına geliyor.
+                        </p>
+
+                        <h2><span style="color: #e91e63;">🌡️ Termal Yönetim ve Verimlilik</span></h2>
+                        <p>
+                            Bu kadar yüksek hızların doğal sonucu olarak ortaya çıkan ısınma, SSD'nin en kritik noktasıydı. Ancak üreticiler, devasa soğutucu blokları ve optimize edilmiş kontrolcüler kullanarak, performansta herhangi bir düşüş (throttling) yaşanmasını engellemeyi başarmış. Idle (boşta) güç tüketimi önceki nesillere göre daha verimli.
+                        </p>
+
+                    </div>
+
+                    <div id="pros-cons-container">
+                        <h2><span style="color: #76ff03;">✅ Artıları</span></h2>
+                        <ul id="detail-pros">
+                            <li>20 GB/sn'ye ulaşan akıl almaz sıralı okuma/yazma hızları.</li>
+                            <li>4K ve 8K video düzenleme profesyonelleri için vazgeçilmez.</li>
+                            <li>Üstün termal çözümler sayesinde tutarlı performans.</li>
+                            <li>DirectStorage destekli oyunlarda anlık yükleme süreleri.</li>
+                        </ul>
+                        
+                        <h2><span style="color: #ffc107;">❌ Eksileri</span></h2>
+                        <ul id="detail-cons">
+                            <li class="negative">PCIe 6.0 desteği için yeni nesil anakart şart.</li>
+                            <li class="negative">Tüketici için fiyat etiketi oldukça yüksek.</li>
+                            <li class="negative">Standart PC kullanıcıları bu hızı tam olarak kullanamayacak.</li>
+                        </ul>
+                    </div>
+
+                    <h2 style="margin-top: 40px;"><span style="color: #e91e63;">📊 Benchmark Sonuçları (CrystalDiskMark)</span></h2>
+                    <div class="technical-specs-box">
+                        <ul class="specs-list">
+                            <li><span>Sıralı Okuma (Maks.)</span> <span>20.1 GB/sn</span></li>
+                            <li><span>Sıralı Yazma (Maks.)</span> <span>18.5 GB/sn</span></li>
+                            <li><span>Rastgele Okuma (IOPS)</span> <span>3.5M</span></li>
+                            <li><span>Rastgele Yazma (IOPS)</span> <span>3.2M</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="conclusion-box">
+                        <h2>✨ Editörün Yorumu</h2>
+                        <p style="color: #f0f0f0;">PCIe 6.0 SSD, depolama teknolojisinin ulaştığı son nokta. Herkes için değil, ancak en son teknolojiye sahip bir profesyonel iş istasyonu kuran veya geleceğe yatırım yapanlar için tartışmasız en iyi seçenek. Hız tutkunları bu SSD'ye bayılacak.</p>
+                    </div>
+                </div>
+
+                <div class="technical-specs-box">
+                    <h2 style="color: #e91e63;">⚙️ Teknik Özellikler</h2>
+                    <ul class="specs-list">
+                        <li><span>Kapasite</span> <span>2 TB</span></li>
+                        <li><span>Arayüz</span> <span>PCI Express 6.0 (x4)</span></li>
+                        <li><span>Form Faktörü</span> <span>M.2 2280</span></li>
+                        <li><span>Denetleyici</span> <span>Phison E36 (Varsayımsal)</span></li>
+                        <li><span>Garanti (TBW)</span> <span>2500 TBW</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+        </section>
+
+    </div>
+    
+    <footer>
+        <p>© 2025 TEKNOGÜNDEM DONANIM. Tüm hakları saklıdır. | <a href="#">Gizlilik Politikası</a></p>
+    </footer>
+
+</body>
+</html>

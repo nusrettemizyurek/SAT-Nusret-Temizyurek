@@ -164,6 +164,105 @@ window.addEventListener('click', function(event) {
 });
 
 
+/* İnceleme kartlar kısmı            */
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Güvenli Seçiciler
+    const searchInput = document.getElementById('review-search');
+    const categoryFilter = document.getElementById('category-filter');
+    const filterButton = document.querySelector('.filter-btn');
+    const reviewGrid = document.querySelector('.review-grid');
+    const loadMoreButton = document.querySelector('.load-more-btn');
+    
+    if (!reviewGrid) {
+        console.error("Hata: '.review-grid' bulunamadı.");
+        return; 
+    }
+    
+    const allReviewCards = Array.from(reviewGrid.querySelectorAll('.review-card'));
+    const INITIAL_VISIBLE_COUNT = 9; // İlk başta 3x3 = 9 kart göster
+    const LOAD_MORE_COUNT = 6; // Her seferinde 6 kart daha yükle
+
+    let currentVisibleCount = 0; // Şu anda ekranda görünen kart sayısı (Yüklemeden sorumlu)
+    
+    // --- 1. Filtreleme ve Arama İşlevi (Tümünü Gösterir, Yükleme Yapmaz) ---
+
+    const applyFilters = () => {
+        const searchTerm = (searchInput ? searchInput.value.toLowerCase().trim() : "");
+        const selectedCategory = (categoryFilter ? categoryFilter.value : "all");
+        
+        let visibleCountAfterFilter = 0;
+
+        allReviewCards.forEach(card => {
+            const cardTitle = card.querySelector('h3')?.textContent.toLowerCase() || "";
+            const cardDescription = card.querySelector('p')?.textContent.toLowerCase() || "";
+            const cardCategory = card.getAttribute('data-category');
+
+            const categoryMatch = selectedCategory === 'all' || cardCategory === selectedCategory;
+            const searchMatch = cardTitle.includes(searchTerm) || cardDescription.includes(searchTerm);
+
+            if (categoryMatch && searchMatch) {
+                card.style.display = 'block';
+                visibleCountAfterFilter++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        
+        // Filtreleme yapıldığında, "Daha Fazla Yükle" özelliğini devre dışı bırak.
+        // Çünkü filtre, tüm kartların görünürlüğünü yönetti.
+        if (loadMoreButton) {
+            loadMoreButton.style.display = 'none';
+        }
+    };
+
+    // --- 2. "Daha Fazla Yükle" İşlevi ve Başlangıç Görünürlüğü ---
+    
+    const updateLoadMoreButton = () => {
+        if (loadMoreButton) {
+            // Görünür kart sayısını güncelle
+            currentVisibleCount = allReviewCards.filter(card => card.style.display !== 'none').length;
+            
+            // Eğer tüm kartlar görünüyorsa butonu gizle
+            if (currentVisibleCount >= allReviewCards.length) {
+                loadMoreButton.style.display = 'none';
+            } else {
+                 // Filtreleme yapılmadıysa butonu göster
+                 if (searchInput.value === "" && categoryFilter.value === "all") {
+                    loadMoreButton.style.display = 'block';
+                 }
+            }
+        }
+    }
+    
+    const initializeCards = () => {
+        // Başlangıçta sadece ilk 9 kartı göster (3x3 grid için)
+        allReviewCards.forEach((card, index) => {
+            card.style.display = index < INITIAL_VISIBLE_COUNT ? 'block' : 'none';
+        });
+        currentVisibleCount = INITIAL_VISIBLE_COUNT;
+        
+        updateLoadMoreButton();
+    };
+    
+    const loadMoreReviews = () => {
+        const startIndex = currentVisibleCount;
+        const endIndex = currentVisibleCount + LOAD_MORE_COUNT; 
+
+        // Sadece bir sonraki yükleme aralığındaki kartları göster
+        for (let i = startIndex; i < endIndex && i < allReviewCards.length; i++) {
+            allReviewCards[i].style.display = 'block';
+        }
+        
+        currentVisibleCount = endIndex;
+        updateLoadMoreButton();
+    };
+
+});
+
+
+
+
 
 
 

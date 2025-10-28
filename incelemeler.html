@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İncelemeler | Teknogündem Donanım</title>
     <link rel="stylesheet" href="css/style.css"> 
-</head>
-<body>
-
-    <header>
+    
+    </head>
+<body class="dark-mode"> <header>
         <div class="header-content">
             <h1>TEKNOGÜNDEM<span class="logo-dot">.</span>DONANIM</h1>
             <nav>
                 <ul>
-                    <li><a href="index.html">ANA SAYFA</a></li>
                     <li class="dropdown">
                         <a href="#">HABERLER ▼</a>
                         <div class="dropdown-content">
@@ -38,21 +36,6 @@
             <h2 class="page-title">✅ TÜM DETAYLI İNCELEMELERİMİZ</h2>
             <p class="subtitle">Yeni çıkan ekran kartları, işlemciler ve tüm donanımların bağımsız test sonuçları burada.</p>
         </section>
-
-        <section class="review-filters">
-            <div class="filter-bar">
-                <input type="text" id="review-search" placeholder="İnceleme Ara (Örn: RTX 5080, Ryzen 9)">
-                <select id="category-filter">
-                    <option value="all">Tüm Kategoriler</option>
-                    <option value="gpu">Ekran Kartları</option>
-                    <option value="cpu">İşlemciler</option>
-                    <option value="motherboard">Anakartlar</option>
-                    <option value="storage">Depolama (SSD/HDD)</option>
-                </select>
-                <button class="cta-button filter-btn">Filtrele</button>
-            </div>
-        </section>
-
         <section class="review-grid-section">
             <div class="review-grid">
                 
@@ -62,7 +45,7 @@
                     <p>8K Oyun Performansı ve DLSS 4.0 Testleri</p>
                     <div class="review-meta">
                         <span class="score">⭐ 9.8/10</span>
-                        <a href="#" class="read-more">İncelemeyi Oku &raquo;</a>
+                        <a href="rtx-5090.html" class="read-more">İncelemeyi Oku &raquo;</a>
                     </div>
                 </article>
 
@@ -72,7 +55,7 @@
                     <p>Yeni IPC Mimarisi ve Çoklu Çekirdek Gücü</p>
                     <div class="review-meta">
                         <span class="score">⭐ 9.5/10</span>
-                        <a href="#" class="read-more">İncelemeyi Oku &raquo;</a>
+                        <a href="intel-i9-15900k.html" class="read-more">İncelemeyi Oku &raquo;</a>
                     </div>
                 </article>
 
@@ -82,15 +65,162 @@
                     <p>Veri aktarımında yeni bir çağ: Isınma ve gecikme sorunları</p>
                     <div class="review-meta">
                         <span class="score">⭐ 9.0/10</span>
-                        <a href="#" class="read-more">İncelemeyi Oku &raquo;</a>
+                        <a href="pcie-6-ssd.html" class="read-more">İncelemeyi Oku &raquo;</a>
                     </div>
                 </article>
                 
-                </div>
-            
-            <div class="load-more-container">
-                <button class="cta-button load-more-btn">Daha Fazla İnceleme Yükle</button>
+                <article class="review-card" data-category="gpu">
+                    <span class="review-tag gpu-color">EKRAN KARTI</span>
+                    <h3>AMD Radeon RX 8900 XT Testi</h3>
+                    <p>Fiyat/Performans lideri mi? FSR 4.0 ile karşılaştırmalı inceleme.</p>
+                    <div class="review-meta">
+                        <span class="score">⭐ 8.7/10</span>
+                        <a href="rx-8900-xt.html" class="read-more">İncelemeyi Oku &raquo;</a>
+                    </div>
+                </article>
+                
+                <article class="review-card" data-category="cpu">
+                    <span class="review-tag cpu-color">İŞLEMCİ</span>
+                    <h3>AMD Ryzen 7 9700X İşlemci İncelemesi</h3>
+                    <p>Zen 5 mimarisi ile tek çekirdek performansında zirve.</p>
+                    <div class="review-meta">
+                        <span class="score">⭐ 9.4/10</span>
+                        <a href="AMD Ryzen 7 9700X İnceleme Sayfası .html" class="read-more">İncelemeyi Oku &raquo;</a>
+                    </div>
+                </article>
+
+                <article class="review-card" data-category="motherboard">
+                    <span class="review-tag motherboard-color">ANAKART</span>
+                    <h3>MSI Z890 Tomahawk Wi-Fi</h3>
+                    <p>Yeni nesil anakartın VRM gücü ve bağlantı seçenekleri.</p>
+                    <div class="review-meta">
+                        <span class="score">⭐ 9.2/10</span>
+                        <a href="msi-z890-tomahawk.html" class="read-more">İncelemeyi Oku &raquo;</a>
+                    </div>
+                </article>
+
+                <article class="review-card" data-category="storage">
+                    <span class="review-tag storage-color">DEPOLAMA</span>
+                    <h3>Samsung 990 Pro Evo (4TB)</h3>
+                    <p>En uygun depolama çözümü mü? Günlük kullanım testleri.</p>
+                    <div class="review-meta">
+                        <span class="score">⭐ 8.5/10</span>
+                        <a href="samsung-990-pro-evo.html" class="read-more">İncelemeyi Oku &raquo;</a>
+                    </div>
+                </article>
+
+                <article class="review-card" data-category="gpu">
+                    <span class="review-tag gpu-color">EKRAN KARTI</span>
+                    <h3>RTX 5070 Ti Karşılaştırması</h3>
+                    <p>Üst-orta seviyenin yeni lideri mi? Rakip kartlarla detaylı kıyaslama.</p>
+                    <div class="review-meta">
+                        <span class="score">⭐ 9.1/10</span>
+                        <a href="rtx-5070-ti-karsilastirma.html" class="read-more">İncelemeyi Oku &raquo;</a>
+                    </div>
+                </article>
+
+                <article class="review-card" data-category="cpu">
+                    <span class="review-tag cpu-color">İŞLEMCİ</span>
+                    <h3>Intel Core i5-15600K Oyun Testleri</h3>
+                    <p>Orta segmentin en popüler işlemcisiyle 1440p ve 4K oyun performansı.</p>
+                    <div class="review-meta">
+                        <span class="score">⭐ 9.3/10</span>
+                        <a href="intel-i5-15600k.html" class="read-more">İncelemeyi Oku &raquo;</a>
+                    </div>
+                </article>
+
+                <article class="review-card" data-category="gpu">
+                    <span class="review-tag gpu-color">EKRAN KARTI</span>
+                    <h3>Intel Arc A980 Masaüstü İncelemesi</h3>
+                    <p>Fiyat performans dengesini bozan bir giriş mi? Ray Tracing performansı.</p>
+                    <div class="review-meta">
+                        <span class="score">⭐ 8.2/10</span>
+                        <a href="intel-arc-a980.html" class="read-more">İncelemeyi Oku &raquo;</a>
+                    </div>
+                </article>
+
+                <article class="review-card" data-category="cpu">
+                    <span class="review-tag cpu-color">İŞLEMCİ</span>
+                    <h3>Ryzen 5 9600X İncelemesi</h3>
+                    <p>6 çekirdekle 2025'te oyun performansı ne durumda?</p>
+                    <div class="review-meta">
+                        <span class="score">⭐ 8.8/10</span>
+                        <a href="ryzen-5-9600x.html" class="read-more">İncelemeyi Oku &raquo;</a>
+                    </div>
+                </article>
+                
+                <article class="review-card" data-category="motherboard">
+                    <span class="review-tag motherboard-color">RAM</span>
+                    <h3>G.SKILL Trident Z6 DDR5 8000 MHz</h3>
+                    <p>Yüksek hızlı RAM kitinin kararlılık ve gecikme testleri.</p>
+                    <div class="review-meta">
+                        <span class="score">⭐ 9.6/10</span>
+                        <a href="gskill-trident-z6.html" class="read-more">İncelemeyi Oku &raquo;</a>
+                    </div>
+                </article>
+
+                <article class="review-card" data-category="storage">
+                    <span class="review-tag storage-color">DEPOLAMA</span>
+                    <h3>WD Black SN1000 Harici SSD</h3>
+                    <p>Profesyonel içerik üreticileri için taşınabilir performans.</p>
+                    <div class="review-meta">
+                        <span class="score">⭐ 8.9/10</span>
+                        <a href="wd-black-sn1000.html" class="read-more">İncelemeyi Oku &raquo;</a>
+                    </div>
+                </article>
+                
+                <article class="review-card" data-category="cpu">
+                    <span class="review-tag cpu-color">İŞLEMCİ</span>
+                    <h3>Intel Core Ultra 9 285K (Lunar Lake)</h3>
+                    <p>Mobil performansta yeni standart: Entegre yapay zeka performansı.</p>
+                    <div class="review-meta">
+                        <span class="score">⭐ 9.7/10</span>
+                        <a href="intel-core-ultra-9.html" class="read-more">İncelemeyi Oku &raquo;</a>
+                    </div>
+                </article>
+
+                <article class="review-card" data-category="gpu">
+                    <span class="review-tag gpu-color">EKRAN KARTI</span>
+                    <h3>AMD Radeon RX 8600 XT (Orta Segment)</h3>
+                    <p>En çok satan segmentte rekabet: 1440p FSR ile güç testi.</p>
+                    <div class="review-meta">
+                        <span class="score">⭐ 8.4/10</span>
+                        <a href="rx-8600-xt.html" class="read-more">İncelemeyi Oku &raquo;</a>
+                    </div>
+                </article>
+
+                <article class="review-card" data-category="motherboard">
+                    <span class="review-tag motherboard-color">ANAKART</span>
+                    <h3>ASUS ROG Maximus XIII Extreme Z890</h3>
+                    <p>Profesyonel hız aşırtma ve üst düzey bağlantı özellikleri.</p>
+                    <div class="review-meta">
+                        <span class="score">⭐ 9.9/10</span>
+                        <a href="asus-z890-extreme.html" class="read-more">İncelemeyi Oku &raquo;</a>
+                    </div>
+                </article>
+                
+                <article class="review-card" data-category="storage">
+                    <span class="review-tag storage-color">DEPOLAMA</span>
+                    <h3>Seagate FireCuda 550 (8TB)</h3>
+                    <p>Oyunlar için devasa depolama ve yüksek yük altında performans.</p>
+                    <div class="review-meta">
+                        <span class="score">⭐ 8.6/10</span>
+                        <a href="seagate-firecuda-550.html" class="read-more">İncelemeyi Oku &raquo;</a>
+                    </div>
+                </article>
+
+                <article class="review-card" data-category="cpu">
+                    <span class="review-tag cpu-color">İŞLEMCİ</span>
+                    <h3>Ryzen 3 9300X (Giriş Seviyesi)</h3>
+                    <p>Bütçe dostu sistemler için 4 çekirdekli canavar.</p>
+                    <div class="review-meta">
+                        <span class="score">⭐ 7.9/10</span>
+                        <a href="ryzen-3-9300x.html" class="read-more">İncelemeyi Oku &raquo;</a>
+                    </div>
+                </article>
+                
             </div>
+
 
         </section>
 

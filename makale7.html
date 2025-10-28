@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veri Setlerinden Öğrenmek: Feature Engineering ve ML Başarısı - TeknoGündem</title>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #f0f0f0;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #161b22;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .logo {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #00c6ff;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav .active {
+            color: #00c6ff;
+        }
+
+        /* Makale İçeriği Stil Başlangıcı */
+        .article-container {
+            padding: 40px 8%;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .article-container h1 {
+            font-size: 2.5em;
+            color: #00c6ff;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .article-meta {
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 15px;
+        }
+
+        .article-meta span {
+            margin-right: 20px;
+        }
+
+        .article-body h2 {
+            font-size: 1.8em;
+            color: #f0f0f0;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-left: 4px solid #00c6ff;
+            padding-left: 10px;
+        }
+
+        .article-body h3 {
+            font-size: 1.4em;
+            color: #00c6ff;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        .article-body p {
+            margin-bottom: 20px;
+            color: #ccc;
+            text-align: justify;
+        }
+
+        .article-body ul {
+            list-style: disc;
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        .article-body strong {
+            color: #00c6ff;
+        }
+        
+        .article-body em {
+            color: #c0c0c0;
+        }
+
+        .article-body blockquote {
+            border-left: 5px solid #00c6ff;
+            margin: 25px 0;
+            padding: 10px 20px;
+            background-color: #161b22;
+            color: #ccc;
+            font-style: italic;
+            border-radius: 4px;
+        }
+        /* Makale İçeriği Stil Bitişi */
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #30363d;
+            background-color: #0d1117;
+            color: #777;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">TeknoGündem</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="yazılım.html">Yazılım</a></li>
+            <li><a href="donanım.html">Donanım</a></li>
+            <li><a href="ai-makaleler.html">AI Makaleleri</a></li> 
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="article-container">
+    <article class="article-body">
+        
+        <h1>Veri Setlerinden Öğrenmek: Feature Engineering, Makine Öğrenimi Başarısında Neden Kritik?</h1>
+        
+        <div class="article-meta">
+            <span>Yazar: Veri Bilimi Uzmanı</span>
+            <span>Tarih: 02 Kasım 2025</span>
+            <span>Okuma Süresi: ~8 dakika</span>
+            <span>Kategori: Makine Öğrenimi (ML), Veri Bilimi</span>
+        </div>
+
+        <p>Makine Öğrenimi (ML) algoritmalarının başarısı genellikle kullanılan modelin karmaşıklığına değil, modele sunulan verinin kalitesine ve biçimine bağlıdır. Veri biliminde sıklıkla söylenen bir söz vardır: "Çöp Girdi, Çöp Çıktı" (**Garbage In, Garbage Out**). İşte bu noktada, modelin veriden en iyi şekilde öğrenebilmesi için verinin dönüştürülmesi sanatı olan **Öznitelik Mühendisliği (Feature Engineering)** devreye girer.</p>
+
+        <h2>Öznitelik Mühendisliği Nedir?</h2>
+        <p>Öznitelik Mühendisliği, ham veriyi alıp, modelin öğrenme performansını artırmak için daha anlamlı, ayırt edici özelliklere dönüştürme sürecidir. Bu, veri temizliği, dönüştürme, birleştirme ve yeni değişkenler oluşturmayı içerir. İyi bir öznitelik, karmaşık ilişkileri modelin kolayca anlayabileceği basit bir formata indirger.</p>
+
+        <h3>Temiz Verinin Temeli: Veri Ön İşleme</h3>
+        <p>Feature Engineering'e başlamadan önce veri ön işlemesi hayati önem taşır:</p>
+        <ul>
+            <li><strong>Kayıp Veri Yönetimi:</strong> Eksik değerleri doldurmak (imputation) veya satırları kaldırmak.</li>
+            <li><strong>Aykırı Değer Tespiti:</strong> Modelin performansını bozan anormal veri noktalarını (outliers) belirlemek ve düzeltmek.</li>
+            <li><strong>Veri Normalizasyonu/Standardizasyonu:</strong> Farklı ölçeklerdeki öznitelikleri (örneğin, yaş ve maaş) aynı ölçeğe getirmek, böylece hiçbir özniteliğin modele gereksiz yere hakim olmamasını sağlamak.</li>
+        </ul>
+
+        <blockquote>
+            "Model mimarisine harcadığınız zamanın büyük bir kısmı, aslında veri hazırlığına harcadığınız zamanın yanında sönük kalır. Feature Engineering, modelin beynine beslediğiniz 'bilgeliktir'."
+        </blockquote>
+
+        <h2>Öznitelik Yaratma Teknikleri</h2>
+        <p>Yeni ve güçlü öznitelikler yaratmak için kullanılan bazı temel stratejiler:</p>
+
+        <h3>1. Dönüşümler (Transformations):</h3>
+        <p>Sayısal verileri daha bilgilendirici hale getirmek için matematiksel işlemler uygulamak. Örneğin, iki farklı zaman damgasından (tarihten) **geçen süreyi** hesaplayarak yeni bir "yaş" özniteliği oluşturmak.</p>
+
+        <h3>2. Kodlama (Encoding) Kategorik Veri:</h3>
+        <p>Kategori adlarını (örneğin 'Ankara', 'İstanbul') modelin anlayabileceği sayısal biçime dönüştürmek:</p>
+        <ul>
+            <li><strong>One-Hot Encoding:</strong> Her bir kategori için yeni bir ikili (0 veya 1) öznitelik sütunu oluşturur.</li>
+            <li><strong>Target Encoding:</strong> Kategorik değeri, hedef değişkenin ortalamasıyla kodlar (Örneğin, 'İstanbul'da oturanların ortalama borç riski).</li>
+        </ul>
+
+        <h3>3. Etkileşim Öznitelikleri (Interaction Features):</h3>
+        <p>Mevcut iki özniteliği birleştirerek aralarındaki ilişkiyi yansıtan yeni bir öznitelik oluşturmak (örneğin: **"Harcama_Oranı" = "Gelir" / "Harcamalar"**).</p>
+
+        <h2>Otomatik Öznitelik Mühendisliği (AutoFE)</h2>
+        <p>Derin Öğrenme (DL) alanındaki ilerlemeler, öznitelik mühendisliği sürecini otomatikleştirmeye başlamıştır. DL modelleri, özellikle Görü ve NLP gibi alanlarda, ham veriden (piksel, kelime) anlamlı öznitelikleri (**Feature Learning**) kendiliğinden çıkarabilme yeteneğine sahiptir. Ancak, tabular (tablo) verilerde, **AutoML** araçları ve teknikleri (örneğin, Featuretools) hala insan uzmanlığının yerini tamamen alabilmiş değildir; insan müdahalesi kritik kalmaya devam etmektedir.</p>
+
+        <p>Öznitelik Mühendisliği, bir veri bilimcinin cephaneliğindeki en güçlü araçtır. Modelleri eğitmek ve ayarlamaktan daha fazla zaman ve düşünce gerektirir, ancak nihai model performansındaki kazançlar genellikle bu çabaya değerdir.</p>
+
+        <div class="article-meta" style="margin-top: 50px; border-top: 1px solid #30363d; padding-top: 15px;">
+            <span>#FeatureEngineering #VeriBilimi #ML #VeriÖnİşleme #AutoML</span>
+        </div>
+
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2025 TeknoGündem. Tüm Hakları Saklıdır.</p>
+</footer>
+
+</body>
+</html>
