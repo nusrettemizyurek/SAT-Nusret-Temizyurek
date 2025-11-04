@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web'de Erişilebilirlik (Accessibility) İlkeleri: Herkes İçin Tasarım - TeknoGündem</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            /* Orijinal renkler */
+            --color-primary: #00bcd4; /* Mavi-Turkuaz */
+            --color-secondary: #ff9800; /* Turuncu */
+            --color-a11y: #9c27b0; /* Erişilebilirlik teması için Mor (WCAG'dan esinlenildi) */
+        }
+        .main-body-container {
+            /* Orijinal yazı içeriği wrapper stilini taklit ediyoruz */
+            max-width: 900px; 
+            margin: 40px auto; 
+            padding: 20px; 
+            background-color: rgba(255, 255, 255, 0.03); 
+            border-radius: 10px;
+        }
+        /* Yeni sayfaya özgü vurgu renkleri */
+        .a11y-vurgu-baslik {
+            color: var(--color-a11y);
+        }
+        .a11y-liste-ogesi {
+            border-left: 3px solid var(--color-a11y) !important; 
+            padding-left: 10px;
+            color: #ddd;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body class="yazilim-sayfa">
+    <header>
+        <div class="logo">TeknoGündem</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="yazılım.html" class="active">Yazılım</a></li>
+                <li><a href="donanım.html">Donanım</a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container main-body-container">
+        
+        <section class="detail-header">
+            <h1 style="color: var(--color-a11y); font-size: 2.5rem;">🌐 Web'de Erişilebilirlik (A11Y) İlkeleri: Herkes İçin Tasarım</h1>
+            <div class="review-meta" style="margin-top: 10px; display: flex; justify-content: center; gap: 20px; color: #aaa; font-size: 0.9rem;">
+                <span>Yazar: Ece YILMAZ</span>
+                <span>Tarih: 28 Aralık 2025</span>
+                <span class="tag tag-a11y" style="position: static; padding: 5px 15px; background-color: var(--color-a11y); color: white; border-radius: 4px;">A11Y/WCAG</span>
+            </div>
+        </section>
+
+        <div class="article-content-wrapper" style="max-width: 900px; margin: 40px auto; padding: 20px; background-color: rgba(255, 255, 255, 0.03); border-radius: 10px;">
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; font-size: 1.1rem; color: #ccc;">
+                Erişilebilirlik (Accessibility, kısaca A11Y), web sitelerinin ve uygulamalarının, engelli bireyler de dahil olmak üzere herkes tarafından kullanılabilir olmasını sağlamak anlamına gelir. Yalnızca yasal bir gereklilik değil, etik bir sorumluluk ve daha geniş bir kullanıcı tabanına ulaşmanın anahtarıdır.
+            </p>
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                Dünya çapında 1 milyardan fazla insan bir tür engelle yaşamaktadır. Web içeriklerinin bu büyük kitle için uygun hale getirilmesi, Web İçeriği Erişilebilirlik Yönergeleri (WCAG) tarafından belirlenen temel ilkelere uyulmasıyla başlar.
+            </p>
+
+            <h2 class="a11y-vurgu-baslik" style="margin-top: 40px; margin-bottom: 15px;">WCAG Temel Prensipleri: POUR</h2>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                WCAG standartları, Erişilebilirliğin dört temel ilkesi üzerine kurulmuştur. Bu ilkeler, İngilizce baş harfleriyle **POUR** (Perceivable, Operable, Understandable, Robust) olarak bilinir.
+            </p>
+            
+            <div style="margin: 25px 0; text-align: center;">
+                <img src="wcag-pour-diagram.jpg" alt="WCAG POUR İlkeleri Diyagramı" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);">
+            </div>
+            
+            <h3 style="color: var(--color-primary); margin-top: 30px; margin-bottom: 10px;">1. Algılanabilir (Perceivable)</h3>
+            <p style="margin-bottom: 10px; line-height: 1.8; color: #ddd;">
+                Kullanıcılar bilginin sunuluş şeklini algılayabilmelidir. Yani, görme, işitme veya bilişsel engelleri olan kullanıcılar bile içeriği hissedebilmelidir.
+            </p>
+            <ul style="list-style: none; padding-left: 20px;">
+                <li class="a11y-liste-ogesi">Görsellere **anlamlı alternatif metin (alt text)** eklemek.</li>
+                <li class="a11y-liste-ogesi">Video ve sesler için **altyazı veya transkript** sağlamak.</li>
+                <li class="a11y-liste-ogesi">Yeterli **renk kontrastı** kullanmak.</li>
+            </ul>
+
+            <h3 style="color: var(--color-primary); margin-top: 30px; margin-bottom: 10px;">2. Kullanılabilir (Operable)</h3>
+            <p style="margin-bottom: 10px; line-height: 1.8; color: #ddd;">
+                Arayüz bileşenleri ve navigasyon kullanılabilir olmalıdır. Özellikle klavye kullanıcıları ve ekran okuyucu kullananlar için hayati önem taşır.
+            </p>
+            <ul style="list-style: none; padding-left: 20px;">
+                <li class="a11y-liste-ogesi">Tüm işlevselliğin **klavye ile erişilebilir** olması.</li>
+                <li class="a11y-liste-ogesi">İçeriğin okumaya yetecek kadar **zaman** tanıması (örn. otomatik dönen karusel kullanmamak).</li>
+                <li class="a11y-liste-ogesi">Kullanıcının **odak noktasının** (focus) her zaman görünür olması.</li>
+            </ul>
+
+            <h3 style="color: var(--color-primary); margin-top: 30px; margin-bottom: 10px;">3. Anlaşılabilir (Understandable)</h3>
+            <p style="margin-bottom: 10px; line-height: 1.8; color: #ddd;">
+                Bilgi ve arayüzün kendisi anlaşılabilir olmalıdır. Tahmin edilebilir ve tutarlı bir yapı, bilişsel engelleri olan kullanıcılara yardımcı olur.
+            </p>
+            <ul style="list-style: none; padding-left: 20px;">
+                <li class="a11y-liste-ogesi">Metinlerin **okunabilir** ve anlaşılır olması.</li>
+                <li class="a11y-liste-ogesi">Navigasyonun **tutarlı** ve beklendik şekilde çalışması.</li>
+                <li class="a11y-liste-ogesi">Hata mesajlarının **açık ve yol gösterici** olması.</li>
+            </ul>
+
+            <h3 style="color: var(--color-primary); margin-top: 30px; margin-bottom: 10px;">4. Sağlam (Robust)</h3>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                İçeriğin, teknolojiler geliştikçe (farklı tarayıcılar, cihazlar ve yardımcı teknolojiler) sağlam kalması ve güvenilir bir şekilde yorumlanabilmesi gerekir.
+            </p>
+            <ul style="list-style: none; padding-left: 20px;">
+                <li class="a11y-liste-ogesi">HTML'in **geçerli (valid)** ve anlamsal (semantic) olarak doğru kullanılması.</li>
+                <li class="a11y-liste-ogesi">Özel arayüz öğeleri için **ARIA (Accessible Rich Internet Applications)** rollerini kullanmak.</li>
+            </ul>
+            
+            <h2 class="a11y-vurgu-baslik" style="margin-top: 40px; margin-bottom: 15px;">Geliştiriciler İçin Pratik Adımlar</h2>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                Erişilebilirlik, kodlama aşamasında başlar. Doğru HTML etiketlerini kullanmak ve basit testler yapmak büyük fark yaratır.
+            </p>
+
+            <div style="display: flex; gap: 20px; margin-bottom: 30px; text-align: center; font-size: 0.9em;">
+                <div style="flex: 1; background-color: #1e1e1e; padding: 15px; border-radius: 8px; border-top: 3px solid var(--color-a11y);">
+                    <h4 style="color: var(--color-a11y); margin-bottom: 8px;">Klavye Testi</h4>
+                    <p>Sitenin tamamında sadece klavyenin **Tab, Enter ve Boşluk** tuşlarını kullanarak gezinebildiğinizden emin olun.</p>
+                </div>
+                <div style="flex: 1; background-color: #1e1e1e; padding: 15px; border-radius: 8px; border-top: 3px solid var(--color-a11y);">
+                    <h4 style="color: var(--color-a11y); margin-bottom: 8px;">Anlamsal HTML</h4>
+                    <p>Düğmeler için `&lt;button&gt;`, bağlantılar için `&lt;a&gt;` kullanın. Sadece `&lt;div&gt;` kullanıp CSS ile stil vermekten kaçının.</p>
+                </div>
+            </div>
+
+            <h2 style="color: var(--color-a11y); margin-top: 40px; margin-bottom: 15px;">Sonuç: Web'i Daha Kapsayıcı Hale Getirmek</h2>
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
+                Erişilebilirlik bir 'ekstra özellik' değil, temel bir tasarım gerekliliğidir. POUR ilkelerini uygulayarak, sadece engelli bireylere değil, aynı zamanda geçici (kırık kol) veya durumsal (parlak güneş ışığı altında telefon kullanma) engelleri olan herkese de hitap eden, daha iyi, daha hızlı ve daha etik web siteleri inşa edebilirsiniz.
+            </p>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 TeknoGündem. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

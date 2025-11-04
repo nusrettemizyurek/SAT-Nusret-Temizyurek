@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yazılım Dünyası - TeknoGündem</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body>
+<body class="yazilim-sayfa">
     <header>
         <div class="logo">TeknoGündem</div>
         <nav>
@@ -29,70 +30,184 @@
                 <a href="#yapay-zeka" class="cta-button secondary">Yapay Zeka & ML</a>
             </div>
         </section>
-
+        
+        <section class="weekly-featured-article">
+            <div class="featured-card-content">
+                <span class="category-pill"><i class="fas fa-bolt"></i> HAFTANIN ODAK NOKTASI</span>
+                <h2>Sıfırdan Uzmana: Golang (Go) ile Yüksek Performanslı API Geliştirme</h2>
+                <p>Go'nun eşzamanlılık (concurrency) yetenekleri sayesinde milisaniyeler içinde yanıt veren sunucu mimarileri nasıl oluşturulur? Kanal (channels) ve goroutine kavramları.</p>
+                <a href="#" class="cta-button primary small-btn">Makaleyi Oku <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </section>
+        
         <section class="category-tabs">
             <h2>Hızlı Kategoriler</h2>
             <div class="tab-list">
-                <a href="#frontend-konular" class="tab-item active">Frontend</a>
-                <a href="#backend-konular" class="tab-item">Backend & Veritabanı</a>
-                <a href="#devops-konular" class="tab-item">DevOps & Cloud</a>
+                <a href="#frontend-konular" class="tab-item active" data-target="frontend-konular">Frontend</a>
+                <a href="#backend-konular" class="tab-item" data-target="backend-konular">Backend & Veritabanı</a>
+                <a href="#devops-konular" class="tab-item" data-target="devops-konular">DevOps & Cloud</a>
             </div>
 
-            <div class="tab-content" id="frontend-konular">
-                <h3>Frontend Geliştirme</h3>
-                <div class="article-list">
-                    <article class="list-item">
-                        <h4><a href="#">React vs Vue: 2025 Karşılaştırması</a></h4>
+            <div class="tab-content active-tab" id="frontend-konular">
+                <h3><i class="fas fa-code icon-primary"></i> Frontend Geliştirme</h3>
+                <div class="article-list card-grid">
+                    <article class="list-item article-card">
+                        <h4><a href="react vs vue.html">React vs Vue: 2025 Karşılaştırması</a></h4>
                         <p>Performans, öğrenme eğrisi ve topluluk desteği açısından hangi framework daha iyi?</p>
-                        <span class="tag">#React</span> <span class="tag">#Vue</span>
+                        <span class="tag tag-react">#React</span> <span class="tag tag-vue">#Vue</span>
                     </article>
-                    <article class="list-item">
-                        <h4><a href="#">TypeScript Neden Zorunlu?</a></h4>
+                    <article class="list-item article-card">
+                        <h4><a href="typce-c .html">TypeScript Neden Zorunlu?</a></h4>
                         <p>Büyük projelerde tip güvenliğinin önemi ve JavaScript ile entegrasyonu.</p>
-                        <span class="tag">#TypeScript</span>
+                        <span class="tag tag-typescript">#TypeScript</span>
                     </article>
-                </div>
+                    <article class="list-item article-card">
+                        <h4><a href="yeni-nesil-css.html">Yeni Nesil CSS Özellikleri</a></h4>
+                        <p>CSS Grid, Flexbox, Container Queries ve :has() seçicisinin kullanımı.</p>
+                        <span class="tag tag-css">#CSS</span> <span class="tag tag-frontend">#WebDesign</span>
+                    </article>
+                    <article class="list-item article-card">
+                        <h4><a href="lighthouse-optimizasyonu.html">Web Performansı: Lighthouse Optimizasyonu</a></h4>
+                        <p>Lighthouse skorunu 90'ın üzerine çıkarmak için izlenmesi gereken kritik adımlar.</p>
+                        <span class="tag tag-perf">#Performans</span> <span class="tag tag-seo">#SEO</span>
+                    </article>
+                     <article class="list-item article-card">
+                        <h4><a href="astro-ssg.html">Astro ile Statik Site Jeneratörleri</a></h4>
+                        <p>Minimal JavaScript gönderimi ile ultra hızlı statik siteler oluşturma rehberi.</p>
+                        <span class="tag tag-astro">#Astro</span> <span class="tag tag-static">#SSG</span>
+                    </article>
+                     <article class="list-item article-card">
+                        <h4><a href="erişebilirlik.html">Erişilebilirlik (Accessibility) İlkeleri</a></h4>
+                        <p>WCAG standartlarına uyum ve engelli kullanıcılar için web siteleri tasarlama.</p>
+                        <span class="tag tag-a11y">#A11y</span> <span class="tag tag-ux">#UX</span>
+                    </article>
+                    <article class="list-item article-card">
+                        <h4><a href="#">Svelte Nedir ve Neden Popüler?</a></h4>
+                        <p>React/Vue gibi sanal DOM kullanmayan Svelte'in derleme aşamasındaki sihirli minimalizmi.</p>
+                        <span class="tag tag-svelte">#Svelte</span> <span class="tag tag-framework">#Framework</span>
+                    </article>
+                    <article class="list-item article-card">
+                        <h4><a href="v">Modern Modül Paketleyiciler: Vite vs Webpack</a></h4>
+                        <p>Hızlı sıcak yeniden yükleme (HMR) ve geliştirme deneyiminde Vite'ın sunduğu yenilikler.</p>
+                        <span class="tag tag-vite">#Vite</span> <span class="tag tag-build-tool">#BuildTool</span>
+                    </article>
+                    <article class="list-item article-card">
+                        <h4><a href="cypress-e2e-test.html">Uçtan Uca Testler (E2E) için Cypress</a></h4>
+                        <p>Tüm uygulama akışını kapsayan güvenilir test stratejileri ve otomasyonu.</p>
+                        <span class="tag tag-testing">#Testing</span> <span class="tag tag-cypress">#Cypress</span>
+                    </article>
+                    <article class="list-item article-card">
+                        <h4><a href="tasarım-sistemleri.html">Tasarım Sistemleri Oluşturma Rehberi</a></h4>
+                        <p>Component kütüphaneleri, Storybook ve dokümantasyon ile tutarlı arayüzler inşa etme.</p>
+                        <span class="tag tag-design-system">#DesignSystem</span> <span class="tag tag-storybook">#Storybook</span>
+                    </article>
+                    </div>
             </div>
 
             <div class="tab-content" id="backend-konular">
-                <h3>Backend ve Veritabanı Yönetimi</h3>
-                <div class="article-list">
-                    <article class="list-item">
+                <h3><i class="fas fa-server icon-secondary"></i> Backend ve Veritabanı Yönetimi</h3>
+                <div class="article-list card-grid">
+                    <article class="list-item article-card">
                         <h4><a href="#">Node.js vs Python: API Geliştirme Hızı</a></h4>
                         <p>Asenkron programlama ve GIL farkları. Hangi dil, hangi mikroservisler için ideal?</p>
-                        <span class="tag">#NodeJS</span> <span class="tag">#Python</span>
+                        <span class="tag tag-nodejs">#NodeJS</span> <span class="tag tag-python">#Python</span>
                     </article>
-                    <article class="list-item">
+                    <article class="list-item article-card">
                         <h4><a href="#">SQL'den NoSQL'e Geçişin Maliyeti</a></h4>
                         <p>MongoDB, Cassandra ve Redis gibi NoSQL veritabanlarının ne zaman tercih edilmesi gerekir?</p>
-                        <span class="tag">#Veritabanı</span> <span class="tag">#NoSQL</span>
+                        <span class="tag tag-database">#Veritabanı</span> <span class="tag tag-nosql">#NoSQL</span>
+                    </article>
+                    <article class="list-item article-card">
+                        <h4><a href="#">RESTful API'lerden gRPC'ye Geçiş</a></h4>
+                        <p>Yüksek performanslı ve düşük gecikmeli servisler için gRPC kullanımı.</p>
+                        <span class="tag tag-api">#API</span> <span class="tag tag-grpc">#gRPC</span>
+                    </article>
+                    <article class="list-item article-card">
+                        <h4><a href="#">Güvenli Şifreleme Algoritmaları</a></h4>
+                        <p>Backend uygulamalarında kullanıcı şifrelerini güvenle saklama yöntemleri (Bcrypt vs Argon2).</p>
+                        <span class="tag tag-security">#Güvenlik</span> <span class="tag tag-backend">#Auth</span>
+                    </article>
+                     <article class="list-item article-card">
+                        <h4><a href="#">Redis Cache Nasıl Yapılandırılır?</a></h4>
+                        <p>Veritabanı yükünü azaltmak için Redis'in temel caching stratejileri ve TTL ayarları.</p>
+                        <span class="tag tag-redis">#Redis</span> <span class="tag tag-cache">#Caching</span>
+                    </article>
+                    <article class="list-item article-card">
+                        <h4><a href="#">İleri Düzey PostgreSQL İpuçları</a></h4>
+                        <p>Stored Procedures, Triggers ve JSONB kullanımıyla esnek veritabanı tasarlama.</p>
+                        <span class="tag tag-postgres">#PostgreSQL</span> <span class="tag tag-sql">#SQL</span>
                     </article>
                 </div>
             </div>
 
             <div class="tab-content" id="devops-konular">
-                <h3>DevOps ve Otomasyon</h3>
-                <div class="article-list">
-                    <article class="list-item">
+                <h3><i class="fas fa-wrench icon-devops"></i> DevOps ve Otomasyon</h3>
+                <div class="article-list card-grid">
+                    <article class="list-item article-card">
                         <h4><a href="#">Kubernetes'e Giriş Rehberi</a></h4>
                         <p>Konteyner orkestrasyonunun temelleri ve YAML dosyalarıyla servis yönetimi.</p>
-                        <span class="tag">#Kubernetes</span>
+                        <span class="tag tag-kubernetes">#Kubernetes</span>
                     </article>
-                    <article class="list-item">
+                    <article class="list-item article-card">
                         <h4><a href="#">Sunucusuz (Serverless) Mimarinin Avantajları</a></h4>
                         <p>AWS Lambda ve Azure Functions ile maliyet optimizasyonu ve ölçeklenebilirlik.</p>
-                        <span class="tag">#Serverless</span> <span class="tag">#Cloud</span>
+                        <span class="tag tag-serverless">#Serverless</span> <span class="tag tag-cloud">#Cloud</span>
+                    </article>
+                    <article class="list-item article-card">
+                        <h4><a href="#">CI/CD Süreçlerinde GitLab vs GitHub Actions</a></h4>
+                        <p>Sürekli Entegrasyon ve Sürekli Dağıtım için en iyi otomasyon araçlarının karşılaştırması.</p>
+                        <span class="tag tag-ci-cd">#CI/CD</span> <span class="tag tag-git">#GitLab</span>
+                    </article>
+                    <article class="list-item article-card">
+                        <h4><a href="#">Altyapıyı Kod Olarak Yönetme (IaC)</a></h4>
+                        <p>Terraform ile AWS, Azure ve GCP üzerinde altyapı oluşturma pratikleri.</p>
+                        <span class="tag tag-iac">#IaC</span> <span class="tag tag-terraform">#Terraform</span>
+                    </article>
+                     <article class="list-item article-card">
+                        <h4><a href="#">Prometheus ve Grafana ile İzleme</a></h4>
+                        <p>Sistem metriklerini toplama, görselleştirme ve alarm sistemleri kurma rehberi.</p>
+                        <span class="tag tag-monitoring">#Monitoring</span> <span class="tag tag-grafana">#Metrics</span>
+                    </article>
+                    <article class="list-item article-card">
+                        <h4><a href="#">Docker İle Geliştirme Ortamı</a></h4>
+                        <p>Farklı projeler için izole ve tutarlı geliştirme ortamlarını Docker ile yönetme.</p>
+                        <span class="tag tag-docker">#Docker</span> <span class="tag tag-container">#Container</span>
                     </article>
                 </div>
             </div>
-
+        </section>
+        
+        <section class="language-ecosystem-section">
+            <h2><i class="fas fa-laptop-code"></i> Popüler Diller ve EkoSistemler</h2>
+            <div class="ecosystem-grid card-grid">
+                <div class="ecosystem-card card-java">
+                    <i class="fab fa-java"></i>
+                    <h3>Java / Spring</h3>
+                    <p>Kurumsal uygulamalar, mikroservisler ve Android geliştirme.</p>
+                </div>
+                <div class="ecosystem-card card-csharp">
+                    <i class="fab fa-microsoft"></i>
+                    <h3>C# / .NET</h3>
+                    <p>Web API'leri, oyun geliştirme (Unity) ve Windows uygulamaları.</p>
+                </div>
+                <div class="ecosystem-card card-go">
+                    <i class="fab fa-go"></i>
+                    <h3>Go (Golang)</h3>
+                    <p>Cloud altyapısı, yüksek performanslı ağ araçları ve CLI uygulamaları.</p>
+                </div>
+                <div class="ecosystem-card card-ruby">
+                    <i class="fas fa-gem"></i>
+                    <h3>Ruby / Rails</h3>
+                    <p>Hızlı prototipleme ve esnek, geliştirici dostu web framework'ü.</p>
+                </div>
+            </div>
         </section>
         
         <section class="ai-focus-section" id="yapay-zeka">
-            <h2><i class="icon-ai"></i> Yapay Zeka ve Makine Öğrenimi</h2>
+            <h2><i class="fas fa-robot"></i> Yapay Zeka ve Makine Öğrenimi</h2>
             <div class="ai-content">
                 <p>Generative AI, LLM'ler (Büyük Dil Modelleri) ve Makine Öğrenimi algoritmaları üzerine en son araştırmalar ve Python kütüphaneleri (TensorFlow, PyTorch) ile pratik rehberler.</p>
-                <a href="#" class="cta-button primary">Tüm AI Makaleleri</a>
+                <a href="ai-makaleler.html" class="cta-button primary">Tüm AI Makaleleri</a>
             </div>
         </section>
 
@@ -102,6 +217,29 @@
         <p>&copy; 2025 TeknoGündem. Tüm Hakları Saklıdır.</p>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+        // Tab etkileşimini etkinleştirmek için basit JS kodu
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab-item');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Önceki aktif sekmeyi ve içeriği deaktif et
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active-tab'));
+                    
+                    // Yeni aktif sekmeyi ve içeriği aktif et
+                    const targetId = tab.getAttribute('data-target');
+                    tab.classList.add('active');
+                    document.getElementById(targetId).classList.add('active-tab');
+                });
+            });
+            // Sayfa yüklendiğinde varsayılan olarak Frontend'i göster
+            document.getElementById('frontend-konular').classList.add('active-tab');
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasarım Sistemleri Oluşturma Rehberi: Ölçeklenebilir UI/UX İçin Yol Haritası - TeknoGündem</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* TEMEL RENKLER VE GLOBAL STİLLER */
+        :root {
+            --color-primary: #00bcd4; /* Mavi-Turkuaz */
+            --color-secondary: #ff9800; /* Turuncu */
+            --color-background: #121212;
+            --color-text-light: #ddd;
+            --color-vite: #646cff; 
+            --color-webpack: #1c78c0; 
+            --color-detail: #4caf50; /* Detaylar için Yeşil */
+        }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text-light);
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* HEADER & NAV STİLLERİ */
+        header {
+            background-color: #1e1e1e;
+            color: white;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li a {
+            color: var(--color-text-light);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--color-primary);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+        }
+        
+        /* ANA İÇERİK STİLLERİ */
+        .main-body-container {
+            max-width: 1000px;
+            margin: 40px auto; 
+            padding: 25px; 
+            background-color: rgba(255, 255, 255, 0.05); 
+            border-radius: 10px;
+        }
+        .tag {
+            position: static; padding: 5px 15px; background-color: var(--color-secondary); 
+            color: var(--color-background); border-radius: 4px; font-size: 0.9rem;
+            font-weight: bold;
+        }
+        .review-meta {
+            margin-top: 10px; display: flex; justify-content: center; gap: 20px; color: #aaa; font-size: 0.9rem;
+        }
+
+        /* TABLO STİLLERİ */
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            border: 1px solid #333;
+            text-align: left;
+            font-size: 0.95em;
+        }
+        .comparison-table th {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .vite-cell { background-color: rgba(100, 108, 255, 0.1); color: #b3b6ff; } /* Atom */
+        .webpack-cell { background-color: rgba(28, 120, 192, 0.1); color: #b8d2ed; } /* Molekül */
+        
+        /* DETAY BÖLÜM STİLLERİ */
+        .technical-section h3 {
+            color: var(--color-detail);
+            margin-top: 35px;
+            border-bottom: 1px dashed #333;
+            padding-bottom: 5px;
+        }
+        .detail-list {
+            list-style: none;
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+        .detail-list li {
+            border-left: 3px solid var(--color-secondary);
+            padding-left: 10px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        /* KOD BLOKLARI */
+        pre {
+            background-color: #2b2b2b;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.9em;
+            border: 1px solid #3a3a3a;
+        }
+
+        /* FOOTER STİLİ */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            color: #666;
+            background-color: #1e1e1e;
+        }
+    </style>
+</head>
+<body class="yazilim-sayfa">
+    <header>
+        <div class="logo">TeknoGündem</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="yazılım.html" class="active">Yazılım</a></li>
+                <li><a href="donanım.html">Donanım</a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container main-body-container">
+        
+        <section class="detail-header">
+            <h1 style="color: var(--color-primary); font-size: 3rem;"><i class="fas fa-magic"></i> Tasarım Sistemleri Oluşturma Rehberi: Ölçeklenebilir UI/UX İçin Yol Haritası</h1>
+            <div class="review-meta">
+                <span>Yazar: Caner BULUT</span>
+                <span>Tarih: 20 Aralık 2025</span>
+                <span class="tag">Tasarım/Mimari</span>
+            </div>
+        </section>
+
+        <div class="article-content-wrapper" style="max-width: 900px; margin: 40px auto; padding: 20px;">
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; font-size: 1.1rem; color: #ccc;">
+                Tasarım Sistemi, sadece bir komponent kütüphanesi veya stil kılavuzu değildir; ürün geliştirme süreçlerini birleştiren, tasarım ve mühendislik ekipleri arasındaki iletişimi standartlaştıran canlı bir kaynaktır. Bu rehber, sıfırdan, bakımı kolay ve ölçeklenebilir bir Tasarım Sistemi (Design System) oluşturmanız için size yol haritası sunacaktır.
+            </p>
+
+            <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-layer-group"></i> Faz 1: Temel Oluşum (The Foundation)</h2>
+            
+            <div class="technical-section">
+                <h3>Adım 1.1: Tasarım Dili ve İlkelerin Belirlenmesi</h3>
+                <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
+                    Sisteminizi kurmadan önce, neyi başarmak istediğinizi tanımlayın. Bu, sadece estetik değil, aynı zamanda kullanıcı deneyimi felsefenizdir.
+                </p>
+                <ul class="detail-list">
+                    <li><i class="fas fa-check-circle" style="color: var(--color-detail);"></i> **Vizyon ve Misyon:** "Sistemimiz Hızlı, Erişilebilir ve Tutarlı olmalıdır" gibi net bir misyon belirleyin.</li>
+                    <li><i class="fas fa-check-circle" style="color: var(--color-detail);"></i> **Hedef Kitle:** Sistemi kullanacak geliştiriciler, tasarımcılar ve QA ekipleri kimlerdir? İhtiyaçları nelerdir?</li>
+                </ul>
+            </div>
+            
+            <div class="technical-section">
+                <h3>Adım 1.2: Tasarım Token'larının (Design Tokens) Tanımlanması</h3>
+                <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
+                    Tasarım Token'ları, renkler, tipografi boyutları, boşluk (spacing) ve gölgeler gibi görsel değerlerin soyutlanmış adlarıdır. Bu, **tek doğruluk kaynağı (Single Source of Truth)** oluşturmanın ilk adımıdır.
+                </p>
+                <pre><code>// Örnek Token Tanımlaması (Figma/Style Dictionary için)
+{
+  "color": {
+    "brand": {
+      "primary": { "value": "#00bcd4" },
+      "secondary": { "value": "#ff9800" }
+    },
+    "surface": {
+      "background": { "value": "#121212" }
+    }
+  },
+  "spacing": {
+    "md": { "value": "16px" }
+  }
+}</code></pre>
+            </div>
+
+            <h2 style="color: var(--color-secondary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-sitemap"></i> Faz 2: Komponent Mimarisi ve Geliştirme</h2>
+            
+            <div class="technical-section">
+                <h3>Adım 2.1: Atomik Tasarım (Atomic Design) Metodolojisi</h3>
+                <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
+                    Sisteminizi yönetilebilir parçalara ayırmak için Brad Frost'un Atomik Tasarım prensibini uygulayın. Bu, Komponentlerinizi düzenleme ve yeniden kullanma şeklinizi standartlaştırır.
+                </p>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th style="background-color: var(--color-detail);">Seviye</th>
+                            <th style="background-color: var(--color-detail);">Tanım</th>
+                            <th style="background-color: var(--color-detail);">Örnek</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="vite-cell">Atom</td>
+                            <td>Bir UI'nın temel yapı taşları. Tek bir işlevi vardır.</td>
+                            <td>Buton, Input alanı, Renk Paleti.</td>
+                        </tr>
+                        <tr>
+                            <td class="webpack-cell">Molekül</td>
+                            <td>Atomların birleşimiyle oluşan, birlikte çalışan küçük gruplar.</td>
+                            <td>Form Alanı (Input + Label), Navigasyon Link Grubu.</td>
+                        </tr>
+                        <tr>
+                            <td class="vite-cell">Organizmalar</td>
+                            <td>Moleküllerin ve/veya Atomların bir araya gelerek oluşturduğu karmaşık birim.</td>
+                            <td>Header (Logo + Navigasyon + Arama Çubuğu), Ürün Kartı.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="technical-section">
+                <h3>Adım 2.2: Komponent Geliştirme ve Dokümantasyon</h3>
+                <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
+                    Komponentlerin kodlanması, tasarımcıların ve geliştiricilerin ortak bir dil konuşmasını sağlar. **Storybook** gibi izole edilmiş bir geliştirme ortamı kullanmak zorunluluktur.
+                </p>
+                <ul class="detail-list">
+                    <li><i class="fas fa-code" style="color: var(--color-detail);"></i> **İzolasyon:** Komponentleri, uygulamanın geri kalanından bağımsız olarak test edin ve belgeleyin.</li>
+                    <li><i class="fas fa-book" style="color: var(--color-detail);"></i> **API Belgeleme:** Her komponentin kabul ettiği tüm `props`, beklenen davranışlar ve kullanım örnekleri net bir şekilde dokümante edilmelidir.</li>
+                    <li><i class="fas fa-universal-access" style="color: var(--color-detail);"></i> **Erişilebilirlik (A11y):** Tüm komponentler, WCAG standartlarına uygun olarak (klavye navigasyonu, ARIA etiketleri) geliştirilmelidir.</li>
+                </ul>
+            </div>
+
+            <h2 class="cypress-vurgu-baslik" style="color: var(--color-detail); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-sync-alt"></i> Faz 3: Sürdürülebilirlik ve Adaptasyon</h2>
+            
+            <div class="technical-section">
+                <h3>Adım 3.1: Dağıtım ve Versiyonlama Stratejisi</h3>
+                <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
+                    Sistem canlı kaldıkça değişecektir. Sisteminizi kullanan ürünler için kararlılığı sağlamak hayati önem taşır.
+                </p>
+                <ul class="detail-list">
+                    <li><i class="fas fa-box" style="color: var(--color-detail);"></i> **Paketleme:** Sistemi NPM paketi olarak dağıtın (örneğin `@org/design-system`).</li>
+                    <li><i class="fas fa-code-branch" style="color: var(--color-detail);"></i> **SemVer Kullanımı:** <span style="color: var(--color-primary);">Semantik Versiyonlama (Major.Minor.Patch)</span> uygulayın. `Major` versiyon güncellemeleri, geriye dönük uyumluluğu bozan değişiklikler için ayrılmalıdır.</li>
+                </ul>
+            </div>
+            
+            <div class="technical-section">
+                <h3>Adım 3.2: Yönetişim Modeli (Governance Model)</h3>
+                <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
+                    Sistem kimin sorumluluğunda olmalı? Bu sorunun cevabı sisteminizin başarısını belirler.
+                </p>
+                <ul class="detail-list">
+                    <li><i class="fas fa-user-lock" style="color: var(--color-detail);"></i> **Merkezileştirilmiş Model:** Sadece küçük bir çekirdek ekip sistemi yönetir. Hızlı karar alma, yavaş adaptasyon.</li>
+                    <li><i class="fas fa-users" style="color: var(--color-detail);"></i> **Federal Model:** Sistem, birden fazla üründen gelen katkılarla büyür. Yavaş karar alma, hızlı adaptasyon ve sahiplenme.</li>
+                </ul>
+            </div>
+
+            <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-graduation-cap"></i> Özet Rehberlik İlkesi</h2>
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
+                Tasarım sistemi oluşturmak bir sprint değil, bir maratondur. <span style="color: var(--color-secondary);">Mükemmeliyetçilikten önce kullanılabilirliğe odaklanın.</span> Sisteminizi, tek bir ürüne sıkı sıkıya bağlı kalmadan, esnek ve modüler parçalar halinde inşa edin. Unutmayın, en iyi tasarım sistemi, geliştiricilerin ve tasarımcıların **kullanmaktan keyif aldığı** sistemdir.
+            </p>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 TeknoGündem. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+</body>
+</html>

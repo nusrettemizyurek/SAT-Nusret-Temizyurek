@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Modül Paketleyiciler: Vite vs Webpack (Teknik Derinlik) - TeknoGündem</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Bu sayfaya özgü renkler ve stiller */
+        :root {
+            --color-primary: #00bcd4;
+            --color-secondary: #ff9800;
+            --color-vite: #646cff; /* Vite Mavisi */
+            --color-webpack: #1c78c0; /* Webpack Mavisi */
+            --color-detail: #4caf50; /* Detaylar için Yeşil */
+        }
+        .main-body-container {
+            max-width: 1000px;
+            margin: 40px auto; 
+            padding: 25px; 
+            background-color: rgba(255, 255, 255, 0.05); 
+            border-radius: 10px;
+        }
+        .vite-vurgu-baslik {
+            color: var(--color-vite);
+        }
+        .webpack-vurgu-baslik {
+            color: var(--color-webpack);
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            border: 1px solid #333;
+            text-align: left;
+            font-size: 0.95em;
+        }
+        .comparison-table th {
+            background-color: #222;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .vite-cell {
+            background-color: rgba(100, 108, 255, 0.1);
+            color: #b3b6ff;
+        }
+        .webpack-cell {
+            background-color: rgba(28, 120, 192, 0.1);
+            color: #b8d2ed;
+        }
+        .detail-point {
+            color: var(--color-detail);
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body class="yazilim-sayfa">
+    <header>
+        <div class="logo">TeknoGündem</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="yazılım.html" class="active">Yazılım</a></li>
+                <li><a href="donanım.html">Donanım</a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container main-body-container">
+        
+        <section class="detail-header">
+            <h1 style="color: var(--color-primary); font-size: 3rem;">🔬 Modül Paketleyiciler Savaşları: Vite vs Webpack (Teknik Derinlik)</h1>
+            <p style="text-align: center; color: #aaa; font-style: italic; margin-top: -10px;">Geliştirme Mimarisinden Derleme Araçlarına Kapsamlı Analiz</p>
+        </section>
+
+        <div class="article-content-wrapper" style="max-width: 900px; margin: 40px auto; padding: 20px;">
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; font-size: 1.1rem; color: #ccc;">
+                Webpack'in karmaşık iç yapısı ve topluluk tarafından geliştirilen binlerce eklentisine karşılık, Vite, tamamen farklı bir felsefeyle ortaya çıktı: **"Öncelikle Tarayıcı."** Bu makalede, sadece hız farklarına değil, her iki aracın dahili işleyiş mekanizmalarına ve arkasındaki teknolojilere odaklanarak, hangisinin hangi mimariye uygun olduğunu derinlemesine inceleyeceğiz.
+            </p>
+
+            <h2 class="vite-vurgu-baslik" style="margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-microchip"></i> Mimari Derinliği: Bundle vs. No-Bundle</h2>
+            
+            <div style="margin-top: 30px;">
+                <p class="detail-point" style="color: var(--color-webpack);"><i class="fas fa-cubes"></i> Webpack: Node.js Tabanlı Karmaşıklık</p>
+                <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
+                    Webpack, tüm kod grafiğini çıkarmak için Node.js tabanlı bir mekanizma kullanır. Bu, hem geliştirme hem de üretim için her dosyayı tek tek okumayı, dönüştürmeyi ve birleştirmeyi gerektirir. Bu süreç, büyük projelerde binlerce modülün defalarca işlenmesine neden olur ve HMR (Sıcak Modül Değişimi) bile, tüm modül ağacını yeniden hesaplama ihtiyacından dolayı yavaşlar. <span style="color: var(--color-secondary);">Webpack'in en büyük yükü, JavaScript içinde JavaScript'i çalıştırmasıdır.</span>
+                </p>
+                
+                <p class="detail-point" style="color: var(--color-vite);"><i class="fas fa-jet-fighter"></i> Vite: ESM ve Yerel Hızın Gücü</p>
+                <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
+                    Vite, geliştirme sırasında <span style="color: var(--color-vite);">tarayıcıların yerel ES Modülleri (ESM) desteğine güvenir.</span> Bu, tarayıcının yalnızca o anda ihtiyaç duyduğu kodu `import` ifadesi ile çekebileceği anlamına gelir. Bağımlılıkları hızla önbelleğe almak için **esbuild** gibi inanılmaz hızlı, Go ile yazılmış araçları kullanır, bu sayede sunucu anında açılır. Geliştirme sürecinde **paketleme (bundling) yapmaz.**
+                </p>
+            </div>
+
+            <h2 style="color: var(--color-secondary); margin-top: 40px; margin-bottom: 25px;"><i class="fas fa-code"></i> Teknik Karşılaştırma: Alt Düzey Farklar</h2>
+            
+            <table class="comparison-table" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th style="color: var(--color-primary);">Kriter</th>
+                        <th class="vite-cell">Vite</th>
+                        <th class="webpack-cell">Webpack</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="font-weight: bold;">Geliştirme Sunucusu</td>
+                        <td class="vite-cell">Yerel ESM'e dayanır. Node.js'de sadece statik dosya sunumu ve dönüşüm yapar.</td>
+                        <td class="webpack-cell">Node.js tabanlı sanal modül sistemi (Modül Çözümleyici ve Transpiler).</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold;">Transpilasyon (TS, JSX)</td>
+                        <td class="vite-cell"><i class="fas fa-tools"></i> **Esbuild** kullanır. Ciddi performans artışı sağlar.</td>
+                        <td class="webpack-cell"><i class="fas fa-sync-alt"></i> **Babel** kullanır. Çok esnek ama daha yavaştır.</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold;">Üretim Paketleyicisi</td>
+                        <td class="vite-cell"><i class="fas fa-cubes"></i> **Rollup** kullanır. Daha küçük ve daha verimli çıktı üretir.</td>
+                        <td class="webpack-cell"><i class="fas fa-layer-group"></i> Kendi dahili sistemi. Büyük konfigürasyonlarla yönetilir.</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold;">Yapılandırma Dosyası</td>
+                        <td class="vite-cell">Çoğu zaman gereksiz, az sayıda basit JS/TS dosyası (`vite.config.js`).</td>
+                        <td class="webpack-cell">Derin, uzun ve genellikle zor okunan `webpack.config.js` dosyaları.</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold;">Tree Shaking (Ölü Kod Eleme)</td>
+                        <td class="vite-cell">Rollup'ın gelişmiş statik analizi ile çok verimli çalışır.</td>
+                        <td class="webpack-cell">Yapılandırmaya bağlı olarak çalışır, optimizasyon gerektirir.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="webpack-vurgu-baslik" style="margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-hand-holding-usd"></i> Webpack'in Sınırsız Esnekliği ve Maliyeti</h2>
+
+            <p style="margin-bottom: 15px; line-height: 1.8; color: #ddd;">
+                Webpack'in karmaşık yapısı, aynı zamanda en büyük gücüdür. Bir kütüphaneyi farklı bir şekilde yüklemek, spesifik bir varlığı işlemek veya çok özel bir optimizasyon uygulamak istiyorsanız, **yüzlerce plugin ve loader** arasından seçim yapabilir veya kendiniz yazabilirsiniz. Vite'ta ise bu seviyede bir "her şeyi yap" esnekliği yoktur; basitliği ve hızının bedeli, bazı niş özelleştirmelerden vazgeçmektir.
+            </p>
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                Ancak bu esnekliğin maliyeti, **geliştirici zamanı ve öğrenme eğrisidir.** Webpack yapılandırmaları, bir projenin büyümesiyle birlikte hızla başa çıkılmaz bir hale gelebilir.
+            </p>
+
+            <h2 style="color: var(--color-detail); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-bullseye"></i> Sonuç: Yeni Dönemin Standardı</h2>
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
+                Teknik analiz, Vite'ın Node.js tabanlı JavaScript araçlarını (Babel, Webpack'in kendi motoru) Go tabanlı yüksek hızlı derleyicilerle (Esbuild) değiştirerek ve tarayıcının yerel yeteneklerini kullanarak ciddi bir mimari avantaj sağladığını gösteriyor. Webpack hala büyük, olgun projelerde kritik rol oynasa da, <span style="color: var(--color-detail);">modern bir geliştiricinin zamanını harcaması gereken yer, artık hız ve basitlik sunan Vite ekosistemidir.</span>
+            </p>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 TeknoGündem. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

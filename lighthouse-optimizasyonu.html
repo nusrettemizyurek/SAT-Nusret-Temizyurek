@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Performansı: Lighthouse Optimizasyonu - TeknoGündem</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Bu stil bloğu, var(--color-primary) ve var(--color-secondary) gibi değişkenlerin tanımlanmadığı durumlarda geçici renkler sağlar. Normalde bunlar 'style.css' içinde olmalıdır. */
+        :root {
+            --color-primary: #00bcd4; /* Mavi/Turkuaz */
+            --color-secondary: #ff9800; /* Turuncu */
+        }
+        .yazilim-sayfa {
+            background-color: #121212; /* Koyu arka plan */
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="yazilim-sayfa">
+    <header>
+        <div class="logo">TeknoGündem</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="yazılım.html" class="active">Yazılım</a></li>
+                <li><a href="donanım.html">Donanım</a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container main-body-container">
+        
+        <section class="detail-header">
+            <h1 style="color: var(--color-primary); font-size: 2.5rem;">Web Performansı: Lighthouse Optimizasyonu (A'dan Z'ye Kılavuz)</h1>
+            <div class="review-meta" style="margin-top: 10px; display: flex; justify-content: center; gap: 20px; color: #aaa; font-size: 0.9rem;">
+                <span>Yazar: TeknoGündem Ekibi</span>
+                <span>Tarih: 4 Kasım 2025</span>
+                <span class="tag tag-frontend" style="position: static; padding: 5px 15px;">Performans</span>
+            </div>
+        </section>
+
+        <div class="article-content-wrapper" style="max-width: 900px; margin: 40px auto; padding: 20px; background-color: rgba(255, 255, 255, 0.03); border-radius: 10px;">
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; font-size: 1.1rem; color: #ccc;">
+                Kullanıcı deneyimi ve SEO için web performansı artık bir lüks değil, bir zorunluluktur. Google'ın açık kaynaklı aracı **Lighthouse**, sitenizin hızını, erişilebilirliğini, SEO'sunu ve en iyi uygulamaları ne kadar iyi uyguladığını ölçmek için en önemli araçtır. Bu kılavuz, Lighthouse puanlarınızı nasıl optimize edeceğinize odaklanmaktadır.
+            </p>
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                Yüksek bir Lighthouse puanı, daha hızlı yükleme süreleri, daha iyi dönüşüm oranları ve Google arama sonuçlarında daha iyi sıralamalar anlamına gelir. Performans kategorisindeki 100 puan, yalnızca bir hedef değil, sürekli bir optimizasyon sürecidir.
+            </p>
+
+            <h2 style="color: var(--color-secondary); margin-top: 40px; margin-bottom: 15px;">Lighthouse ve Core Web Vitals (Temel Web Ögeleri)</h2>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                Lighthouse, Temel Web Ögeleri'ni (LCP, FID/INP, CLS) ölçerek sitenizin gerçek kullanıcılar için ne kadar hızlı ve duyarlı olduğunu belirler. Yüksek bir performans puanı almak için bu metriklerin iyi olması şarttır.
+            </p>
+
+            <h3 style="color: #4fc3f7; margin-top: 30px; margin-bottom: 10px;">1. Largest Contentful Paint (LCP) Optimizasyonu</h3>
+            <p style="margin-bottom: 10px; line-height: 1.8; color: #ddd;">
+                LCP, sayfa yüklenmeye başladığından itibaren görüntü alanındaki en büyük resim veya metin bloğunun ne kadar sürede oluşturulduğunu ölçer. İdeal olarak **2,5 saniyenin altında** olmalıdır.
+            </p>
+            <ul style="list-style: none; padding-left: 20px;">
+                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">Sunucu yanıt süresini iyileştirin (TTFB).</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">Kritik CSS'i satır içine alın ve kritik olmayan CSS'i erteleyin.</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">LCP öğesinin yüklenmesini hızlandırmak için `preload` kullanın.</li>
+            </ul>
+
+            <h3 style="color: #4fc3f7; margin-top: 30px; margin-bottom: 10px;">2. Cumulative Layout Shift (CLS) Optimizasyonu</h3>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                CLS, sayfa yüklenirken beklenmedik düzen kaymalarının miktarını ölçer. Düşük CLS, kullanıcıların yanlışlıkla reklamlara veya düğmelere tıklamasını önler. Hedeflenen değer **0.1'in altıdır**.
+            </p>
+            <ul style="list-style: none; padding-left: 20px;">
+                <li style="margin-bottom: 8px; border-left: 3px solid #ff9800; padding-left: 10px;">Tüm resimler ve video öğeleri için boyut nitelikleri (`width` ve `height`) belirtin.</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid #ff9800; padding-left: 10px;">Dinamik olarak enjekte edilen içeriğin yerini ayırın (örneğin, reklamlar).</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid #ff9800; padding-left: 10px;">Web yazı tiplerini yüklerken `font-display: optional` veya `swap` kullanın.</li>
+            </ul>
+
+            <h2 style="color: var(--color-secondary); margin-top: 40px; margin-bottom: 15px;">Temel Lighthouse İyileştirmeleri</h2>
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                Sitenizin performansını genel olarak artırmak için Lighthouse'un en çok vurguladığı alanlara odaklanın.
+            </p>
+
+            <h3 style="color: #4fc3f7; margin-top: 30px; margin-bottom: 10px;">3. JavaScript Yükünü Azaltma</h3>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                Lighthouse genellikle ana iş parçacığındaki (main-thread) engellemelerden şikayet eder. Bu genellikle büyük ve verimsiz JavaScript dosyalarından kaynaklanır.
+            </p>
+            <ul style="list-style: none; padding-left: 20px;">
+                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">Kullanılmayan kodu kaldırın (Code Splitting).</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">JavaScript dosyalarını sıkıştırın (Minify ve Gzip/Brotli).</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">Tüm harici komut dosyaları için `defer` veya `async` niteliklerini kullanın.</li>
+            </ul>
+
+            <h3 style="color: #4fc3f7; margin-top: 30px; margin-bottom: 10px;">4. Görsel Optimizasyon ve Önbellekleme</h3>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                Görseller, genellikle bir sayfanın toplam boyutunun büyük bir kısmını oluşturur. Önbellekleme ise tekrarlanan ziyaretlerde hızı artırır.
+            </p>
+            
+            <div style="margin: 25px 0; text-align: center;">
+                <img src="lighthouse-score.jpg" alt="Lighthouse Puanı Görseli" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);">
+            </div>
+            
+            <ul style="list-style: none; padding-left: 20px;">
+                <li style="margin-bottom: 8px; border-left: 3px solid #ff9800; padding-left: 10px;">Görselleri yeni nesil formatlara (WebP, AVIF) dönüştürün.</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid #ff9800; padding-left: 10px;">Görüntü alanı dışındaki görseller için `loading="lazy"` kullanın.</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid #ff9800; padding-left: 10px;">Tüm statik varlıklar için uzun süreli HTTP önbelleğe alma başlıkları (`Cache-Control`) ayarlayın.</li>
+            </ul>
+            
+            <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;">Sonuç: Sürekli İyileştirme Döngüsü</h2>
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                Lighthouse optimizasyonu, tek seferlik bir görev değil, sürekli bir süreçtir. Sitenize yeni özellikler ekledikçe veya üçüncü taraf komut dosyaları kullandıkça puanınız düşebilir. Yapmanız gereken, Lighthouse raporunu bir yapılacaklar listesi olarak görmektir.
+            </p>
+            
+            <h3 style="color: #00bcd4; margin-top: 30px; margin-bottom: 10px;">Lighthouse Optimizasyonunun Faydaları:</h3>
+            <ul style="list-style: none; padding-left: 20px;">
+                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">Daha yüksek organik arama sıralaması (SEO).</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">Daha düşük hemen çıkma (bounce) oranları.</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">Mobil cihazlarda gelişmiş kullanıcı deneyimi.</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">Daha yüksek dönüşüm oranları (e-ticaret siteleri için kritik).</li>
+            </ul>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 TeknoGündem. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

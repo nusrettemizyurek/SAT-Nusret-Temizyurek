@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astro ile Statik Site Jeneratörleri: Hızın Geleceği - TeknoGündem</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            /* Orijinal renkler */
+            --color-primary: #00bcd4; /* Mavi-Turkuaz */
+            --color-secondary: #ff9800; /* Turuncu */
+            --color-astro: #ff5d01; /* Astro Turuncusu */
+        }
+        .main-body-container {
+            /* Orijinal yazı içeriği wrapper stilini taklit ediyoruz */
+            max-width: 900px; 
+            margin: 40px auto; 
+            padding: 20px; 
+            background-color: rgba(255, 255, 255, 0.03); 
+            border-radius: 10px;
+        }
+        /* Yeni sayfaya özgü vurgu renkleri */
+        .astro-vurgu-baslik {
+            color: var(--color-astro);
+        }
+        .astro-liste-ogesi {
+            border-left: 3px solid var(--color-astro) !important; 
+            padding-left: 10px;
+            color: #ddd;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body class="yazilim-sayfa">
+    <header>
+        <div class="logo">TeknoGündem</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="yazılım.html" class="active">Yazılım</a></li>
+                <li><a href="donanım.html">Donanım</a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container main-body-container">
+        
+        <section class="detail-header">
+            <h1 style="color: var(--color-astro); font-size: 2.5rem;">Astro ile Statik Site Jeneratörleri: Hızın Geleceği</h1>
+            <div class="review-meta" style="margin-top: 10px; display: flex; justify-content: center; gap: 20px; color: #aaa; font-size: 0.9rem;">
+                <span>Yazar: Caner BULUT</span>
+                <span>Tarih: 15 Aralık 2025</span>
+                <span class="tag tag-astro" style="position: static; padding: 5px 15px; background-color: var(--color-astro); color: white; border-radius: 4px;">SSG/Astro</span>
+            </div>
+        </section>
+
+        <div class="article-content-wrapper" style="max-width: 900px; margin: 40px auto; padding: 20px; background-color: rgba(255, 255, 255, 0.03); border-radius: 10px;">
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; font-size: 1.1rem; color: #ccc;">
+                Statik Site Jeneratörleri (SSG), günümüzde web hızını ve güvenliğini en üst düzeye çıkarmak için vazgeçilmez hale geldi. Astro, bu alanda yeni bir soluk getirerek hem statik sitelerin hızını hem de modern dinamik geliştirme araçlarının esnekliğini bir araya getiriyor.
+            </p>
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                Geleneksel CMS'lerin veya sunucu tabanlı uygulamaların aksine, SSG'ler sitenizi önceden saf HTML, CSS ve JavaScript dosyalarına dönüştürür. Astro ise bu konsepti "Adacık Mimarisi" (Islands Architecture) ile bir adım öteye taşıyarak sayfanın yalnızca gerekli kısımlarında JavaScript çalıştırmanıza olanak tanır.
+            </p>
+
+            <h2 class="astro-vurgu-baslik" style="margin-top: 40px; margin-bottom: 15px;">Astro Neden Farklı? Adacık Mimarisi</h2>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                Çoğu modern framework (React, Vue, Next.js vb.), tüm sayfayı etkileşimli hale getirmek için büyük miktarda JavaScript'i tarayıcıya gönderme eğilimindedir. Bu, sayfa hızı ve TTI (Time to Interactive) değerlerini düşürür. Astro'nun farkı burada ortaya çıkar.
+            </p>
+            
+            <ul style="list-style: none; padding-left: 20px;">
+                <li class="astro-liste-ogesi">**Sıfır JavaScript Varsayımı:** Astro, varsayılan olarak her bileşeni sunucuda render eder ve tarayıcıya hiç JavaScript göndermez.</li>
+                <li class="astro-liste-ogesi">**Gereken Yer Kadar JS:** Yalnızca etkileşimli olması gereken (örneğin bir sayaç, bir galeri) bileşenlere JavaScript yükler. Bu bileşenlere "Adacık" denir.</li>
+                <li class="astro-liste-ogesi">**Kendi Framework'ünüzü Getirin:** Astro, React, Vue, Svelte, Preact gibi popüler UI kütüphanelerini aynı anda tek bir projede kullanmanıza izin verir.</li>
+            </ul>
+
+            <h2 class="astro-vurgu-baslik" style="margin-top: 40px; margin-bottom: 15px;">Statik Site Jeneratörlerinin Temel Avantajları</h2>
+            
+            <div style="margin: 25px 0; text-align: center;">
+                <img src="astra  görsle.png" alt="Astro Adacık Mimarisi Şeması" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);">
+            </div>
+
+            <h3 style="color: var(--color-primary); margin-top: 30px; margin-bottom: 10px;">1. Performans</h3>
+            <p style="margin-bottom: 10px; line-height: 1.8; color: #ddd;">
+                Statik dosyalar, sunucu tarafında işleme (Server-Side Rendering - SSR) veya istemci tarafında render (Client-Side Rendering - CSR) gerektirmediği için inanılmaz derecede hızlıdır. Astro bu hızı daha da artırarak, sektördeki en iyi PageSpeed skorlarını elde etmeyi kolaylaştırır.
+            </p>
+            
+            <h3 style="color: var(--color-primary); margin-top: 30px; margin-bottom: 10px;">2. Güvenlik</h3>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                Veritabanı bağlantısı veya sunucu taraflı karmaşık iş mantığı olmadığı için, SSG'ler geleneksel dinamik sitelere göre çok daha güvenlidir. Saldırı yüzeyi minimuma indirilir.
+            </p>
+
+            <h2 class="astro-vurgu-baslik" style="margin-top: 40px; margin-bottom: 15px;">Astro Kullanım Alanları ve Karşılaştırma</h2>
+            
+            <h3 style="color: var(--color-secondary); margin-top: 30px; margin-bottom: 10px;">Astro'yu Seçmeniz Gereken Durumlar</h3>
+            <ul style="list-style: none; padding-left: 20px;">
+                <li class="astro-liste-ogesi" style="border-left: 3px solid var(--color-secondary) !important;">İçerik odaklı siteler (Bloglar, Kurumsal Siteler, Belgelendirme).</li>
+                <li class="astro-liste-ogesi" style="border-left: 3px solid var(--color-secondary) !important;">Maksimum Lighthouse skoru ve SEO performansı arayan projeler.</li>
+                <li class="astro-liste-ogesi" style="border-left: 3px solid var(--color-secondary) !important;">Farklı UI kütüphanelerindeki bileşenleri tek bir yerde birleştirmek isteyen ekipler.</li>
+            </ul>
+            
+            <h3 style="color: var(--color-secondary); margin-top: 30px; margin-bottom: 10px;">Astro vs. Diğer SSG'ler (Next/Nuxt)</h3>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                Next.js veya Nuxt.js gibi araçlar da statik çıktılar üretebilir, ancak varsayılan olarak Astro kadar az JavaScript göndermezler. Astro, en hızlı başlangıç yüklemesi ve en az JavaScript maliyeti için tasarlanmıştır, bu da onu saf SSG performansı için rakipsiz kılar.
+            </p>
+
+            <h2 style="color: var(--color-astro); margin-top: 40px; margin-bottom: 15px;">🚀 Sonuç: Hızlı, Esnek ve Geleceğe Yönelik</h2>
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
+                Astro, modern web geliştiricisine hız, güvenlik ve esneklik sunan güçlü bir Statik Site Jeneratörüdür. Web sitelerinin yavaşlığından sıkılanlar için Astro, performanstan ödün vermeden dinamik öğeler eklemenin en ideal yolunu sunar.
+            </p>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 TeknoGündem. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

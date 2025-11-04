@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React ve Vue.js Karşılaştırması (Detaylı) - TeknoGündem</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="yazilim-sayfa">
+    <header>
+        <div class="logo">TeknoGündem</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="yazılım.html" class="active">Yazılım</a></li>
+                <li><a href="donanım.html">Donanım</a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container main-body-container">
+        
+        <section class="detail-header">
+            <h1 style="color: var(--color-primary); font-size: 2.5rem;">React ve Vue.js Karşılaştırması (Detaylı)</h1>
+            <div class="review-meta" style="margin-top: 10px; display: flex; justify-content: center; gap: 20px; color: #aaa; font-size: 0.9rem;">
+                <span>Yazar: Caner BULUT</span>
+                <span>Tarih: 21 Mart 2021</span>
+                <span class="tag tag-frontend" style="position: static; padding: 5px 15px;">Frontend</span>
+            </div>
+        </section>
+
+        <div class="article-content-wrapper" style="max-width: 900px; margin: 40px auto; padding: 20px; background-color: rgba(255, 255, 255, 0.03); border-radius: 10px;">
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; font-size: 1.1rem; color: #ccc;">
+                Vue.js ile React arasındaki kullanım örneklerini daha iyi anlamanıza ve bir sonraki projeniz için hangisinin en iyi sonucu vereceğini belirlemenize yardımcı olmak için bu kullanışlı kılavuzu bir araya getirdik.
+            </p>
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                JavaScript frameworkler artık web uygulaması geliştirme için hayati önem taşırken, birçok şirket projeleri için React ve Vue.js arasında seçim yapmakta zorlanıyor. Kısa cevap, genel React ile Vue.js tartışmasında net bir kazanan olmadığıdır. Her frameworkün artıları ve eksileri vardır ve farklı uygulamalar için kullanışlıdır.
+            </p>
+
+            <h2 style="color: var(--color-secondary); margin-top: 40px; margin-bottom: 15px;">JavaScript Framework Nedir?</h2>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                Hem React hem de Vue.js, geliştiricilerin karmaşık kullanıcı arayüzleri oluşturmasını kolaylaştıran ve hızlandıran açık kaynaklı JavaScript frameworklerdir. React bir 'sanal DOM' aracılığıyla HTML belgeleriyle etkileşime girer ve geliştiricilerin daha karmaşık mantık ve kullanıcı arabirimleri oluşturmak için kullanabilecekleri 'bileşenleri', kısa, izole kod bölümlerini kullanarak daha fazla esneklik sunar.
+            </p>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                Vue.js, iki yönlü bağlama ve bileşenlere sahiptir ve sanal bir DOM kullanır. Bununla birlikte, Vue.js'nin en büyük çekiciliği, **ilerici tasarımıdır**. Vue.js, geliştiricilerin mevcut projeleri çerçeveye aşamalı olarak taşımasına, özellikleri tek seferde değil, tek tek hareket ettirmesine izin verecek şekilde tasarlanmıştır.
+            </p>
+
+            <h2 style="color: var(--color-secondary); margin-top: 40px; margin-bottom: 15px;">Vue.js ve React Benzerlikleri
+                
+            </h2>
+            
+            <div style="margin: 25px 0; text-align: center;">
+                <img src="react-vs-vue.jpg" alt="Vue.js vs React Karşılaştırma Görseli" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);">
+            </div>
+            <p style="margin-bottom: 15px; line-height: 1.8; color: #ddd;">
+                Gördüğünüz gibi, Vue.js ve React birbirine oldukça benzer ve aynı özellik ve özelliklerin çoğuna sahiptir. En büyük benzerlik, sanal DOM'un kullanılmasıdır.
+            </p>
+            <ul style="list-style: none; padding-left: 20px;">
+                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">Mevcut herhangi bir web uygulamasıyla çalışırlar.</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">Geliştiricilerin işe hızla atlaması için oldukça hafif bir yaklaşım önerirler.</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">Yaşam döngüsü yöntemleriyle bileşen tabanlı mimariye sahiplerdir.</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">Daha fazla esneklik, hız ve performans sunarlar.</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">Geniş, aktif topluluklara sahiptirler.</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">Geniş bir kitaplık ve araç yelpazesi sunarlar.</li>
+            </ul>
+
+            <h2 style="color: var(--color-secondary); margin-top: 40px; margin-bottom: 15px;">Vue.js ve React Arasındaki Farklar</h2>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                React ve Vue.js birçok benzerliğe sahip olsa da, ikisi arasında önemli birkaç fark vardır. Birincil fark, içeriği DOM'a oluşturmak için kullanılan yöntemlerde yatmaktadır.
+            </p>
+            
+            <h3 style="color: #4fc3f7; margin-top: 30px; margin-bottom: 10px;">1. DOM Oluşturma Yöntemi</h3>
+            <p style="margin-bottom: 10px; line-height: 1.8; color: #ddd;">
+                **Vue.js:** HTML şablonlarını ve JSX'i kullanır.
+            </p>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                **React:** Yalnızca JSX'i kullanır. JSX daha büyük, daha karmaşık görevleri hızlandırabilir ve basitleştirebilirken, olumsuz yanı da kolay bir görev olması gereken şeyi karmaşıklaştırabilmesidir.
+            </p>
+
+            <h3 style="color: #4fc3f7; margin-top: 30px; margin-bottom: 10px;">2. Çekirdek Araç Desteği</h3>
+            <p style="margin-bottom: 10px; line-height: 1.8; color: #ddd;">
+                **React:** Temel teklifleri bileşenler ve durum yönetimidir. Geri kalan her şey topluluk tarafından geliştirilir ve desteklenir. Deneyimli geliştiriciler bu özgürlüğü tercih ederken, yeni başlayanlar üçüncü taraf kitaplıklarının bolluğundan bunalmış hissedebilirler.
+            </p>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                **Vue.js:** Çekirdek ekibi ayrıca Vue-router, Vuex ve Vue CLI gibi yaygın olarak kullanılan araçlar ve yardımcı kitaplıkları oluşturur ve destekler. Bu kombinasyon, hem yeni başlayanların hem de kıdemli geliştiricilerin ihtiyaçlarını karşılamaya yardımcı olur.
+            </p>
+
+            <h2 style="color: var(--color-secondary); margin-top: 40px; margin-bottom: 15px;">Vue ve React Performans Karşılaştırması</h2>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                React ve Vue.js aynı unsurların çoğunu paylaştığından, genel performansları yaklaşık olarak eşittir. Her iki frameworkte, performansı ve sayfa yükleme hızlarını artırmak için sanal DOM'leri ve geç yüklemeyi kullanır.
+            </p>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                Bununla birlikte, bir React bileşeninin durumunu değiştirdiğinizde, alt ağacındaki tüm bileşenler de yeniden oluşturulacaktır. Vue.js'de ise, gereksiz yeniden oluşturmaları önlemek için bağımlılıklar izlenir.
+            </p>
+            
+            <h3 style="color: #4fc3f7; margin-top: 30px; margin-bottom: 10px;">1. Uygulama Mimarisi</h3>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                **React:** Yerleşik bir mimari modele sahip olmaması bakımından farklıdır. Değişen verilere yanıt veren bileşenler tarafından oluşturulur. İç mimari, bileşenlerin durumu ile kullanıcıların eylemleri arasındaki sürekli etkileşimden oluşur.
+            </p>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                **Vue.js:** MVVM modelinin ViewModel yaklaşımına odaklanması, daha büyük uygulamalarda iyi sonuç verir. Birincil amacı, tam kapsamlı bir çerçeve değil, basit, esnek bir görünüm katmanı sağlamaktır.
+            </p>
+            
+            <h3 style="color: #4fc3f7; margin-top: 30px; margin-bottom: 10px;">2. Ölçeklenebilirlik</h3>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                **React:** Kolay ölçeklenebilirliği nedeniyle bir avantaja sahiptir. Yalnızca JavaScript kullandığından, geliştiriciler kolay ölçeklendirme için geleneksel kod düzenleme yöntemlerini kullanabilir. Bileşenlerin yeniden kullanılabilirliği, React'in ölçeklenebilirliğini artırır. Kurumsal düzeydeki uygulamalar için daha uygun olabilir.
+            </p>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                **Vue.js:** Geniş esnek araç yelpazesi sayesinde ölçeklenebilir olsa da, daha küçük uygulamalarda daha sık kullanılır. Dinamik mimari nedeniyle, ölçeklendirme sınırlamalarının üstesinden gelmek için Vue kütüphanelerinden ve Mixin öğelerinden yararlanmanız gerekecektir.
+            </p>
+            
+            <h3 style="color: #4fc3f7; margin-top: 30px; margin-bottom: 10px;">3. Dökümantasyon</h3>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                **Vue.js:** Açık ara kazanandır. Mükemmel kalitede, son derece ayrıntılı açıklamalar içerir ve dokümanları sektörün en iyisi olarak kabul edilir.
+            </p>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                **React:** Dokümantasyonu Vue'nun seviyesine yakın değildir, bu nedenle zorlukları çözmek için devasa, aktif topluluğa daha sık başvurmanız gerekir.
+            </p>
+
+            <h3 style="color: #4fc3f7; margin-top: 30px; margin-bottom: 10px;">4. Popülerlik</h3>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                181.000 Github yıldızıyla, **Vue.js** tartışmasız en popüler JavaScript frameworktür. Ancak **React**, 165 bin yıldızla ikinci sıraya yükseldi ve büyümeye devam ediyor.
+            </p>
+            
+            <div style="display: flex; gap: 20px; margin-bottom: 30px; text-align: center; font-size: 0.9em;">
+                <div style="flex: 1; background-color: #1e1e1e; padding: 15px; border-radius: 8px; border-top: 3px solid #ff9800;">
+                    <h4 style="color: #ff9800; margin-bottom: 8px;">Vue.js Kullanan Kurumlar</h4>
+                    <p>Gitlab, Euronews, Adobe Portfolio, Behance, Alibaba, Trustpilot, Vice, Nintendo, BMW</p>
+                </div>
+                <div style="flex: 1; background-color: #1e1e1e; padding: 15px; border-radius: 8px; border-top: 3px solid #4fc3f7;">
+                    <h4 style="color: #4fc3f7; margin-bottom: 8px;">React Kullanan Kurumlar</h4>
+                    <p>BBC, Airbnb, Facebook, PayPal, The New York Times, Netflix, Instagram, Twitter, WhatsApp</p>
+                </div>
+            </div>
+            
+            <h3 style="color: #4fc3f7; margin-top: 30px; margin-bottom: 10px;">5. Güvenlik</h3>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                **Vue.js:** Uygulamalarının güvenliğini sağlamak React tabanlı uygulamalardan **biraz daha kolaydır**. HTML kodunu uygulamadan önce temizleyebilir veya saldırılara karşı korunmaya yardımcı olmak için harici kitaplıkları kullanabilir.
+            </p>
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+                **React:** Geliştiricinin XSS güvenlik açıklarına, sunucu tarafı işleme saldırılarına, SQL enjeksiyonlarına ve diğer tehditlere karşı en iyi güvenlik uygulamalarını kullanmasına güvenir.
+            </p>
+
+            <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;">Sonuç Olarak: Hangi Framework'ü Seçmeli?</h2>
+            
+            <h3 style="color: #00bcd4; margin-top: 30px; margin-bottom: 10px;">Aşağıdakileri yapmak istiyorsanız React daha iyidir:</h3>
+            <ul style="list-style: none; padding-left: 20px;">
+                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">Çok çeşitli esnek kitaplıklara, araçlara ve ekosistemlere sahip olmak.</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">Yüksek düzeyde ölçeklenebilir bir uygulama geliştirme.</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">Karmaşık bir uygulamayı hızla oluşturma.</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">Yüksek performanslı bir video akış platformu veya medya sitesi oluşturma.</li>
+            </ul>
+
+            <h3 style="color: #ff9800; margin-top: 30px; margin-bottom: 10px;">Aşağıdakileri yapmak istiyorsanız Vue.js'yi seçin:</h3>
+            <ul style="list-style: none; padding-left: 20px;">
+                <li style="margin-bottom: 8px; border-left: 3px solid #ff9800; padding-left: 10px;">Progressive web app veya SPA oluşturmak.</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid #ff9800; padding-left: 10px;">Hemen geliştirmeye başlamak.</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid #ff9800; padding-left: 10px;">Daha fazla temel araca ve desteğe erişme.</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid #ff9800; padding-left: 10px;">Mevcut bir uygulamanın işlevselliğini genişletme.</li>
+            </ul>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 TeknoGündem. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

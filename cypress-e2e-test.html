@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uçtan Uca Testler (E2E) için Cypress: Neden Yeni Standart? (Derinlemesine İnceleme) - TeknoGündem</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* TEMEL RENKLER VE GLOBAL STİLLER */
+        :root {
+            --color-primary: #00bcd4; /* Mavi-Turkuaz */
+            --color-secondary: #ff9800; /* Turuncu */
+            --color-background: #121212;
+            --color-text-light: #ddd;
+            --color-cypress: #69d479; /* Cypress Yeşili */
+            --color-detail: #8a2be2; /* Detaylar için Mor */
+        }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text-light);
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* HEADER & NAV STİLLERİ */
+        header {
+            background-color: #1e1e1e;
+            color: white;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li a {
+            color: var(--color-text-light);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--color-primary);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+        }
+        
+        /* ANA İÇERİK STİLLERİ */
+        .main-body-container {
+            max-width: 1000px;
+            margin: 40px auto; 
+            padding: 25px; 
+            background-color: rgba(255, 255, 255, 0.05); 
+            border-radius: 10px;
+        }
+        .cypress-vurgu-baslik { color: var(--color-cypress); }
+        .tag {
+            position: static; padding: 5px 15px; background-color: var(--color-primary); 
+            color: white; border-radius: 4px; font-size: 0.9rem;
+        }
+        .review-meta {
+            margin-top: 10px; display: flex; justify-content: center; gap: 20px; color: #aaa; font-size: 0.9rem;
+        }
+
+        /* DETAY BÖLÜM STİLLERİ */
+        .technical-section h3 {
+            color: var(--color-detail);
+            margin-top: 35px;
+            border-bottom: 1px dashed #333;
+            padding-bottom: 5px;
+        }
+        .detail-list {
+            list-style: none;
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+        .detail-list li {
+            border-left: 3px solid var(--color-cypress);
+            padding-left: 10px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        /* KOD BLOKLARI */
+        pre {
+            background-color: #2b2b2b;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.9em;
+            border: 1px solid #3a3a3a;
+        }
+
+        /* FOOTER STİLİ */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            color: #666;
+            background-color: #1e1e1e;
+        }
+    </style>
+</head>
+<body class="yazilim-sayfa">
+   <header>
+    <div class="logo">TeknoGündem</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="yazılım.html" class="active">Yazılım</a></li>
+            <li><a href="donanım.html">Donanım</a></li>
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container main-body-container">
+    
+    <section class="detail-header">
+        <h1 style="color: var(--color-cypress); font-size: 3rem;"><i class="fas fa-microscope"></i> Uçtan Uca Testler (E2E) için Cypress: Neden Yeni Standart?</h1>
+        <div class="review-meta">
+            <span>Yazar: Caner BULUT</span>
+            <span>Tarih: 15 Aralık 2025</span>
+            <span class="tag" style="background-color: var(--color-cypress);">Test Otomasyonu/QA</span>
+        </div>
+    </section>
+
+    <div class="article-content-wrapper" style="max-width: 900px; margin: 40px auto; padding: 20px;">
+        
+        <p style="margin-bottom: 25px; line-height: 1.8; font-size: 1.1rem; color: #ccc;">
+            Uçtan Uca (E2E) testler, bir uygulamanın son kullanıcı yolculuğunu taklit ederek kritik iş akışlarının doğru çalıştığından emin olmanın en önemli yoludur. Selenium'un yıllar süren egemenliğinden sonra, modern JavaScript tabanlı uygulamalar için geliştirilmiş olan **Cypress**, test otomasyonunun çehresini kökten değiştirdi. Cypress, sadece bir test aracı değil, hızlı, güvenilir ve geliştirici odaklı bir E2E test çerçevesidir.
+        </p>
+
+        <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-cogs"></i> 1. Mimari Farkı: Tarayıcı İçinde Çalışmak</h2>
+        
+        <div class="technical-section">
+            <h3>Geleneksel Araçlar (Selenium): Süreçler Arası İletişim</h3>
+            <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
+                Selenium gibi eski araçlar, tarayıcı dışında Node.js veya başka bir dil ortamında çalışır ve <span style="color: var(--color-secondary);">WebDriver protokolü</span> aracılığıyla komutları tarayıcıya HTTP üzerinden gönderir. Bu, iki ayrı süreç arasındaki iletişimde kaçınılmaz bir **gecikme (latency)** ve testlerde **güvenilirlik sorunları (flakiness)** yaratır. Tarayıcıda bir şeyin olmasını beklemek, sürekli zaman aşımları ve bekleme kodları yazmayı gerektirir.
+            </p>
+        </div>
+        
+        <div class="technical-section">
+            <h3>Cypress: Aynı Çalışma Döngüsü (Same Run-Loop)</h3>
+            <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
+                Cypress, test kodunuzu **doğrudan tarayıcınızda** çalıştırır. Test kodu, uygulamanızla aynı çalışma döngüsünde (run-loop) bulunur. Bu, Cypress'in DOM'a, pencere nesnesine, yerel depolama alanına ve uygulamanızın koduna **doğrudan erişimi** olduğu anlamına gelir. Sonuç: Testler daha hızlı, daha deterministik (belirlenimci) ve test yürütülürken ağ trafiğini kolayca izleyebilir veya değiştirebilirsiniz.
+            </p>
+        </div>
+
+        <h2 class="cypress-vurgu-baslik" style="margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-tachometer-alt"></i> 2. Güvenilirlik ve Hız: Otomatik Bekleme ve Zaman Seyahati</h2>
+
+        <div class="technical-section">
+            <h3>Otomatik Bekleme (Automatic Waiting) ve Determinizm</h3>
+            <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
+                Geleneksel araçlarda test kırılmalarının en büyük nedeni, uygulamanın henüz yüklenmemiş bir DOM öğesiyle etkileşime girmeye çalışmasıdır. Cypress, bu sorunu kendi mimarisiyle çözer. Cypress komutları, bir öğenin görünür, etkileşimli ve mevcut olmasını **otomatik olarak bekler**. Bu, `cy.wait(500)` gibi manuel ve güvenilmez bekleme kodları yazma zorunluluğunu ortadan kaldırır.
+            </p>
+            <pre style="background-color: #2b2b2b; color: #f8f8f2; padding: 15px; border-radius: 6px; overflow-x: auto; font-family: 'Consolas', 'Courier New', monospace; font-size: 0.9em; border: 1px solid #3a3a3a;"><code>// Cypress, "submit" butonu görünür ve etkileşime hazır olana kadar bekler.
+cy.get('button[type="submit"]').click(); 
+
+// Geleneksel yaklaşımla yazılması gereken:
+// driver.wait(until.elementLocated(By.css('button[type="submit"]')), 10000);
+// driver.findElement(By.css('button[type="submit"]')).click();</code></pre>
+        </div>
+        
+        <div class="technical-section">
+            <h3>Zaman Seyahati (Time Travel) ve Hata Ayıklama</h3>
+            <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
+                Cypress'in en güçlü özelliklerinden biri, **Test Çalıştırıcısı (Test Runner)** arayüzüdür. Bu arayüzde, testinizin her adımını görebilirsiniz. Bir komuta tıkladığınızda, Cypress size o anki DOM yapısını, CSS ve JavaScript state'ini gösterir. Buna **Zaman Seyahati** denir. Bu görsel hata ayıklama yeteneği, test hatalarının nedenini bulma süresini dakikalardan saniyelere düşürür.
+            </p>
+        </div>
+
+        <h2 class="cypress-vurgu-baslik" style="margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-code"></i> 3. Geliştirici Deneyimi ve Özelleştirme</h2>
+        
+        <div class="technical-section">
+            <h3>Kullanım Kolaylığı ve API Sadeliği</h3>
+            <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
+                Cypress, test yazımını standart JavaScript ve Mocha/Chai sözdizimi ile yapar. API'si, modern JavaScript geliştiricileri için sezgisel ve anlaşılırdır.
+            </p>
+            <ul class="detail-list" style="list-style: none; padding-left: 20px; margin-top: 15px;">
+                <li style="border-left: 3px solid var(--color-cypress); padding-left: 10px; margin-bottom: 10px; line-height: 1.6;">**Zincirleme (Chaining):** Komutlar, `cy.get().type().click()` şeklinde zincirlenir, bu da kodun okunabilirliğini artırır.</li>
+                <li style="border-left: 3px solid var(--color-cypress); padding-left: 10px; margin-bottom: 10px; line-height: 1.6;">**Fixture ve Komutlar:** Cypress, test verilerini (Fixture) yönetmek ve tekrarlayan görevleri (Custom Commands) soyutlamak için basit ve güçlü mekanizmalar sunar.</li>
+            </ul>
+        </div>
+        
+        <div class="technical-section">
+            <h3>Ağ Kontrolü (Network Stubbing) ve State Yönetimi</h3>
+            <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
+                Cypress'in tarayıcı içinde çalışması sayesinde, uygulamanızın API çağrılarına müdahale edebilirsiniz. **`cy.intercept()`** komutu ile sunucu yanıtlarını taklit (stub) edebilir veya değiştirebilirsiniz.
+            </p>
+            <pre style="background-color: #2b2b2b; color: #f8f8f2; padding: 15px; border-radius: 6px; overflow-x: auto; font-family: 'Consolas', 'Courier New', monospace; font-size: 0.9em; border: 1px solid #3a3a3a;"><code>// Sunucudan gelen kullanıcı listesi yanıtını taklit etme
+cy.intercept('GET', '/api/users', { fixture: 'users.json' }).as('getUsers');
+
+// Alternatif olarak, doğrudan uygulama durumunu ayarlama
+cy.window().then((win) => {
+    win.localStorage.setItem('auth_token', 'mock_token');
+});</code></pre>
+            <p style="line-height: 1.7; color: #ddd;">
+                Bu yetenek, testlerinizi <span style="color: var(--color-detail);">sunucu durumundan bağımsız hale getirerek</span>, çok daha hızlı ve güvenilir çalışmasını sağlar.
+            </p>
+        </div>
+
+        <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-check-circle"></i> Sonuç: Test Otomasyonunun Geleceği</h2>
+        
+        <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
+            Cypress, test etme şeklimizi, E2E testlerini bir geliştiricinin iş akışının doğal bir parçası haline getirerek değiştirdi. Tarayıcıya entegre mimarisi, otomatik bekleme mekanizması ve üstün görsel hata ayıklama yetenekleri sayesinde, Cypress, klasik araçların karşılaştığı güvenilirlik ve hız sorunlarını aşıyor. Hızlı ve güvenilir bir yayın döngüsü arayan her modern yazılım ekibi için <span style="color: var(--color-secondary);">Cypress, artık sadece bir seçenek değil, bir zorunluluktur.</span>
+        </p>
+
+    </div>
+
+</main>
+
+<footer>
+    <p>&copy; 2025 TeknoGündem. Tüm Hakları Saklıdır.</p>
+</footer>
+
+</body>
+</html>

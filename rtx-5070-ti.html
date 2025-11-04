@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NVIDIA GeForce RTX 5070 Ti İncelemesi | Teknogündem Donanım</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    
+    <style>
+        /* SADECE BU SAYFAYA ÖZEL STİLLER (NVIDIA Teması: Yeşil/Siyah) */
+        
+        body { 
+            background-color: #0a0a0a; 
+            color: #f0f0f0; /* Genel metin rengi açık */
+            font-family: 'Poppins', sans-serif;
+        }
+        .main-body-container { 
+            background-color: transparent; 
+            padding-top: 50px; 
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        
+        /* GPU İNCELEMESİ İÇİN ÖZEL RENK VURGULARI (Yeşil/Siyah) */
+        
+        .accent-color { color: #76ff03; /* Parlak Yeşil Vurgu */ }
+        
+        /* 1. Başlık Rengi */
+        .detail-header h1 {
+            color: #ffffff; /* Başlık rengini tamamen Beyaz yaptık */
+            text-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
+        }
+        
+        /* 2. Ana Puan Vurgusu */
+        .score-large {
+            background: linear-gradient(45deg, #4CAF50, #76ff03); 
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            color: transparent; 
+            font-size: 3.5em;
+            font-weight: 900;
+            padding: 10px 0;
+            border-bottom: 3px solid #4CAF50;
+        }
+        /* 3. Sonuç Kutusu Rengi */
+        .conclusion-box {
+            border: 3px solid #76ff03; 
+            background-color: #151d15; 
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 8px;
+        }
+        
+        /* 4. İnceleme Başlıkları */
+        .detail-review-body h2 span, 
+        .technical-specs-box h2 {
+            color: #76ff03; 
+        }
+        
+        /* 5. Artı ve Eksiler */
+        #detail-pros li { color: #76ff03; } /* Artılar Yeşil */
+        #detail-cons li { color: #ff9800; } /* Eksiler Turuncu */
+        
+        /* Teknik özellikler tablosu */
+        .specs-list { list-style: none; padding: 0; }
+        .specs-list li { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px dashed #333; }
+        .specs-list span:first-child { color: #ccc; } /* Sol sütun metni daha açık gri yapıldı */
+        
+        /* Genel İnceleme Sayfası Yerleşimi */
+        .review-content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-top: 30px; }
+        .main-content { grid-column: 1 / 2; }
+        .technical-specs-box { grid-column: 2 / 3; padding: 20px; background-color: #1a1a1a; border-radius: 8px; }
+        .video-container { margin-bottom: 30px; border-radius: 8px; overflow: hidden; }
+        #pros-cons-container { display: flex; gap: 40px; margin-top: 30px; }
+        #pros-cons-container ul { list-style: none; padding: 0; }
+        
+        /* EK DÜZELTME: Ana içerik paragraf renkleri */
+        .detail-review-body p {
+            color: #f0f0f0; /* Paragrafların açık renkli olmasını garanti eder */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>TEKNOGÜNDEM<span class="logo-dot">.</span>DONANIM</h1>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="#">HABERLER ▼</a>
+                        <div class="dropdown-content">
+                            <a href="guncel-haberler.html">Güncel</a>
+                            <a href="ekran-karti-haberleri.html">Ekran Kartları</a>
+                            <a href="islemci-haberleri.html">İşlemciler</a>
+                            <a href="anakart-ram-haberleri.html">Anakart ve RAM</a>
+                            <a href="sizintilar.html">Sızıntılar</a>
+                            <a href="yapay-zeka.html">Yapay Zeka</a>
+                        </div>
+                    </li>
+                    <li><a href="incelemeler.html" class="active">İNCELEMELER</a></li>
+                    <li><a href="fiyatlar.html">FİYAT LİSTELERİ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+<div class="main-body-container">
+        
+    <section id="review-detail-section">
+        <div class="detail-header">
+            <h1>NVIDIA GeForce RTX 5070 Ti İncelemesi</h1>
+            <p class="subtitle">4K Oyunculuk İçin Tatlı Nokta: Yüksek Performanslı Ada Next Mimarisi</p>
+            <div class="score-large">⭐ 9.3/10</div>
+        </div>
+
+        <div class="review-content-grid">
+            
+            <div class="main-content">
+                
+                <div class="video-container">
+                    <iframe 
+                        width="100%" 
+                        height="450" 
+                        src="https://www.youtube-nocookie.com/embed/nVYwv0YpyPc" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <div class="detail-review-body">
+                    
+                    <h2 style="margin-top: 0;"><span class="accent-color">🚀 Ada Next Mimarisi ve Saf Güç</span></h2>
+                    <p>
+                        RTX 5070 Ti, NVIDIA'nın **Ada Next** mimarisine dayanarak, saf rasterizasyon performansında önceki nesil amiral gemisi kartlara yaklaşıyor. 1440p çözünürlükte tartışmasız liderliğini sürdürürken, DLSS 3.5 ve Frame Generation teknolojileri sayesinde 4K oyunculuğunu da stabil FPS'lerle ulaşılabilir kılıyor. Performans artışı, özellikle yeni nesil oyun motorlarında kendini gösteriyor.
+                    </p>
+
+                    <h2><span class="accent-color">✨ DLSS 4.0 ve Ray Tracing Performansı</span></h2>
+                    <p>
+                        Kartın en büyük avantajı, gelişmiş **DLSS 4.0** (Deep Learning Super Sampling) ve **4. nesil Ray Tracing (Işın İzleme)** çekirdekleridir. Bu teknolojiler, grafik kalitesinden ödün vermeden performansı dramatik şekilde artırır. NVIDIA'nın yazılım ekosistemi (Reflex, Broadcast) ile birleştiğinde, oyuncular ve yayıncılar için eksiksiz bir paket sunar.
+                    </p>
+
+                    <div id="pros-cons-container">
+                        <div>
+                            <h2><span style="color: #76ff03;">✅ Artıları</span></h2>
+                            <ul id="detail-pros">
+                                <li>Mükemmel 1440p ve güçlü 4K oyun performansı.</li>
+                                <li>Piyasadaki en iyi DLSS ve Ray Tracing optimizasyonu.</li>
+                                <li>Selefine göre önemli ölçüde artırılmış çekirdek sayısı.</li>
+                                <li>Referans Founder's Edition modelinin şık ve serin tasarımı.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h2><span style="color: #ff9800;">❌ Eksileri</span></h2>
+                            <ul id="detail-cons">
+                                <li class="negative">Fiyatı, orta-üst segment için hala yüksek kalıyor.</li>
+                                <li class="negative">RTX 5080 ile arasında çok az performans farkı.</li>
+                                <li class="negative">Yüksek güç tüketimi, kaliteli bir PSU gerektiriyor.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="conclusion-box">
+                        <h2>✨ Editörün Yorumu</h2>
+                        <p style="color: #f0f0f0;">NVIDIA RTX 5070 Ti, 4K monitör kullanıcılarının bütçeyi çok zorlamadan amiral gemisi performansına yaklaştığı "altın nokta"dır. DLSS 4.0'ın eklenmesiyle gelen verimlilik ve hız, kartı uzun ömürlü bir yatırım haline getiriyor. Eğer en iyi Işın İzleme ve yapay zeka destekli yükseltme teknolojilerine sahip olmak istiyorsanız, bu kart listenizin başında olmalı.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="technical-specs-box">
+                <h2 class="accent-color">⚙️ Teknik Özellikler</h2>
+                <ul class="specs-list">
+                    <li><span>GPU Mimarisi</span> <span>Ada Next (AD103)</span></li>
+                    <li><span>CUDA Çekirdeği</span> <span>8448 (Varsayımsal)</span></li>
+                    <li><span>Bellek (VRAM)</span> <span>16 GB GDDR6X</span></li>
+                    <li><span>Bellek Arayüzü</span> <span>256-bit</span></li>
+                    <li><span>Güç Bağlantısı</span> <span>1 x 12VHPWR</span></li>
+                    <li><span>TDP (Güç Tüketimi)</span> <span>Yaklaşık 300W</span></li>
+                </ul>
+                <h2 class="accent-color" style="margin-top: 30px;">🎮 Ek Teknolojiler</h2>
+                <ul class="specs-list">
+                    <li><span>Ray Tracing</span> <span>4. Nesil RT Çekirdekleri</span></li>
+                    <li><span>Upscaling (Yükseltme)</span> <span>NVIDIA DLSS 4.0</span></li>
+                </ul>
+            </div>
+            
+        </div>
+        
+    </section>
+    
+</div>
+
+<footer>
+    <p>© 2025 TEKNOGÜNDEM DONANIM. Tüm hakları saklıdır. | <a href="#">Gizlilik Politikası</a></p>
+</footer>
+
+<script src="js/script.js"></script> 
+</body>
+</html>

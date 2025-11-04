@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intel Core i9-15900K (Arrow Lake) İncelemesi | Teknogündem</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    
+    <style>
+        /* *** KESİN DÜZELTME: HEADER, FOOTER VE NAVIGASYON ARKA PLANLARI *** */
+        header, footer {
+            background-color: #151515 !important;
+            color: #e0e0e0 !important;
+            width: 100%;
+        }
+        .header-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 15px 20px; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        footer {
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+        header nav ul li a {
+            color: #e0e0e0 !important;
+            background-color: transparent !important;
+        }
+        .dropdown-content {
+            background-color: #2a2a2a !important; 
+            border: 1px solid #00bcd4 !important; 
+        }
+        .dropdown-content a {
+            color: #e0e0e0 !important;
+            background-color: #2a2a2a !important;
+            padding: 10px 15px !important;
+        }
+        .dropdown-content a:hover {
+            background-color: #00bcd4 !important; 
+            color: #0a0a0a !important; 
+        }
+
+        /* *** YENİ DÜZELTME: METİN ALANI VE ÇİZGİ STİLİ *** */
+        .main-content {
+            background-color: #1a1a1a; /* Ana içerik alanını biraz daha açık koyu gri yaptık */
+            padding: 30px; 
+            border-radius: 8px; 
+        }
+        /* Yatay Çizgi (HR) Stili: Başlık altındaki çizgileri görünür yaptık */
+        .detail-review-body hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 188, 212, 0), rgba(0, 188, 212, 0.75), rgba(0, 188, 212, 0));
+            margin: 20px 0;
+        }
+
+
+        /* *** SAYFA İÇERİĞİ VE VURGU STİLLERİ *** */
+        body { 
+            background-color: #0a0a0a; 
+            color: #e0e0e0; 
+            font-family: 'Poppins', sans-serif;
+        }
+        .main-body-container { 
+            background-color: transparent; 
+            padding-top: 50px; 
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .review-content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-top: 30px; }
+        .technical-specs-box {
+            background-color: #1a1a1a; 
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .specs-list { list-style: none; padding: 0; }
+        .specs-list li { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px dashed #333; }
+        .specs-list span:first-child { color: #ccc; }
+
+        /* İŞLEMCİ İNCELEMESİ İÇİN ÖZEL RENK VURGULARI (Turkuaz: #00bcd4) */
+        .detail-header h1 {
+            color: #00bcd4; 
+            text-shadow: 0 0 10px rgba(0, 188, 212, 0.7);
+        }
+        .score-large {
+            background: linear-gradient(45deg, #00bcd4, #76ff03); 
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3.5em;
+            font-weight: 900;
+            padding: 10px 0;
+            border-bottom: 3px solid #00bcd4; 
+        }
+        .conclusion-box {
+            border: 3px solid #00bcd4; 
+            background-color: #1f1f25; 
+            padding: 20px;
+            border-radius: 8px; 
+        }
+        .detail-review-body h2 span, 
+        .technical-specs-box h2 {
+            color: #00bcd4; 
+        }
+        #detail-pros li { color: #76ff03; } 
+        #detail-cons li { color: #e91e63; } 
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>TEKNOGÜNDEM<span class="logo-dot">.</span>DONANIM</h1>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="#">HABERLER ▼</a>
+                        <div class="dropdown-content">
+                            <a href="guncel-haberler.html">Güncel</a>
+                            <a href="ekran-karti-haberleri.html">Ekran Kartları</a>
+                            <a href="islemci-haberleri.html">İşlemciler</a>
+                            <a href="anakart-ram-haberleri.html">Anakart ve RAM</a>
+                            <a href="sizintilar.html">Sızıntılar</a>
+                            <a href="yapay-zeka.html">Yapay Zeka</a>
+                        </div>
+                    </li>
+                    <li><a href="incelemeler.html" class="active">İNCELEMELER</a></li>
+                    <li><a href="fiyatlar.html">FİYAT LİSTELERİ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-body-container">
+        
+        <section id="review-detail-section">
+            <div class="detail-header">
+                <h1>Intel Core i9-15900K (Arrow Lake)</h1>
+                <p class="subtitle">Yeni IPC Mimarisi ve Çoklu Çekirdek Gücü</p>
+                <div class="score-large">⭐ 9.5/10</div>
+            </div>
+
+            <div class="review-content-grid">
+                
+                <div class="main-content">
+                    
+                    <div class="video-container">
+                        <iframe 
+                            width="100%" 
+                            height="450" 
+                            src="https://www.youtube-nocookie.com/embed/VuzBSPpu-vo" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    
+                    <div class="detail-review-body">
+                        
+                        <h2 style="margin-top: 0;"><span style="color: #00bcd4;">🛠️ Mimari ve Termal Başarımlar</span></h2>
+                        <hr> <p>
+                            i9-15900K, Arrow Lake mimarisinin en üst noktasını temsil ediyor ve önceki nesillere göre Çekirdek Başına Talimat (IPC) oranında önemli bir sıçrama sunuyor. 8 P-çekirdeği ve 16 E-çekirdeği konfigürasyonunu korurken, yeni çekirdek tasarımları sayesinde tek çekirdek performansı %15 artırıldı. En büyük sürpriz ise, maksimum turbo frekansına ulaşılırken dahi termal sınırların geçmişe göre daha iyi yönetilmesi.
+                        </p>
+
+                        <h2><span style="color: #00bcd4;">📊 Oyun ve İş Yükü Testleri</span></h2>
+                        <hr> <p>
+                            4K çözünürlükte bile, üst düzey ekran kartlarıyla eşleştirildiğinde, 15900K, minimum kare hızlarını (1% Lows) kayda değer ölçüde yükselterek oyun deneyimini daha akıcı hale getiriyor. Blender ve Adobe Premiere gibi profesyonel iş yüklerinde ise 24 çekirdekli yapının sağladığı güç, özellikle render sürelerinde %20'lik bir iyileşme sağlıyor. Çoklu görevde rakipsiz bir performans sunuyor.
+                        </p>
+
+                    </div>
+
+                    <div id="pros-cons-container">
+                        <div style="flex: 1;">
+                             <h2><span style="color: #76ff03;">✅ Artıları</span></h2>
+                            <ul id="detail-pros">
+                                <li>Lider tek çekirdek performansı ve IPC artışı.</li>
+                                <li>Çoklu çekirdek performansı, profesyonel iş yüklerinde üstün.</li>
+                                <li>Geçmişe göre daha verimli termal yönetim (yüksek güç tüketimine rağmen).</li>
+                                <li>PCIe 5.0 ve DDR5 8000+ MHz bellek desteği.</li>
+                            </ul>
+                        </div>
+                        <div style="flex: 1;">
+                            <h2><span style="color: #e91e63;">❌ Eksileri</span></h2>
+                            <ul id="detail-cons">
+                                <li class="negative">Yüksek güç tüketimi, üst düzey soğutma (360mm+ sıvı) gerektiriyor.</li>
+                                <li class="negative">Zirve fiyat etiketi.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h2 style="margin-top: 40px;"><span style="color: #00bcd4;">📈 Benchmark Sonuçları (Cinebench R26)</span></h2>
+                    <hr> <div class="technical-specs-box" style="padding: 10px 20px;">
+                        <ul class="specs-list">
+                            <li><span>Tek Çekirdek Skoru</span> <span>3250</span></li>
+                            <li><span>Çoklu Çekirdek Skoru</span> <span>58000</span></li>
+                            <li><span>Maks. Sıcaklık (Yükte)</span> <span>88°C</span></li>
+                            <li><span>Ortalama Güç Tüketimi (Yükte)</span> <span>330W</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="conclusion-box">
+                        <h2>✨ Editörün Yorumu</h2>
+                        <p style="color: #f0f0f0;">Core i9-15900K, hem oyun hem de profesyonel içerik üretimi için mutlak hız isteyen kullanıcılar için tasarlanmış bir canavar. Yüksek fiyatı ve soğutma ihtiyacı olsa da, şu anki piyasanın en hızlı masaüstü işlemcisi olmaya aday.</p>
+                    </div>
+                </div>
+
+                <div class="technical-specs-box">
+                    <h2 style="color: #00bcd4;">⚙️ Teknik Özellikler</h2>
+                    <hr> <ul class="specs-list">
+                        <li><span>Çekirdek Sayısı</span> <span>8 P + 16 E (Toplam 24)</span></li>
+                        <li><span>İş Parçacığı</span> <span>32</span></li>
+                        <li><span>Maks. Frekans</span> <span>6.3 GHz</span></li>
+                        <li><span>Temel Güç (PL1)</span> <span>150W</span></li>
+                        <li><span>Maks. Güç (PL2)</span> <span>330W</span></li>
+                        <li><span>Önbellek (L2 + L3)</span> <span>68 MB</span></li>
+                        <li><span>Soket Tipi</span> <span>LGA 1851</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+        </section>
+
+    </div>
+    
+    <footer>
+        <p>© 2025 TEKNOGÜNDEM DONANIM. Tüm hakları saklıdır. | <a href="#">Gizlilik Politikası</a></p>
+    </footer>
+
+</body>
+</html>
