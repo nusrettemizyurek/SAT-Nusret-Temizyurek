@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redis Cache Nasıl Yapılandırılır? Bellek Yönetimi, Kalıcılık ve Kümeleme Rehberi - TeknoGündem</title>
+      <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    
+    
+    <style>
+        /* TEMEL RENKLER VE GLOBAL STİLLER */
+        :root {
+            --color-primary: #00bcd4; /* Mavi-Turkuaz */
+            --color-secondary: #ff9800; /* Turuncu */
+            --color-background: #121212;
+            --color-text-light: #ddd;
+            --color-detail: #4caf50; /* Detaylar için Yeşil */
+            /* Yeni makale için özel renkler */
+            --color-redis-main: #DC382D; /* Redis Kırmızı */
+            --color-cache-vurgu: #FF9800; /* Turuncu (Cache) */
+        }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text-light);
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* HEADER & NAV STİLLERİ */
+        header {
+            background-color: #1e1e1e;
+            color: white;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li a {
+            color: var(--color-text-light);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--color-primary);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+        }
+        
+        /* ANA İÇERİK STİLLERİ */
+        .main-body-container {
+            max-width: 1000px;
+            margin: 40px auto; 
+            padding: 25px; 
+            background-color: rgba(255, 255, 255, 0.05); 
+            border-radius: 10px;
+        }
+        .tag {
+            position: static; padding: 5px 15px; background-color: var(--color-secondary); 
+            color: var(--color-background); border-radius: 4px; font-size: 0.9rem;
+            font-weight: bold;
+        }
+        .review-meta {
+            margin-top: 10px; display: flex; justify-content: center; gap: 20px; color: #aaa; font-size: 0.9rem;
+        }
+
+        /* TABLO STİLLERİ */
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            border: 1px solid #333;
+            text-align: left;
+            font-size: 0.95em;
+        }
+        .comparison-table th {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        /* Yeni tablo için renkler */
+        .redis-config-cell { background-color: rgba(220, 56, 45, 0.1); color: var(--color-redis-main); } 
+        .cache-detail-cell { background-color: rgba(255, 152, 0, 0.1); color: var(--color-cache-vurgu); } 
+        
+        /* DETAY BÖLÜM STİLLERİ */
+        .technical-section h3 {
+            color: var(--color-detail);
+            margin-top: 35px;
+            border-bottom: 1px dashed #333;
+            padding-bottom: 5px;
+        }
+        .detail-list {
+            list-style: none;
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+        .detail-list li {
+            border-left: 3px solid var(--color-secondary);
+            padding-left: 10px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        /* KOD BLOKLARI */
+        pre {
+            background-color: #2b2b2b;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.9em;
+            border: 1px solid #3a3a3a;
+        }
+
+        /* FOOTER STİLİ */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            color: #666;
+            background-color: #1e1e1e;
+        }
+    </style>
+</head>
+<body class="yazilim-sayfa">
+    <header>
+        <div class="logo">TeknoGündem</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="donanım.html">Donanım</a></li>
+                <li><a href="yazılım.html" class="active">Yazılım</a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container main-body-container">
+        
+        <section class="detail-header">
+            <h1 style="color: var(--color-primary); font-size: 3rem;"><i class="fas fa-server"></i> Redis Cache Nasıl Yapılandırılır? Yüksek Performanslı ve Ölçeklenebilir Önbellekleme</h1>
+            <div class="review-meta">
+                <span>Yazar: Murat ŞAHİN</span>
+                <span>Tarih: 7 Nisan 2026</span>
+                <span class="tag">Veritabanı/DevOps</span>
+            </div>
+        </section>
+
+        <div class="article-content-wrapper" style="max-width: 900px; margin: 40px auto; padding: 20px;">
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; font-size: 1.1rem; color: #ccc;">
+                Redis, yalnızca bir key-value deposu değil, aynı zamanda veriye inanılmaz hızda erişim sağlayan bellek içi (in-memory) bir veri yapısı sunucusudur. Yüksek trafikli uygulamalarda gecikmeyi (latency) azaltmanın anahtarı, Redis'i sadece kurmak değil, doğru şekilde yapılandırmaktır. Cache sistemini optimize etmek için bellek yönetimi, kalıcılık (persistence) ve silme (eviction) stratejileri hayati önem taşır.
+            </p>
+
+            <h2 style="color: var(--color-redis-main); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-memory"></i> Faz 1: Bellek Yönetimi ve Silme Stratejileri</h2>
+            
+            <div class="technical-section">
+                <h3>Adım 1.1: Maksimum Bellek Sınırını Belirleme</h3>
+                <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
+                    Redis'in bellek içi çalışması nedeniyle, ana belleği (RAM) tüketmesini engellemek için maksimum sınır belirlenmelidir. Bu sınır aşıldığında Redis, önbellek olarak hareket etmeye ve eski anahtarları silmeye (eviction) başlar.
+                </p>
+                <p style="color: var(--color-redis-main); font-weight: bold; margin-bottom: 10px;">`redis.conf` Ayarı:</p>
+                <pre><code># Redis'in kullanabileceği maksimum belleği 4GB ile sınırla
+maxmemory 4gb 
+
+# İşletim sisteminin Redis'i disk swap'ine zorlamasını önlemek için 
+# bu değeri fiziksel RAM'in yaklaşık %60-70'i olarak ayarlayın.</code></pre>
+            </div>
+            
+            <div class="technical-section">
+                <h3>Adım 1.2: Doğru Silme (Eviction) Politikası Seçimi</h3>
+                <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
+                    `maxmemory` sınırına ulaşıldığında hangi anahtarların silineceğini belirleyen politikadır. Yanlış seçim, cache isabet oranını (hit rate) düşürür.
+                </p>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th style="background-color: var(--color-detail);">Politika</th>
+                            <th style="background-color: var(--color-cache-vurgu);">Tanım</th>
+                            <th style="background-color: var(--color-detail);">Kullanım Senaryosu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="redis-config-cell">**allkeys-lru**</td>
+                            <td class="redis-config-cell">En uzun süredir kullanılmayan anahtarları siler. (Least Recently Used)</td>
+                            <td class="redis-config-cell">Genel Amaçlı Önbellek. En popüler ve önerilen seçenektir.</td>
+                        </tr>
+                        <tr>
+                            <td class="redis-config-cell">**volatile-ttl**</td>
+                            <td class="redis-config-cell">Sadece TTL (Time To Live) ayarlanmış anahtarlar arasından ömrü en kısa olanı siler.</td>
+                            <td class="redis-config-cell">Farklı TTL'lere sahip anahtarların yönetimi.</td>
+                        </tr>
+                        <tr>
+                            <td class="redis-config-cell">**noeviction**</td>
+                            <td class="redis-config-cell">Hiçbir anahtarı silmez. Bellek dolduğunda yeni yazma işlemlerine izin vermez.</td>
+                            <td class="redis-config-cell">Kritik ve kalıcılığı mutlak gerekli olan veriler için.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 style="color: var(--color-cache-vurgu); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-save"></i> Faz 2: Veri Kalıcılığı (Persistence) Stratejileri</h2>
+            
+            <div class="technical-section">
+                <h3>Adım 2.1: Kalıcılık Modellerini Anlama (AOF vs RDB)</h3>
+                <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
+                    Redis, varsayılan olarak in-memory olsa da, sunucu çökmesi durumunda veriyi kaybetmemek için disk üzerinde kalıcılık seçenekleri sunar. Bu, önbelleğin kalıcı (daha güvenli) olmasını sağlar.
+                </p>
+                <ul class="detail-list">
+                    <li><i class="fas fa-file-archive" style="color: var(--color-detail);"></i> **RDB (Redis Database Backup):** Belirli aralıklarla belleğin anlık görüntüsünü (snapshot) alır. Kurtarma hızlıdır, ancak son snapshot'tan sonraki veriler kaybolabilir.</li>
+                    <li><i class="fas fa-list-alt" style="color: var(--color-detail);"></i> **AOF (Append Only File):** Redis'e gelen her yazma komutunu bir log dosyasına kaydeder. RDB'ye göre daha yavaş kurtarılır, ancak veri kaybı riski daha düşüktür.</li>
+                </ul>
+            </div>
+            
+            <div class="technical-section">
+                <h3>Adım 2.2: Optimal Kalıcılık Ayarları</h3>
+                <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
+                    Önbellek olarak kullanılan ve yeniden oluşturulabilir (rebuildable) veriler için RDB yeterlidir, ancak oturum yönetimi gibi kritik verilerde AOF önerilir.
+                </p>
+                <p style="color: var(--color-cache-vurgu); font-weight: bold; margin-bottom: 10px;">AOF Örneği (Yüksek Güvenilirlik İçin):</p>
+                <pre><code># AOF'u etkinleştir
+appendonly yes
+
+# Her saniye fsync (disk senkronizasyonu) yap.
+# İyi performans ve veri güvenliği arasında denge.
+appendfsync everysec </code></pre>
+                <blockquote style="border-left: 5px solid var(--color-secondary); background-color: rgba(255, 152, 0, 0.05); padding: 15px; margin-top: 20px;">
+                    <i class="fas fa-battery-three-quarters" style="color: var(--color-secondary);"></i> **Güvenilirlik Notu:** En yüksek güvenilirlik (örneğin oturum yönetimi) için hem RDB hem de AOF'yi birlikte kullanmak ve Replikasyon (Replication) kurmak standart bir uygulamadır.
+                </blockquote>
+            </div>
+
+            <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-cubes"></i> Faz 3: Yüksek Erişilebilirlik ve Ölçekleme</h2>
+            
+            <div class="technical-section">
+                <h3>Adım 3.1: Replikasyon (Replication) ve Sentinel</h3>
+                <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
+                    Tek bir Redis örneği, tüm sistemi tek hata noktası (Single Point of Failure - SPOF) yapar. Yüksek erişilebilirlik (HA) için replikasyon şarttır.
+                </p>
+                <ul class="detail-list">
+                    <li><i class="fas fa-clone" style="color: var(--color-secondary);"></i> **Replikasyon (Master-Replica):** Veriyi ana (master) sunucudan bir veya birden fazla kopya (replica) sunucuya asenkron olarak aktarır. Okuma yükünü replikalara dağıtarak performansı artırır.</li>
+                    <li><i class="fas fa-eye" style="color: var(--color-secondary);"></i> **Redis Sentinel:** HA'nın beynidir. Master sunucu çöktüğünde otomatik hata toleransı (failover) sağlar. Replikalardan birini otomatik olarak yeni Master yapar.</li>
+                </ul>
+            </div>
+
+            <div class="technical-section">
+                <h3>Adım 3.2: Kümeleme (Clustering) ile Yatay Ölçekleme</h3>
+                <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
+                    Veriniz tek bir sunucunun belleğini (RAM) aştığında veya yazma (write) yükünü dağıtmak istediğinizde Kümeleme (Clustering) kullanılır.
+                </p>
+                <ul class="detail-list">
+                    <li><i class="fas fa-splotch" style="color: var(--color-detail);"></i> **Hash Slotlama:** Redis Cluster, veriyi 16384 adet hash slotuna böler ve bu slotları kümedeki nodelar arasında dağıtır. Bu, veri parçalama (sharding) sağlar.</li>
+                    <li><i class="fas fa-level-up-alt" style="color: var(--color-detail);"></i> **Ölçeklenebilirlik:** Kümeleme ile hem bellek kapasitesini (yatay ölçekleme) hem de komut işleme kapasitesini nodelar arasında bölerek artırabilirsiniz.</li>
+                </ul>
+            </div>
+
+            <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-graduation-cap"></i> Özet Rehberlik İlkesi</h2>
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
+                Redis'i optimize etmek, uygulamanızın performansını radikal bir şekilde artırır. Başarılı bir Redis yapılandırması, <span style="color: var(--color-redis-main);">`maxmemory` sınırının belirlenmesi</span> ve **`allkeys-lru`** gibi etkin bir silme politikasının uygulanmasıyla başlar. Yüksek erişilebilirlik için **Sentinel** ile replikasyon, büyük veri kümeleri için ise **Cluster** mimarisi zorunluluktur. Her zaman, verinin kritiklik seviyesine göre kalıcılık (RDB/AOF) ayarınızı yapmayı unutmayın.
+            </p>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TeknoGündem. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+</body> 
+</html>

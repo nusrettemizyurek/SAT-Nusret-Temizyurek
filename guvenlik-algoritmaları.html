@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Güvenli Şifreleme Algoritmaları Rehberi: Simetrik, Asimetrik ve Hash Fonksiyonları - TeknoGündem</title>
+    
+    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    <style>
+        /* TEMEL RENKLER VE GLOBAL STİLLER */
+        :root {
+            --color-primary: #00bcd4; /* Mavi-Turkuaz */
+            --color-secondary: #ff9800; /* Turuncu */
+            --color-background: #121212;
+            --color-text-light: #ddd;
+            --color-detail: #4caf50; /* Detaylar için Yeşil */
+            /* Yeni makale için özel renkler */
+            --color-simetrik: #E91E63; /* Pembe/Simetrik vurgusu */
+            --color-asimetrik: #9C27B0; /* Mor/Asimetrik vurgusu */
+            --color-hash: #03A9F4; /* Açık Mavi/Hash vurgusu */
+        }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text-light);
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* HEADER & NAV STİLLERİ */
+        header {
+            background-color: #1e1e1e;
+            color: white;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li a {
+            color: var(--color-text-light);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--color-primary);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+        }
+        
+        /* ANA İÇERİK STİLLERİ */
+        .main-body-container {
+            max-width: 1000px;
+            margin: 40px auto; 
+            padding: 25px; 
+            background-color: rgba(255, 255, 255, 0.05); 
+            border-radius: 10px;
+        }
+        .tag {
+            position: static; padding: 5px 15px; background-color: var(--color-secondary); 
+            color: var(--color-background); border-radius: 4px; font-size: 0.9rem;
+            font-weight: bold;
+        }
+        .review-meta {
+            margin-top: 10px; display: flex; justify-content: center; gap: 20px; color: #aaa; font-size: 0.9rem;
+        }
+
+        /* TABLO STİLLERİ */
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            border: 1px solid #333;
+            text-align: left;
+            font-size: 0.95em;
+        }
+        .comparison-table th {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        /* Yeni tablo için renkler */
+        .simetrik-cell { background-color: rgba(233, 30, 99, 0.1); color: var(--color-simetrik); } 
+        .asimetrik-cell { background-color: rgba(156, 39, 176, 0.1); color: var(--color-asimetrik); } 
+        .hash-cell { background-color: rgba(3, 169, 244, 0.1); color: var(--color-hash); } 
+        
+        /* DETAY BÖLÜM STİLLERİ */
+        .technical-section h3 {
+            color: var(--color-detail);
+            margin-top: 35px;
+            border-bottom: 1px dashed #333;
+            padding-bottom: 5px;
+        }
+        .detail-list {
+            list-style: none;
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+        .detail-list li {
+            border-left: 3px solid var(--color-secondary);
+            padding-left: 10px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        /* KOD BLOKLARI */
+        pre {
+            background-color: #2b2b2b;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.9em;
+            border: 1px solid #3a3a3a;
+        }
+
+        /* FOOTER STİLİ */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            color: #666;
+            background-color: #1e1e1e;
+        }
+    </style>
+</head>
+<body class="yazilim-sayfa">
+    <header>
+        <div class="logo">TeknoGündem</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="donanım.html">Donanım</a></li>
+                <li><a href="yazılım.html" class="active">Yazılım</a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container main-body-container">
+        
+        <section class="detail-header">
+            <h1 style="color: var(--color-primary); font-size: 3rem;"><i class="fas fa-lock"></i> Güvenli Şifreleme Algoritmaları Rehberi: Modern Kriptografinin Temelleri</h1>
+            <div class="review-meta">
+                <span>Yazar: Kerem DENİZ</span>
+                <span>Tarih: 21 Mart 2025</span>
+                <span class="tag">Siber Güvenlik/Algoritma</span>
+            </div>
+        </section>
+
+        <div class="article-content-wrapper" style="max-width: 900px; margin: 40px auto; padding: 20px;">
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; font-size: 1.1rem; color: #ccc;">
+                Dijital çağda veri güvenliği, kritik öneme sahiptir. Şifreleme (Encryption), veriyi yetkisiz erişime karşı korumanın temelidir ve bu koruma, güçlü matematiksel algoritmalar sayesinde sağlanır. Kriptografi, Simetrik, Asimetrik ve Tek Yönlü Hash Fonksiyonları olmak üzere üç ana başlıkta incelenir. Bir yazılım mimarının bu algoritmaların işlevini ve modern güvenlik standartlarını bilmesi esastır.
+            </p>
+
+            <h2 style="color: var(--color-simetrik); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-key"></i> Faz 1: Simetrik Şifreleme (Hız ve Gizlilik)</h2>
+            
+            <div class="technical-section">
+                <h3>Adım 1.1: Tek Anahtarlı Şifrelemenin Mekanizması</h3>
+                <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
+                    Simetrik şifrelemede, veriyi şifrelemek ve şifreyi çözmek için **aynı gizli anahtar** kullanılır. Bu yöntem, hızı nedeniyle büyük miktarda veri şifrelemede tercih edilir.
+                </p>
+                <ul class="detail-list">
+                    <li><i class="fas fa-microchip" style="color: var(--color-detail);"></i> **AES (Advanced Encryption Standard):** Günümüzde endüstri standardıdır. 128, 192 ve 256 bit anahtar uzunluklarıyla kullanılır. Donanımsal hızlandırma (AES-NI) desteği sayesinde en hızlı şifreleme çözümüdür.</li>
+                    <li><i class="fas fa-exchange-alt" style="color: var(--color-detail);"></i> **Stream (Akış) Şifreler:** Veriyi bloklar halinde değil, bayt bayt işler. Örneğin **ChaCha20**, özellikle mobil cihazlar ve TLS 1.3'ün bazı konfigürasyonlarında düşük donanım gereksinimi nedeniyle popülerdir.</li>
+                </ul>
+            </div>
+            
+            <div class="technical-section">
+                <h3>Adım 1.2: Anahtar Değişim Zorluğu</h3>
+                <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
+                    Simetrik şifrelemenin temel zafiyeti, iki tarafın da gizli anahtarı güvenli bir şekilde paylaşma zorunluluğudur. Bu, genellikle Asimetrik şifreleme ile çözülür.
+                </p>
+                <p style="color: var(--color-simetrik); font-weight: bold; margin-bottom: 10px;">AES-256 Örneği (Kullanım Alanı):</p>
+                <pre><code>// Geniş veritabanı alanları, dosya şifreleme ve VPN tünelleri (IPsec/OpenVPN)
+Data in Transit (Taşıma Halindeki Veri): TLS bağlantısı kurulduktan sonraki trafiğin şifrelenmesi.
+Data at Rest (Durağan Veri): SSD/HDD şifrelemesi (BitLocker, LUKS).</code></pre>
+            </div>
+
+            <h2 style="color: var(--color-asimetrik); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-user-shield"></i> Faz 2: Asimetrik Şifreleme (Güven ve Kimlik Doğrulama)</h2>
+            
+            <div class="technical-section">
+                <h3>Adım 2.1: Açık ve Gizli Anahtar Çiftleri (Public/Private Key)</h3>
+                <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
+                    Asimetrik şifrelemede iki farklı anahtar kullanılır: **Açık Anahtar** (herkesle paylaşılır) ve **Gizli Anahtar** (yalnızca sahibi bilir). Açık anahtarla şifrelenen, sadece gizli anahtarla çözülebilir ve tersi.
+                </p>
+                <ul class="detail-list">
+                    <li><i class="fas fa-signature" style="color: var(--color-detail);"></i> **RSA (Rivest–Shamir–Adleman):** En eski ve yaygın algoritmadır. Hem şifreleme hem de dijital imzalama için kullanılır. Anahtar uzunlukları genellikle 2048 bitten başlar.</li>
+                    <li><i class="fas fa-bezier-curve" style="color: var(--color-detail);"></i> **ECC (Elliptic Curve Cryptography):** RSA'ya göre aynı güvenlik seviyesini çok daha küçük anahtar boyutlarında (örneğin ECC 256-bit vs RSA 3072-bit) sağlar. Mobil ve IoT cihazlar için idealdir.</li>
+                    <li><i class="fas fa-handshake" style="color: var(--color-detail);"></i> **Anahtar Değişimi (Key Exchange):** **Diffie-Hellman (DH)** veya onun Elliptik Eğri versiyonu (ECDH) asimetrik olarak gizli bir anahtar üzerinde anlaşmak için kullanılır. TLS el sıkışmasının temelini oluşturur.</li>
+                </ul>
+            </div>
+            
+            <div class="technical-section">
+                <h3>Adım 2.2: Dijital İmzalar ve PKI</h3>
+                <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
+                    Asimetrik kriptografi, iletişimin gizliliğinden çok, kaynağın kimlik doğrulaması (Authentication) ve bütünlüğünün (Integrity) sağlanmasında hayati rol oynar.
+                </p>
+                <blockquote style="border-left: 5px solid var(--color-secondary); background-color: rgba(255, 152, 0, 0.05); padding: 15px; margin-top: 20px;">
+                    <i class="fas fa-certificate" style="color: var(--color-secondary);"></i> **PKI (Public Key Infrastructure):** Web sitelerinin kimliğini doğrulamak için kullanılan SSL/TLS sertifikaları, Asimetrik şifrelemeye dayanır. Sertifika Otoriteleri (CA), açık anahtarların gerçekten iddia edilen kişiye ait olduğunu bu mekanizma ile garantiler.
+                </blockquote>
+            </div>
+
+            <h2 style="color: var(--color-hash); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-fingerprint"></i> Faz 3: Hash Fonksiyonları (Bütünlük ve Veri Doğrulama)</h2>
+            
+            <div class="technical-section">
+                <h3>Adım 3.1: Tek Yönlü Fonksiyonlar ve Çarpışma Direnci</h3>
+                <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
+                    Hash fonksiyonları, herhangi bir uzunluktaki girdiyi alıp, sabit uzunlukta benzersiz bir çıktı (özet/parmak izi) üretir. Bu çıktıdan girdiyi geri döndürmek **imkansızdır** (Tek Yönlülük).
+                </p>
+                <ul class="detail-list">
+                    <li><i class="fas fa-equals" style="color: var(--color-hash);"></i> **SHA-256 (Secure Hash Algorithm):** Günümüzün en güvenilir hash standardıdır. Veri bütünlüğünü (dosya indirme kontrolü) ve blok zinciri (Blockchain) teknolojilerinin temelini sağlar.</li>
+                    <li><i class="fas fa-shield-virus" style="color: var(--color-hash);"></i> **Kullanımdan Kaldırılanlar:** **MD5** ve **SHA-1** çarpışma (collision) saldırılarına karşı savunmasız olduğu için kritik sistemlerde kesinlikle kullanılmamalıdır.</li>
+                </ul>
+            </div>
+
+            <div class="technical-section">
+                <h3>Adım 3.2: Şifre Saklama: Tuzlama (Salting) ve Anahtar Güçlendirme</h3>
+                <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
+                    Kullanıcı şifreleri veritabanında saklanırken, basit SHA-256 kullanmak dahi güvenli değildir. Hash tablosu (Rainbow Table) saldırılarını engellemek için **tuzlama** ve **anahtar güçlendirme** yöntemleri şarttır.
+                </p>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th style="background-color: var(--color-detail);">Yöntem</th>
+                            <th style="background-color: var(--color-detail);">Mekanizma</th>
+                            <th style="background-color: var(--color-detail);">Kullanım Amacı</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="hash-cell">**Tuzlama (Salting)**</td>
+                            <td class="hash-cell">Şifreye rastgele ve benzersiz bir veri ekleyip öyle hash'lemek.</td>
+                            <td class="hash-cell">Rainbow Table saldırılarını ve aynı şifreye sahip kullanıcıların aynı hash'i üretmesini engeller.</td>
+                        </tr>
+                        <tr>
+                            <td class="hash-cell">**Anahtar Güçlendirme**</td>
+                            <td class="hash-cell">Hash alma işlemini yüzlerce veya binlerce kez yinelemek. (Key Stretching)</td>
+                            <td class="hash-cell">Brute-force saldırılarını yavaşlatır (örneğin **Argon2**, **PBKDF2**, **Bcrypt**).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-graduation-cap"></i> Özet Rehberlik İlkesi</h2>
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
+                Güvenli bir sistem, bu üç kriptografik temel direğin optimal kombinasyonunu kullanır: **Asimetrik şifreleme** anahtar değişimi ve kimlik doğrulamasını sağlar; ardından **Simetrik şifreleme** yüksek hızda büyük veriyi şifreler; ve son olarak **Hash fonksiyonları** veri bütünlüğünü ve şifrelerin güvenliğini garantiler. <span style="color: var(--color-secondary);">Kriptografide kendi algoritmanızı yazmaktan kaçının;</span> her zaman sektör tarafından onaylanmış, denetlenmiş ve güncel standartları (örneğin AES-256, SHA-256, Argon2) kullanın.
+            </p>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TeknoGündem. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+</body> 
+</html>

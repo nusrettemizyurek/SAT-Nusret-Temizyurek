@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samsung 990 Pro Evo (4TB) İncelemesi | Teknogündem Donanım</title>
+    <title>MSI MAG Z890 Tomahawk Wi-Fi İncelemesi | Teknogündem Donanım</title>
     <link rel="stylesheet" href="css/style.css"> 
+    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
     
     <style>
-        /* SADECE BU SAYFAYA ÖZEL STİLLER (SSD Teması: Mavi/Turuncu) */
+        /* SADECE BU SAYFAYA ÖZEL STİLLER (TOMAHAWK Teması: Siyah/Gri/Mavi) */
         
         body { 
             background-color: #0a0a0a; 
@@ -21,31 +22,31 @@
             margin: 0 auto;
         }
         
-        /* SSD İNCELEMESİ İÇİN ÖZEL RENK VURGULARI (Mavi/Turuncu - Anakart ile aynı tema) */
+        /* TOMAHAWK İNCELEMESİ İÇİN ÖZEL RENK VURGULARI (Aqua/Gümüş) */
         
-        .accent-color { color: #2196f3; /* Mavi Vurgu */ }
+        .accent-color { color: #00C4CC; /* Parlak Mavi/Cyan Vurgu (MSI/Tomahawk'a Uygun) */ }
         
         /* 1. Başlık Rengi */
         .detail-header h1 {
-            color: #2196f3; /* Mavi Vurgu */
-            text-shadow: 0 0 10px rgba(33, 150, 243, 0.7);
+            color: #ffffff; 
+            text-shadow: 0 0 10px rgba(0, 196, 204, 0.5); /* Mavi Işık Gölgesi */
         }
         
         /* 2. Ana Puan Vurgusu */
         .score-large {
-            background: linear-gradient(45deg, #2196f3, #ff9800); /* Mavi - Turuncu Gradyan */
+            background: linear-gradient(45deg, #008D97, #00C4CC); /* Koyu Mavi - Parlak Mavi Gradyan */
             -webkit-background-clip: text; 
             background-clip: text; 
             color: transparent; 
             font-size: 3.5em;
             font-weight: 900;
             padding: 10px 0;
-            border-bottom: 3px solid #2196f3;
+            border-bottom: 3px solid #008D97;
         }
         /* 3. Sonuç Kutusu Rengi */
         .conclusion-box {
-            border: 3px solid #2196f3; /* Mavi Sınır */
-            background-color: #1a1a2e; /* Koyu Mavi Tonu */
+            border: 3px solid #00C4CC; /* Mavi Sınır */
+            background-color: #081a1a; /* Koyu Mavi/Siyah Ton */
             padding: 20px;
             margin-top: 30px;
             border-radius: 8px;
@@ -54,25 +55,31 @@
         /* 4. İnceleme Başlıkları */
         .detail-review-body h2 span, 
         .technical-specs-box h2 {
-            color: #2196f3; /* Mavi Vurgusu */
+            color: #00C4CC; /* Mavi Vurgusu */
+        }
+        
+        /* *** İSTENEN YENİ DEĞİŞİKLİK: ALT BAŞLIK BEYAZ YAPILDI *** */
+        .detail-header .subtitle {
+            color: white;
         }
         
         /* 5. Artı ve Eksiler */
         #detail-pros li { color: #76ff03; } /* Artılar Yeşil */
-        #detail-cons li { color: #ff9800; } /* Eksiler Turuncu */
+        #detail-cons li { color: #ff9800; } /* Eksiler Turuncu (Değişmedi) */
         
         /* Teknik özellikler tablosu */
         .specs-list { list-style: none; padding: 0; }
         .specs-list li { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px dashed #333; }
-        .specs-list span:first-child { color: #999; }
+        .specs-list span:first-child { color: #ccc; }
         
         /* Genel İnceleme Sayfası Yerleşimi */
         .review-content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-top: 30px; }
         .main-content { grid-column: 1 / 2; }
-        .technical-specs-box { grid-column: 2 / 3; padding: 20px; background-color: #1a1a2e; border-radius: 8px; }
+        .technical-specs-box { grid-column: 2 / 3; padding: 20px; background-color: #1a1a1a; border-radius: 8px; }
         .video-container { margin-bottom: 30px; border-radius: 8px; overflow: hidden; }
         #pros-cons-container { display: flex; gap: 40px; margin-top: 30px; }
         #pros-cons-container ul { list-style: none; padding: 0; }
+        .detail-review-body p { color: #f0f0f0; }
 
     </style>
 </head>
@@ -82,21 +89,22 @@
         <div class="header-content">
             <h1>TEKNOGÜNDEM<span class="logo-dot">.</span>DONANIM</h1>
             <nav>
-                <ul>
-                    <li class="dropdown">
-                        <a href="#">HABERLER ▼</a>
-                        <div class="dropdown-content">
-                            <a href="guncel-haberler.html">Güncel</a>
-                            <a href="ekran-karti-haberleri.html">Ekran Kartları</a>
-                            <a href="islemci-haberleri.html">İşlemciler</a>
-                            <a href="anakart-ram-haberleri.html">Anakart ve RAM</a>
-                            <a href="sizintilar.html">Sızıntılar</a>
-                            <a href="yapay-zeka.html">Yapay Zeka</a>
-                        </div>
-                    </li>
-                    <li><a href="incelemeler.html" class="active">İNCELEMELER</a></li>
-                    <li><a href="fiyatlar.html">FİYAT LİSTELERİ</a></li>
-                </ul>
+                 <ul>
+                 <li><a href="index.html">Ana Sayfa</a></li>
+            
+            <li class="dropdown">
+                
+                <a href="donanım.html">Donanım</a> 
+                
+                <div class="dropdown-content"> 
+                    <a href="haberler.html" class="dropdown-item">Haberler</a> 
+                    <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
+                </div>
+            </li>
+            <li><a href="yazılım.html" class="active">Yazılım</a></li>
+            
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            </ul>
             </nav>
         </div>
     </header>
@@ -104,9 +112,9 @@
         
     <section id="review-detail-section">
         <div class="detail-header">
-            <h1>Samsung 990 Pro Evo (4TB) NVMe SSD</h1>
-            <p class="subtitle">Üstün Hız, Dev Kapasite: Yeni Nesil Depolamanın Zirvesi</p>
-            <div class="score-large">⭐ 9.5/10</div>
+            <h1>MSI MAG Z890 Tomahawk Wi-Fi İncelemesi</h1>
+            <p class="subtitle">Kararlılık ve Dayanıklılığın Orta-Üst Sınıf Temsilcisi</p>
+            <div class="score-large">⭐ 8.7/10</div>
         </div>
 
         <div class="review-content-grid">
@@ -114,51 +122,51 @@
             <div class="main-content">
                 
                 <div class="video-container">
-                    <iframe 
-                        width="100%" 
-                        height="450" 
-                        src="https://www.youtube-nocookie.com/embed/S2pC7E7L-1k" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
+    <iframe 
+        width="100%" 
+        height="450" 
+        src="https://www.youtube-nocookie.com/embed/om0EnHnWA8I" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+</div>
                 
                 <div class="detail-review-body">
                     
-                    <h2 style="margin-top: 0;"><span class="accent-color">🚀 Saf Okuma/Yazma Performansı</span></h2>
+                    <h2 style="margin-top: 0;"><span class="accent-color">🛡️ Soğutma ve Güç Dağıtımı</span></h2>
                     <p>
-                        Samsung 990 Pro Evo, piyasadaki en hızlı M.2 SSD'lerden biri olarak **PCIe 4.0** arayüzünün limitlerini zorluyor. Yaptığımız testlerde ardışık okuma hızı **7,450 MB/s**, ardışık yazma hızı ise **6,900 MB/s** seviyelerini görerek rakipsiz bir performans sergiledi. Rastgele okuma/yazma (IOPS) değerleri ise yapay zeka ve profesyonel iş yükleri için inanılmaz derecede yüksek.
+                        MAG Tomahawk serisi, **askeri sınıf bileşenleri** ve kararlı performansı ile bilinir. Z890 Tomahawk Wi-Fi, güçlü 16+1+1 Duet Rail Güç Sistemi (DRPS) ve genişletilmiş mosfet soğutucularıyla yeni nesil Intel işlemcileri en yüksek yük altında bile **serin ve stabil** tutma becerisi gösteriyor. Bu kart, uç noktalara gitmekten ziyade, **uzun ömürlü ve güvenilir** bir oyun performansı arayanlar için tasarlandı.
                     </p>
 
-                    <h2><span class="accent-color">🌡️ Kapasite ve Termal Yönetim</span></h2>
+                    <h2><span class="accent-color">📶 Bağlantı ve Kullanışlılık</span></h2>
                     <p>
-                        Bu 4TB'lık versiyon, sadece devasa bir depolama alanı sunmakla kalmıyor, aynı zamanda Samsung'un geliştirdiği yeni nesil kontrolcü sayesinde **ısı yönetimi** konusunda da önceki nesillere göre önemli bir iyileşme gösteriyor. Yoğun kullanımlarda bile termal kısılma (throttling) sorunu yaşanmıyor, bu da tutarlı yüksek hız anlamına geliyor. Güvenilirlik (TBW) değeri de sektör ortalamasının oldukça üzerinde.
+                        Tomahawk, kullanıcı dostu özelliklere odaklanarak fiyat/performans dengesini koruyor. Kartta, geleceğe dönük **PCIe 5.0** desteği ve hızlı depolama için en az dört adet M.2 yuvası bulunuyor. Ayrıca, **Wi-Fi 7** entegrasyonu ve 2.5G LAN portu ile hızlı ve düşük gecikmeli ağ deneyimi sunar. **Yenilenen EZ M.2 Clip** gibi pratik özellikler montajı kolaylaştırır.
                     </p>
 
                     <div id="pros-cons-container">
                         <div>
                             <h2><span style="color: #76ff03;">✅ Artıları</span></h2>
                             <ul id="detail-pros">
-                                <li>PCIe 4.0 limitlerine ulaşan üstün ardışık ve rastgele hızlar.</li>
-                                <li>4TB kapasite seçeneği ile yüksek depolama çözümü.</li>
-                                <li>Geliştirilmiş ısı yönetimi sayesinde tutarlı performans.</li>
-                                <li>5 yıllık cömert garanti ve yüksek TBW değeri.</li>
+                                <li>Mükemmel fiyat/performans oranı ve üstün kararlılık.</li>
+                                <li>Genişletilmiş pasif soğutma çözümleri (Frozr Soğutucular).</li>
+                                <li>Wi-Fi 7 ve 2.5G LAN gibi güncel ağ teknolojileri.</li>
+                                <li>Montajı kolaylaştıran kullanıcı dostu tasarım özellikleri.</li>
                             </ul>
                         </div>
                         <div>
                             <h2><span style="color: #ff9800;">❌ Eksileri</span></h2>
                             <ul id="detail-cons">
-                                <li class="negative">Piyasada bulunan en pahalı M.2 SSD'lerden biri.</li>
-                                <li class="negative">PCIe 5.0 SSD'ler çıkmaya başlamışken, hala 4.0 arayüzünü kullanıyor.</li>
-                                <li class="negative">Samsung Magician yazılımının daha modern bir arayüze ihtiyacı var.</li>
+                                <li class="negative">Ekstrem hız aşırtma için üst seviye VRM gücüne sahip değil.</li>
+                                <li class="negative">10G LAN veya Thunderbolt 5 gibi ultra premium özellikler yok.</li>
+                                <li class="negative">Tasarımı, bazı rakip kartlar kadar gösterişli değil (daha sade).</li>
                             </ul>
                         </div>
                     </div>
                     
                     <div class="conclusion-box">
                         <h2>✨ Editörün Yorumu</h2>
-                        <p style="color: #f0f0f0;">Samsung 990 Pro Evo (4TB), yüksek bütçeli kullanıcılar ve profesyoneller için tartışmasız en iyi depolama çözümüdür. Eğer devasa bir oyun arşivine veya yüksek boyutlu video düzenleme dosyalarına sahipseniz, sağladığı hız ve kapasitenin kombinasyonu fiyat etiketini hak ediyor. Saf performans isteyenler için halen zirvede.</p>
+                        <p style="color: #f0f0f0;">MSI MAG Z890 Tomahawk Wi-Fi, Z890 platformunun en mantıklı seçimlerinden biridir. Amacı, **üst düzey performansı makul bir fiyat etiketiyle** birleştirmektir. Aşırıya kaçan özellikler yerine, günlük kullanımda ve zorlu oyun senaryolarında beklenen **sağlamlığı, güncel bağlantıları ve verimliliği** fazlasıyla sunar. Bir üst seviye kartın maliyetine girmek istemeyen, akıllı oyuncu ve içerik üreticileri için idealdir.</p>
                     </div>
                 </div>
             </div>
@@ -166,19 +174,18 @@
             <div class="technical-specs-box">
                 <h2 class="accent-color">⚙️ Teknik Özellikler</h2>
                 <ul class="specs-list">
-                    <li><span>Kapasite</span> <span>4 TB</span></li>
-                    <li><span>Arayüz</span> <span>PCIe 4.0 x4, NVMe 2.0</span></li>
-                    <li><span>Form Faktörü</span> <span>M.2 2280</span></li>
-                    <li><span>Kontrolcü</span> <span>Samsung Pascal</span></li>
-                    <li><span>NAND Tipi</span> <span>Samsung V-NAND 7. Nesil</span></li>
-                    <li><span>Maks. Ardışık Okuma</span> <span>7450 MB/s</span></li>
-                    <li><span>Maks. Ardışık Yazma</span> <span>6900 MB/s</span></li>
-                    <li><span>TBW (Yazılabilirlik)</span> <span>2400 TB</span></li>
+                    <li><span>Yonga Seti</span> <span>Intel Z890</span></li>
+                    <li><span>Soket</span> <span>LGA 1851</span></li>
+                    <li><span>VRM Faz Sayısı</span> <span>16 (Vcore) + 1 + 1 (DRPS)</span></li>
+                    <li><span>Bellek Desteği</span> <span>4 x DDR5 (7800 MHz+ OC)</span></li>
+                    <li><span>Form Faktörü</span> <span>ATX</span></li>
                 </ul>
-                <h2 class="accent-color" style="margin-top: 30px;">🛡️ Garanti ve Güvenilirlik</h2>
+                <h2 class="accent-color" style="margin-top: 30px;">🔌 Bağlantı</h2>
                 <ul class="specs-list">
-                    <li><span>Garanti Süresi</span> <span>5 Yıl Sınırlı</span></li>
-                    <li><span>Önbellek (DRAM)</span> <span>4 GB LPDDR4</span></li>
+                    <li><span>Kablosuz Ağ</span> <span>Intel Wi-Fi 7</span></li>
+                    <li><span>Kablolu Ağ</span> <span>1 x 2.5 Gigabit Ethernet</span></li>
+                    <li><span>Genişleme Yuvaları</span> <span>2 x PCIe 5.0 x16 (x16 veya x8/x8)</span></li>
+                    <li><span>Depolama</span> <span>4 x M.2 Yuvası (Shield Frozr ile)</span></li>
                 </ul>
             </div>
             

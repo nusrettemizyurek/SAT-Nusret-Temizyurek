@@ -66,7 +66,7 @@ header { /* DÜZELTME: class yerine element seçici kullanılmış, düzeltildi 
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 10px var(--color-shadow);
-    position: sticky;
+    position: sticky; /* Sticky Navbar */
     top: 0;
     z-index: 1000;
 }
@@ -329,9 +329,6 @@ main {
 
 /* ================================================= */
 /* YAZILIM.HTML (SAYFAYA ÖZEL TEMEL STİLLER) */
-/* ROOT DEĞİŞKENİ KULLANILMADI! */
-/* ================================================= */
-
 /* Tüm sayfayı kapsayan koyu tema ve font rengi */
 body.yazilim-sayfa {
     /* Özel Arka Plan ve Ana Renkler */
@@ -733,30 +730,6 @@ body.yazilim-sayfa footer {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Donanım Sayfası CSS */
 /* Genel Stil Resetleri (Mevcut CSS'inizin başına ekleyebilirsiniz) */
 .main-body-container {
@@ -783,26 +756,42 @@ header {
     background-color: #1f1f1f;
     border-bottom: 3px solid #00bcd4;
     padding: 15px 0;
-}
-.header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    /* Bu kod, başlığı sola, menüyü sağa iter. */
-    justify-content: space-between; 
-    align-items: center;
-    padding: 0 20px;
+    /* Metnin Kesin Konumlandırması için Gerekli */
+    position: relative; 
 }
 
-/* header h1 BOYUTUNU KÜÇÜK TUTUYORUZ */
+.header-content {
+    display: flex; /* Flexbox'ı etkinleştir */
+    justify-content: space-between; /* Logo'yu (h1) sola, Nav'ı sağa iter */
+    align-items: center; /* Öğeleri dikeyde ortalar */
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+/* 📢 EKLENDİ: Başlığı sağ alta hizalamak için yeni stil */
+.header-text {
+    position: absolute;
+    right: 10px; /* Sağdan 20 piksel boşluk */
+    bottom: 10px; /* Alttan 10 piksel boşluk */
+    font-size: 2rem; 
+    font-weight: 900;
+    color: #f0f0f0;
+    z-index: 1001;
+    letter-spacing: 1px;
+    /* Diğer logodan farklı bir renkte nokta isterseniz: */
+    /* color: #e91e63; */ 
+}
+/* header h1 BOYUTUNU KÜÇÜK TUTUYORUZ (Artık kullanılmayacağı varsayıldı) */
+/*
 header h1 {
     font-size: 1.8em; 
     font-weight: 900;
     letter-spacing: 1px;
     color: #f0f0f0;
     margin: 0;
-    /* Başlığın sol kenara yapışmasını garantilemek için padding'i kaldırıyoruz (zaten .header-content padding'i var) */
 }
+*/
 .logo-dot {
     color: #e91e63; /* Pembe nokta vurgusu */
     font-size: 1.2em;
@@ -814,9 +803,10 @@ nav ul {
     display: flex;
 }
 nav ul li {
-    /* Menü elemanları arasındaki mesafeyi ayarlar */
-    margin-left: 25px; 
-    position: relative;
+   
+    position: relative; /* Bu olmadan alt menü konumlanamaz */
+    margin-left: 15px;
+    
 }
 nav ul li a {
     color: #ccc;
@@ -831,23 +821,27 @@ nav ul li a:hover {
 
 /* Dropdown Menü Stilleri */
 .dropdown-content {
-    display: none;
+    display: none; /* Varsayılan olarak gizli */
     position: absolute;
-    background-color: #2a2a2a;
+    background-color: #2a2a2a; /* Menü arka planı */
     min-width: 180px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
     z-index: 1;
-    border-top: 3px solid #e91e63;
+    border-top: 3px solid #e91e63; /* Pembe vurgu çizgisi */
 }
+
 .dropdown-content a {
-    color: #f0f0f0;
+    color: #f0f0f0; /* Açık metin rengi */
     padding: 12px 16px;
     display: block;
 }
+
 .dropdown-content a:hover {
     background-color: #333;
-    color: #00bcd4;
+    color: #00bcd4; /* Mavi vurgu rengi */
 }
+
+/* Mouse ile üzerine gelindiğinde alt menüyü göster */
 .dropdown:hover .dropdown-content {
     display: block;
 }
@@ -924,7 +918,6 @@ nav ul li a:hover {
 /* Kategorilere Renkli Kenarlıklar */
 .category-card[data-category="haberler"] { border-left-color: #e91e63; } /* Pembe */
 .category-card[data-category="incelemeler"] { border-left-color: #00bcd4; } /* Mavi */
-.category-card[data-category="fiyat-listeleri"] { border-left-color: #8bc34a; } /* Yeşil */
 
 .category-card h3 {
     font-size: 1.4em;
@@ -990,7 +983,7 @@ nav ul li a:hover {
     margin-top: 10px;
 }
 
-/*  Donanım sayfası haberler kısmı parçalar           */
+/* Donanım sayfası haberler kısmı parçalar           */
 /* ==================================== */
 /* 2. KATEGORİ SAYFASI GENEL DÜZENİ */
 /* ==================================== */
@@ -1561,46 +1554,34 @@ nav ul li a:hover {
     opacity: 0.9;
 }
 
-/* AÇILIR MENÜ  EKRAN KARTI    */
-/* Sadece ekran-karti-haberleri.html sayfasını hedefle (body etiketinde iki sınıfı birden arar) */
-body.ekran-haberler-sayfasi {
-    /* Buraya yazdığın stiller SADECE bu sayfada geçerli olur, :root'u etkilemez */
-    background-color: #0d0d0d; /* Daha da koyu bir arka plan */
-}
-
-/* Sadece bu sayfadaki bir başlığı (örn: .page-title) değiştirmek istersen: */
-body.ekran-haberler-sayfasi .page-title {
-    color: #ff4500; /* Kırmızımsı turuncu vurgu */
-}
-
-/* Sadece bu sayfadaki haber kartı stilini (örn: .news-card-grid) değiştirmek istersen: */
-body.ekran-haberler-sayfasi .news-card-grid:hover {
-    box-shadow: 0 10px 20px rgba(255, 69, 0, 0.4); /* Vurgulu gölge */
-    border-left-color: #ff4500;
-}
-
-/*DONAIM KISMI HABERLER ALT BAŞ   */
-
-
-
-
-
 /* =========================
     Hakkımızda sayfası özel stil düzeltme arka plan 
     ========================= */
-
-/* Ana sayfadaki body dark-mode'a benzetildi, ancak özel bir renk paleti kullanıldı. */
+/*
+ * ANA SAYFADAKİ body dark-mode'a benzetildi, ancak özel bir renk paleti kullanıldı.
+ * body.hakkimizda sınıfı, hakkimizda.html dosyası tarafından kullanılır.
+ */
 body.hakkimizda {
     /* Yazılım sayfasından esinlenilen daha koyu ve sofistike arka plan */
     background: radial-gradient(circle at top left, #1f2d40, #0a0f1f); 
     background-attachment: fixed; /* Arka planı sabit tutarak derinlik hissi verir */
-    color: #e0e0e0; /* Açık metin rengi */
+    color: #e0e0e0; /* Varsayılan Açık Gri Metin Rengi (Okunurluk için aşağıda beyaz ile geçersiz kılınacaktır) */
     font-family: 'Poppins', sans-serif;
     
     /* Hakkımızda sayfasına özel, soft vurgu renkleri */
     --color-primary-hakkimizda: #4fc3f7; /* Açık Mavi Vurgu */
     --color-secondary-hakkimizda: #ff9800; /* Turuncu Vurgu */
     --color-card-bg-hakkimizda: rgba(255, 255, 255, 0.05); /* Yarı Saydam Kart */
+
+    /* Altbilgiyi aşağı itmek için Flexbox ayarları (Genel CSS'ten alınmıştır) */
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh;
+}
+
+/* Ana İçeriğin kalan tüm boşluğu doldurması (Genel CSS'ten alınmıştır) */
+body.hakkimizda main {
+    flex-grow: 1; 
 }
 
 /* Header ve Footer, genel body'deki dark-mode değişkenlerini kullanır, 
@@ -1615,6 +1596,19 @@ body.hakkimizda header, body.hakkimizda footer {
 body.hakkimizda .page-title {
     color: var(--color-primary-hakkimizda);
     text-shadow: 0 0 5px rgba(79, 195, 247, 0.5);
+    /* Genel başlık stiline benzer şekilde alt çizgi eklemek faydalı olabilir */
+    border-bottom: 2px solid var(--color-secondary-hakkimizda); 
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+}
+
+/* OKUNURLUK ÇÖZÜMÜ: Giriş metnini saf beyaza çeviriyoruz */
+/* HTML'inizdeki <p class="main-intro"> etiketini hedef alır. */
+body.hakkimizda .main-intro {
+    color: #ffffff !important; 
+    font-size: 1.2rem; /* Daha okunaklı bir boyut */
+    line-height: 1.7;
+    margin-bottom: 40px;
 }
 
 /* Misyon ve Vizyon kartları */
@@ -1622,7 +1616,16 @@ body.hakkimizda .info-block {
     background: var(--color-card-bg-hakkimizda); /* Yarı Saydam Kart */
     backdrop-filter: blur(4px); /* Arka planı hafifçe bulanıklaştırır */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
-    color: #ffffff;
+    color: #ffffff; /* Tüm kart içeriğini (h2 ve p hariç) beyaza ayarlar */
+    padding: 30px;
+    border-radius: 10px;
+    border-top: 4px solid #555; /* Varsayılan üst kenarlık stili */
+}
+
+/* Misyon/Vizyon İçindeki Paragrafları da Beyaz Yapar (Okunurluk) */
+body.hakkimizda .info-block p {
+    color: #ffffff; /* Okunurluk için beyazı kesinleştiriyoruz */
+    line-height: 1.6;
 }
 
 body.hakkimizda .info-block.mission {
@@ -1637,27 +1640,73 @@ body.hakkimizda .info-block h2 {
     color: var(--color-primary-hakkimizda);
 }
 
-/* İletişim kartı */
+/* Misyon/Vizyon için Grid yapısı ekleyelim (HTML'inizdeki grid'i varsayarak) */
+body.hakkimizda .mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+/* İletişim kartı ve detayları */
+body.hakkimizda .team-contact-section h2 {
+    color: var(--color-secondary-hakkimizda);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
 body.hakkimizda .team-detail-card {
     background: var(--color-card-bg-hakkimizda);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
-    color: #e0e0e0;
+    color: #ffffff; /* Metni beyaz yapıyoruz */
+    padding: 40px;
+    border-radius: 10px;
+    border-left: 5px solid var(--color-primary-hakkimizda);
+    text-align: center;
+}
+
+body.hakkimizda .contact-links {
+    margin-top: 25px;
 }
 
 /* Buton renkleri */
+.contact-button {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 0 10px;
+    transition: all 0.3s;
+}
+
 body.hakkimizda .contact-button.email {
     background-color: var(--color-primary-hakkimizda);
+    color: #1f2d40;
 }
 
 body.hakkimizda .contact-button.github {
-    background-color: #555;
+    background-color: #333; /* Koyu gri */
     color: #ffffff;
+    border: 1px solid #ffffff;
+}
+body.hakkimizda .contact-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Mobil Uyum için küçük düzeltme */
 @media (max-width: 768px) {
     body.hakkimizda .mission-grid {
         grid-template-columns: 1fr;
+    }
+    body.hakkimizda .contact-links {
+        display: flex;
+        flex-direction: column;
+    }
+    body.hakkimizda .contact-button {
+        margin: 10px 0;
     }
 }
 
@@ -1901,6 +1950,7 @@ footer a {
         background-color: #151515;
     }
 }
+
 
 
 

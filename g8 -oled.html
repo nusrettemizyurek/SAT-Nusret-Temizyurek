@@ -4,13 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Samsung Odyssey G8 OLED İncelemesi | Teknogündem</title>
-    <link rel="stylesheet" href="css/style.css"> 
+   <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
     
     <style>
-        /* *** KESİN DÜZELTME: HEADER, FOOTER VE NAVIGASYON ARKA PLANLARI *** */
+        /* Genel Stiller ve Sıfırlamalar */
+        body { 
+            background-color: #0a0a0a; 
+            color: #e0e0e0; 
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .main-body-container { 
+            padding-top: 50px; 
+            max-width: 1300px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        a {
+            color: #00bcd4;
+            text-decoration: none;
+        }
+        
+        /* HEADER & NAV STİLLERİ */
         header, footer {
-            background-color: #151515 !important;
-            color: #e0e0e0 !important;
+            background-color: #151515;
             width: 100%;
         }
         .header-content {
@@ -21,110 +40,92 @@
             justify-content: space-between;
             align-items: center;
         }
-        footer {
-            padding: 20px 0;
-            text-align: center;
-            border-top: 1px solid #333;
-        }
+        header h1 { margin: 0; font-size: 1.5em; }
+        .logo-dot { color: #00bcd4; }
+        
+        header nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
+        header nav ul li { margin-left: 25px; position: relative; }
         header nav ul li a {
-            color: #e0e0e0 !important;
-            background-color: transparent !important;
+            color: #e0e0e0; text-decoration: none; padding: 10px 0; display: block; transition: color 0.3s;
         }
+        header nav ul li a:hover { color: #00bcd4; }
+        
+        /* Dropdown */
         .dropdown-content {
-            background-color: #2a2a2a !important; 
-            border: 1px solid #00bcd4 !important; 
+            display: none; position: absolute; background-color: #2a2a2a; 
+            min-width: 150px; z-index: 1; border: 1px solid #00bcd4; padding: 5px 0;
         }
+        .dropdown:hover .dropdown-content { display: block; }
         .dropdown-content a {
-            color: #e0e0e0 !important;
-            background-color: #2a2a2a !important;
-            padding: 10px 15px !important;
+            color: #e0e0e0 !important; background-color: #2a2a2a !important; padding: 10px 15px !important; display: block;
         }
         .dropdown-content a:hover {
-            background-color: #00bcd4 !important; 
-            color: #0a0a0a !important; 
+            background-color: #00bcd4 !important; color: #0a0a0a !important; 
         }
 
-        /* *** YENİ DÜZELTME: METİN ALANI VE ÇİZGİ STİLİ *** */
+        /* İÇERİK ve VURGU STİLLERİ */
         .main-content {
-            background-color: #1a1a1a; 
-            padding: 30px; 
-            border-radius: 8px; 
+            background-color: #1a1a1a; padding: 30px; border-radius: 8px; 
         }
-        /* Yatay Çizgi (HR) Stili: Başlık altındaki çizgileri görünür yaptık */
-        .detail-review-body hr {
-            border: 0;
-            height: 1px;
-            /* Turkuaz Vurgu Çizgisi */
-            background-image: linear-gradient(to right, rgba(0, 188, 212, 0), rgba(0, 188, 212, 0.75), rgba(0, 188, 212, 0));
-            margin: 20px 0;
-        }
-
-
-        /* *** SAYFA İÇERİĞİ VE VURGU STİLLERİ (TURKUAZ/YEŞİL) *** */
-        body { 
-            background-color: #0a0a0a; 
-            color: #e0e0e0; 
-            font-family: 'Poppins', sans-serif;
-        }
-        .main-body-container { 
-            background-color: transparent; 
-            padding-top: 50px; 
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-        /* İstenen Grid Yapısı (Video/Metin solda 2fr, Özellikler sağda 1fr) */
         .review-content-grid { 
-            display: grid; 
-            grid-template-columns: 2fr 1fr; 
-            gap: 30px; 
-            margin-top: 30px; 
+            display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-top: 30px; 
         }
+        
+        /* Başlık ve Puan (ORTALAMA HİZALAMA EKLENDİ) */
+        .detail-header { 
+            text-align: center; /* Bu satır başlık ve puanı ortalar */
+        }
+        .detail-header h1 { color: #00bcd4; text-shadow: 0 0 10px rgba(0, 188, 212, 0.7); }
+        .score-large {
+            background: linear-gradient(45deg, #00bcd4, #76ff03); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+            font-size: 3.5em; font-weight: 900; padding: 10px 0;
+            border-bottom: 3px solid #00bcd4; display: inline-block; margin-bottom: 20px;
+        }
+
+        /* Video Düzeltmesi */
+        .video-container { 
+            margin-bottom: 30px; border-radius: 8px; overflow: hidden; 
+            /* Video oranını korumak için (16:9) */
+            position: relative; padding-bottom: 56.25%; height: 0;
+        }
+        .video-container iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: block; 
+        }
+
+        /* İçerik Başlıkları ve Yatay Çizgi */
+        .detail-review-body h2 span, 
+        .technical-specs-box h2 { color: #00bcd4; }
+        .detail-review-body hr {
+            border: 0; height: 1px; margin: 20px 0;
+            background-image: linear-gradient(to right, rgba(0, 188, 212, 0), rgba(0, 188, 212, 0.75), rgba(0, 188, 212, 0));
+        }
+        
+        /* Artı/Eksi ve Sonuç Kutusu */
+        #pros-cons-container { display: flex; gap: 40px; margin-top: 30px; }
+        #pros-cons-container ul { list-style: none; padding: 0; }
+        #detail-pros li { color: #76ff03; } 
+        #detail-cons li { color: #e91e63; }
+
+        .conclusion-box {
+            border: 3px solid #00bcd4; background-color: #1f1f25; 
+            padding: 20px; border-radius: 8px; margin-top: 40px;
+        }
+
+        /* Teknik Özellikler Kutusu */
         .technical-specs-box {
-            background-color: #1a1a1a; 
-            padding: 20px;
-            border-radius: 8px;
+            background-color: #1a1a1a; padding: 20px; border-radius: 8px;
             height: fit-content; 
-            grid-column: 2 / 3; 
         }
         .specs-list { list-style: none; padding: 0; }
         .specs-list li { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px dashed #333; }
         .specs-list span:first-child { color: #ccc; }
-        .video-container { 
-            margin-bottom: 30px; 
-            border-radius: 8px; 
-            overflow: hidden; 
-        }
 
-
-        /* MONİTÖR İNCELEMESİ İÇİN ÖZEL RENK VURGULARI (Turkuaz/Yeşil/Kırmızı) */
-        .detail-header h1 {
-            color: #00bcd4; /* Turkuaz */
-            text-shadow: 0 0 10px rgba(0, 188, 212, 0.7);
+        /* Footer */
+        footer {
+            padding: 20px 0; text-align: center; border-top: 1px solid #333; margin-top: 50px;
         }
-        .score-large {
-            background: linear-gradient(45deg, #00bcd4, #76ff03); /* Turkuaz - Yeşil Gradyan */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 3.5em;
-            font-weight: 900;
-            padding: 10px 0;
-            border-bottom: 3px solid #00bcd4; 
-        }
-        .conclusion-box {
-            border: 3px solid #00bcd4; /* Turkuaz Çerçeve */
-            background-color: #1f1f25; 
-            padding: 20px;
-            border-radius: 8px; 
-        }
-        .detail-review-body h2 span, 
-        .technical-specs-box h2 {
-            color: #00bcd4; /* Turkuaz Başlıklar */
-        }
-        #detail-pros li { color: #76ff03; } /* Artılar Yeşil */
-        #detail-cons li { color: #e91e63; } /* Eksiler Kırmızı/Pembe */
-        #pros-cons-container { display: flex; gap: 40px; margin-top: 30px; }
-        #pros-cons-container ul { list-style: none; padding: 0; }
-        
     </style>
 </head>
 <body>
@@ -134,19 +135,18 @@
             <h1>TEKNOGÜNDEM<span class="logo-dot">.</span>DONANIM</h1>
             <nav>
                 <ul>
-                    <li class="dropdown">
-                        <a href="#">HABERLER ▼</a>
-                        <div class="dropdown-content">
-                            <a href="guncel-haberler.html">Güncel</a>
-                            <a href="ekran-karti-haberleri.html">Ekran Kartları</a>
-                            <a href="islemci-haberleri.html">İşlemciler</a>
-                            <a href="anakart-ram-haberleri.html">Anakart ve RAM</a>
-                            <a href="sizintilar.html">Sızıntılar</a>
-                            <a href="yapay-zeka.html">Yapay Zeka</a>
-                        </div>
-                    </li>
-                    <li><a href="incelemeler.html" class="active">İNCELEMELER</a></li>
-                    <li><a href="fiyatlar.html">FİYAT LİSTELERİ</a></li>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+            
+            <li class="dropdown">
+                <a href="donanım.html">Donanım</a> 
+                <div class="dropdown-content"> 
+                    <a href="haberler.html" class="dropdown-item">Haberler</a> 
+                    <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
+                </div>
+            </li>
+            <li><a href="yazılım.html" >Yazılım</a></li>
+            
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
                 </ul>
             </nav>
         </div>
@@ -167,9 +167,7 @@
                     
                     <div class="video-container">
                         <iframe 
-                            width="100%" 
-                            height="450" 
-                            src="https://www.youtube.com/watch?v=nrCi2Aw5TXM" 
+                            src="https://www.youtube-nocookie.com/embed/nrCi2Aw5TXM" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen>
@@ -253,6 +251,5 @@
     <footer>
         <p>© 2025 TEKNOGÜNDEM DONANIM. Tüm hakları saklıdır. | <a href="#">Gizlilik Politikası</a></p>
     </footer>
-
 </body>
 </html>

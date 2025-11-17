@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASUS ROG Maximus XIII Extreme Z890 İncelemesi | Teknogündem Donanım</title>
     <link rel="stylesheet" href="css/style.css"> 
+    <link rel="shortcut icon" href="TEKNO GÜNDEM LOGO .png" type="image/x-icon">
     
     <style>
         /* SADECE BU SAYFAYA ÖZEL STİLLER (ROG Teması: Kırmızı/Siyah) */
@@ -13,27 +14,71 @@
             background-color: #0a0a0a; 
             color: #f0f0f0; 
             font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
         }
         .main-body-container { 
             background-color: transparent; 
             padding-top: 50px; 
             max-width: 1300px;
             margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
         }
         
-        /* ROG İNCELEMESİ İÇİN ÖZEL RENK VURGULARI (Kırmızı/Beyaz) */
+        /* HEADER & NAV STİLLERİ (Harici CSS eksikse diye eklenmiştir) */
+        header, footer {
+            background-color: #151515;
+            width: 100%;
+        }
+        .header-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 15px 20px; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 { margin: 0; font-size: 1.5em; }
+        .logo-dot { color: #ff003c; }
         
-        .accent-color { color: #ff003c; /* Parlak Kırmızı Vurgu (ROG Kırmızısı) */ }
+        header nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
+        header nav ul li { margin-left: 25px; position: relative; }
+        header nav ul li a {
+            color: #e0e0e0; text-decoration: none; padding: 10px 0; display: block; transition: color 0.3s;
+        }
+        header nav ul li a:hover { color: #ff003c; }
+
+        /* Dropdown */
+        .dropdown-content {
+            display: none; position: absolute; background-color: #2a2a2a; 
+            min-width: 150px; z-index: 1; border: 1px solid #ff003c; padding: 5px 0;
+        }
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown-content a {
+            color: #e0e0e0 !important; background-color: #2a2a2a !important; padding: 10px 15px !important; display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #ff003c !important; color: #0a0a0a !important; 
+        }
+
+        /* Başlık ve Puan (Ortalanmış) */
+        .detail-header {
+            text-align: center; /* Başlık ve puanı ortalar */
+        }
+        .accent-color { color: #ff003c; } /* Parlak Kırmızı Vurgu (ROG Kırmızısı) */
         
-        /* 1. Başlık Rengi */
         .detail-header h1 {
             color: #ffffff; 
             text-shadow: 0 0 10px rgba(255, 0, 60, 0.7);
         }
         
-        /* 2. Ana Puan Vurgusu */
         .score-large {
-            background: linear-gradient(45deg, #cc0000, #ff003c); /* Koyu Kırmızı - Parlak Kırmızı Gradyan */
+            background: linear-gradient(45deg, #cc0000, #ff003c);
             -webkit-background-clip: text; 
             background-clip: text; 
             color: transparent; 
@@ -41,8 +86,26 @@
             font-weight: 900;
             padding: 10px 0;
             border-bottom: 3px solid #cc0000;
+            display: inline-block; /* Ortalamayı korumak için */
         }
-        /* 3. Sonuç Kutusu Rengi */
+
+        /* Video Düzeltmesi (Responsive) */
+        .video-container { 
+            margin-bottom: 30px; border-radius: 8px; overflow: hidden; 
+            position: relative; 
+            padding-bottom: 56.25%; /* 16:9 oranı */
+            height: 0;
+        }
+        .video-container iframe {
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            display: block; 
+        }
+
+        /* İnceleme İçeriği Stilleri */
         .conclusion-box {
             border: 3px solid #ff003c; /* Kırmızı Sınır */
             background-color: #1a080c; /* Koyu Kırmızımsı Siyah Ton */
@@ -51,29 +114,32 @@
             border-radius: 8px;
         }
         
-        /* 4. İnceleme Başlıkları */
         .detail-review-body h2 span, 
         .technical-specs-box h2 {
-            color: #ff003c; /* Kırmızı Vurgusu */
+            color: #ff003c;
         }
         
-        /* 5. Artı ve Eksiler */
-        #detail-pros li { color: #76ff03; } /* Artılar Yeşil */
-        #detail-cons li { color: #ff9800; } /* Eksiler Turuncu */
+        #detail-pros li { color: #76ff03; } 
+        #detail-cons li { color: #ff9800; } 
         
+        /* Genel İnceleme Sayfası Yerleşimi */
+        .review-content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-top: 30px; }
+        .main-content { grid-column: 1 / 2; background-color: #1a1a1a; padding: 30px; border-radius: 8px; }
+        .technical-specs-box { grid-column: 2 / 3; padding: 20px; background-color: #1a1a1a; border-radius: 8px; height: fit-content; }
+        #pros-cons-container { display: flex; gap: 40px; margin-top: 30px; }
+        #pros-cons-container ul { list-style: none; padding: 0; }
+        .detail-review-body p { color: #f0f0f0; }
+
         /* Teknik özellikler tablosu */
         .specs-list { list-style: none; padding: 0; }
         .specs-list li { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px dashed #333; }
         .specs-list span:first-child { color: #ccc; }
-        
-        /* Genel İnceleme Sayfası Yerleşimi */
-        .review-content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-top: 30px; }
-        .main-content { grid-column: 1 / 2; }
-        .technical-specs-box { grid-column: 2 / 3; padding: 20px; background-color: #1a1a1a; border-radius: 8px; }
-        .video-container { margin-bottom: 30px; border-radius: 8px; overflow: hidden; }
-        #pros-cons-container { display: flex; gap: 40px; margin-top: 30px; }
-        #pros-cons-container ul { list-style: none; padding: 0; }
-        .detail-review-body p { color: #f0f0f0; }
+
+        /* Footer */
+        footer {
+            background-color: #151515;
+            padding: 20px 0; text-align: center; border-top: 1px solid #333; margin-top: 50px;
+        }
 
     </style>
 </head>
@@ -84,19 +150,18 @@
             <h1>TEKNOGÜNDEM<span class="logo-dot">.</span>DONANIM</h1>
             <nav>
                 <ul>
-                    <li class="dropdown">
-                        <a href="#">HABERLER ▼</a>
-                        <div class="dropdown-content">
-                            <a href="guncel-haberler.html">Güncel</a>
-                            <a href="ekran-karti-haberleri.html">Ekran Kartları</a>
-                            <a href="islemci-haberleri.html">İşlemciler</a>
-                            <a href="anakart-ram-haberleri.html">Anakart ve RAM</a>
-                            <a href="sizintilar.html">Sızıntılar</a>
-                            <a href="yapay-zeka.html">Yapay Zeka</a>
-                        </div>
-                    </li>
-                    <li><a href="incelemeler.html" class="active">İNCELEMELER</a></li>
-                    <li><a href="fiyatlar.html">FİYAT LİSTELERİ</a></li>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+            
+            <li class="dropdown">
+                <a href="donanım.html">Donanım</a> 
+                <div class="dropdown-content"> 
+                    <a href="haberler.html" class="dropdown-item">Haberler</a> 
+                    <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
+                </div>
+            </li>
+            <li><a href="yazılım.html" class="active">Yazılım</a></li>
+            
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
                 </ul>
             </nav>
         </div>
@@ -116,9 +181,7 @@
                 
                 <div class="video-container">
                     <iframe 
-                        width="100%" 
-                        height="450" 
-                        src="https://www.youtube-nocookie.com/embed/fD3K7w59k1I" 
+                        src="https://www.youtube-nocookie.com/embed/C86hIgHLFqE" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen>
@@ -138,7 +201,7 @@
                     </p>
 
                     <div id="pros-cons-container">
-                        <div>
+                        <div style="flex: 1;">
                             <h2><span style="color: #76ff03;">✅ Artıları</span></h2>
                             <ul id="detail-pros">
                                 <li>Piyasadaki en güçlü VRM (Voltaj Regülatör Modülü) tasarımı.</li>
@@ -147,7 +210,7 @@
                                 <li>Ekstrem hız aşırtma için özel düğmeler ve teşhis ekranı.</li>
                             </ul>
                         </div>
-                        <div>
+                        <div style="flex: 1;">
                             <h2><span style="color: #ff9800;">❌ Eksileri</span></h2>
                             <ul id="detail-cons">
                                 <li class="negative">Fiyatı, ortalama bir sistemin tamamından daha yüksek.</li>

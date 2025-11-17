@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prometheus ve Grafana İkilisi: Operasyonel Görünürlük Rehberi - TeknoGündem</title>
+    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* TEMEL RENKLER VE GLOBAL STİLLER */
+        :root {
+            --color-primary: #00bcd4; /* Mavi-Turkuaz */
+            --color-secondary: #ff9800; /* Turuncu */
+            --color-background: #121212;
+            --color-text-light: #ddd;
+            --color-detail: #4caf50; /* Detaylar için Yeşil */
+            /* Yeni makale için özel renkler */
+            --color-prometheus: #E6522C; /* Prometheus Kırmızımsı Turuncu */
+            --color-grafana: #F47521; /* Grafana Turuncu */
+            --color-sre: #2196F3; /* SRE/Mavi */
+        }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text-light);
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* HEADER & NAV STİLLERİ */
+        header {
+            background-color: #1e1e1e;
+            color: white;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li a {
+            color: var(--color-text-light);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--color-primary);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+        }
+        
+        /* ANA İÇERİK STİLLERİ */
+        .main-body-container {
+            max-width: 1000px;
+            margin: 40px auto; 
+            padding: 25px; 
+            background-color: rgba(255, 255, 255, 0.05); 
+            border-radius: 10px;
+        }
+        .tag {
+            position: static; padding: 5px 15px; background-color: var(--color-secondary); 
+            color: var(--color-background); border-radius: 4px; font-size: 0.9rem;
+            font-weight: bold;
+        }
+        .review-meta {
+            margin-top: 10px; display: flex; justify-content: center; gap: 20px; color: #aaa; font-size: 0.9rem;
+        }
+
+        /* TABLO STİLLERİ */
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            border: 1px solid #333;
+            text-align: left;
+            font-size: 0.95em;
+        }
+        .comparison-table th {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        /* Yeni tablo için renkler */
+        .prometheus-cell { background-color: rgba(230, 82, 44, 0.1); color: var(--color-prometheus); } 
+        .grafana-cell { background-color: rgba(244, 117, 33, 0.1); color: var(--color-grafana); } 
+        
+        /* DETAY BÖLÜM STİLLERİ */
+        .technical-section h3 {
+            color: var(--color-detail);
+            margin-top: 35px;
+            border-bottom: 1px dashed #333;
+            padding-bottom: 5px;
+        }
+        .detail-list {
+            list-style: none;
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+        .detail-list li {
+            border-left: 3px solid var(--color-secondary);
+            padding-left: 10px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        /* KOD BLOKLARI */
+        pre {
+            background-color: #2b2b2b;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.9em;
+            border: 1px solid #3a3a3a;
+        }
+        /* Video Benzetmesi ve YouTube Yer Tutucu */
+        .video-box {
+            background-color: #1e1e1e;
+            border: 2px solid var(--color-prometheus);
+            padding: 20px;
+            margin-top: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .youtube-placeholder {
+            width: 100%;
+            aspect-ratio: 16 / 9; /* 16:9 video formatı */
+            background-color: #000;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+            position: relative;
+        }
+
+        .youtube-placeholder iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* FOOTER STİLİ */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            color: #666;
+            background-color: #1e1e1e;
+        }
+    </style>
+</head>
+<body class="yazilim-sayfa">
+    <header>
+        <div class="logo">TeknoGündem</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="donanım.html">Donanım</a></li>
+                <li><a href="yazılım.html">Yazılım</a></li>
+                <li><a href="devops.html" class="active">DevOps</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container main-body-container">
+        
+        <section class="detail-header">
+            <h1 style="color: var(--color-prometheus); font-size: 3rem;"><i class="fas fa-chart-area"></i> Prometheus ve Grafana İkilisi: Operasyonel Görünürlük Rehberi</h1>
+            <div class="review-meta">
+                <span>Yazar: Melis AKINCI</span>
+                <span>Tarih: 5 Kasım 2025</span>
+                <span class="tag">DevOps/SRE/İzleme</span>
+            </div>
+        </section>
+
+        <div class="article-content-wrapper" style="max-width: 900px; margin: 40px auto; padding: 20px;">
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; font-size: 1.1rem; color: #ccc;">
+                Üretim ortamlarındaki uygulamaların performansını anlamak, sorunları proaktif olarak tespit etmek ve müşteri deneyimini garantilemek için izleme (monitoring) hayati öneme sahiptir. Prometheus ve Grafana, metrik tabanlı izleme alanında endüstri standardı haline gelmiş, açık kaynaklı ve güçlü bir ikilidir. Prometheus metrikleri toplar, depolar ve sorgular; Grafana ise bu verileri kullanıcı dostu, görsel panolara dönüştürür.
+            </p>
+
+            <div class="video-box">
+                <h2 style="color: var(--color-grafana); margin-top: 0;"><i class="fas fa-video"></i> AŞAMA 1: Prometheus Çalışma Mantığı ve Metrik Toplama</h2>
+                <p style="color: #ccc;">*Bu video kesitinde, Prometheus'un altyapınızdan veriyi nasıl çektiğini (Pull) ve zaman serisi veritabanına nasıl kaydettiğini izliyoruz.*</p>
+                
+                <div class="youtube-placeholder">
+                    <iframe src="https://www.youtube.com/embed/NWt75kyGUxA" 
+                            title="Prometheus & Grafana: The Ultimate Monitoring Stack" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="technical-section">
+                    <h3>Metrik Toplama Mimarisi: Pull Modeli</h3>
+                    <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
+                        Prometheus, geleneksel izleme sistemlerinin aksine, izleyeceği servislerin metriklerini kendisi çeker (**Pull Model**).
+                    </p>
+                    <ul class="detail-list">
+                        <li><i class="fas fa-network-wired" style="color: var(--color-prometheus);"></i> **Scraping (Kazıma):** Prometheus sunucusu, yapılandırma dosyasında belirtilen hedeflere (targets) düzenli aralıklarla (örneğin 15 saniyede bir) HTTP isteği göndererek metrikleri toplar.</li>
+                        <li><i class="fas fa-tag" style="color: var(--color-prometheus);"></i> **Çok Boyutlu Veri Modeli:** Metrikler, etiketler (labels) ile zenginleştirilir. Örneğin: `http_requests_total{method="POST", endpoint="/users", status="200"}`. Bu etiketler, güçlü sorgulama ve filtreleme imkanı sağlar.</li>
+                        <li><i class="fas fa-satellite-dish" style="color: var(--color-prometheus);"></i> **Exporter Mimarisi:** Altyapı veya veritabanı (Node Exporter, Postgres Exporter) gibi metrikleri kendiliğinden sağlamayan servisler için ayrı bir **Exporter** servisi kurulur. Bu exporter, Prometheus'un çekebileceği formata dönüştürülmüş metrikleri açığa çıkarır.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="video-box">
+                <h2 style="color: var(--color-prometheus); margin-top: 0;"><i class="fas fa-video"></i> AŞAMA 2: PromQL ile Sorgulama ve Analiz</h2>
+                <p style="color: #ccc;">*Bu kesitte, toplanan verileri analiz etmek için Prometheus'un sorgu dili PromQL'in gücünü ve sözdizimini öğreniyoruz.*</p>
+                
+                <div class="technical-section">
+                    <h3>Prometheus Query Language (PromQL)</h3>
+                    <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
+                        PromQL, zaman serisi verilerinden karmaşık sonuçlar elde etmek için tasarlanmış esnek bir sorgu dilidir.
+                    </p>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th style="background-color: var(--color-sre);">Sorgu Tipi</th>
+                                <th style="background-color: var(--color-prometheus);">PromQL Örneği</th>
+                                <th style="background-color: var(--color-sre);">Açıklama</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="prometheus-cell">**Hız (Rate)**</td>
+                                <td class="prometheus-cell">`rate(http_requests_total[5m])`</td>
+                                <td class="grafana-cell">Son 5 dakikadaki HTTP isteklerinin saniye başına ortalama hızını hesaplar (RPS).</td>
+                            </tr>
+                            <tr>
+                                <td class="prometheus-cell">**Gecikme (Latency)**</td>
+                                <td class="prometheus-cell">`histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))`</td>
+                                <td class="grafana-cell">İsteklerin %95'inin hangi sürede tamamlandığını (95. persentil gecikmesi) hesaplar. SRE için kritik.</td>
+                            </tr>
+                            <tr>
+                                <td class="prometheus-cell">**Toplama (Aggregation)**</td>
+                                <td class="prometheus-cell">`sum by (job) (node_cpu_seconds_total)`</td>
+                                <td class="grafana-cell">Tüm CPU sürelerini, her bir işe (job) göre gruplandırarak toplar.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="video-box">
+                <h2 style="color: var(--color-sre); margin-top: 0;"><i class="fas fa-video"></i> AŞAMA 3: Grafana ile Görselleştirme ve Alarm Yönetimi</h2>
+                <p style="color: #ccc;">*Son aşamada, Grafana'nın görsel gücünü kullanarak metrikleri anlamlı panolara dönüştürmeyi ve kritik durumlarda uyarı mekanizmasını kurmayı görüyoruz.*</p>
+                
+                <div class="technical-section">
+                    <h3>Grafana: Metrikleri Anlama Sanatı</h3>
+                    <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
+                        Grafana, Prometheus'un depoladığı ham veriyi alan ve onu anlaşılır grafiklere, tablolara ve göstergelere dönüştüren görselleştirme aracıdır.
+                    </p>
+                    <ul class="detail-list">
+                        <li><i class="fas fa-dashboard" style="color: var(--color-grafana);"></i> **Çoklu Veri Kaynakları:** Prometheus en temel kaynak olsa da, Grafana aynı panoda Loki (Loglar için), Elasticsearch veya bulut sağlayıcılarının metrik servislerini (CloudWatch, Azure Monitor) birleştirebilir.</li>
+                        <li><i class="fas fa-bell" style="color: var(--color-grafana);"></i> **Uyarı Yönetimi:** Grafana, tanımlanan PromQL sorguları belirli bir eşiği aştığında (örneğin CPU kullanımı %90'ın üzerine çıktığında) e-posta, Slack veya PagerDuty gibi kanallar aracılığıyla otomatik olarak uyarı gönderme yeteneğine sahiptir.</li>
+                        <li><i class="fas fa-users" style="color: var(--color-grafana);"></i> **Dashboard Paylaşımı:** Ekipler, hazır şablonları (örneğin popüler "Node Exporter Dashboard" şablonları) kolayca içe aktarabilir ve panoları organizasyon içinde paylaşabilir.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 style="color: var(--color-sre); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-cogs"></i> En İyi Uygulama: RED Metrikleri ve Uyarı Eşiği</h2>
+            
+            <div class="technical-section">
+                <h3>SRE Uygulamaları: Ne İzlenmeli?</h3>
+                <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
+                    Prometheus/Grafana kurulumunda başarılı olmak için sadece metrik toplamak yetmez; doğru metrikleri izlemek gerekir. Google SRE ekibinin önerdiği **RED** metotolojisi yol göstericidir.
+                </p>
+                <ul class="detail-list">
+                    <li><i class="fas fa-fire" style="color: var(--color-secondary);"></i> **Rate (Hız):** Servisin işlediği saniye başına istek sayısı (PromQL'de `rate` fonksiyonu ile hesaplanır).</li>
+                    <li><i class="fas fa-hourglass-half" style="color: var(--color-secondary);"></i> **Errors (Hata):** Başarısız olan isteklerin saniye başına oranı (HTTP 5xx hataları).</li>
+                    <li><i class="fas fa-stopwatch" style="color: var(--color-secondary);"></i> **Durations/Latency (Gecikme):** Bir isteğin ne kadar sürdüğü (PromQL'de `histogram_quantile` ile persentil bazlı hesaplanır). **Ortalama (Average) gecikme yerine, p95 veya p99 gibi persentil değerlerini izlemek daha doğrudur.**</li>
+                </ul>
+            </div>
+
+            <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-graduation-cap"></i> Özet Rehberlik İlkesi</h2>
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
+                Prometheus ve Grafana, sadece metrik toplama araçları değil, operasyonel zekanın temelini oluşturur. Prometheus'un **Pull** mimarisini ve **Exporter** gücünü kullanarak altyapı metriklerinizi toplayın. Topladığınız bu zengin, etiketlenmiş veriyi **PromQL** ile analiz edin. Son olarak, Grafana'yı kullanarak bu verileri anlamlı **RED metotolojisine** uygun panolara dönüştürün ve kritik **uyarı eşiklerini** belirleyerek proaktif bir izleme kültürü oluşturun.
+            </p>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TeknoGündem. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+</body> 
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker İle Geliştirme Ortamı: Konteynerize Edilmiş Çevik Geliştirme Rehberi - TeknoGündem</title>
+    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    
+    
+    <style>
+        /* TEMEL RENKLER VE GLOBAL STİLLER */
+        :root {
+            --color-primary: #00bcd4; /* Mavi-Turkuaz */
+            --color-secondary: #ff9800; /* Turuncu */
+            --color-background: #121212;
+            --color-text-light: #ddd;
+            --color-detail: #4caf50; /* Detaylar için Yeşil */
+            /* Yeni makale için özel renkler */
+            --color-docker-main: #2496ED; /* Docker Mavi */
+            --color-compose: #0073AA; /* Docker Compose Mavi */
+            --color-dev: #FF5722; /* Geliştirme Kırmızı */
+        }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text-light);
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* HEADER & NAV STİLLERİ */
+        header {
+            background-color: #1e1e1e;
+            color: white;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li a {
+            color: var(--color-text-light);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--color-primary);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+        }
+        
+        /* ANA İÇERİK STİLLERİ */
+        .main-body-container {
+            max-width: 1000px;
+            margin: 40px auto; 
+            padding: 25px; 
+            background-color: rgba(255, 255, 255, 0.05); 
+            border-radius: 10px;
+        }
+        .tag {
+            position: static; padding: 5px 15px; background-color: var(--color-secondary); 
+            color: var(--color-background); border-radius: 4px; font-size: 0.9rem;
+            font-weight: bold;
+        }
+        .review-meta {
+            margin-top: 10px; display: flex; justify-content: center; gap: 20px; color: #aaa; font-size: 0.9rem;
+        }
+
+        /* TABLO STİLLERİ */
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            border: 1px solid #333;
+            text-align: left;
+            font-size: 0.95em;
+        }
+        .comparison-table th {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        /* Yeni tablo için renkler */
+        .docker-cell { background-color: rgba(36, 150, 237, 0.1); color: var(--color-docker-main); } 
+        .dev-cell { background-color: rgba(255, 87, 34, 0.1); color: var(--color-dev); } 
+        
+        /* DETAY BÖLÜM STİLLERİ */
+        .technical-section h3 {
+            color: var(--color-detail);
+            margin-top: 35px;
+            border-bottom: 1px dashed #333;
+            padding-bottom: 5px;
+        }
+        .detail-list {
+            list-style: none;
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+        .detail-list li {
+            border-left: 3px solid var(--color-secondary);
+            padding-left: 10px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        /* KOD BLOKLARI */
+        pre {
+            background-color: #2b2b2b;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.9em;
+            border: 1px solid #3a3a3a;
+        }
+
+        /* FOOTER STİLİ */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            color: #666;
+            background-color: #1e1e1e;
+        }
+    </style>
+</head>
+<body class="yazilim-sayfa">
+    <header>
+        <div class="logo">TeknoGündem</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                 <li><a href="donanım.html">Donanım</a></li>
+                <li><a href="yazılım.html">Yazılım</a></li>
+                <li><a href="devops.html" class="active">DevOps</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container main-body-container">
+        
+        <section class="detail-header">
+            <h1 style="color: var(--color-docker-main); font-size: 3rem;"><i class="fas fa-whale"></i> Docker İle Geliştirme Ortamı: "Makinenizde Çalışıyor" Mazeretine Son!</h1>
+            <div class="review-meta">
+                <span>Yazar: Cem YAMAN</span>
+                <span>Tarih: 5 Kasım 2025</span>
+                <span class="tag">DevOps/Konteynerizasyon/Geliştirme</span>
+            </div>
+        </section>
+
+        <div class="article-content-wrapper" style="max-width: 900px; margin: 40px auto; padding: 20px;">
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; font-size: 1.1rem; color: #ccc;">
+                Geliştirme ortamlarının ayarlanması, yazılım projelerinin en büyük zaman kayıplarından biridir. Farklı işletim sistemleri, dil versiyonları, veritabanı sürümleri ve bağımlılıklar, "bende çalışıyor" kaosuna yol açar. Docker, bu sorunu geliştirme ortamını da konteynerize ederek çözer. Bu rehberde, Docker'ı sadece üretim (production) için değil, günlük geliştirme akışınızın merkezi yapmak için gereken en güncel teknikleri ve mimari kararları inceliyoruz.
+            </p>
+
+            <h2 style="color: var(--color-compose); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-layer-group"></i> Faz 1: Tekrarlanabilir Geliştirme Ortamının Temelleri</h2>
+            
+            <div class="technical-section">
+                <h3>Adım 1.1: Docker Compose ile Orkestrasyon</h3>
+                <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
+                    Modern uygulamalar, genellikle bir veritabanı, bir önbellek (Redis) ve uygulamanın kendisi olmak üzere birden fazla servisten oluşur. `docker-compose.yml` dosyası, tüm bu servisleri tek bir komutla ayağa kaldırmanın anahtarıdır.
+                </p>
+                <ul class="detail-list">
+                    <li><i class="fas fa-code-branch" style="color: var(--color-compose);"></i> **Tek Komutla Kurulum:** Tüm ekip üyeleri, karmaşık manuel kurulumlar yerine sadece `docker compose up -d` komutunu çalıştırarak aynı ortamı saniyeler içinde kurar.</li>
+                    <li><i class="fas fa-network-wired" style="color: var(--color-compose);"></i> **İzolasyon ve Ağ:** Compose, varsayılan olarak tüm servislere aynı ağda iletişim kurma imkanı tanır. Uygulama, veritabanına, localhost yerine servis adı (`db` veya `redis`) ile erişir.</li>
+                </ul>
+                <p style="color: var(--color-compose); font-weight: bold; margin-bottom: 10px;">Temel `docker-compose.yml` Yapısı:</p>
+                <pre><code>version: '3.8'
+services:
+  app:
+    build: .
+    volumes:
+      - .:/app # Geliştirme için kritik: Kod paylaşımı
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: devdb
+      POSTGRES_PASSWORD: mysecretpassword</code></pre>
+            </div>
+            
+            <div class="technical-section">
+                <h3>Adım 1.2: Host ile Konteyner Arası Bağlantı (Volume Mounts)</h3>
+                <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
+                    Geliştirme sırasında konteyneri sürekli yeniden oluşturmamak için yerel kodu konteynere aktarmak hayati önem taşır.
+                </p>
+                <ul class="detail-list">
+                    <li><i class="fas fa-sync" style="color: var(--color-dev);"></i> **Bind Mounts:** Yukarıdaki örnekteki gibi (`.:/app`), yerel makinenizdeki kod dizinini konteyner içindeki uygulama dizinine bağlar. Bu, kodu yerel IDE'nizde düzenlerken, değişikliklerin anında konteynerde (genellikle bir HMR/Live-Reload mekanizmasıyla) yansımasını sağlar. **En hızlı geliştirme akışı için şarttır.**</li>
+                    <li><i class="fas fa-hdd" style="color: var(--color-dev);"></i> **Named Volumes:** Veritabanı verisi gibi, konteyner silinse bile kalmasını istediğiniz durum bilgisi için kullanılır (Örn: `volumes: db-data:`).</li>
+                </ul>
+            </div>
+
+            <h2 style="color: var(--color-dev); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-code"></i> Faz 2: Gelişmiş Docker Geliştirme Akışı İpuçları</h2>
+            
+            <div class="technical-section">
+                <h3>Adım 2.1: Geliştirme vs. Üretim (Production) Dockerfile Ayrımı</h3>
+                <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
+                    Geliştirme ortamı, daha yavaş ama daha fazla araç içeren bir yapıya ihtiyaç duyarken, üretim ortamı hızlı ve hafif olmalıdır.
+                </p>
+                <ul class="detail-list">
+                    <li><i class="fas fa-diagnoses" style="color: var(--color-secondary);"></i> **Geliştirme Ortamı:** Daha büyük temel imajlar, geliştirme araçları (linterlar, test araçları) ve hatta SSH sunucusu içerebilir. Amaç hızlı geri bildirimdir.</li>
+                    <li><i class="fas fa-shield-alt" style="color: var(--color-secondary);"></i> **Çok Aşamalı Yapı (Multi-stage Builds):** Üretim Dockerfile'larında, kodu derlemek için kullanılan büyük araçları (örneğin Node.js SDK) nihai imajdan dışlamak için kullanılır. Bu, son imajın boyutunu ve yüzey alanını (attack surface) küçültür.</li>
+                </ul>
+                <p style="color: var(--color-dev); font-weight: bold; margin-bottom: 10px;">Çok Aşamalı Yapı Örneği (Hafif Üretim İmajı İçin):</p>
+                <pre><code># Stage 1: Builder
+FROM node:20 as builder 
+WORKDIR /app
+COPY package*.json ./
+RUN npm install 
+COPY . .
+RUN npm run build # Sadece üretim dosyaları oluşturulur
+
+# Stage 2: Production Final
+FROM node:20-alpine # Daha küçük ve hafif temel imaj
+WORKDIR /app
+COPY --from=builder /app/dist ./dist 
+EXPOSE 8080
+CMD [ "node", "dist/server.js" ]</code></pre>
+            </div>
+            
+            <div class="technical-section">
+                <h3>Adım 2.2: Dev Containers (VS Code & JetBrains) Entegrasyonu</h3>
+                <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
+                    En modern ve güncel geliştirme akışı, geliştirme araçlarını doğrudan konteynerin içine taşımaktır.
+                </p>
+                <blockquote style="border-left: 5px solid var(--color-secondary); background-color: rgba(255, 152, 0, 0.05); padding: 15px; margin-top: 20px;">
+                    <i class="fas fa-laptop-code" style="color: var(--color-secondary);"></i> **Dev Containers:** VS Code ve JetBrains IDE'leri, kodunuzu yerel makineniz yerine bir Docker konteyneri içinde çalıştırmanıza olanak tanır.
+                    <br> **Avantaj:** Geliştirme ortamınızın tam yapılandırması (VS Code eklentileri, terminal ayarları, dil sunucuları) koda sabitlenir. Yeni bir ekip üyesi, kod deposunu klonlar klonlamaz, IDE otomatik olarak konteynere bağlanır ve geliştirme hazırdır.
+                </blockquote>
+            </div>
+
+            <h2 style="color: var(--color-docker-main); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-bullseye"></i> Faz 3: Geliştirme Ortamında Hata Ayıklama (Debugging)</h2>
+            
+            <div class="technical-section">
+                <h3>Adım 3.1: Hata Ayıklama Portlarının Açılması</h3>
+                <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
+                    Dockerize edilmiş bir uygulamada hata ayıklama (debugging) yapmak için, uygulama içi hata ayıklama sunucusunun portunu (örneğin Node.js için 9229) host makineye (`ports` kullanarak) açmanız ve IDE'nizi bu porta bağlamanız gerekir.
+                </p>
+                <p style="color: var(--color-docker-main); font-weight: bold; margin-bottom: 10px;">Compose Dosyasında Debugging Portu Tanımlama:</p>
+                <pre><code>services:
+  app:
+    # ...
+    ports:
+      - "8080:8080" # Uygulama portu
+      - "9229:9229" # Node.js Debugger portu</code></pre>
+            </div>
+
+            <div class="technical-section">
+                <h3>Adım 3.2: Geçici Test Ortamları (Ephemeral Environments)</h3>
+                <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
+                    Docker'ın konteyner mimarisi, testler için geçici, atılabilir ortamlar oluşturmayı kolaylaştırır.
+                </p>
+                <ul class="detail-list">
+                    <li><i class="fas fa-trash-alt" style="color: var(--color-secondary);"></i> **Atılabilir Ortamlar:** Geliştiriciler, bir pull request (çekme isteği) veya yeni bir özellik üzerinde çalışırken mevcut ortamı bozma riski olmadan, tamamen izole yeni bir Docker ortamını ayağa kaldırıp, işi bittiğinde `docker compose down --volumes` komutuyla tamamen silebilirler.</li>
+                    <li><i class="fas fa-vial" style="color: var(--color-secondary);"></i> **Entegre Test:** `docker-compose.yml` dosyasını, entegrasyon testlerini çalıştıran geçici bir konteyneri (test runner) içerecek şekilde genişleterek, testleri de tamamen konteynerize edilmiş bir ortamda çalıştırabilirsiniz.</li>
+                </ul>
+            </div>
+
+            <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-graduation-cap"></i> Özet Rehberlik İlkesi</h2>
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
+                Docker, geliştirme ortamlarında **"Herkes için aynı, garantili ortam"** ilkesini getirerek DevOps kültürünü geliştirme sürecine taşır. Başarılı bir Docker Geliştirme Ortamı, tüm servisleri yönetmek için **`docker-compose`'a**, hızlı kod yenilemesi için **`Bind Mounts`'a** ve hafif üretim imajları için **Çok Aşamalı Yapılara** dayanır. En güncel verimlilik için, IDE'nizi (VS Code/JetBrains) **Dev Containers** özelliği ile doğrudan konteynere bağlamayı benimseyin.
+            </p>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TeknoGündem. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+</body> 
+</html>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intel Core i9-15900K (Arrow Lake) İncelemesi | Teknogündem</title>
     <link rel="stylesheet" href="css/style.css"> 
+    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
     
     <style>
         /* *** KESİN DÜZELTME: HEADER, FOOTER VE NAVIGASYON ARKA PLANLARI *** */
@@ -50,6 +51,15 @@
             padding: 30px; 
             border-radius: 8px; 
         }
+        
+        /* *** GÖRÜNMEYEN METİNLER İÇİN DÜZELTME *** */
+        /* İnceleme metinlerinin rengini beyaz yaptık */
+        .detail-review-body p {
+            color: #ffffff !important;
+            line-height: 1.6; /* Okunabilirliği artırmak için satır aralığı */
+            font-size: 1.05rem;
+        }
+
         /* Yatay Çizgi (HR) Stili: Başlık altındaki çizgileri görünür yaptık */
         .detail-review-body hr {
             border: 0;
@@ -117,19 +127,17 @@
             <h1>TEKNOGÜNDEM<span class="logo-dot">.</span>DONANIM</h1>
             <nav>
                 <ul>
+                 <li><a href="index.html">Ana Sayfa</a></li>
+                    
                     <li class="dropdown">
-                        <a href="#">HABERLER ▼</a>
-                        <div class="dropdown-content">
-                            <a href="guncel-haberler.html">Güncel</a>
-                            <a href="ekran-karti-haberleri.html">Ekran Kartları</a>
-                            <a href="islemci-haberleri.html">İşlemciler</a>
-                            <a href="anakart-ram-haberleri.html">Anakart ve RAM</a>
-                            <a href="sizintilar.html">Sızıntılar</a>
-                            <a href="yapay-zeka.html">Yapay Zeka</a>
-                        </div>
+                        <a href="donanım.html">Donanım </a>
+                        <ul class="dropdown-content">
+                            <li><a href="haberler.html">Haberler</a></li>
+                            <li><a href="incelemeler.html">İncelemeler</a></li>
+                        </ul>
                     </li>
-                    <li><a href="incelemeler.html" class="active">İNCELEMELER</a></li>
-                    <li><a href="fiyatlar.html">FİYAT LİSTELERİ</a></li>
+                    <li><a href="yazılım.html">Yazılım </a></li>
+                    <li><a href="hakkimizda.html">Hakkımızda</a></li>
                 </ul>
             </nav>
         </div>
@@ -162,12 +170,14 @@
                     <div class="detail-review-body">
                         
                         <h2 style="margin-top: 0;"><span style="color: #00bcd4;">🛠️ Mimari ve Termal Başarımlar</span></h2>
-                        <hr> <p>
+                        <hr> 
+                        <p>
                             i9-15900K, Arrow Lake mimarisinin en üst noktasını temsil ediyor ve önceki nesillere göre Çekirdek Başına Talimat (IPC) oranında önemli bir sıçrama sunuyor. 8 P-çekirdeği ve 16 E-çekirdeği konfigürasyonunu korurken, yeni çekirdek tasarımları sayesinde tek çekirdek performansı %15 artırıldı. En büyük sürpriz ise, maksimum turbo frekansına ulaşılırken dahi termal sınırların geçmişe göre daha iyi yönetilmesi.
                         </p>
 
                         <h2><span style="color: #00bcd4;">📊 Oyun ve İş Yükü Testleri</span></h2>
-                        <hr> <p>
+                        <hr> 
+                        <p>
                             4K çözünürlükte bile, üst düzey ekran kartlarıyla eşleştirildiğinde, 15900K, minimum kare hızlarını (1% Lows) kayda değer ölçüde yükselterek oyun deneyimini daha akıcı hale getiriyor. Blender ve Adobe Premiere gibi profesyonel iş yüklerinde ise 24 çekirdekli yapının sağladığı güç, özellikle render sürelerinde %20'lik bir iyileşme sağlıyor. Çoklu görevde rakipsiz bir performans sunuyor.
                         </p>
 

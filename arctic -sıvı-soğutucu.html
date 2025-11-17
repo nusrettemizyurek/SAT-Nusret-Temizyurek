@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arctic Liquid Freezer III 360 A-RGB İncelemesi | Teknogündem</title>
-    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon"> 
     
     <style>
         /* *** KESİN DÜZELTME: HEADER, FOOTER VE NAVIGASYON ARKA PLANLARI *** */
@@ -59,10 +60,19 @@
         }
 
 
+        /* *** METİN GÖRÜNÜRLÜĞÜ İÇİN KESİN ÇÖZÜM (Dahili CSS) *** */
+        /* Bu kurallar inline stillerle birlikte çalışır */
+        body, .main-content {
+            color: #ffffff !important; 
+        }
+        .detail-review-body ul li, 
+        .technical-specs-box .specs-list li {
+            color: #ffffff !important; 
+        }
+
         /* *** SAYFA İÇERİĞİ VE VURGU STİLLERİ (TURKUAZ/YEŞİL) *** */
         body { 
             background-color: #0a0a0a; 
-            color: #e0e0e0; 
             font-family: 'Poppins', sans-serif;
         }
         .main-body-container { 
@@ -133,19 +143,23 @@
             <h1>TEKNOGÜNDEM<span class="logo-dot">.</span>DONANIM</h1>
             <nav>
                 <ul>
-                    <li class="dropdown">
-                        <a href="#">HABERLER ▼</a>
-                        <div class="dropdown-content">
-                            <a href="guncel-haberler.html">Güncel</a>
-                            <a href="ekran-karti-haberleri.html">Ekran Kartları</a>
-                            <a href="islemci-haberleri.html">İşlemciler</a>
-                            <a href="anakart-ram-haberleri.html">Anakart ve RAM</a>
-                            <a href="sizintilar.html">Sızıntılar</a>
-                            <a href="yapay-zeka.html">Yapay Zeka</a>
-                        </div>
-                    </li>
-                    <li><a href="incelemeler.html" class="active">İNCELEMELER</a></li>
-                    <li><a href="fiyatlar.html">FİYAT LİSTELERİ</a></li>
+                        <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+            
+            <li class="dropdown">
+                
+                <a href="donanım.html">Donanım</a> 
+                
+                <div class="dropdown-content"> 
+                    <a href="haberler.html" class="dropdown-item">Haberler</a> 
+                    <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
+                </div>
+            </li>
+            <li><a href="yazılım.html" class="active">Yazılım</a></li>
+            
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            </ul>
+                    
                 </ul>
             </nav>
         </div>
@@ -178,17 +192,17 @@
                     <div class="detail-review-body">
                         
                         <h2 style="margin-top: 0;"><span style="color: #00bcd4;">📏 Radyatör Kalınlığının Gücü</span></h2>
-                        <hr> <p>
+                        <hr> <p style="color: #ffffff !important;">
                             Arctic Liquid Freezer III serisinin temel gücü radyatör kalınlığından gelmektedir. Standart AIO soğutucuların 27mm'lik radyatörlerine kıyasla, bu model **38mm kalınlığı** ile rakiplerine yaklaşık 11mm fark atmaktadır [02:34]. Bu kalınlık, daha geniş sıvı kanallarıyla birleştiğinde (33mm efektif yükseklik), sıvının çok daha hızlı soğumasını sağlayarak üstün termal performans sunar [03:55].
                         </p>
 
                         <h2><span style="color: #00bcd4;">🛠️ Intel için Devrim: Contact Frame</span></h2>
-                        <hr> <p>
+                        <hr> <p style="color: #ffffff !important;">
                             Soğutucu, kutu içeriğinde Intel LGA 1700 soketleri için özel bir **Contact Frame (Temas Çerçevesi)** ile birlikte gelir [09:56]. Bu çerçeve, LGA 1700 işlemcilerde soğutucunun neden olduğu eğilme/bükülme sorununu ortadan kaldırarak ısı transferini maksimuma çıkarır ve sıcaklıkları düşürür. Ayrıca, soğutma bloğunda bulunan küçük **VRM Fanı**, anakart üzerindeki mosfetleri ve soket çevresini aktif olarak soğutarak sistem stabilitesine katkıda bulunur [07:14].
                         </p>
 
                         <h2><span style="color: #00bcd4;">📈 Gerçek Dünya Performansı</span></h2>
-                        <hr> <p>
+                        <hr> <p style="color: #ffffff !important;">
                             ModArt PC testlerinde, Intel Core i7-14700K işlemci (250W) ile yapılan stres testinde soğutucu, sıcaklığı maksimum **90°C** ve ortalama **87°C** seviyelerinde tutmayı başarmıştır [11:21]. Oyun testlerinde (Cyberpunk) ise işlemci frekansları 5.5 GHz'in altına düşmeden **70-75°C** aralığında çalışmıştır, ki bu da yüksek frekanslı Intel işlemciler için mükemmel bir değerdir [13:15].
                         </p>
 
@@ -199,4 +213,54 @@
                             <h2><span style="color: #76ff03;">✅ Artıları</span></h2>
                             <ul id="detail-pros">
                                 <li>Rakiplerine göre açık ara daha iyi soğutma performansı.</li>
-                                <li>Dahili **LGA 1700 Contact Frame** (Ekstra maliyetten kurt
+                                <li>Dahili **LGA 1700 Contact Frame** (Ekstra maliyetten kurtulma).</li>
+                                <li>Sökülebilir ve sessiz **VRM Fanı**.</li>
+                                <li>Tüm bileşenler için tek kablo yönetimi.</li>
+                            </ul>
+                        </div>
+                        <div style="flex: 1;">
+                            <h2><span style="color: #e91e63;">❌ Eksileri</span></h2>
+                            <ul id="detail-cons">
+                                <li>38mm radyatör kalınlığı nedeniyle bazı kasalarda uyumluluk sorunu yaşanabilir.</li>
+                                <li>Montaj işlemi (özellikle Contact Frame) biraz karmaşık.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="conclusion-box">
+                        <h2>Sonuç: Piyasayı Sallayan Performans</h2>
+                        <p style="color: #ffffff !important;">
+                            Arctic Liquid Freezer III 360 A-RGB, sadece termal performansı ile değil, aynı zamanda Intel işlemciler için sunduğu Contact Frame çözümü ile de piyasada bir devrim yaratıyor. Fiyat-performans dengesinde zirveye oynayan bu soğutucu, yüksek güç tüketimine sahip modern işlemcileri sorunsuz ve sessiz bir şekilde soğutmak isteyenler için **şiddetle tavsiye edilir**.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="technical-specs-box">
+                    <h2>⚙️ Teknik Özellikler</h2>
+                    <ul class="specs-list">
+                        <li><span>Radyatör Boyutu:</span> <span>360 mm</span></li>
+                        <li><span>Radyatör Kalınlığı:</span> <span>38 mm</span></li>
+                        <li><span>Fan Boyutları:</span> <span>3 x 120 mm (P12 Max ARGB)</span></li>
+                        <li><span>Fan Hızı:</span> <span>200 - 2000 RPM</span></li>
+                        <li><span>Soket Desteği:</span> <span>Intel (1700, 1200, 115x), AMD (AM5, AM4)</span></li>
+                        <li><span>VRM Fanı:</span> <span>Var (40 mm)</span></li>
+                        <li><span>Contact Frame:</span> <span>Dahili (LGA 1700)</span></li>
+                        <li><span>RGB Senkronizasyon:</span> <span>Var (A-RGB)</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>
+            &copy; 2024 Teknogündem Donanım. Tüm Hakları Saklıdır.
+        </p>
+        <p>İncelemelerimize Göz Atın: <a href="incelemeler.html" style="color: #00bcd4; text-decoration: none;">İncelemeler</a></p>
+    </footer>
+
+</body>
+</html>

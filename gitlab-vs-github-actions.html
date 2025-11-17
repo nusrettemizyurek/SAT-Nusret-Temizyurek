@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI/CD Süreçlerinde GitLab vs GitHub Actions: Karşılaştırmalı Analiz ve Entegrasyon Rehberi - TeknoGündem</title>
+    
+    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+       <style>
+        /* TEMEL RENKLER VE GLOBAL STİLLER */
+        :root {
+            --color-primary: #00bcd4; /* Mavi-Turkuaz */
+            --color-secondary: #ff9800; /* Turuncu */
+            --color-background: #121212;
+            --color-text-light: #ddd;
+            --color-detail: #4caf50; /* Detaylar için Yeşil */
+            /* Yeni makale için özel renkler */
+            --color-gitlab: #FC6D26; /* GitLab Turuncu */
+            --color-github: #2C974B; /* GitHub Actions Yeşil */
+            --color-ci-cd: #03A9F4; /* CI/CD Mavi */
+        }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text-light);
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* HEADER & NAV STİLLERİ */
+        header {
+            background-color: #1e1e1e;
+            color: white;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li a {
+            color: var(--color-text-light);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--color-primary);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+        }
+        
+        /* ANA İÇERİK STİLLERİ */
+        .main-body-container {
+            max-width: 1000px;
+            margin: 40px auto; 
+            padding: 25px; 
+            background-color: rgba(255, 255, 255, 0.05); 
+            border-radius: 10px;
+        }
+        .tag {
+            position: static; padding: 5px 15px; background-color: var(--color-secondary); 
+            color: var(--color-background); border-radius: 4px; font-size: 0.9rem;
+            font-weight: bold;
+        }
+        .review-meta {
+            margin-top: 10px; display: flex; justify-content: center; gap: 20px; color: #aaa; font-size: 0.9rem;
+        }
+
+        /* TABLO STİLLERİ */
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            border: 1px solid #333;
+            text-align: left;
+            font-size: 0.95em;
+        }
+        .comparison-table th {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        /* Yeni tablo için renkler */
+        .gitlab-cell { background-color: rgba(252, 109, 38, 0.1); color: var(--color-gitlab); } 
+        .github-cell { background-color: rgba(44, 151, 75, 0.1); color: var(--color-github); } 
+        
+        /* DETAY BÖLÜM STİLLERİ */
+        .technical-section h3 {
+            color: var(--color-detail);
+            margin-top: 35px;
+            border-bottom: 1px dashed #333;
+            padding-bottom: 5px;
+        }
+        .detail-list {
+            list-style: none;
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+        .detail-list li {
+            border-left: 3px solid var(--color-secondary);
+            padding-left: 10px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        /* KOD BLOKLARI */
+        pre {
+            background-color: #2b2b2b;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.9em;
+            border: 1px solid #3a3a3a;
+        }
+
+        /* FOOTER STİLİ */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            color: #666;
+            background-color: #1e1e1e;
+        }
+    </style>
+</head>
+<body class="yazilim-sayfa">
+    <header>
+        <div class="logo">TeknoGündem</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="donanım.html">Donanım</a></li>
+                <li><a href="yazılım.html">Yazılım</a></li>
+                <li><a href="devops.html" class="active">DevOps</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container main-body-container">
+        
+        <section class="detail-header">
+            <h1 style="color: var(--color-ci-cd); font-size: 3rem;"><i class="fas fa-code-branch"></i> CI/CD Süreçlerinde GitLab vs GitHub Actions: Hangisi Sizin İçin İdeal?</h1>
+            <div class="review-meta">
+                <span>Yazar: Barış KAYA</span>
+                <span>Tarih: 15 Ağustos 2025</span>
+                <span class="tag">DevOps/CI-CD/SaaS</span>
+            </div>
+        </section>
+
+        <div class="article-content-wrapper" style="max-width: 900px; margin: 40px auto; padding: 20px;">
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; font-size: 1.1rem; color: #ccc;">
+                Sürekli Entegrasyon ve Sürekli Teslimat (CI/CD), modern yazılım geliştirmenin temelidir. Hata oranını düşürürken dağıtım hızını artırır. Bu alanda pazarın en büyük iki oyuncusu, yerleşik bir platform olan GitLab CI ve yeni nesil bulut tabanlı otomasyon aracı olan GitHub Actions'dır. Her ikisi de YAML tabanlı bildirimsel boru hatları (pipeline) sunsa da, felsefeleri ve temel güçleri farklıdır. Bu karşılaştırma, mimari seçiminizi yapmanıza yardımcı olacaktır.
+            </p>
+
+            <h2 style="color: var(--color-gitlab); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-boxes"></i> Faz 1: GitLab CI/CD: Tek Platform Yaklaşımı</h2>
+            
+            <div class="technical-section">
+                <h3>Adım 1.1: Özellikler ve Entegrasyon</h3>
+                <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
+                    GitLab, Kaynak Kod Yönetimi (SCM) ve CI/CD'yi tek bir arayüzde birleştiren "tek platform" felsefesiyle öne çıkar.
+                </p>
+                <ul class="detail-list">
+                    <li><i class="fas fa-compress-arrows-alt" style="color: var(--color-gitlab);"></i> **Monolitik Entegrasyon:** GitLab, kod, CI/CD, Güvenlik Taramaları (SAST/DAST), Güvenlik Politikaları, Konteyner Kayıt Defteri (Registry) ve Gözlemlenebilirlik araçlarını tek bir arayüze entegre eder. Bu, öğrenme ve yönetim eğrisini düşürür.</li>
+                    <li><i class="fas fa-server" style="color: var(--color-gitlab);"></i> **Self-Hosted (Kendi Barındırma) Gücü:** GitLab Runner'ları hem bulutta hem de şirket içi (on-premise) ortamlarda kolayca barındırılabilir. Şirket içi güvenlik veya özel donanım gereksinimleri olan kurumlar için kritik bir avantajdır.</li>
+                </ul>
+            </div>
+            
+            <div class="technical-section">
+                <h3>Adım 1.2: Temel Yapılandırma ve YAML</h3>
+                <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
+                    GitLab, boru hatlarını (pipeline) `stages` ve `jobs` konsepti üzerine kurar.
+                </p>
+                <p style="color: var(--color-gitlab); font-weight: bold; margin-bottom: 10px;">GitLab CI YAML (`.gitlab-ci.yml`) Örneği:</p>
+                <pre><code>stages:
+  - build
+  - test
+
+build_job:
+  stage: build
+  image: docker:20.10.16
+  script:
+    - docker build -t my-app:$CI_COMMIT_SHORT_SHA .
+    - docker push my-app:$CI_COMMIT_SHORT_SHA</code></pre>
+            </div>
+
+            <h2 style="color: var(--color-github); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-bolt"></i> Faz 2: GitHub Actions: Topluluk ve Esneklik</h2>
+            
+            <div class="technical-section">
+                <h3>Adım 2.1: Action'lar ve Pazar Yeri (Marketplace)</h3>
+                <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
+                    GitHub Actions, boru hatlarını `workflow` ve `jobs` konsepti üzerine kurar ve gücünü üçüncü taraf "Action"lardan alır.
+                </p>
+                <ul class="detail-list">
+                    <li><i class="fas fa-share-alt" style="color: var(--color-github);"></i> **Geniş Topluluk:** GitHub Marketplace, binlerce hazır "Action" sunar. Bu, AWS'ye dağıtımdan Slack bildirimi göndermeye kadar, hemen hemen her görevi, sıfırdan komut yazmadan yapabileceğiniz anlamına gelir.</li>
+                    <li><i class="fas fa-layer-group" style="color: var(--color-github);"></i> **Modüler Yapı:** Bir Action, tek bir işlevi yerine getiren (örneğin Node.js kurmak, Docker'a giriş yapmak) bağımsız, yeniden kullanılabilir birimdir. Bu, boru hatlarının esnek ve okunabilir olmasını sağlar.</li>
+                </ul>
+            </div>
+            
+            <div class="technical-section">
+                <h3>Adım 2.2: Temel Yapılandırma ve YAML</h3>
+                <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
+                    GitHub Actions, boru hatlarını `workflow` içinde tanımlanan `jobs` ve bu job'ların içindeki `steps` (Action'lar) ile yönetir.
+                </p>
+                <p style="color: var(--color-github); font-weight: bold; margin-bottom: 10px;">GitHub Actions YAML (`.github/workflows/main.yml`) Örneği:</p>
+                <pre><code>name: Build and Deploy
+
+on: [push] # Tetikleyici (Trigger)
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4 # Kodu klonla
+    - uses: actions/setup-node@v4 # Node.js Action'ı
+      with:
+        node-version: '18'
+    - run: npm install && npm test</code></pre>
+            </div>
+
+            <h2 style="color: var(--color-ci-cd); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-balance-scale"></i> Faz 3: Karşılaştırmalı Analiz ve Senaryo Seçimi</h2>
+            
+            <div class="technical-section">
+                <h3>Adım 3.1: Mimarideki ve İş Modelindeki Temel Farklar</h3>
+                <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
+                    İki platformun felsefi ve mimari farkları, seçim yaparken kilit rol oynar.
+                </p>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th style="background-color: var(--color-detail);">Özellik</th>
+                            <th style="background-color: var(--color-gitlab);">GitLab CI/CD</th>
+                            <th style="background-color: var(--color-github);">GitHub Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="gitlab-cell">**Felsefe**</td>
+                            <td class="gitlab-cell">Tek bir entegre DevOps Platformu.</td>
+                            <td class="github-cell">Kodu ve otomasyonu ayırarak esnek Action'lar sunan platform.</td>
+                        </tr>
+                        <tr>
+                            <td class="gitlab-cell">**Kendi Barındırma (Runner)**</td>
+                            <td class="gitlab-cell">Çok güçlü ve yaygın kullanılır. Her ortamda (Windows, Linux, Mac) Runner kurulabilir.</td>
+                            <td class="github-cell">Self-Hosted Runner mevcuttur, ancak GitLab kadar yaygın kurumsal kullanıma sahip değildir.</td>
+                        </tr>
+                        <tr>
+                            <td class="gitlab-cell">**Yeniden Kullanılabilirlik**</td>
+                            <td class="gitlab-cell">Dahil etme (`include`) mekanizması ile template'ler kullanılır.</td>
+                            <td class="github-cell">Topluluk Action'ları sayesinde dış bağımlılıklarla anında entegrasyon.</td>
+                        </tr>
+                        <tr>
+                            <td class="gitlab-cell">**Güvenlik**</td>
+                            <td class="gitlab-cell">Yerleşik (Built-in) SAST/DAST taramaları ve politikaları tek platformda.</td>
+                            <td class="github-cell">CodeQL gibi güçlü araçlar sunar, ancak ayrı Action'lar gerektirir.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="technical-section">
+                <h3>Adım 3.2: İdeal Kullanım Senaryoları</h3>
+                <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
+                    Hangi aracın ne zaman daha uygun olduğunu gösteren özet bir kılavuz:
+                </p>
+                <blockquote style="border-left: 5px solid var(--color-secondary); background-color: rgba(255, 152, 0, 0.05); padding: 15px; margin-top: 20px;">
+                    <i class="fas fa-check-circle" style="color: var(--color-gitlab);"></i> **GitLab'i Tercih Edin:** Eğer uygulamanız hassas ve kendi barındırdığınız (self-hosted) ortamlarda çalışmak zorundaysa, tek bir ekran üzerinden tam DevOps Yaşam Döngüsünü (koddan güvenliğe) yönetmek istiyorsanız veya Container Registry'ye yüksek seviyede entegrasyona ihtiyacınız varsa.
+                    <br><i class="fas fa-check-circle" style="color: var(--color-github);"></i> **GitHub Actions'ı Tercih Edin:** Eğer projeniz zaten GitHub'da barınıyorsa, açık kaynaklı ve topluluk tarafından sağlanan çok sayıda üçüncü taraf entegrasyonuna (Action) hızlıca ihtiyacınız varsa ve esnek, modüler boru hatları kurmak istiyorsanız.
+                </blockquote>
+            </div>
+
+            <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-graduation-cap"></i> Özet Rehberlik İlkesi</h2>
+            
+            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
+                Her iki araç da mükemmel CI/CD yetenekleri sunar ve temel olarak bildirimsel YAML ile çalışır. Aradaki fark, **felsefede ve entegrasyon derinliğindedir.** <span style="color: var(--color-gitlab);">GitLab</span>, **"her şeyi içeren tek bir platform"** çözümü olarak kurumsal ve Self-Hosted ortamlar için uygundur. <span style="color: var(--color-github);">GitHub Actions</span> ise **"topluluk gücü ve modüler Action'lar"** ile hız ve esneklik arayan ekipler için idealdir. Nihai karar, mevcut kod deposu konumunuz, güvenlik gereksinimleriniz ve entegrasyon tercihleriniz tarafından belirlenmelidir.
+            </p>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TeknoGündem. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+</body> 
+</html>

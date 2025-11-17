@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DDR6 RAM'ler İçin İlk Resmi Standartlar Açıklandı: Veri Hızında 17.600 MT/s Devrimi | Teknogündem</title>
+    
+    <style>
+        /* ==================================== */
+        /* NEWS DETAIL PAGE SPECIFIC STYLES (INLINE) */
+        /* ==================================== */
+
+        /* Genel Stil ve Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f4f7f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Stili */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 1.8em;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo-dot {
+            height: 10px;
+            width: 10px;
+            background-color: #00bcd4;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 2px;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        header nav ul li a:hover {
+            background-color: #00bcd4;
+            border-radius: 4px;
+        }
+
+        /* Haber Detay Kapsayıcı Stili */
+        .news-detail-container {
+            /* GENİŞLİK 900px'ten 1000px'e yükseltildi */
+            max-width: 1000px; 
+            margin: 40px auto; /* Ortalamayı korur */
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); 
+            transition: box-shadow 0.3s ease;
+        }
+
+        .news-detail-container:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Sayfa Başlığı (H1) Stili */
+        .news-detail-container h1 {
+            font-size: 2.4em;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            border-bottom: 3px solid #00bcd4;
+            padding-bottom: 10px;
+        }
+
+        /* Meta Bilgileri (Tarih, Yazar, Kategori) */
+        .detail-meta {
+            color: #7f8c8d;
+            font-size: 1em;
+            margin-bottom: 25px;
+            padding: 8px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Haber Görseli Stili */
+        .detail-image {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: cover; 
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* İçerik Alanı */
+        .detail-content {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #34495e;
+            text-align: justify; 
+        }
+
+        /* İçerikteki İkincil Başlıklar (H3) */
+        .detail-content h3 {
+            font-size: 1.6em;
+            font-weight: 600;
+            color: #e74c3c; 
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-left: 5px solid #e74c3c;
+            padding-left: 15px;
+        }
+
+        /* Paragraf Stili */
+        .detail-content p {
+            margin-bottom: 25px; 
+        }
+
+        /* Vurgulama Stili */
+        .detail-content strong {
+            color: #00bcd4;
+            font-weight: 700;
+        }
+        
+        /* Teknik Tablo Stili */
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background-color: #f8f8f8;
+        }
+        .specs-table th, .specs-table td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .specs-table th {
+            background-color: #2c3e50;
+            color: white;
+            font-weight: 600;
+            width: 35%;
+        }
+        .specs-table td {
+            font-weight: 500;
+            color: #34495e;
+        }
+        
+        /* Geri Dön Linki */
+        .news-detail-container a.read-more-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 15px;
+            font-weight: 600;
+            color: #ffffff;
+            background-color: #00bcd4;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .news-detail-container a.read-more-btn:hover {
+            background-color: #0097a7;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Küçük Ekranlar İçin Duyarlı Ayarlar (MOBİL UYUMLULUK KRİTİK DEĞİŞİKLİĞİ BURADA!) */
+        @media (max-width: 960px) {
+            .news-detail-container {
+                /* Max-width'i kaldırıyoruz, sadece kenar boşlukları kalıyor */
+                max-width: 100%; 
+                margin: 20px; /* Kenarlardan 20px boşluk bırakarak sayfayı kaplıyor */
+                padding: 15px;
+            }
+            .news-detail-container h1 {
+                font-size: 1.8em;
+            }
+            .detail-content {
+                font-size: 1em;
+            }
+            .specs-table {
+                font-size: 0.85em; /* Mobil için tablo fontunu biraz küçültelim */
+                display: block; /* Küçük ekranlarda tabloyu daha iyi yönetmek için */
+                overflow-x: auto; /* Yatay kaydırma çubuğu sağlar */
+            }
+            .specs-table tbody, .specs-table tr {
+                display: table; /* Eski tablo düzenini korumak için */
+                width: 100%; 
+            }
+        }
+        /* Ekstra Mobil İyileştirme */
+        @media (max-width: 600px) {
+             .specs-table thead {
+                display: none; /* Mobil cihazlarda tablo başlıklarını gizleyelim */
+            }
+            .specs-table tr {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 10px;
+                border: 1px solid #ddd;
+            }
+            .specs-table th {
+                background-color: transparent;
+                color: #2c3e50;
+                font-weight: bold;
+                width: 100%;
+            }
+            .specs-table td {
+                border: none;
+                width: 100%;
+                padding-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>TEKNOGÜNDEM<span class="logo-dot"></span></h1>
+            <nav>
+                <ul>
+                 
+
+
+                
+                    <li class="dropdown">
+                        <a href="index.html">Ana Sayfa</a>
+                    </li>
+                    <li><a href="donanım.html">Donanım </a></li>
+                    <li><a href="yazılım.html">Yazılım </a></li>
+                    <li><a href="hakkimizda.html">Hakkımızda </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="news-detail-container">
+            <h1 style="color: #00bcd4;">DDR6 RAM'ler İçin İlk Resmi Standartlar Açıklandı: Veri Hızında 17.600 MT/s Devrimi</h1>
+            <p class="detail-meta">BELLEK TEKNOLOJİSİ | 03 Kasım 2025 | Editör: Ece Tekin</p>
+            <img src="img/haber-ddr6.jpg" alt="Yeni Nesil DDR6 RAM Modülleri ve Mimari" class="detail-image">
+
+            <div class="detail-content">
+                <p>JEDEC (Elektronik Cihaz Mühendisliği Ortak Konseyi), uzun zamandır beklenen **DDR6 DRAM** bellek standartlarını resmen onaylayarak teknoloji dünyasına fırtına gibi bir haberle girdi. DDR5’in pazar penetrasyonu devam ederken, endüstri artık bir sonraki büyük sıçramaya hazırlanıyor. Bu yeni nesil bellek standardı, yalnızca hız artışı sunmakla kalmıyor, aynı zamanda veri merkezlerinden yapay zeka uygulamalarına kadar hemen her alanda performansı kökten değiştirecek mimari yenilikler getiriyor. JEDEC'in duyurusu, bu teknolojiye yatırım yapan Micron, Samsung ve SK Hynix gibi devlerin yol haritasını da belirlemiş oldu.</p>
+                
+                <p>Temel olarak, DDR6, mevcut DDR5'in sunduğu maksimum hızların çok ötesine geçmeyi hedefliyor. DDR5 modüllerinin yaygın olarak 4800 ila 8400 MT/s arasında çalıştığı düşünülürse, DDR6'nın hedeflediği başlangıç ve maksimum frekanslar, bellek bant genişliğinde **iki kattan fazla** bir artış anlamına geliyor. Bu devasa bant genişliği artışı, özellikle yeni nesil işlemcilerin ve yapay zeka hızlandırıcılarının veri açlığını gidermede kritik rol oynayacak.</p>
+                
+                <h3>Teknik Mimarideki Ana Değişimler ve Bant Genişliği Hedefleri</h3>
+                <p>DDR6'nın bu yüksek hızlara ulaşabilmesi, bellek modülünün mimarisinde yapılan kritik değişikliklerle mümkün oluyor. JEDEC, daha yüksek sinyal bütünlüğünü korumak ve paraziti en aza indirmek için sinyalizasyon protokollerinde önemli iyileştirmeler yaptı. Ayrıca, güç verimliliğini korumak amacıyla çalışma voltajının düşürülmesi bekleniyor; bu, mobil ve dizüstü bilgisayar pazarında pil ömrü için büyük bir avantaj sağlayacak.</p>
+                
+                <p>En dikkat çekici teknik yenilik, sinyal bütünlüğünü korumaya yönelik yeni **RDIMM (Registered DIMM)** ve **LRDIMM (Load-Reduced DIMM)** tasarımlarıdır. Bu tasarımlar, sunucu ve veri merkezi ortamlarında, tek bir kanala birden fazla bellek modülü takıldığında bile yüksek frekansların kararlılığını garanti ediyor. Tüketiciye yönelik UDIMM'ler (Unbuffered DIMM) ise daha basit, ancak yine de **12.000 MT/s** başlangıç hızlarını zorlayacak şekilde tasarlandı.</p>
+
+                <h3>DDR5 vs. DDR6: Temel Spesifikasyon Karşılaştırması</h3>
+                <table class="specs-table">
+                    <thead>
+                        <tr>
+                            <th>Özellik</th>
+                            <th>DDR5 (Üst Düzey)</th>
+                            <th>DDR6 (Tanıtım Standartı)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Hedef Frekans (Maksimum)</th>
+                            <td>~8400 MT/s</td>
+                            <td>**17.600 MT/s +**</td>
+                        </tr>
+                        <tr>
+                            <th>Veri Kanalı Başına Genişlik</th>
+                            <td>2 x 32-bit</td>
+                            <td>2 x 32-bit (Devam)</td>
+                        </tr>
+                        <tr>
+                            <th>Nominal Voltaj (Tahmini)</th>
+                            <td>1.1V</td>
+                            <td>**1.0V veya Altı**</td>
+                        </tr>
+                        <tr>
+                            <th>Bant Genişliği (Teorik)</th>
+                            <td>~67.2 GB/s</td>
+                            <td>**~140.8 GB/s**</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>DDR6'nın Pazar Etkisi ve Çıkış Takvimi</h3>
+                <p>Yeni standartların açıklanması, yonga üreticileri için yol haritasının netleşmesi anlamına geliyor. Bellek üreticileri artık bu spesifikasyonlara göre çip tasarımlarına ve testlerine hız verecek. Ancak bu teknolojinin son kullanıcıya ulaşması biraz zaman alacaktır. Sektör analistleri, DDR6'nın ilk örneklerinin **2026** sonunda test merkezlerinde görülmeye başlanacağını, ticari lansmanının ise **2027** yılında yeni nesil işlemci ve anakart platformlarıyla birlikte yapılacağını tahmin ediyor.</p>
+
+                <p>Özellikle yapay zeka ve makine öğrenimi alanlarında çalışan profesyoneller için bu gecikme kabul edilebilir. DDR6'nın getireceği düşük gecikme ve yüksek bant genişliği, büyük dil modellerinin (LLM) eğitim ve çıkarım süreçlerini hızlandırarak yapay zeka inovasyonuna doğrudan katkı sağlayacaktır. DDR6, basit bir hız artışı değil, teknolojik bir atlama olarak görülmeli ve bilgi işlem gücümüzün sınırlarını yeniden tanımlayacaktır.</p>
+            </div>
+            <p style="margin-top: 40px;"><a href="donanim-sayfasi.html" class="read-more-btn">← Tüm Donanım Haberlerine Geri Dön</a></p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Teknogündem. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+</body>
+</html>

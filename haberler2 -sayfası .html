@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TÜM DONANIM HABERLERİ | İşlemci, GPU, Anakart | Teknogündem</title>
+    <title>TÜM DONANIM HABERLERİ - Teknogündem</title>
     <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
     <style>
-        /* Genel Reset ve Temel Ayarlar */
+        /* [Buraya, bir önceki yanıtta yer alan TÜM CSS KODLARI EKLENMELİDİR] */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -22,7 +22,7 @@
 
         /* Header Stili */
         header {
-            background-color: #2c3e50; /* Koyu Mavi/Gri */
+            background-color: #2c3e50;
             color: white;
             padding: 15px 0;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -70,6 +70,41 @@
             background-color: #00bcd4;
             border-radius: 4px;
         }
+        
+        /* Dropdown Menü Stilleri (Eski İnceleme Sayfasından Eklendi) */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #2c3e50;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            padding: 5px 0;
+            border-radius: 4px;
+        }
+        
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #00bcd4;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        /* Dropdown Stilleri SONU */
+
 
         /* Main İçerik Kapsayıcısı */
         .main-body-container {
@@ -162,7 +197,7 @@
         .card-text-content p {
             color: #555;
             margin-bottom: 20px;
-            flex-grow: 1; /* Metnin kart içinde esnek büyümesini sağlar */
+            flex-grow: 1;
         }
 
         .meta-data {
@@ -215,7 +250,7 @@
 
         .category-tag-small {
             display: inline-block;
-            background-color: #f39c12; /* Turuncu/Sarı kategori etiketi */
+            background-color: #f39c12;
             color: white;
             padding: 4px 8px;
             border-radius: 3px;
@@ -245,7 +280,7 @@
         /* Diğer Haberler Izgarası (NEWS GRID) */
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2 sütunlu düzen */
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
         }
 
@@ -266,7 +301,7 @@
             width: 140px;
             height: 140px;
             object-fit: cover;
-            flex-shrink: 0; /* Görselin küçülmesini engeller */
+            flex-shrink: 0;
         }
 
         .card-content {
@@ -300,7 +335,7 @@
             color: #00bcd4;
             text-decoration: none;
             font-weight: 600;
-            align-self: flex-start; /* Linkin sola hizalanmasını sağlar */
+            align-self: flex-start;
         }
 
         .read-more:hover {
@@ -361,7 +396,7 @@
                 max-height: 250px;
             }
             .news-grid {
-                grid-template-columns: 1fr; /* Tek sütuna düşer */
+                grid-template-columns: 1fr;
             }
             .news-card-grid img {
                 width: 100px;
@@ -385,59 +420,9 @@
                 padding: 8px 0;
             }
             .sub-news-grid {
-                grid-template-columns: 1fr; /* Tek sütuna düşer */
+                grid-template-columns: 1fr;
             }
         }
-        
-        /* DROPDOWN MENU CSS BAŞLANGICI */
-
-        /* Açılır menü ana konteynerını göreceli yapar */
-        .dropdown {
-            position: relative; 
-        }
-
-        /* Açılır menü içeriği (Gizlenen kısım) */
-        .dropdown-content {
-            display: none; /* KRİTİK: Varsayılan olarak gizle */
-            position: absolute; /* Ana menü öğesine göre konumlandır */
-            background-color: #2c3e50; /* Header arka plan rengi */
-            min-width: 150px;
-            z-index: 1000; /* Diğer her şeyin üstünde görünmesini sağla */
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            padding: 0;
-            margin-top: 10px; /* Menüyü biraz aşağı kaydırabilir */
-        }
-
-        /* Açılır menüdeki linkler */
-        .dropdown-content a {
-            color: white !important; /* Önemli: Bağlantı rengini Header'daki renge sabitle */
-            padding: 10px 15px;
-            text-decoration: none;
-            display: block;
-            font-weight: 400; /* Normal yazı fontu */
-            transition: background-color 0.3s;
-        }
-
-        /* Açılır menü linklerinin hover efekti */
-        .dropdown-content a:hover {
-            background-color: #00bcd4; /* Vurgulama rengi */
-            border-radius: 0; /* Köşeleri düz tut */
-        }
-
-        /* KRİTİK: Ana menü öğesinin üzerine gelindiğinde açılır içeriği göster */
-        .dropdown:hover .dropdown-content {
-            display: block; 
-        }
-
-        /* Mobil görünümde menülerin alt alta gelmesi için ek ayar */
-        @media (max-width: 600px) {
-            .dropdown .dropdown-content {
-                position: static; /* Mobil menüde akışa dahil et */
-                width: 100%;
-                box-shadow: none;
-            }
-        }
-        /* DROPDOWN MENU CSS SONU */
     </style>
 </head>
 <body class="donanim-sayfasi">
@@ -447,26 +432,19 @@
             <h1>TEKNOGÜNDEM<span class="logo-dot"></span></h1>
             <nav>
                 <ul>
-                    <li>
-                        <a href="index.html">ANA SAYFA </a>
-                    </li>
-                 
-                    <li class="dropdown">
-                        <a href="#">DONANIM</a>
-                        <ul class="dropdown-content">
-                            <li><a href="donanim-incelemeler.html">İncelemeler</a></li>
-                            <li><a href="donanim-haberler.html">Haberler</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="yazılım.html">YAZILIM</a>
-                    </li>
+                    <li><a href="index.html">Ana Sayfa</a></li>
                     
-                      <li>
-                        <a href="hakkimizda.html">HAKKIMIZDA</a>
+                    <li class="dropdown">
+                        <a href="donanim.html">Donanım</a> 
+                        
+                        <div class="dropdown-content"> 
+                            <a href="haberler.html" class="dropdown-item">Haberler</a> 
+                            <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
+                        </div>
                     </li>
-                
+                    <li><a href="yazılım.html" class="active">Yazılım</a></li>
+                    
+                    <li><a href="hakkimizda.html">Hakkımızda</a></li>
                 </ul>
             </nav>
         </div>
@@ -476,22 +454,22 @@
         <div class="main-body-container">
             <div class="page-title-section">
                 <h1 class="page-title">GÜNCEL DONANIM HABERLERİ MERKEZİ</h1> 
-                <p class="subtitle">İşlemci, ekran kartı, anakart ve bellek teknolojilerine dair en güncel haberler ve gelişmeler.</p>
+                <p class="subtitle">İşlemci, ekran kartı, anakart ve bellek teknolojilerine dair en güncel haberler ve gelişmeler. (Sayfa 2)</p>
             </div>
 
             <section class="news-layout-system">
 
                 <div class="featured-news-area">
                     <article class="featured-card-large">
-                        <img src="img/haber-islemci-manşet-yeni.jpg" alt="Yeni Nesil İşlemciler" loading="lazy">
+                        <img src="img/haber-sogutma-manset.jpg" alt="Yeni sıvı soğutma sistemi" loading="lazy">
                         <div class="card-text-content">
-                            <span class="category-tag">İŞLEMCİ ÖZEL</span>
-                            <h2>Intel Core Ultra 9: Performans ve Verimlilikte Yeni Standart!</h2>
-                            <p>Yeni nesil mobil işlemciler, yapay zeka çekirdekleri (NPU) ile güçlendirildi ve pil ömründe çığır açıyor. İlk test sonuçları ve teknik detaylar...</p>
+                            <span class="category-tag">SOĞUTMA ÖZEL</span>
+                            <h2>540W TDP'ye Hazırız: Yeni Nesil Sıvı Soğutmalar Piyasada!</h2>
+                            <p>Artan güç tüketimine karşı dev üreticiler 420mm radyatörlü sistemleri ana akım haline getiriyor. İlk test sonuçları...</p>
                             <div class="meta-data">
-                                <span>12 Kasım 2025</span> | <span>Editör: Can Erdem</span>
+                                <span>01 Kasım 2025</span> | <span>Editör: Ece Tekin</span>
                             </div>
-                            <a href="intelcore- i9.html" class="read-more-btn">Haberi Detaylı Oku →</a>
+                            <a href="detay-sogutma-yeni.html" class="read-more-btn">Haberi Detaylı Oku →</a>
                         </div>
                     </article>
                 </div>
@@ -501,29 +479,29 @@
                 <div class="sub-news-grid">
                     
                     <article class="news-card-small">
-                        <img src="rtx 5070 haberler .jpg" alt="RTX 5070 Sızıntısı" loading="lazy">
+                        <img src="img/haber-amd-apu.jpg" alt="AMD APU" loading="lazy">
                         <div class="card-content-small">
-                            <span class="category-tag-small">GPU / NVIDIA</span>
-                            <h4>RTX 5070 Teknik Özellikleri Sızdırıldı: Bellek Miktarı Şaşırttı!</h4>
-                            <p>Orta-üst segmentin beklenen kartının VRAM miktarında beklentilerin üstünde artış...<a href="detay-rtx5070-sızıntı.html" class="read-more-link">Devamı</a></p>
+                            <span class="category-tag-small">İŞLEMCİ / APU</span>
+                            <h4>AMD Strix Point APU'lar Mobil Pazarı Alt Üst Edecek</h4>
+                            <p>Entegre GPU performansında rekor artış bekleniyor, mobil oyunculuk için yeni dönem...<a href="detay-strix-point.html" class="read-more-link">Devamı</a></p>
                         </div>
                     </article>
 
                     <article class="news-card-small">
-                        <img src="img/haber-anakart-z890.jpg" alt="Anakart Z890" loading="lazy">
+                        <img src="img/haber-ray-tracing-donanim.jpg" alt="Ray Tracing" loading="lazy">
                         <div class="card-content-small">
-                            <span class="category-tag-small">ANAKART / BELLEK</span>
-                            <h4>Z890 Anakartlarda DDR5 Hız Sınırları Yeniden Yazılıyor</h4>
-                            <p>Yeni yonga setinde bellek frekansları rekor kırdı: 9000 MHz stabil hale geldi...<a href="detay-z890-oc.html" class="read-more-link">Devamı</a></p>
+                            <span class="category-tag-small">GPU TEKNOLOJİSİ</span>
+                            <h4>Işın İzleme Donanımı Artık Giriş Seviyesine İndi</h4>
+                            <p>Yeni ekonomik kartlar bile kabul edilebilir RT performansı sunuyor...<a href="detay-rt-giriş.html" class="read-more-link">Devamı</a></p>
                         </div>
                     </article>
 
                     <article class="news-card-small">
-                        <img src="pcı gen5 .jpg" alt="Depolama Gen5" loading="lazy">
+                        <img src="img/haber-laptop-batarya.jpg" alt="Laptop Batarya" loading="lazy">
                         <div class="card-content-small">
-                            <span class="category-tag-small">DEPOLAMA</span>
-                            <h4>PCIe Gen5 SSD'ler Artık Ana Akım: Okuma Hızında Çift Hane</h4>
-                            <p>14.000 MB/s okuma hızlarına ulaşan yeni nesil SSD'ler piyasaya çıkıyor...<a href="detay-gen5-ssd.html" class="read-more-link">Devamı</a></p>
+                            <span class="category-tag-small">MOBİL TEKNOLOJİ</span>
+                            <h4>Yeni Pil Teknolojisi İle Dizüstü Bilgisayar Pil Ömrü %50 Arttı</h4>
+                            <p>Katı hal batarya hücreleri nihayet seri üretime geçiyor...<a href="detay-pil-teknolojisi.html" class="read-more-link">Devamı</a></p>
                         </div>
                     </article>
 
@@ -536,61 +514,37 @@
                 <div class="news-grid"> 
                     
                     <article class="news-card-grid">
-                        <img src="img/haber-amd-ryzen-api.jpg" alt="AMD Ryzen API" loading="lazy">
+                        <img src="img/haber-fiber-genel.jpg" alt="Fiber bağlantı" loading="lazy">
                         <div class="card-content">
                             <div>
-                                <h4>AMD, Ryzen İşlemciler İçin Yeni Geliştirici API'sini Duyurdu</h4>
-                                <p>Performans ve verimliliği artırmak için geliştiricilere özel araçlar sunulacak...</p>
-                                <span class="news-meta">08 Kasım 2025 | İŞLEMCİ | Yorum: 22</span>
+                                <h4>10 Gigabit Fiber Bağlantı Hızları Avrupa'da Yaygınlaşıyor</h4>
+                                <p>Tüketicilere yönelik fiber optik altyapıda önemli gelişmeler...</p>
+                                <span class="news-meta">30 Ekim 2025 | ALTYAPI | Yorum: 51</span>
                             </div>
-                            <a href="detay-ryzen-api.html" class="read-more">Haberi Oku →</a>
+                            <a href="detay-10g-fiber.html" class="read-more">Haberi Oku →</a>
                         </div>
                     </article>
                     
                     <article class="news-card-grid">
-                        <img src="img/haber-msi-anakart.jpg" alt="MSI Anakart" loading="lazy">
+                        <img src="img/haber-mini-pc.jpg" alt="Mini PC" loading="lazy">
                         <div class="card-content">
                             <div>
-                                <h4>MSI, Yeni Nesil Anakartlarında Soğutma Çözümlerini Yeniledi</h4>
-                                <p>VRM ve M.2 SSD soğutma bloklarında pasif çözümlere geçiş sinyali...</p>
-                                <span class="news-meta">07 Kasım 2025 | ANAKART | Yorum: 14</span>
+                                <h4>Mini PC Pazarı Rekor Kırıyor: Güçlü Bileşenler Küçük Kasalarda</h4>
+                                <p>NVIDIA MXM modülleri ve mobil işlemcilerle masaüstü gücü...</p>
+                                <span class="news-meta">28 Ekim 2025 | SİSTEM | Yorum: 9</span>
                             </div>
-                            <a href="detay-msi-sogutma.html" class="read-more">Haberi Oku →</a>
+                            <a href="detay-mini-pc.html" class="read-more">Haberi Oku →</a>
                         </div>
                     </article>
 
-                    <article class="news-card-grid">
-                        <img src="img/haber-ekran-karti-piyasa.jpg" alt="Ekran Kartı Piyasa" loading="lazy">
-                        <div class="card-content">
-                            <div>
-                                <h4>Global GPU Tedarik Zinciri Sorunları Tamamen Çözüldü</h4>
-                                <p>Tedarikteki iyileşme, perakende fiyatlarının düşmeye devam edeceğini gösteriyor...</p>
-                                <span class="news-meta">05 Kasım 2025 | PİYASA | Yorum: 38</span>
-                            </div>
-                            <a href="detay-tedarik-cozumu.html" class="read-more">Haberi Oku →</a>
-                        </div>
-                    </article>
-
-                    <article class="news-card-grid">
-                        <img src="ddr6 ram jpg.jpg" alt="DDR6 RAM" loading="lazy">
-                        <div class="card-content">
-                            <div>
-                                <h4>DDR6 RAM'ler İçin İlk Resmi Standartlar Açıklandı</h4>
-                                <p>JEDEC, masaüstü ve mobil sistemler için yeni bellek standartlarını onayladı...</p>
-                                <span class="news-meta">03 Kasım 2025 | BELLEK | Yorum: 19</span>
-                            </div>
-                            <a href="ddr6-ram.html" class="read-more">Haberi Oku →</a>
-                        </div>
-                    </article>
-                    
                 </div>
                 
                 <div class="pagination">
-                    <a href="#">&laquo; Önceki</a>
-                    <a href="haberler.html" class="active">1</a>
-                    <a href="haberler2 -sayfası .html">2</a>
+                    <a href="donanim-sayfasi.html">&laquo; Önceki</a>
+                    <a href="haberler.html">1</a>
+                    <a href="habeler2 -sayfası .html" class="active">2</a>
                     <a href="haberler3- sayfası.html">3</a>
-                    <a href="#">Sonraki &raquo;</a>
+                    <a href="donanim-sayfasi-3.html">Sonraki &raquo;</a>
                 </div>
 
             </section>

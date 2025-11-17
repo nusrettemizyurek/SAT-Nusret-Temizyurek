@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yazılım Dünyası - TeknoGündem</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
 </head>
 <body class="yazilim-sayfa">
     <header>
@@ -13,9 +13,19 @@
         <nav>
             <ul>
                 <li><a href="index.html">Ana Sayfa</a></li>
-                <li><a href="yazılım.html" class="active">Yazılım</a></li>
-                <li><a href="donanım.html">Donanım</a></li>
-                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            
+            <li class="dropdown">
+                
+                <a href="donanım.html">Donanım</a> 
+                
+                <div class="dropdown-content"> 
+                    <a href="haberler.html" class="dropdown-item">Haberler</a> 
+                    <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
+                </div>
+            </li>
+            <li><a href="yazılım.html" class="active">Yazılım</a></li>
+            
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
             </ul>
         </nav>
     </header>
@@ -82,12 +92,12 @@
                         <span class="tag tag-a11y">#A11y</span> <span class="tag tag-ux">#UX</span>
                     </article>
                     <article class="list-item article-card">
-                        <h4><a href="#">Svelte Nedir ve Neden Popüler?</a></h4>
+                        <h4><a href="svelte -nedir -ve  -neden- popüler.html">Svelte Nedir ve Neden Popüler?</a></h4>
                         <p>React/Vue gibi sanal DOM kullanmayan Svelte'in derleme aşamasındaki sihirli minimalizmi.</p>
                         <span class="tag tag-svelte">#Svelte</span> <span class="tag tag-framework">#Framework</span>
                     </article>
                     <article class="list-item article-card">
-                        <h4><a href="v">Modern Modül Paketleyiciler: Vite vs Webpack</a></h4>
+                        <h4><a href="vite-vs-webpack.html">Modern Modül Paketleyiciler: Vite vs Webpack</a></h4>
                         <p>Hızlı sıcak yeniden yükleme (HMR) ve geliştirme deneyiminde Vite'ın sunduğu yenilikler.</p>
                         <span class="tag tag-vite">#Vite</span> <span class="tag tag-build-tool">#BuildTool</span>
                     </article>
@@ -108,32 +118,32 @@
                 <h3><i class="fas fa-server icon-secondary"></i> Backend ve Veritabanı Yönetimi</h3>
                 <div class="article-list card-grid">
                     <article class="list-item article-card">
-                        <h4><a href="#">Node.js vs Python: API Geliştirme Hızı</a></h4>
+                        <h4><a href="node.js vs -phton .html">Node.js vs Python: API Geliştirme Hızı</a></h4>
                         <p>Asenkron programlama ve GIL farkları. Hangi dil, hangi mikroservisler için ideal?</p>
                         <span class="tag tag-nodejs">#NodeJS</span> <span class="tag tag-python">#Python</span>
                     </article>
                     <article class="list-item article-card">
-                        <h4><a href="#">SQL'den NoSQL'e Geçişin Maliyeti</a></h4>
+                        <h4><a href="sql-noqsql -geçis.html">SQL'den NoSQL'e Geçişin Maliyeti</a></h4>
                         <p>MongoDB, Cassandra ve Redis gibi NoSQL veritabanlarının ne zaman tercih edilmesi gerekir?</p>
                         <span class="tag tag-database">#Veritabanı</span> <span class="tag tag-nosql">#NoSQL</span>
                     </article>
                     <article class="list-item article-card">
-                        <h4><a href="#">RESTful API'lerden gRPC'ye Geçiş</a></h4>
+                        <h4><a href="rest'en-grpc-gecis.html">RESTful API'lerden gRPC'ye Geçiş</a></h4>
                         <p>Yüksek performanslı ve düşük gecikmeli servisler için gRPC kullanımı.</p>
                         <span class="tag tag-api">#API</span> <span class="tag tag-grpc">#gRPC</span>
                     </article>
                     <article class="list-item article-card">
-                        <h4><a href="#">Güvenli Şifreleme Algoritmaları</a></h4>
+                        <h4><a href="guvenlik-algoritmaları.html">Güvenli Şifreleme Algoritmaları</a></h4>
                         <p>Backend uygulamalarında kullanıcı şifrelerini güvenle saklama yöntemleri (Bcrypt vs Argon2).</p>
                         <span class="tag tag-security">#Güvenlik</span> <span class="tag tag-backend">#Auth</span>
                     </article>
                      <article class="list-item article-card">
-                        <h4><a href="#">Redis Cache Nasıl Yapılandırılır?</a></h4>
+                        <h4><a href="redius-cache .html">Redis Cache Nasıl Yapılandırılır?</a></h4>
                         <p>Veritabanı yükünü azaltmak için Redis'in temel caching stratejileri ve TTL ayarları.</p>
                         <span class="tag tag-redis">#Redis</span> <span class="tag tag-cache">#Caching</span>
                     </article>
                     <article class="list-item article-card">
-                        <h4><a href="#">İleri Düzey PostgreSQL İpuçları</a></h4>
+                        <h4><a href="ileri-duzey- postgreSQL- ipuçları.html">İleri Düzey PostgreSQL İpuçları</a></h4>
                         <p>Stored Procedures, Triggers ve JSONB kullanımıyla esnek veritabanı tasarlama.</p>
                         <span class="tag tag-postgres">#PostgreSQL</span> <span class="tag tag-sql">#SQL</span>
                     </article>
@@ -144,7 +154,7 @@
                 <h3><i class="fas fa-wrench icon-devops"></i> DevOps ve Otomasyon</h3>
                 <div class="article-list card-grid">
                     <article class="list-item article-card">
-                        <h4><a href="#">Kubernetes'e Giriş Rehberi</a></h4>
+                        <h4><a href="kubernetese-geçiş-rehberi.html">Kubernetes'e Giriş Rehberi</a></h4>
                         <p>Konteyner orkestrasyonunun temelleri ve YAML dosyalarıyla servis yönetimi.</p>
                         <span class="tag tag-kubernetes">#Kubernetes</span>
                     </article>
@@ -154,22 +164,22 @@
                         <span class="tag tag-serverless">#Serverless</span> <span class="tag tag-cloud">#Cloud</span>
                     </article>
                     <article class="list-item article-card">
-                        <h4><a href="#">CI/CD Süreçlerinde GitLab vs GitHub Actions</a></h4>
+                        <h4><a href="gitlab-vs-github-actions.html">CI/CD Süreçlerinde GitLab vs GitHub Actions</a></h4>
                         <p>Sürekli Entegrasyon ve Sürekli Dağıtım için en iyi otomasyon araçlarının karşılaştırması.</p>
                         <span class="tag tag-ci-cd">#CI/CD</span> <span class="tag tag-git">#GitLab</span>
                     </article>
                     <article class="list-item article-card">
-                        <h4><a href="#">Altyapıyı Kod Olarak Yönetme (IaC)</a></h4>
+                        <h4><a href="altyapı-kod -olarak- yürütme.html">Altyapıyı Kod Olarak Yönetme (IaC)</a></h4>
                         <p>Terraform ile AWS, Azure ve GCP üzerinde altyapı oluşturma pratikleri.</p>
                         <span class="tag tag-iac">#IaC</span> <span class="tag tag-terraform">#Terraform</span>
                     </article>
                      <article class="list-item article-card">
-                        <h4><a href="#">Prometheus ve Grafana ile İzleme</a></h4>
+                        <h4><a href="prometheus -ve -grafana- ile -İzleme.html">Prometheus ve Grafana ile İzleme</a></h4>
                         <p>Sistem metriklerini toplama, görselleştirme ve alarm sistemleri kurma rehberi.</p>
                         <span class="tag tag-monitoring">#Monitoring</span> <span class="tag tag-grafana">#Metrics</span>
                     </article>
                     <article class="list-item article-card">
-                        <h4><a href="#">Docker İle Geliştirme Ortamı</a></h4>
+                        <h4><a href="docker-geliştirme-ortamı.html">Docker İle Geliştirme Ortamı</a></h4>
                         <p>Farklı projeler için izole ve tutarlı geliştirme ortamlarını Docker ile yönetme.</p>
                         <span class="tag tag-docker">#Docker</span> <span class="tag tag-container">#Container</span>
                     </article>
