@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kubernetes'e Giriş Rehberi: Temeller, Mimari ve Konteyner Orkestrasyonu - TeknoGündem</title>
     <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         /* TEMEL RENKLER VE GLOBAL STİLLER */
@@ -63,6 +63,50 @@
             border-radius: 5px;
         }
         
+        /* EKLENDİ: DROPDOWN MENÜ STİLLERİ (Açılır menünün çalışması için) */
+        .dropdown {
+            position: relative;
+            display: inline-block; 
+            padding: 0 5px; 
+        }
+        
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            background-color: #1e1e1e; 
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+            z-index: 10; 
+            padding: 0;
+            top: 100%; 
+            margin-top: 0; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            border-radius: 5px;
+        }
+        
+        .dropdown-content a {
+            color: var(--color-text-light);
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-primary);
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block; 
+        }
+
+        /* EKLENDİ: İkonlar için metin ayrımı (Görsel tutarlılık için) */
+        h1 i, h2 i, h3 i, .detail-list i, blockquote i {
+            margin-right: 10px;
+        }
+
         /* ANA İÇERİK STİLLERİ */
         .main-body-container {
             max-width: 1000px;
@@ -144,7 +188,13 @@
         <nav>
             <ul>
                 <li><a href="index.html">Ana Sayfa</a></li>
-                <li><a href="donanım.html">Donanım</a></li>
+                <li class="dropdown">
+                    <a href="donanım.html">Donanım</a>
+                    <div class="dropdown-content"> 
+                        <a href="haberler.html" class="dropdown-item">Haberler</a> 
+                        <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
+                    </div>
+                </li>
                 <li><a href="yazılım.html">Yazılım</a></li>
                 <li><a href="hakkimizda.html" class="active">DevOps</a></li>
             </ul>
@@ -157,7 +207,7 @@
             <h1 style="color: var(--color-primary); font-size: 3rem;"><i class="fas fa-ship"></i> Kubernetes'e Giriş Rehberi: Konteyner Orkestrasyonunun Kalbi (K8s)</h1>
             <div class="review-meta">
                 <span>Yazar: Deniz AKIN</span>
-                <span>Tarih: 22 Haziran 2026</span>
+                <span>Tarih: 22 Haziran 2024</span>
                 <span class="tag">DevOps/Konteynerizasyon</span>
             </div>
         </section>
@@ -165,7 +215,7 @@
         <div class="article-content-wrapper" style="max-width: 900px; margin: 40px auto; padding: 20px;">
             
             <p style="margin-bottom: 25px; line-height: 1.8; font-size: 1.1rem; color: #ccc;">
-                Mikroservis mimarisinin ve bulut bilişimin yükselişiyle birlikte, konteyner yönetimi karmaşık bir hal aldı. Tek bir konteyneri çalıştırmak kolayken, yüzlerce konteyneri ölçeklemek, izlemek ve ağını yönetmek için **Konteyner Orkestrasyonu** araçlarına ihtiyaç duyulur. Google tarafından geliştirilen Kubernetes (K8s), bu alandaki tartışmasız endüstri standardıdır. Bu rehber, K8s'in temel yapı taşlarını ve DevOps dünyasındaki rolünü açıklamaktadır.
+                Mikroservis mimarisinin ve bulut bilişimin yükselişiyle birlikte, konteyner yönetimi karmaşık bir hal aldı. Tek bir konteyneri çalıştırmak kolayken, yüzlerce konteyneri ölçeklemek, izlemek ve ağını yönetmek için Konteyner Orkestrasyonu araçlarına ihtiyaç duyulur. Google tarafından geliştirilen Kubernetes (K8s), bu alandaki tartışmasız endüstri standardıdır. Bu rehber, K8s'in temel yapı taşlarını ve DevOps dünyasındaki rolünü açıklamaktadır.
             </p>
 
             <h2 style="color: var(--color-k8s-main); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-puzzle-piece"></i> Faz 1: Kubernetes Temel Kavramları ve Objeleri</h2>
@@ -176,9 +226,10 @@
                     Kubernetes, birbirine bağlı düğümlerden (Nodes) oluşan bir küme (Cluster) üzerinde çalışır. Bu küme, iki ana bileşene ayrılır.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-brain" style="color: var(--color-secondary);"></i> **Kontrol Düzlemi (Control Plane / Master Node):** Kümenin beynidir. Karar verme ve kümenin durumunu korumaktan sorumludur. Bileşenleri: API Server, Scheduler, Controller Manager, **etcd** (küme durumunu tutan key-value deposu).</li>
-                    <li><i class="fas fa-users-cog" style="color: var(--color-secondary);"></i> **Çalışan Düğümler (Worker Nodes):** Konteynerleri çalıştıran makinelerdir. Bileşenleri: **Kubelet** (Kontrol düzleminden gelen komutları yürütür) ve **Kube-proxy** (Ağ kurallarını ve servis yönlendirmesini yönetir).</li>
+                    <li><i class="fas fa-brain" style="color: var(--color-secondary);"></i> Kontrol Düzlemi (Control Plane / Master Node): Kümenin beynidir. Karar verme ve kümenin durumunu korumaktan sorumludur. Bileşenleri: API Server, Scheduler, Controller Manager, etcd (küme durumunu tutan key-value deposu).</li>
+                    <li><i class="fas fa-users-cog" style="color: var(--color-secondary);"></i> Çalışan Düğümler (Worker Nodes): Konteynerleri çalıştıran makinelerdir. Bileşenleri: Kubelet (Kontrol düzleminden gelen komutları yürütür) ve Kube-proxy (Ağ kurallarını ve servis yönlendirmesini yönetir).</li>
                 </ul>
+                
             </div>
             
             <div class="technical-section">
@@ -196,22 +247,23 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="k8s-config-cell">**Pod**</td>
+                            <td class="k8s-config-cell">Pod</td>
                             <td class="k8s-config-cell">K8s'in en küçük birimi. Bir veya daha fazla konteyneri (ortak ağ ve depolama ile) barındırır.</td>
                             <td class="k8s-config-cell">Konteynerler arası iletişimi ve yaşam döngüsünü yönetir.</td>
                         </tr>
                         <tr>
-                            <td class="k8s-config-cell">**Deployment**</td>
+                            <td class="k8s-config-cell">Deployment</td>
                             <td class="k8s-config-cell">Pod'ların bildirimsel (declarative) olarak istenen sayıda çalışmasını sağlar (Replication).</td>
                             <td class="k8s-config-cell">Uygulama sürümlerini yönetir ve sıfır kesintili güncelleme (Rolling Update) sağlar.</td>
                         </tr>
                         <tr>
-                            <td class="k8s-config-cell">**Service**</td>
+                            <td class="k8s-config-cell">Service</td>
                             <td class="k8s-config-cell">Bir grup Pod'a kararlı bir ağ adresi (IP ve DNS) atar.</td>
                             <td class="k8s-config-cell">Load Balancing ve Pod'lar arası erişimi kolaylaştırır.</td>
                         </tr>
                     </tbody>
                 </table>
+                
             </div>
 
             <h2 style="color: var(--color-devops); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-code-branch"></i> Faz 2: Bildirimsel Yönetim ve DevOps Entegrasyonu</h2>
@@ -219,7 +271,7 @@
             <div class="technical-section">
                 <h3>Adım 2.1: Bildirimsel API (Declarative API) ve YAML</h3>
                 <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
-                    Kubernetes'in gücü, kümenin **istenilen durumu (desired state)** tanımlayan YAML dosyalarıyla çalışmasından gelir. Bu, altyapıyı kod olarak (Infrastructure as Code - IaC) yönetmenin temelidir.
+                    Kubernetes'in gücü, kümenin istenilen durumu (desired state) tanımlayan YAML dosyalarıyla çalışmasından gelir. Bu, altyapıyı kod olarak (Infrastructure as Code - IaC) yönetmenin temelidir.
                 </p>
                 <p style="color: var(--color-devops); font-weight: bold; margin-bottom: 10px;">Temel Deployment YAML Örneği:</p>
                 <pre><code>apiVersion: apps/v1
@@ -249,9 +301,9 @@ spec:
                     Kubernetes, kontrol düzlemi aracılığıyla kümenin mevcut durumunu sürekli olarak istenen durumla karşılaştırır. Bu, otomatik onarım ve kararlılık sağlar.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-heartbeat" style="color: var(--color-detail);"></i> **Liveness Probes (Canlılık Kontrolü):** Bir konteynerin çalışır durumda olup olmadığını kontrol eder. Başarısız olursa Pod yeniden başlatılır.</li>
-                    <li><i class="fas fa-check" style="color: var(--color-detail);"></i> **Readiness Probes (Hazırlık Kontrolü):** Bir konteynerin dış trafiği kabul etmeye hazır olup olmadığını kontrol eder. Pod hazır olana kadar Service trafiği ona yönlendirmez.</li>
-                    <li><i class="fas fa-skull-crossbones" style="color: var(--color-detail);"></i> **Yüksek Erişilebilirlik (HA):** Bir düğüm çökerse, Scheduler bu düğümdeki Pod'ları otomatik olarak sağlıklı düğümlere taşır.</li>
+                    <li><i class="fas fa-heartbeat" style="color: var(--color-detail);"></i> Liveness Probes (Canlılık Kontrolü): Bir konteynerin çalışır durumda olup olmadığını kontrol eder. Başarısız olursa Pod yeniden başlatılır.</li>
+                    <li><i class="fas fa-check" style="color: var(--color-detail);"></i> Readiness Probes (Hazırlık Kontrolü): Bir konteynerin dış trafiği kabul etmeye hazır olup olmadığını kontrol eder. Pod hazır olana kadar Service trafiği ona yönlendirmez.</li>
+                    <li><i class="fas fa-skull-crossbones" style="color: var(--color-detail);"></i> Yüksek Erişilebilirlik (HA): Bir düğüm çökerse, Scheduler bu düğümdeki Pod'ları otomatik olarak sağlıklı düğümlere taşır.</li>
                 </ul>
             </div>
 
@@ -263,9 +315,10 @@ spec:
                     Uygulamaların dış dünyadan (kullanıcılardan) erişilebilir olması için `Service` objeleri tek başına yeterli değildir.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-ethernet" style="color: var(--color-k8s-main);"></i> **NodePort ve LoadBalancer:** `Service` türleri. NodePort, her düğümde sabit bir port açar; LoadBalancer ise bulut sağlayıcınızdan bir harici yük dengeleyici (ELB, ALB) oluşturur.</li>
-                    <li><i class="fas fa-door-open" style="color: var(--color-k8s-main);"></i> **Ingress:** HTTP/HTTPS trafiği için katman-7 (Layer-7) yönlendirme kurallarını tanımlar. Tek bir IP adresi üzerinden birden fazla uygulamayı host etmeye yarar ve trafik yönetimi için kritik öneme sahiptir.</li>
+                    <li><i class="fas fa-ethernet" style="color: var(--color-k8s-main);"></i> NodePort ve LoadBalancer: `Service` türleri. NodePort, her düğümde sabit bir port açar; LoadBalancer ise bulut sağlayıcınızdan bir harici yük dengeleyici (ELB, ALB) oluşturur.</li>
+                    <li><i class="fas fa-door-open" style="color: var(--color-k8s-main);"></i> Ingress: HTTP/HTTPS trafiği için katman-7 (Layer-7) yönlendirme kurallarını tanımlar. Tek bir IP adresi üzerinden birden fazla uygulamayı host etmeye yarar ve trafik yönetimi için kritik öneme sahiptir.</li>
                 </ul>
+                
             </div>
 
             <div class="technical-section">
@@ -273,16 +326,17 @@ spec:
                 <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
                     Kubernetes, `Deployment` ve `Service` objeleriyle entegre çalışan karmaşık dağıtım stratejilerini kolayca destekler.
                 </p>
+                
                 <blockquote style="border-left: 5px solid var(--color-secondary); background-color: rgba(255, 152, 0, 0.05); padding: 15px; margin-top: 20px;">
-                    <i class="fas fa-traffic-light" style="color: var(--color-secondary);"></i> **Canary Dağıtımı:** Yeni versiyonu (V2) trafiğin küçük bir yüzdesine (%5-10) yönlendirerek test etmek. Hata yoksa trafik kademeli olarak V2'ye kaydırılır.
-                    <br> <i class="fas fa-tint" style="color: var(--color-secondary);"></i> **Blue/Green (Mavi/Yeşil):** İki tam ve özdeş ortamı (V1 - Mavi, V2 - Yeşil) paralel çalıştırıp, trafik anahtarını (Service veya Ingress) anında V1'den V2'ye çevirmek. Hızlı geri alma (rollback) sağlar.
+                    <i class="fas fa-traffic-light" style="color: var(--color-secondary);"></i> Canary Dağıtımı: Yeni versiyonu (V2) trafiğin küçük bir yüzdesine (%5-10) yönlendirerek test etmek. Hata yoksa trafik kademeli olarak V2'ye kaydırılır.
+                    <br> <i class="fas fa-tint" style="color: var(--color-secondary);"></i> Blue/Green (Mavi/Yeşil):İki tam ve özdeş ortamı (V1 - Mavi, V2 - Yeşil) paralel çalıştırıp, trafik anahtarını (Service veya Ingress) anında V1'den V2'ye çevirmek. Hızlı geri alma (rollback) sağlar.
                 </blockquote>
             </div>
 
             <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-graduation-cap"></i> Özet Rehberlik İlkesi</h2>
             
             <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
-                Kubernetes, modern uygulama dağıtımının belkemiğidir. Başarılı bir K8s uygulaması için, sadece temel **Pod** ve **Deployment** kavramlarını öğrenmek yetmez; aynı zamanda **Control Plane** bileşenlerini anlamak, altyapıyı **Bildirimsel YAML** ile yönetmek, **Liveness/Readiness Probes** kullanarak kendi kendini iyileştirmeyi etkinleştirmek ve **Ingress** ile dış dünya erişimini güvenli ve verimli hale getirmek gerekir. K8s'e geçiş, DevOps'ta otomasyon ve kararlılık yolunda atılan en büyük adımdır.
+                Kubernetes, modern uygulama dağıtımının belkemiğidir. Başarılı bir K8s uygulaması için, sadece temel Pod ve Deployment kavramlarını öğrenmek yetmez; aynı zamanda Control Planebileşenlerini anlamak, altyapıyı Bildirimsel YAML ile yönetmek, Liveness/Readiness Probes kullanarak kendi kendini iyileştirmeyi etkinleştirmek ve Ingress ile dış dünya erişimini güvenli ve verimli hale getirmek gerekir. K8s'e geçiş, DevOps'ta otomasyon ve kararlılık yolunda atılan en büyük adımdır.
             </p>
 
         </div>

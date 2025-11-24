@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redis Cache Nasıl Yapılandırılır? Bellek Yönetimi, Kalıcılık ve Kümeleme Rehberi - TeknoGündem</title>
-      <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     
     <style>
         /* TEMEL RENKLER VE GLOBAL STİLLER */
@@ -61,6 +62,49 @@
             color: var(--color-primary);
             background-color: rgba(255, 255, 255, 0.05);
             border-radius: 5px;
+        }
+        
+        /* EKLENDİ: DROPDOWN MENÜ STİLLERİ (Açılır menünün çalışması için) */
+        .dropdown {
+            position: relative;
+            display: inline-block; 
+            padding: 0 5px; /* Ana menü öğelerinin etrafında biraz boşluk */
+        }
+        
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            background-color: #1e1e1e; 
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+            z-index: 10; 
+            padding: 0;
+            top: 100%; /* Tam alta yerleştir */
+            margin-top: 0; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            border-radius: 5px;
+        }
+        
+        .dropdown-content a {
+            color: var(--color-text-light);
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-primary);
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block; 
+        }
+        /* İkonlar için metin ayrımı */
+        h1 i, h2 i, h3 i, .detail-list i, blockquote i {
+            margin-right: 10px;
         }
         
         /* ANA İÇERİK STİLLERİ */
@@ -144,9 +188,20 @@
         <nav>
             <ul>
                 <li><a href="index.html">Ana Sayfa</a></li>
-                <li><a href="donanım.html">Donanım</a></li>
+            
+                <li class="dropdown">
+                    
+                    <a href="donanım.html">Donanım</a> 
+                    
+                    <div class="dropdown-content"> 
+                        <a href="haberler.html" class="dropdown-item">Haberler</a> 
+                        <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
+                    </div>
+                </li>
                 <li><a href="yazılım.html" class="active">Yazılım</a></li>
+                
                 <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            
             </ul>
         </nav>
     </header>
@@ -198,17 +253,17 @@ maxmemory 4gb
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="redis-config-cell">**allkeys-lru**</td>
+                            <td class="redis-config-cell">allkeys-lru</td>
                             <td class="redis-config-cell">En uzun süredir kullanılmayan anahtarları siler. (Least Recently Used)</td>
                             <td class="redis-config-cell">Genel Amaçlı Önbellek. En popüler ve önerilen seçenektir.</td>
                         </tr>
                         <tr>
-                            <td class="redis-config-cell">**volatile-ttl**</td>
+                            <td class="redis-config-cell">volatile-ttl</td>
                             <td class="redis-config-cell">Sadece TTL (Time To Live) ayarlanmış anahtarlar arasından ömrü en kısa olanı siler.</td>
                             <td class="redis-config-cell">Farklı TTL'lere sahip anahtarların yönetimi.</td>
                         </tr>
                         <tr>
-                            <td class="redis-config-cell">**noeviction**</td>
+                            <td class="redis-config-cell">noeviction</td>
                             <td class="redis-config-cell">Hiçbir anahtarı silmez. Bellek dolduğunda yeni yazma işlemlerine izin vermez.</td>
                             <td class="redis-config-cell">Kritik ve kalıcılığı mutlak gerekli olan veriler için.</td>
                         </tr>
@@ -224,8 +279,8 @@ maxmemory 4gb
                     Redis, varsayılan olarak in-memory olsa da, sunucu çökmesi durumunda veriyi kaybetmemek için disk üzerinde kalıcılık seçenekleri sunar. Bu, önbelleğin kalıcı (daha güvenli) olmasını sağlar.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-file-archive" style="color: var(--color-detail);"></i> **RDB (Redis Database Backup):** Belirli aralıklarla belleğin anlık görüntüsünü (snapshot) alır. Kurtarma hızlıdır, ancak son snapshot'tan sonraki veriler kaybolabilir.</li>
-                    <li><i class="fas fa-list-alt" style="color: var(--color-detail);"></i> **AOF (Append Only File):** Redis'e gelen her yazma komutunu bir log dosyasına kaydeder. RDB'ye göre daha yavaş kurtarılır, ancak veri kaybı riski daha düşüktür.</li>
+                    <li><i class="fas fa-file-archive" style="color: var(--color-detail);"></i> RDB (Redis Database Backup): Belirli aralıklarla belleğin anlık görüntüsünü (snapshot) alır. Kurtarma hızlıdır, ancak son snapshot'tan sonraki veriler kaybolabilir.</li>
+                    <li><i class="fas fa-list-alt" style="color: var(--color-detail);"></i> **AOF (Append Only File):Redis'e gelen her yazma komutunu bir log dosyasına kaydeder. RDB'ye göre daha yavaş kurtarılır, ancak veri kaybı riski daha düşüktür.</li>
                 </ul>
             </div>
             
@@ -254,8 +309,8 @@ appendfsync everysec </code></pre>
                     Tek bir Redis örneği, tüm sistemi tek hata noktası (Single Point of Failure - SPOF) yapar. Yüksek erişilebilirlik (HA) için replikasyon şarttır.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-clone" style="color: var(--color-secondary);"></i> **Replikasyon (Master-Replica):** Veriyi ana (master) sunucudan bir veya birden fazla kopya (replica) sunucuya asenkron olarak aktarır. Okuma yükünü replikalara dağıtarak performansı artırır.</li>
-                    <li><i class="fas fa-eye" style="color: var(--color-secondary);"></i> **Redis Sentinel:** HA'nın beynidir. Master sunucu çöktüğünde otomatik hata toleransı (failover) sağlar. Replikalardan birini otomatik olarak yeni Master yapar.</li>
+                    <li><i class="fas fa-clone" style="color: var(--color-secondary);"></i> Replikasyon (Master-Replica): Veriyi ana (master) sunucudan bir veya birden fazla kopya (replica) sunucuya asenkron olarak aktarır. Okuma yükünü replikalara dağıtarak performansı artırır.</li>
+                    <li><i class="fas fa-eye" style="color: var(--color-secondary);"></i> Redis Sentinel:HA'nın beynidir. Master sunucu çöktüğünde otomatik hata toleransı (failover) sağlar. Replikalardan birini otomatik olarak yeni Master yapar.</li>
                 </ul>
             </div>
 
@@ -265,15 +320,15 @@ appendfsync everysec </code></pre>
                     Veriniz tek bir sunucunun belleğini (RAM) aştığında veya yazma (write) yükünü dağıtmak istediğinizde Kümeleme (Clustering) kullanılır.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-splotch" style="color: var(--color-detail);"></i> **Hash Slotlama:** Redis Cluster, veriyi 16384 adet hash slotuna böler ve bu slotları kümedeki nodelar arasında dağıtır. Bu, veri parçalama (sharding) sağlar.</li>
-                    <li><i class="fas fa-level-up-alt" style="color: var(--color-detail);"></i> **Ölçeklenebilirlik:** Kümeleme ile hem bellek kapasitesini (yatay ölçekleme) hem de komut işleme kapasitesini nodelar arasında bölerek artırabilirsiniz.</li>
+                    <li><i class="fas fa-splotch" style="color: var(--color-detail);"></i>Hash Slotlama:Redis Cluster, veriyi 16384 adet hash slotuna böler ve bu slotları kümedeki nodelar arasında dağıtır. Bu, veri parçalama (sharding) sağlar.</li>
+                    <li><i class="fas fa-level-up-alt" style="color: var(--color-detail);"></i>Ölçeklenebilirlik:Kümeleme ile hem bellek kapasitesini (yatay ölçekleme) hem de komut işleme kapasitesini nodelar arasında bölerek artırabilirsiniz.</li>
                 </ul>
             </div>
 
             <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-graduation-cap"></i> Özet Rehberlik İlkesi</h2>
             
             <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
-                Redis'i optimize etmek, uygulamanızın performansını radikal bir şekilde artırır. Başarılı bir Redis yapılandırması, <span style="color: var(--color-redis-main);">`maxmemory` sınırının belirlenmesi</span> ve **`allkeys-lru`** gibi etkin bir silme politikasının uygulanmasıyla başlar. Yüksek erişilebilirlik için **Sentinel** ile replikasyon, büyük veri kümeleri için ise **Cluster** mimarisi zorunluluktur. Her zaman, verinin kritiklik seviyesine göre kalıcılık (RDB/AOF) ayarınızı yapmayı unutmayın.
+                Redis'i optimize etmek, uygulamanızın performansını radikal bir şekilde artırır. Başarılı bir Redis yapılandırması, <span style="color: var(--color-redis-main);">`maxmemory` sınırının belirlenmesi</span> ve `allkeys-lru` gibi etkin bir silme politikasının uygulanmasıyla başlar. Yüksek erişilebilirlik için Sentinel ile replikasyon, büyük veri kümeleri için ise Cluster mimarisi zorunluluktur. Her zaman, verinin kritiklik seviyesine göre kalıcılık (RDB/AOF) ayarınızı yapmayı unutmayın.
             </p>
 
         </div>
@@ -281,7 +336,7 @@ appendfsync everysec </code></pre>
     </main>
 
     <footer>
-        <p>&copy; 2026 TeknoGündem. Tüm Hakları Saklıdır.</p>
+        <p>&copy; 2025 TeknoGündem. Tüm Hakları Saklıdır.</p>
     </footer>
 
 </body> 

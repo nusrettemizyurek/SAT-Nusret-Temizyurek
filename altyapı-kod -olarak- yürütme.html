@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Altyapıyı Kod Olarak Yönetme (IaC) Rehberi: Terraform, Ansible ve Bildirimsel Yaklaşım - TeknoGündem</title>
     <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         /* TEMEL RENKLER VE GLOBAL STİLLER */
@@ -50,6 +51,11 @@
             padding: 0;
             display: flex;
         }
+        /* Dropdown için LI'lara Relative konumlandırma */
+        nav ul li {
+            position: relative; 
+        }
+
         nav ul li a {
             color: var(--color-text-light);
             text-decoration: none;
@@ -63,6 +69,61 @@
             border-radius: 5px;
         }
         
+        /* DROPDOWN MENÜ STİLLERİ */
+        .dropdown {
+            padding: 0; 
+        }
+        
+        /* Dropdown butonu yanındaki ok ikonu için */
+        .dropbtn i {
+            margin-left: 5px;
+        }
+        
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            background-color: #1e1e1e; 
+            min-width: 220px; 
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+            z-index: 10; 
+            padding: 0;
+            top: 100%; 
+            margin-top: 0; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            border-radius: 5px;
+            overflow: hidden; 
+            border: 1px solid #333;
+        }
+        
+        .dropdown-content a {
+            color: var(--color-text-light);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left; 
+            border-bottom: 1px solid #333;
+        }
+        
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(0, 188, 212, 0.1); 
+            color: var(--color-primary);
+            border-radius: 0; 
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block; 
+        }
+
+        /* İkonlar için metin ayrımı (Görsel tutarlılık için) */
+        h1 i, h2 i, h3 i, .detail-list i, blockquote i {
+            margin-right: 10px;
+        }
+
         /* ANA İÇERİK STİLLERİ */
         .main-body-container {
             max-width: 1000px;
@@ -144,7 +205,15 @@
         <nav>
             <ul>
                 <li><a href="index.html">Ana Sayfa</a></li>
-                 <li><a href="donanım.html">Donanım</a></li>
+                
+                <li class="dropdown">
+                    <a href="donanım.html" class="dropbtn">Donanım</a>
+                    <div class="dropdown-content">
+                        <a href="haberler.html">Haberler</a>
+                        <a href="incelemeler.html">İncelemeler</a>
+                    </div>
+                </li>
+                
                 <li><a href="yazılım.html">Yazılım</a></li>
                 <li><a href="devops.html" class="active">DevOps</a></li>
             </ul>
@@ -165,7 +234,7 @@
         <div class="article-content-wrapper" style="max-width: 900px; margin: 40px auto; padding: 20px;">
             
             <p style="margin-bottom: 25px; line-height: 1.8; font-size: 1.1rem; color: #ccc;">
-                Altyapıyı Kod Olarak Yönetme (Infrastructure as Code - IaC), sunucuları, ağları, veritabanlarını ve diğer altyapı bileşenlerini manuel yapılandırmalar yerine kod (konfigürasyon dosyaları) kullanarak yönetme uygulamasıdır. Bu sayede altyapı, geliştirme ekiplerinin yazılım kodu gibi versiyonlanabilir, test edilebilir ve otomatikleştirilebilir hale gelir. IaC, DevOps'un temel direğidir ve tekrarlanabilir, tutarlı ve ölçeklenebilir altyapı dağıtımları için kritik öneme sahiptir.
+                Altyapıyı Kod Olarak Yönetme (Infrastructure as Code - IaC), sunucuları, ağları, veritabanlarını ve diğer altyapı bileşenlerini manuel yapılandırmalar yerine kod (konfigürasyon dosyaları) kullanarak yönetme uygulamasıdır. Bu sayede altyapı, geliştirme ekiplerinin yazılım kodu gibi versiyonlanabilir, test edilebilir ve otomatikleştirilebilir hale gelir. IaC, **DevOps'un temel direğidir** ve tekrarlanabilir, tutarlı ve ölçeklenebilir altyapı dağıtımları için kritik öneme sahiptir.
             </p>
 
             <h2 style="color: var(--color-terraform); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-magic"></i> Faz 1: IaC'nin Temel Felsefesi ve Avantajları</h2>
@@ -175,9 +244,10 @@
                 <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
                     IaC araçları, altyapıyı tanımlama şekillerine göre iki ana kategoriye ayrılır. Bu ayrım, bir aracın ne zaman ve nerede kullanılması gerektiğini belirler.
                 </p>
+                
                 <ul class="detail-list">
-                    <li><i class="fas fa-eye" style="color: var(--color-detail);"></i> **Bildirimsel (Declarative):** Sistemin **istenilen nihai durumunu** tanımlarsınız (*"Bu sanal sunucu olsun"*). Araç (Örn: Terraform), mevcut durum ile istenen durum arasındaki farkı otomatik olarak hesaplar ve bu farkı kapatacak adımları kendi başına atar.</li>
-                    <li><i class="fas fa-list-ol" style="color: var(--color-detail);"></i> **Prosedürel (Procedural):** Sisteme **nasıl** ulaşılacağını adım adım belirtirsiniz (*"Önce şunu yap, sonra bu ayarı değiştir, sonra servisi yeniden başlat"*). Araç (Örn: Ansible), bu adımları sırayla takip eder.</li>
+                    <li><i class="fas fa-eye" style="color: var(--color-detail);"></i> Bildirimsel (Declarative): Sistemin istenilen nihai durumunu** tanımlarsınız ("Bu sanal sunucu olsun"). Araç (Örn: Terraform), mevcut durum ile istenen durum arasındaki farkı otomatik olarak hesaplar ve bu farkı kapatacak adımları kendi başına atar.</li>
+                    <li><i class="fas fa-list-ol" style="color: var(--color-detail);"></i>Prosedürel (Procedural): Sisteme nasıl ulaşılacağını adım adım belirtirsiniz ("Önce şunu yap, sonra bu ayarı değiştir, sonra servisi yeniden başlat"). Araç (Örn: **Ansible), bu adımları sırayla takip eder.</li>
                 </ul>
             </div>
             
@@ -187,9 +257,9 @@
                     Kod tabanlı altyapı yönetimi, operasyonel süreçlere köklü iyileştirmeler getirir.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-clone" style="color: var(--color-secondary);"></i> **Tutarlılık ve Tekrarlanabilirlik (Idempotency):** Aynı kodu defalarca çalıştırmak, altyapının her zaman aynı duruma ulaşmasını garanti eder. Bu, **Ortam Kayması (Drift)** sorununu ortadan kaldırır.</li>
-                    <li><i class="fas fa-history" style="color: var(--color-secondary);"></i> **Versiyon Kontrolü:** Tüm altyapı yapılandırması Git gibi SCM sistemlerinde saklanır. Değişiklik geçmişi, denetim (audit) ve kolay geri alma (rollback) imkanı sağlar.</li>
-                    <li><i class="fas fa-shield-alt" style="color: var(--color-secondary);"></i> **Güvenlik ve Uyum:** Altyapı güvenlik kuralları (örneğin güvenlik grupları) kodda tanımlandığı için, güvenlik uzmanları bunları inceleyip onaylayabilirler (**Policy as Code**).</li>
+                    <li><i class="fas fa-clone" style="color: var(--color-secondary);"></i>Tutarlılık ve Tekrarlanabilirlik (Idempotency):Aynı kodu defalarca çalıştırmak, altyapının her zaman aynı duruma ulaşmasını garanti eder. Bu, Ortam Kayması (Drift) sorununu ortadan kaldırır.</li>
+                    <li><i class="fas fa-history" style="color: var(--color-secondary);"></i>Versiyon Kontrolü: Tüm altyapı yapılandırması Git gibi SCM sistemlerinde saklanır. Değişiklik geçmişi, denetim (audit) ve kolay geri alma (rollback) imkanı sağlar.</li>
+                    <li><i class="fas fa-shield-alt" style="color: var(--color-secondary);"></i>Güvenlik ve Uyum: Altyapı güvenlik kuralları (örneğin güvenlik grupları) kodda tanımlandığı için, güvenlik uzmanları bunları inceleyip onaylayabilirler (Policy as Code).</li>
                 </ul>
             </div>
 
@@ -210,22 +280,22 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="terraform-cell">**Yaklaşım**</td>
-                            <td class="terraform-cell">**Bildirimsel (Declarative)**</td>
-                            <td class="ansible-cell">**Prosedürel / Bildirimsel (Hibrit)**</td>
+                            <td class="terraform-cell">Yaklaşım</td>
+                            <td class="terraform-cell">Bildirimsel (Declarative)</td>
+                            <td class="ansible-cell">Prosedürel / Bildirimsel (Hibrit)</td>
                         </tr>
                         <tr>
-                            <td class="terraform-cell">**Temel Odak**</td>
+                            <td class="terraform-cell">Temel Odak</td>
                             <td class="terraform-cell">Altyapı Sağlama (Provisioning): VM'ler, VPC, Load Balancer, DNS.</td>
                             <td class="ansible-cell">Konfigürasyon Yönetimi (Configuration Management): Yazılım kurma, dosya ayarları, servis başlatma.</td>
                         </tr>
                         <tr>
-                            <td class="terraform-cell">**Durum Yönetimi (State)**</td>
-                            <td class="terraform-cell">**Kritik.** Küresel durumu (`.tfstate` dosyası) tutar ve değişimleri buna göre hesaplar.</td>
+                            <td class="terraform-cell">Durum Yönetimi (State)</td>
+                            <td class="terraform-cell">Kritik.Küresel durumu (`.tfstate` dosyası) tutar ve değişimleri buna göre hesaplar.</td>
                             <td class="ansible-cell">Durumsuz (Agent-less). Görevlerin sonuçlarına dayanarak çalışır.</td>
                         </tr>
                         <tr>
-                            <td class="terraform-cell">**İletişim**</td>
+                            <td class="terraform-cell">İletişim</td>
                             <td class="terraform-cell">API tabanlı (AWS, Azure, Google Cloud API'leri).</td>
                             <td class="ansible-cell">SSH tabanlı (Client-Server ilişkisi olmadan).</td>
                         </tr>
@@ -238,8 +308,9 @@
                 <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
                     Modern DevOps'ta bu iki araç, genellikle birbirini tamamlayıcı olarak kullanılır:
                 </p>
+                
                 <blockquote style="border-left: 5px solid var(--color-secondary); background-color: rgba(255, 152, 0, 0.05); padding: 15px; margin-top: 20px;">
-                    <i class="fas fa-handshake" style="color: var(--color-secondary);"></i> **Kazan-Kazan Senaryosu:** Önce **Terraform** ile temel altyapı (VM'ler, Ağ, Güvenlik Duvarı) oluşturulur. Ardından, Terraform'dan alınan çıktı (VM IP adresleri) **Ansible**'a girdi olarak verilerek, bu yeni VM'ler üzerinde yazılımlar kurulur, servisler yapılandırılır ve başlatılır. Bu, **En İyi Uygulama (Best Practice)** olarak kabul edilir.
+                    <i class="fas fa-handshake" style="color: var(--color-secondary);"></i> Kazan-Kazan Senaryosu: Önce Terraform ile temel altyapı (VM'ler, Ağ, Güvenlik Duvarı) oluşturulur. Ardından, Terraform'dan alınan çıktı (VM IP adresleri) Ansible'a girdi olarak verilerek, bu yeni VM'ler üzerinde yazılımlar kurulur, servisler yapılandırılır ve başlatılır. Bu, En İyi Uygulama (Best Practice) olarak kabul edilir.
                 </blockquote>
             </div>
 
@@ -251,27 +322,27 @@
                     Terraform'un benzersiz gücü, altyapının durumunu yönetmesinden gelir. Ancak bu durum dosyasının yönetimi, ölçekli operasyonlarda karmaşıktır.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-lock" style="color: var(--color-terraform);"></i> **Uzaktan Durum (Remote State):** Durum dosyaları (`.tfstate`) hiçbir zaman yerel diskte (local) tutulmamalıdır. AWS S3, Azure Blob Storage veya HashiCorp Cloud gibi uzaktan, merkezi konumlarda saklanmalıdır.</li>
-                    <li><i class="fas fa-users-slash" style="color: var(--color-terraform);"></i> **Kilitleme (Locking):** Aynı anda birden fazla kişi `.tfstate` dosyasını değiştirmeye çalıştığında bozulmayı önlemek için kilitleme mekanizmaları (Backend Locking) zorunludur.</li>
-                    <li><i class="fas fa-compress" style="color: var(--color-terraform);"></i> **Çalışma Alanları (Workspaces):** Farklı ortamları (Dev, Test, Prod) aynı Terraform koduyla yönetmek için kullanılır. Her ortam için ayrı bir durum dosyası oluşturulmasını sağlar.</li>
+                    <li><i class="fas fa-lock" style="color: var(--color-terraform);"></i> Uzaktan Durum (Remote State): Durum dosyaları (`.tfstate`) hiçbir zaman yerel diskte (local) tutulmamalıdır. AWS S3, Azure Blob Storage veya HashiCorp Cloud gibi uzaktan, merkezi konumlarda saklanmalıdır.</li>
+                    <li><i class="fas fa-users-slash" style="color: var(--color-terraform);"></i> Kilitleme (Locking): Aynı anda birden fazla kişi `.tfstate` dosyasını değiştirmeye çalıştığında bozulmayı önlemek için kilitleme mekanizmaları (Backend Locking) zorunludur.</li>
+                    <li><i class="fas fa-compress" style="color: var(--color-terraform);"></i> Çalışma Alanları (Workspaces): Farklı ortamları (Dev, Test, Prod) aynı Terraform koduyla yönetmek için kullanılır. Her ortam için ayrı bir durum dosyası oluşturulmasını sağlar.</li>
                 </ul>
             </div>
 
             <div class="technical-section">
                 <h3>Adım 3.2: Gizli Bilgi Yönetimi (Secrets Management)</h3>
                 <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
-                    Şifreler, API anahtarları veya hassas değişkenler, IaC kodunun içinde **düz metin (plaintext)** olarak asla saklanmamalıdır.
+                    Şifreler, API anahtarları veya hassas değişkenler, IaC kodunun içinde düz metin (plaintext) olarak asla saklanmamalıdır.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-vault" style="color: var(--color-ansible);"></i> **HashiCorp Vault:** IaC ortamlarında şifreleri yönetmek için endüstri standardı haline gelmiştir. Terraform, Vault'tan şifreleri dinamik olarak çekebilir.</li>
-                    <li><i class="fas fa-file-invoice-dollar" style="color: var(--color-ansible);"></i> **Bulut Sağlayıcı Servisleri:** AWS Secrets Manager veya Azure Key Vault gibi yerel bulut servisleri de hassas verilerin IaC boru hattına güvenli bir şekilde enjekte edilmesi için yaygın olarak kullanılır.</li>
+                    <li><i class="fas fa-vault" style="color: var(--color-ansible);"></i> HashiCorp Vault: IaC ortamlarında şifreleri yönetmek için endüstri standardı haline gelmiştir. Terraform, Vault'tan şifreleri dinamik olarak çekebilir.</li>
+                    <li><i class="fas fa-file-invoice-dollar" style="color: var(--color-ansible);"></i> Bulut Sağlayıcı Servisleri: AWS Secrets Manager veya Azure Key Vault gibi yerel bulut servisleri de hassas verilerin IaC boru hattına güvenli bir şekilde enjekte edilmesi için yaygın olarak kullanılır.</li>
                 </ul>
             </div>
 
             <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-graduation-cap"></i> Özet Rehberlik İlkesi</h2>
             
             <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
-                IaC, altyapı yönetiminde manuel hataları ortadan kaldırarak **tutarlılık ve hız** sağlar. Başarılı bir IaC stratejisi, altyapı provizyonu için **Terraform'un Bildirimsel gücünü** ve konfigürasyon yönetimi için **Ansible'ın Prosedürel esnekliğini** birleştiren hibrit bir yaklaşımla başlar. Kritik nokta, **uzaktan ve kilitli durum yönetimi** sağlamak ve hassas bilgileri **HashiCorp Vault** gibi özel araçlarla korumaktır. Bu uygulamalar, altyapınızı gerçekten kod olarak yönetmenizi sağlar.
+                IaC, altyapı yönetiminde manuel hataları ortadan kaldırarak tutarlılık ve hız sağlar. Başarılı bir IaC stratejisi, altyapı provizyonu için Terraform'un Bildirimsel gücünü ve konfigürasyon yönetimi için Ansible'ın Prosedürel esnekliğini birleştiren hibrit bir yaklaşımla başlar. Kritik nokta, uzaktan ve kilitli durum yönetimi sağlamak ve hassas bilgileri HashiCorp Vault gibi özel araçlarla korumaktır. Bu uygulamalar, altyapınızı gerçekten kod olarak yönetmenizi sağlar.
             </p>
 
         </div>
@@ -279,7 +350,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 TeknoGündem. Tüm Hakları Saklıdır.</p>
+        <p>&copy; 2025 TeknoGündem. Tüm Hakları Saklıdır.</p>
     </footer>
 
 </body> 

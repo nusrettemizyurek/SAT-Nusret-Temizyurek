@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Docker İle Geliştirme Ortamı: Konteynerize Edilmiş Çevik Geliştirme Rehberi - TeknoGündem</title>
     <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     
     <style>
@@ -51,6 +52,11 @@
             padding: 0;
             display: flex;
         }
+        /* DÜZELTME: Dropdown için LI'lara Relative konumlandırma eklendi */
+        nav ul li {
+            position: relative; 
+        }
+
         nav ul li a {
             color: var(--color-text-light);
             text-decoration: none;
@@ -62,6 +68,61 @@
             color: var(--color-primary);
             background-color: rgba(255, 255, 255, 0.05);
             border-radius: 5px;
+        }
+
+        /* DROPDOWN MENÜ STİLLERİ (EKLEDİM) */
+        .dropdown {
+            padding: 0; 
+        }
+        
+        /* Dropdown butonu yanındaki ok ikonu için */
+        .dropbtn i {
+            margin-left: 5px;
+        }
+        
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            background-color: #1e1e1e; 
+            min-width: 220px; 
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+            z-index: 10; 
+            padding: 0;
+            top: 100%; 
+            margin-top: 0; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            border-radius: 5px;
+            overflow: hidden; 
+            border: 1px solid #333;
+        }
+        
+        .dropdown-content a {
+            color: var(--color-text-light);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left; 
+            border-bottom: 1px solid #333;
+        }
+        
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(0, 188, 212, 0.1); 
+            color: var(--color-primary);
+            border-radius: 0; 
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block; 
+        }
+
+        /* İkonlar için metin ayrımı (Görsel tutarlılık için) */
+        h1 i, h2 i, h3 i, .detail-list i, blockquote i {
+            margin-right: 10px;
         }
         
         /* ANA İÇERİK STİLLERİ */
@@ -145,7 +206,15 @@
         <nav>
             <ul>
                 <li><a href="index.html">Ana Sayfa</a></li>
-                 <li><a href="donanım.html">Donanım</a></li>
+                
+                <li class="dropdown">
+                    <a href="donanım.html" class="dropbtn">Donanım </a>
+                    <div class="dropdown-content">
+                        <a href="donanim-haberler.html">Haberler</a>
+                        <a href="donanim-incelemeler.html">İncelemeler</a>
+                    </div>
+                </li>
+                
                 <li><a href="yazılım.html">Yazılım</a></li>
                 <li><a href="devops.html" class="active">DevOps</a></li>
             </ul>
@@ -177,8 +246,8 @@
                     Modern uygulamalar, genellikle bir veritabanı, bir önbellek (Redis) ve uygulamanın kendisi olmak üzere birden fazla servisten oluşur. `docker-compose.yml` dosyası, tüm bu servisleri tek bir komutla ayağa kaldırmanın anahtarıdır.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-code-branch" style="color: var(--color-compose);"></i> **Tek Komutla Kurulum:** Tüm ekip üyeleri, karmaşık manuel kurulumlar yerine sadece `docker compose up -d` komutunu çalıştırarak aynı ortamı saniyeler içinde kurar.</li>
-                    <li><i class="fas fa-network-wired" style="color: var(--color-compose);"></i> **İzolasyon ve Ağ:** Compose, varsayılan olarak tüm servislere aynı ağda iletişim kurma imkanı tanır. Uygulama, veritabanına, localhost yerine servis adı (`db` veya `redis`) ile erişir.</li>
+                    <li><i class="fas fa-code-branch" style="color: var(--color-compose);"></i>Tek Komutla Kurulum: Tüm ekip üyeleri, karmaşık manuel kurulumlar yerine sadece `docker compose up -d` komutunu çalıştırarak aynı ortamı saniyeler içinde kurar.</li>
+                    <li><i class="fas fa-network-wired" style="color: var(--color-compose);"></i> İzolasyon ve Ağ: Compose, varsayılan olarak tüm servislere aynı ağda iletişim kurma imkanı tanır. Uygulama, veritabanına, localhost yerine servis adı (`db` veya `redis`) ile erişir.</li>
                 </ul>
                 <p style="color: var(--color-compose); font-weight: bold; margin-bottom: 10px;">Temel `docker-compose.yml` Yapısı:</p>
                 <pre><code>version: '3.8'
@@ -204,8 +273,8 @@ services:
                     Geliştirme sırasında konteyneri sürekli yeniden oluşturmamak için yerel kodu konteynere aktarmak hayati önem taşır.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-sync" style="color: var(--color-dev);"></i> **Bind Mounts:** Yukarıdaki örnekteki gibi (`.:/app`), yerel makinenizdeki kod dizinini konteyner içindeki uygulama dizinine bağlar. Bu, kodu yerel IDE'nizde düzenlerken, değişikliklerin anında konteynerde (genellikle bir HMR/Live-Reload mekanizmasıyla) yansımasını sağlar. **En hızlı geliştirme akışı için şarttır.**</li>
-                    <li><i class="fas fa-hdd" style="color: var(--color-dev);"></i> **Named Volumes:** Veritabanı verisi gibi, konteyner silinse bile kalmasını istediğiniz durum bilgisi için kullanılır (Örn: `volumes: db-data:`).</li>
+                    <li><i class="fas fa-sync" style="color: var(--color-dev);"></i>Bind Mounts: Yukarıdaki örnekteki gibi (`.:/app`), yerel makinenizdeki kod dizinini konteyner içindeki uygulama dizinine bağlar. Bu, kodu yerel IDE'nizde düzenlerken, değişikliklerin anında konteynerde (genellikle bir HMR/Live-Reload mekanizmasıyla) yansımasını sağlar. En hızlı geliştirme akışı için şarttır.</li>
+                    <li><i class="fas fa-hdd" style="color: var(--color-dev);"></i>Named Volumes:Veritabanı verisi gibi, konteyner silinse bile kalmasını istediğiniz durum bilgisi için kullanılır (Örn: `volumes: db-data:`).</li>
                 </ul>
             </div>
 
@@ -217,8 +286,8 @@ services:
                     Geliştirme ortamı, daha yavaş ama daha fazla araç içeren bir yapıya ihtiyaç duyarken, üretim ortamı hızlı ve hafif olmalıdır.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-diagnoses" style="color: var(--color-secondary);"></i> **Geliştirme Ortamı:** Daha büyük temel imajlar, geliştirme araçları (linterlar, test araçları) ve hatta SSH sunucusu içerebilir. Amaç hızlı geri bildirimdir.</li>
-                    <li><i class="fas fa-shield-alt" style="color: var(--color-secondary);"></i> **Çok Aşamalı Yapı (Multi-stage Builds):** Üretim Dockerfile'larında, kodu derlemek için kullanılan büyük araçları (örneğin Node.js SDK) nihai imajdan dışlamak için kullanılır. Bu, son imajın boyutunu ve yüzey alanını (attack surface) küçültür.</li>
+                    <li><i class="fas fa-diagnoses" style="color: var(--color-secondary);"></i> Geliştirme Ortamı: Daha büyük temel imajlar, geliştirme araçları (linterlar, test araçları) ve hatta SSH sunucusu içerebilir. Amaç hızlı geri bildirimdir.</li>
+                    <li><i class="fas fa-shield-alt" style="color: var(--color-secondary);"></i> Çok Aşamalı Yapı (Multi-stage Builds): Üretim Dockerfile'larında, kodu derlemek için kullanılan büyük araçları (örneğin Node.js SDK) nihai imajdan dışlamak için kullanılır. Bu, son imajın boyutunu ve yüzey alanını (attack surface) küçültür.</li>
                 </ul>
                 <p style="color: var(--color-dev); font-weight: bold; margin-bottom: 10px;">Çok Aşamalı Yapı Örneği (Hafif Üretim İmajı İçin):</p>
                 <pre><code># Stage 1: Builder
@@ -243,8 +312,8 @@ CMD [ "node", "dist/server.js" ]</code></pre>
                     En modern ve güncel geliştirme akışı, geliştirme araçlarını doğrudan konteynerin içine taşımaktır.
                 </p>
                 <blockquote style="border-left: 5px solid var(--color-secondary); background-color: rgba(255, 152, 0, 0.05); padding: 15px; margin-top: 20px;">
-                    <i class="fas fa-laptop-code" style="color: var(--color-secondary);"></i> **Dev Containers:** VS Code ve JetBrains IDE'leri, kodunuzu yerel makineniz yerine bir Docker konteyneri içinde çalıştırmanıza olanak tanır.
-                    <br> **Avantaj:** Geliştirme ortamınızın tam yapılandırması (VS Code eklentileri, terminal ayarları, dil sunucuları) koda sabitlenir. Yeni bir ekip üyesi, kod deposunu klonlar klonlamaz, IDE otomatik olarak konteynere bağlanır ve geliştirme hazırdır.
+                    <i class="fas fa-laptop-code" style="color: var(--color-secondary);"></i> Dev Containers: VS Code ve JetBrains IDE'leri, kodunuzu yerel makineniz yerine bir Docker konteyneri içinde çalıştırmanıza olanak tanır.
+                    <br> Avantaj: Geliştirme ortamınızın tam yapılandırması (VS Code eklentileri, terminal ayarları, dil sunucuları) koda sabitlenir. Yeni bir ekip üyesi, kod deposunu klonlar klonlamaz, IDE otomatik olarak konteynere bağlanır ve geliştirme hazırdır.
                 </blockquote>
             </div>
 
@@ -270,15 +339,15 @@ CMD [ "node", "dist/server.js" ]</code></pre>
                     Docker'ın konteyner mimarisi, testler için geçici, atılabilir ortamlar oluşturmayı kolaylaştırır.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-trash-alt" style="color: var(--color-secondary);"></i> **Atılabilir Ortamlar:** Geliştiriciler, bir pull request (çekme isteği) veya yeni bir özellik üzerinde çalışırken mevcut ortamı bozma riski olmadan, tamamen izole yeni bir Docker ortamını ayağa kaldırıp, işi bittiğinde `docker compose down --volumes` komutuyla tamamen silebilirler.</li>
-                    <li><i class="fas fa-vial" style="color: var(--color-secondary);"></i> **Entegre Test:** `docker-compose.yml` dosyasını, entegrasyon testlerini çalıştıran geçici bir konteyneri (test runner) içerecek şekilde genişleterek, testleri de tamamen konteynerize edilmiş bir ortamda çalıştırabilirsiniz.</li>
+                    <li><i class="fas fa-trash-alt" style="color: var(--color-secondary);"></i> Atılabilir Ortamlar:Geliştiriciler, bir pull request (çekme isteği) veya yeni bir özellik üzerinde çalışırken mevcut ortamı bozma riski olmadan, tamamen izole yeni bir Docker ortamını ayağa kaldırıp, işi bittiğinde `docker compose down --volumes` komutuyla tamamen silebilirler.</li>
+                    <li><i class="fas fa-vial" style="color: var(--color-secondary);"></i> Entegre Test:docker-compose.yml` dosyasını, entegrasyon testlerini çalıştıran geçici bir konteyneri (test runner) içerecek şekilde genişleterek, testleri de tamamen konteynerize edilmiş bir ortamda çalıştırabilirsiniz.</li>
                 </ul>
             </div>
 
             <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-graduation-cap"></i> Özet Rehberlik İlkesi</h2>
             
             <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
-                Docker, geliştirme ortamlarında **"Herkes için aynı, garantili ortam"** ilkesini getirerek DevOps kültürünü geliştirme sürecine taşır. Başarılı bir Docker Geliştirme Ortamı, tüm servisleri yönetmek için **`docker-compose`'a**, hızlı kod yenilemesi için **`Bind Mounts`'a** ve hafif üretim imajları için **Çok Aşamalı Yapılara** dayanır. En güncel verimlilik için, IDE'nizi (VS Code/JetBrains) **Dev Containers** özelliği ile doğrudan konteynere bağlamayı benimseyin.
+                Docker, geliştirme ortamlarında "Herkes için aynı, garantili ortam" ilkesini getirerek DevOps kültürünü geliştirme sürecine taşır. Başarılı bir Docker Geliştirme Ortamı, tüm servisleri yönetmek için docker-compose`'a, hızlı kod yenilemesi için  Bind Mounts`'a ve hafif üretim imajları için Çok Aşamalı Yapılara dayanır. En güncel verimlilik için, IDE'nizi (VS Code/JetBrains) Dev Containers özelliği ile doğrudan konteynere bağlamayı benimseyin.
             </p>
 
         </div>
@@ -286,7 +355,7 @@ CMD [ "node", "dist/server.js" ]</code></pre>
     </main>
 
     <footer>
-        <p>&copy; 2026 TeknoGündem. Tüm Hakları Saklıdır.</p>
+        <p>&copy; 2025 TeknoGündem. Tüm Hakları Saklıdır.</p>
     </footer>
 
 </body> 

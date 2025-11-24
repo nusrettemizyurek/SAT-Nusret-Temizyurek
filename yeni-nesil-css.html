@@ -3,18 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yeni Nesil CSS Özellikleri - TeknoGündem</title>
-    <link rel="stylesheet" href="css/style.css"> 
-  <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    <title>Yeni Nesil CSS Özellikleri: Daha Akıllı ve Güçlü Stiller</title>
+    <link rel="shortcut icon" href="TEKNO GÜNDEM LOGO .png" type="image/x-icon">
     <style>
-        /* Bu stil bloğu, var(--color-primary) ve var(--color-secondary) gibi değişkenlerin tanımlanmadığı durumlarda geçici renkler sağlar. Normalde bunlar 'style.css' içinde olmalıdır. */
+        /* CSS Değişkenleri */
         :root {
             --color-primary: #00bcd4; /* Mavi/Turkuaz */
             --color-secondary: #ff9800; /* Turuncu */
+            --color-background: #121212; /* Koyu arka plan */
+            --color-text-light: #ddd;
         }
-        .yazilim-sayfa {
-            background-color: #121212; /* Koyu arka plan */
-            color: #fff;
+
+        /* Temel Global Stiller */
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text-light);
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* HEADER & NAV STİLLERİ */
+        header {
+            background-color: #1e1e1e;
+            color: white;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+        nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
+        nav ul li a { color: var(--color-text-light); text-decoration: none; padding: 10px 15px; display: block; transition: color 0.3s; }
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--color-primary);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+        }
+
+        /* Ana İçerik Stilleri */
+        .main-body-container {
+            max-width: 1000px;
+            margin: 40px auto; 
+            padding: 25px; 
+            background-color: rgba(255, 255, 255, 0.05); 
+            border-radius: 10px;
+        }
+        .tag {
+            background-color: var(--color-secondary); 
+            color: var(--color-background); 
+            border-radius: 4px; 
+            font-weight: bold;
+        }
+
+        /* Liste ve Blok Alıntı Stilleri */
+        ul {
+            padding-left: 20px;
+        }
+        ul li {
+            padding-left: 10px;
+        }
+        blockquote {
+            border-left: 4px solid var(--color-primary);
+            padding-left: 15px; 
+            margin: 15px 0; 
+            font-style: italic; 
+            color: #aaa;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            color: #666;
+            background-color: #1e1e1e;
         }
     </style>
 </head>
@@ -38,54 +107,54 @@
             <div class="review-meta" style="margin-top: 10px; display: flex; justify-content: center; gap: 20px; color: #aaa; font-size: 0.9rem;">
                 <span>Yazar: Yapay Zeka</span>
                 <span>Tarih: 4 Kasım 2025</span>
-                <span class="tag tag-frontend" style="position: static; padding: 5px 15px;">Frontend</span>
+                <span class="tag tag-frontend" style="position: static; padding: 5px 15px; font-size: 0.9rem;">Frontend</span>
             </div>
         </section>
 
         <div class="article-content-wrapper" style="max-width: 900px; margin: 40px auto; padding: 20px; background-color: rgba(255, 255, 255, 0.03); border-radius: 10px;">
             
             <p style="margin-bottom: 25px; line-height: 1.8; font-size: 1.1rem; color: #ccc;">
-                Web tasarım ve geliştirme dünyası sürekli değişiyor. Geleneksel CSS yöntemlerinin karmaşıklığını ve sınırlamalarını aşmak için, modern tarayıcılar tarafından desteklenen bir dizi **yeni nesil CSS özelliği** hayatımıza girdi. Bu kılavuz, kodunuzu daha okunabilir, sürdürülebilir ve dinamik hale getiren bu özelliklere odaklanmaktadır.
+                Web tasarım ve geliştirme dünyası sürekli değişiyor. Geleneksel CSS yöntemlerinin karmaşıklığını ve sınırlamalarını aşmak için, modern tarayıcılar tarafından desteklenen bir dizi <strong>yeni nesil CSS özelliği</strong> hayatımıza girdi. Bu kılavuz, kodunuzu daha okunabilir, sürdürülebilir ve dinamik hale getiren bu özelliklere odaklanmaktadır.
             </p>
             
-            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+            <p style="margin-bottom: 25px; line-height: 1.8; color: var(--color-text-light);">
                 CSS, yıllar içinde basit bir stil dili olmaktan çıkıp, karmaşık arayüzlerin temelini oluşturan güçlü bir araç setine dönüştü. Yeni özellikler, geliştiricilere performans, düzen ve etkileşim açısından daha fazla kontrol sağlıyor.
             </p>
 
             <h2 style="color: var(--color-secondary); margin-top: 40px; margin-bottom: 15px;">Modern CSS Düzenleri: Flexbox ve Grid'in Ötesi</h2>
-            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+            <p style="margin-bottom: 25px; line-height: 1.8; color: var(--color-text-light);">
                 Flexbox ve Grid zaten web düzeninde devrim yaratmıştı, ancak yeni özellikler adaptif ve karmaşık düzenleri daha da kolaylaştırıyor.
             </p>
 
             <h3 style="color: #4fc3f7; margin-top: 30px; margin-bottom: 10px;">1. CSS Alt Sorgular (Subgrid)</h3>
-            <p style="margin-bottom: 10px; line-height: 1.8; color: #ddd;">
-                **CSS Grid'in bir uzantısı** olan Subgrid, iç içe geçmiş grid öğelerinin, ana grid'in satır ve sütun tanımlarını miras almasını sağlar. Bu, dikey hizalamanın ve karmaşık, çok seviyeli düzenlerin tutarlı bir şekilde yönetilmesini inanılmaz derecede kolaylaştırır.
+            <p style="margin-bottom: 10px; line-height: 1.8; color: var(--color-text-light);">
+                <strong>CSS Grid'in bir uzantısı</strong> olan Subgrid, iç içe geçmiş grid öğelerinin, ana grid'in satır ve sütun tanımlarını miras almasını sağlar. Bu, dikey hizalamanın ve karmaşık, çok seviyeli düzenlerin tutarlı bir şekilde yönetilmesini inanılmaz derecede kolaylaştırır.
             </p>
             <blockquote style="border-left: 4px solid var(--color-primary); padding-left: 15px; margin: 15px 0; font-style: italic; color: #aaa;">
                 <p>Kullanım Örneği: Bir kart bileşeni içindeki başlıkların ve düğmelerin, kartlar arasında mükemmel şekilde hizalanması.</p>
             </blockquote>
 
             <h3 style="color: #4fc3f7; margin-top: 30px; margin-bottom: 10px;">2. Container Queries (Kapsayıcı Sorguları)</h3>
-            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
-                Geleneksel Medya Sorgularının (`@media`) aksine, Container Queries (`@container`) bir bileşenin stilini **viewport'a (görüntü alanına) göre değil**, **içinde bulunduğu kapsayıcının boyutuna göre** değiştirmesine olanak tanır. Bu, yeniden kullanılabilir ve bağlamdan bağımsız bileşenler oluşturmak için bir dönüm noktasıdır.
+            <p style="margin-bottom: 25px; line-height: 1.8; color: var(--color-text-light);">
+                Geleneksel Medya Sorgularının (`@media`) aksine, Container Queries (`@container`) bir bileşenin stilini <strong>viewport'a (görüntü alanına) göre değil</strong>, <strong>içinde bulunduğu kapsayıcının boyutuna göre</strong> değiştirmesine olanak tanır. Bu, yeniden kullanılabilir ve bağlamdan bağımsız bileşenler oluşturmak için bir dönüm noktasıdır.
             </p>
 
             <h2 style="color: var(--color-secondary); margin-top: 40px; margin-bottom: 15px;">Dinamik Stil ve Özelleştirilebilirlik</h2>
             
-            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+            <p style="margin-bottom: 25px; line-height: 1.8; color: var(--color-text-light);">
                 CSS değişkenlerinin (`--custom-property`) yaygınlaşmasından sonra, dilin dinamik yetenekleri daha da artmıştır.
             </p>
             
             <h3 style="color: #4fc3f7; margin-top: 30px; margin-bottom: 10px;">3. Cascade Layers (Basamaklı Katmanlar)</h3>
-            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
-                CSS'in karmaşık basamaklanma (özelliklerin nasıl önceliklendirildiği) sorununu çözmek için tasarlanmıştır. `@layer` kuralı, geliştiricilerin stillerine açıkça öncelik vermesine izin vererek, üçüncü taraf kütüphanelerden veya temel stillerden gelen beklenmedik stil çakışmalarını ortadan kaldırır. Bu, **büyük projelerde ve tasarım sistemlerinde** stil yönetimine netlik getirir.
+            <p style="margin-bottom: 25px; line-height: 1.8; color: var(--color-text-light);">
+                CSS'in karmaşık basamaklanma (özelliklerin nasıl önceliklendirildiği) sorununu çözmek için tasarlanmıştır. `@layer` kuralı, geliştiricilerin stillerine açıkça öncelik vermesine izin vererek, üçüncü taraf kütüphanelerden veya temel stillerden gelen beklenmedik stil çakışmalarını ortadan kaldırır. Bu, <strong>büyük projelerde ve tasarım sistemlerinde</strong> stil yönetimine netlik getirir.
             </p>
 
             <h3 style="color: #4fc3f7; margin-top: 30px; margin-bottom: 10px;">4. Trigonometrik Fonksiyonlar ve Yeni Renk Modelleri</h3>
-            <p style="margin-bottom: 10px; line-height: 1.8; color: #ddd;">
+            <p style="margin-bottom: 10px; line-height: 1.8; color: var(--color-text-light);">
                 CSS artık matematiksel fonksiyonları (`sin()`, `cos()`, `tan()`) destekliyor, bu da geliştiricilerin CSS ile saf geometrik şekiller ve karmaşık animasyon yolları oluşturmasına olanak tanıyor.
             </p>
-            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+            <p style="margin-bottom: 25px; line-height: 1.8; color: var(--color-text-light);">
                 Ayrıca, LCH ve LAB gibi yeni renk uzayları, insan gözünün algıladığı renklere daha yakın, geniş gamlı ve tutarlı renk geçişleri oluşturulmasına izin vererek tasarım yeteneklerini artırıyor.
             </p>
 
@@ -96,14 +165,14 @@
             </div>
             
             <ul style="list-style: none; padding-left: 20px;">
-                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">**Daha İyi Bileşenler:** Container Queries sayesinde, bileşenleriniz daha taşınabilir ve esnek hale gelir.</li>
-                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">**Karmaşanın Azalması:** Cascade Layers, CSS dosyalarının basamaklanma önceliğini açıkça kontrol etmenizi sağlar.</li>
-                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">**Gelişmiş Tasarım:** Yeni renk modelleri ve matematik fonksiyonları, daha yaratıcı ve erişilebilir tasarımlara olanak tanır.</li>
-                <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">**Daha Az JavaScript:** Saf CSS ile daha fazla dinamik ve karmaşık düzen oluşturulabilir, bu da JavaScript ihtiyacını azaltır.</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid var(--color-primary); padding-left: 10px;"><strong>Daha İyi Bileşenler:</strong> Container Queries sayesinde, bileşenleriniz daha taşınabilir ve esnek hale gelir.</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid var(--color-primary); padding-left: 10px;"><strong>Karmaşanın Azalması:</strong> Cascade Layers, CSS dosyalarının basamaklanma önceliğini açıkça kontrol etmenizi sağlar.</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid var(--color-primary); padding-left: 10px;"><strong>Gelişmiş Tasarım:</strong> Yeni renk modelleri ve matematik fonksiyonları, daha yaratıcı ve erişilebilir tasarımlara olanak tanır.</li>
+                <li style="margin-bottom: 8px; border-left: 3px solid var(--color-primary); padding-left: 10px;"><strong>Daha Az JavaScript:</strong> Saf CSS ile daha fazla dinamik ve karmaşık düzen oluşturulabilir, bu da JavaScript ihtiyacını azaltır.</li>
             </ul>
 
             <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;">Geleceğe Hazırlık</h2>
-            <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
+            <p style="margin-bottom: 25px; line-height: 1.8; color: var(--color-text-light);">
                 Bu yeni nesil CSS özellikleri, web geliştirmeyi daha verimli ve eğlenceli hale getiriyor. Geliştiricilerin bu yenilikleri öğrenmeleri ve uygulamaları, hem kod kalitelerini hem de kullanıcı deneyimlerini önemli ölçüde artıracaktır. Tarayıcı desteği her geçen gün artarken, projelerinizde bu özelliklere yer vermenin tam zamanı.
             </p>
 

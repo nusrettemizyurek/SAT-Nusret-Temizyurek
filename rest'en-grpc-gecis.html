@@ -4,148 +4,210 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REST'ten gRPC'ye Geçiş: Performans, Verimlilik ve Hizmet Sözleşmeleri - TeknoGündem</title>
-     <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon"> 
-   
+    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
-        /* TEMEL RENKLER VE GLOBAL STİLLER */
-        :root {
-            --color-primary: #00bcd4; /* Mavi-Turkuaz */
-            --color-secondary: #ff9800; /* Turuncu */
-            --color-background: #121212;
-            --color-text-light: #ddd;
-            --color-detail: #4caf50; /* Detaylar için Yeşil */
-            /* Yeni makale için özel renkler */
-            --color-rest: #FFC107; /* Amber/REST vurgusu */
-            --color-grpc: #4285F4; /* Mavi/gRPC vurgusu (Google) */
-        }
+    /* TEMEL RENKLER VE GLOBAL STİLLER */
+    :root {
+        --color-primary: #00bcd4; /* Mavi-Turkuaz */
+        --color-secondary: #ff9800; /* Turuncu */
+        --color-background: #121212;
+        --color-text-light: #ddd;
+        --color-detail: #4caf50; /* Detaylar için Yeşil */
+        --color-node: #68a063; /* Node.js yeşili */
+        --color-python: #306998; /* Python mavisi */
+        --color-rest: #FF5722; /* REST Kırmızımsı */
+        --color-grpc: #4CAF50; /* gRPC Yeşil */
+    }
 
-        body {
-            background-color: var(--color-background);
-            color: var(--color-text-light);
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
+    body {
+        background-color: var(--color-background);
+        color: var(--color-text-light);
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* HEADER & NAV STİLLERİ */
+    header {
+        background-color: #1e1e1e;
+        color: white;
+        padding: 15px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: var(--color-primary);
+    }
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+    /* DÜZELTME 2: Dropdown'ın doğru konumlanması için LI'a relative konumlandırma */
+    nav ul li {
+        position: relative;
+    }
 
-        /* HEADER & NAV STİLLERİ */
-        header {
-            background-color: #1e1e1e;
-            color: white;
-            padding: 15px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--color-primary);
-        }
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        nav ul li a {
-            color: var(--color-text-light);
-            text-decoration: none;
-            padding: 10px 15px;
-            display: block;
-            transition: color 0.3s;
-        }
-        nav ul li a:hover, nav ul li a.active {
-            color: var(--color-primary);
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 5px;
-        }
-        
-        /* ANA İÇERİK STİLLERİ */
-        .main-body-container {
-            max-width: 1000px;
-            margin: 40px auto; 
-            padding: 25px; 
-            background-color: rgba(255, 255, 255, 0.05); 
-            border-radius: 10px;
-        }
-        .tag {
-            position: static; padding: 5px 15px; background-color: var(--color-secondary); 
-            color: var(--color-background); border-radius: 4px; font-size: 0.9rem;
-            font-weight: bold;
-        }
-        .review-meta {
-            margin-top: 10px; display: flex; justify-content: center; gap: 20px; color: #aaa; font-size: 0.9rem;
-        }
+    nav ul li a {
+        color: var(--color-text-light);
+        text-decoration: none;
+        padding: 10px 15px;
+        display: block;
+        transition: color 0.3s;
+    }
+    nav ul li a:hover, nav ul li a.active {
+        color: var(--color-primary);
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 5px;
+    }
+    
+    /* İkonlar için metin ayrımı */
+    h1 i, h2 i, h3 i, .detail-list i {
+        margin-right: 10px;
+    }
 
-        /* TABLO STİLLERİ */
-        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        .comparison-table th, .comparison-table td {
-            padding: 15px;
-            border: 1px solid #333;
-            text-align: left;
-            font-size: 0.95em;
-        }
-        .comparison-table th {
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        /* Yeni tablo için renkler */
-        .rest-cell { background-color: rgba(255, 193, 7, 0.1); color: var(--color-rest); } 
-        .grpc-cell { background-color: rgba(66, 133, 244, 0.1); color: var(--color-grpc); } 
-        
-        /* DETAY BÖLÜM STİLLERİ */
-        .technical-section h3 {
-            color: var(--color-detail);
-            margin-top: 35px;
-            border-bottom: 1px dashed #333;
-            padding-bottom: 5px;
-        }
-        .detail-list {
-            list-style: none;
-            padding-left: 20px;
-            margin-top: 15px;
-        }
-        .detail-list li {
-            border-left: 3px solid var(--color-secondary);
-            padding-left: 10px;
-            margin-bottom: 10px;
-            line-height: 1.6;
-        }
-        
-        /* KOD BLOKLARI */
-        pre {
-            background-color: #2b2b2b;
-            color: #f8f8f2;
-            padding: 15px;
-            border-radius: 6px;
-            overflow-x: auto;
-            font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 0.9em;
-            border: 1px solid #3a3a3a;
-        }
+    /* DROPDOWN MENÜ STİLLERİ */
+    .dropdown-content {
+        display: none; 
+        position: absolute;
+        background-color: #1e1e1e; 
+        min-width: 180px; /* Genişlik biraz artırıldı */
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+        z-index: 10; 
+        padding: 0; 
+        top: 100%; 
+        left: 50%; 
+        transform: translateX(-50%); /* Merkezleme */
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    
+    .dropdown-content a {
+        color: var(--color-text-light);
+        padding: 12px 16px; 
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        border-bottom: 1px solid #333;
+    }
+    
+    .dropdown-content a:last-child {
+        border-bottom: none;
+    }
 
-        /* FOOTER STİLİ */
-        footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            border-top: 1px solid #333;
-            color: #666;
-            background-color: #1e1e1e;
-        }
-    </style>
+    .dropdown-content a:hover {
+        background-color: rgba(0, 188, 212, 0.1); /* Hafif vurgu */
+        color: var(--color-primary);
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: block; 
+    }
+
+    /* ANA İÇERİK STİLLERİ */
+    .main-body-container {
+        max-width: 1000px;
+        margin: 40px auto; 
+        padding: 25px; 
+        background-color: rgba(255, 255, 255, 0.05); 
+        border-radius: 10px;
+    }
+    .tag {
+        position: static; padding: 5px 15px; background-color: var(--color-secondary); 
+        color: var(--color-background); border-radius: 4px; font-size: 0.9rem;
+        font-weight: bold;
+    }
+    .review-meta {
+        margin-top: 10px; display: flex; justify-content: center; gap: 20px; color: #aaa; font-size: 0.9rem;
+    }
+
+    /* TABLO STİLLERİ */
+    .comparison-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    .comparison-table th, .comparison-table td {
+        padding: 15px;
+        border: 1px solid #333;
+        text-align: left;
+        font-size: 0.95em;
+    }
+    .comparison-table th {
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    /* Tablo renkleri gRPC ve REST için yeniden tanımlandı */
+    .rest-cell { background-color: rgba(255, 87, 34, 0.1); color: var(--color-rest); } 
+    .grpc-cell { background-color: rgba(76, 175, 80, 0.1); color: var(--color-grpc); } 
+    
+    /* DETAY BÖLÜM STİLLERİ */
+    .technical-section h3 {
+        color: var(--color-detail);
+        margin-top: 35px;
+        border-bottom: 1px dashed #333;
+        padding-bottom: 5px;
+    }
+    .detail-list {
+        list-style: none;
+        padding-left: 20px;
+        margin-top: 15px;
+    }
+    .detail-list li {
+        border-left: 3px solid var(--color-secondary);
+        padding-left: 10px;
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
+    
+    /* KOD BLOKLARI */
+    pre {
+        background-color: #2b2b2b;
+        color: #f8f8f2;
+        padding: 15px;
+        border-radius: 6px;
+        overflow-x: auto;
+        font-family: 'Consolas', 'Courier New', monospace;
+        font-size: 0.9em;
+        border: 1px solid #3a3a3a;
+    }
+
+    /* FOOTER STİLİ */
+    footer {
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+        border-top: 1px solid #333;
+        color: #666;
+        background-color: #1e1e1e;
+    }
+</style>
+    
 </head>
 <body class="yazilim-sayfa">
     <header>
         <div class="logo">TeknoGündem</div>
-        <nav>
+    <nav>
             <ul>
                 <li><a href="index.html">Ana Sayfa</a></li>
-                <li><a href="donanım.html">Donanım</a></li>
+            
+                <li class="dropdown">
+                    <a href="donanım.html">Donanım </a> 
+                    
+                    <div class="dropdown-content"> 
+                        <a href="haberler.html" class="dropdown-item">Haberler</a> 
+                        <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
+                    </div>
+                </li>
+                
                 <li><a href="yazılım.html" class="active">Yazılım</a></li>
+                
                 <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                
             </ul>
         </nav>
     </header>
@@ -164,7 +226,7 @@
         <div class="article-content-wrapper" style="max-width: 900px; margin: 40px auto; padding: 20px;">
             
             <p style="margin-bottom: 25px; line-height: 1.8; font-size: 1.1rem; color: #ccc;">
-                RESTful API'lar, web'in ve mikroservis mimarilerinin temelini oluşturur. Ancak, yüksek trafikli, düşük gecikmeli sistemlerde ve özellikle servisler arası iletişimde (inter-service communication) gRPC, üstün performansı ve kesin sözleşme yapısıyla öne çıkmaktadır. Google tarafından geliştirilen bu **Uzaktan Prosedür Çağrısı (Remote Procedure Call)** çerçevesine geçiş, mimaride önemli değişiklikler gerektirir.
+                RESTful API'lar, web'in ve mikroservis mimarilerinin temelini oluşturur. Ancak, yüksek trafikli, düşük gecikmeli sistemlerde ve özellikle servisler arası iletişimde (inter-service communication) gRPC, üstün performansı ve kesin sözleşme yapısıyla öne çıkmaktadır. Google tarafından geliştirilen bu Uzaktan Prosedür Çağrısı (Remote Procedure Call) çerçevesine geçiş, mimaride önemli değişiklikler gerektirir.
             </p>
 
             <h2 style="color: var(--color-grpc); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-cogs"></i> Faz 1: Performansın Sırrı: Protokol ve Serileştirme</h2>
@@ -175,8 +237,8 @@
                     gRPC'nin hız avantajı iki temel teknolojiye dayanır: HTTP/2 protokolü ve Protocol Buffers (Protobuf) serileştirme formatı.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-network-wired" style="color: var(--color-secondary);"></i> **HTTP/2 Kullanımı:** gRPC, TCP bağlantısının yeniden kullanımını sağlayan, başlıkları sıkıştıran ve tek bir bağlantı üzerinden birden çok eşzamanlı istek (Multiplexing) yapabilen HTTP/2 üzerinde çalışır. REST genellikle daha yavaş olan HTTP/1.1 kullanır.</li>
-                    <li><i class="fas fa-compress" style="color: var(--color-secondary);"></i> **Protocol Buffers (Protobuf):** REST'in metin tabanlı (text-based) ve şişkin JSON/XML formatının aksine, gRPC veriyi **ikili (binary)** formatta serileştirir. Bu, veriyi taşıyan paketin boyutunu 3 ila 10 kat azaltır ve serileştirme/seri kaldırma (serialization/deserialization) süresini hızlandırır.</li>
+                    <li><i class="fas fa-network-wired" style="color: var(--color-secondary);"></i> HTTP/2 Kullanımı: gRPC, TCP bağlantısının yeniden kullanımını sağlayan, başlıkları sıkıştıran ve tek bir bağlantı üzerinden birden çok eşzamanlı istek (Multiplexing) yapabilen HTTP/2 üzerinde çalışır. REST genellikle daha yavaş olan HTTP/1.1 kullanır.</li>
+                    <li><i class="fas fa-compress" style="color: var(--color-secondary);"></i>Protocol Buffers (Protobuf):REST'in metin tabanlı (text-based) ve şişkin JSON/XML formatının aksine, gRPC veriyi **ikili (binary)** formatta serileştirir. Bu, veriyi taşıyan paketin boyutunu 3 ila 10 kat azaltır ve serileştirme/seri kaldırma (serialization/deserialization) süresini hızlandırır.</li>
                 </ul>
             </div>
             
@@ -195,24 +257,24 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td style="color: var(--color-text-light);">**İletişim Stili**</td>
+                            <td style="color: var(--color-text-light);">İletişim Stili</td>
                             <td class="rest-cell">Kaynak Odaklı (Resource-Oriented) - HTTP Metotları (GET, POST, PUT, DELETE).</td>
-                            <td class="grpc-cell">**Prosedür Odaklı (Procedure-Oriented)** - Fonksiyon Çağrıları (RPC).</td>
+                            <td class="grpc-cell">Prosedür Odaklı (Procedure-Oriented)- Fonksiyon Çağrıları (RPC).</td>
                         </tr>
                         <tr>
-                            <td style="color: var(--color-text-light);">**Taşıma Protokolü**</td>
+                            <td style="color: var(--color-text-light);">Taşıma Protokolü</td>
                             <td class="rest-cell">Çoğunlukla HTTP/1.1.</td>
-                            <td class="grpc-cell">**Zorunlu HTTP/2.**</td>
+                            <td class="grpc-cell">Zorunlu HTTP/2.**</td>
                         </tr>
                         <tr>
-                            <td style="color: var(--color-text-light);">**Veri Formatı**</td>
+                            <td style="color: var(--color-text-light);">Veri Formatı</td>
                             <td class="rest-cell">JSON, XML (Metin tabanlı).</td>
-                            <td class="grpc-cell">**Protocol Buffers (İkili / Binary).**</td>
+                            <td class="grpc-cell">Protocol Buffers (İkili / Binary).</td>
                         </tr>
                         <tr>
-                            <td style="color: var(--color-text-light);">**Streaming (Akış)**</td>
+                            <td style="color: var(--color-text-light);">Streaming (Akış)</td>
                             <td class="rest-cell">Sınırlı (Server-Sent Events).</td>
-                            <td class="grpc-cell">**Çift Yönlü Akış (Bi-directional Streaming) dahil, yerleşik destek.**</td>
+                            <td class="grpc-cell">Çift Yönlü Akış (Bi-directional Streaming) dahil, yerleşik destek.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -226,8 +288,8 @@
                     gRPC'ye geçişteki en büyük öğrenme eğrisi ve maliyet, tüm API arayüzlerini `.proto` dosyaları kullanarak tanımlamaktan geçer.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-file-contract" style="color: var(--color-detail);"></i> **Kesin Şema (Schema Enforcement):** Protobuf, alan tiplerini, isimlerini ve hatta numaralarını (field numbers) kesinlikle tanımlar. Bu katı sözleşme, geliştiricilerin bir API'yi yanlış kullanmasını engeller, ancak ilk tanımlama süresini uzatır.</li>
-                    <li><i class="fas fa-lock" style="color: var(--color-detail);"></i> **Versiyonlama (Versioning):** Protobuf, geriye dönük uyumluluğu korumak için alan numaralarını (field numbers) kullanır. Alan kaldırmak yerine 'deprecated' olarak işaretleme gibi yeni disiplinler gerektirir.</li>
+                    <li><i class="fas fa-file-contract" style="color: var(--color-detail);"></i> Kesin Şema (Schema Enforcement): Protobuf, alan tiplerini, isimlerini ve hatta numaralarını (field numbers) kesinlikle tanımlar. Bu katı sözleşme, geliştiricilerin bir API'yi yanlış kullanmasını engeller, ancak ilk tanımlama süresini uzatır.</li>
+                    <li><i class="fas fa-lock" style="color: var(--color-detail);"></i>Versiyonlama (Versioning): Protobuf, geriye dönük uyumluluğu korumak için alan numaralarını (field numbers) kullanır. Alan kaldırmak yerine 'deprecated' olarak işaretleme gibi yeni disiplinler gerektirir.</li>
                 </ul>
             </div>
             
@@ -260,8 +322,8 @@ message UserResponse {
 
                 <p style="color: var(--color-rest); font-weight: bold; margin-top: 20px; margin-bottom: 10px;">Etkisi:</p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-magic" style="color: var(--color-secondary);"></i> **Çoklu Dil Desteği:** Tek bir proto dosyası kullanarak farklı dillerde yazılmış servislerin kolayca iletişim kurmasını sağlar. Bu, poliglott (çok dilli) mikroservis mimarileri için hayati önem taşır.</li>
-                    <li><i class="fas fa-hourglass-half" style="color: var(--color-secondary);"></i> **Geliştirme Hızı:** Geliştiricilerin veri transferi kodu yazmasına gerek kalmaz; sadece iş mantığına (business logic) odaklanırlar.</li>
+                    <li><i class="fas fa-magic" style="color: var(--color-secondary);"></i> Çoklu Dil Desteği: Tek bir proto dosyası kullanarak farklı dillerde yazılmış servislerin kolayca iletişim kurmasını sağlar. Bu, poliglott (çok dilli) mikroservis mimarileri için hayati önem taşır.</li>
+                    <li><i class="fas fa-hourglass-half" style="color: var(--color-secondary);"></i> Geliştirme Hızı: Geliştiricilerin veri transferi kodu yazmasına gerek kalmaz; sadece iş mantığına (business logic) odaklanırlar.</li>
                 </ul>
             </div>
 
@@ -273,8 +335,8 @@ message UserResponse {
                     gRPC'nin ikili yapısı, hata ayıklama (debugging) ve izlemeyi (monitoring) zorlaştırır.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-bug" style="color: var(--color-rest);"></i> **Hata Ayıklama:** REST çağrıları tarayıcıda veya cURL ile kolayca test edilir ve hatalar genellikle okunabilir JSON/XML'dir. gRPC trafiğini analiz etmek için özel araçlar (gRPCurl, BloomRPC) ve HTTP/2 proxy'leri gereklidir.</li>
-                    <li><i class="fas fa-tachometer-alt" style="color: var(--color-rest);"></i> **Load Balancing:** HTTP/2 bağlantıları uzun ömürlü olduğu için, geleneksel L4 (TCP) Load Balancer'lar gRPC yükünü verimli dağıtamaz. Uygulama seviyesinde (L7) Load Balancing veya **Service Mesh (Istio, Linkerd)** kullanılması zorunluluk haline gelir.</li>
+                    <li><i class="fas fa-bug" style="color: var(--color-rest);"></i> Hata Ayıklama: REST çağrıları tarayıcıda veya cURL ile kolayca test edilir ve hatalar genellikle okunabilir JSON/XML'dir. gRPC trafiğini analiz etmek için özel araçlar (gRPCurl, BloomRPC) ve HTTP/2 proxy'leri gereklidir.</li>
+                    <li><i class="fas fa-tachometer-alt" style="color: var(--color-rest);"></i> Load Balancing: HTTP/2 bağlantıları uzun ömürlü olduğu için, geleneksel L4 (TCP) Load Balancer'lar gRPC yükünü verimli dağıtamaz. Uygulama seviyesinde (L7) Load Balancing veya **Service Mesh (Istio, Linkerd)** kullanılması zorunluluk haline gelir.</li>
                 </ul>
             </div>
 
@@ -284,17 +346,17 @@ message UserResponse {
                     Tarayıcılar doğrudan gRPC'yi desteklemediği için, dış dünyaya açılan API'ler için bir geçit (Gateway) şarttır.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-globe" style="color: var(--color-grpc);"></i> **Web İstemcileri:** Web tarayıcıları hala REST/JSON ile çalışır. Bu nedenle, gRPC servisinizi REST'e çeviren bir **gRPC Gateway** (örneğin `grpc-gateway` veya Envoy proxy) kullanmak, hem iç iletişimin gRPC olmasını, hem de dış iletişimin REST/JSON kalmasını sağlar.</li>
+                    <li><i class="fas fa-globe" style="color: var(--color-grpc);"></i>Web İstemcileri: Web tarayıcıları hala REST/JSON ile çalışır. Bu nedenle, gRPC servisinizi REST'e çeviren bir gRPC Gateway (örneğin `grpc-gateway` veya Envoy proxy) kullanmak, hem iç iletişimin gRPC olmasını, hem de dış iletişimin REST/JSON kalmasını sağlar.</li>
                 </ul>
                 <blockquote style="border-left: 5px solid var(--color-secondary); background-color: rgba(255, 152, 0, 0.05); padding: 15px; margin-top: 20px;">
-                    <i class="fas fa-bullhorn" style="color: var(--color-secondary);"></i> **Stratejik Not:** En iyi uygulama, şirket içi mikroservisler arasında gRPC kullanmak ve kamuya açık API'ler için gRPC Gateway üzerinden REST sunmaktır. Bu, hem hız hem de erişilebilirlik avantajını birleştirir.
+                    <i class="fas fa-bullhorn" style="color: var(--color-secondary);"></i>Stratejik Not: En iyi uygulama, şirket içi mikroservisler arasında gRPC kullanmak ve kamuya açık API'ler için gRPC Gateway üzerinden REST sunmaktır. Bu, hem hız hem de erişilebilirlik avantajını birleştirir.
                 </blockquote>
             </div>
 
             <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-graduation-cap"></i> Özet Rehberlik İlkesi</h2>
             
             <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
-                gRPC'ye geçiş, özellikle servisler arası yüksek hacimli, düşük gecikmeli iletişim, çift yönlü akış gerektiren uygulamalar ve poliglott mikroservis mimarileri için **kritik bir performans yatırımıdır.** Ancak bu geçiş; <span style="color: var(--color-rest);">yeni bir şema dili (Protobuf) öğrenmeyi, operasyonel araçları güncellemeyi ve dış dünyaya açık API'ler için bir Geçit (Gateway) kurma zorunluluğunu</span> beraberinde getirir. Büyük bir fayda için önemli bir mimari disiplin gerektirir.
+                gRPC'ye geçiş, özellikle servisler arası yüksek hacimli, düşük gecikmeli iletişim, çift yönlü akış gerektiren uygulamalar ve poliglott mikroservis mimarileri için kritik bir performans yatırımıdır. Ancak bu geçiş; <span style="color: var(--color-rest);">yeni bir şema dili (Protobuf) öğrenmeyi, operasyonel araçları güncellemeyi ve dış dünyaya açık API'ler için bir Geçit (Gateway) kurma zorunluluğunu</span> beraberinde getirir. Büyük bir fayda için önemli bir mimari disiplin gerektirir.
             </p>
 
         </div>
@@ -302,7 +364,7 @@ message UserResponse {
     </main>
 
     <footer>
-        <p>&copy; 2026 TeknoGündem. Tüm Hakları Saklıdır.</p>
+        <p>&copy; 2025TeknoGündem. Tüm Hakları Saklıdır.</p>
     </footer>
 
 </body> 

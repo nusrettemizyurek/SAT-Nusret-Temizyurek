@@ -64,6 +64,50 @@
             border-radius: 5px;
         }
         
+        /* EKLENDİ: DROPDOWN MENÜ STİLLERİ (Açılır menünün çalışması için) */
+        .dropdown {
+            position: relative;
+            display: inline-block; 
+            padding: 0 5px; 
+        }
+        
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            background-color: #1e1e1e; 
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+            z-index: 10; 
+            padding: 0;
+            top: 100%; 
+            margin-top: 0; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            border-radius: 5px;
+        }
+        
+        .dropdown-content a {
+            color: var(--color-text-light);
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-primary);
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block; 
+        }
+
+        /* EKLENDİ: İkonlar için metin ayrımı (Görsel tutarlılık için) */
+        h1 i, h2 i, h3 i, .detail-list i, blockquote i {
+            margin-right: 10px;
+        }
+
         /* ANA İÇERİK STİLLERİ */
         .main-body-container {
             max-width: 1000px;
@@ -174,9 +218,17 @@
         <nav>
             <ul>
                 <li><a href="index.html">Ana Sayfa</a></li>
-                <li><a href="donanım.html">Donanım</a></li>
-                <li><a href="yazılım.html">Yazılım</a></li>
-                <li><a href="devops.html" class="active">DevOps</a></li>
+            
+                <li class="dropdown">
+                    <a href="donanım.html">Donanım</a> 
+                    <div class="dropdown-content"> 
+                        <a href="haberler.html" class="dropdown-item">Haberler</a> 
+                        <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
+                    </div>
+                </li>
+                <li><a href="yazılım.html" class="active">Yazılım</a></li>
+                
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
             </ul>
         </nav>
     </header>
@@ -200,25 +252,25 @@
 
             <div class="video-box">
                 <h2 style="color: var(--color-grafana); margin-top: 0;"><i class="fas fa-video"></i> AŞAMA 1: Prometheus Çalışma Mantığı ve Metrik Toplama</h2>
-                <p style="color: #ccc;">*Bu video kesitinde, Prometheus'un altyapınızdan veriyi nasıl çektiğini (Pull) ve zaman serisi veritabanına nasıl kaydettiğini izliyoruz.*</p>
+                <p style="color: #ccc;">Bu video kesitinde, Prometheus'un altyapınızdan veriyi nasıl çektiğini (Pull) ve zaman serisi veritabanına nasıl kaydettiğini izliyoruz.*</p>
                 
                 <div class="youtube-placeholder">
                     <iframe src="https://www.youtube.com/embed/NWt75kyGUxA" 
-                            title="Prometheus & Grafana: The Ultimate Monitoring Stack" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
+                                title="Prometheus & Grafana: The Ultimate Monitoring Stack" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
                     </iframe>
                 </div>
                 <div class="technical-section">
                     <h3>Metrik Toplama Mimarisi: Pull Modeli</h3>
                     <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
-                        Prometheus, geleneksel izleme sistemlerinin aksine, izleyeceği servislerin metriklerini kendisi çeker (**Pull Model**).
+                        Prometheus, geleneksel izleme sistemlerinin aksine, izleyeceği servislerin metriklerini kendisi çeker (Pull Model).
                     </p>
                     <ul class="detail-list">
-                        <li><i class="fas fa-network-wired" style="color: var(--color-prometheus);"></i> **Scraping (Kazıma):** Prometheus sunucusu, yapılandırma dosyasında belirtilen hedeflere (targets) düzenli aralıklarla (örneğin 15 saniyede bir) HTTP isteği göndererek metrikleri toplar.</li>
-                        <li><i class="fas fa-tag" style="color: var(--color-prometheus);"></i> **Çok Boyutlu Veri Modeli:** Metrikler, etiketler (labels) ile zenginleştirilir. Örneğin: `http_requests_total{method="POST", endpoint="/users", status="200"}`. Bu etiketler, güçlü sorgulama ve filtreleme imkanı sağlar.</li>
-                        <li><i class="fas fa-satellite-dish" style="color: var(--color-prometheus);"></i> **Exporter Mimarisi:** Altyapı veya veritabanı (Node Exporter, Postgres Exporter) gibi metrikleri kendiliğinden sağlamayan servisler için ayrı bir **Exporter** servisi kurulur. Bu exporter, Prometheus'un çekebileceği formata dönüştürülmüş metrikleri açığa çıkarır.</li>
+                        <li><i class="fas fa-network-wired" style="color: var(--color-prometheus);"></i> Scraping (Kazıma): Prometheus sunucusu, yapılandırma dosyasında belirtilen hedeflere (targets) düzenli aralıklarla (örneğin 15 saniyede bir) HTTP isteği göndererek metrikleri toplar.</li>
+                        <li><i class="fas fa-tag" style="color: var(--color-prometheus);"></i> Çok Boyutlu Veri Modeli: Metrikler, etiketler (labels) ile zenginleştirilir. Örneğin: `http_requests_total{method="POST", endpoint="/users", status="200"}`. Bu etiketler, güçlü sorgulama ve filtreleme imkanı sağlar.</li>
+                        <li><i class="fas fa-satellite-dish" style="color: var(--color-prometheus);"></i>Exporter Mimarisi: Altyapı veya veritabanı (Node Exporter, Postgres Exporter) gibi metrikleri kendiliğinden sağlamayan servisler için ayrı bir **Exporter** servisi kurulur. Bu exporter, Prometheus'un çekebileceği formata dönüştürülmüş metrikleri açığa çıkarır.</li>
                     </ul>
                 </div>
             </div>
@@ -242,17 +294,17 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="prometheus-cell">**Hız (Rate)**</td>
+                                <td class="prometheus-cell">Hız (Rate)</td>
                                 <td class="prometheus-cell">`rate(http_requests_total[5m])`</td>
                                 <td class="grafana-cell">Son 5 dakikadaki HTTP isteklerinin saniye başına ortalama hızını hesaplar (RPS).</td>
                             </tr>
                             <tr>
-                                <td class="prometheus-cell">**Gecikme (Latency)**</td>
+                                <td class="prometheus-cell">Gecikme (Latency)</td>
                                 <td class="prometheus-cell">`histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))`</td>
                                 <td class="grafana-cell">İsteklerin %95'inin hangi sürede tamamlandığını (95. persentil gecikmesi) hesaplar. SRE için kritik.</td>
                             </tr>
                             <tr>
-                                <td class="prometheus-cell">**Toplama (Aggregation)**</td>
+                                <td class="prometheus-cell">Toplama (Aggregation)</td>
                                 <td class="prometheus-cell">`sum by (job) (node_cpu_seconds_total)`</td>
                                 <td class="grafana-cell">Tüm CPU sürelerini, her bir işe (job) göre gruplandırarak toplar.</td>
                             </tr>
@@ -271,9 +323,9 @@
                         Grafana, Prometheus'un depoladığı ham veriyi alan ve onu anlaşılır grafiklere, tablolara ve göstergelere dönüştüren görselleştirme aracıdır.
                     </p>
                     <ul class="detail-list">
-                        <li><i class="fas fa-dashboard" style="color: var(--color-grafana);"></i> **Çoklu Veri Kaynakları:** Prometheus en temel kaynak olsa da, Grafana aynı panoda Loki (Loglar için), Elasticsearch veya bulut sağlayıcılarının metrik servislerini (CloudWatch, Azure Monitor) birleştirebilir.</li>
-                        <li><i class="fas fa-bell" style="color: var(--color-grafana);"></i> **Uyarı Yönetimi:** Grafana, tanımlanan PromQL sorguları belirli bir eşiği aştığında (örneğin CPU kullanımı %90'ın üzerine çıktığında) e-posta, Slack veya PagerDuty gibi kanallar aracılığıyla otomatik olarak uyarı gönderme yeteneğine sahiptir.</li>
-                        <li><i class="fas fa-users" style="color: var(--color-grafana);"></i> **Dashboard Paylaşımı:** Ekipler, hazır şablonları (örneğin popüler "Node Exporter Dashboard" şablonları) kolayca içe aktarabilir ve panoları organizasyon içinde paylaşabilir.</li>
+                        <li><i class="fas fa-dashboard" style="color: var(--color-grafana);"></i> **Çoklu Veri Kaynakları: Prometheus en temel kaynak olsa da, Grafana aynı panoda Loki (Loglar için), Elasticsearch veya bulut sağlayıcılarının metrik servislerini (CloudWatch, Azure Monitor) birleştirebilir.</li>
+                        <li><i class="fas fa-bell" style="color: var(--color-grafana);"></i>Uyarı Yönetimi: Grafana, tanımlanan PromQL sorguları belirli bir eşiği aştığında (örneğin CPU kullanımı %90'ın üzerine çıktığında) e-posta, Slack veya PagerDuty gibi kanallar aracılığıyla otomatik olarak uyarı gönderme yeteneğine sahiptir.</li>
+                        <li><i class="fas fa-users" style="color: var(--color-grafana);"></i>Dashboard Paylaşımı: Ekipler, hazır şablonları (örneğin popüler "Node Exporter Dashboard" şablonları) kolayca içe aktarabilir ve panoları organizasyon içinde paylaşabilir.</li>
                     </ul>
                 </div>
             </div>
@@ -286,16 +338,16 @@
                     Prometheus/Grafana kurulumunda başarılı olmak için sadece metrik toplamak yetmez; doğru metrikleri izlemek gerekir. Google SRE ekibinin önerdiği **RED** metotolojisi yol göstericidir.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-fire" style="color: var(--color-secondary);"></i> **Rate (Hız):** Servisin işlediği saniye başına istek sayısı (PromQL'de `rate` fonksiyonu ile hesaplanır).</li>
-                    <li><i class="fas fa-hourglass-half" style="color: var(--color-secondary);"></i> **Errors (Hata):** Başarısız olan isteklerin saniye başına oranı (HTTP 5xx hataları).</li>
-                    <li><i class="fas fa-stopwatch" style="color: var(--color-secondary);"></i> **Durations/Latency (Gecikme):** Bir isteğin ne kadar sürdüğü (PromQL'de `histogram_quantile` ile persentil bazlı hesaplanır). **Ortalama (Average) gecikme yerine, p95 veya p99 gibi persentil değerlerini izlemek daha doğrudur.**</li>
+                    <li><i class="fas fa-fire" style="color: var(--color-secondary);"></i>Rate (Hız): Servisin işlediği saniye başına istek sayısı (PromQL'de `rate` fonksiyonu ile hesaplanır).</li>
+                    <li><i class="fas fa-hourglass-half" style="color: var(--color-secondary);"></i>Errors (Hata):Başarısız olan isteklerin saniye başına oranı (HTTP 5xx hataları).</li>
+                    <li><i class="fas fa-stopwatch" style="color: var(--color-secondary);"></i>Durations/Latency (Gecikme):Bir isteğin ne kadar sürdüğü (PromQL'de `histogram_quantile` ile persentil bazlı hesaplanır).Ortalama (Average) gecikme yerine, p95 veya p99 gibi persentil değerlerini izlemek daha doğrudur.</li>
                 </ul>
             </div>
 
             <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-graduation-cap"></i> Özet Rehberlik İlkesi</h2>
             
             <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
-                Prometheus ve Grafana, sadece metrik toplama araçları değil, operasyonel zekanın temelini oluşturur. Prometheus'un **Pull** mimarisini ve **Exporter** gücünü kullanarak altyapı metriklerinizi toplayın. Topladığınız bu zengin, etiketlenmiş veriyi **PromQL** ile analiz edin. Son olarak, Grafana'yı kullanarak bu verileri anlamlı **RED metotolojisine** uygun panolara dönüştürün ve kritik **uyarı eşiklerini** belirleyerek proaktif bir izleme kültürü oluşturun.
+                Prometheus ve Grafana, sadece metrik toplama araçları değil, operasyonel zekanın temelini oluşturur. Prometheus'un Pull mimarisini ve Exporter gücünü kullanarak altyapı metriklerinizi toplayın. Topladığınız bu zengin, etiketlenmiş veriyi PromQL ile analiz edin. Son olarak, Grafana'yı kullanarak bu verileri anlamlı RED metotolojisine uygun panolara dönüştürün ve kritik uyarı eşiklerini belirleyerek proaktif bir izleme kültürü oluşturun.
             </p>
 
         </div>
@@ -303,7 +355,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 TeknoGündem. Tüm Hakları Saklıdır.</p>
+        <p>&copy; 2025TeknoGündem. Tüm Hakları Saklıdır.</p>
     </footer>
 
 </body> 

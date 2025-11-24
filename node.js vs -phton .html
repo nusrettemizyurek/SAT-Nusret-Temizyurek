@@ -6,148 +6,208 @@
     <title>Node.js vs Python: API Geliştirme Hızı, Performans ve Eko-sistem Karşılaştırması - TeknoGündem</title>
     <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
     
-    <style>
-        /* TEMEL RENKLER VE GLOBAL STİLLER (Mevcut sayfanızdaki ile aynı) */
-        :root {
-            --color-primary: #00bcd4; /* Mavi-Turkuaz */
-            --color-secondary: #ff9800; /* Turuncu */
-            --color-background: #121212;
-            --color-text-light: #ddd;
-            --color-vite: #646cff; /* Vite Rengi */
-            --color-webpack: #1c78c0; /* Webpack Rengi */
-            --color-detail: #4caf50; /* Detaylar için Yeşil */
-            /* Yeni makale için özel renkler tanımlayalım */
-            --color-node: #68a063; /* Node.js yeşili */
-            --color-python: #306998; /* Python mavisi */
-        }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* TEMEL RENKLER VE GLOBAL STİLLER (Mevcut sayfanızdaki ile aynı) */
+    :root {
+        --color-primary: #00bcd4; /* Mavi-Turkuaz */
+        --color-secondary: #ff9800; /* Turuncu */
+        --color-background: #121212;
+        --color-text-light: #ddd;
+        --color-detail: #4caf50; /* Detaylar için Yeşil */
+        --color-node: #68a063; /* Node.js yeşili */
+        --color-python: #306998; /* Python mavisi */
+    }
 
-        body {
-            background-color: var(--color-background);
-            color: var(--color-text-light);
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
+    body {
+        background-color: var(--color-background);
+        color: var(--color-text-light);
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* HEADER & NAV STİLLERİ */
+    header {
+        background-color: #1e1e1e;
+        color: white;
+        padding: 15px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: var(--color-primary);
+    }
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+    nav ul li a {
+        color: var(--color-text-light);
+        text-decoration: none;
+        padding: 10px 15px;
+        display: block;
+        transition: color 0.3s;
+    }
+    nav ul li a:hover, nav ul li a.active {
+        color: var(--color-primary);
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 5px;
+    }
+    
+    /* İkonlar için metin ayrımı */
+    h1 i, h2 i, h3 i {
+        margin-right: 10px;
+    }
 
-        /* HEADER & NAV STİLLERİ */
-        header {
-            background-color: #1e1e1e;
-            color: white;
-            padding: 15px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--color-primary);
-        }
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        nav ul li a {
-            color: var(--color-text-light);
-            text-decoration: none;
-            padding: 10px 15px;
-            display: block;
-            transition: color 0.3s;
-        }
-        nav ul li a:hover, nav ul li a.active {
-            color: var(--color-primary);
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 5px;
-        }
+    /* ************************************************* */
+    /* DÜZELTİLDİ: NAV DROPDOWN İÇİN GEREKLİ CSS STİLLERİ */
+    /* ************************************************* */
+    .dropdown {
+        position: relative;
+        display: inline-block; 
+        /* Geri kapanma sorununu çözmek için `li` öğesinin etrafına daha büyük bir hover alanı tanımlanır */
+        padding: 0 5px; /* Ana linkler hariç, li etrafına biraz boşluk */
+    }
+    
+    .dropdown-content {
+        display: none; 
+        position: absolute;
+        background-color: #1e1e1e; 
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+        z-index: 10; 
         
-        /* ANA İÇERİK STİLLERİ */
-        .main-body-container {
-            max-width: 1000px;
-            margin: 40px auto; 
-            padding: 25px; 
-            background-color: rgba(255, 255, 255, 0.05); 
-            border-radius: 10px;
-        }
-        .tag {
-            position: static; padding: 5px 15px; background-color: var(--color-secondary); 
-            color: var(--color-background); border-radius: 4px; font-size: 0.9rem;
-            font-weight: bold;
-        }
-        .review-meta {
-            margin-top: 10px; display: flex; justify-content: center; gap: 20px; color: #aaa; font-size: 0.9rem;
-        }
+        /* ÖNEMLİ DÜZELTMELER */
+        padding: 0; /* İç dolguyu kaldır */
+        top: 100%; /* İçeriği tam olarak li'nin altına yerleştirir */
+        margin-top: 0; /* Üst menü ile alt menü arasındaki boşluğu kaldırır */
+        /* Merkezleme */
+        left: 50%; 
+        transform: translateX(-50%); 
+    }
+    
+    .dropdown-content a {
+        color: var(--color-text-light);
+        padding: 10px 16px; /* Alt menü linklerinin dolgusunu artır */
+        text-decoration: none;
+        display: block;
+        text-align: center;
+    }
+    
+    .dropdown-content a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--color-primary);
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: block; 
+    }
+    /* ************************************************* */
 
-        /* TABLO STİLLERİ (Özel Renkler ile Güncellendi) */
-        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        .comparison-table th, .comparison-table td {
-            padding: 15px;
-            border: 1px solid #333;
-            text-align: left;
-            font-size: 0.95em;
-        }
-        .comparison-table th {
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        /* Yeni tablo için renkler */
-        .node-cell { background-color: rgba(104, 160, 99, 0.1); color: var(--color-node); } 
-        .python-cell { background-color: rgba(48, 105, 152, 0.1); color: var(--color-python); } 
-        
-        /* DETAY BÖLÜM STİLLERİ */
-        .technical-section h3 {
-            color: var(--color-detail);
-            margin-top: 35px;
-            border-bottom: 1px dashed #333;
-            padding-bottom: 5px;
-        }
-        .detail-list {
-            list-style: none;
-            padding-left: 20px;
-            margin-top: 15px;
-        }
-        .detail-list li {
-            border-left: 3px solid var(--color-secondary);
-            padding-left: 10px;
-            margin-bottom: 10px;
-            line-height: 1.6;
-        }
-        
-        /* KOD BLOKLARI */
-        pre {
-            background-color: #2b2b2b;
-            color: #f8f8f2;
-            padding: 15px;
-            border-radius: 6px;
-            overflow-x: auto;
-            font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 0.9em;
-            border: 1px solid #3a3a3a;
-        }
+    /* ANA İÇERİK STİLLERİ */
+    .main-body-container {
+        max-width: 1000px;
+        margin: 40px auto; 
+        padding: 25px; 
+        background-color: rgba(255, 255, 255, 0.05); 
+        border-radius: 10px;
+    }
+    .tag {
+        position: static; padding: 5px 15px; background-color: var(--color-secondary); 
+        color: var(--color-background); border-radius: 4px; font-size: 0.9rem;
+        font-weight: bold;
+    }
+    .review-meta {
+        margin-top: 10px; display: flex; justify-content: center; gap: 20px; color: #aaa; font-size: 0.9rem;
+    }
 
-        /* FOOTER STİLİ */
-        footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            border-top: 1px solid #333;
-            color: #666;
-            background-color: #1e1e1e;
-        }
-    </style>
+    /* TABLO STİLLERİ */
+    .comparison-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    .comparison-table th, .comparison-table td {
+        padding: 15px;
+        border: 1px solid #333;
+        text-align: left;
+        font-size: 0.95em;
+    }
+    .comparison-table th {
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    /* Yeni tablo için renkler */
+    .node-cell { background-color: rgba(104, 160, 99, 0.1); color: var(--color-node); } 
+    .python-cell { background-color: rgba(48, 105, 152, 0.1); color: var(--color-python); } 
+    
+    /* DETAY BÖLÜM STİLLERİ */
+    .technical-section h3 {
+        color: var(--color-detail);
+        margin-top: 35px;
+        border-bottom: 1px dashed #333;
+        padding-bottom: 5px;
+    }
+    .detail-list {
+        list-style: none;
+        padding-left: 20px;
+        margin-top: 15px;
+    }
+    .detail-list li {
+        border-left: 3px solid var(--color-secondary);
+        padding-left: 10px;
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
+    
+    /* KOD BLOKLARI */
+    pre {
+        background-color: #2b2b2b;
+        color: #f8f8f2;
+        padding: 15px;
+        border-radius: 6px;
+        overflow-x: auto;
+        font-family: 'Consolas', 'Courier New', monospace;
+        font-size: 0.9em;
+        border: 1px solid #3a3a3a;
+    }
+
+    /* FOOTER STİLİ */
+    footer {
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+        border-top: 1px solid #333;
+        color: #666;
+        background-color: #1e1e1e;
+    }
+</style>
 </head>
 <body class="yazilim-sayfa">
     <header>
         <div class="logo">TeknoGündem</div>
         <nav>
             <ul>
-                <li><a href="index.html">Ana Sayfa</a></li>
-                <li><a href="donanım.html">Donanım</a></li>
-                <li><a href="yazılım.html" class="active">Yazılım</a></li>
-                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                      <li><a href="index.html">Ana Sayfa</a></li>
+            
+            <li class="dropdown">
+                
+                <a href="donanım.html">Donanım</a> 
+                
+                <div class="dropdown-content"> 
+                    <a href="haberler.html" class="dropdown-item">Haberler</a> 
+                    <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
+                </div>
+            </li>
+            
+            <li><a href="yazılım.html" class="active">Yazılım</a></li>
+            
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+              
             </ul>
         </nav>
     </header>
@@ -177,8 +237,8 @@
                     Temel mimari farkı, hangi senaryoda hangi teknolojinin daha iyi performans göstereceğini belirler.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-bolt" style="color: var(--color-node);"></i> **Node.js (Tek İş Parçacığı - Non-Blocking I/O):** V8 motoru üzerinde çalışan Node.js, olay döngüsü (Event Loop) ve geri arama (Callback) mekanizması ile **Non-Blocking I/O** kullanır. Bu, özellikle I/O yoğun (veritabanı sorguları, harici API çağrıları) uygulamalarda yüksek eşzamanlılık sağlar.</li>
-                    <li><i class="fas fa-cogs" style="color: var(--color-python);"></i> **Python (Çoklu İş Parçacığı - GIL):** Python'ın CPython uygulaması, aynı anda yalnızca bir iş parçacığının Python bayt kodunu yürütmesine izin veren **Global Interpreter Lock (GIL)**'e sahiptir. Bu, CPU yoğun işlerde (veri işleme, kompleks hesaplama) performansı düşürebilir, ancak **Multi-Processing** ile bu aşılabilir.</li>
+                    <li><i class="fas fa-bolt" style="color: var(--color-node);"></i> Node.js (Tek İş Parçacığı - Non-Blocking I/O):V8 motoru üzerinde çalışan Node.js, olay döngüsü (Event Loop) ve geri arama (Callback) mekanizması ile Non-Blocking I/O kullanır. Bu, özellikle I/O yoğun (veritabanı sorguları, harici API çağrıları) uygulamalarda yüksek eşzamanlılık sağlar.</li>
+                    <li><i class="fas fa-cogs" style="color: var(--color-python);"></i> Python (Çoklu İş Parçacığı - GIL): Python'ın CPython uygulaması, aynı anda yalnızca bir iş parçacığının Python bayt kodunu yürütmesine izin veren Global Interpreter Lock (GIL)'e sahiptir. Bu, CPU yoğun işlerde (veri işleme, kompleks hesaplama) performansı düşürebilir, ancak Multi-Processing ile bu aşılabilir.</li>
                 </ul>
             </div>
             
@@ -197,17 +257,17 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td style="color: var(--color-text-light);">**I/O Yoğun İşlemler**</td>
-                            <td class="node-cell">**Üstün.** Event Loop sayesinde çok sayıda bağlantıyı düşük gecikmeyle yönetir.</td>
+                            <td style="color: var(--color-text-light);">I/O Yoğun İşlemler</td>
+                            <td class="node-cell">Üstün. Event Loop sayesinde çok sayıda bağlantıyı düşük gecikmeyle yönetir.</td>
                             <td class="python-cell">İyi. Ancak GIL nedeniyle eşzamanlılıkta Node.js'in gerisinde kalır. (Asenkron çerçevelerle [FastAPI] rekabet edebilir.)</td>
                         </tr>
                         <tr>
                             <td style="color: var(--color-text-light);">**CPU Yoğun İşlemler**</td>
                             <td class="node-cell">Zayıf. Tek iş parçacığı uzun süren bir işlemi bloke eder. Worker Threads ile çözülür.</td>
-                            <td class="python-cell">**Daha Üstün.** Multi-Processing ve NumPy/Pandas gibi C tabanlı kütüphanelerle hızlı çalışır.</td>
+                            <td class="python-cell">Daha Üstün. Multi-Processing ve NumPy/Pandas gibi C tabanlı kütüphanelerle hızlı çalışır.</td>
                         </tr>
                         <tr>
-                            <td style="color: var(--color-text-light);">**Başlangıç Hızı**</td>
+                            <td style="color: var(--color-text-light);">Başlangıç Hızı</td>
                             <td class="node-cell">Çok Hızlı. V8 JIT derleyicisi anında başlar.</td>
                             <td class="python-cell">Yavaş. Yorumlama süresi ve daha ağır çerçeveler nedeniyle (örneğin Django) daha yavaş başlar.</td>
                         </tr>
@@ -223,8 +283,8 @@
                     Geliştirme hızını belirleyen en önemli faktör, mevcut ekosistemin zenginliğidir.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-code-branch" style="color: var(--color-secondary);"></i> **Node.js (NPM):** Dünyanın en büyük paket deposu olan NPM, neredeyse her şey için bir çözüme sahiptir. **Full-Stack JavaScript** (React, Vue, Node.js) mimarisi sayesinde ön ve arka ucun tek bir dilde kodlanması geliştirme hızını inanılmaz artırır.</li>
-                    <li><i class="fas fa-book-open" style="color: var(--color-secondary);"></i> **Python (PyPI):** Kütüphane sayısı çok fazladır ancak en güçlü yanı **Veri Bilimi (Data Science), Yapay Zeka (AI/ML) ve Akademik Hesaplama** alanlarındaki benzersiz kütüphaneleridir (TensorFlow, PyTorch, Scikit-learn). Eğer projeniz bu alanlarla kesişiyorsa, Python vazgeçilmezdir.</li>
+                    <li><i class="fas fa-code-branch" style="color: var(--color-secondary);"></i> Node.js (NPM): Dünyanın en büyük paket deposu olan NPM, neredeyse her şey için bir çözüme sahiptir. Full-Stack JavaScript (React, Vue, Node.js) mimarisi sayesinde ön ve arka ucun tek bir dilde kodlanması geliştirme hızını inanılmaz artırır.</li>
+                    <li><i class="fas fa-book-open" style="color: var(--color-secondary);"></i> Python (PyPI): Kütüphane sayısı çok fazladır ancak en güçlü yanı Veri Bilimi (Data Science), Yapay Zeka (AI/ML) ve Akademik Hesaplama alanlarındaki benzersiz kütüphaneleridir (TensorFlow, PyTorch, Scikit-learn). Eğer projeniz bu alanlarla kesişiyorsa, Python vazgeçilmezdir.</li>
                 </ul>
             </div>
             
@@ -267,7 +327,7 @@ def create_user():
     except Exception as e:
         return jsonify({'error': str(e)}), 500</code></pre>
                 <blockquote style="border-left: 5px solid var(--color-secondary); background-color: rgba(255, 152, 0, 0.05); padding: 15px; margin-top: 20px;">
-                    <i class="fas fa-info-circle" style="color: var(--color-secondary);"></i> **Not:** Her iki dil de modern çerçevelerle (Node.js'te Fastify/NestJS, Python'da FastAPI) çok daha hızlı ve okunabilir API'ler yazmaya olanak tanır.
+                    <i class="fas fa-info-circle" style="color: var(--color-secondary);"></i> Not: Her iki dil de modern çerçevelerle (Node.js'te Fastify/NestJS, Python'da FastAPI) çok daha hızlı ve okunabilir API'ler yazmaya olanak tanır.
                 </blockquote>
             </div>
 
@@ -280,8 +340,8 @@ def create_user():
             <div class="technical-section">
                 <h3>Sonuç Özeti: Ne Zaman Hangisini Seçmeli?</h3>
                 <ul class="detail-list">
-                    <li><i class="fas fa-check" style="color: var(--color-node);"></i> **Node.js'i Tercih Edin:** Gerçek zamanlı uygulamalar (WebSockets), mikroservis mimarileri, I/O yoğun API ağ geçitleri veya tam yığın (Full-Stack) JavaScript kullanmak istediğinizde.</li>
-                    <li><i class="fas fa-check" style="color: var(--color-python);"></i> **Python'ı Tercih Edin:** ML modellerinin entegre edildiği API'ler, veri işleme boru hatları, basit ve hızlı prototipleme veya güçlü ve olgun bilimsel kütüphanelere ihtiyaç duyduğunuzda.</li>
+                    <li><i class="fas fa-check" style="color: var(--color-node);"></i> Node.js'i Tercih Edin: Gerçek zamanlı uygulamalar (WebSockets), mikroservis mimarileri, I/O yoğun API ağ geçitleri veya tam yığın (Full-Stack) JavaScript kullanmak istediğinizde.</li>
+                    <li><i class="fas fa-check" style="color: var(--color-python);"></i> Python'ı Tercih Edin: ML modellerinin entegre edildiği API'ler, veri işleme boru hatları, basit ve hızlı prototipleme veya güçlü ve olgun bilimsel kütüphanelere ihtiyaç duyduğunuzda.</li>
                 </ul>
             </div>
 
@@ -290,7 +350,7 @@ def create_user():
     </main>
 
     <footer>
-        <p>&copy; 2026 TeknoGündem. Tüm Hakları Saklıdır.</p>
+        <p>&copy; 2025 TeknoGündem. Tüm Hakları Saklıdır.</p>
     </footer>
 
 </body> 

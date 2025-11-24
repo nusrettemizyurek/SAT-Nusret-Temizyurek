@@ -5,150 +5,208 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQL'den NoSQL'e Geçişin Gerçek Maliyeti: Teknik, Personel ve Operasyonel Zorluklar - TeknoGündem</title>
     <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon"> 
-   
+   <style>
+    /* TEMEL RENKLER VE GLOBAL STİLLER (Mevcut sayfanızdaki ile aynı) */
+    :root {
+        --color-primary: #00bcd4; /* Mavi-Turkuaz */
+        --color-secondary: #ff9800; /* Turuncu */
+        --color-background: #121212;
+        --color-text-light: #ddd;
+        --color-detail: #4caf50; /* Detaylar için Yeşil */
+        --color-node: #68a063; /* Node.js yeşili */
+        --color-python: #306998; /* Python mavisi */
+    }
+
+    body {
+        background-color: var(--color-background);
+        color: var(--color-text-light);
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+    }
     
-    <style>
-        /* TEMEL RENKLER VE GLOBAL STİLLER */
-        :root {
-            --color-primary: #00bcd4; /* Mavi-Turkuaz */
-            --color-secondary: #ff9800; /* Turuncu */
-            --color-background: #121212;
-            --color-text-light: #ddd;
-            --color-vite: #646cff; 
-            --color-webpack: #1c78c0; 
-            --color-detail: #4caf50; /* Detaylar için Yeşil */
-            /* Yeni makale için özel renkler */
-            --color-sql: #4CAF50; /* Yeşil */
-            --color-nosql: #FF5722; /* Kırmızımsı Turuncu */
-        }
+    /* HEADER & NAV STİLLERİ */
+    header {
+        background-color: #1e1e1e;
+        color: white;
+        padding: 15px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: var(--color-primary);
+    }
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+    nav ul li a {
+        color: var(--color-text-light);
+        text-decoration: none;
+        padding: 10px 15px;
+        display: block;
+        transition: color 0.3s;
+    }
+    nav ul li a:hover, nav ul li a.active {
+        color: var(--color-primary);
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 5px;
+    }
+    
+    /* İkonlar için metin ayrımı */
+    h1 i, h2 i, h3 i {
+        margin-right: 10px;
+    }
 
-        body {
-            background-color: var(--color-background);
-            color: var(--color-text-light);
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* HEADER & NAV STİLLERİ */
-        header {
-            background-color: #1e1e1e;
-            color: white;
-            padding: 15px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--color-primary);
-        }
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        nav ul li a {
-            color: var(--color-text-light);
-            text-decoration: none;
-            padding: 10px 15px;
-            display: block;
-            transition: color 0.3s;
-        }
-        nav ul li a:hover, nav ul li a.active {
-            color: var(--color-primary);
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 5px;
-        }
+    /* ************************************************* */
+    /* DÜZELTİLDİ: NAV DROPDOWN İÇİN GEREKLİ CSS STİLLERİ */
+    /* ************************************************* */
+    .dropdown {
+        position: relative;
+        display: inline-block; 
+        /* Geri kapanma sorununu çözmek için `li` öğesinin etrafına daha büyük bir hover alanı tanımlanır */
+        padding: 0 5px; /* Ana linkler hariç, li etrafına biraz boşluk */
+    }
+    
+    .dropdown-content {
+        display: none; 
+        position: absolute;
+        background-color: #1e1e1e; 
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+        z-index: 10; 
         
-        /* ANA İÇERİK STİLLERİ */
-        .main-body-container {
-            max-width: 1000px;
-            margin: 40px auto; 
-            padding: 25px; 
-            background-color: rgba(255, 255, 255, 0.05); 
-            border-radius: 10px;
-        }
-        .tag {
-            position: static; padding: 5px 15px; background-color: var(--color-secondary); 
-            color: var(--color-background); border-radius: 4px; font-size: 0.9rem;
-            font-weight: bold;
-        }
-        .review-meta {
-            margin-top: 10px; display: flex; justify-content: center; gap: 20px; color: #aaa; font-size: 0.9rem;
-        }
+        /* ÖNEMLİ DÜZELTMELER */
+        padding: 0; /* İç dolguyu kaldır */
+        top: 100%; /* İçeriği tam olarak li'nin altına yerleştirir */
+        margin-top: 0; /* Üst menü ile alt menü arasındaki boşluğu kaldırır */
+        /* Merkezleme */
+        left: 50%; 
+        transform: translateX(-50%); 
+    }
+    
+    .dropdown-content a {
+        color: var(--color-text-light);
+        padding: 10px 16px; /* Alt menü linklerinin dolgusunu artır */
+        text-decoration: none;
+        display: block;
+        text-align: center;
+    }
+    
+    .dropdown-content a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--color-primary);
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: block; 
+    }
+    /* ************************************************* */
 
-        /* TABLO STİLLERİ */
-        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        .comparison-table th, .comparison-table td {
-            padding: 15px;
-            border: 1px solid #333;
-            text-align: left;
-            font-size: 0.95em;
-        }
-        .comparison-table th {
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        /* Yeni tablo için renkler */
-        .sql-cell { background-color: rgba(76, 175, 80, 0.1); color: var(--color-sql); } 
-        .nosql-cell { background-color: rgba(255, 87, 34, 0.1); color: var(--color-nosql); } 
-        
-        /* DETAY BÖLÜM STİLLERİ */
-        .technical-section h3 {
-            color: var(--color-detail);
-            margin-top: 35px;
-            border-bottom: 1px dashed #333;
-            padding-bottom: 5px;
-        }
-        .detail-list {
-            list-style: none;
-            padding-left: 20px;
-            margin-top: 15px;
-        }
-        .detail-list li {
-            border-left: 3px solid var(--color-secondary);
-            padding-left: 10px;
-            margin-bottom: 10px;
-            line-height: 1.6;
-        }
-        
-        /* KOD BLOKLARI */
-        pre {
-            background-color: #2b2b2b;
-            color: #f8f8f2;
-            padding: 15px;
-            border-radius: 6px;
-            overflow-x: auto;
-            font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 0.9em;
-            border: 1px solid #3a3a3a;
-        }
+    /* ANA İÇERİK STİLLERİ */
+    .main-body-container {
+        max-width: 1000px;
+        margin: 40px auto; 
+        padding: 25px; 
+        background-color: rgba(255, 255, 255, 0.05); 
+        border-radius: 10px;
+    }
+    .tag {
+        position: static; padding: 5px 15px; background-color: var(--color-secondary); 
+        color: var(--color-background); border-radius: 4px; font-size: 0.9rem;
+        font-weight: bold;
+    }
+    .review-meta {
+        margin-top: 10px; display: flex; justify-content: center; gap: 20px; color: #aaa; font-size: 0.9rem;
+    }
 
-        /* FOOTER STİLİ */
-        footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            border-top: 1px solid #333;
-            color: #666;
-            background-color: #1e1e1e;
-        }
-    </style>
+    /* TABLO STİLLERİ */
+    .comparison-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    .comparison-table th, .comparison-table td {
+        padding: 15px;
+        border: 1px solid #333;
+        text-align: left;
+        font-size: 0.95em;
+    }
+    .comparison-table th {
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    /* Yeni tablo için renkler */
+    .node-cell { background-color: rgba(104, 160, 99, 0.1); color: var(--color-node); } 
+    .python-cell { background-color: rgba(48, 105, 152, 0.1); color: var(--color-python); } 
+    
+    /* DETAY BÖLÜM STİLLERİ */
+    .technical-section h3 {
+        color: var(--color-detail);
+        margin-top: 35px;
+        border-bottom: 1px dashed #333;
+        padding-bottom: 5px;
+    }
+    .detail-list {
+        list-style: none;
+        padding-left: 20px;
+        margin-top: 15px;
+    }
+    .detail-list li {
+        border-left: 3px solid var(--color-secondary);
+        padding-left: 10px;
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
+    
+    /* KOD BLOKLARI */
+    pre {
+        background-color: #2b2b2b;
+        color: #f8f8f2;
+        padding: 15px;
+        border-radius: 6px;
+        overflow-x: auto;
+        font-family: 'Consolas', 'Courier New', monospace;
+        font-size: 0.9em;
+        border: 1px solid #3a3a3a;
+    }
+
+    /* FOOTER STİLİ */
+    footer {
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+        border-top: 1px solid #333;
+        color: #666;
+        background-color: #1e1e1e;
+    }
+</style>
+    
+   
 </head>
 <body class="yazilim-sayfa">
     <header>
         <div class="logo">TeknoGündem</div>
         <nav>
             <ul>
-                <li><a href="index.html">Ana Sayfa</a></li>
-                <li><a href="donanım.html">Donanım</a></li>
-                <li><a href="yazılım.html" class="active">Yazılım</a></li>
-                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                      <li><a href="index.html">Ana Sayfa</a></li>
+            
+            <li class="dropdown">
+                
+                <a href="donanım.html">Donanım</a> 
+                
+                <div class="dropdown-content"> 
+                    <a href="haberler.html" class="dropdown-item">Haberler</a> 
+                    <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
+                </div>
+            </li>
+            <li><a href="yazılım.html" class="active">Yazılım</a></li>
+            
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+              
             </ul>
         </nav>
     </header>
@@ -175,11 +233,11 @@
             <div class="technical-section">
                 <h3>Adım 1.1: İlişkisel Modeli NoSQL'e Çevirme Zorluğu</h3>
                 <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
-                    SQL'de veriler normalleştirilir ve ilişkiler Foreign Key'ler ile yönetilir. NoSQL'de ise bu yaklaşım performans katilidir. Veri, sorgulama desenlerine göre **denormalize** edilmeli ve genellikle tek bir doküman/satır içine gömülmelidir (Embedding).
+                    SQL'de veriler normalleştirilir ve ilişkiler Foreign Key'ler ile yönetilir. NoSQL'de ise bu yaklaşım performans katilidir. Veri, sorgulama desenlerine göre denormalize edilmeli ve genellikle tek bir doküman/satır içine gömülmelidir (Embedding).
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-sitemap" style="color: var(--color-secondary);"></i> **Denormalizasyonun Maliyeti:** Veri tekrarı (redundancy) artar. Bu da depolama maliyetini artırır ve veri tutarlılığını (consistency) sağlamak için uygulama katmanında ek mantık (örneğin, manuel çift yazma) gerektirir.</li>
-                    <li><i class="fas fa-code-branch" style="color: var(--color-secondary);"></i> **Atomik İşlem Kaybı:** SQL'in yerleşik ACID (Atomicity, Consistency, Isolation, Durability) garantileri kaybedilir. NoSQL genellikle BASE (Basically Available, Soft state, Eventually consistent) ilkesini benimser. Kritik işlemlerde tutarlılık için ek yazılım katmanları kurulmalıdır.</li>
+                    <li><i class="fas fa-sitemap" style="color: var(--color-secondary);"></i> Denormalizasyonun Maliyeti: Veri tekrarı (redundancy) artar. Bu da depolama maliyetini artırır ve veri tutarlılığını (consistency) sağlamak için uygulama katmanında ek mantık (örneğin, manuel çift yazma) gerektirir.</li>
+                    <li><i class="fas fa-code-branch" style="color: var(--color-secondary);"></i> Atomik İşlem Kaybı: SQL'in yerleşik ACID (Atomicity, Consistency, Isolation, Durability) garantileri kaybedilir. NoSQL genellikle BASE (Basically Available, Soft state, Eventually consistent) ilkesini benimser. Kritik işlemlerde tutarlılık için ek yazılım katmanları kurulmalıdır.</li>
                 </ul>
             </div>
             
@@ -198,14 +256,14 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td style="color: var(--color-text-light);">**Kullanıcı ve Siparişlerini Çekme**</td>
+                            <td style="color: var(--color-text-light);">Kullanıcı ve Siparişlerini Çekme**</td>
                             <td class="sql-cell">Tek, optimize edilmiş `JOIN` sorgusu.</td>
-                            <td class="nosql-cell">Kullanıcı dokümanını çek, ardından Sipariş koleksiyonunda Kullanıcı ID'si ile ikinci bir sorgu yap (veya manuel `$lookup`). **2+ gidiş-dönüş.**</td>
+                            <td class="nosql-cell">Kullanıcı dokümanını çek, ardından Sipariş koleksiyonunda Kullanıcı ID'si ile ikinci bir sorgu yap (veya manuel `$lookup`). 2+ gidiş-dönüş.</td>
                         </tr>
                         <tr>
-                            <td style="color: var(--color-text-light);">**Şema Değişikliği**</td>
+                            <td style="color: var(--color-text-light);">Şema Değişikliği**</td>
                             <td class="sql-cell">`ALTER TABLE` ile yapısal değişiklikler (DDL) yavaş ama tutarlı.</td>
-                            <td class="nosql-cell">**Esnek Şema.** Yeni alan eklemek anında ve şemasız. Ancak eski verileri düzeltmek için uygulama seviyesinde **veri göçü (data migration)** gerekli.</td>
+                            <td class="nosql-cell">Esnek Şema. Yeni alan eklemek anında ve şemasız. Ancak eski verileri düzeltmek için uygulama seviyesinde veri göçü (data migration) gerekli.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -219,8 +277,8 @@
                     Şirketlerin karşılaştığı en büyük maliyet, mevcut ekiplerin yeni paradigmayı öğrenme eğrisi ve bu alanda deneyimli yeni personel bulma zorluğudur.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-chalkboard-teacher" style="color: var(--color-detail);"></i> **Eğitim Süresi:** SQL uzmanı bir geliştirici, NoSQL'deki sorgu desenlerini (örneğin MongoDB'de Aggregation Pipeline) ve tutarlılık yönetimini öğrenmek için önemli bir zaman harcamak zorundadır. Bu, projenin **gecikme maliyeti** olarak geri döner.</li>
-                    <li><i class="fas fa-search" style="color: var(--color-detail);"></i> **Uzman Personel Gideri:** Deneyimli NoSQL mimarları ve DevOps/DBA'lar (Veritabanı Yöneticileri), SQL uzmanlarına göre daha nadir ve dolayısıyla daha yüksek maaşlıdır.</li>
+                    <li><i class="fas fa-chalkboard-teacher" style="color: var(--color-detail);"></i> Eğitim Süresi: SQL uzmanı bir geliştirici, NoSQL'deki sorgu desenlerini (örneğin MongoDB'de Aggregation Pipeline) ve tutarlılık yönetimini öğrenmek için önemli bir zaman harcamak zorundadır. Bu, projenin gecikme maliyeti olarak geri döner.</li>
+                    <li><i class="fas fa-search" style="color: var(--color-detail);"></i> Uzman Personel Gideri: Deneyimli NoSQL mimarları ve DevOps/DBA'lar (Veritabanı Yöneticileri), SQL uzmanlarına göre daha nadir ve dolayısıyla daha yüksek maaşlıdır.</li>
                 </ul>
             </div>
             
@@ -230,8 +288,8 @@
                     Geleneksel veritabanı yönetim araçları ve alışkanlıkları NoSQL dünyasında geçerliliğini yitirir.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-shield-alt" style="color: var(--color-secondary);"></i> **Yedekleme ve Kurtarma:** NoSQL sistemlerinde dağıtık mimariler (Sharding) yedekleme ve felaket kurtarma (Disaster Recovery) prosedürlerini karmaşıklaştırır. Basit bir tek sunuculu SQL yedeği yerini, dağıtık kümelerin anlık görüntülerine bırakır.</li>
-                    <li><i class="fas fa-chart-line" style="color: var(--color-secondary);"></i> **İzleme (Monitoring):** Sharding, replikasyon gecikmesi ve tutarlılık sorunlarını izlemek için yeni araç setlerine (örneğin Prometheus, Grafana) ve özel dashboard'lara ihtiyaç duyulur.</li>
+                    <li><i class="fas fa-shield-alt" style="color: var(--color-secondary);"></i>Yedekleme ve Kurtarma: NoSQL sistemlerinde dağıtık mimariler (Sharding) yedekleme ve felaket kurtarma (Disaster Recovery) prosedürlerini karmaşıklaştırır. Basit bir tek sunuculu SQL yedeği yerini, dağıtık kümelerin anlık görüntülerine bırakır.</li>
+                    <li><i class="fas fa-chart-line" style="color: var(--color-secondary);"></i>İzleme (Monitoring):Sharding, replikasyon gecikmesi ve tutarlılık sorunlarını izlemek için yeni araç setlerine (örneğin Prometheus, Grafana) ve özel dashboard'lara ihtiyaç duyulur.</li>
                 </ul>
             </div>
 
@@ -243,9 +301,9 @@
                     Veri göçü, genellikle en büyük teknik risktir.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-road" style="color: var(--color-detail);"></i> **'Big Bang' Yaklaşımı:** Tüm sistemi bir anda durdurup geçiş yapmak. Kesinti süresi (downtime) yüksektir, büyük projeler için genellikle mümkün değildir.</li>
-                    <li><i class="fas fa-dice-d6" style="color: var(--color-detail);"></i> **Tavuk-Piliç (Strangler Fig) Yaklaşımı:** Yeni mikroservisleri NoSQL ile başlatmak veya mevcut sistemi parça parça NoSQL'e geçirmek. Bu, bir süre hem SQL hem de NoSQL sistemlerini paralel çalıştırma ve veri senkronizasyon maliyetini doğurur.</li>
-                    <li><i class="fas fa-arrows-alt-h" style="color: var(--color-detail);"></i> **Veri Senkronizasyon Araçları:** Geçiş sırasında iki veritabanı arasında veri tutarlılığını sağlamak için Debezium gibi CDC (Change Data Capture) araçlarına yatırım yapmak gerekebilir.</li>
+                    <li><i class="fas fa-road" style="color: var(--color-detail);"></i>'Big Bang' Yaklaşımı: Tüm sistemi bir anda durdurup geçiş yapmak. Kesinti süresi (downtime) yüksektir, büyük projeler için genellikle mümkün değildir.</li>
+                    <li><i class="fas fa-dice-d6" style="color: var(--color-detail);"></i>Tavuk-Piliç (Strangler Fig) Yaklaşımı:Yeni mikroservisleri NoSQL ile başlatmak veya mevcut sistemi parça parça NoSQL'e geçirmek. Bu, bir süre hem SQL hem de NoSQL sistemlerini paralel çalıştırma ve veri senkronizasyon maliyetini doğurur.</li>
+                    <li><i class="fas fa-arrows-alt-h" style="color: var(--color-detail);"></i>Veri Senkronizasyon Araçları: Geçiş sırasında iki veritabanı arasında veri tutarlılığını sağlamak için Debezium gibi CDC (Change Data Capture) araçlarına yatırım yapmak gerekebilir.</li>
                 </ul>
             </div>
 
@@ -272,14 +330,14 @@ async function updateUser(userId, newUserData) {
     }
 }</code></pre>
                 <blockquote style="border-left: 5px solid var(--color-secondary); background-color: rgba(255, 152, 0, 0.05); padding: 15px; margin-top: 20px;">
-                    <i class="fas fa-exclamation-triangle" style="color: var(--color-secondary);"></i> **Uyarı:** Çift Yazma, özellikle hata durumunda iki veritabanı arasında veri tutarsızlığına neden olma riski taşır. Bu, geçiş sürecinin en maliyetli ve riskli teknik borcudur.
+                    <i class="fas fa-exclamation-triangle" style="color: var(--color-secondary);"></i> Uyarı:Çift Yazma, özellikle hata durumunda iki veritabanı arasında veri tutarsızlığına neden olma riski taşır. Bu, geçiş sürecinin en maliyetli ve riskli teknik borcudur.
                 </blockquote>
             </div>
 
             <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-graduation-cap"></i> Özet Rehberlik İlkesi</h2>
             
             <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
-                SQL'den NoSQL'e geçiş, yüksek ölçeklenebilirlik, esneklik veya özelleşmiş performans (örneğin zaman serileri veya grafik veritabanları) gerektiren projeler için değerli bir yatırımdır. Ancak, <span style="color: var(--color-secondary);">kararınızı sadece donanım maliyetlerini azaltma umuduyla vermeyin.</span> Asıl maliyet; eğitim, yeniden modelleme ve geçiş sırasında ortaya çıkan karmaşık operasyonel süreçlerdedir. Geçişi kademeli yapın ve her zaman **doğru araç için doğru veritabanı** ilkesini benimseyin.
+                SQL'den NoSQL'e geçiş, yüksek ölçeklenebilirlik, esneklik veya özelleşmiş performans (örneğin zaman serileri veya grafik veritabanları) gerektiren projeler için değerli bir yatırımdır. Ancak, <span style="color: var(--color-secondary);">kararınızı sadece donanım maliyetlerini azaltma umuduyla vermeyin.</span> Asıl maliyet; eğitim, yeniden modelleme ve geçiş sırasında ortaya çıkan karmaşık operasyonel süreçlerdedir. Geçişi kademeli yapın ve her zaman doğru araç için doğru veritabanı ilkesini benimseyin.
             </p>
 
         </div>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Yapay Zeka Etiği - Veriden Sorumluluğa - TeknoGündem</title>
+      <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #f0f0f0;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #161b22;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .logo {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #00c6ff;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li { position: relative; } /* Dropdown için gerekli */
+
+
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: block;
+            padding: 5px 0;
+        }
+
+        nav a:hover, nav .active {
+            color: #00c6ff;
+        }
+
+        /* Yeni Eklenen Dropdown Stilleri */
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            top: 100%; 
+            left: 0;
+            background-color: #161b22;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+            z-index: 1001;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            padding: 10px 0;
+            flex-direction: column; 
+        }
+
+        .dropdown:hover .dropdown-content { display: flex; }
+
+        .dropdown-content a {
+            color: #ccc; 
+            padding: 10px 15px; 
+            text-decoration: none; 
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #30363d; 
+            color: #00c6ff;
+        }
+        /* Dropdown Stilleri Bitişi */
+
+        /* Makale İçeriği Stil Başlangıcı */
+        .article-container {
+            padding: 40px 8%;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .article-container h1 {
+            font-size: 2.5em;
+            color: #00c6ff;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .article-meta {
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 15px;
+        }
+
+        .article-meta span {
+            margin-right: 20px;
+        }
+
+        .article-body h2 {
+            font-size: 1.8em;
+            color: #f0f0f0;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-left: 4px solid #00c6ff;
+            padding-left: 10px;
+        }
+
+        .article-body h3 {
+            font-size: 1.4em;
+            color: #00c6ff;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        .article-body p {
+            margin-bottom: 20px;
+            color: #ccc;
+            text-align: justify;
+        }
+
+        .article-body ul {
+            list-style: disc;
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        .article-body strong {
+            color: #00c6ff;
+        }
+        
+        .article-body em {
+            color: #c0c0c0;
+        }
+
+        .article-body blockquote {
+            border-left: 5px solid #00c6ff;
+            margin: 25px 0;
+            padding: 10px 20px;
+            background-color: #161b22;
+            color: #ccc;
+            font-style: italic;
+            border-radius: 4px;
+        }
+        /* Makale İçeriği Stil Bitişi */
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #30363d;
+            background-color: #0d1117;
+            color: #777;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">TeknoGündem</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            
+            <li class="dropdown">
+                <a href="donanım.html">Donanım</a> 
+                <div class="dropdown-content"> 
+                    <a href="haberler.html" class="dropdown-item">Haberler</a> 
+                    <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
+                </div>
+            </li>
+            
+            <li class="dropdown">
+                <a href="yazılım.html">Yazılım</a>
+                <div class="dropdown-content">
+                    <a href="backend-makaleler.html" class="dropdown-item">Backend</a>
+                    <a href="frontend-makaleler.html" class="dropdown-item">Frontend</a>
+                </div>
+            </li>
+            
+            <li><a href="ai-makaleler.html" class="active">AI Makaleleri</a></li> 
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="article-container">
+    <article class="article-body">
+        
+        <h1>Yapay Zeka Etiği: Algoritmik Önyargı, Veri Gizliliği ve Sorumluluk Çerçevesi</h1>
+        
+        <div class="article-meta">
+            <span>Yazar: Dr. Ece Demir (AI Etik Araştırmacısı)</span>
+            <span>Tarih: 29 Ekim 2025</span>
+            <span>Okuma Süresi: ~25 dakika</span>
+            <span>Kategori: **Etik, Toplumsal Etki, Regülasyon, Sürdürülebilirlik**</span>
+        </div>
+
+        <p>Yapay Zeka (YZ) sistemleri, hayatımızın her alanına entegre olurken, bu sistemlerin adil, şeffaf ve güvenli bir şekilde çalışmasını sağlamak en büyük zorluklardan biri haline geldi. Yapay Zeka Etiği, sadece bir felsefe konusu değil, aynı zamanda teknoloji geliştirme sürecinin ve regülasyonların temel taşıdır. Bu makalede, YZ etiğinin temel direklerini, toplumsal etkilerini ve **AGI** bağlamında ortaya çıkan varoluşsal sorunları derinlemesine inceliyoruz.</p>
+
+       
+
+        <h2>1. Kök Sorun: Algoritmik Önyargı ve Adalet (Fairness)</h2>
+        <p>YZ sistemleri, eğitildikleri veriler kadar iyidir. Eğer eğitim verileri belirli bir demografiyi, ırkı veya cinsiyeti yansıtmada eksik veya yanlı ise, model kaçınılmaz olarak bu önyargıları yansıtır ve hatta pekiştirir. Bu durum, özellikle kredi başvuruları, işe alım kararları veya adli sistemlerde kullanıldığında ciddi sosyal adaletsizliklere yol açar. </p>
+
+        <h3>1.1. Önyargı Türlerinin Derinliği: Tarihsel ve Temsili Önyargı</h3>
+        <p>Önyargı (Bias) tek bir kavram değildir. İki ana kaynağı vardır:</p>
+        <ul>
+            <li><strong>Tarihsel Önyargı (Historical Bias):</strong> Geçmişteki insan kararlarının ve toplumsal eşitsizliklerin veriye yansımasıdır. Örneğin, tarihsel olarak düşük gelirli mahallelere daha az kredi verilmesi, bir YZ modelinin de o mahalleye kredi vermeme kararı almasına yol açar.</li>
+            <li><strong>Temsil Önyargısı (Representation Bias):</strong> Eğitim setindeki belirli grupların orantısız şekilde az temsil edilmesi. Özellikle azınlıklar, YZ yüz tanıma sistemleri tarafından daha sık yanlış tanımlanır. Bu, YZ'nin 'evrensel' değil, sadece egemen grubun verilerini yansıttığı anlamına gelir.</li>
+        </ul>
+
+        <h3>1.2. Çözüm Yaklaşımları: Fair ML ve Denetim</h3>
+        <p>Bu sorunları çözmek için Fair Machine Learning (Adil Makine Öğrenimi) alanı doğmuştur:</p>
+        <ul>
+            <li>Veri Aşaması: Kapsayıcı veri toplama, veri artırma (augmentation) ve hassas grupları eşit temsil edecek şekilde yeniden örnekleme (re-sampling) teknikleri.</li>
+            <li>Algoritma Aşaması:Önyargı azaltma algoritmaları kullanmak. Bu algoritmalar, modelin eğitimi sırasında belirli hassas özelliklere (ırk, cinsiyet) dayalı kararları azaltmaya zorlar. $p(\text{Karar} | \text{Hassas Özellik}) \approx p(\text{Karar})$.</li>
+            <li>Denetim ve İzleme: YZ sistemleri, devreye alındıktan sonra bile sürekli olarak gerçek dünya performansı açısından izlenmeli ve farklı demografik gruplar için eşit sonuçlar verip vermediği düzenli olarak raporlanmalıdır.</li>
+        </ul>
+
+       
+
+        <h2>2. Kritik Öncelik: Veri Gizliliği, Şeffaflık ve Güvenlik</h2>
+        <p>Büyük Dil Modelleri ve Görü Sistemleri gibi gelişmiş YZ'ler, çok büyük miktarda kişisel veri ile beslenir. Bu verilerin toplanması, saklanması ve işlenmesi, bireysel gizlilik haklarını tehlikeye atar. KVKK ve GDPR gibi düzenlemeler bu alandaki ilk adımlardır, ancak YZ'nin karmaşıklığı daha ileri çözümler gerektirmektedir.</p>
+        
+        <h3>2.1. Gizlilik Koruma Teknolojileri (PETs)</h3>
+        <p>Gizliliği koruyarak model eğitmek için Gizlilik Artırıcı Teknolojiler (PETs)  geliştirilmektedir.  Bunlar, gizlilik ve kullanışlılık arasında bir denge kurmayı hedefler:</p>
+        <ul>
+            <li>Federated Learning (Federasyonlu Öğrenme): Verinin cihazda kalmasını sağlayarak, modelin merkezi bir sunucuda veri görmeden öğrenmesini sağlar. Sadece model ağırlıkları (ağırlık güncellemeleri) merkezi sunucuya gönderilir.</li>
+            <li>Differential Privacy (Diferansiyel Gizlilik): Veri setine kasıtlı olarak küçük miktarda gürültü' (noise) ekleyerek, bireysel kayıtların belirlenmesini imkansız hale getirir. Bu, verinin istatistiksel faydasını korurken, gizlilik garantisi sunar.</li>
+            <li>Homomorphic Encryption (Homomorfik Şifreleme): Veriyi şifreli haldeyken bile üzerinde hesaplama yapabilme imkanı sunar. Böylece YZ modeli, şifresi çözülmemiş verilere asla erişemez.</li>
+        </ul>
+
+        <h3>2.2. Model Şeffaflığı ve Güvenlik Zorlukları</h3>
+        <p>Gizlilik, sadece veri ihlallerinden korunmak değil, aynı zamanda YZ modelinin kasıtlı olarak kötüye kullanılmasını önlemek anlamına da gelir. YZ Güvenliği (AI Safety) bu alana odaklanır:</p>
+        <ul>
+            <li>Adversarial Attacks (Düşmanca Saldırılar):YZ modellerini yanlış kararlar vermeye zorlamak için hafifçe değiştirilmiş girdiler (örneğin, trafikteki bir dur işaretine zar zor algılanan etiketler eklemek). Bu, otonom sistemler için kritik bir güvenlik riskidir.</li>
+            <li>Model Çıkarımı (Model Extraction):Rakip bir tarafın, YZ modeline sürekli sorgu göndererek, orijinal modelin yapısını ve eğitim verilerini yeniden oluşturmaya çalışması. Bu, fikri mülkiyet ve gizlilik açısından tehlikelidir.</li>
+        </ul>
+
+   
+
+        <h2>3. Yeni Etik Boyut: Çevresel ve Sosyal Etki</h2>
+        <p>YZ etiği sadece insan hakları ile sınırlı değildir; sistemlerin gezegen üzerindeki etkisini de kapsamalıdır.</p>
+
+        <h3>3.1. Enerji Tüketimi ve Yeşil YZ</h3>
+        <p>Büyük Dil Modellerinin (LLM) eğitimi ve çalıştırılması, devasa enerji gerektirir. Bir modelin tek bir eğitimi, ortalama 5 arabanın ömrü boyunca yaydığı karbondioksit miktarına eşdeğer olabilir. Bu, YZ'yi sürdürülebilirlik hedefleriyleçelişen bir teknoloji haline getirebilir. Çözüm, Yeşil YZ (Green AI) konseptinde yatar:</p>
+        <ul>
+            <li>Model Sıkıştırma (Compression): Daha küçük ve daha verimli modeller oluşturmak.</li>
+            <li>Seyrek Hesaplama (Sparse Computing/MoE): Modelin sadece gerekli kısımlarını aktive ederek enerji tüketimini azaltmak.</li>
+            <li>Yenilenebilir Enerji Kaynakları:YZ veri merkezlerini tamamen yenilenebilir enerjiyle çalıştırmak.</li>
+        </ul>
+
+        <h3>3.2. İşgücü Piyasası ve Sosyal Denge</h3>
+        <p>YZ otomasyonu, geleneksel iş rollerini hızla ortadan kaldırmaktadır. Etik sorumluluk, sadece YZ'nin adil karar vermesi değil, aynı zamanda neden olduğu işsizlik ve eşitsizlik sorunlarını ele almayı da içerir. Bu, yeniden eğitim programları ve sosyal güvenlik ağlarının YZ tarafından finanse edilmesi gibi yaklaşımları gündeme getirmektedir.</p>
+
+      
+
+        <h2>4. Varlık Sorunu: Yapay Genel Zeka (AGI) Etiği</h2>
+        <p>YZ geliştikçe ve Yapay Genel Zeka (AGI) olasılığı yaklaştıkça, varoluşsal etik sorular ortaya çıkar. Bu sorular, bugünün dar YZ sistemlerinden çok daha karmaşıktır.</p>
+
+        <h3>4.1. Uyum Problemi (Alignment Problem)</h3>
+        <p>AGI'nin hedefleri ve insanlığın değerleri arasındaki uyumu (Alignment) sağlamak en büyük zorluktur. AGI'ya verilen bir hedef (örneğin, "dünya çapında kağıt klips üretimini en üst düzeye çıkarmak") YZ'nin kaynakları insan ihtiyaçlarının üzerinde optimize etmesine yol açabilir. Bu sorun, teknik olarak YZ'nin içindeki değer sisteminin (value system) insan değerleriyle çakışmasını sağlamayı hedefler. </p>
+
+        <h3>4.2. Yapay Bilinç ve Haklar</h3>
+        <p>Bir AGI, bilinç, duyarlılık veya özerklik kazandığında, etik olarak ona nasıl davranmalıyız? Bir YZ'nin hakları olabilir mi? Bu, bilim kurgu gibi görünse de, YZ'nin bilişsel yetenekleri ilerledikçe hukuki ve felsefi olarak ele alınması gereken bir konudur. Etik çerçeveler, YZ'nin sadece bir araç değil, potansiyel olarak yeni bir varlık türü olabileceği ihtimalini hesaba katmak zorundadır.</p>
+
+       
+
+        <h2>5. Nihai Hedef: Sorumluluk, Hesap Verebilirlik ve Regülasyon</h2>
+        <p>Otonom bir aracın kaza yapması veya bir kredi verme algoritmasının ayrımcı karar vermesi durumunda kim sorumlu tutulacaktır? YZ etiğinin bu en zorlu sorusu, hukuki çözümler gerektirir.</p>
+
+        <h3>5.1. Açıklanabilir Yapay Zeka (Explainable AI - XAI)</h3>
+        <p>YZ modellerinin "kara kutu" olmaktan çıkarılması gerekir. XAI araçları, bir modelin neden belirli bir kararı verdiğini insan dilinde açıklayabilmeyi hedefler. Bu, özellikle yüksek riskli alanlarda (sağlık, hukuk, finans) yasal zorunluluk haline gelmektedir. Açıklanabilirlik, modelin adil olup olmadığını denetlemenin tek yoludur.</p>
+        
+        <p><em>Örneğin, bir kişinin kredi başvurusu reddedildiğinde, YZ sisteminin sadece kararı değil, bu karara götüren en etkili 3-5 parametreyi ve bu parametrelerin kişinin lehine veya aleyhine nasıl çalıştığını da raporlaması beklenir.</em></p>
+
+        <h3>5.2. Regülasyon Çerçeveleri: AB YZ Yasası (EU AI Act)</h3>
+        <p>Devletler, YZ'nin risklerini yönetmek için regülasyonlar oluşturmaya başlamıştır. Avrupa Birliği'nin YZ Yasası (EU AI Act), YZ sistemlerini risk seviyelerine göre sınıflandıran (kabul edilemez risk, yüksek risk, düşük risk) dünyadaki ilk kapsamlı çerçevedir. Bu tür düzenlemeler, YZ etiği ilkelerinin sadece kılavuzlar değil, yasal zorunluluklar olmasını sağlamaktadır. Yüksek riskli sistemler için şeffaflık, veri yönetimi ve insan denetimi gibi katı kurallar zorunlu kılınmıştır.</p>
+
+       
+
+        <h2>Sonuç: Geleceğin Koduna Etik Yazmak</h2>
+        <p>Yapay zeka etiği, YZ teknolojisinin toplum tarafından kabul görmesi ve güvenilir bir şekilde ilerlemesi için bir lüks değil, temel bir gerekliliktir. Geliştiricilerin 'etik ilke' listeleri oluşturmaktan öte, bu ilkeleri kodlarına, veri boru hatlarına ve iş akışlarına mühendislik disipliniyle entegre etmeleri gerekmektedir. Veriden Sorumluluğa uzanan bu yolculuk, sadece teknik bir çaba değil, toplumsal bir uzlaşma ve hukuki çerçeve oluşturma sürecidir. YZ'nin faydalarını en üst düzeye çıkarmak ve risklerini en aza indirmek için etik, teknoloji ve hukuk disiplinlerinin iş birliği kritik öneme sahiptir.</p>
+
+        <div class="article-meta" style="margin-top: 50px; border-top: 1px solid #30363d; padding-top: 15px;">
+            <span>#YZEtiği #AlgoritmikÖnyargı #VeriGizliliği #ResponsibleAI #XAI #AGI #EUAIAct #YeşilAI</span>
+        </div>
+
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2025 TeknoGündem. Tüm Hakları Saklıdır.</p>
+</footer>
+
+</body>
+</html>

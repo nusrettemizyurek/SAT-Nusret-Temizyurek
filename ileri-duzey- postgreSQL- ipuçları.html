@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İleri Düzey PostgreSQL İpuçları: Performans, Ölçek ve Mimari Optimizasyon - TeknoGündem</title>
-    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -61,6 +61,50 @@
             color: var(--color-primary);
             background-color: rgba(255, 255, 255, 0.05);
             border-radius: 5px;
+        }
+        
+        /* EKLENDİ: DROPDOWN MENÜ STİLLERİ (Açılır menünün çalışması için) */
+        .dropdown {
+            position: relative;
+            display: inline-block; 
+            padding: 0 5px; /* Ana menü öğelerinin etrafında biraz boşluk */
+        }
+        
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            background-color: #1e1e1e; 
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+            z-index: 10; 
+            padding: 0;
+            top: 100%; /* Tam alta yerleştir */
+            margin-top: 0; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            border-radius: 5px;
+        }
+        
+        .dropdown-content a {
+            color: var(--color-text-light);
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-primary);
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block; 
+        }
+        
+        /* İkonlar için metin ayrımı */
+        h1 i, h2 i, h3 i, .detail-list i, blockquote i {
+            margin-right: 10px;
         }
         
         /* ANA İÇERİK STİLLERİ */
@@ -144,7 +188,13 @@
         <nav>
             <ul>
                 <li><a href="index.html">Ana Sayfa</a></li>
-                <li><a href="donanım.html" class="active">Donanım </a></li>
+                <li class="dropdown">
+                    <a href="donanım.html" class="active">Donanım </a>
+                    <div class="dropdown-content"> 
+                        <a href="haberler.html" class="dropdown-item">Haberler</a> 
+                        <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
+                    </div>
+                </li>
                 <li><a href="yazılım.html">Yazılım </a></li>
                 <li><a href="hakkimizda.html">Hakkımızda</a></li>
             </ul>
@@ -165,7 +215,7 @@
         <div class="article-content-wrapper" style="max-width: 900px; margin: 40px auto; padding: 20px;">
             
             <p style="margin-bottom: 25px; line-height: 1.8; font-size: 1.1rem; color: #ccc;">
-                PostgreSQL, güvenilirliği ve zengin özellik setiyle ünlüdür. Ancak, milyonlarca satırlık tablolarda veya yüksek eşzamanlılık (concurrency) gerektiren sistemlerde, varsayılan ayarlar yetersiz kalır. Gerçekten ileri düzey performans ve ölçeklenebilirlik elde etmek için, DBA'lar ve kıdemli geliştiriciler PostgreSQL'in derinliklerine inmelidir. İşte basit *`SELECT`* işlemlerinin ötesine geçen, en kritik ileri düzey optimizasyon teknikleri.
+                PostgreSQL, güvenilirliği ve zengin özellik setiyle ünlüdür. Ancak, milyonlarca satırlık tablolarda veya yüksek eşzamanlılık (concurrency) gerektiren sistemlerde, varsayılan ayarlar yetersiz kalır. Gerçekten ileri düzey performans ve ölçeklenebilirlik elde etmek için, DBA'lar ve kıdemli geliştiriciler PostgreSQL'in derinliklerine inmelidir. İşte basit `SELECT` işlemlerinin ötesine geçen, en kritik ileri düzey optimizasyon teknikleri.
             </p>
 
             <h2 style="color: var(--color-postgres-main); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-cubes"></i> Faz 1: Büyük Veri Yönetimi ve Ölçeklenebilirlik</h2>
@@ -176,8 +226,8 @@
                     Terabaytlarca veriye sahip tablolarda sorgu performansını artırmak ve bakım maliyetlerini düşürmek için tabloyu daha küçük parçalara (partitions) ayırmak esastır. PostgreSQL 10 sonrası bu özellik yerel olarak desteklenir.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-calendar-alt" style="color: var(--color-secondary);"></i> **Zaman Serisi Verisi:** Genellikle `RANGE` parçalama (örneğin aylık veya yıllık bazda) kullanılır. Bu, eski veriyi arşivlemeyi kolaylaştırır ve sorgu optimizasyonunu hızlandırır (Partition Pruning).</li>
-                    <li><i class="fas fa-th-list" style="color: var(--color-secondary);"></i> **Sorgu Pruning:** PostgreSQL sorgu planlayıcısı (Planner), yalnızca sorgunun kapsadığı parçaları (örneğin son 3 aylık veriyi) tarayarak performansı dramatik bir şekilde artırır.</li>
+                    <li><i class="fas fa-calendar-alt" style="color: var(--color-secondary);"></i> Zaman Serisi Verisi: Genellikle `RANGE` parçalama (örneğin aylık veya yıllık bazda) kullanılır. Bu, eski veriyi arşivlemeyi kolaylaştırır ve sorgu optimizasyonunu hızlandırır (Partition Pruning).</li>
+                    <li><i class="fas fa-th-list" style="color: var(--color-secondary);"></i> Sorgu Pruning: PostgreSQL sorgu planlayıcısı (Planner), yalnızca sorgunun kapsadığı parçaları (örneğin son 3 aylık veriyi) tarayarak performansı dramatik bir şekilde artırır.</li>
                 </ul>
                 <p style="color: var(--color-postgres-main); font-weight: bold; margin-bottom: 10px;">RANGE Parçalama Örneği:</p>
                 <pre><code>CREATE TABLE siparisler (
@@ -192,10 +242,10 @@ CREATE TABLE siparisler_2024 PARTITION OF siparisler
             <div class="technical-section">
                 <h3>Adım 1.2: Dış Veri Sargısı (Foreign Data Wrappers - FDW)</h3>
                 <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
-                    Farklı veritabanlarındaki (MySQL, Oracle, hatta MongoDB) veya başka bir PostgreSQL örneğindeki verilere yerel bir tabloymuş gibi erişim sağlar. **Veri bütünleştirme (Data Integration)** ve dağıtık sorgular için mükemmeldir.
+                    Farklı veritabanlarındaki (MySQL, Oracle, hatta MongoDB) veya başka bir PostgreSQL örneğindeki verilere yerel bir tabloymuş gibi erişim sağlar. Veri bütünleştirme (Data Integration) ve dağıtık sorgular için mükemmeldir.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-plug" style="color: var(--color-detail);"></i> **Yabancı Tablolar:** FDW, farklı sistemler arasında ETL (Extract, Transform, Load) ihtiyacını azaltır.</li>
+                    <li><i class="fas fa-plug" style="color: var(--color-detail);"></i> Yabancı Tablolar: FDW, farklı sistemler arasında ETL (Extract, Transform, Load) ihtiyacını azaltır.</li>
                 </ul>
             </div>
 
@@ -216,17 +266,17 @@ CREATE TABLE siparisler_2024 PARTITION OF siparisler
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="pg-config-cell">**GIN (Generalized Inverted Index)**</td>
+                            <td class="pg-config-cell">GIN (Generalized Inverted Index)</td>
                             <td class="pg-config-cell">Dizi (Array) ve JSONB sütunlarında tam metin araması.</td>
                             <td class="pg-config-cell">E-ticaret siteleri, log analizi.</td>
                         </tr>
                         <tr>
-                            <td class="pg-config-cell">**BRIN (Block Range Index)**</td>
+                            <td class="pg-config-cell">BRIN (Block Range Index)</td>
                             <td class="pg-config-cell">Sıralı (sekansiyel) olarak eklenen büyük tablolarda alan bazlı sorgular.</td>
                             <td class="pg-config-cell">Zaman serisi veritabanları (Çok küçük indeks boyutu).</td>
                         </tr>
                         <tr>
-                            <td class="pg-config-cell">**Partial Index**</td>
+                            <td class="pg-config-cell">Partial Index</td>
                             <td class="pg-config-cell">Tablonun yalnızca bir alt kümesi için indeks oluşturur.</td>
                             <td class="pg-config-cell">Aktif kullanıcılar (`WHERE is_active = true`) veya işlenmemiş siparişler. İndeksi küçültür.</td>
                         </tr>
@@ -240,7 +290,7 @@ CREATE TABLE siparisler_2024 PARTITION OF siparisler
                     Her kıdemli geliştiricinin ezbere bilmesi gereken komut, sorgu planlayıcısının (Planner) bir sorguyu nasıl yürüttüğünü ve performans darboğazlarını (Sequential Scan, yüksek maliyetli Join) belirlemeye yarar.
                 </p>
                 <blockquote style="border-left: 5px solid var(--color-secondary); background-color: rgba(255, 152, 0, 0.05); padding: 15px; margin-top: 20px;">
-                    <i class="fas fa-microscope" style="color: var(--color-secondary);"></i> **Önemli İpucu:** Sorgu analizinde **"Loops"** satırına dikkat edin. İç döngüde yüksek maliyetli bir işlem binlerce kez tekrarlanıyorsa, bu ciddi bir optimizasyon gereksinimi işaretidir (Genellikle Missing Index veya Planner'ın yanlış tahmini).
+                    <i class="fas fa-microscope" style="color: var(--color-secondary);"></i> Önemli İpucu:Sorgu analizinde"Loops" satırına dikkat edin. İç döngüde yüksek maliyetli bir işlem binlerce kez tekrarlanıyorsa, bu ciddi bir optimizasyon gereksinimi işaretidir (Genellikle Missing Index veya Planner'ın yanlış tahmini).
                 </blockquote>
             </div>
 
@@ -252,9 +302,9 @@ CREATE TABLE siparisler_2024 PARTITION OF siparisler
                     PostgreSQL'in belleği ve I/O kullanımı, aşağıdaki üç anahtar parametreyle doğrudan kontrol edilir:
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-hdd" style="color: var(--color-postgres-main);"></i> **`shared_buffers`:** Sistem belleğinin (RAM) büyük bir kısmı buraya ayrılmalıdır (Genellikle toplam RAM'in %25'i). Tüm veritabanı süreçleri tarafından paylaşılan önbellektir.</li>
-                    <li><i class="fas fa-layer-group" style="color: var(--color-postgres-main);"></i> **`work_mem`:** Karmaşık sorgular (JOIN, SORT, HASH) tarafından geçici bellek olarak kullanılır. Yüksek değerli eşzamanlı sorgularda `work_mem`'i yükseltmek, diskte gerçekleşecek yavaş işlemleri RAM'e taşır.</li>
-                    <li><i class="fas fa-hand-holding-usd" style="color: var(--color-postgres-main);"></i> **`effective_cache_size`:** Sorgu planlayıcısına (Planner) sunucunun toplam ne kadar belleğe sahip olduğu hakkında bilgi verir. Bu, planlayıcının ne zaman disk erişimi yerine indeks kullanması gerektiğini anlamasına yardımcı olur (Genellikle toplam RAM'in %50-%75'i).</li>
+                    <li><i class="fas fa-hdd" style="color: var(--color-postgres-main);"></i>`shared_buffers`:Sistem belleğinin (RAM) büyük bir kısmı buraya ayrılmalıdır (Genellikle toplam RAM'in %25'i). Tüm veritabanı süreçleri tarafından paylaşılan önbellektir.</li>
+                    <li><i class="fas fa-layer-group" style="color: var(--color-postgres-main);"></i>`work_mem`: Karmaşık sorgular (JOIN, SORT, HASH) tarafından geçici bellek olarak kullanılır. Yüksek değerli eşzamanlı sorgularda `work_mem`'i yükseltmek, diskte gerçekleşecek yavaş işlemleri RAM'e taşır.</li>
+                    <li><i class="fas fa-hand-holding-usd" style="color: var(--color-postgres-main);"></i>`effective_cache_size`:Sorgu planlayıcısına (Planner) sunucunun toplam ne kadar belleğe sahip olduğu hakkında bilgi verir. Bu, planlayıcının ne zaman disk erişimi yerine indeks kullanması gerektiğini anlamasına yardımcı olur (Genellikle toplam RAM'in %50-%75'i).</li>
                 </ul>
             </div>
 
@@ -264,15 +314,15 @@ CREATE TABLE siparisler_2024 PARTITION OF siparisler
                     PostgreSQL'in MVCC (Multi-Version Concurrency Control) mimarisi gereği, her UPDATE ve DELETE işlemi ölü satır (dead tuple) bırakır. `Autovacuum` bu ölü satırları temizlemezse, performans düşüşü (bloat) kaçınılmazdır.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-recycle" style="color: var(--color-optimization);"></i> **Ayarlama:** `autovacuum_vacuum_scale_factor` ve `autovacuum_analyze_scale_factor` parametrelerini, özellikle yüksek değişim oranına sahip tablolarda, varsayılan değerlerden düşürerek temizliğin daha sık yapılmasını sağlayın.</li>
-                    <li><i class="fas fa-chart-area" style="color: var(--color-optimization);"></i> **İzleme:** `pg_stat_user_tables` ve `pg_stat_activity` görünümlerini kullanarak uzun süren sorguları ve Autovacuum görevlerini düzenli olarak izleyin.</li>
+                    <li><i class="fas fa-recycle" style="color: var(--color-optimization);"></i> Ayarlama: `autovacuum_vacuum_scale_factor` ve `autovacuum_analyze_scale_factor` parametrelerini, özellikle yüksek değişim oranına sahip tablolarda, varsayılan değerlerden düşürerek temizliğin daha sık yapılmasını sağlayın.</li>
+                    <li><i class="fas fa-chart-area" style="color: var(--color-optimization);"></i>İzleme: `pg_stat_user_tables` ve `pg_stat_activity` görünümlerini kullanarak uzun süren sorguları ve Autovacuum görevlerini düzenli olarak izleyin.</li>
                 </ul>
             </div>
 
             <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-graduation-cap"></i> Özet Rehberlik İlkesi</h2>
             
             <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
-                İleri düzey PostgreSQL yönetimi, yalnızca SQL yazmaktan ibaret değildir; bir mimari sanatıdır. Kritik performans artışları, **büyük tabloları mantıklı parçalara (Partitioning) ayırmaktan**, standart B-Tree'nin ötesindeki **GIN veya BRIN gibi özel indeks türlerini kullanmaktan** ve özellikle **`shared_buffers`, `work_mem` ve `effective_cache_size`** gibi temel yapılandırma parametrelerini sunucunuzun donanımına göre hassasça ayarlamaktan geçer. Performans her zaman **`EXPLAIN ANALYZE`** ile kanıtlanmalıdır.
+                İleri düzey PostgreSQL yönetimi, yalnızca SQL yazmaktan ibaret değildir; bir mimari sanatıdır. Kritik performans artışları, büyük tabloları mantıklı parçalara (Partitioning) ayırmaktan, standart B-Tree'nin ötesindeki GIN veya BRIN gibi özel indeks türlerini kullanmaktan ve özellikle`shared_buffers`, `work_mem` ve `effective_cache_size` gibi temel yapılandırma parametrelerini sunucunuzun donanımına göre hassasça ayarlamaktan geçer. Performans her zaman `EXPLAIN ANALYZE` ile kanıtlanmalıdır.
             </p>
 
         </div>
@@ -280,7 +330,7 @@ CREATE TABLE siparisler_2024 PARTITION OF siparisler
     </main>
 
     <footer>
-        <p>&copy; 2026 TeknoGündem. Tüm Hakları Saklıdır.</p>
+        <p>&copy; 2025 TeknoGündem. Tüm Hakları Saklıdır.</p>
     </footer>
 
 </body> 

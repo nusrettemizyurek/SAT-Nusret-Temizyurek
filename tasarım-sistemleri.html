@@ -141,10 +141,21 @@
         <div class="logo">TeknoGündem</div>
         <nav>
             <ul>
-                <li><a href="index.html">Ana Sayfa</a></li>
-                <li><a href="donanım.html">Donanım</a></li>
-                <li><a href="yazılım.html" class="active">Yazılım</a></li>
-                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                      <li><a href="index.html">Ana Sayfa</a></li>
+            
+            <li class="dropdown">
+                
+                <a href="donanım.html">Donanım</a> 
+                
+                <div class="dropdown-content"> 
+                    <a href="haberler.html" class="dropdown-item">Haberler</a> 
+                    <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
+                </div>
+            </li>
+            <li><a href="yazılım.html" class="active">Yazılım</a></li>
+            
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+              
             </ul>
         </nav>
     </header>
@@ -155,7 +166,7 @@
             <h1 style="color: var(--color-primary); font-size: 3rem;"><i class="fas fa-magic"></i> Tasarım Sistemleri Oluşturma Rehberi: Ölçeklenebilir UI/UX İçin Yol Haritası</h1>
             <div class="review-meta">
                 <span>Yazar: Caner BULUT</span>
-                <span>Tarih: 20 Aralık 2025</span>
+                <span>Tarih: 20 Haziran 2024</span>
                 <span class="tag">Tasarım/Mimari</span>
             </div>
         </section>
@@ -174,15 +185,15 @@
                     Sisteminizi kurmadan önce, neyi başarmak istediğinizi tanımlayın. Bu, sadece estetik değil, aynı zamanda kullanıcı deneyimi felsefenizdir.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-check-circle" style="color: var(--color-detail);"></i> **Vizyon ve Misyon:** "Sistemimiz Hızlı, Erişilebilir ve Tutarlı olmalıdır" gibi net bir misyon belirleyin.</li>
-                    <li><i class="fas fa-check-circle" style="color: var(--color-detail);"></i> **Hedef Kitle:** Sistemi kullanacak geliştiriciler, tasarımcılar ve QA ekipleri kimlerdir? İhtiyaçları nelerdir?</li>
+                    <li><i class="fas fa-check-circle" style="color: var(--color-detail);"></i> Vizyon ve Misyon: "Sistemimiz Hızlı, Erişilebilir ve Tutarlı olmalıdır" gibi net bir misyon belirleyin.</li>
+                    <li><i class="fas fa-check-circle" style="color: var(--color-detail);"></i> Hedef Kitle: Sistemi kullanacak geliştiriciler, tasarımcılar ve QA ekipleri kimlerdir? İhtiyaçları nelerdir?</li>
                 </ul>
             </div>
             
             <div class="technical-section">
                 <h3>Adım 1.2: Tasarım Token'larının (Design Tokens) Tanımlanması</h3>
                 <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
-                    Tasarım Token'ları, renkler, tipografi boyutları, boşluk (spacing) ve gölgeler gibi görsel değerlerin soyutlanmış adlarıdır. Bu, **tek doğruluk kaynağı (Single Source of Truth)** oluşturmanın ilk adımıdır.
+                    Tasarım Token'ları, renkler, tipografi boyutları, boşluk (spacing) ve gölgeler gibi görsel değerlerin soyutlanmış adlarıdır. Bu, tek doğruluk kaynağı (Single Source of Truth) oluşturmanın ilk adımıdır.
                 </p>
                 <pre><code>// Örnek Token Tanımlaması (Figma/Style Dictionary için)
 {
@@ -239,12 +250,12 @@
             <div class="technical-section">
                 <h3>Adım 2.2: Komponent Geliştirme ve Dokümantasyon</h3>
                 <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
-                    Komponentlerin kodlanması, tasarımcıların ve geliştiricilerin ortak bir dil konuşmasını sağlar. **Storybook** gibi izole edilmiş bir geliştirme ortamı kullanmak zorunluluktur.
+                    Komponentlerin kodlanması, tasarımcıların ve geliştiricilerin ortak bir dil konuşmasını sağlar. Storybook gibi izole edilmiş bir geliştirme ortamı kullanmak zorunluluktur.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-code" style="color: var(--color-detail);"></i> **İzolasyon:** Komponentleri, uygulamanın geri kalanından bağımsız olarak test edin ve belgeleyin.</li>
-                    <li><i class="fas fa-book" style="color: var(--color-detail);"></i> **API Belgeleme:** Her komponentin kabul ettiği tüm `props`, beklenen davranışlar ve kullanım örnekleri net bir şekilde dokümante edilmelidir.</li>
-                    <li><i class="fas fa-universal-access" style="color: var(--color-detail);"></i> **Erişilebilirlik (A11y):** Tüm komponentler, WCAG standartlarına uygun olarak (klavye navigasyonu, ARIA etiketleri) geliştirilmelidir.</li>
+                    <li><i class="fas fa-code" style="color: var(--color-detail);"></i> İzolasyon: Komponentleri, uygulamanın geri kalanından bağımsız olarak test edin ve belgeleyin.</li>
+                    <li><i class="fas fa-book" style="color: var(--color-detail);"></i> API Belgeleme: Her komponentin kabul ettiği tüm `props`, beklenen davranışlar ve kullanım örnekleri net bir şekilde dokümante edilmelidir.</li>
+                    <li><i class="fas fa-universal-access" style="color: var(--color-detail);"></i> Erişilebilirlik (A11y):Tüm komponentler, WCAG standartlarına uygun olarak (klavye navigasyonu, ARIA etiketleri) geliştirilmelidir.</li>
                 </ul>
             </div>
 
@@ -256,8 +267,8 @@
                     Sistem canlı kaldıkça değişecektir. Sisteminizi kullanan ürünler için kararlılığı sağlamak hayati önem taşır.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-box" style="color: var(--color-detail);"></i> **Paketleme:** Sistemi NPM paketi olarak dağıtın (örneğin `@org/design-system`).</li>
-                    <li><i class="fas fa-code-branch" style="color: var(--color-detail);"></i> **SemVer Kullanımı:** <span style="color: var(--color-primary);">Semantik Versiyonlama (Major.Minor.Patch)</span> uygulayın. `Major` versiyon güncellemeleri, geriye dönük uyumluluğu bozan değişiklikler için ayrılmalıdır.</li>
+                    <li><i class="fas fa-box" style="color: var(--color-detail);"></i> Paketleme:Sistemi NPM paketi olarak dağıtın (örneğin `@org/design-system`).</li>
+                    <li><i class="fas fa-code-branch" style="color: var(--color-detail);"></i>SemVer Kullanımı:<span style="color: var(--color-primary);">Semantik Versiyonlama (Major.Minor.Patch)</span> uygulayın. `Major` versiyon güncellemeleri, geriye dönük uyumluluğu bozan değişiklikler için ayrılmalıdır.</li>
                 </ul>
             </div>
             
@@ -267,15 +278,15 @@
                     Sistem kimin sorumluluğunda olmalı? Bu sorunun cevabı sisteminizin başarısını belirler.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-user-lock" style="color: var(--color-detail);"></i> **Merkezileştirilmiş Model:** Sadece küçük bir çekirdek ekip sistemi yönetir. Hızlı karar alma, yavaş adaptasyon.</li>
-                    <li><i class="fas fa-users" style="color: var(--color-detail);"></i> **Federal Model:** Sistem, birden fazla üründen gelen katkılarla büyür. Yavaş karar alma, hızlı adaptasyon ve sahiplenme.</li>
+                    <li><i class="fas fa-user-lock" style="color: var(--color-detail);"></i>Merkezileştirilmiş Model: Sadece küçük bir çekirdek ekip sistemi yönetir. Hızlı karar alma, yavaş adaptasyon.</li>
+                    <li><i class="fas fa-users" style="color: var(--color-detail);"></i>Federal Model:Sistem, birden fazla üründen gelen katkılarla büyür. Yavaş karar alma, hızlı adaptasyon ve sahiplenme.</li>
                 </ul>
             </div>
 
             <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-graduation-cap"></i> Özet Rehberlik İlkesi</h2>
             
             <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
-                Tasarım sistemi oluşturmak bir sprint değil, bir maratondur. <span style="color: var(--color-secondary);">Mükemmeliyetçilikten önce kullanılabilirliğe odaklanın.</span> Sisteminizi, tek bir ürüne sıkı sıkıya bağlı kalmadan, esnek ve modüler parçalar halinde inşa edin. Unutmayın, en iyi tasarım sistemi, geliştiricilerin ve tasarımcıların **kullanmaktan keyif aldığı** sistemdir.
+                Tasarım sistemi oluşturmak bir sprint değil, bir maratondur. <span style="color: var(--color-secondary);">Mükemmeliyetçilikten önce kullanılabilirliğe odaklanın.</span> Sisteminizi, tek bir ürüne sıkı sıkıya bağlı kalmadan, esnek ve modüler parçalar halinde inşa edin. Unutmayın, en iyi tasarım sistemi, geliştiricilerin ve tasarımcıların kullanmaktan keyif aldığı sistemdir.
             </p>
 
         </div>

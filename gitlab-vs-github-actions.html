@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CI/CD Süreçlerinde GitLab vs GitHub Actions: Karşılaştırmalı Analiz ve Entegrasyon Rehberi - TeknoGündem</title>
-    
     <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
-       <style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
         /* TEMEL RENKLER VE GLOBAL STİLLER */
         :root {
             --color-primary: #00bcd4; /* Mavi-Turkuaz */
@@ -50,6 +51,11 @@
             padding: 0;
             display: flex;
         }
+        /* Dropdown için LI'lara Relative konumlandırma EKLENDİ */
+        nav ul li {
+            position: relative; 
+        }
+        
         nav ul li a {
             color: var(--color-text-light);
             text-decoration: none;
@@ -61,6 +67,60 @@
             color: var(--color-primary);
             background-color: rgba(255, 255, 255, 0.05);
             border-radius: 5px;
+        }
+
+        /* DROPDOWN MENÜ STİLLERİ EKLENDİ */
+        .dropdown {
+            padding: 0; 
+        }
+        
+        /* Dropdown butonu yanındaki ok ikonu için */
+        .dropbtn i {
+            margin-left: 5px;
+        }
+        
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            background-color: #1e1e1e; 
+            min-width: 220px; 
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+            z-index: 10; 
+            padding: 0;
+            top: 100%; 
+            margin-top: 0; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            border-radius: 5px;
+            overflow: hidden; 
+            border: 1px solid #333;
+        }
+        
+        .dropdown-content a {
+            color: var(--color-text-light);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left; 
+            border-bottom: 1px solid #333;
+        }
+        
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(0, 188, 212, 0.1); 
+            color: var(--color-primary);
+            border-radius: 0; 
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block; 
+        }
+        /* İkonlar için metin ayrımı (Görsel tutarlılık için) EKLENDİ */
+        h1 i, h2 i, h3 i, .detail-list i, blockquote i {
+            margin-right: 10px;
         }
         
         /* ANA İÇERİK STİLLERİ */
@@ -144,7 +204,15 @@
         <nav>
             <ul>
                 <li><a href="index.html">Ana Sayfa</a></li>
-                <li><a href="donanım.html">Donanım</a></li>
+                
+                <li class="dropdown">
+                    <a href="donanım.html" class="dropbtn">Donanım </a>
+                    <div class="dropdown-content">
+                        <a href="donanim-haberler.html">Haberler</a>
+                        <a href="donanim-incelemeler.html">İncelemeler</a>
+                    </div>
+                </li>
+                
                 <li><a href="yazılım.html">Yazılım</a></li>
                 <li><a href="devops.html" class="active">DevOps</a></li>
             </ul>
@@ -176,8 +244,8 @@
                     GitLab, Kaynak Kod Yönetimi (SCM) ve CI/CD'yi tek bir arayüzde birleştiren "tek platform" felsefesiyle öne çıkar.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-compress-arrows-alt" style="color: var(--color-gitlab);"></i> **Monolitik Entegrasyon:** GitLab, kod, CI/CD, Güvenlik Taramaları (SAST/DAST), Güvenlik Politikaları, Konteyner Kayıt Defteri (Registry) ve Gözlemlenebilirlik araçlarını tek bir arayüze entegre eder. Bu, öğrenme ve yönetim eğrisini düşürür.</li>
-                    <li><i class="fas fa-server" style="color: var(--color-gitlab);"></i> **Self-Hosted (Kendi Barındırma) Gücü:** GitLab Runner'ları hem bulutta hem de şirket içi (on-premise) ortamlarda kolayca barındırılabilir. Şirket içi güvenlik veya özel donanım gereksinimleri olan kurumlar için kritik bir avantajdır.</li>
+                    <li><i class="fas fa-compress-arrows-alt" style="color: var(--color-gitlab);"></i> Monolitik Entegrasyon: GitLab, kod, CI/CD, Güvenlik Taramaları (SAST/DAST), Güvenlik Politikaları, Konteyner Kayıt Defteri (Registry) ve Gözlemlenebilirlik araçlarını tek bir arayüze entegre eder. Bu, öğrenme ve yönetim eğrisini düşürür.</li>
+                    <li><i class="fas fa-server" style="color: var(--color-gitlab);"></i> Self-Hosted (Kendi Barındırma) Gücü:GitLab Runner'ları hem bulutta hem de şirket içi (on-premise) ortamlarda kolayca barındırılabilir. Şirket içi güvenlik veya özel donanım gereksinimleri olan kurumlar için kritik bir avantajdır.</li>
                 </ul>
             </div>
             
@@ -207,8 +275,8 @@ build_job:
                     GitHub Actions, boru hatlarını `workflow` ve `jobs` konsepti üzerine kurar ve gücünü üçüncü taraf "Action"lardan alır.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-share-alt" style="color: var(--color-github);"></i> **Geniş Topluluk:** GitHub Marketplace, binlerce hazır "Action" sunar. Bu, AWS'ye dağıtımdan Slack bildirimi göndermeye kadar, hemen hemen her görevi, sıfırdan komut yazmadan yapabileceğiniz anlamına gelir.</li>
-                    <li><i class="fas fa-layer-group" style="color: var(--color-github);"></i> **Modüler Yapı:** Bir Action, tek bir işlevi yerine getiren (örneğin Node.js kurmak, Docker'a giriş yapmak) bağımsız, yeniden kullanılabilir birimdir. Bu, boru hatlarının esnek ve okunabilir olmasını sağlar.</li>
+                    <li><i class="fas fa-share-alt" style="color: var(--color-github);"></i> Geniş Topluluk: GitHub Marketplace, binlerce hazır "Action" sunar. Bu, AWS'ye dağıtımdan Slack bildirimi göndermeye kadar, hemen hemen her görevi, sıfırdan komut yazmadan yapabileceğiniz anlamına gelir.</li>
+                    <li><i class="fas fa-layer-group" style="color: var(--color-github);"></i> Modüler Yapı: Bir Action, tek bir işlevi yerine getiren (örneğin Node.js kurmak, Docker'a giriş yapmak) bağımsız, yeniden kullanılabilir birimdir. Bu, boru hatlarının esnek ve okunabilir olmasını sağlar.</li>
                 </ul>
             </div>
             
@@ -250,22 +318,22 @@ jobs:
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="gitlab-cell">**Felsefe**</td>
+                            <td class="gitlab-cell">Felsefe</td>
                             <td class="gitlab-cell">Tek bir entegre DevOps Platformu.</td>
                             <td class="github-cell">Kodu ve otomasyonu ayırarak esnek Action'lar sunan platform.</td>
                         </tr>
                         <tr>
-                            <td class="gitlab-cell">**Kendi Barındırma (Runner)**</td>
+                            <td class="gitlab-cell">Kendi Barındırma (Runner)</td>
                             <td class="gitlab-cell">Çok güçlü ve yaygın kullanılır. Her ortamda (Windows, Linux, Mac) Runner kurulabilir.</td>
                             <td class="github-cell">Self-Hosted Runner mevcuttur, ancak GitLab kadar yaygın kurumsal kullanıma sahip değildir.</td>
                         </tr>
                         <tr>
-                            <td class="gitlab-cell">**Yeniden Kullanılabilirlik**</td>
+                            <td class="gitlab-cell">Yeniden Kullanılabilirlik</td>
                             <td class="gitlab-cell">Dahil etme (`include`) mekanizması ile template'ler kullanılır.</td>
                             <td class="github-cell">Topluluk Action'ları sayesinde dış bağımlılıklarla anında entegrasyon.</td>
                         </tr>
                         <tr>
-                            <td class="gitlab-cell">**Güvenlik**</td>
+                            <td class="gitlab-cell">Güvenlik</td>
                             <td class="gitlab-cell">Yerleşik (Built-in) SAST/DAST taramaları ve politikaları tek platformda.</td>
                             <td class="github-cell">CodeQL gibi güçlü araçlar sunar, ancak ayrı Action'lar gerektirir.</td>
                         </tr>
@@ -279,15 +347,15 @@ jobs:
                     Hangi aracın ne zaman daha uygun olduğunu gösteren özet bir kılavuz:
                 </p>
                 <blockquote style="border-left: 5px solid var(--color-secondary); background-color: rgba(255, 152, 0, 0.05); padding: 15px; margin-top: 20px;">
-                    <i class="fas fa-check-circle" style="color: var(--color-gitlab);"></i> **GitLab'i Tercih Edin:** Eğer uygulamanız hassas ve kendi barındırdığınız (self-hosted) ortamlarda çalışmak zorundaysa, tek bir ekran üzerinden tam DevOps Yaşam Döngüsünü (koddan güvenliğe) yönetmek istiyorsanız veya Container Registry'ye yüksek seviyede entegrasyona ihtiyacınız varsa.
-                    <br><i class="fas fa-check-circle" style="color: var(--color-github);"></i> **GitHub Actions'ı Tercih Edin:** Eğer projeniz zaten GitHub'da barınıyorsa, açık kaynaklı ve topluluk tarafından sağlanan çok sayıda üçüncü taraf entegrasyonuna (Action) hızlıca ihtiyacınız varsa ve esnek, modüler boru hatları kurmak istiyorsanız.
+                    <i class="fas fa-check-circle" style="color: var(--color-gitlab);"></i> GitLab'i Tercih Edin:Eğer uygulamanız hassas ve kendi barındırdığınız (self-hosted) ortamlarda çalışmak zorundaysa, tek bir ekran üzerinden tam DevOps Yaşam Döngüsünü (koddan güvenliğe) yönetmek istiyorsanız veya Container Registry'ye yüksek seviyede entegrasyona ihtiyacınız varsa.
+                    <br><i class="fas fa-check-circle" style="color: var(--color-github);"></i> **GitHub Actions'ı Tercih Edin: Eğer projeniz zaten GitHub'da barınıyorsa, açık kaynaklı ve topluluk tarafından sağlanan çok sayıda üçüncü taraf entegrasyonuna (Action) hızlıca ihtiyacınız varsa ve esnek, modüler boru hatları kurmak istiyorsanız.
                 </blockquote>
             </div>
 
             <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-graduation-cap"></i> Özet Rehberlik İlkesi</h2>
             
             <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
-                Her iki araç da mükemmel CI/CD yetenekleri sunar ve temel olarak bildirimsel YAML ile çalışır. Aradaki fark, **felsefede ve entegrasyon derinliğindedir.** <span style="color: var(--color-gitlab);">GitLab</span>, **"her şeyi içeren tek bir platform"** çözümü olarak kurumsal ve Self-Hosted ortamlar için uygundur. <span style="color: var(--color-github);">GitHub Actions</span> ise **"topluluk gücü ve modüler Action'lar"** ile hız ve esneklik arayan ekipler için idealdir. Nihai karar, mevcut kod deposu konumunuz, güvenlik gereksinimleriniz ve entegrasyon tercihleriniz tarafından belirlenmelidir.
+                Her iki araç da mükemmel CI/CD yetenekleri sunar ve temel olarak bildirimsel YAML ile çalışır. Aradaki fark, felsefede ve entegrasyon derinliğindedir.<span style="color: var(--color-gitlab);">GitLab</span>, "her şeyi içeren tek bir platform" çözümü olarak kurumsal ve Self-Hosted ortamlar için uygundur. <span style="color: var(--color-github);">GitHub Actions</span> ise "topluluk gücü ve modüler Action'lar" ile hız ve esneklik arayan ekipler için idealdir. Nihai karar, mevcut kod deposu konumunuz, güvenlik gereksinimleriniz ve entegrasyon tercihleriniz tarafından belirlenmelidir.
             </p>
 
         </div>
@@ -295,7 +363,7 @@ jobs:
     </main>
 
     <footer>
-        <p>&copy; 2026 TeknoGündem. Tüm Hakları Saklıdır.</p>
+        <p>&copy; 2025 TeknoGündem. Tüm Hakları Saklıdır.</p>
     </footer>
 
 </body> 

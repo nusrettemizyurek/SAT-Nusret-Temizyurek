@@ -147,7 +147,7 @@
     <div class="article-content-wrapper" style="max-width: 900px; margin: 40px auto; padding: 20px;">
         
         <p style="margin-bottom: 25px; line-height: 1.8; font-size: 1.1rem; color: #ccc;">
-            Uçtan Uca (E2E) testler, bir uygulamanın son kullanıcı yolculuğunu taklit ederek kritik iş akışlarının doğru çalıştığından emin olmanın en önemli yoludur. Selenium'un yıllar süren egemenliğinden sonra, modern JavaScript tabanlı uygulamalar için geliştirilmiş olan **Cypress**, test otomasyonunun çehresini kökten değiştirdi. Cypress, sadece bir test aracı değil, hızlı, güvenilir ve geliştirici odaklı bir E2E test çerçevesidir.
+            Uçtan Uca (E2E) testler, bir uygulamanın son kullanıcı yolculuğunu taklit ederek kritik iş akışlarının doğru çalıştığından emin olmanın en önemli yoludur. Selenium'un yıllar süren egemenliğinden sonra, modern JavaScript tabanlı uygulamalar için geliştirilmiş olan Cypress, test otomasyonunun çehresini kökten değiştirdi. Cypress, sadece bir test aracı değil, hızlı, güvenilir ve geliştirici odaklı bir E2E test çerçevesidir.
         </p>
 
         <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-cogs"></i> 1. Mimari Farkı: Tarayıcı İçinde Çalışmak</h2>
@@ -155,14 +155,14 @@
         <div class="technical-section">
             <h3>Geleneksel Araçlar (Selenium): Süreçler Arası İletişim</h3>
             <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
-                Selenium gibi eski araçlar, tarayıcı dışında Node.js veya başka bir dil ortamında çalışır ve <span style="color: var(--color-secondary);">WebDriver protokolü</span> aracılığıyla komutları tarayıcıya HTTP üzerinden gönderir. Bu, iki ayrı süreç arasındaki iletişimde kaçınılmaz bir **gecikme (latency)** ve testlerde **güvenilirlik sorunları (flakiness)** yaratır. Tarayıcıda bir şeyin olmasını beklemek, sürekli zaman aşımları ve bekleme kodları yazmayı gerektirir.
+                Selenium gibi eski araçlar, tarayıcı dışında Node.js veya başka bir dil ortamında çalışır ve <span style="color: var(--color-secondary);">WebDriver protokolü</span> aracılığıyla komutları tarayıcıya HTTP üzerinden gönderir. Bu, iki ayrı süreç arasındaki iletişimde kaçınılmaz bir gecikme (latency) ve testlerde güvenilirlik sorunları (flakiness) yaratır. Tarayıcıda bir şeyin olmasını beklemek, sürekli zaman aşımları ve bekleme kodları yazmayı gerektirir.
             </p>
         </div>
         
         <div class="technical-section">
             <h3>Cypress: Aynı Çalışma Döngüsü (Same Run-Loop)</h3>
             <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
-                Cypress, test kodunuzu **doğrudan tarayıcınızda** çalıştırır. Test kodu, uygulamanızla aynı çalışma döngüsünde (run-loop) bulunur. Bu, Cypress'in DOM'a, pencere nesnesine, yerel depolama alanına ve uygulamanızın koduna **doğrudan erişimi** olduğu anlamına gelir. Sonuç: Testler daha hızlı, daha deterministik (belirlenimci) ve test yürütülürken ağ trafiğini kolayca izleyebilir veya değiştirebilirsiniz.
+                Cypress, test kodunuzu **doğrudan tarayıcınızda** çalıştırır. Test kodu, uygulamanızla aynı çalışma döngüsünde (run-loop) bulunur. Bu, Cypress'in DOM'a, pencere nesnesine, yerel depolama alanına ve uygulamanızın koduna doğrudan erişimi olduğu anlamına gelir. Sonuç: Testler daha hızlı, daha deterministik (belirlenimci) ve test yürütülürken ağ trafiğini kolayca izleyebilir veya değiştirebilirsiniz.
             </p>
         </div>
 
@@ -184,7 +184,7 @@ cy.get('button[type="submit"]').click();
         <div class="technical-section">
             <h3>Zaman Seyahati (Time Travel) ve Hata Ayıklama</h3>
             <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
-                Cypress'in en güçlü özelliklerinden biri, **Test Çalıştırıcısı (Test Runner)** arayüzüdür. Bu arayüzde, testinizin her adımını görebilirsiniz. Bir komuta tıkladığınızda, Cypress size o anki DOM yapısını, CSS ve JavaScript state'ini gösterir. Buna **Zaman Seyahati** denir. Bu görsel hata ayıklama yeteneği, test hatalarının nedenini bulma süresini dakikalardan saniyelere düşürür.
+                Cypress'in en güçlü özelliklerinden biri, **Test Çalıştırıcısı (Test Runner)** arayüzüdür. Bu arayüzde, testinizin her adımını görebilirsiniz. Bir komuta tıkladığınızda, Cypress size o anki DOM yapısını, CSS ve JavaScript state'ini gösterir. Buna Zaman Seyahati denir. Bu görsel hata ayıklama yeteneği, test hatalarının nedenini bulma süresini dakikalardan saniyelere düşürür.
             </p>
         </div>
 
@@ -204,7 +204,7 @@ cy.get('button[type="submit"]').click();
         <div class="technical-section">
             <h3>Ağ Kontrolü (Network Stubbing) ve State Yönetimi</h3>
             <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
-                Cypress'in tarayıcı içinde çalışması sayesinde, uygulamanızın API çağrılarına müdahale edebilirsiniz. **`cy.intercept()`** komutu ile sunucu yanıtlarını taklit (stub) edebilir veya değiştirebilirsiniz.
+                Cypress'in tarayıcı içinde çalışması sayesinde, uygulamanızın API çağrılarına müdahale edebilirsiniz. `cy.intercept()` komutu ile sunucu yanıtlarını taklit (stub) edebilir veya değiştirebilirsiniz.
             </p>
             <pre style="background-color: #2b2b2b; color: #f8f8f2; padding: 15px; border-radius: 6px; overflow-x: auto; font-family: 'Consolas', 'Courier New', monospace; font-size: 0.9em; border: 1px solid #3a3a3a;"><code>// Sunucudan gelen kullanıcı listesi yanıtını taklit etme
 cy.intercept('GET', '/api/users', { fixture: 'users.json' }).as('getUsers');

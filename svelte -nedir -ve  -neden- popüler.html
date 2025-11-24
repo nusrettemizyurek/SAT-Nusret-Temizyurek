@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Svelte Nedir ve Neden Popüler? Derleyici Mimarisi ve Geleceği - TeknoGündem</title>
-    
+    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -181,7 +181,7 @@
         <div class="article-content-wrapper" style="max-width: 900px; margin: 40px auto; padding: 20px;">
             
             <p style="margin-bottom: 25px; line-height: 1.8; font-size: 1.1rem; color: #ccc;">
-                React, Vue ve Angular gibi devlerin hakim olduğu frontend dünyasında, Svelte, kökten farklı bir felsefeyle ortaya çıkarak hızla popülerlik kazandı. Svelte, kendisini bir "framework" olarak değil, kullanıcı arayüzleri inşa etmek için bir **derleyici (compiler)** olarak tanımlar. Bu basit felsefi ayrım, modern web uygulamalarının performansını ve geliştirici deneyimini kökten değiştiren bir dizi teknik avantaja yol açar.
+                React, Vue ve Angular gibi devlerin hakim olduğu frontend dünyasında, Svelte, kökten farklı bir felsefeyle ortaya çıkarak hızla popülerlik kazandı. Svelte, kendisini bir "framework" olarak değil, kullanıcı arayüzleri inşa etmek için bir derleyici (compiler) olarak tanımlar. Bu basit felsefi ayrım, modern web uygulamalarının performansını ve geliştirici deneyimini kökten değiştiren bir dizi teknik avantaja yol açar.
             </p>
 
             <h2 style="color: var(--color-compiler); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-wrench"></i> Faz 1: Svelte'in Temel Felsefesi: Derleyici Yaklaşımı</h2>
@@ -200,8 +200,8 @@
                     React ve Vue gibi Framework'ler, runtime (çalışma zamanı) sırasında uygulamanın tarayıcıda çalışması için büyük miktarda kodu (Virtual DOM algoritmaları) barındırmak zorundadır. Svelte bu yükü tamamen ortadan kaldırır.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-compress" style="color: var(--color-svelte-main);"></i> **Sıfır Runtime Yükü:** Svelte, geliştirme sırasında yazdığınız bileşenleri alır ve onları doğrudan gerçek DOM'u minimum JavaScript koduyla güncelleyen, saf, Vanilla JavaScript koduna dönüştürür. Üretim (Production) paketinde Svelte framework'ünün kendisine ait kod bulunmaz.</li>
-                    <li><i class="fas fa-running" style="color: var(--color-svelte-main);"></i> **Gerekli Minimum Kod:** Bir state (durum) değiştiğinde, Svelte yalnızca değişen kısmı kesin olarak bilen mikro kodlar üretir. Bu, tarayıcının yapması gereken işi büyük ölçüde azaltır, bu da daha hızlı yüklenme ve daha akıcı etkileşim anlamına gelir.</li>
+                    <li><i class="fas fa-compress" style="color: var(--color-svelte-main);"></i> Sıfır Runtime Yükü: Svelte, geliştirme sırasında yazdığınız bileşenleri alır ve onları doğrudan gerçek DOM'u minimum JavaScript koduyla güncelleyen, saf, Vanilla JavaScript koduna dönüştürür. Üretim (Production) paketinde Svelte framework'ünün kendisine ait kod bulunmaz.</li>
+                    <li><i class="fas fa-running" style="color: var(--color-svelte-main);"></i> Gerekli Minimum Kod:Bir state (durum) değiştiğinde, Svelte yalnızca değişen kısmı kesin olarak bilen mikro kodlar üretir. Bu, tarayıcının yapması gereken işi büyük ölçüde azaltır, bu da daha hızlı yüklenme ve daha akıcı etkileşim anlamına gelir.</li>
                 </ul>
             </div>
             
@@ -248,17 +248,17 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="svelte-cell">**Güncelleme Mekanizması**</td>
+                            <td class="svelte-cell">Güncelleme Mekanizması</td>
                             <td class="svelte-cell">Doğrudan DOM manipülasyonu.</td>
                             <td class="react-cell">Virtual DOM fark kontrolü (Diffing) ve yama (Patching).</td>
                         </tr>
                         <tr>
-                            <td class="svelte-cell">**Bundle Boyutu**</td>
+                            <td class="svelte-cell">Bundle Boyutu</td>
                             <td class="svelte-cell">Çok küçük. Sadece uygulama kodu dahil edilir.</td>
                             <td class="react-cell">Büyük. Framework runtime kodu (VDOM motoru) dahil edilir.</td>
                         </tr>
                         <tr>
-                            <td class="svelte-cell">**Geliştirici Reaktivitesi**</td>
+                            <td class="svelte-cell">Geliştirici Reaktivitesi</td>
                             <td class="svelte-cell">Basit JavaScript atama operatörleri (`=`). Sihirli bir fonksiyon çağırmaya gerek yok.</td>
                             <td class="react-cell">Özel fonksiyonlar (`useState`, `setState`) veya ref'ler gereklidir.</td>
                         </tr>
@@ -272,8 +272,8 @@
                     Svelte'in gücünü tam potansiyeliyle kullanmak için SvelteKit kullanılır. SvelteKit, Next.js veya Nuxt.js gibi bir meta-framework'tür.
                 </p>
                 <blockquote style="border-left: 5px solid var(--color-secondary); background-color: rgba(255, 152, 0, 0.05); padding: 15px; margin-top: 20px;">
-                    <i class="fas fa-database" style="color: var(--color-secondary);"></i> **Serverless/Edge Desteği:** SvelteKit, yerleşik olarak **Sunucu Tarafı İşleme (SSR)**, **Statik Site Oluşturma (SSG)** ve **Edge Fonksiyonları**nı destekler. Bu, uygulamaların bulut altyapılarında (Vercel, Cloudflare Pages) maksimum hızda dağıtılmasına olanak tanır.
-                    <br> <i class="fas fa-laptop-code" style="color: var(--color-secondary);"></i> **Form Eylemleri (Form Actions):** SvelteKit'in benzersiz bir özelliği, client-side JavaScript kullanmadan bile form verilerini doğrudan sunucu tarafında yönetmenizi sağlayan güçlü bir routing ve veri yönetimi sistemidir.
+                    <i class="fas fa-database" style="color: var(--color-secondary);"></i> Serverless/Edge Desteği: SvelteKit, yerleşik olarak Sunucu Tarafı İşleme (SSR), Statik Site Oluşturma (SSG) ve Edge Fonksiyonları 'nı destekler. Bu, uygulamaların bulut altyapılarında (Vercel, Cloudflare Pages) maksimum hızda dağıtılmasına olanak tanır.
+                    <br> <i class="fas fa-laptop-code" style="color: var(--color-secondary);"></i> Form Eylemleri (Form Actions): SvelteKit'in benzersiz bir özelliği, client-side JavaScript kullanmadan bile form verilerini doğrudan sunucu tarafında yönetmenizi sağlayan güçlü bir routing ve veri yönetimi sistemidir.
                 </blockquote>
             </div>
 
@@ -285,8 +285,8 @@
                     Svelte, geliştiriciler tarafından en sevilen framework'lerden biri olarak gösterilmesinin temel nedeni, kolay öğrenilebilir olmasıdır.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-magic" style="color: var(--color-detail);"></i> **Azaltılmış Sözdizimi (Syntax):** React'teki `useEffect`, `useMemo` veya `useCallback` gibi hook'lara olan ihtiyacı ortadan kaldırır. Reaktivite, yerel JavaScript atamalarıyla yapılır.</li>
-                    <li><i class="fas fa-code-merge" style="color: var(--color-detail);"></i> **Yerleşik Geçişler (Transitions) ve Animasyonlar:** Svelte, CSS transition ve animasyonlarını yönetmek için kolay kullanımlı API'ler sunar, bu da ekstra animasyon kütüphanelerine olan ihtiyacı azaltır.</li>
+                    <li><i class="fas fa-magic" style="color: var(--color-detail);"></i> Azaltılmış Sözdizimi (Syntax): React'teki `useEffect`, `useMemo` veya `useCallback` gibi hook'lara olan ihtiyacı ortadan kaldırır. Reaktivite, yerel JavaScript atamalarıyla yapılır.</li>
+                    <li><i class="fas fa-code-merge" style="color: var(--color-detail);"></i> Yerleşik Geçişler (Transitions) ve Animasyonlar: Svelte, CSS transition ve animasyonlarını yönetmek için kolay kullanımlı API'ler sunar, bu da ekstra animasyon kütüphanelerine olan ihtiyacı azaltır.</li>
                 </ul>
             </div>
 
@@ -300,7 +300,7 @@
             <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-graduation-cap"></i> Özet Rehberlik İlkesi</h2>
             
             <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
-                Svelte, frontend'in geleceğini temsil eden, **"Derleyici Yaklaşımıyla"** yazılan kodu üretimden önce saf JavaScript'e dönüştüren devrimci bir teknolojidir. Bu mimari, **Sıfır Runtime Yükü**, **Küçük Bundle Boyutu** ve **Üstün Çalışma Zamanı Performansı** sağlar. Eğer projenizde maksimum hız, mükemmel geliştirici deneyimi ve modern full-stack özellikler (SvelteKit ile) arıyorsanız, Svelte bugün denemeniz gereken en önemli araçtır.
+                Svelte, frontend'in geleceğini temsil eden, "Derleyici Yaklaşımıyla" yazılan kodu üretimden önce saf JavaScript'e dönüştüren devrimci bir teknolojidir. Bu mimari, Sıfır Runtime Yükü, Küçük Bundle Boyutu ve Üstün Çalışma Zamanı Performansı sağlar. Eğer projenizde maksimum hız, mükemmel geliştirici deneyimi ve modern full-stack özellikler (SvelteKit ile) arıyorsanız, Svelte bugün denemeniz gereken en önemli araçtır.
             </p>
 
         </div>
@@ -308,7 +308,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 TeknoGündem. Tüm Hakları Saklıdır.</p>
+        <p>&copy; 2025 TeknoGündem. Tüm Hakları Saklıdır.</p>
     </footer>
 
 </body> 

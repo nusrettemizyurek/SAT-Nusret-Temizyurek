@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veri Setlerinden Öğrenmek: Feature Engineering ve ML Başarısı - TeknoGündem</title>
+      <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #f0f0f0;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #161b22;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .logo {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #00c6ff;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li { position: relative; } /* Dropdown için gerekli */
+
+
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: block;
+            padding: 5px 0;
+        }
+
+        nav a:hover, nav .active {
+            color: #00c6ff;
+        }
+
+        /* Yeni Eklenen Dropdown Stilleri */
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            top: 100%; 
+            left: 0;
+            background-color: #161b22;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+            z-index: 1001;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            padding: 10px 0;
+            flex-direction: column; 
+        }
+
+        .dropdown:hover .dropdown-content { display: flex; }
+
+        .dropdown-content a {
+            color: #ccc; 
+            padding: 10px 15px; 
+            text-decoration: none; 
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #30363d; 
+            color: #00c6ff;
+        }
+        /* Dropdown Stilleri Bitişi */
+        
+        /* Makale İçeriği Stil Başlangıcı */
+        .article-container {
+            padding: 40px 8%;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .article-container h1 {
+            font-size: 2.5em;
+            color: #00c6ff;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .article-meta {
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 15px;
+        }
+
+        .article-meta span {
+            margin-right: 20px;
+        }
+
+        .article-body h2 {
+            font-size: 1.8em;
+            color: #f0f0f0;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-left: 4px solid #00c6ff;
+            padding-left: 10px;
+        }
+
+        .article-body h3 {
+            font-size: 1.4em;
+            color: #00c6ff;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        .article-body p {
+            margin-bottom: 20px;
+            color: #ccc;
+            text-align: justify;
+        }
+
+        .article-body ul {
+            list-style: disc;
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        .article-body strong {
+            color: #00c6ff;
+        }
+        
+        .article-body em {
+            color: #c0c0c0;
+        }
+
+        .article-body blockquote {
+            border-left: 5px solid #00c6ff;
+            margin: 25px 0;
+            padding: 10px 20px;
+            background-color: #161b22;
+            color: #ccc;
+            font-style: italic;
+            border-radius: 4px;
+        }
+        /* Makale İçeriği Stil Bitişi */
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #30363d;
+            background-color: #0d1117;
+            color: #777;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">TeknoGündem</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            
+            <li class="dropdown">
+                <a href="donanım.html">Donanım</a> 
+                <div class="dropdown-content"> 
+                    <a href="haberler.html" class="dropdown-item">Haberler</a> 
+                    <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
+                </div>
+            </li>
+            
+            <li class="dropdown">
+                <a href="yazılım.html">Yazılım</a>
+                <div class="dropdown-content">
+                    <a href="backend-makaleler.html" class="dropdown-item">Backend</a>
+                    <a href="frontend-makaleler.html" class="dropdown-item">Frontend</a>
+                </div>
+            </li>
+            
+            <li><a href="ai-makaleler.html" class="active">AI Makaleleri</a></li> 
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="article-container">
+    <article class="article-body">
+        
+        <h1>Veri Setlerinden Öğrenmek: Feature Engineering, Makine Öğrenimi Başarısında Neden Kritik?</h1>
+        
+        <div class="article-meta">
+            <span>Yazar: Veri Bilimi Uzmanı</span>
+            <span>Tarih: 02 Kasım 2025</span>
+            <span>Okuma Süresi: ~8 dakika</span>
+            <span>Kategori: Makine Öğrenimi (ML), Veri Bilimi</span>
+        </div>
+
+        <p>Makine Öğrenimi (ML) algoritmalarının başarısı genellikle kullanılan modelin karmaşıklığına değil, modele sunulan verinin kalitesine ve biçimine bağlıdır. Veri biliminde sıklıkla söylenen bir söz vardır: "Çöp Girdi, Çöp Çıktı" (Garbage In, Garbage Out). İşte bu noktada, modelin veriden en iyi şekilde öğrenebilmesi için verinin dönüştürülmesi sanatı olan Öznitelik Mühendisliği (Feature Engineering) devreye girer. Ham veriyi işlenmiş, optimize edilmiş ve modele hazır hale getirme süreci, başarılı bir ML projesinin belki de %80'ini oluşturur.</p>
+        <p>Başarılı bir Feature Engineering süreci, modelin yalnızca verideki mevcut bilgiyi değil, aynı zamanda değişkenler arasındaki gizli, doğrusal olmayan ilişkileri de keşfetmesini sağlar. Örneğin, sadece bir kişinin gelirine bakmak yerine, geliri ve yaşadığı bölgenin ortalama yaşam maliyetini karşılaştıran yeni bir "Göreceli Gelir Endeksi" oluşturmak, tahmin gücünü çarpıcı biçimde artırabilir. Bu yaratıcı süreç, algoritmaların sınırlarını aşmanın ve gerçek dünya sorunlarına daha isabetli çözümler üretmenin anahtarıdır.</p>
+
+        <h2>Öznitelik Mühendisliği Nedir?</h2>
+        <p>Öznitelik Mühendisliği, ham veriyi alıp, modelin öğrenme performansını artırmak için daha anlamlı, ayırt edici özelliklere dönüştürme sürecidir. Bu, veri temizliği, dönüştürme, birleştirme ve yeni değişkenler oluşturmayı içerir. İyi bir öznitelik, karmaşık ilişkileri modelin kolayca anlayabileceği basit bir formata indirger.</p>
+        
+        <p>Bu süreç, bir veri bilimcinin alan bilgisini (domain expertise) derinlemesine kullanmasını gerektirir. Modelin neyi tahmin etmeye çalıştığını (hedef değişken) ve hangi ham verilerin bu tahminle en güçlü şekilde ilişkili olduğunu anlamak esastır. Örneğin, bir hisse senedi fiyatı tahmin ederken, sadece günlük kapanış fiyatına odaklanmak yerine, "hareketli ortalama" veya "volatilite" gibi finansal türev göstergeleri oluşturmak, modele piyasa dinamikleri hakkında anında bilgi sağlar.</p>
+
+        <p>Öznitelik Mühendisliği, yalnızca performansı artırmakla kalmaz, aynı zamanda modelin yorumlanabilirliğini de yükseltir. İyi tasarlanmış öznitelikler, karmaşık bir Derin Öğrenme modelinin bile tahminlerinin arkasındaki mantığı anlamayı kolaylaştırır. Model, 100 farklı anlamsız sütun yerine, 5-10 tane yüksek korelasyonlu, anlamlı özellik üzerinde eğitildiğinde, çıktıların nedenlerini açıklamak çok daha basit hale gelir.</p>
+
+        <p>Kısacası, Feature Engineering; karmaşık, kirli ve eksik ham veriyi, bir makine öğrenimi algoritmasının kolaylıkla sindirebileceği, temiz ve yüksek oranda bilgilendirici bir besine dönüştürme sanatıdır. Bu hazırlık evresi, modelin eğitimine harcanan zamandan çok daha kritiktir.</p>
+
+        <h3>Temiz Verinin Temeli: Veri Ön İşleme</h3>
+        <p>Feature Engineering'e başlamadan önce veri ön işlemesi hayati önem taşır:</p>
+        <ul>
+            <li><strong>Kayıp Veri Yönetimi:</strong> Eksik değerleri doldurmak (imputation) veya satırları kaldırmak.</li>
+            <li><strong>Aykırı Değer Tespiti:</strong> Modelin performansını bozan anormal veri noktalarını (outliers) belirlemek ve düzeltmek.</li>
+            <li><strong>Veri Normalizasyonu/Standardizasyonu:</strong> Farklı ölçeklerdeki öznitelikleri (örneğin, yaş ve maaş) aynı ölçeğe getirmek, böylece hiçbir özniteliğin modele gereksiz yere hakim olmamasını sağlamak.</li>
+        </ul>
+        
+        <p>Veri ön işlemesi, bir binanın temelini atmaya benzer. Eğer temel sağlam atılmazsa, üzerinde kurulan en gelişmiş model mimarisi bile çökmeye mahkumdur. Özellikle kayıp verilerin yanlış yöntemlerle doldurulması, modelin öğrenme sırasında ciddi yanlılıklar (bias) geliştirmesine yol açabilir. Örneğin, kayıp yaş değerlerini basit bir ortalama ile doldurmak yerine, aynı medeni durumdaki veya eğitim seviyesindeki kişilerin ortalama yaşını kullanarak daha karmaşık imputation teknikleri uygulamak, veri kalitesini maksimize eder.</p>
+
+        <p>Aykırı değerlerin (Outliers) tespiti ve yönetimi de büyük önem taşır. Lineer regresyon veya destek vektör makineleri gibi bazı algoritmalar bu anormal noktalara karşı oldukça hassastır ve aykırı değerler modelin genel performansını dramatik şekilde bozabilir. Aykırı değerleri doğrudan kaldırmak yerine, onları sıkıştırmak (winsorizing) veya logaritmik dönüşümlerle etkilerini azaltmak, hem veri kaybını önler hem de modelin sağlamlığını artırır.</p>
+        
+        <p>Normalizasyon ve Standardizasyon, veriyi aynı oyun alanına taşır. Büyük ölçekli bir özellik (örneğin yıllık gelir: $100.000) küçük ölçekli bir özelliğe (örneğin çocuk sayısı: 3) göre modele orantısız şekilde hakim olabilir. Standardizasyon (Ortalama: 0, Standart Sapma: 1) veya Normalizasyon(Değerleri 0 ile 1 arasına sıkıştırma) yöntemleri bu dengesizliği giderir, böylece gradyan inişi gibi optimizasyon algoritmaları daha hızlı ve doğru çalışır.</p>
+
+        <blockquote>
+            "Model mimarisine harcadığınız zamanın büyük bir kısmı, aslında veri hazırlığına harcadığınız zamanın yanında sönük kalır. Feature Engineering, modelin beynine beslediğiniz 'bilgeliktir'."
+        </blockquote>
+
+        <h2>Öznitelik Yaratma Teknikleri</h2>
+        <p>Yeni ve güçlü öznitelikler yaratmak için kullanılan bazı temel stratejiler:</p>
+
+        <h3>1. Dönüşümler (Transformations):</h3>
+        <p>Sayısal verileri daha bilgilendirici hale getirmek için matematiksel işlemler uygulamak. Örneğin, iki farklı zaman damgasından (tarihten) **geçen süreyi** hesaplayarak yeni bir "yaş" özniteliği oluşturmak.</p>
+        <p>Dönüşümler, yalnızca zaman hesaplamalarıyla sınırlı değildir. Özellikle çarpık dağılımlı (skewed) değişkenler için logaritmik $(y = \log(x))$ veya karekök dönüşümleri uygulamak, verinin dağılımını normale yaklaştırarak Lineer Regresyon gibi parametrik modellerin varsayımlarına uyum sağlamasına ve böylece daha iyi performans göstermesine olanak tanır. Bu, özellikle gelir, süre veya nüfus gibi pozitif değerlerle sınırlı değişkenlerde yaygındır.</p>
+        <p>Başka bir yaygın dönüşüm tekniği, sayısal değişkenleri gruplara ayırmaktır (binning veya bucketing). Örneğin, sürekli bir yaş değişkenini "Genç", "Orta Yaşlı" ve "Yaşlı" kategorilerine dönüştürmek. Bu işlem, aşırı detaydan kaynaklanan gürültüyü azaltabilir ve modelin aykırı değerlere karşı daha dayanıklı olmasını sağlayarak genelleme yeteneğini artırır.</p>
+
+        <h3>2. Kodlama (Encoding) Kategorik Veri:</h3>
+        <p>Kategori adlarını (örneğin 'Ankara', 'İstanbul') modelin anlayabileceği sayısal biçime dönüştürmek:</p>
+        <ul>
+            <li><strong>One-Hot Encoding:</strong> Her bir kategori için yeni bir ikili (0 veya 1) öznitelik sütunu oluşturur.</li>
+            <li><strong>Target Encoding:</strong> Kategorik değeri, hedef değişkenin ortalamasıyla kodlar (Örneğin, 'İstanbul'da oturanların ortalama borç riski).</li>
+        </ul>
+        <p>Kategorik verinin doğru kodlanması kritiktir. One-Hot Encoding yöntemi, yüksek kardinaliteli (çok sayıda benzersiz değere sahip) sütunlarda kullanıldığında aşırı miktarda yeni sütun (Curse of Dimensionality) oluşturarak modelin eğitim süresini uzatabilir ve hafıza sorunlarına yol açabilir. Bu sorun, özellikle 100'den fazla benzersiz şehir adı gibi durumlarda ortaya çıkar.</p>
+        <p>Yüksek kardinalite sorununu çözmek için Target Encoding (veya Mean Encoding) güçlü bir alternatiftir. Bu teknik, her kategoriyi, hedef değişkenin o kategoriye karşılık gelen ortalama değeriyle kodlar. Örneğin, bir şehirdeki müşteri churn (ayrılma) oranını kodlamak gibi. Bu, kategori ve hedef değişken arasındaki ilişkiyi tek bir sayısal değişkende yakalar, ancak aşırı öğrenme (overfitting) riskini azaltmak için çapraz doğrulama (cross-validation) ile birlikte dikkatlice kullanılmalıdır.</p>
+        <p>Ordinal Encoding ise doğal bir sıraya sahip kategoriler için kullanılır (Örn: Eğitim Seviyesi: İlkokul < Lise < Üniversite). Bu kodlama, kategorileri doğrudan 1, 2, 3 gibi sıralı sayılarla eşleştirir ve modelin bu sıralı ilişkiyi öğrenmesini kolaylaştırır, böylece gereksiz yeni sütunlar oluşturulmamış olur.</p>
+
+        <h3>3. Etkileşim Öznitelikleri (Interaction Features):</h3>
+        <p>Mevcut iki veya daha fazla özniteliği birleştirerek aralarındaki ilişkiyi yansıtan yeni bir öznitelik oluşturmak (örneğin: "Harcama_Oranı" = "Gelir" / "Harcamalar").</p>
+        <p>Etkileşim öznitelikleri, modelin tekil değişkenlerde gizli kalan, doğrusal olmayan karmaşık ilişkileri keşfetmesini sağlar. Örneğin, bir kişinin geliri yüksek olabilir, ancak Harcama/Gelir oranı da yüksekse, bu durum tek başına gelir değişkeni ile anlaşılamayacak yeni bir risk faktörünü ortaya çıkarır. Bu mühendislik tekniği, temel algoritmaların (lineer modeller) varsayımlarını aşmalarını ve verilere daha esnek uyum sağlamalarını sağlar.</p>
+        <p>Sıklıkla kullanılan bir başka etkileşim örneği, iki kategorik değişkeni birleştirmektir. Örneğin, "Cinsiyet" ve "Ürün Kategorisi" özelliklerini birleştirerek "Kadın ve Spor Giyim" gibi yeni bir öznitelik oluşturmak. Bu birleşik öznitelik, modelin kadın müşterilerin spor giyime olan ilgisini, genel olarak kadınlara veya genel olarak spor giyime olan ilgiden daha net bir şekilde ayırt etmesine yardımcı olabilir.</p>
+        <p>Özellikle Ağaç tabanlı modeller (Random Forest, Gradient Boosting) etkileşimleri doğal olarak yakalayabilirken, Lineer Regresyon veya SVM gibi modeller için etkileşim terimlerinin manuel olarak oluşturulması, model performansını artırmanın en etkili yoludur.</p>
+
+        <h2>Otomatik Öznitelik Mühendisliği (AutoFE)</h2>
+        <p>Derin Öğrenme (DL) alanındaki ilerlemeler, öznitelik mühendisliği sürecini otomatikleştirmeye başlamıştır. DL modelleri, özellikle Görü ve NLP gibi alanlarda, ham veriden (piksel, kelime) anlamlı öznitelikleri (Feature Learning**) kendiliğinden çıkarabilme yeteneğine sahiptir. Ancak, tabular (tablo) verilerde, AutoML araçları ve teknikleri (örneğin, Featuretools) hala insan uzmanlığının yerini tamamen alabilmiş değildir; insan müdahalesi kritik kalmaya devam etmektedir.</p>
+
+        <p>AutoFE araçları, temel dönüşümler ve basit etkileşimler oluşturarak veri bilimcilerin iş yükünü hafifletebilir, ancak karmaşık iş mantığına dayanan veya derin alan bilgisi gerektiren özelliklerin (örneğin, "müşterinin son 3 aydaki ortalama sipariş değeri") oluşturulması hala insan analistlerin elindedir. Otomasyon, bir başlangıç noktası sunsa da, en yüksek doğruluk seviyeleri için yaratıcı, uzmanlık gerektiren manuel mühendislik kaçınılmazdır.</p>
+
+        <p>Öznitelik Mühendisliği, bir veri bilimcinin cephaneliğindeki en güçlü araçtır. Modelleri eğitmek ve ayarlamaktan daha fazla zaman ve düşünce gerektirir, ancak nihai model performansındaki kazançlar genellikle bu çabaya değerdir.</p>
+
+        <div class="article-meta" style="margin-top: 50px; border-top: 1px solid #30363d; padding-top: 15px;">
+            <span>#FeatureEngineering #VeriBilimi #ML #VeriÖnİşleme #AutoML</span>
+        </div>
+
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2025 TeknoGündem. Tüm Hakları Saklıdır.</p>
+</footer>
+
+</body>
+</html>

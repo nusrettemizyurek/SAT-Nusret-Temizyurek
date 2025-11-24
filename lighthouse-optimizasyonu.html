@@ -23,10 +23,21 @@
         <div class="logo">TeknoGündem</div>
         <nav>
             <ul>
-                <li><a href="index.html">Ana Sayfa</a></li>
-                <li><a href="donanım.html">Donanım</a></li>
-                <li><a href="yazılım.html" class="active">Yazılım</a></li>
-                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                     <li><a href="index.html">Ana Sayfa</a></li>
+            
+            <li class="dropdown">
+                
+                <a href="donanım.html">Donanım</a> 
+                
+                <div class="dropdown-content"> 
+                    <a href="haberler.html" class="dropdown-item">Haberler</a> 
+                    <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
+                </div>
+            </li>
+            <li><a href="yazılım.html" class="active">Yazılım</a></li>
+            
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+              
             </ul>
         </nav>
     </header>
@@ -45,7 +56,7 @@
         <div class="article-content-wrapper" style="max-width: 900px; margin: 40px auto; padding: 20px; background-color: rgba(255, 255, 255, 0.03); border-radius: 10px;">
             
             <p style="margin-bottom: 25px; line-height: 1.8; font-size: 1.1rem; color: #ccc;">
-                Kullanıcı deneyimi ve SEO için web performansı artık bir lüks değil, bir zorunluluktur. Google'ın açık kaynaklı aracı **Lighthouse**, sitenizin hızını, erişilebilirliğini, SEO'sunu ve en iyi uygulamaları ne kadar iyi uyguladığını ölçmek için en önemli araçtır. Bu kılavuz, Lighthouse puanlarınızı nasıl optimize edeceğinize odaklanmaktadır.
+                Kullanıcı deneyimi ve SEO için web performansı artık bir lüks değil, bir zorunluluktur. Google'ın açık kaynaklı aracı Lighthouse, sitenizin hızını, erişilebilirliğini, SEO'sunu ve en iyi uygulamaları ne kadar iyi uyguladığını ölçmek için en önemli araçtır. Bu kılavuz, Lighthouse puanlarınızı nasıl optimize edeceğinize odaklanmaktadır.
             </p>
             
             <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
@@ -59,7 +70,7 @@
 
             <h3 style="color: #4fc3f7; margin-top: 30px; margin-bottom: 10px;">1. Largest Contentful Paint (LCP) Optimizasyonu</h3>
             <p style="margin-bottom: 10px; line-height: 1.8; color: #ddd;">
-                LCP, sayfa yüklenmeye başladığından itibaren görüntü alanındaki en büyük resim veya metin bloğunun ne kadar sürede oluşturulduğunu ölçer. İdeal olarak **2,5 saniyenin altında** olmalıdır.
+                LCP, sayfa yüklenmeye başladığından itibaren görüntü alanındaki en büyük resim veya metin bloğunun ne kadar sürede oluşturulduğunu ölçer. İdeal olarak 2,5 saniyenin altında olmalıdır.
             </p>
             <ul style="list-style: none; padding-left: 20px;">
                 <li style="margin-bottom: 8px; border-left: 3px solid #00bcd4; padding-left: 10px;">Sunucu yanıt süresini iyileştirin (TTFB).</li>
@@ -69,7 +80,7 @@
 
             <h3 style="color: #4fc3f7; margin-top: 30px; margin-bottom: 10px;">2. Cumulative Layout Shift (CLS) Optimizasyonu</h3>
             <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd;">
-                CLS, sayfa yüklenirken beklenmedik düzen kaymalarının miktarını ölçer. Düşük CLS, kullanıcıların yanlışlıkla reklamlara veya düğmelere tıklamasını önler. Hedeflenen değer **0.1'in altıdır**.
+                CLS, sayfa yüklenirken beklenmedik düzen kaymalarının miktarını ölçer. Düşük CLS, kullanıcıların yanlışlıkla reklamlara veya düğmelere tıklamasını önler. Hedeflenen değer 0.1'in altıdır.
             </p>
             <ul style="list-style: none; padding-left: 20px;">
                 <li style="margin-bottom: 8px; border-left: 3px solid #ff9800; padding-left: 10px;">Tüm resimler ve video öğeleri için boyut nitelikleri (`width` ve `height`) belirtin.</li>

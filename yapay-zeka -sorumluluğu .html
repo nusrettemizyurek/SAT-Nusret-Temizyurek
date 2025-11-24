@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yapay Zeka Etiği - Veriden Sorumluluğa - TeknoGündem</title>
+      <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #f0f0f0;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #161b22;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .logo {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #00c6ff;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav .active {
+            color: #00c6ff;
+        }
+
+        /* Makale İçeriği Stil Başlangıcı */
+        .article-container {
+            padding: 40px 8%;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .article-container h1 {
+            font-size: 2.5em;
+            color: #00c6ff;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .article-meta {
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 15px;
+        }
+
+        .article-meta span {
+            margin-right: 20px;
+        }
+
+        .article-body h2 {
+            font-size: 1.8em;
+            color: #f0f0f0;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-left: 4px solid #00c6ff;
+            padding-left: 10px;
+        }
+
+        .article-body h3 {
+            font-size: 1.4em;
+            color: #00c6ff;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        .article-body p {
+            margin-bottom: 20px;
+            color: #ccc;
+            text-align: justify;
+        }
+
+        .article-body ul {
+            list-style: disc;
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        .article-body strong {
+            color: #00c6ff;
+        }
+        
+        .article-body em {
+            color: #c0c0c0;
+        }
+
+        .article-body blockquote {
+            border-left: 5px solid #00c6ff;
+            margin: 25px 0;
+            padding: 10px 20px;
+            background-color: #161b22;
+            color: #ccc;
+            font-style: italic;
+            border-radius: 4px;
+        }
+        /* Makale İçeriği Stil Bitişi */
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #30363d;
+            background-color: #0d1117;
+            color: #777;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">TeknoGündem</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="donanım.html">Donanım</a></li>
+            <li><a href="yazılım.html">Yazılım</a></li>
+            <li><a href="ai-makaleler.html">AI Makaleleri</a></li> 
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="article-container">
+    <article class="article-body">
+        
+        <h1>Yapay Zeka Etiği: Algoritmik Önyargı, Veri Gizliliği ve Sorumluluk Çerçevesi</h1>
+        
+        <div class="article-meta">
+            <span>Yazar: Dr. Ece Demir (AI Etik Araştırmacısı)</span>
+            <span>Tarih: 29 Ekim 2025</span>
+            <span>Okuma Süresi: ~12 dakika</span>
+            <span>Kategori: Etik, Toplumsal Etki</span>
+        </div>
+
+        <p>Yapay Zeka (YZ) sistemleri, hayatımızın her alanına entegre olurken, bu sistemlerin adil, şeffaf ve güvenli bir şekilde çalışmasını sağlamak en büyük zorluklardan biri haline geldi. Yapay Zeka Etiği, sadece bir felsefe konusu değil, aynı zamanda teknoloji geliştirme sürecinin ve regülasyonların temel taşıdır. Bu makalede, YZ etiğinin üç temel direğini inceliyoruz: Veri, Önyargı ve Sorumluluk.</p>
+
+        <h2>1. Kök Sorun: Algoritmik Önyargı ve Adalet</h2>
+        <p>YZ sistemleri, eğitildikleri veriler kadar iyidir. Eğer eğitim verileri belirli bir demografiyi, ırkı veya cinsiyeti yansıtmada eksik veya yanlı ise, model kaçınılmaz olarak bu önyargıları yansıtır ve hatta pekiştirir. Bu durum, özellikle kredi başvuruları, işe alım kararları veya adli sistemlerde kullanıldığında ciddi sosyal adaletsizliklere yol açar.</p>
+
+        <h3>Önyargı Türleri ve Çözüm Yaklaşımları:</h3>
+        <ul>
+            <li><strong>Veri Önyargısı:</strong> Eğitim setindeki eksiklikler veya hatalı etiketlemeler. Çözüm: Kapsayıcı veri toplama ve veri artırma (augmentation) teknikleri.</li>
+            <li><strong>Algoritma Önyargısı:</strong> Modelin kendisinin belirli özelliklere aşırı odaklanması. Çözüm: Fair ML (Adil Makine Öğrenimi) metrikleri ve önyargı azaltma algoritmaları.</li>
+        </ul>
+
+        <blockquote>
+            "Bir YZ modelinin verdiği kararın gerekçesini anlayamıyorsak, o kararın adil olup olmadığını da denetleyemeyiz. Şeffaflık, etik bir zorunluluktur."
+        </blockquote>
+
+        <h2>2. Kritik Öncelik: Veri Gizliliği ve Şeffaflık</h2>
+        <p>Büyük Dil Modelleri ve Görü Sistemleri gibi gelişmiş YZ'ler, çok büyük miktarda kişisel veri ile beslenir. Bu verilerin toplanması, saklanması ve işlenmesi, bireysel gizlilik haklarını tehlikeye atar. KVKK ve GDPR gibi düzenlemeler bu alandaki ilk adımlardır, ancak YZ'nin karmaşıklığı daha ileri çözümler gerektirmektedir.</p>
+        
+        <h3>Gizlilik Koruma Teknolojileri:</h3>
+        <p>Gizliliği koruyarak model eğitmek için yeni teknikler geliştirilmektedir:</p>
+        <ul>
+            <li><strong>Federated Learning (Federasyonlu Öğrenme):</strong> Verinin cihazda kalmasını sağlayarak, modelin merkezi bir sunucuda veri görmeden öğrenmesini sağlar.</li>
+            <li><strong>Differential Privacy (Diferansiyel Gizlilik):</strong> Veri setine kasıtlı olarak küçük miktarda 'gürültü' ekleyerek, bireysel kayıtların belirlenmesini imkansız hale getirir.</li>
+        </ul>
+
+        <h2>3. Nihai Hedef: Sorumluluk ve Hesap Verebilirlik</h2>
+        <p>Otonom bir aracın kaza yapması veya bir kredi verme algoritmasının ayrımcı karar vermesi durumunda kim sorumlu tutulacaktır? Bu, YZ etiğinin en zorlu sorusudur. Sorumluluk sadece yazılımcıya veya şirkete yüklenemez; kararın alınma sürecinin şeffaf olması gerekir.</p>
+
+        <h3>Şeffaflık ve Açıklanabilirlik (Explainable AI - XAI):</h3>
+        <p>YZ modellerinin "kara kutu" olmaktan çıkarılması gerekir. XAI araçları, bir modelin neden belirli bir kararı verdiğini insan dilinde açıklayabilmeyi hedefler. Bu, özellikle yüksek riskli alanlarda (sağlık, hukuk) yasal zorunluluk haline gelmektedir.</p>
+        
+        <p><em>Örneğin, bir kişinin kredi başvurusu reddedildiğinde, YZ sisteminin sadece kararı değil, bu karara götüren en etkili 3-5 parametreyi de raporlaması beklenir.</em></p>
+
+        <h2>Sonuç ve Gelecek Çerçevesi</h2>
+        <p>Yapay zeka etiği, YZ teknolojisinin toplum tarafından kabul görmesi ve güvenilir bir şekilde ilerlemesi için bir lüks değil, temel bir gerekliliktir. Geliştiricilerin 'etik ilke' listeleri oluşturmaktan öte, bu ilkeleri kodlarına, veri boru hatlarına ve iş akışlarına entegre etmeleri gerekmektedir. Veriden Sorumluluğa uzanan bu yolculuk, sadece teknik bir çaba değil, toplumsal bir uzlaşma sürecidir.</p>
+
+        <div class="article-meta" style="margin-top: 50px; border-top: 1px solid #30363d; padding-top: 15px;">
+            <span>#YZEtiği #AlgoritmikÖnyargı #VeriGizliliği #ResponsibleAI #XAI</span>
+        </div>
+
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2025 TeknoGündem. Tüm Hakları Saklıdır.</p>
+</footer>
+
+</body>
+</html>

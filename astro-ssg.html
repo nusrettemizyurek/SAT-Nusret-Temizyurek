@@ -38,10 +38,21 @@
         <div class="logo">TeknoGündem</div>
         <nav>
             <ul>
-                <li><a href="index.html">Ana Sayfa</a></li>
-                <li><a href="donanım.html" class="active">Donanım </a></li>
-                <li><a href="yazılım.html">Yazılım </a></li>
-                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                 <li><a href="index.html">Ana Sayfa</a></li>
+            
+            <li class="dropdown">
+                
+                <a href="donanım.html">Donanım</a> 
+                
+                <div class="dropdown-content"> 
+                    <a href="haberler.html" class="dropdown-item">Haberler</a> 
+                    <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
+                </div>
+            </li>
+            <li><a href="yazılım.html" class="active">Yazılım</a></li>
+            
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+              
             </ul>
         </nav>
     </header>
@@ -73,9 +84,9 @@
             </p>
             
             <ul style="list-style: none; padding-left: 20px;">
-                <li class="astro-liste-ogesi">**Sıfır JavaScript Varsayımı:** Astro, varsayılan olarak her bileşeni sunucuda render eder ve tarayıcıya hiç JavaScript göndermez.</li>
-                <li class="astro-liste-ogesi">**Gereken Yer Kadar JS:** Yalnızca etkileşimli olması gereken (örneğin bir sayaç, bir galeri) bileşenlere JavaScript yükler. Bu bileşenlere "Adacık" denir.</li>
-                <li class="astro-liste-ogesi">**Kendi Framework'ünüzü Getirin:** Astro, React, Vue, Svelte, Preact gibi popüler UI kütüphanelerini aynı anda tek bir projede kullanmanıza izin verir.</li>
+                <li class="astro-liste-ogesi">Sıfır JavaScript Varsayımı: Astro, varsayılan olarak her bileşeni sunucuda render eder ve tarayıcıya hiç JavaScript göndermez.</li>
+                <li class="astro-liste-ogesi">Gereken Yer Kadar JS: Yalnızca etkileşimli olması gereken (örneğin bir sayaç, bir galeri) bileşenlere JavaScript yükler. Bu bileşenlere "Adacık" denir.</li>
+                <li class="astro-liste-ogesi">Kendi Framework'ünüzü Getirin: Astro, React, Vue, Svelte, Preact gibi popüler UI kütüphanelerini aynı anda tek bir projede kullanmanıza izin verir.</li>
             </ul>
 
             <h2 class="astro-vurgu-baslik" style="margin-top: 40px; margin-bottom: 15px;">Statik Site Jeneratörlerinin Temel Avantajları</h2>

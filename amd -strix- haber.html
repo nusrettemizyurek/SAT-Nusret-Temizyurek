@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMD Strix Point APU'lar Mobil Pazarı Alt Üst Edecek | TeknoGündem</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+
+    <style>
+        /* Varsayılan Renkler (Dark Mode) */
+        :root {
+            --color-primary: #007bff; /* Mavi */
+            --color-secondary: #00bcd4; /* Turkuaz */
+            --color-background: #1e1e1e; /* Koyu Gri (Zemin) */
+            --color-card-background: #252526; /* Daha Koyu Kart Arka Planı */
+            --color-text: #f0f0f0; /* Açık Metin */
+            --text-gray: #b0b0b0; /* Gri Metin */
+            --color-border: #333; /* Sınır Çizgileri */
+            --color-shadow: rgba(0, 0, 0, 0.5);
+            --accent-color: #ff5722; /* Turuncu */
+        }
+
+        .dark-mode {
+            background-color: var(--color-background);
+            color: var(--color-text);
+        }
+
+        /* Temel Tipografi ve Global Ayarlar (style.css'ten varsayılan) */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* HEADER ve NAV */
+        header {
+            background-color: var(--color-card-background);
+            box-shadow: 0 2px 10px var(--color-shadow);
+            color: var(--color-text);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            color: var(--color-text);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--color-secondary);
+        }
+
+        /* Ana Kapsayıcı ve Sütun Düzeni */
+        .full-width-section {
+            width: 100%;
+            background-color: var(--color-card-background);
+            box-shadow: 0 4px 15px var(--color-shadow);
+            padding: 40px 0;
+        }
+
+        .content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            gap: 40px;
+        }
+
+        .article-main-text-area {
+            flex: 3; 
+            min-width: 0; 
+        }
+        
+        .article-sidebar {
+            flex: 1; 
+            min-width: 300px;
+            max-width: 400px;
+            padding-top: 50px; 
+        }
+        
+        /* GÖRSEL STİLİ */
+        .featured-image-detail img {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin: 30px 0;
+        }
+        
+        /* GELİŞMİŞ BAŞLIK ALANI (HERO) */
+        .hero-article-header {
+            width: 100%;
+            padding: 80px 0; 
+            color: #fff; 
+            text-align: center;
+            box-shadow: inset 0 -5px 15px rgba(0, 0, 0, 0.2); 
+            margin-bottom: 40px; 
+        }
+
+        .hero-header-content {
+            max-width: 1000px; 
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero-header-content .tag {
+            background-color: rgba(255, 255, 255, 0.2); 
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .hero-header-content h1 {
+            font-size: 3.5em; 
+            line-height: 1.1;
+            margin-bottom: 25px;
+            font-weight: 900;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-header-content .article-meta-info {
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.7);
+            border-top: 1px solid rgba(255, 255, 255, 0.3); 
+            padding-top: 15px;
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* İÇERİK METİN STİLLERİ */
+        .article-body-text h2 {
+            font-size: 1.6em; 
+            margin-top: 30px; 
+            color: var(--color-secondary);
+            border-bottom: 2px solid var(--color-border);
+            padding-bottom: 5px;
+        }
+
+        .article-body-text h3 {
+             font-size: 1.3em;
+             margin-top: 20px;
+             color: var(--color-text);
+             border-left: 3px solid var(--accent-color);
+             padding-left: 10px;
+             padding-bottom: 2px;
+        }
+
+        .article-body-text p {
+            margin: 15px 0;
+            color: var(--color-text);
+        }
+        
+        .article-body-text ul {
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+
+        .article-body-text li {
+            margin-bottom: 10px;
+        }
+
+        /* Blok Alıntı (blockquote) */
+        blockquote {
+            border-left: 5px solid var(--color-primary); 
+            background-color: var(--color-card-background); 
+            padding: 15px 20px; 
+            margin: 25px 0; 
+            font-style: italic; 
+            border-radius: 4px;
+            color: var(--color-text);
+            border-left-color: #f39c12 !important; /* APU rengi */
+        }
+        
+        blockquote cite {
+            display: block; 
+            margin-top: 10px; 
+            font-size: 0.9em; 
+            color: var(--text-gray);
+        }
+
+        /* Okuma Süresi Etiketi */
+        .reading-time {
+            font-size: 0.9em;
+            color: var(--text-gray);
+            font-weight: bold;
+            display: block;
+            margin-bottom: 20px;
+            text-align: right;
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 10px;
+        }
+
+        /* İlgili Haberler Kutusu */
+        .related-articles-box {
+            background-color: var(--color-card-background);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            margin-bottom: 30px;
+        }
+
+        .related-articles-box h3 {
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-secondary);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .related-articles-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .related-articles-box li {
+            margin-bottom: 10px;
+        }
+
+        .related-articles-box a {
+            color: var(--color-text);
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 0.95em;
+        }
+
+        .related-articles-box a:hover {
+            color: var(--color-secondary);
+        }
+
+        /* SOSYAL PAYLAŞIM BUTONLARI İÇİN EKLENEN CSS */
+        .share-buttons {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        .share-buttons a {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: opacity 0.2s;
+        }
+        .share-buttons a:hover {
+            opacity: 0.8;
+        }
+        /* Sosyal Medya Renkleri */
+        .share-buttons .twitter { background-color: #1DA1F2; }
+        .share-buttons .linkedin { background-color: #0077B5; }
+        .share-buttons .facebook { background-color: #4267B2; }
+
+        /* SVG İkonlarının Boyutlandırılması */
+        .share-buttons svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor; 
+            margin-right: 8px;
+            flex-shrink: 0; 
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #111;
+            color: var(--text-gray);
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 40px;
+            border-top: 1px solid var(--color-border);
+        }
+
+
+        /* Mobil Uyum */
+        @media (max-width: 1024px) {
+            .content-wrapper { flex-direction: column; padding: 0 20px; }
+            .article-sidebar { max-width: 100%; min-width: unset; padding-top: 10px; }
+            .hero-header-content h1 { font-size: 2.5em; }
+            .share-buttons { flex-direction: column; align-items: stretch;}
+        }
+    </style>
+</head>
+
+<body class="dark-mode"> 
+    <header>
+        <div class="logo">TEKNOGÜNDEM</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li class="dropdown">
+                    <a href="donanim.html">Donanım</a>
+                    <ul class="dropdown-content">
+                        <li><a href="haberler.html">Haberler</a></li>
+                        <li><a href="incelemeler.html">İncelemeler</a></li>
+                    </ul>
+                </li>
+                <li><a href="yazılım.html">Yazılım</a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero-article-header" style="background: linear-gradient(135deg, #9b59b6 0%, #3498db 100%);">
+        <div class="hero-header-content">
+            <span class="tag" style="background-color: #f39c12; border: none;">İŞLEMCİ / APU</span>
+            <h1>AMD Strix Point APU'lar Mobil Pazarı Alt Üst Edecek: %50 Entegre GPU Artışı! 🚀</h1> 
+            <p class="article-summary-text">AMD'nin yeni Zen 5 ve RDNA 3.5 mimarilerini birleştiren Strix Point işlemcileri, dizüstü bilgisayarlarda oyunculuk deneyimini kökten değiştirecek.</p>
+            <div class="article-meta-info">
+                <span>20 Kasım 2025</span> 
+                <span>Yazar: Ali Kıran</span>
+            </div>
+        </div>
+    </div>
+    
+    <main class="full-width-section">
+        <div class="content-wrapper">
+            
+            <section class="article-main-text-area"> 
+                <span class="reading-time">Okuma Süresi: 5 Dakika ⏱️</span>
+
+                <figure class="featured-image-detail">
+                    <img src="amd  strix point  apu   jpg.jpg" alt="AMD Strix Point APU Sızıntı Görseli" loading="lazy"> 
+                    <figcaption style="font-size: 0.8em; color: var(--text-gray); text-align: center; margin-top: 10px;">Strix Point, AMD'nin RDNA entegre grafik mimarisini mobil performansta zirveye taşıyacak.</figcaption>
+                </figure>
+
+                <section class="article-body-text">
+                    <p>APU (Hızlandırılmış İşlem Birimi) pazarında liderliğini sürdüren AMD, yeni nesil Strix Point mobil işlemcileriyle hem verimlilik hem de ham güç açısından çıtayı oldukça yükseğe taşıyor. Bu yongalar, TSMC'nin 4nm sınıfı süreciyle üretilecek ve harici ekran kartı (dGPU) gereksinimini orta seviye dizüstü bilgisayarlar için tamamen ortadan kaldırmayı hedefleyen bir teknoloji harikası olarak karşımıza çıkıyor. Strix Point, yalnızca işlemci gücü sunmakla kalmıyor, aynı zamanda Intel'in en yeni mobil işlemcilerine karşı agresif bir grafik üstünlüğü kurmayı amaçlıyor. Bu, "Thin & Light" (İnce ve Hafif) segmentindeki cihazların çok daha yetenekli hale gelmesi anlamına geliyor.</p>
+                    
+                    <h2 id="zen5">Zen 5: Performans ve Verimlilikte Yeni Standart 📈</h2>
+                    <p>Strix Point'in CPU (İşlemci) kanadı, uzun zamandır beklenen Zen 5 mimarisi üzerine inşa edilmiştir. Bu yeni çekirdek mimarisi, önceki nesil Zen 4'e kıyasla çekirdek başına saat döngüsü başına talimat (IPC) oranında beklenen çift haneli (%15+) artış ile dikkat çekiyor. Bu artış, uygulamaların daha hızlı yanıt vermesini ve tek iş parçacıklı görevlerde muazzam bir hızlanma sağlıyor.</p>
+                    
+                    <h3>Mikro-Mimari Derinliği ve Yenilikler:</h3>
+                    <p>Zen 5'teki performans sıçraması tesadüfi değildir; AMD mühendisleri mikro-mimariyi kökten elden geçirmiştir:</p>
+                    <ul>
+                        <li>Genişletilmiş Frontend:Daha geniş bir komut getirme (fetch) ve çözümleme (decode) genişliği, çekirdeklerin daha fazla işi aynı anda alıp işlemeye başlamasını sağlıyor. Bu, özellikle modern, çok iş parçacıklı yazılımlar için hayati önem taşıyor.</li>
+                        <li>Daha Hızlı Önbellek Hiyerarşisi: Hem L1 hem de L2 önbellekler yeniden optimize edildi. Özellikle L3 önbellek gecikmesinin daha da düşürülmesi, GPU'nun (iGPU) veriye daha hızlı erişmesine yardımcı olarak APU tasarımının en büyük darboğazlarından birini hafifletiyor.</li>
+                        <li>Geliştirilmiş Vektörel İşlem Birimleri: Özellikle AVX-512 gibi vektörel hesaplama gerektiren profesyonel uygulamalar (yapay zeka çıkarımı, bilimsel simülasyonlar) için Zen 5, çok daha hızlı ve verimli işlem yeteneği sunuyor.</li>
+                    </ul>
+                    <p>Özetle, Zen 5 çekirdekleri sadece yüksek saat hızına güvenmek yerine, her döngüde daha fazla iş yaparak (yani yüksek IPC ile) mobil cihazların termal ve güç kısıtlamaları altında bile maksimum performansı garantilemeyi amaçlıyor.</p>
+
+
+                    <h2 id="rdna35">RDNA 3.5 Entegre Grafik Mimarisi: Mobil Oyunculuğun Dönüm Noktası 🎮</h2>
+                    <p>Strix Point'i rakiplerinden ayıran en kritik ve heyecan verici özellik, entegre GPU (iGPU) tarafındaki devasa sıçramadır. RDNA 3.5 mimarisi, önceki nesil Hawk Point APU'larına kıyasla yaklaşık %50'ye varan bir ham grafik performansı artışı getirme potansiyeli taşıyor. Bu, dizüstü bilgisayarların, 1080p orta ayarlarda çoğu AAA oyunu harici ekran kartına ihtiyaç duymadan oynatabilmesi demektir.</p>
+                    
+                    <h3>iGPU Gücündeki Sıçramanın Arkasındaki Teknolojiler:</h3>
+                    <p>Strix Point'in mobil pazarda ezber bozmasının anahtarı, Hesaplama Birimi (CU) sayısındaki artış ve yeni nesil özelliklerin entegrasyonudur:</p>
+                    <ul>
+                        <li>Yüksek CU Sayısı ve Yeni Tasarım: Strix Point'in üst düzey modellerinin 20 adede kadar Hesaplama Birimi (CU) barındıracağı söyleniyor. Bu, sadece bir nesildeki standart artışın çok ötesindedir. Ayrıca, RDNA 3.5, güncellenmiş Shader motorları sayesinde aynı sayıda CU ile bile daha fazla performans sunuyor.</li>
+                        <li>Geliştirilmiş Ray Tracing ve FSR 3 Desteği: RDNA 3.5, donanımsal Işın İzleme (Ray Tracing) hızlandırmasını daha verimli hale getiriyor. Ayrıca, AMD'nin FSR 3 (FidelityFX Super Resolution 3) kare oluşturma teknolojisinin tam entegrasyonu sayesinde, oyunlar gerçekçi olarak işlenen kare sayısının çok ötesinde (örneğin, 30 FPS'den 60 FPS'ye çıkış) akıcılık kazanacak.</li>
+                        <li>Hızlı LPDDR5X Bellek Arayüzü: APU'lar, harici VRAM yerine sistem belleğini (RAM) kullandığından, bellek bant genişliği kritiktir. Strix Point, en hızlı LPDDR5X modüllerini destekleyerek ve bant genişliğini agresif bir şekilde optimize ederek iGPU'nun veri açlığını doyurmayı hedefliyor.</li>
+                    </ul>
+
+                    <blockquote>
+                        <p>"Strix Point, 1080p çözünürlükte birçok modern oyunu orta ayarlarda akıcı şekilde oynatabilen ilk entegre grafik çözümü olabilir. Mobil oyunculuk, ciddi bir dönüşüm eşiğinde. Orta seviye dGPU segmenti (Örn: GeForce RTX 3050 muadili) tarih oluyor."</p>
+                        <cite>— Mobil Donanım Uzmanı, Deniz Kaya</cite>
+                    </blockquote>
+                    
+                    <h2 id="ai-npu">Yapay Zeka (AI) ve NPU Entegrasyonu: Geleceğin Laptopları 🧠</h2>
+                    <p>Strix Point, sadece CPU ve GPU gücüyle değil, aynı zamanda yapay zeka performansı ile de iddialı. Bu APU'lar, Intel'in "AI PC" vizyonuna doğrudan yanıt vererek, çok daha güçlü bir **NPU (Nöral İşlem Birimi) içeriyor. Bu NPU'nun gücünün, rakiplerine kıyasla önemli ölçüde yüksek (örneğin 40 TOPS seviyelerinde) olması bekleniyor.</p>
+
+                    <h3>NPU'nun Kullanım Alanları ve Faydaları:</h3>
+                    <p>Güçlü NPU, modern işletim sistemleri ve uygulamalar için hayati öneme sahiptir:</p>
+                    <ul>
+                        <li>Yerel AI İşlemleri:Windows'un Copilot gibi özelliklerini, arka plan gürültü engellemeyi, kamera efektlerini (bulanıklaştırma, göz takibi) ve video/görüntü düzenleme yazılımlarındaki AI araçlarını pil ömründen ödün vermeden yerel olarak hızlandırır.</li>
+                        <li>Verimlilik:Yoğun AI iş yüklerini NPU'ya devrederek, CPU ve GPU'yu oyunlar ve profesyonel render görevleri için serbest bırakır.</li>
+                        <li>Pil Ömrü:Yapay zeka görevlerini işlemciden çok daha verimli bir birimde işlediği için, dizüstü bilgisayarların genel pil ömrünü uzatır.</li>
+                    </ul>
+                    <p>Mobil bilişimde beklenen bu performans sıçraması, ince ve hafif (Thin & Light) segmentindeki dizüstü bilgisayarları, eskiden sadece kalın ve ağır "oyun laptopları"nın yapabildiği işleri yapabilir hale getirecek. Tüketiciler, artık hem taşınabilirlik hem de ciddi performans arasında seçim yapmak zorunda kalmayacak. Strix Point, AMD'nin mobil donanım devrimindeki en büyük adımı olabilir.</p>
+
+                    <div class="share-buttons">
+                        <a href="https://x.com/intent/tweet?url=URL_BURAYA&text=AMD Strix Point APU'lar Mobil Pazarı Alt Üst Edecek!" class="twitter" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M18.9 4.8c-.7.3-1.5.5-2.3.6.8-.5 1.4-1.2 1.7-2.1-.8.5-1.7.9-2.7 1.1-.7-.7-1.7-1.2-2.8-1.2-2.1 0-3.8 1.7-3.8 3.8 0 .3.04.6.1.9C7 8.3 4.5 6.9 2.8 4.7c-.3.6-.5 1.2-.5 1.9 0 1.3.7 2.4 1.7 3.1-.6 0-1.2-.2-1.7-.5v.05c0 1.9 1.4 3.5 3.3 3.8-.3.1-.7.1-1.1.1-.3 0-.6 0-.8-.1 1.4 1.6 3.4 2.7 5.7 2.7-1.7 1.3-3.8 2.1-6.1 2.1-.4 0-.8 0-1.2-.1C4.3 19.3 7 20.2 9.9 20.2c8.2 0 12.7-6.8 12.7-12.7 0-.2 0-.4-.01-.6.9-.6 1.7-1.3 2.3-2.1z"/></svg> 
+                            Twitter'da Paylaş
+                        </a>
+                        <a href="https://www.linkedin.com/shareArticle?mini=true&url=URL_BURAYA&title=AMD Strix Point APU'lar Mobil Pazarı Alt Üst Edecek" class="linkedin" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19h-3v-9h3v9zm-1.5-10h-.01c-.8 0-1.3-.5-1.3-1.2 0-.7.5-1.2 1.3-1.2.8 0 1.3.5 1.3 1.2 0 .7-.5 1.2-1.3 1.2zm13 10h-3v-4.7c0-1.1-.4-1.7-1.3-1.7-.7 0-1.1.4-1.3.8v.9c0 0-.1 4.7-.1 4.7h-3s.1-8.5 0-9h3v1.3c.4-.7 1.2-1.3 2.7-1.3 2 0 3.5 1.3 3.5 4.3V19z"/></svg>
+                            LinkedIn'de Paylaş
+                        </a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=URL_BURAYA" class="facebook" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M14.01 2.016h2.466V4.49H14.01c-.698 0-1.22.427-1.22 1.261v1.615h3.69l-.6 3.696H12.79v8.941h-4.8v-8.941H6.18V7.366h1.81V5.753c0-2.43 1.487-3.766 3.75-3.766h2.27z"/></svg>
+                            Facebook'ta Paylaş
+                        </a>
+                    </div>
+
+                </section>
+            </section>
+            
+            <aside class="article-sidebar">
+                <div class="related-articles-box">
+                    <h3>📢 İLGİLİ HABERLER</h3>
+                    <ul>
+                        <li><a href="#">Intel Meteor Lake vs. AMD Hawk Point: Güncel Mobil Savaş</a></li>
+                        <li><a href="#">APU'lar İçin En İyi LPDDR5X Bellek Seçimi Rehberi</a></li>
+                        <li><a href="#">Zen 5 Mimarisi Masaüstünde Ne Zaman Geliyor?</a></li>
+                    </ul>
+                </div>
+
+                <div class="related-articles-box">
+                    <h3>💬 SON YORUMLAR</h3>
+                    <p style="font-size: 0.9em; color: var(--text-gray); border-bottom: 1px dashed var(--color-border); padding-bottom: 8px;">
+                        <span style="color: var(--color-primary); font-weight: bold;">Cem Y.:</span> Entegre grafikler için bu hızlar inanılmaz. Artık her laptopta oyun oynayabileceğiz.
+                    </p>
+                    <p style="font-size: 0.9em; color: var(--text-gray); margin-top: 15px;">
+                        <span style="color: var(--color-primary); font-weight: bold;">Eda T.:</span> NPU'daki gelişme, yapay zeka destekli profesyonel uygulamalar için çok önemli.
+                    </p>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Teknogündem. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+    
+</body>
+</html>
