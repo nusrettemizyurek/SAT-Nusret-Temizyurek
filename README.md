@@ -38,7 +38,7 @@ Depoyu Klonlayın:
 
 Bash
 
-git clone https://github.com/KULLANICIADINIZ/teknogundem-website.git
+git clone https://github.com/nusrettemizyurek/SAT-Nusret-Temizyurek/tree/main
 Dizine Gidin:
 
 Bash
@@ -73,6 +73,6 @@ Bir Pull Request (PR) açın.
 📧 İletişim
 Geliştirici: [Nüsret Temizyürek ]
 
-GitHub: [nusrettemizyurek ]
+GitHub: [nusrettemizyurek]
 
 Web Sitesi: [Web Sitenizin Yayınlandığı Link - Opsiyonel]
