@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redis Cache Nasıl Yapılandırılır? Bellek Yönetimi, Kalıcılık ve Kümeleme Rehberi - TeknoGündem</title>
-    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     
@@ -212,7 +212,7 @@
             <h1 style="color: var(--color-primary); font-size: 3rem;"><i class="fas fa-server"></i> Redis Cache Nasıl Yapılandırılır? Yüksek Performanslı ve Ölçeklenebilir Önbellekleme</h1>
             <div class="review-meta">
                 <span>Yazar: Murat ŞAHİN</span>
-                <span>Tarih: 7 Nisan 2026</span>
+                <span>Tarih: 7 Nisan 2025</span>
                 <span class="tag">Veritabanı/DevOps</span>
             </div>
         </section>
@@ -280,7 +280,7 @@ maxmemory 4gb
                 </p>
                 <ul class="detail-list">
                     <li><i class="fas fa-file-archive" style="color: var(--color-detail);"></i> RDB (Redis Database Backup): Belirli aralıklarla belleğin anlık görüntüsünü (snapshot) alır. Kurtarma hızlıdır, ancak son snapshot'tan sonraki veriler kaybolabilir.</li>
-                    <li><i class="fas fa-list-alt" style="color: var(--color-detail);"></i> **AOF (Append Only File):Redis'e gelen her yazma komutunu bir log dosyasına kaydeder. RDB'ye göre daha yavaş kurtarılır, ancak veri kaybı riski daha düşüktür.</li>
+                    <li><i class="fas fa-list-alt" style="color: var(--color-detail);"></i> AOF (Append Only File):Redis'e gelen her yazma komutunu bir log dosyasına kaydeder. RDB'ye göre daha yavaş kurtarılır, ancak veri kaybı riski daha düşüktür.</li>
                 </ul>
             </div>
             
@@ -297,7 +297,7 @@ appendonly yes
 # İyi performans ve veri güvenliği arasında denge.
 appendfsync everysec </code></pre>
                 <blockquote style="border-left: 5px solid var(--color-secondary); background-color: rgba(255, 152, 0, 0.05); padding: 15px; margin-top: 20px;">
-                    <i class="fas fa-battery-three-quarters" style="color: var(--color-secondary);"></i> **Güvenilirlik Notu:** En yüksek güvenilirlik (örneğin oturum yönetimi) için hem RDB hem de AOF'yi birlikte kullanmak ve Replikasyon (Replication) kurmak standart bir uygulamadır.
+                    <i class="fas fa-battery-three-quarters" style="color: var(--color-secondary);"></i> Güvenilirlik Notu: En yüksek güvenilirlik (örneğin oturum yönetimi) için hem RDB hem de AOF'yi birlikte kullanmak ve Replikasyon (Replication) kurmak standart bir uygulamadır.
                 </blockquote>
             </div>
 

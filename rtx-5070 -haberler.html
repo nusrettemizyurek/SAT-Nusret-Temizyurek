@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTX 5070 Teknik Özellikleri Sızdırıldı: Bellek Miktarı Şaşırttı! | TeknoGündem</title>
+    <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        :root {
+            --color-background: #101824; 
+            --color-card-background: #1C2533; 
+            --color-text: #E0E6F0; 
+            --color-primary: #3B82F6; 
+            --color-secondary: #06B6D4; 
+            --color-border: #374151; 
+            --color-shadow: rgba(0, 0, 0, 0.4); 
+            --text-gray: #9CA3AF;
+            --nvidia-green: #76b900;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        /* HEADER & NAVİGASYON STİLLERİ */
+        header {
+            background-color: var(--color-card-background);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            padding: 15px 40px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .logo { font-size: 1.8em; font-weight: 900; color: var(--color-primary); }
+
+        nav ul { list-style: none; display: flex; gap: 25px; }
+        .dropdown { position: relative; }
+        nav a { color: var(--color-text); text-decoration: none; padding: 5px 10px; transition: color 0.3s, border-bottom 0.3s; display: block; }
+        nav a:hover { color: var(--color-secondary); border-bottom: 2px solid var(--color-secondary); }
+
+        .dropdown-content { display: none; position: absolute; background-color: var(--color-card-background); min-width: 180px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5); z-index: 10; list-style: none; padding: 10px 0; border-radius: 6px; border: 1px solid var(--color-border); top: 100%; left: 0; margin-top: 5px; }
+        .dropdown-content a { padding: 10px 20px; text-align: left; border-bottom: none; }
+        .dropdown-content a:hover { background-color: var(--color-primary); color: white; }
+        .dropdown:hover .dropdown-content { display: block; }
+
+        footer { background-color: var(--color-card-background); color: var(--text-gray); text-align: center; padding: 20px 0; margin-top: 50px; border-top: 1px solid var(--color-border); }
+        
+        /* Ana Kapsayıcı */
+        .full-width-section { width: 100%; padding: 40px 0; }
+        .content-wrapper { max-width: 1400px; margin: 0 auto; padding: 0 40px; display: flex; gap: 40px; }
+        .article-main-text-area { flex: 3; min-width: 0; }
+        .article-sidebar { flex: 1; min-width: 300px; max-width: 400px; padding-top: 50px; }
+        
+        /* GÖRSELLER */
+        .featured-image-detail img { width: 100%; height: auto; max-height: 600px; object-fit: cover; border-radius: 8px; margin: 30px 0; box-shadow: 0 4px 15px var(--color-shadow); border: 1px solid var(--color-border); }
+        .article-body-text img { width: 100%; max-width: 800px; height: auto; border-radius: 6px; margin: 20px auto; display: block; box-shadow: 0 4px 15px var(--color-shadow); }
+
+        .hero-article-header {
+            width: 100%;
+            padding: 100px 0; 
+            
+            /* Arka plan resmi ve üzerindeki karartma katmanı */
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+                url('rtx 5070   haberler .jpg'); 
+            
+            background-color: #1a1a1a; /* Resim yüklenmezse */
+            background-size: cover;      
+            background-position: center;  
+            background-attachment: fixed; /* Parallax efekti */
+            
+            color: #fff; 
+            text-align: center;
+            box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.5);
+            margin-bottom: 40px; 
+            position: relative;
+        }
+
+        .hero-header-content { max-width: 1000px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2;}
+        
+        .hero-header-content .tag {
+            background-color: var(--nvidia-green); /* NVIDIA Yeşili */
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 20px; 
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .hero-header-content h1 {
+            font-size: 3.5em; 
+            line-height: 1.1;
+            margin-bottom: 25px;
+            font-weight: 900;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        }
+        
+        .hero-header-content .article-summary-text {
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+        }
+
+        .hero-header-content .article-meta-info {
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.7);
+            border-top: 1px solid rgba(255, 255, 255, 0.3); 
+            padding-top: 15px;
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* İÇERİK STİLLERİ */
+        .toc-box { background-color: var(--color-card-background); padding: 20px; border-radius: 8px; border: 1px solid var(--color-border); margin: 0 0 30px 0; box-shadow: 0 2px 10px var(--color-shadow); }
+        .toc-box h3 { color: var(--nvidia-green); border-bottom: 2px solid var(--color-primary); padding-bottom: 10px; margin-bottom: 15px; font-size: 1.2em; }
+        .toc-box ul { list-style: none; padding-left: 0; }
+        .toc-box a { color: var(--color-text); text-decoration: none; transition: color 0.2s; font-size: 0.95em; display: block; padding: 5px 0; }
+        .toc-box a:hover { color: var(--nvidia-green); }
+        
+        .article-body-text h2 { color: var(--color-secondary); font-size: 1.8em; margin: 40px 0 20px 0; border-bottom: 1px solid var(--color-border); padding-bottom: 5px; }
+        .article-body-text h3 { color: var(--color-primary); font-size: 1.4em; margin: 25px 0 15px 0; }
+        .article-body-text p { margin-bottom: 20px; font-size: 1.05em; text-align: justify; }
+        .article-body-text ul { padding-left: 20px; margin-bottom: 20px; list-style-type: disc; }
+        .article-body-text li { margin-bottom: 8px; }
+        
+        /* TABLO */
+        .specs-table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 1em; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); border-radius: 8px; overflow: hidden; }
+        .specs-table th, .specs-table td { padding: 15px; text-align: left; border-bottom: 1px solid var(--color-border); }
+        .specs-table th { background-color: var(--color-primary); color: white; font-weight: bold; text-transform: uppercase; }
+        .specs-table tr:nth-child(even) { background-color: #1a2332; }
+        .specs-table tr:hover { background-color: var(--color-primary); color: white; cursor: pointer; }
+        .specs-table td:nth-child(3) { color: var(--nvidia-green); font-weight: bold; }
+
+        .reading-time { font-size: 0.9em; color: var(--text-gray); font-weight: bold; display: block; text-align: right; border-bottom: 1px solid var(--color-border); padding-bottom: 10px; }
+        
+        /* Sidebar & Paylaşım */
+        .related-articles-box { background-color: var(--color-card-background); padding: 20px; border-radius: 8px; border: 1px solid var(--color-border); margin-bottom: 30px; box-shadow: 0 2px 10px var(--color-shadow); }
+        .related-articles-box h3 { color: var(--nvidia-green); border-bottom: 2px solid var(--color-border); padding-bottom: 10px; margin-bottom: 15px; }
+        .related-articles-box ul { list-style: none; }
+        .related-articles-box a { color: var(--color-text) !important; text-decoration: none; transition: color 0.2s; font-size: 0.95em; }
+        .related-articles-box a:hover { color: var(--color-secondary) !important; }
+        
+        .share-buttons { display: flex; gap: 15px; padding: 20px 0; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); margin: 30px 0; align-items: center; }
+        .share-buttons span { font-weight: bold; color: var(--color-primary); font-size: 1.1em; margin-right: 10px; }
+        .share-button { text-decoration: none; color: white; padding: 10px 15px; border-radius: 6px; font-weight: bold; display: flex; align-items: center; gap: 8px; transition: transform 0.2s, opacity 0.2s; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); }
+        .share-button:hover { transform: translateY(-2px); opacity: 0.9; }
+        .share-twitter { background-color: #1DA1F2; }
+        .share-facebook { background-color: #3B5998; }
+        .share-linkedin { background-color: #0077B5; }
+
+        @media (max-width: 1024px) {
+            .content-wrapper { flex-direction: column; padding: 0 20px; }
+            .article-sidebar { max-width: 100%; min-width: unset; padding-top: 10px; }
+            .hero-header-content h1 { font-size: 2.5em; }
+            nav ul { flex-direction: row; flex-wrap: wrap; gap: 10px; }
+            header { flex-direction: column; align-items: flex-start; }
+            .dropdown-content { position: relative; margin-top: 0; width: 100%; box-shadow: none; border: none; padding: 5px 0; }
+            .share-buttons { flex-wrap: wrap; }
+        }
+    </style>
+    
+    <script>
+        function shareArticle(platform) {
+            const articleTitle = "RTX 5070 Teknik Özellikleri Sızdırıldı: Bellek Miktarı Şaşırttı! | TeknoGündem";
+            const articleUrl = window.location.href; 
+            let url = "";
+
+            switch (platform) {
+                case 'twitter': url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(articleTitle)}&url=${encodeURIComponent(articleUrl)}&hashtags=Nvidia,RTX5070,GPU,Sızıntı`; break;
+                case 'facebook': url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(articleUrl)}`; break;
+                case 'linkedin': url = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(articleUrl)}&title=${encodeURIComponent(articleTitle)}`; break;
+                default: return;
+            }
+            window.open(url, '_blank', 'width=600,height=400');
+        }
+    </script>
+</head>
+<body> 
+
+    <header>
+        <div class="logo">TeknoGündem</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li class="dropdown">
+                    <a href="donanım.html">Donanım </a>
+                    <ul class="dropdown-content">
+                        <li><a href="haberler.html">Haberler</a></li>
+                        <li><a href="incelemeler.html">İncelemeler</a></li>
+                    </ul>
+                </li>
+                <li><a href="yazılım.html">Yazılım </a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+    <div class="hero-article-header">
+        <div class="hero-header-content">
+            <span class="tag">GPU / SIZINTI</span>
+            <h1>RTX 5070 Teknik Özellikleri Sızdırıldı: Bellek Miktarı Şaşırttı! 😲</h1> 
+            <p class="article-summary-text">NVIDIA'nın merakla beklenen orta-üst segment ekran kartı RTX 5070 hakkında en güvenilir kaynaklardan yeni teknik detaylar sızdı. VRAM kapasitesi oyuncuları ikiye böldü.</p>
+            <div class="article-meta-info">
+                <span>01 Kasım 2025</span> 
+                <span>Kaynak: Güvenilir Sızıntı Kaynakları</span>
+            </div>
+        </div>
+    </div>
+    
+
+    <main class="full-width-section">
+        
+        <div class="content-wrapper">
+            
+            <section class="article-main-text-area">
+                
+                <span class="reading-time">Okuma Süresi: 6 Dakika ⏱️</span>
+
+                <div class="toc-box">
+                    <h3>İçindekiler</h3>
+                    <ul>
+                        <li><a href="#vram-soku">1. VRAM Kapasitesi: Beklentiler vs Gerçekler</a></li>
+                        <li><a href="#cuda-cekirdekleri">2. CUDA Çekirdek Sayısı ve Mimari</a></li>
+                        <li><a href="#guc-tuketimi">3. Güç Tüketimi ve Verimlilik</a></li>
+                        <li><a href="#fiyat">4. Tahmini Çıkış Tarihi ve Fiyat</a></li>
+                        <li><a href="#gddr7-analiz">5. Yeni Nesil GDDR7 Belleğin Önemi</a></li>
+                        <li><a href="#blackwell-analiz">6. Blackwell Mimarisi ve IPC Kazançları</a></li>
+                        <li><a href="#karsilastirma">7. Teknik Özellik Karşılaştırması (RTX 5070 vs. RTX 4070)</a></li>
+                        <li><a href="#sonuc">8. Sonuç: 12 GB Yeterli Olacak mı?</a></li>
+                    </ul>
+                </div>
+
+                <section class="article-body-text">
+
+                    <h2 id="vram-soku">VRAM Kapasitesi: Beklentiler vs Gerçekler</h2>
+                    <p>NVIDIA'nın "Blackwell" mimarisine dayanacak olan GeForce RTX 5070 hakkında en çok merak edilen konu bellek miktarıydı. Son sızıntılar, kartın 12 GB GDDR7 bellek ile geleceğini işaret ediyor. Birçok oyuncu 16 GB beklentisi içindeyken, 12 GB kararı tartışma yarattı. Ancak GDDR7 teknolojisinin getirdiği devasa bant genişliği artışı, kapasite eksiğini performansla kapatabilir.</p>
+                    
+                    <p>Sızıntı kaynağına göre, NVIDIA bellek veri yolunu 192-bit olarak koruyacak, ancak 28 Gbps hızındaki yeni bellek modülleri sayesinde bant genişliği RTX 4070'e göre %30'un üzerinde artış gösterecek.</p>
+                    
+
+                    <h2 id="cuda-cekirdekleri">CUDA Çekirdek Sayısı ve Mimari</h2>
+                    <p>RTX 5070'in kalbinde yer alacak GB204 grafik işlemcisinin kısaltılmış bir versiyonunu kullanması bekleniyor. Sızan bilgilere göre kart, yaklaşık 7680 CUDA çekirdeğine sahip olacak. Bu, RTX 4070'e kıyasla çekirdek sayısında %30'luk bir artış anlamına geliyor. Ancak asıl performans farkının, yeni mimarinin getirdiği IPC (Saat başı işlem) artışı ve geliştirilmiş Ray Tracing (Işın İzleme) çekirdeklerinden gelmesi bekleniyor.</p>
+
+                    <h2 id="guc-tuketimi">Güç Tüketimi ve Verimlilik</h2>
+                    <p>TSMC'nin 3nm üretim süreci (veya NVIDIA için özelleştirilmiş 4N sürecinin gelişmiş versiyonu) sayesinde, RTX 5070'in güç verimliliğinde büyük bir sıçrama yapması bekleniyor. Kartın TGP (Toplam Grafik Gücü) değerinin 220W civarında olacağı söyleniyor. Bu, RTX 4070 ile benzer bir güç tüketimi sunarken çok daha yüksek performans vaat ettiği anlamına geliyor.</p>
+                    
+                    <h2 id="fiyat">Tahmini Çıkış Tarihi ve Fiyat</h2>
+                    <p>Sektör analistleri, NVIDIA'nın RTX 5090 ve 5080 modellerini 2024 sonunda piyasaya süreceğini, RTX 5070'in ise 2025'in ilk çeyreğinde raflarda yerini alacağını öngörüyor. Fiyat konusunda ise NVIDIA'nın agresif bir politika izleyerek kartı $599 - $649 bandında konumlandırması bekleniyor.</p>
+                    
+                    <hr>
+
+                    <h2 id="gddr7-analiz">Yeni Nesil GDDR7 Belleğin Önemi</h2>
+                    
+                    <figure style="margin: 20px 0;">
+                        <img src="gddr7  grafiği.png" alt="GDDR7 Bant Genişliği Grafiği" loading="lazy" style="max-width: 650px; margin: 0 auto; display: block;">
+                        <figcaption style="font-size: 0.8em; color: var(--text-gray); text-align: center;">GDDR7'nin bant genişliği potansiyeli (Görsel temsilidir).</figcaption>
+                    </figure>
+                    <p>Kartın 12 GB GDDR7 bellekle gelmesi, bazı kullanıcıları hayal kırıklığına uğratsa da, asıl dikkat edilmesi gereken nokta kullanılan bellek tipinin hızıdır. GDDR7 standardı, bir önceki nesil GDDR6X'e göre çok daha yüksek bant genişliği sunarak, daha az bit genişliğinde bile yüksek çözünürlüklü ve yüksek hızlı veri transferini mümkün kılıyor.</p>
+                    
+                    <ul>
+                        <li>Bant Genişliği Artışı: 28 Gbps hızındaki GDDR7 modülleri, RTX 4070'in 21 Gbps GDDR6X modüllerine kıyasla teorik olarak %33 daha hızlı veri iletişimi sağlayacak.</li>
+                        <li>Optimizasyon: NVIDIA, bu yüksek hızı kullanarak 192-bit bellek yolu genişliğini koruma kararı almış gibi görünüyor, bu da üretim maliyetlerini düşürme ve verimliliği artırma hedefinin bir parçası olabilir.</li>
+                    </ul>
+
+                    <p style="text-align: center; font-style: italic; color: var(--text-gray);">GDDR7 belleğin getirdiği hız artışı, özellikle 1440p üzeri çözünürlüklerde oyun motorlarının daha verimli çalışmasını sağlayacaktır.</p>
+
+                    <h2 id="blackwell-analiz">Blackwell Mimarisi ve IPC Kazançları</h2>
+                    <p>RTX 5070'de yer alması beklenen GB204 çipi, sadece daha fazla CUDA Çekirdeği (yaklaşık 7680) sunmakla kalmayacak, aynı zamanda mimari geliştirmeler sayesinde Saat Başına Talimat (IPC) performansını da önemli ölçüde artıracak.</p>
+
+                    <ul>
+                        <li>Geliştirilmiş Işın İzleme (Ray Tracing) Yeni nesil RT çekirdeklerinin, ışın izleme hesaplamalarını daha verimli hale getirerek performansta büyük sıçramalar yapması bekleniyor. Bu, özellikle 4K çözünürlükte ışın izlemeli oyunlar için kritik öneme sahip.</li>
+                        <li>DLSS ve Yapay Zeka Çekirdekleri: Daha hızlı ve optimize edilmiş Tensor çekirdekleri, NVIDIA'nın DLSS (Deep Learning Super Sampling) ve muhtemel DLSS 4.0 teknolojilerinin performansını daha da ileri taşıyarak, VRAM kısıtlamalarının etkisini azaltmaya yardımcı olabilir.</li>
+                    </ul>
+
+                    <h2 id="karsilastirma">RTX 5070 (Sızıntı) vs. RTX 4070 Teknik Özellik Karşılaştırması</h2>
+
+                    <table class="specs-table">
+                        <thead>
+                            <tr>
+                                <th>Özellik</th>
+                                <th>Sızdırılan RTX 5070 (Tahmini)</th>
+                                <th>NVIDIA RTX 4070 (Mevcut)</th>
+                                <th>Fark</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mimari</td>
+                                <td>Blackwell (GB204)</td>
+                                <td>Ada Lovelace (AD104)</td>
+                                <td>Yeni Nesil</td>
+                            </tr>
+                            <tr>
+                                <td>CUDA Çekirdeği</td>
+                                <td>~7680</td>
+                                <td>5888</td>
+                                <td>~%30.4 Artış</td>
+                            </tr>
+                            <tr>
+                                <td>Bellek (VRAM)</td>
+                                <td>12 GB GDDR7</td>
+                                <td>12 GB GDDR6X</td>
+                                <td>Bellek Tipi Yükseldi</td>
+                            </tr>
+                            <tr>
+                                <td>Bellek Hızı</td>
+                                <td>28 Gbps</td>
+                                <td>21 Gbps</td>
+                                <td>~%33.3 Artış</td>
+                            </tr>
+                            <tr>
+                                <td>Bellek Arayüzü</td>
+                                <td>192-bit</td>
+                                <td>192-bit</td>
+                                <td>Aynı</td>
+                            </tr>
+                            <tr>
+                                <td>TGP (Güç)</td>
+                                <td>~220W</td>
+                                <td>200W</td>
+                                <td>Benzer Verimlilik</td>
+                            </tr>
+                            <tr>
+                                <td>Tahmini Fiyat</td>
+                                <td>$599 - $649</td>
+                                <td>$599 (Lansman)</td>
+                                <td>Aynı Fiyat Bandı</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h2 id="sonuc">Sonuç: 12 GB Yeterli Olacak mı?</h2>
+                    <p>RTX 5070'in 12 GB VRAM ile gelmesi, özellikle yüksek çözünürlüklerde (4K) bazı yeni nesil, yüksek doku paketli oyunlar için gelecekte bir performans darboğazı yaratma potansiyeli taşısa da, kartın genel mimari gücü ve GDDR7'nin muazzam bant genişliği bu açığı büyük ölçüde kapatacaktır.</p>
+                    <p>Bu kart, büyük ihtimalle 1440p (2K) oyuncularıhedeflemeye devam edecek ve burada rakipsiz bir performans-verimlilik oranı sunması bekleniyor. Fiyatlandırmanın da 600 dolar civarında kalması, onu orta-üst segment için cazip bir seçenek haline getirebilir.</p>
+                    
+                </section>
+
+                <figure class="featured-image-detail">
+                    <img src="5070 sızınıtı.jpg" alt="NVIDIA RTX 5070 Ekran Kartı Konsepti" loading="lazy">
+                    <figcaption style="font-size: 0.8em; color: var(--text-gray); text-align: center;">Sızdırılan bilgilere göre RTX 5070'in olası tasarım çizgileri.</figcaption>
+                </figure>
+                
+                <div class="share-buttons">
+                    <span>Bu Haberi Paylaş:</span>
+                    <a href="javascript:void(0)" onclick="shareArticle('twitter')" class="share-button share-twitter">
+                        <i class="fab fa-twitter"></i> X (Twitter)
+                    </a>
+                    <a href="javascript:void(0)" onclick="shareArticle('facebook')" class="share-button share-facebook">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </a>
+                    <a href="javascript:void(0)" onclick="shareArticle('linkedin')" class="share-button share-linkedin">
+                        <i class="fab fa-linkedin-in"></i> LinkedIn
+                    </a>
+                </div>
+            </section>
+            
+            <aside class="article-sidebar">
+                
+                <div class="related-articles-box">
+                    <h3>📢 DİĞER HABERLER </h3>
+                    <ul>
+                        <li><a href="msı-sıvı-soğutma-haber.html">MSI, Yeni Nesil Anakartlarında Soğutma Çözümlerini Yeniledi</a></li>
+                        <li><a href="mini-pc-haber.html">Mini PC Pazarı Rekor Kırıyor: Güçlü Bileşenler Küçük Kasalarda</a></li>
+                        <li><a href="pil-teknolojisi.html">Yeni Pil Teknolojisi İle Dizüstü Bilgisayar Pil Ömrü %50 Arttı</a></li>
+                    </ul>
+                </div>
+                
+           
+                
+            </aside>
+
+        </div>
+        
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 TeknoGündem. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+    
+</body>
+</html>

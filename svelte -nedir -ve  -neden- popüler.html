@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Svelte Nedir ve Neden Popüler? Derleyici Mimarisi ve Geleceği - TeknoGündem</title>
-    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -30,13 +30,14 @@
             padding: 0;
         }
 
-        /* HEADER & NAV STİLLERİ */
+        /* HEADER & NAV STİLLERİ - Burası Güncellendi! */
         header {
             background-color: #1e1e1e;
             color: white;
             padding: 15px 50px;
             display: flex;
-            justify-content: space-between;
+            /* Logoyu ve menüyü aynı hizada tutar */
+            justify-content: space-between; 
             align-items: center;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
@@ -51,17 +52,58 @@
             padding: 0;
             display: flex;
         }
+        
+        /* Ana Menü Bağlantıları */
         nav ul li a {
             color: var(--color-text-light);
             text-decoration: none;
             padding: 10px 15px;
             display: block;
-            transition: color 0.3s;
+            transition: color 0.3s, background-color 0.3s;
+            border-radius: 5px;
         }
         nav ul li a:hover, nav ul li a.active {
             color: var(--color-primary);
             background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 5px;
+        }
+
+        /* DROPDOWN STİLLERİ - Burası Eklendi/Güncellendi! */
+        .dropdown {
+            position: relative; 
+        }
+
+        .dropdown-content {
+            display: none; /* Varsayılan olarak gizli */
+            position: absolute;
+            top: 100%; 
+            left: 0;
+            background-color: #2a2a2a; 
+            min-width: 170px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.7);
+            z-index: 10; 
+            border-top: 3px solid var(--color-primary); 
+            border-radius: 0 0 5px 5px;
+            padding: 0; 
+        }
+
+        .dropdown-content a {
+            color: var(--color-text-light);
+            padding: 12px 16px; 
+            text-decoration: none;
+            display: block;
+            text-align: left; 
+            font-size: 0.95rem;
+            border-radius: 0; 
+        }
+
+        .dropdown-content a:hover {
+            background-color: #3d3d3d;
+            color: var(--color-secondary);
+        }
+
+        /* Üzerine gelindiğinde içeriği göster */
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
         
         /* ANA İÇERİK STİLLERİ */
@@ -160,9 +202,20 @@
         <nav>
             <ul>
                 <li><a href="index.html">Ana Sayfa</a></li>
-                <li><a href="donanım.html">Donanım</a></li>
+            
+                <li class="dropdown">
+                    <a href="donanım.html">Donanım</a> 
+                    
+                    <div class="dropdown-content"> 
+                        <a href="haberler.html">Haberler</a> 
+                        <a href="incelemeler.html">İncelemeler</a>
+                    </div>
+                </li>
+                
                 <li><a href="yazılım.html" class="active">Yazılım</a></li>
-                <li><a href="devops.html">DevOps</a></li>
+                
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                
             </ul>
         </nav>
     </header>
@@ -200,23 +253,23 @@
                     React ve Vue gibi Framework'ler, runtime (çalışma zamanı) sırasında uygulamanın tarayıcıda çalışması için büyük miktarda kodu (Virtual DOM algoritmaları) barındırmak zorundadır. Svelte bu yükü tamamen ortadan kaldırır.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-compress" style="color: var(--color-svelte-main);"></i> Sıfır Runtime Yükü: Svelte, geliştirme sırasında yazdığınız bileşenleri alır ve onları doğrudan gerçek DOM'u minimum JavaScript koduyla güncelleyen, saf, Vanilla JavaScript koduna dönüştürür. Üretim (Production) paketinde Svelte framework'ünün kendisine ait kod bulunmaz.</li>
-                    <li><i class="fas fa-running" style="color: var(--color-svelte-main);"></i> Gerekli Minimum Kod:Bir state (durum) değiştiğinde, Svelte yalnızca değişen kısmı kesin olarak bilen mikro kodlar üretir. Bu, tarayıcının yapması gereken işi büyük ölçüde azaltır, bu da daha hızlı yüklenme ve daha akıcı etkileşim anlamına gelir.</li>
+                    <li><i class="fas fa-compress" style="color: var(--color-svelte-main);"></i>Sıfır Runtime Yükü: Svelte, geliştirme sırasında yazdığınız bileşenleri alır ve onları doğrudan gerçek DOM'u minimum JavaScript koduyla güncelleyen, saf, Vanilla JavaScript koduna dönüştürür. Üretim (Production) paketinde Svelte framework'ünün kendisine ait kod bulunmaz.</li>
+                    <li><i class="fas fa-running" style="color: var(--color-svelte-main);"></i>Gerekli Minimum Kod:Bir state (durum) değiştiğinde, Svelte yalnızca değişen kısmı kesin olarak bilen mikro kodlar üretir. Bu, tarayıcının yapması gereken işi büyük ölçüde azaltır, bu da daha hızlı yüklenme ve daha akıcı etkileşim anlamına gelir.</li>
                 </ul>
             </div>
             
             <div class="technical-section">
                 <h3>Adım 1.2: Komponent Yapısı ve Reaktivite</h3>
                 <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
-                    Svelte bileşenleri, tek bir `.svelte` dosyasında HTML, CSS ve JavaScript'i birleştirir. Reaktivite ise JavaScript'te değişken tanımlar gibi basittir.
+                    Svelte bileşenleri, tek bir svelte dosyasında HTML, CSS ve JavaScript'i birleştirir. Reaktivite ise JavaScript'te değişken tanımlar gibi basittir.
                 </p>
                 <p style="color: var(--color-svelte-main); font-weight: bold; margin-bottom: 10px;">Basit Svelte Bileşeni (`Sayac.svelte`) Örneği:</p>
                 <pre><code>&lt;script&gt;
-  // Reaktif değişkenler! Svelte, 'count' değiştiğinde DOM'u güncelleyecek kodu üretir.
-  let count = 0;
-  const increment = () => {
-    count += 1; // Basit atama operatörü reaktiviteyi tetikler
-  };
+ // Reaktif değişkenler! Svelte, 'count' değiştiğinde DOM'u güncelleyecek kodu üretir.
+ let count = 0;
+ const increment = () => {
+   count += 1; // Basit atama operatörü reaktiviteyi tetikler
+ };
 &lt;/script&gt;
 
 &lt;button on:click={increment}&gt;
@@ -236,7 +289,7 @@
             <div class="technical-section">
                 <h3>Adım 2.1: Svelte vs. React/Vue: Runtime vs. Compile Time</h3>
                 <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
-                    Performans farkı, çalışma zamanı felsefesinden kaynaklanır.
+                    Performans farkı, çalışma zamanı felsefesinden kaynaklanır. 
                 </p>
                 <table class="comparison-table">
                     <thead>
@@ -272,7 +325,7 @@
                     Svelte'in gücünü tam potansiyeliyle kullanmak için SvelteKit kullanılır. SvelteKit, Next.js veya Nuxt.js gibi bir meta-framework'tür.
                 </p>
                 <blockquote style="border-left: 5px solid var(--color-secondary); background-color: rgba(255, 152, 0, 0.05); padding: 15px; margin-top: 20px;">
-                    <i class="fas fa-database" style="color: var(--color-secondary);"></i> Serverless/Edge Desteği: SvelteKit, yerleşik olarak Sunucu Tarafı İşleme (SSR), Statik Site Oluşturma (SSG) ve Edge Fonksiyonları 'nı destekler. Bu, uygulamaların bulut altyapılarında (Vercel, Cloudflare Pages) maksimum hızda dağıtılmasına olanak tanır.
+                    <i class="fas fa-database" style="color: var(--color-secondary);"></i> Serverless/Edge Desteği:SvelteKit, yerleşik olarak Sunucu Tarafı İşleme (SSR), Statik Site Oluşturma (SSG) ve Edge Fonksiyonları 'nı destekler. Bu, uygulamaların bulut altyapılarında (Vercel, Cloudflare Pages) maksimum hızda dağıtılmasına olanak tanır.
                     <br> <i class="fas fa-laptop-code" style="color: var(--color-secondary);"></i> Form Eylemleri (Form Actions): SvelteKit'in benzersiz bir özelliği, client-side JavaScript kullanmadan bile form verilerini doğrudan sunucu tarafında yönetmenizi sağlayan güçlü bir routing ve veri yönetimi sistemidir.
                 </blockquote>
             </div>
@@ -285,8 +338,8 @@
                     Svelte, geliştiriciler tarafından en sevilen framework'lerden biri olarak gösterilmesinin temel nedeni, kolay öğrenilebilir olmasıdır.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-magic" style="color: var(--color-detail);"></i> Azaltılmış Sözdizimi (Syntax): React'teki `useEffect`, `useMemo` veya `useCallback` gibi hook'lara olan ihtiyacı ortadan kaldırır. Reaktivite, yerel JavaScript atamalarıyla yapılır.</li>
-                    <li><i class="fas fa-code-merge" style="color: var(--color-detail);"></i> Yerleşik Geçişler (Transitions) ve Animasyonlar: Svelte, CSS transition ve animasyonlarını yönetmek için kolay kullanımlı API'ler sunar, bu da ekstra animasyon kütüphanelerine olan ihtiyacı azaltır.</li>
+                    <li><i class="fas fa-magic" style="color: var(--color-detail);"></i> Azaltılmış Sözdizimi (Syntax):React'teki `useEffect`, `useMemo` veya `useCallback` gibi hook'lara olan ihtiyacı ortadan kaldırır. Reaktivite, yerel JavaScript atamalarıyla yapılır.</li>
+                    <li><i class="fas fa-code-merge" style="color: var(--color-detail);"></i>Yerleşik Geçişler (Transitions) ve Animasyonlar:** Svelte, CSS transition ve animasyonlarını yönetmek için kolay kullanımlı API'ler sunar, bu da ekstra animasyon kütüphanelerine olan ihtiyacı azaltır.</li>
                 </ul>
             </div>
 

@@ -5,57 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMD Ryzen 5 9600X İncelemesi | Teknogündem Donanım</title>
     <link rel="stylesheet" href="css/style.css"> 
-    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
 
     <style>
         /* SADECE BU SAYFAYA ÖZEL STİLLER (Ryzen Teması: Kırmızı/Siyah) */
-        
         body { 
             background-color: #0a0a0a; 
             color: #f0f0f0; 
             font-family: 'Poppins', sans-serif;
+            margin: 0;
         }
+
         .main-body-container { 
             background-color: transparent; 
             padding-top: 50px; 
             max-width: 1300px;
             margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
-        /* *** KESİN DÜZELTME: HEADER, FOOTER, NAVIGASYON VE İÇERİK ARKA PLANLARI *** */
         header, footer {
             background-color: #151515 !important; 
             color: #e0e0e0 !important;
             width: 100%;
         }
+
+        .header-content { max-width: 1300px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+
         .main-content {
-            background-color: #1a1a1a; /* Ana içerik alanını biraz daha açık koyu gri yaptık */
+            background-color: #1a1a1a; 
             padding: 30px; 
             border-radius: 8px; 
         }
-        .technical-specs-box {
-            background-color: #1a1a1a; 
-            padding: 20px;
-            border-radius: 8px;
-        }
+
         .review-content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-top: 30px; }
         .specs-list { list-style: none; padding: 0; }
         .specs-list li { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px dashed #333; }
         .specs-list span:first-child { color: #ccc; }
 
-        /* RYZEN İNCELEMESİ İÇİN ÖZEL RENK VURGULARI (Kırmızı: #cc0000) */
-        
-        .accent-color { color: #cc0000; /* AMD Kırmızısı Vurgu */ }
-        
-        /* 1. Başlık Rengi */
+        .accent-color { color: #cc0000; }
+
         .detail-header h1 {
             color: #ffffff; 
             text-shadow: 0 0 10px rgba(204, 0, 0, 0.7);
+            text-align: center;
         }
-        
-        /* 2. Ana Puan Vurgusu */
+
+        .detail-header .subtitle {
+            color: white;
+            text-align: center;
+        }
+
         .score-large {
-            background: linear-gradient(45deg, #cc0000, #ff5500); /* Kırmızı - Turuncu Gradient */
+            background: linear-gradient(45deg, #cc0000, #ff5500); 
             -webkit-background-clip: text; 
             background-clip: text; 
             color: transparent; 
@@ -63,76 +66,106 @@
             font-weight: 900;
             padding: 10px 0;
             border-bottom: 3px solid #cc0000;
+            text-align: center;
+            display: block;
+            margin: 20px auto;
         }
-        /* 3. Sonuç Kutusu Rengi */
+
         .conclusion-box {
-            border: 3px solid #cc0000; /* Kırmızı Sınır */
-            background-color: #1a0808; /* Koyu Kırmızımsı Siyah Ton */
+            border: 3px solid #cc0000;
+            background-color: #1a0808;
             padding: 20px;
             margin-top: 30px;
             border-radius: 8px;
         }
-        
-        /* 4. İnceleme Başlıkları */
+
         .detail-review-body h2 span, 
         .technical-specs-box h2 {
-            color: #cc0000; /* Kırmızı Vurgusu */
+            color: #cc0000;
         }
-        
-        /* YATAY ÇİZGİ (HR) STİLİ - INTEL SAYFASI İLE UYUMLU */
+
         .detail-review-body hr {
             border: 0;
             height: 1px;
-            /* Kırmızı gradyanlı çizgi */
             background-image: linear-gradient(to right, rgba(204, 0, 0, 0), rgba(204, 0, 0, 0.75), rgba(204, 0, 0, 0));
             margin: 20px 0;
         }
-        
-        /* 5. Artı ve Eksiler */
-        #detail-pros li { color: #76ff03; } /* Artılar Yeşil */
-        #detail-cons li { color: #ff9800; } /* Eksiler Turuncu */
 
         #pros-cons-container { display: flex; gap: 40px; margin-top: 30px; }
         #pros-cons-container ul { list-style: none; padding: 0; }
+        #detail-pros li { color: #76ff03; }
+        #detail-cons li { color: #ff9800; }
         .detail-review-body p { color: #f0f0f0; }
 
-        /* Navigasyon ve diğer temel stiller (Yüksek Öncelik için) */
-        .header-content { max-width: 1300px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
-        footer { padding: 20px 0; text-align: center; border-top: 1px solid #333; }
-        /* Drodown stilleri ve diğer ufak ayarlamalar */
-        .dropdown-content { background-color: #2a2a2a !important; border: 1px solid #cc0000 !important; }
+        .technical-specs-box {
+            background-color: #1a1a1a; 
+            padding: 20px;
+            border-radius: 8px;
+            height: fit-content;
+        }
+
+        /* Video kutusu */
+        .video-container { 
+            margin-bottom: 30px; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            position: relative; 
+            padding-bottom: 56.25%; 
+            height: 0;
+        }
+        .video-container iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: block; 
+        }
+
+        footer {
+            padding: 20px 0; text-align: center; border-top: 1px solid #333;
+        }
+
+        /* Dropdown stilleri */
+        .dropdown-content {
+            display: none; position: absolute; background-color: #2a2a2a; 
+            min-width: 150px; z-index: 1; border: 1px solid #00bcd4; padding: 5px 0;
+        }
         .dropdown-content a { color: #e0e0e0 !important; background-color: #2a2a2a !important; padding: 10px 15px !important; }
-        .dropdown-content a:hover { background-color: #cc0000 !important; color: #0a0a0a !important; }
-        
+      .dropdown-content a:hover {
+            background-color: #00bcd4 !important; color: #0a0a0a !important; 
+        }
+
+        /* Mobil uyumlu grid */
+        @media (max-width: 900px) {
+            .review-content-grid {
+                grid-template-columns: 1fr;
+            }
+            #pros-cons-container {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="header-content">
-            <h1>TEKNOGÜNDEM<span class="logo-dot">.</span>DONANIM</h1>
-            <nav>
-                <ul>
+<header>
+    <div class="header-content">
+        <h1>TEKNOGÜNDEM</h1>
+        <nav>
+            <ul>
                 <li><a href="index.html">Ana Sayfa</a></li>
-            
-            <li class="dropdown">
-                
-                <a href="donanım.html">Donanım</a> 
-                
-                <div class="dropdown-content"> 
-                    <a href="haberler.html" class="dropdown-item">Haberler</a> 
-                    <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
-                </div>
-            </li>
-            <li><a href="yazılım.html" >Yazılım</a></li>
-            
-            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                <li class="dropdown">
+                    <a href="donanım.html">Donanım</a> 
+                    <div class="dropdown-content"> 
+                        <a href="haberler.html" class="dropdown-item">Haberler</a> 
+                        <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
+                    </div>
+                </li>
+                <li><a href="yazılım.html">Yazılım</a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
             </ul>
-            </nav>
-        </div>
-    </header>
+        </nav>
+    </div>
+</header>
+
 <div class="main-body-container">
-        
     <section id="review-detail-section">
         <div class="detail-header">
             <h1>AMD Ryzen 5 9600X İncelemesi</h1>
@@ -141,29 +174,29 @@
         </div>
 
         <div class="review-content-grid">
-            
-            <div class="main-content">
-                
+            <!-- Sol: Video ve içerik -->
+            <div>
                 <div class="video-container">
-                  <iframe 
-                    width="100%" 
-                   height="450" 
-                     src="https://www.youtube-nocookie.com/embed/Xt4m28IZI1k" 
-                  frameborder="0" 
-                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                      allowfullscreen>
-         </iframe>
+                    <iframe 
+                        width="100%" 
+                        height="450" 
+                        src="https://www.youtube-nocookie.com/embed/Xt4m28IZI1k" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
-                
+
                 <div class="detail-review-body">
-                    
                     <h2 style="margin-top: 0;"><span class="accent-color">🕹️ Oyun Performansında Büyük Sıçrama</span></h2>
-                    <hr> <p>
+                    <hr>
+                    <p>
                         Ryzen 5 9600X, Zen 5 mimarisi ile birlikte, özellikle 1080p ve 1440p çözünürlüklerde oyun performansını önceki nesil R5 işlemcilere kıyasla %20'ye varan oranlarda artırıyor. 6 çekirdek ve 12 iş parçacığı konfigürasyonuna sahip olan bu işlemci, yüksek saat hızları ve revize edilmiş önbellek yapısı sayesinde Intel'in orta segmentteki rakiplerine ciddi bir baskı oluşturuyor.
                     </p>
 
                     <h2><span class="accent-color">🌡️ Verimlilik ve Güç Tüketimi</span></h2>
-                    <hr> <p>
+                    <hr>
+                    <p>
                         AMD, 9600X ile performansı artırırken güç verimliliğinden ödün vermemiş. 105W TDP değerine sahip olmasına rağmen, pratik yüklerde ve oyunlarda güç tüketimi rakip serinin K olmayan modelleri ile rekabet edebilecek düzeyde. Bu, işlemcinin daha düşük maliyetli ve daha sessiz soğutucularla bile etkili bir şekilde kullanılabilmesi anlamına geliyor.
                     </p>
 
@@ -180,45 +213,35 @@
                         <div style="flex: 1;">
                             <h2><span style="color: #ff9800;">❌ Eksileri</span></h2>
                             <ul id="detail-cons">
-                                <li class="negative">İlk nesil AM5 anakartlar için BIOS güncellemesi gerekebilir.</li>
-                                <li class="negative">Yüksek çekirdek sayısı gerektiren profesyonel iş yüklerinde üst segment R7'lerin gerisinde kalması.</li>
+                                <li>İlk nesil AM5 anakartlar için BIOS güncellemesi gerekebilir.</li>
+                                <li>Yüksek çekirdek sayısı gerektiren profesyonel iş yüklerinde üst segment R7'lerin gerisinde kalması.</li>
                             </ul>
                         </div>
                     </div>
 
-                    <h2 style="margin-top: 40px;"><span class="accent-color">📈 Benchmark Sonuçları (Cinebench R26)</span></h2>
-                    <hr> <div class="technical-specs-box" style="padding: 10px 20px;">
-                        <ul class="specs-list">
-                            <li><span>Tek Çekirdek Skoru</span> <span>2550</span></li>
-                            <li><span>Çoklu Çekirdek Skoru</span> <span>22100</span></li>
-                            <li><span>Maks. Sıcaklık (Yükte)</span> <span>78°C</span></li>
-                            <li><span>Temel Güç Tüketimi (TDP)</span> <span>105W</span></li>
-                        </ul>
-                    </div>
-                    
                     <div class="conclusion-box">
                         <h2>✨ Editörün Yorumu</h2>
                         <p style="color: #f0f0f0;">AMD Ryzen 5 9600X, orta segment oyun bilgisayarları için mutlak bir zaferdir. Yüksek hızlı oyun performansı, makul güç tüketimi ve gelecek nesil AM5 platformunu kullanmaya devam etmesi, onu paranın satın alabileceği en iyi oyuncu işlemcilerinden biri yapıyor. Eğer bütçenizi zorlamadan en iyi oyun deneyimini arıyorsanız, 9600X'i listenizin en başına koymalısınız.</p>
                     </div>
                 </div>
-
-                <div class="technical-specs-box">
-                    <h2 class="accent-color">⚙️ Teknik Özellikler</h2>
-                    <hr> <ul class="specs-list">
-                        <li><span>Çekirdek Sayısı</span> <span>6</span></li>
-                        <li><span>İş Parçacığı</span> <span>12</span></li>
-                        <li><span>Maks. Hız Aşırtma (Boost)</span> <span>5.8 GHz</span></li>
-                        <li><span>Önbellek (L2 + L3)</span> <span>38 MB</span></li>
-                        <li><span>TDP</span> <span>105W</span></li>
-                        <li><span>Soket Tipi</span> <span>AM5 (LGA 1718)</span></li>
-                    </ul>
-                </div>
-                
             </div>
-            
-        </section>
-        
-    </div>
+
+            <!-- Sağ: Teknik Özellikler -->
+            <div class="technical-specs-box">
+                <h2 class="accent-color">⚙️ Teknik Özellikler</h2>
+                <hr>
+                <ul class="specs-list">
+                    <li><span>Çekirdek Sayısı</span> <span>6</span></li>
+                    <li><span>İş Parçacığı</span> <span>12</span></li>
+                    <li><span>Maks. Hız Aşırtma (Boost)</span> <span>5.8 GHz</span></li>
+                    <li><span>Önbellek (L2 + L3)</span> <span>38 MB</span></li>
+                    <li><span>TDP</span> <span>105W</span></li>
+                    <li><span>Soket Tipi</span> <span>AM5 (LGA 1718)</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
 
 <footer>
     <p>© 2025 TEKNOGÜNDEM DONANIM. Tüm hakları saklıdır.</p>

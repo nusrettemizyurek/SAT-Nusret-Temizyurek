@@ -10,11 +10,11 @@
     --color-footer: #333333;
 }
 
-/* Karanlık Mod Değişkenleri */
+
 .dark-mode {
-    --color-text: #e0e0e0; /* Açık Gri Metin */
-    --color-background: #121212; /* Koyu Siyah Arka Plan */
-    --color-card-background: #1e1e1e; /* Koyu Kart Arka Planı */
+    --color-text: #e0e0e0; 
+    --color-background: #121212; 
+    --color-card-background: #1e1e1e; 
     --color-shadow: rgba(0, 0, 0, 0.5);
     --color-border: #333333;
     --color-footer: #000000;

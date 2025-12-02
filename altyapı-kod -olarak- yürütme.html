@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Altyapıyı Kod Olarak Yönetme (IaC) Rehberi: Terraform, Ansible ve Bildirimsel Yaklaşım - TeknoGündem</title>
-    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -234,7 +234,7 @@
         <div class="article-content-wrapper" style="max-width: 900px; margin: 40px auto; padding: 20px;">
             
             <p style="margin-bottom: 25px; line-height: 1.8; font-size: 1.1rem; color: #ccc;">
-                Altyapıyı Kod Olarak Yönetme (Infrastructure as Code - IaC), sunucuları, ağları, veritabanlarını ve diğer altyapı bileşenlerini manuel yapılandırmalar yerine kod (konfigürasyon dosyaları) kullanarak yönetme uygulamasıdır. Bu sayede altyapı, geliştirme ekiplerinin yazılım kodu gibi versiyonlanabilir, test edilebilir ve otomatikleştirilebilir hale gelir. IaC, **DevOps'un temel direğidir** ve tekrarlanabilir, tutarlı ve ölçeklenebilir altyapı dağıtımları için kritik öneme sahiptir.
+                Altyapıyı Kod Olarak Yönetme (Infrastructure as Code - IaC), sunucuları, ağları, veritabanlarını ve diğer altyapı bileşenlerini manuel yapılandırmalar yerine kod (konfigürasyon dosyaları) kullanarak yönetme uygulamasıdır. Bu sayede altyapı, geliştirme ekiplerinin yazılım kodu gibi versiyonlanabilir, test edilebilir ve otomatikleştirilebilir hale gelir. IaC, DevOps'un temel direğidir ve tekrarlanabilir, tutarlı ve ölçeklenebilir altyapı dağıtımları için kritik öneme sahiptir.
             </p>
 
             <h2 style="color: var(--color-terraform); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-magic"></i> Faz 1: IaC'nin Temel Felsefesi ve Avantajları</h2>
@@ -246,8 +246,8 @@
                 </p>
                 
                 <ul class="detail-list">
-                    <li><i class="fas fa-eye" style="color: var(--color-detail);"></i> Bildirimsel (Declarative): Sistemin istenilen nihai durumunu** tanımlarsınız ("Bu sanal sunucu olsun"). Araç (Örn: Terraform), mevcut durum ile istenen durum arasındaki farkı otomatik olarak hesaplar ve bu farkı kapatacak adımları kendi başına atar.</li>
-                    <li><i class="fas fa-list-ol" style="color: var(--color-detail);"></i>Prosedürel (Procedural): Sisteme nasıl ulaşılacağını adım adım belirtirsiniz ("Önce şunu yap, sonra bu ayarı değiştir, sonra servisi yeniden başlat"). Araç (Örn: **Ansible), bu adımları sırayla takip eder.</li>
+                    <li><i class="fas fa-eye" style="color: var(--color-detail);"></i> Bildirimsel (Declarative): Sistemin istenilen nihai durumunu tanımlarsınız ("Bu sanal sunucu olsun"). Araç (Örn: Terraform), mevcut durum ile istenen durum arasındaki farkı otomatik olarak hesaplar ve bu farkı kapatacak adımları kendi başına atar.</li>
+                    <li><i class="fas fa-list-ol" style="color: var(--color-detail);"></i>Prosedürel (Procedural): Sisteme nasıl ulaşılacağını adım adım belirtirsiniz ("Önce şunu yap, sonra bu ayarı değiştir, sonra servisi yeniden başlat"). Araç (Örn: Ansible), bu adımları sırayla takip eder.</li>
                 </ul>
             </div>
             
@@ -291,7 +291,7 @@
                         </tr>
                         <tr>
                             <td class="terraform-cell">Durum Yönetimi (State)</td>
-                            <td class="terraform-cell">Kritik.Küresel durumu (`.tfstate` dosyası) tutar ve değişimleri buna göre hesaplar.</td>
+                            <td class="terraform-cell">Kritik.Küresel durumu (.tfstate dosyası) tutar ve değişimleri buna göre hesaplar.</td>
                             <td class="ansible-cell">Durumsuz (Agent-less). Görevlerin sonuçlarına dayanarak çalışır.</td>
                         </tr>
                         <tr>
@@ -322,8 +322,8 @@
                     Terraform'un benzersiz gücü, altyapının durumunu yönetmesinden gelir. Ancak bu durum dosyasının yönetimi, ölçekli operasyonlarda karmaşıktır.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-lock" style="color: var(--color-terraform);"></i> Uzaktan Durum (Remote State): Durum dosyaları (`.tfstate`) hiçbir zaman yerel diskte (local) tutulmamalıdır. AWS S3, Azure Blob Storage veya HashiCorp Cloud gibi uzaktan, merkezi konumlarda saklanmalıdır.</li>
-                    <li><i class="fas fa-users-slash" style="color: var(--color-terraform);"></i> Kilitleme (Locking): Aynı anda birden fazla kişi `.tfstate` dosyasını değiştirmeye çalıştığında bozulmayı önlemek için kilitleme mekanizmaları (Backend Locking) zorunludur.</li>
+                    <li><i class="fas fa-lock" style="color: var(--color-terraform);"></i> Uzaktan Durum (Remote State): Durum dosyaları (tfstate) hiçbir zaman yerel diskte (local) tutulmamalıdır. AWS S3, Azure Blob Storage veya HashiCorp Cloud gibi uzaktan, merkezi konumlarda saklanmalıdır.</li>
+                    <li><i class="fas fa-users-slash" style="color: var(--color-terraform);"></i> Kilitleme (Locking): Aynı anda birden fazla kişi tfstate dosyasını değiştirmeye çalıştığında bozulmayı önlemek için kilitleme mekanizmaları (Backend Locking) zorunludur.</li>
                     <li><i class="fas fa-compress" style="color: var(--color-terraform);"></i> Çalışma Alanları (Workspaces): Farklı ortamları (Dev, Test, Prod) aynı Terraform koduyla yönetmek için kullanılır. Her ortam için ayrı bir durum dosyası oluşturulmasını sağlar.</li>
                 </ul>
             </div>

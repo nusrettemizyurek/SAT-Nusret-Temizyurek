@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Docker İle Geliştirme Ortamı: Konteynerize Edilmiş Çevik Geliştirme Rehberi - TeknoGündem</title>
-    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     
@@ -52,7 +52,7 @@
             padding: 0;
             display: flex;
         }
-        /* DÜZELTME: Dropdown için LI'lara Relative konumlandırma eklendi */
+       
         nav ul li {
             position: relative; 
         }
@@ -70,12 +70,12 @@
             border-radius: 5px;
         }
 
-        /* DROPDOWN MENÜ STİLLERİ (EKLEDİM) */
+  
         .dropdown {
             padding: 0; 
         }
         
-        /* Dropdown butonu yanındaki ok ikonu için */
+
         .dropbtn i {
             margin-left: 5px;
         }
@@ -120,7 +120,7 @@
             display: block; 
         }
 
-        /* İkonlar için metin ayrımı (Görsel tutarlılık için) */
+       
         h1 i, h2 i, h3 i, .detail-list i, blockquote i {
             margin-right: 10px;
         }
@@ -243,13 +243,13 @@
             <div class="technical-section">
                 <h3>Adım 1.1: Docker Compose ile Orkestrasyon</h3>
                 <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
-                    Modern uygulamalar, genellikle bir veritabanı, bir önbellek (Redis) ve uygulamanın kendisi olmak üzere birden fazla servisten oluşur. `docker-compose.yml` dosyası, tüm bu servisleri tek bir komutla ayağa kaldırmanın anahtarıdır.
+                    Modern uygulamalar, genellikle bir veritabanı, bir önbellek (Redis) ve uygulamanın kendisi olmak üzere birden fazla servisten oluşur. docker-compose.yml dosyası, tüm bu servisleri tek bir komutla ayağa kaldırmanın anahtarıdır.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-code-branch" style="color: var(--color-compose);"></i>Tek Komutla Kurulum: Tüm ekip üyeleri, karmaşık manuel kurulumlar yerine sadece `docker compose up -d` komutunu çalıştırarak aynı ortamı saniyeler içinde kurar.</li>
-                    <li><i class="fas fa-network-wired" style="color: var(--color-compose);"></i> İzolasyon ve Ağ: Compose, varsayılan olarak tüm servislere aynı ağda iletişim kurma imkanı tanır. Uygulama, veritabanına, localhost yerine servis adı (`db` veya `redis`) ile erişir.</li>
+                    <li><i class="fas fa-code-branch" style="color: var(--color-compose);"></i>Tek Komutla Kurulum: Tüm ekip üyeleri, karmaşık manuel kurulumlar yerine sadece docker compose up -d komutunu çalıştırarak aynı ortamı saniyeler içinde kurar.</li>
+                    <li><i class="fas fa-network-wired" style="color: var(--color-compose);"></i> İzolasyon ve Ağ: Compose, varsayılan olarak tüm servislere aynı ağda iletişim kurma imkanı tanır. Uygulama, veritabanına, localhost yerine servis adı (db veya redis) ile erişir.</li>
                 </ul>
-                <p style="color: var(--color-compose); font-weight: bold; margin-bottom: 10px;">Temel `docker-compose.yml` Yapısı:</p>
+                <p style="color: var(--color-compose); font-weight: bold; margin-bottom: 10px;">Temel docker-compose.yml Yapısı:</p>
                 <pre><code>version: '3.8'
 services:
   app:
@@ -273,8 +273,8 @@ services:
                     Geliştirme sırasında konteyneri sürekli yeniden oluşturmamak için yerel kodu konteynere aktarmak hayati önem taşır.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-sync" style="color: var(--color-dev);"></i>Bind Mounts: Yukarıdaki örnekteki gibi (`.:/app`), yerel makinenizdeki kod dizinini konteyner içindeki uygulama dizinine bağlar. Bu, kodu yerel IDE'nizde düzenlerken, değişikliklerin anında konteynerde (genellikle bir HMR/Live-Reload mekanizmasıyla) yansımasını sağlar. En hızlı geliştirme akışı için şarttır.</li>
-                    <li><i class="fas fa-hdd" style="color: var(--color-dev);"></i>Named Volumes:Veritabanı verisi gibi, konteyner silinse bile kalmasını istediğiniz durum bilgisi için kullanılır (Örn: `volumes: db-data:`).</li>
+                    <li><i class="fas fa-sync" style="color: var(--color-dev);"></i>Bind Mounts: Yukarıdaki örnekteki gibi (.:/app), yerel makinenizdeki kod dizinini konteyner içindeki uygulama dizinine bağlar. Bu, kodu yerel IDE'nizde düzenlerken, değişikliklerin anında konteynerde (genellikle bir HMR/Live-Reload mekanizmasıyla) yansımasını sağlar. En hızlı geliştirme akışı için şarttır.</li>
+                    <li><i class="fas fa-hdd" style="color: var(--color-dev);"></i>Named Volumes:Veritabanı verisi gibi, konteyner silinse bile kalmasını istediğiniz durum bilgisi için kullanılır (Örn:volumes: db-data:`).</li>
                 </ul>
             </div>
 
@@ -322,7 +322,7 @@ CMD [ "node", "dist/server.js" ]</code></pre>
             <div class="technical-section">
                 <h3>Adım 3.1: Hata Ayıklama Portlarının Açılması</h3>
                 <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
-                    Dockerize edilmiş bir uygulamada hata ayıklama (debugging) yapmak için, uygulama içi hata ayıklama sunucusunun portunu (örneğin Node.js için 9229) host makineye (`ports` kullanarak) açmanız ve IDE'nizi bu porta bağlamanız gerekir.
+                    Dockerize edilmiş bir uygulamada hata ayıklama (debugging) yapmak için, uygulama içi hata ayıklama sunucusunun portunu (örneğin Node.js için 9229) host makineye (ports kullanarak) açmanız ve IDE'nizi bu porta bağlamanız gerekir.
                 </p>
                 <p style="color: var(--color-docker-main); font-weight: bold; margin-bottom: 10px;">Compose Dosyasında Debugging Portu Tanımlama:</p>
                 <pre><code>services:
@@ -347,7 +347,7 @@ CMD [ "node", "dist/server.js" ]</code></pre>
             <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-graduation-cap"></i> Özet Rehberlik İlkesi</h2>
             
             <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
-                Docker, geliştirme ortamlarında "Herkes için aynı, garantili ortam" ilkesini getirerek DevOps kültürünü geliştirme sürecine taşır. Başarılı bir Docker Geliştirme Ortamı, tüm servisleri yönetmek için docker-compose`'a, hızlı kod yenilemesi için  Bind Mounts`'a ve hafif üretim imajları için Çok Aşamalı Yapılara dayanır. En güncel verimlilik için, IDE'nizi (VS Code/JetBrains) Dev Containers özelliği ile doğrudan konteynere bağlamayı benimseyin.
+                Docker, geliştirme ortamlarında "Herkes için aynı, garantili ortam" ilkesini getirerek DevOps kültürünü geliştirme sürecine taşır. Başarılı bir Docker Geliştirme Ortamı, tüm servisleri yönetmek için docker-compose`'a, hızlı kod yenilemesi için  Bind Mounts'a ve hafif üretim imajları için Çok Aşamalı Yapılara dayanır. En güncel verimlilik için, IDE'nizi (VS Code/JetBrains) Dev Containers özelliği ile doğrudan konteynere bağlamayı benimseyin.
             </p>
 
         </div>

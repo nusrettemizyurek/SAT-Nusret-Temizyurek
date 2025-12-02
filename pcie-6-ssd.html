@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PCIe 6.0 NVMe SSD İncelemesi | Teknogündem</title>
     <link rel="stylesheet" href="css/style.css"> 
-      <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
     
     <style>
         body { 
             background-color: #0a0a0a; /* Koyu arka plan */
-            color: #f0f0f0; /* 👈 Metin rengi #e0e0e0'dan #f0f0f0'a (daha parlak) yükseltildi. */
+            color: #f0f0f0; /* Metin rengi #e0e0e0'dan #f0f0f0'a (daha parlak) yükseltildi. */
             font-family: 'Poppins', sans-serif;
         }
         .main-body-container { 
@@ -20,28 +20,24 @@
             margin: 0 auto;
         }
         
-        /* DEPOLAMA İNCELEMESİ İÇİN ÖZEL RENK VURGULARI (Mor/Pembe) */
-        
         /* 1. Başlık Rengi */
         .detail-header h1 {
             color: #e91e63; /* Mor/Pembe Vurgu */
             text-shadow: 0 0 10px rgba(233, 30, 99, 0.7);
         }
         
-        /* 2. Ana Puan Vurgusu (Sarı uyarı veren -webkit- satırları temizlendi) */
+        /* Puan Stili */
         .score-large {
             background: linear-gradient(45deg, #e91e63, #ffc107);
-        
-            background-clip: text; /* Standart kural korundu */
-            -webkit-background-clip: text; /* Eski kural bırakıldı, ancak çoğu tarayıcı bunu yok sayar */
-        
-            color: transparent; /* Textin rengini gradyanın göstermesi için şeffaf yapar */
-        
+            background-clip: text;
+            -webkit-background-clip: text; 
+            color: transparent; 
             font-size: 3.5em;
             font-weight: 900;
             padding: 10px 0;
             border-bottom: 3px solid #e91e63;
         }
+        
         /* 3. Sonuç Kutusu Rengi */
         .conclusion-box {
             border: 3px solid #e91e63; /* Pembe Sınır */
@@ -67,6 +63,76 @@
         .detail-review-body p {
             color: #f0f0f0; /* Paragraf metinleri daha parlak hale getirildi. */
         }
+
+        /* Alt Başlık Rengi (İSTEK 1) */
+        .detail-header .subtitle {
+            color: #ffffff; 
+            opacity: 0.8; 
+            font-size: 1.1em;
+            margin-top: -10px;
+        }
+
+        /* Benchmark Kutusunun Arka Planı Kaldırıldı/Koyulaştırıldı (İSTEK 2) */
+        /* Not: Bu sınıf artık hem Benchmark hem de Teknik Özellikler için kullanılıyor, 
+           Ancak Teknik Özellikler kutusu için özel bir stil aşağıda tanımlanacak. 
+           Bu, sadece Benchmark sonuçları için geçerli olur. */
+        .technical-specs-box {
+            background-color: transparent !important;
+            border: none; /* Çerçeveyi kaldırdık */
+            padding: 15px 0; /* Boşlukları güncelledik */
+            margin-bottom: 20px;
+        }
+
+        /* Specs Listesi Çizgileri */
+        .specs-list li {
+            padding: 5px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+        
+        /* ------------------------------------------------------------- */
+        /* 🚀 YENİ: İKİ SÜTUNLU DÜZEN (İSTEK 3) */
+        /* ------------------------------------------------------------- */
+
+        .review-content-grid {
+            display: grid;
+            /* Ana İçerik (Video, Metin) için daha geniş, Sidebar için daha dar sütun. */
+            grid-template-columns: 3fr 1fr; 
+            gap: 30px; /* Sütunlar arası boşluk */
+            margin-top: 30px;
+        }
+
+        /* Teknik Özellikler (Sidebar) Kutusu */
+        /* Not: Bu, HTML yapısında en altta bulunan ve artık sağ tarafa taşınan kutudur. */
+        #review-detail-section > .technical-specs-box { 
+            grid-column: 2 / 3; /* İkinci sütuna yerleştir */
+            grid-row: 1 / span 3; /* Başlık/Video ve Metin kısımlarını kapsayacak şekilde yer kapla */
+            
+            /* Background ve çerçeveyi belirgin yapalım */
+            background-color: #1e1e2d; 
+            border: 3px solid #e91e63; /* Conclusion kutusu gibi belirgin bir çerçeve */
+            border-radius: 8px;
+            padding: 20px;
+            height: fit-content; /* İçeriği kadar yer kaplasın */
+        }
+        
+        /* main-content (Video ve İnceleme Metni) ilk sütunu kaplar */
+        .main-content {
+            grid-column: 1 / 2;
+        }
+
+        /* Küçük ekranlarda (Mobil Görünüm) tek sütun düzenine geri dön */
+        @media (max-width: 1024px) {
+            .review-content-grid {
+                grid-template-columns: 1fr; /* Tek sütun */
+                gap: 0;
+            }
+
+            #review-detail-section > .technical-specs-box {
+                grid-column: 1 / 2; /* Tek sütun */
+                grid-row: auto; 
+                margin-top: 30px; 
+            }
+        }
         
     </style>
 </head>
@@ -74,29 +140,26 @@
 
     <header>
         <div class="header-content">
-            <h1>TEKNOGÜNDEM<span class="logo-dot">.</span>DONANIM</h1>
+            <h1>TEKNOGÜNDEM</h1>
             <nav>
-                 <ul>
-                <li><a href="index.html">Ana Sayfa</a></li>
-            
-            <li class="dropdown">
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
                 
-                <a href="donanım.html">Donanım</a> 
-                
-                <div class="dropdown-content"> 
-                    <a href="haberler.html" class="dropdown-item">Haberler</a> 
-                    <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
-                </div>
-            </li>
-            <li><a href="yazılım.html" class="active">Yazılım</a></li>
-            
-            <li><a href="hakkimizda.html">Hakkımızda</a></li>
-            </ul>
+                    <li class="dropdown">
+                        <a href="donanım.html">Donanım</a> 
+                        <div class="dropdown-content"> 
+                            <a href="haberler.html" class="dropdown-item">Haberler</a> 
+                            <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
+                        </div>
+                    </li>
+                    <li><a href="yazılım.html" class="active">Yazılım</a></li>
+                    <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                </ul>
             </nav>
         </div>
     </header>
+
 <div class="main-body-container">
-        
     <section id="review-detail-section">
         <div class="detail-header">
             <h1>PCIe 6.0 NVMe SSD (2TB)</h1>
@@ -120,23 +183,16 @@
                 </div>
                 
                 <div class="detail-review-body">
-                ```
+                    
+                    <h2 style="margin-top: 0;"><span style="color: #e91e63;">🚀 Teorik Hızdan Gerçek Performansa</span></h2>
+                    <p>
+                        PCIe 6.0 arayüzü, 5.0'ın zaten şaşırtıcı olan hızını ikiye katlayarak 2TB'lık bu canavarı, okuma ve yazma işlemlerinde 20 GB/sn seviyelerine taşıyor. Bu, yalnızca profesyonel video düzenleme ve büyük veri işleme için değil, aynı zamanda DirectStorage teknolojisi sayesinde oyun yükleme sürelerinde de devrim niteliğinde bir kısalma anlamına geliyor.
+                    </p>
 
-
-        
-                    <div class="detail-review-body">
-                        
-                        <h2 style="margin-top: 0;"><span style="color: #e91e63;">🚀 Teorik Hızdan Gerçek Performansa</span></h2>
-                        <p>
-                            PCIe 6.0 arayüzü, 5.0'ın zaten şaşırtıcı olan hızını ikiye katlayarak 2TB'lık bu canavarı, okuma ve yazma işlemlerinde 20 GB/sn seviyelerine taşıyor. Bu, yalnızca profesyonel video düzenleme ve büyük veri işleme için değil, aynı zamanda DirectStorage teknolojisi sayesinde oyun yükleme sürelerinde de devrim niteliğinde bir kısalma anlamına geliyor.
-                        </p>
-
-                        <h2><span style="color: #e91e63;">🌡️ Termal Yönetim ve Verimlilik</span></h2>
-                        <p>
-                            Bu kadar yüksek hızların doğal sonucu olarak ortaya çıkan ısınma, SSD'nin en kritik noktasıydı. Ancak üreticiler, devasa soğutucu blokları ve optimize edilmiş kontrolcüler kullanarak, performansta herhangi bir düşüş (throttling) yaşanmasını engellemeyi başarmış. Idle (boşta) güç tüketimi önceki nesillere göre daha verimli.
-                        </p>
-
-                    </div>
+                    <h2><span style="color: #e91e63;">🌡️ Termal Yönetim ve Verimlilik</span></h2>
+                    <p>
+                        Bu kadar yüksek hızların doğal sonucu olarak ortaya çıkan ısınma, SSD'nin en kritik noktasıydı. Ancak üreticiler, devasa soğutucu blokları ve optimize edilmiş kontrolcüler kullanarak, performansta herhangi bir düşüş (throttling) yaşanmasını engellemeyi başarmış. Idle (boşta) güç tüketimi önceki nesillere göre daha verimli.
+                    </p>
 
                     <div id="pros-cons-container">
                         <h2><span style="color: #76ff03;">✅ Artıları</span></h2>
@@ -170,26 +226,27 @@
                         <p style="color: #f0f0f0;">PCIe 6.0 SSD, depolama teknolojisinin ulaştığı son nokta. Herkes için değil, ancak en son teknolojiye sahip bir profesyonel iş istasyonu kuran veya geleceğe yatırım yapanlar için tartışmasız en iyi seçenek. Hız tutkunları bu SSD'ye bayılacak.</p>
                     </div>
                 </div>
-
-                <div class="technical-specs-box">
-                    <h2 style="color: #e91e63;">⚙️ Teknik Özellikler</h2>
-                    <ul class="specs-list">
-                        <li><span>Kapasite</span> <span>2 TB</span></li>
-                        <li><span>Arayüz</span> <span>PCI Express 6.0 (x4)</span></li>
-                        <li><span>Form Faktörü</span> <span>M.2 2280</span></li>
-                        <li><span>Denetleyici</span> <span>Phison E36 (Varsayımsal)</span></li>
-                        <li><span>Garanti (TBW)</span> <span>2500 TBW</span></li>
-                    </ul>
-                </div>
             </div>
             
-        </section>
-
-    </div>
+            <div class="technical-specs-box">
+                <h2 style="color: #e91e63;">⚙️ Teknik Özellikler</h2>
+                <ul class="specs-list">
+                    <li><span>Kapasite</span> <span>2 TB</span></li>
+                    <li><span>Arayüz</span> <span>PCI Express 6.0 (x4)</span></li>
+                    <li><span>Form Faktörü</span> <span>M.2 2280</span></li>
+                    <li><span>Denetleyici</span> <span>Phison E36 (Varsayımsal)</span></li>
+                    <li><span>Garanti (TBW)</span> <span>2500 TBW</span></li>
+                </ul>
+            </div>
+            
+        </div>
+        
+    </section>
+</div>
     
-    <footer>
-        <p>© 2025 TEKNOGÜNDEM DONANIM. Tüm hakları saklıdır. | <a href="#">Gizlilik Politikası</a></p>
-    </footer>
+<footer>
+    <p>© 2025 TEKNOGÜNDEM DONANIM. Tüm hakları saklıdır. | <a href="#">Gizlilik Politikası</a></p>
+</footer>
 
 </body>
 </html>

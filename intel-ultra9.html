@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intel Core Ultra 9: Performans ve Verimlilikte Yeni Standart! | TeknoGündem</title>
+    <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css"> 
+    
+    <style>
+        /* --- CSS BAŞLANGIÇ --- */
+        
+        /* Eğer harici style.css dosyası yoksa diye temel değişkenleri buraya da ekliyorum */
+        :root {
+            --color-primary: #007bff;
+            --color-secondary: #00bcd4; /* Intel Mavisi Tonu */
+            --color-text: #333333;
+            --color-background: #f4f4f9;
+            --color-card-background: #ffffff;
+            --color-shadow: rgba(0, 0, 0, 0.1);
+            --color-border: #eeeeee;
+            --color-footer: #333333;
+            --text-gray: #6c757d;
+        }
+
+        .dark-mode {
+            --color-text: #e0e0e0;
+            --color-background: #121212;
+            --color-card-background: #1e1e1e;
+            --color-shadow: rgba(0, 0, 0, 0.5);
+            --color-border: #333333;
+            --color-footer: #000000;
+        }
+
+        /* ANA LAYOUT YAPISI */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        /* HEADER STİLLERİ */
+        header {
+            background-color: var(--color-card-background);
+            color: var(--color-text);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px var(--color-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo { font-size: 1.8em; font-weight: 800; color: var(--color-primary); }
+
+        nav ul { list-style: none; display: flex; gap: 25px; }
+        nav ul li a { color: var(--color-text); text-decoration: none; font-weight: 600; transition: color 0.2s; }
+        nav ul li a:hover { color: var(--color-secondary); }
+
+        /* Dropdown */
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: var(--color-card-background); min-width: 160px; box-shadow: 0 8px 16px var(--color-shadow); z-index: 1; border-top: 3px solid var(--color-primary); border-radius: 0 0 5px 5px; }
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown-content li a { padding: 12px 16px; display: block; border-left: 3px solid transparent; }
+        .dropdown-content li a:hover { background-color: rgba(255,255,255,0.05); color: var(--color-secondary); border-left: 3px solid var(--color-secondary); }
+
+
+        /* ----------------------------------------------------------- */
+        /* 🔥 YENİ GELİŞMİŞ BAŞLIK ALANI (FOTOĞRAFLI HERO) 🔥 */
+        /* ----------------------------------------------------------- */
+        .hero-article-header {
+            width: 100%;
+            padding: 100px 0; /* Yükseklik artırıldı */
+            
+            /* ARKA PLAN RESMİ AYARLARI */
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), /* %75 Siyah Perde */
+                url('intel core  ultra 9  haberler.jpg'); /* SENİN GÖRSELİN */
+            
+            background-color: #00bcd4; /* Resim yüklenmezse Intel mavisi */
+            background-size: cover;       
+            background-position: center;  
+            background-attachment: fixed; /* Parallax Efekti */
+            
+            color: #fff; 
+            text-align: center;
+            box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px; 
+            position: relative;
+        }
+
+        .hero-header-content {
+            max-width: 1000px; 
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-header-content .tag {
+            background-color: var(--color-secondary); /* Intel temasına uygun turkuaz/mavi */
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .hero-header-content h1 {
+            font-size: 3.2em; 
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 900;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        }
+        
+        .hero-header-content .article-summary-text {
+            font-size: 1.2em;
+            margin-top: 15px;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-header-content .article-meta-info {
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.8);
+            padding-top: 20px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* İÇERİK YAPISI */
+        .full-width-section {
+            width: 100%;
+            background-color: var(--color-card-background);
+            box-shadow: 0 4px 15px var(--color-shadow);
+            padding: 40px 0;
+            min-height: 80vh;
+        }
+
+        .content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            gap: 40px;
+        }
+
+        .article-main-text-area {
+            flex: 3; 
+            min-width: 0; 
+            padding-top: 20px;
+        }
+        
+        .article-sidebar {
+            flex: 1; 
+            min-width: 300px;
+            max-width: 400px;
+            padding-top: 20px; 
+        }
+
+        /* GÖRSEL STİLİ */
+        .featured-image-detail {
+            margin: 30px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        .featured-image-detail img {
+            width: 100%;
+            height: auto;
+            max-height: 550px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* İÇİNDEKİLER TABLOSU (TOC) */
+        .toc-box {
+            background-color: var(--color-background);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            margin-bottom: 30px;
+        }
+        .toc-box h3 {
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-secondary);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        .toc-box a {
+            color: var(--color-text);
+            text-decoration: none;
+            display: block;
+            padding: 5px 0;
+            transition: color 0.2s;
+            font-size: 0.95em;
+        }
+        .toc-box a:hover { color: var(--color-secondary); transform: translateX(3px); }
+
+        /* MAKALENİN İÇİNDEKİ YAZI STİLLERİ */
+        .article-body-text h2 {
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            color: var(--color-secondary);
+            border-left: 4px solid var(--color-secondary);
+            padding-left: 15px;
+        }
+        .article-body-text p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: var(--color-text);
+        }
+        .article-body-text ul { margin: 15px 0 25px 25px; list-style-type: none; }
+        .article-body-text ul li { position: relative; padding-left: 25px; margin-bottom: 10px; line-height: 1.6; }
+        .article-body-text ul li::before {
+            content: '⚡';
+            color: var(--color-secondary);
+            position: absolute;
+            left: 0;
+            font-size: 1em;
+        }
+        
+        /* SIDEBAR STİLLERİ */
+        .related-articles-box {
+            background-color: var(--color-background);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px var(--color-shadow);
+            border: 1px solid var(--color-border);
+        }
+        .related-articles-box h3 {
+            color: var(--color-primary);
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            font-weight: 700;
+        }
+        .related-articles-box a {
+            display: block;
+            margin-bottom: 12px;
+            color: var(--color-text);
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 0.95em;
+            border-left: 3px solid transparent;
+            padding-left: 5px;
+        }
+        .related-articles-box a:hover { color: var(--color-secondary); border-left: 3px solid var(--color-secondary); }
+
+        /* FORM STİLİ */
+        .comment-form textarea, .comment-form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            background-color: var(--color-card-background);
+            color: var(--color-text);
+            font-size: 0.95em;
+        }
+        .comment-form button {
+            background-color: var(--color-secondary);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            font-weight: bold;
+        }
+        .comment-form button:hover { opacity: 0.9; }
+
+
+        /* Mobil Uyum */
+        @media (max-width: 1024px) {
+            .content-wrapper { flex-direction: column; padding: 0 20px; }
+            .article-sidebar { max-width: 100%; min-width: unset; padding-top: 20px; }
+            .hero-header-content h1 { font-size: 2.2em; }
+        }
+             .share-section {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border);
+}
+.share-section h4 {
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    color: var(--color-primary);
+}
+.share-buttons-container {
+    display: flex;
+    gap: 15px;
+    /* justify-content: center; Opsiyonel, kaldırıldı */
+}
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: opacity 0.2s;
+}
+.share-btn:hover { opacity: 0.8; }
+.btn-twitter { background-color: #1DA1F2; } /* Twitter Mavi */
+.btn-facebook { background-color: #4267B2; } /* Facebook Mavi */
+.btn-linkedin { background-color: #0077B5; } /* LinkedIn Mavi */
+
+.share-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor; 
+    margin-right: 8px;
+    flex-shrink: 0; 
+}
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body class="dark-mode"> 
+
+    <header>
+        <div class="logo">TeknoGündem</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li class="dropdown">
+                    <a href="donanım.html">Donanım </a>
+                    <ul class="dropdown-content">
+                        <li><a href="haberler.html">Haberler</a></li>
+                        <li><a href="incelemeler.html">İncelemeler</a></li>
+                    </ul>
+                </li>
+                <li><a href="yazılım.html">Yazılım </a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero-article-header">
+        <div class="hero-header-content">
+            <span class="tag">İŞLEMCİ ÖZEL</span>
+            <h1>Intel Core Ultra 9: Yapay Zeka ile Performans ve Verimlilikte Yeni Standart! 🚀</h1> 
+            <p class="article-summary-text">Intel'in mobil pazarı kökünden değiştirecek yeni nesil Core Ultra 9 işlemcileri resmen tanıtıldı. Entegre NPU ile verimlilikte %30'a varan artış hedefleniyor.</p>
+            <div class="article-meta-info">
+                <span>📅 12 Kasım 2025</span> 
+                <span>✍️ Yazar: Can Erdem</span>
+            </div>
+        </div>
+    </div>
+    
+    <main class="full-width-section">
+        <div class="content-wrapper">
+            
+            <section class="article-main-text-area">
+                
+                <figure class="featured-image-detail">
+                    <img src="intel core  ultra 9  haberler.jpg" 
+                         alt="Yeni Nesil Intel Core Ultra İşlemcileri" 
+                         loading="lazy"
+                         onerror="this.style.display='none'">
+                    <figcaption style="font-size: 0.8em; color: var(--text-gray); text-align: center; padding: 10px;">Core Ultra 9, mobil işlemci pazarında yeni bir dönemin başlangıcı. (Kaynak: Intel)</figcaption>
+                </figure>
+
+                <div class="article-body-text">
+                    
+                    <h2 id="npu-entegrasyonu">Yapay Zeka ve NPU Entegrasyonu</h2>
+                    <p>En büyük yenilik, işlemciye entegre edilen özel <strong>Yapay Zeka Çekirdekleri (NPU)</strong>. Bu çekirdekler, video düzenleme, fotoğraf işleme ve arka plan bulanıklaştırma gibi AI görevlerini CPU ve GPU'ya yük bindirmeden çok daha hızlı ve enerji verimli bir şekilde gerçekleştiriyor. Bu sayede, profesyonel mobil iş istasyonlarının performansı yeni bir boyuta taşınıyor.</p>
+                    <p>İlk test sonuçları, <strong>Core Ultra 9'un önceki nesil amiral gemisi mobil işlemcilere kıyasla %30'a varan verimlilik artışı</strong> sunduğunu gösteriyor.</p>
+                    
+                    <h2 id="hibrit-mimari">Yenilenmiş Hibrit Mimari ve Verimlilik Çekirdekleri</h2>
+                    <p>Core Ultra 9, Intel'in yeni nesil hibrit mimarisini kullanıyor. Bu mimari, yüksek performanslı P-Çekirdekleri (Performance-cores) ve verimli E-Çekirdeklerini (Efficiency-cores) bir araya getiriyor. Ancak asıl fark, verimlilik çekirdeklerinin (E-cores) sayısının artırılması ve NPU ile entegre çalışmasıdır. Bu, günlük görevlerde (web tarama, ofis uygulamaları) daha az güç tüketirken, ağır iş yüklerinde tam performansa ulaşmayı sağlıyor.</p>
+
+                    <h2 id="teknik-detaylar">Teknik Detaylar ve Soğutma Çözümleri</h2>
+                    <p>İşlemci, yeni bir hibrit mimariye sahip ve TDP limitlerini zorlamadan yüksek frekanslara çıkabiliyor. Temel teknik özellikler şunlardır:</p>
+                    <ul>
+                        <li>Mimari: Yeni Nesil (Kod Adı: Arrow Lake Mobile)</li>
+                        <li>Maksimum Çekirdek Sayısı: 24 (Tahmini)</li>
+                        <li>Entegre Grafikler: Xe-LPG (Önceki nesillere göre %50'ye varan performans artışı)</li>
+                        <li>Özel Donanım: 1 adet Neural Processing Unit (NPU)</li>
+                    </ul>
+                    <p>Bu yüksek performansı dizüstü bilgisayarlarda tam olarak kullanabilmek için üreticiler, yeni <strong>buhar odacıklı (Vapor Chamber)</strong> soğutma çözümlerine yöneliyor. Tüketicilerin bu gücü ilk olarak Aralık ayında piyasaya sürülecek amiral gemisi dizüstü bilgisayarlarda deneyimlemesi bekleniyor.</p>
+
+                    <h2 id="karsilastirma">Rekabet ve Pazar Beklentisi</h2>
+                    <p>Core Ultra 9'un en büyük rakibi, AMD'nin yakında çıkacak olan Ryzen serisi mobil işlemcileri olacak. Intel, NPU üzerindeki erken avantajını kullanarak, özellikle yapay zeka odaklı uygulamalarda pazar liderliğini korumayı hedefliyor. Mobil içerik üreticileri ve mühendislik öğrencileri için bu işlemcinin getireceği hız ve verimlilik, sektördeki dengeleri tamamen değiştirecek gibi görünüyor.</p>
+                    
+                </div>
+                
+              <div class="share-section">
+    <h4>Bu Haberi Paylaş:</h4>
+    <div class="share-buttons-container">
+        <a href="https://twitter.com/intent/tweet?url=URL_BURAYA&text=Intel Core Ultra 9: Performans ve Verimlilikte Yeni Standart! TeknoGündem'de okuyun." 
+           target="_blank" 
+           class="share-btn btn-twitter">
+            <svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+            Twitter
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=URL_BURAYA" 
+           target="_blank" 
+           class="share-btn btn-facebook">
+            <svg viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036c-2.148 0-2.971.956-2.971 3.035v.937h4.028l-.385 3.667h-3.643v7.98h-5.844z"/></svg>
+            Facebook
+        </a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=URL_BURAYA&title=Intel Core Ultra 9: Yeni Standart!" 
+           target="_blank" 
+           class="share-btn btn-linkedin">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+        </a>
+    </div>
+</div>
+               
+
+
+
+
+            </section>
+            
+            <aside class="article-sidebar">
+
+                <div class="toc-box">
+                    <h3>İçindekiler</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="#npu-entegrasyonu">1. Yapay Zeka ve NPU Entegrasyonu</a></li>
+                        <li><a href="#hibrit-mimari">2. Yenilenmiş Hibrit Mimari</a></li>
+                        <li><a href="#teknik-detaylar">3. Teknik Detaylar ve Soğutma</a></li>
+                        <li><a href="#karsilastirma">4. Rekabet ve Pazar Beklentisi</a></li>
+                    </ul>
+                </div>
+
+                <div class="related-articles-box">
+                    <h3>📢 DİĞER HABERLER</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="rtx-5070 -haberler.html">RTX 5070 Teknik Özellikleri Sızdırıldı: Bellek Miktarı Şaşırttı!</a></li>
+                        <li><a href="gpu-zinciri-haber.html">Global GPU Tedarik Zinciri Sorunları Tamamen Çözüldü</a></li>
+                        <li><a href="amd -strix- haber.html">AMD Strix Point APU'lar Mobil Pazarı Alt Üst Edecek</a></li>
+                    </ul>
+                </div>
+   
+            </aside>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 TeknoGündem. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+    
+</body>
+</html>

@@ -3,174 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intel Arc B580 İncelemesi | Teknogündem Donanım</title>
+    <title>Intel Arc B580 Masaüstü İncelemesi | Teknogündem Donanım</title>
     <link rel="stylesheet" href="css/style.css"> 
-    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
-<style>
-    /* SADECE BU SAYFAYA ÖZEL STİLLER (GPU Teması: Yeşil/Mavi) */
-    
-    body { 
-        background-color: #0a0a0a; 
-        color: #f0f0f0; 
-        font-family: 'Poppins', sans-serif;
-    }
-    .main-body-container { 
-        background-color: transparent; 
-        padding-top: 50px; 
-        max-width: 1300px;
-        margin: 0 auto;
-    }
-    
-    /* GPU İNCELEMESİ İÇİN ÖZEL RENK VURGULARI (Yeşil/Mavi) */
-    
-    .accent-color { color: #00bcd4; /* Çiğ Mavi Vurgu (Intel Arc rengi) */ }
-    
-    /* 1. Başlık Rengi */
-    .detail-header h1 {
-        color: #4CAF50; /* Yeşil Vurgu */
-        text-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
-    }
-    
-    /* 2. Ana Puan Vurgusu */
-    .score-large {
-        background: linear-gradient(45deg, #4CAF50, #00bcd4); /* Yeşil - Mavi Gradyan */
-        -webkit-background-clip: text; 
-        background-clip: text; 
-        color: transparent; 
-        font-size: 3.5em;
-        font-weight: 900;
-        padding: 10px 0;
-        border-bottom: 3px solid #4CAF50;
-    }
-    /* 3. Sonuç Kutusu Rengi */
-    .conclusion-box {
-        border: 3culosolid #00bcd4; /* Mavi Sınır */
-        background-color: #1a2a2a; /* Koyu Yeşilimsi Ton */
-        padding: 20px;
-        margin-top: 30px;
-        border-radius: 8px;
-    }
-    
-    /* 4. İnceleme Başlıkları */
-    .detail-review-body h2 span, 
-    .technical-specs-box h2 {
-        color: #4CAF50; /* Yeşil Vurgusu */
-    }
-    
-    /* İSTENEN DEĞİŞİKLİK: İLGİLİ METİNLERİ BEYAZ YAPILDI */
-    /* 💻 Alchemist Mimarisi ve Oyun Performansı altındaki metin */
-    .detail-review-body h2:nth-of-type(1) + p {
-        color: white; 
-    }
-    /* ✨ Ray Tracing ve Yapay Zeka Desteği altındaki metin */
-    .detail-review-body h2:nth-of-type(2) + p {
-        color: white; 
-    }
-    
-    /* 5. Artı ve Eksiler */
-    #detail-pros li { color: #76ff03; } /* Artılar Yeşil */
-    #detail-cons li { color: #ff9800; } /* Eksiler Turuncu */
-    
-    /* Teknik özellikler tablosu */
-    .specs-list { list-style: none; padding: 0; }
-    .specs-list li { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px dashed #333; }
-    .specs-list span:first-child { color: #999; }
-    
-    /* Genel İnceleme Sayfası Yerleşimi */
-    .review-content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-top: 30px; }
-    .main-content { grid-column: 1 / 2; }
-    .technical-specs-box { grid-column: 2 / 3; padding: 20px; background-color: #1a2a2a; border-radius: 8px; }
-    .video-container { margin-bottom: 30px; border-radius: 8px; overflow: hidden; }
-    #pros-cons-container { display: flex; gap: 40px; margin-top: 30px; }
-    #pros-cons-container ul { list-style: none; padding: 0; }
+    <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
 
-</style>    
+    <style>
+        body { 
+            background-color: #0a0a0a; 
+            color: #f0f0f0; 
+            font-family: 'Poppins', sans-serif;
+        }
+        .main-body-container { 
+            background-color: transparent; 
+            padding-top: 50px; 
+            max-width: 1300px;
+            margin: 0 auto;
+        }
 
+        /* Renk Vurguları - GPU İncelemesi İçin Mavi/Mor */
+        .accent-color { color: #7b5bff; }
+
+        .detail-header h1 {
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(123, 91, 255, 0.7);
+        }
+
+        .score-large {
+            background: linear-gradient(45deg, #5b2bff, #a18bff);
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            color: transparent; 
+            font-size: 3.5em;
+            font-weight: 900;
+            padding: 10px 0;
+            border-bottom: 3px solid #5b2bff;
+        }
+
+        .conclusion-box {
+            border: 3px solid #7b5bff;
+            background-color: #14111a;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 8px;
+        }
+
+        .detail-review-body h2 span, 
+        .technical-specs-box h2 {
+            color: #7b5bff;
+        }
+
+        #detail-pros li { color: #76ff03; }
+        #detail-cons li { color: #ff9800; }
+
+        .specs-list { list-style: none; padding: 0; }
+        .specs-list li { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px dashed #333; }
+        .specs-list span:first-child { color: #ccc; }
+
+        .review-content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-top: 30px; }
+        .main-content { grid-column: 1 / 2; }
+        .technical-specs-box { grid-column: 2 / 3; padding: 20px; background-color: #1a1a1a; border-radius: 8px; }
+        .video-container { margin-bottom: 30px; border-radius: 8px; overflow: hidden; }
+        #pros-cons-container { display: flex; gap: 40px; margin-top: 30px; }
+        #pros-cons-container ul { list-style: none; padding: 0; }
+        .detail-review-body p { color: #f0f0f0; }
+    </style>
 </head>
 <body>
 
-    <header>
-        <div class="header-content">
-            <h1>TEKNOGÜNDEM<span class="logo-dot">.</span></h1>
-            <nav>
-                <ul>
-               <li><a href="index.html">Ana Sayfa</a></li>
-            
-            <li class="dropdown">
-                
-                <a href="donanım.html">Donanım</a> 
-                
-                <div class="dropdown-content"> 
-                    <a href="haberler.html" class="dropdown-item">Haberler</a> 
-                    <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
-                </div>
-            </li>
-            <li><a href="yazılım.html" >Yazılım</a></li>
-            
-            <li><a href="hakkimizda.html">Hakkımızda</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<header>
+    <div class="header-content">
+        <h1>TEKNOGÜNDEM</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+
+                <li class="dropdown">
+                    <a href="donanım.html">Donanım </a>
+                    <ul class="dropdown-content">
+                        <li><a href="haberler.html">Haberler</a></li>
+                        <li><a href="incelemeler.html">İncelemeler</a></li>
+                    </ul>
+                </li>
+                <li><a href="yazılım.html">Yazılım </a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
 <div class="main-body-container">
-        
+
     <section id="review-detail-section">
         <div class="detail-header">
-            <h1>Intel Arc B580 Masaüstü İncelemesi</h1>
-            <p class="subtitle">Fiyat/Performans Dengesi mi? Intel'in Üst Seviye Ray Tracing Girişimi</p>
-            <div class="score-large">⭐ 8.2/10</div>
+            <h1>Intel Arc B580 Masaüstü Ekran Kartı İncelemesi</h1>
+            <p class="subtitle" style="color: #ffffff;">Fiyat/Performans Sınıfında Yeni Bir Aday</p>
+            <div class="score-large">⭐ 8.7/10</div>
         </div>
 
         <div class="review-content-grid">
-            
+
             <div class="main-content">
-                
-                <div class="video-container">
-                    <iframe 
-    width="100%" 
-    height="450" 
-    src="https://www.youtube.com/embed/gf4Msqg3tBY" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen>
-</iframe>
-                </div>
-                
+            <div class="video-container">
+            <iframe 
+             width="100%" 
+             height="450" 
+             src="https://www.youtube-nocookie.com/embed/ml_2cI_RfsI" 
+             frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+             allowfullscreen>
+            </iframe>
+             </div>
+
                 <div class="detail-review-body">
-                    
-                    <h2 style="margin-top: 0;"><span class="accent-color">💻 Alchemist Mimarisi ve Oyun Performansı</span></h2>
+
+                    <h2><span class="accent-color">🚀 Orta Segment İçin Yeni Bir Rakip</span></h2>
                     <p>
-                        Intel Arc A980, Xᵉ² Alchemist mimarisinin tam gücünü temsil ediyor. Kart, özellikle DirectX 12 Ultimate API'sini kullanan yeni nesil oyunlarda harikalar yaratıyor. Ancak, eski DirectX 11 veya Vulkan tabanlı oyunlarda sürücü optimizasyonu eksiklikleri nedeniyle performansta dalgalanmalar yaşanabiliyor. 1440p çözünürlükte, DLSS muadili olan XeSS teknolojisi ile rekabetçi bir deneyim sunuyor.
+                        Intel Arc B580, Arc Battlemage serisinin fiyat/performans odaklı masaüstü modeli olarak konumlanıyor. Yeni nesil Xe2 mimarisi sayesinde ışın izleme ve yapay zeka destekli yükseltme tekniklerinde önceki kuşaklara göre ciddi bir ilerleme kaydediyor.
                     </p>
 
-                    <h2><span class="accent-color">✨ Ray Tracing ve Yapay Zeka Desteği</span></h2>
+                    <h2><span class="accent-color">🎮 Oyun Performansı ve Sürücü Olgunluğu</span></h2>
                     <p>
-                        A980'in en iddialı olduğu alan Ray Tracing (Işın İzleme). Özel Işın İzleme birimleri sayesinde, NVIDIA ve AMD'nin amiral gemisi kartlarıyla rekabet edebilecek düzeyde detaylı ve etkileyici görseller sunabiliyor. Ayrıca, Intel'in yapay zeka ve video kodlama yetenekleri (özellikle AV1 desteği) içerik üreticileri için bu kartı cazip bir alternatif haline getiriyor.
+                        1080p ve 1440p çözünürlüklü oyun testlerinde Arc B580, RTX 4060 ve RX 7600 ile rekabet eden bir performans sunuyor. Özellikle XeSS desteği olan oyunlarda FPS artışı oldukça etkileyici. Intel'in sürücü tarafındaki gelişimi, bu kartı artık çok daha stabil ve akıcı bir seçenek haline getiriyor.
                     </p>
 
                     <div id="pros-cons-container">
                         <div>
                             <h2><span style="color: #76ff03;">✅ Artıları</span></h2>
                             <ul id="detail-pros">
-                                <li>Pazardaki en iyi Ray Tracing fiyat/performans dengesi.</li>
-                                <li>AV1 donanım kodlama/kod çözme desteği (içerik üreticileri için önemli).</li>
-                                <li>XeSS (Yapay Zeka Yükseltme) teknolojisi çok başarılı.</li>
-                                <li>Referans tasarımlı kartın estetik ve şık görünümü.</li>
+                                <li>Xe2 mimarisi sayesinde güçlü raster ve RT performansı.</li>
+                                <li>Uygun fiyat segmentinde rekabetçi FPS değerleri.</li>
+                                <li>Modern encode/decode birimleri.</li>
+                                <li>XeSS ile yüksek FPS avantajı.</li>
                             </ul>
                         </div>
                         <div>
                             <h2><span style="color: #ff9800;">❌ Eksileri</span></h2>
                             <ul id="detail-cons">
-                                <li class="negative">Eski oyunlarda ve sürücü optimizasyonu zayıf.</li>
-                                <li class="negative">Yüksek güç tüketimi (TDP) rakiplerine göre yüksek.</li>
-                                <li class="negative">Piyasa bulunabilirliği başlangıçta sınırlı olabilir.</li>
+                                <li>Sürücü optimizasyonları hâlâ bazı oyunlarda geride kalabiliyor.</li>
+                                <li>Güç tüketimi rakiplerine göre biraz yüksek.</li>
+                                <li>Yaygın benchmark desteği henüz sınırlı.</li>
                             </ul>
                         </div>
                     </div>
-                    
+
                     <div class="conclusion-box">
                         <h2>✨ Editörün Yorumu</h2>
-                        <p style="color: #f0f0f0;">Intel Arc A980, Intel'in ekran kartı pazarında ne kadar ciddi olduğunun kanıtıdır. Saf performans açısından amiral gemisi rakiplerini tam olarak geçemese de, agresif fiyatlandırması ve üstün Işın İzleme yetenekleriyle dikkat çekiyor. Eğer yeni nesil oyunları ve içerik üretimini destekleyen bir kart arıyorsanız, A980 güçlü bir üçüncü alternatiftir. Gelecek yazılım güncellemeleri ile performansı artacaktır.</p>
+                        <p>
+                            Intel Arc B580, bütçe dostu oyunculara hitap eden güçlü ve modern bir ekran kartı. Xe2 mimarisi ile Intel artık gerçek anlamda rekabetçi bir GPU sunuyor. Eğer 1440p orta-yüksek ayarlarda stabil FPS arıyorsanız ve uygun fiyat istiyorsanız, Arc B580 çok mantıklı bir tercih.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -178,30 +158,29 @@
             <div class="technical-specs-box">
                 <h2 class="accent-color">⚙️ Teknik Özellikler</h2>
                 <ul class="specs-list">
-                    <li><span>Çekirdek Mimarisi</span> <span>Xᵉ² Alchemist</span></li>
-                    <li><span>Xe Çekirdek Sayısı</span> <span>32</span></li>
-                    <li><span>Bellek (VRAM)</span> <span>16 GB GDDR6</span></li>
-                    <li><span>Bellek Arayüzü</span> <span>256-bit</span></li>
-                    <li><span>Saat Hızı (Boost)</span> <span>2500 MHz+</span></li>
-                    <li><span>TDP (Güç Tüketimi)</span> <span>Yaklaşık 300W</span></li>
+                    <li><span>Mimari</span> <span>Intel Xe2 Battlemage</span></li>
+                    <li><span>VRAM</span> <span>12 GB GDDR6</span></li>
+                    <li><span>Bellek Veri Yolu</span> <span>192-bit</span></li>
+                    <li><span>TBP</span> <span>200W</span></li>
+                    <li><span>Destekler</span> <span>XeSS, Ray Tracing, AV1 Encode/Decode</span></li>
                 </ul>
-                <h2 class="accent-color" style="margin-top: 30px;">🎮 Ek Teknolojiler</h2>
+
+                <h2 class="accent-color" style="margin-top: 30px;">🖥️ Platform Desteği</h2>
                 <ul class="specs-list">
-                    <li><span>Ray Tracing</span> <span>Var (Donanımsal Hızlandırma)</span></li>
-                    <li><span>Upscaling (Yükseltme)</span> <span>Intel XeSS</span></li>
+                    <li><span>Bağlantılar</span> <span>3× DisplayPort 2.1, 1× HDMI 2.1</span></li>
+                    <li><span>PCIe</span> <span>PCIe 5.0 x16</span></li>
                 </ul>
             </div>
-            
+
         </div>
-        
     </section>
-    
+
 </div>
 
 <footer>
     <p>© 2025 TEKNOGÜNDEM DONANIM. Tüm hakları saklıdır.</p>
 </footer>
 
-<script src="js/script.js"></script> 
+<script src="js/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DDR6 Bellek Standardı Geliyor: Hızlar Nasıl Katlanacak? | TeknoGündem</title>
+    <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Konfigürasyonu: Karanlık Mod ve Font Ayarları -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    // Renkler, Karanlık Mod için uyarlanmıştır
+                    colors: {
+                        'primary': '#007bff', // Mavi Vurgu
+                        'secondary': '#ffc107', // Sarı/Turuncu Vurgu
+                        'bg-dark': '#121212',
+                        'card-dark': '#1e1e1e',
+                        'text-light': '#e0e0e0',
+                        'text-gray': '#a0a0a0',
+                        'border-dark': '#333333',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+  <style>
+    /* Inter Fontu Yüklemesi */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+    
+    /* HEADER VE FOOTER STİLLERİ */
+    header {
+        background-color: #000; 
+        color: white;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: blue;
+    }
+    header nav ul {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+    }
+    header nav ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 0;
+        border-bottom: 2px solid transparent;
+        transition: border-bottom 0.3s ease;
+        display: flex;
+        align-items: center;
+    }
+    header nav ul li a:hover {
+        border-bottom: 2px solid theme('colors.primary');
+    }
+
+    /* NAV DROPDOWN DÜZELTMESİ VE STABİLİZASYON */
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown-link {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 0;
+        border-bottom: 2px solid transparent;
+        display: flex;
+        align-items: center;
+    }
+
+    .dropdown-link:hover {
+        border-bottom: 2px solid theme('colors.primary');
+    }
+
+    /* Açılır menü */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%; 
+        left: 0;
+        
+        /* DÜZELTME 1: Arka planı tamamen siyah yapıldı */
+        background-color: #000; 
+        
+        min-width: 160px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.8); 
+        z-index: 10;
+        border-radius: 0.5rem;
+        padding: 0;
+        margin: 0;
+        /* DÜZELTME 2: Tüm kenarlıkları kaldırıldı */
+        border: none;
+        list-style: none;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content li {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .dropdown-content li a {
+        display: block;
+        padding: 12px 16px;
+        color: theme('colors.text-light');
+        white-space: nowrap;
+        border-bottom: none;
+    }
+
+    .dropdown-content li a:hover {
+        /* DÜZELTME 3: Sadece koyu gri arka plan kullanıldı, mavi kenar kaldırıldı */
+        background-color: theme('colors.border-dark');
+        border-left: none; 
+    }
+
+
+    footer {
+        background-color: #000;
+        color: theme('colors.text-gray');
+        text-align: center;
+        padding: 1.5rem 0;
+        font-size: 0.9rem;
+        border-top: 1px solid theme('colors.border-dark');
+    }
+    
+    /* Mobil Uyum */
+    @media (max-width: 768px) {
+        header {
+            flex-direction: column;
+            padding: 1rem;
+        }
+        header nav ul {
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .dropdown-content {
+            position: relative; 
+            width: 100%;
+            text-align: center;
+        }
+    }
+</style>
+</head>
+
+<body class="bg-bg-dark text-text-light font-sans antialiased"> 
+
+<header>
+    <div class="logo">TeknoGündem</div>
+  <nav>
+    <ul>
+        <li><a href="index.html">Ana Sayfa</a></li>
+
+        <li class="dropdown">
+            <a href="#" class="dropdown-link">
+                Donanım
+            </a>
+
+            <ul class="dropdown-content">
+                <li><a href="haberler.html">Haberler</a></li>
+                <li><a href="incelemeler.html">İncelemeler</a></li>
+            </ul>
+        </li>
+
+        <li><a href="yazılım.html">Yazılım</a></li>
+        <li><a href="hakkimizda.html">Hakkımızda</a></li>
+    </ul>
+</nav>
+</header>
+
+    
+    <!-- HERO BAŞLIK ALANI (DDR6 Odaklı) -->
+    <div class="w-full py-20 mb-10 text-center text-white shadow-2xl" 
+         style="background: linear-gradient(135deg, #1e3a8a 0%, #06b6d4 100%);"> <!-- Koyu Mavi/Turkuaz Gradien -->
+        <div class="max-w-4xl mx-auto px-5">
+            <span class="inline-block bg-white bg-opacity-10 border border-white border-opacity-30 text-white font-bold tracking-wider uppercase px-4 py-2 rounded-lg mb-5 text-sm transition duration-300 hover:bg-opacity-20">BELLEK TEKNOLOJİSİ</span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-shadow-lg" style="text-shadow: 0 0 10px rgba(0,0,0,0.5);">
+                DDR6 Bellek Standardı Geliyor: Hızlar 17000 MT/s'ye Kadar Ulaşacak! ⚡
+            </h1> 
+            <p class="text-xl text-gray-200 mb-8">JEDEC tarafından geliştirilen yeni nesil DDR6 RAM'ler, bant genişliğini ve enerji verimliliğini tamamen yeniden tanımlayacak.</p>
+            <div class="flex justify-center items-center gap-6 pt-4 border-t border-white border-opacity-30 text-gray-300 text-sm">
+                <span>28 Mart 2026</span> 
+                <span>Yazar: Ece Bulut</span>
+            </div>
+        </div>
+    </div>
+    
+
+    <main class="w-full py-10">
+        
+        <!-- Ana İçerik ve Yan Bölüm Kapsayıcısı -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row gap-10">
+            
+            <!-- Ana Makale Alanı -->
+            <section class="flex-3 w-full lg:w-3/4 min-w-0"> 
+                
+                <span class="block text-right text-text-gray font-bold text-sm mb-5 pb-3 border-b border-border-dark">
+                    Okuma Süresi: 7 Dakika ⏱️
+                </span>
+
+                <!-- İÇİNDEKİLER TABLOSU (TOC) -->
+                <div class="bg-card-dark p-6 rounded-xl border border-border-dark mb-8 shadow-lg">
+                    <h3 class="text-primary border-b-2 border-secondary pb-3 mb-4 text-xl font-semibold">İçindekiler</h3>
+                    <ul class="space-y-2 list-none p-0">
+                        <li><a href="#toc-hizlar" class="text-text-light hover:text-secondary transition duration-200">1. DDR6'da Beklenen Temel Hızlar ve Karşılaştırma</a></li>
+                        <li><a href="#toc-mimari" class="text-text-light hover:text-secondary transition duration-200">2. Mimari Değişiklikler: Sinyal Bütünlüğü ve Güç</a></li>
+                        <li><a href="#toc-gelecek" class="text-text-light hover:text-secondary transition duration-200">3. Kimler İçin Büyük Değişiklik?</a></li>
+                    </ul>
+                </div>
+
+                <figure class="featured-image-detail mb-8">
+                    <!-- Placeholder görsele geçildi. -->
+                    <img src="ddr6 ram jpg.jpg" 
+                         alt="DDR6 RAM Konsept Görseli" loading="lazy" 
+                         class="w-full h-auto max-h-[500px] object-cover rounded-lg shadow-xl">
+                    <figcaption class="text-xs text-text-gray text-center mt-2">DDR6 bellek modüllerinin gelecekteki tasarımı ve artırılmış pin yoğunluğu. (Kaynak: Endüstri Analizleri)</figcaption>
+                </figure>
+
+                <section class="article-body-text text-lg leading-relaxed space-y-6">
+
+                    <h2 id="toc-hizlar" class="text-2xl font-bold mt-8 text-secondary">DDR6'da Beklenen Temel Hızlar ve Karşılaştırma</h2>
+                    <p>DDR5 standardı 8000+ MT/s hızlara ulaşırken, DDR6'nın başlangıç hızının 8800 MT/s civarında olması bekleniyor. Ancak en heyecan verici olanı, hedeflenen son hızlar: 17000 MT/s ve ötesi. Bu, teorik olarak günümüzün en hızlı DDR5 modüllerinin iki katından fazla bir bant genişliği anlamına geliyor. Bu sıçrama, özellikle veri merkezleri, yüksek performanslı bilgi işlem (HPC) ve yapay zeka (AI) eğitimi için kritik öneme sahiptir.</p>
+                    
+                    
+
+                    <blockquote class="border-l-4 border-primary bg-card-dark p-6 my-6 italic rounded-lg shadow-md">
+                        <p>"DDR6 sadece hız artışı değil, aynı zamanda verimli güç tüketimi ve daha düşük voltajlar ile geliyor. Bu da sunucu ve mobil cihazlar için termal ve pil ömrü açısından devrim niteliğinde bir gelişmedir."</p>
+                        <cite class="block mt-4 text-sm font-semibold text-secondary">— TeknoGündem Donanım Analisti</cite>
+                    </blockquote>
+
+                    <h2 id="toc-mimari" class="text-2xl font-bold mt-8 text-secondary">Mimari Değişiklikler: Sinyal Bütünlüğü ve Güç</h2>
+                    <p>Bu denli yüksek hızlara ulaşmak, sadece DRAM yongalarını hızlandırmakla mümkün değil. DDR6 standardı, bellek modüllerinin fiziksel tasarımında köklü değişiklikler gerektiriyor. Öne çıkan mimari iyileştirmeler şunlardır:</p>
+                    <ul class="list-disc list-inside ml-4 space-y-2">
+                        <li>Çift Kanallı DIMM Tasarımı: DDR5'ten farklı olarak, DDR6 modüllerinin içinde sinyal bütünlüğünü korumak için daha fazla kanala ayrılmış yollar kullanılması bekleniyor.</li>
+                        <li>Gelişmiş PCB Katmanları ve Malzemeler: Yüksek frekanslarda sinyal kaybını (attenuation) minimuma indirmek için anakart ve modül PCB'lerinde daha sofistike, düşük kayıplı malzemeler kullanılacak.</li>
+                        <li>Düşük Çalışma Voltajı: DDR5'in 1.1V seviyesine kıyasla, DDR6'nın 1.0V'un altına inmesi bekleniyor, bu da güç tüketimini ve ısı üretimini önemli ölçüde azaltacak.</li>
+                    </ul>
+
+                    <h2 id="toc-gelecek" class="text-2xl font-bold mt-8 text-secondary">Kimler İçin Büyük Değişiklik?</h2>
+                    <p>DDR6'nın ilk benimseyicileri muhtemelen:</p>
+                    <p class="mb-4">Bu hız artışından en çok fayda görecek alanlar, büyük veri setleriyle çalışan profesyonel uygulamalar ve ultra yüksek çözünürlüklü oyun deneyimi hedefleyen üst düzey oyuncular olacaktır. Özellikle GPU'lara aktarılacak veri miktarının artması (Texture Streaming vb.) için işlemci ve bellek arasındaki bu bant genişliği artışı kritik öneme sahip.</p>
+                    <p>Tüketici pazarına ne zaman ulaşacağı, yonga seti üreticilerinin (Intel ve AMD) bu bellek standardını destekleyen ilk platformlarını piyasaya sürme takvimine bağlı olacaktır. Tahminler, 2026 sonu veya 2027 başını işaret ediyor.</p>
+                    
+                </section>
+
+                <!-- Sosyal Paylaşım Butonları -->
+                <div class="flex justify-center gap-4 mt-10 pt-6 border-t border-border-dark">
+                    <a href="https://x.com/?lang=trs" class="flex items-center px-4 py-2 rounded-lg text-sm font-semibold transition duration-300 bg-[#1DA1F2] hover:opacity-80">
+                        <svg class="w-4 h-4 mr-2 fill-current" viewBox="0 0 24 24"><path d="M18.9 4.8c-.7.3-1.5.5-2.3.6.8-.5 1.4-1.2 1.7-2.1-.8.5-1.7.9-2.7 1.1-.7-.7-1.7-1.2-2.8-1.2-2.1 0-3.8 1.7-3.8 3.8 0 .3.04.6.1.9C7 8.3 4.5 6.9 2.8 4.7c-.3.6-.5 1.2-.5 1.9 0 1.3.7 2.4 1.7 3.1-.6 0-1.2-.2-1.7-.5v.05c0 1.9 1.4 3.5 3.3 3.8-.3.1-.7.1-1.1.1-.3 0-.6 0-.8-.1 1.4 1.6 3.4 2.7 5.7 2.7-1.7 1.3-3.8 2.1-6.1 2.1-.4 0-.8 0-1.2-.1C4.3 19.3 7 20.2 9.9 20.2c8.2 0 12.7-6.8 12.7-12.7 0-.2 0-.4-.01-.6.9-.6 1.7-1.3 2.3-2.1z"/></svg> 
+                        Twitter'da Paylaş
+                    </a>
+                    <a href="https://tr.linkedin.com/" class="flex items-center px-4 py-2 rounded-lg text-sm font-semibold transition duration-300 bg-[#0077B5] hover:opacity-80">
+                        <svg class="w-4 h-4 mr-2 fill-current" viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19h-3v-9h3v9zm-1.5-10h-.01c-.8 0-1.3-.5-1.3-1.2 0-.7.5-1.2 1.3-1.2.8 0 1.3.5 1.3 1.2 0 .7-.5 1.2-1.3 1.2zm13 10h-3v-4.7c0-1.1-.4-1.7-1.3-1.7-.7 0-1.1.4-1.3.8v.9c0 0-.1 4.7-.1 4.7h-3s.1-8.5 0-9h3v1.3c.4-.7 1.2-1.3 2.7-1.3 2 0 3.5 1.3 3.5 4.3V19z"/></svg>
+                        LinkedIn'de Paylaş
+                    </a>
+                    <a href="https://www.facebook.com/?locale=tr_TR" class="flex items-center px-4 py-2 rounded-lg text-sm font-semibold transition duration-300 bg-[#4267B2] hover:opacity-80">
+                        <svg class="w-4 h-4 mr-2 fill-current" viewBox="0 0 24 24"><path d="M14.01 2.016h2.466V4.49H14.01c-.698 0-1.22.427-1.22 1.261v1.615h3.69l-.6 3.696H12.79v8.941h-4.8v-8.941H6.18V7.366h1.81V5.753c0-2.43 1.487-3.766 3.75-3.766h2.27z"/></svg>
+                        Facebook'ta Paylaş
+                    </a>
+                </div>
+
+            </section>
+            
+            <!-- Yan Bölüm (Sidebar) -->
+            <aside class="w-full lg:w-1/4 pt-4 lg:pt-10 min-w-[300px]">
+                
+                <div class="related-articles-box bg-card-dark p-6 rounded-xl border border-border-dark mb-8 shadow-lg">
+                    <h3 class="text-xl font-bold mb-4 text-primary">📢 DİĞER  HABERLER</h3>
+                    <ul class="list-none p-0 space-y-3">
+                        <li><a href="oled-monitör-haber.html" class="text-text-light hover:text-secondary transition duration-200">Oyun Dünyasında Yeni Standart: 480Hz OLED Monitörler Satışta!</a></li>
+                        <li><a href="10gb -fiber -haber.html" class="text-text-light hover:text-secondary transition duration-200">10 Gigabit Fiber Bağlantı Hızları Avrupa'da Yaygınlaşıyor</a></li>
+                        <li><a href="ışın-izleme-haber.html" class="text-text-light hover:text-secondary transition duration-200">Işın İzleme Donanımı Artık Giriş Seviyesine İndi</a></li>
+                    </ul>
+                </div>
+                
+               
+    
+            </aside>
+
+        </div>
+        
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 TeknoGündem. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+    
+</body>
+</html>

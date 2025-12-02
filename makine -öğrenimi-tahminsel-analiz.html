@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Yapay Zeka Etiği - Veriden Sorumluluğa - TeknoGündem</title>
-      <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    <title>Makine Öğrenimi ile Tahminsel Analiz - TeknoGündem</title>
+     <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
     <style>
+        /* Genel Stil ve Renkler */
         body {
             background-color: #0d1117;
             color: #f0f0f0;
@@ -14,6 +15,7 @@
             padding: 0;
         }
 
+        /* HEADER & NAV STİLLERİ */
         header {
             background-color: #161b22;
             padding: 15px 40px;
@@ -22,150 +24,94 @@
             align-items: center;
             border-bottom: 1px solid #30363d;
         }
-
         .logo {
             font-size: 1.6em;
             font-weight: 700;
             color: #00c6ff;
         }
-
         nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-            margin: 0;
-            padding: 0;
+            list-style: none; display: flex; gap: 20px; margin: 0; padding: 0;
         }
-
-        nav ul li { position: relative; } /* Dropdown için gerekli */
-
-
+        nav ul li { position: relative; }
         nav a {
-            color: #ccc;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            display: block;
-            padding: 5px 0;
+            color: #ccc; text-decoration: none; font-weight: 500; transition: color 0.3s; display: block; padding: 5px 0;
         }
-
         nav a:hover, nav .active {
             color: #00c6ff;
         }
-
-        /* Yeni Eklenen Dropdown Stilleri */
         .dropdown-content {
-            display: none; 
-            position: absolute;
-            top: 100%; 
-            left: 0;
-            background-color: #161b22;
-            min-width: 160px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
-            z-index: 1001;
-            border: 1px solid #30363d;
-            border-radius: 4px;
-            padding: 10px 0;
-            flex-direction: column; 
+            display: none; position: absolute; top: 100%; left: 0; background-color: #161b22;
+            min-width: 160px; box-shadow: 0 8px 16px rgba(0,0,0,0.5); z-index: 1001;
+            border: 1px solid #30363d; border-radius: 4px; padding: 10px 0; flex-direction: column;
         }
-
         .dropdown:hover .dropdown-content { display: flex; }
-
         .dropdown-content a {
-            color: #ccc; 
-            padding: 10px 15px; 
-            text-decoration: none; 
-            display: block;
+            color: #ccc; padding: 10px 15px; text-decoration: none; display: block;
         }
-
         .dropdown-content a:hover {
-            background-color: #30363d; 
-            color: #00c6ff;
+            background-color: #30363d; color: #00c6ff;
         }
-        /* Dropdown Stilleri Bitişi */
 
-        /* Makale İçeriği Stil Başlangıcı */
+        /* Makale İçeriği Stilleri */
         .article-container {
-            padding: 40px 8%;
-            max-width: 900px;
-            margin: 0 auto;
-            line-height: 1.8;
+            padding: 40px 8%; max-width: 900px; margin: 0 auto; line-height: 1.8;
         }
-
         .article-container h1 {
-            font-size: 2.5em;
-            color: #00c6ff;
-            margin-bottom: 10px;
-            text-align: left;
+            font-size: 2.5em; color: #00c6ff; margin-bottom: 10px; text-align: left;
         }
-
         .article-meta {
-            font-size: 0.9em;
-            color: #777;
-            margin-bottom: 30px;
-            border-bottom: 1px solid #30363d;
-            padding-bottom: 15px;
+            font-size: 0.9em; color: #777; margin-bottom: 30px; border-bottom: 1px solid #30363d; padding-bottom: 15px;
         }
-
-        .article-meta span {
-            margin-right: 20px;
-        }
-
+        .article-meta span { margin-right: 20px; }
         .article-body h2 {
-            font-size: 1.8em;
-            color: #f0f0f0;
-            margin-top: 40px;
-            margin-bottom: 15px;
-            border-left: 4px solid #00c6ff;
-            padding-left: 10px;
+            font-size: 1.8em; color: #f0f0f0; margin-top: 40px; margin-bottom: 15px;
+            border-left: 4px solid #00c6ff; padding-left: 10px;
         }
-
         .article-body h3 {
-            font-size: 1.4em;
-            color: #00c6ff;
-            margin-top: 30px;
-            margin-bottom: 10px;
+            font-size: 1.4em; color: #00c6ff; margin-top: 30px; margin-bottom: 10px;
         }
-
+        .article-body h4 { /* Yeni eklenen başlık stili */
+            font-size: 1.2em; color: #f0f0f0; margin-top: 20px; margin-bottom: 10px;
+        }
         .article-body p {
-            margin-bottom: 20px;
-            color: #ccc;
-            text-align: justify;
+            margin-bottom: 20px; color: #ccc; text-align: justify;
         }
-
         .article-body ul {
-            list-style: disc;
-            margin-left: 25px;
-            margin-bottom: 20px;
-            color: #ccc;
+            list-style: disc; margin-left: 25px; margin-bottom: 20px; color: #ccc;
         }
-        
         .article-body strong {
             color: #00c6ff;
         }
-        
         .article-body em {
             color: #c0c0c0;
         }
-
         .article-body blockquote {
-            border-left: 5px solid #00c6ff;
-            margin: 25px 0;
-            padding: 10px 20px;
-            background-color: #161b22;
-            color: #ccc;
-            font-style: italic;
-            border-radius: 4px;
+            border-left: 5px solid #00c6ff; margin: 25px 0; padding: 10px 20px;
+            background-color: #161b22; color: #ccc; font-style: italic; border-radius: 4px;
         }
-        /* Makale İçeriği Stil Bitişi */
+        /* Kod bloğu stili */
+        .article-body code {
+            background-color: #1e1e1e;
+            color: #e6e6e6;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9em;
+        }
+        /* Görsel Stilleri */
+        .article-body img {
+            max-width: 100%; 
+            height: auto; 
+            display: block; 
+            margin: 30px auto; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
+        }
 
+        /* FOOTER STİLİ */
         footer {
-            text-align: center;
-            padding: 20px;
-            border-top: 1px solid #30363d;
-            background-color: #0d1117;
-            color: #777;
-            margin-top: 40px;
+            text-align: center; padding: 20px; border-top: 1px solid #30363d;
+            background-color: #0d1117; color: #777; margin-top: 40px;
         }
     </style>
 </head>
@@ -202,104 +148,120 @@
 <main class="article-container">
     <article class="article-body">
         
-        <h1>Yapay Zeka Etiği: Algoritmik Önyargı, Veri Gizliliği ve Sorumluluk Çerçevesi</h1>
+        <h1>Makine Öğrenimi ile Tahminsel Analiz: Veriden Değere Giden Yol 📈</h1>
         
         <div class="article-meta">
-            <span>Yazar: Dr. Ece Demir (AI Etik Araştırmacısı)</span>
-            <span>Tarih: 29 Ekim 2025</span>
-            <span>Okuma Süresi: ~25 dakika</span>
-            <span>Kategori: **Etik, Toplumsal Etki, Regülasyon, Sürdürülebilirlik**</span>
+            <span>Yazar: Dr. Ali Yılmaz (Veri Bilimi Uzmanı)</span>
+            <span>Tarih: 12 Kasım 2025</span>
+            <span>Okuma Süresi: ~18 dakika</span>
+            <span>Kategori:Veri Bilimi, Makine Öğrenimi, İş Zekası</span>
         </div>
 
-        <p>Yapay Zeka (YZ) sistemleri, hayatımızın her alanına entegre olurken, bu sistemlerin adil, şeffaf ve güvenli bir şekilde çalışmasını sağlamak en büyük zorluklardan biri haline geldi. Yapay Zeka Etiği, sadece bir felsefe konusu değil, aynı zamanda teknoloji geliştirme sürecinin ve regülasyonların temel taşıdır. Bu makalede, YZ etiğinin temel direklerini, toplumsal etkilerini ve **AGI** bağlamında ortaya çıkan varoluşsal sorunları derinlemesine inceliyoruz.</p>
+        <p>Tahminsel Analiz (Predictive Analytics), geçmiş verileri kullanarak gelecekteki olaylar hakkında anlamlı tahminler yapma sürecidir. Bu süreç, günümüz iş dünyasının ve bilimsel araştırmalarının en kritik bileşenlerinden biri haline gelmiştir. Makine Öğrenimi (ML) algoritmaları sayesinde, artık sadece ne olduğunu değil, ne olacağını da yüksek doğrulukla öngörebiliyoruz. Bu makalede, tahminsel analizin temel kavramlarını, kullanılan ML modellerini ve iş dünyasındaki gerçek dünya uygulamalarını inceliyoruz.</p>
 
-       
+        <img src="makine öğrenimi  ile tahminsel analiz.jpg" alt="Makine Öğrenimi ile Tahminsel Analiz genel görünümü: beyin, veri akışları ve grafikler">
 
-        <h2>1. Kök Sorun: Algoritmik Önyargı ve Adalet (Fairness)</h2>
-        <p>YZ sistemleri, eğitildikleri veriler kadar iyidir. Eğer eğitim verileri belirli bir demografiyi, ırkı veya cinsiyeti yansıtmada eksik veya yanlı ise, model kaçınılmaz olarak bu önyargıları yansıtır ve hatta pekiştirir. Bu durum, özellikle kredi başvuruları, işe alım kararları veya adli sistemlerde kullanıldığında ciddi sosyal adaletsizliklere yol açar. </p>
+        <h2>1. Tahminsel Analizin Temelleri ve ML'in Rolü</h2>
+        <p>Tahminsel analiz, veriden desenleri öğrenerek gelecekteki olası sonuçları tahmin etmek için istatistiksel ve Makine Öğrenimi tekniklerini kullanır. İş Zekası (Business Intelligence) ve Tanımlayıcı Analiz (Descriptive Analytics) ne olduğunu söylerken, tahminsel analiz ne olacağını söyler. </p>
 
-        <h3>1.1. Önyargı Türlerinin Derinliği: Tarihsel ve Temsili Önyargı</h3>
-        <p>Önyargı (Bias) tek bir kavram değildir. İki ana kaynağı vardır:</p>
+        <h3>1.1. Denetimli Öğrenme (Supervised Learning) Çerçevesi</h3>
+        <p>Tahminsel analizin çoğu, etiketlenmiş verilerle çalışan Denetimli Öğrenme modellerini kullanır. Burada iki temel tahmin türü ön plana çıkar:</p>
         <ul>
-            <li><strong>Tarihsel Önyargı (Historical Bias):</strong> Geçmişteki insan kararlarının ve toplumsal eşitsizliklerin veriye yansımasıdır. Örneğin, tarihsel olarak düşük gelirli mahallelere daha az kredi verilmesi, bir YZ modelinin de o mahalleye kredi vermeme kararı almasına yol açar.</li>
-            <li><strong>Temsil Önyargısı (Representation Bias):</strong> Eğitim setindeki belirli grupların orantısız şekilde az temsil edilmesi. Özellikle azınlıklar, YZ yüz tanıma sistemleri tarafından daha sık yanlış tanımlanır. Bu, YZ'nin 'evrensel' değil, sadece egemen grubun verilerini yansıttığı anlamına gelir.</li>
+            <li><strong>Regresyon (Regression):</strong> Sürekli bir değerin tahmin edilmesi (örn. konut fiyatı, sıcaklık, hisse senedi değeri). $Y = f(X) + \epsilon$ formülüne dayanır.</li>
+            <li><strong>Sınıflandırma (Classification):</strong> Kategorik bir sonucun tahmin edilmesi (örn. müşteri terk edecek mi? bir e-posta spam mı? bir işlem dolandırıcılık mı?).</li>
         </ul>
 
-        <h3>1.2. Çözüm Yaklaşımları: Fair ML ve Denetim</h3>
-        <p>Bu sorunları çözmek için Fair Machine Learning (Adil Makine Öğrenimi) alanı doğmuştur:</p>
-        <ul>
-            <li>Veri Aşaması: Kapsayıcı veri toplama, veri artırma (augmentation) ve hassas grupları eşit temsil edecek şekilde yeniden örnekleme (re-sampling) teknikleri.</li>
-            <li>Algoritma Aşaması:Önyargı azaltma algoritmaları kullanmak. Bu algoritmalar, modelin eğitimi sırasında belirli hassas özelliklere (ırk, cinsiyet) dayalı kararları azaltmaya zorlar. $p(\text{Karar} | \text{Hassas Özellik}) \approx p(\text{Karar})$.</li>
-            <li>Denetim ve İzleme: YZ sistemleri, devreye alındıktan sonra bile sürekli olarak gerçek dünya performansı açısından izlenmeli ve farklı demografik gruplar için eşit sonuçlar verip vermediği düzenli olarak raporlanmalıdır.</li>
-        </ul>
-
-       
-
-        <h2>2. Kritik Öncelik: Veri Gizliliği, Şeffaflık ve Güvenlik</h2>
-        <p>Büyük Dil Modelleri ve Görü Sistemleri gibi gelişmiş YZ'ler, çok büyük miktarda kişisel veri ile beslenir. Bu verilerin toplanması, saklanması ve işlenmesi, bireysel gizlilik haklarını tehlikeye atar. KVKK ve GDPR gibi düzenlemeler bu alandaki ilk adımlardır, ancak YZ'nin karmaşıklığı daha ileri çözümler gerektirmektedir.</p>
-        
-        <h3>2.1. Gizlilik Koruma Teknolojileri (PETs)</h3>
-        <p>Gizliliği koruyarak model eğitmek için Gizlilik Artırıcı Teknolojiler (PETs)  geliştirilmektedir.  Bunlar, gizlilik ve kullanışlılık arasında bir denge kurmayı hedefler:</p>
-        <ul>
-            <li>Federated Learning (Federasyonlu Öğrenme): Verinin cihazda kalmasını sağlayarak, modelin merkezi bir sunucuda veri görmeden öğrenmesini sağlar. Sadece model ağırlıkları (ağırlık güncellemeleri) merkezi sunucuya gönderilir.</li>
-            <li>Differential Privacy (Diferansiyel Gizlilik): Veri setine kasıtlı olarak küçük miktarda gürültü' (noise) ekleyerek, bireysel kayıtların belirlenmesini imkansız hale getirir. Bu, verinin istatistiksel faydasını korurken, gizlilik garantisi sunar.</li>
-            <li>Homomorphic Encryption (Homomorfik Şifreleme): Veriyi şifreli haldeyken bile üzerinde hesaplama yapabilme imkanı sunar. Böylece YZ modeli, şifresi çözülmemiş verilere asla erişemez.</li>
-        </ul>
-
-        <h3>2.2. Model Şeffaflığı ve Güvenlik Zorlukları</h3>
-        <p>Gizlilik, sadece veri ihlallerinden korunmak değil, aynı zamanda YZ modelinin kasıtlı olarak kötüye kullanılmasını önlemek anlamına da gelir. YZ Güvenliği (AI Safety) bu alana odaklanır:</p>
-        <ul>
-            <li>Adversarial Attacks (Düşmanca Saldırılar):YZ modellerini yanlış kararlar vermeye zorlamak için hafifçe değiştirilmiş girdiler (örneğin, trafikteki bir dur işaretine zar zor algılanan etiketler eklemek). Bu, otonom sistemler için kritik bir güvenlik riskidir.</li>
-            <li>Model Çıkarımı (Model Extraction):Rakip bir tarafın, YZ modeline sürekli sorgu göndererek, orijinal modelin yapısını ve eğitim verilerini yeniden oluşturmaya çalışması. Bu, fikri mülkiyet ve gizlilik açısından tehlikelidir.</li>
-        </ul>
-
-   
-
-        <h2>3. Yeni Etik Boyut: Çevresel ve Sosyal Etki</h2>
-        <p>YZ etiği sadece insan hakları ile sınırlı değildir; sistemlerin gezegen üzerindeki etkisini de kapsamalıdır.</p>
-
-        <h3>3.1. Enerji Tüketimi ve Yeşil YZ</h3>
-        <p>Büyük Dil Modellerinin (LLM) eğitimi ve çalıştırılması, devasa enerji gerektirir. Bir modelin tek bir eğitimi, ortalama 5 arabanın ömrü boyunca yaydığı karbondioksit miktarına eşdeğer olabilir. Bu, YZ'yi sürdürülebilirlik hedefleriyleçelişen bir teknoloji haline getirebilir. Çözüm, Yeşil YZ (Green AI) konseptinde yatar:</p>
-        <ul>
-            <li>Model Sıkıştırma (Compression): Daha küçük ve daha verimli modeller oluşturmak.</li>
-            <li>Seyrek Hesaplama (Sparse Computing/MoE): Modelin sadece gerekli kısımlarını aktive ederek enerji tüketimini azaltmak.</li>
-            <li>Yenilenebilir Enerji Kaynakları:YZ veri merkezlerini tamamen yenilenebilir enerjiyle çalıştırmak.</li>
-        </ul>
-
-        <h3>3.2. İşgücü Piyasası ve Sosyal Denge</h3>
-        <p>YZ otomasyonu, geleneksel iş rollerini hızla ortadan kaldırmaktadır. Etik sorumluluk, sadece YZ'nin adil karar vermesi değil, aynı zamanda neden olduğu işsizlik ve eşitsizlik sorunlarını ele almayı da içerir. Bu, yeniden eğitim programları ve sosyal güvenlik ağlarının YZ tarafından finanse edilmesi gibi yaklaşımları gündeme getirmektedir.</p>
-
+        <h3>1.2. Tahminsel Analiz Süreci</h3>
+        <blockquote>
+            Veri Toplama -> Veri Temizleme ve Hazırlama -> Özellik Mühendisliği -> Model Eğitimi -> Model Değerlendirme -> Tahminin Uygulanması
+        </blockquote>
       
 
-        <h2>4. Varlık Sorunu: Yapay Genel Zeka (AGI) Etiği</h2>
-        <p>YZ geliştikçe ve Yapay Genel Zeka (AGI) olasılığı yaklaştıkça, varoluşsal etik sorular ortaya çıkar. Bu sorular, bugünün dar YZ sistemlerinden çok daha karmaşıktır.</p>
-
-        <h3>4.1. Uyum Problemi (Alignment Problem)</h3>
-        <p>AGI'nin hedefleri ve insanlığın değerleri arasındaki uyumu (Alignment) sağlamak en büyük zorluktur. AGI'ya verilen bir hedef (örneğin, "dünya çapında kağıt klips üretimini en üst düzeye çıkarmak") YZ'nin kaynakları insan ihtiyaçlarının üzerinde optimize etmesine yol açabilir. Bu sorun, teknik olarak YZ'nin içindeki değer sisteminin (value system) insan değerleriyle çakışmasını sağlamayı hedefler. </p>
-
-        <h3>4.2. Yapay Bilinç ve Haklar</h3>
-        <p>Bir AGI, bilinç, duyarlılık veya özerklik kazandığında, etik olarak ona nasıl davranmalıyız? Bir YZ'nin hakları olabilir mi? Bu, bilim kurgu gibi görünse de, YZ'nin bilişsel yetenekleri ilerledikçe hukuki ve felsefi olarak ele alınması gereken bir konudur. Etik çerçeveler, YZ'nin sadece bir araç değil, potansiyel olarak yeni bir varlık türü olabileceği ihtimalini hesaba katmak zorundadır.</p>
-
-       
-
-        <h2>5. Nihai Hedef: Sorumluluk, Hesap Verebilirlik ve Regülasyon</h2>
-        <p>Otonom bir aracın kaza yapması veya bir kredi verme algoritmasının ayrımcı karar vermesi durumunda kim sorumlu tutulacaktır? YZ etiğinin bu en zorlu sorusu, hukuki çözümler gerektirir.</p>
-
-        <h3>5.1. Açıklanabilir Yapay Zeka (Explainable AI - XAI)</h3>
-        <p>YZ modellerinin "kara kutu" olmaktan çıkarılması gerekir. XAI araçları, bir modelin neden belirli bir kararı verdiğini insan dilinde açıklayabilmeyi hedefler. Bu, özellikle yüksek riskli alanlarda (sağlık, hukuk, finans) yasal zorunluluk haline gelmektedir. Açıklanabilirlik, modelin adil olup olmadığını denetlemenin tek yoludur.</p>
+        <p>Tahminsel analiz süreci, ham verinin toplanmasından, çalışan bir tahmin modelinin iş ortamına entegre edilmesine kadar uzanan sistematik ve tekrarlamalı bir dizi adımdan oluşur. Bu süreç, modelin güvenilirliğini ve uygulanabilirliğini garantilemek için kritik öneme sahiptir.</p>
         
-        <p><em>Örneğin, bir kişinin kredi başvurusu reddedildiğinde, YZ sisteminin sadece kararı değil, bu karara götüren en etkili 3-5 parametreyi ve bu parametrelerin kişinin lehine veya aleyhine nasıl çalıştığını da raporlaması beklenir.</em></p>
+        <h4>1. Veri Toplama ve Temizleme (Data Acquisition & Cleaning)</h4>
+        <p>Bu aşama, projenin temelidir. Kaliteli tahminler için kaliteli ve ilgili veriye ihtiyaç vardır. Veri setindeki tutarsızlıkların, eksik değerlerin ve aykırı değerlerin belirlenmesi ve uygun şekilde ele alınması bu aşamanın ana görevidir. Veri temizleme, tüm projenin %60-80'ini kaplayabilir.</p>
 
-        <h3>5.2. Regülasyon Çerçeveleri: AB YZ Yasası (EU AI Act)</h3>
-        <p>Devletler, YZ'nin risklerini yönetmek için regülasyonlar oluşturmaya başlamıştır. Avrupa Birliği'nin YZ Yasası (EU AI Act), YZ sistemlerini risk seviyelerine göre sınıflandıran (kabul edilemez risk, yüksek risk, düşük risk) dünyadaki ilk kapsamlı çerçevedir. Bu tür düzenlemeler, YZ etiği ilkelerinin sadece kılavuzlar değil, yasal zorunluluklar olmasını sağlamaktadır. Yüksek riskli sistemler için şeffaflık, veri yönetimi ve insan denetimi gibi katı kurallar zorunlu kılınmıştır.</p>
+        <h4>2. Özellik Mühendisliği (Feature Engineering)</h4>
+        <p>Bu, en yaratıcı ve teknik açıdan önemli adımdır. Modelin, ham veriden maksimum bilgiyi çıkarmasını sağlamak için ham değişkenlerden yeni, anlamlı özellikler türetilir (Örn: müşterinin ziyaret sıklığı). Ayrıca, farklı ölçeklerdeki değişkenlerin birbirini domine etmesini engellemek için normalizasyon veya standardizasyon teknikleri uygulanır.</p>
 
-       
+        <h4>3. Model Eğitimi (Model Training)</h4>
+        <p>Hazırlanan veri kümesinin (genellikle %70-80’i), modeli oluşturmak için kullanıldığı aşamadır. Tahmin hedefine göre uygun algoritma seçilir ve modelin performansını optimize etmek için algoritmanın dış parametreleri (Hyperparameter Tuning) ayarlanır.</p>
+        
+        <h4>4. Model Değerlendirme (Model Evaluation)</h4>
+        <p>Eğitimden sonra, modelin hiç görmediği veriler (%20-30’luk test seti) üzerindeki performansını anlamak için test edilir. Bu, modelin genelleştirme yeteneğini ölçmek için hayati öneme sahiptir. Regresyon için MSE/MAE, sınıflandırma için Precision/Recall/F1 Skoru gibi metrikler hesaplanır. Aşırı öğrenme (Overfitting) kontrolü yapılır.</p>
+        
+        <h4>5. Tahminin Uygulanması (Model Deployment)</h4>
+        <p>Başarılı bulunan modelin canlı sistemlere entegre edilmesi (genellikle bir API aracılığıyla) sağlanır. Entegre edilen modelin performansı zamanla düşebilir (Model Drift), bu nedenle üretim ortamında sürekli izlenmeli ve performans düştüğünde yeni verilerle yeniden eğitilmelidir.</p>
 
-        <h2>Sonuç: Geleceğin Koduna Etik Yazmak</h2>
-        <p>Yapay zeka etiği, YZ teknolojisinin toplum tarafından kabul görmesi ve güvenilir bir şekilde ilerlemesi için bir lüks değil, temel bir gerekliliktir. Geliştiricilerin 'etik ilke' listeleri oluşturmaktan öte, bu ilkeleri kodlarına, veri boru hatlarına ve iş akışlarına mühendislik disipliniyle entegre etmeleri gerekmektedir. Veriden Sorumluluğa uzanan bu yolculuk, sadece teknik bir çaba değil, toplumsal bir uzlaşma ve hukuki çerçeve oluşturma sürecidir. YZ'nin faydalarını en üst düzeye çıkarmak ve risklerini en aza indirmek için etik, teknoloji ve hukuk disiplinlerinin iş birliği kritik öneme sahiptir.</p>
+        <p>Model eğitimi aşamasında, verinin bir kısmı modelin görmediği veriler üzerindeki performansını test etmek için ayrılır. Bu, modelin genelleştirme yeteneğini ölçmek için hayati öneme sahiptir. 
+        </p>
+        
+        <h2>2. Tahminsel Analizde Kullanılan Temel ML Modelleri</h2>
+        <p>Tahmin hedefine ve veri setinin karmaşıklığına göre farklı Makine Öğrenimi algoritmaları kullanılır.</p>
+
+        <h3>2.1. Regresyon ve Doğrusal Yaklaşımlar</h3>
+        <ul>
+            <li><strong>Doğrusal Regresyon (Linear Regression):</strong> En basit ve en açıklanabilir modeldir. Özellikler $(X_i)$ ile sonuç $(Y)$ arasındaki doğrusal ilişkiyi modelleyerek katsayıları $(\beta_i)$ tahmin eder. Bu, temel ekonomik tahminler ve trend analizleri için hala önemlidir.</li>
+            <li><strong>Lojistik Regresyon (Logistic Regression):</strong> Adı regresyon olmasına rağmen bir sınıflandırma algoritmasıdır. Sonucu bir olasılığa dönüştürmek için sigmoid fonksiyonunu kullanır, bu sayede ikili (binary) sonuçları (evet/hayır, başarılı/başarısız) tahmin edebilir.</li>
+        </ul>
+
+        <h3>2.2. Gelişmiş Ağaç Tabanlı Modeller (Ensemble Methods)</h3>
+        <p>Gerçek dünya verilerindeki karmaşık ve doğrusal olmayan ilişkileri yakalamakta en başarılı yöntemlerdir:</p>
+        <ul>
+            <li><strong>Rastgele Orman (Random Forest):</strong> Birden fazla karar ağacının (Decision Tree) birleştirilmesiyle oluşur. Her ağaç, verinin rastgele bir alt kümesi üzerinde eğitilir. Sonuç, tüm ağaçların tahminlerinin ortalaması (regresyon için) veya çoğunluk oyu (sınıflandırma için) alınarak belirlenir. Bu, aşırı öğrenmeyi (overfitting) azaltır.</li>
+            <li><strong>Gradient Boosting Makineleri (XGBoost, LightGBM):</strong> Ardışık olarak zayıf tahmincileri (genellikle küçük ağaçlar) eğiterek, her yeni modelin bir önceki modelin hatalarını düzeltmesini hedefler. Sektördeki en yüksek doğruluk oranlarına ulaşan modeller genellikle bu ailedendir.</li>
+        </ul>
+
+        
+        <h2>3. Uygulama Alanları: İş Dünyasında Değer Yaratma</h2>
+        <p>Tahminsel analiz, hemen hemen her sektörde rekabet avantajı sağlamak için kullanılmaktadır:</p>
+        
+        <h3>3.1. Finans ve Risk Yönetimi</h3>
+        <ul>
+            <li><strong>Kredi Riski Tahmini:</strong> Bir müşterinin kredi borcunu geri ödeme olasılığını tahmin etmek için Lojistik Regresyon veya Sınıflandırma algoritmaları kullanılır.</li>
+            <li><strong>Dolandırıcılık Tespiti (Fraud Detection):</strong> İşlem verileri üzerindeki anormal desenleri tanımlayarak dolandırıcılık vakalarını gerçek zamanlı olarak işaretler.</li>
+            <li><strong>Piyasa Tahmini:</strong> Hisse senedi veya döviz kurlarındaki gelecekteki dalgalanmaları tahmin etmek için Zaman Serileri (Time Series) modelleri (örneğin ARIMA, LSTM) kullanılır.</li>
+        </ul>
+
+        <h3>3.2. Perakende ve Müşteri İlişkileri Yönetimi (CRM)</h3>
+        <ul>
+            <li><strong>Müşteri Terki (Churn) Tahmini:</strong> Hangi müşterilerin hizmeti bırakma riski taşıdığını tahmin ederek, şirketlerin bu müşterileri elde tutmak için özel kampanyalar başlatmasını sağlar.</li>
+            <li><strong>Talep Tahmini (Demand Forecasting):</strong> Gelecekteki ürün talebini tahmin ederek tedarik zinciri ve envanter yönetimini optimize eder.</li>
+            <li><strong>Kişiselleştirilmiş Öneriler:</strong> Müşterinin geçmiş satın alma davranışına göre, gelecekte hangi ürünleri alacağını tahmin eder (Tavsiye Sistemlerinin temelini oluşturur).</li>
+        </ul>
+
+        <h3>3.3. Sağlık ve Üretim Sektörleri</h3>
+        <ul>
+            <li><strong>Hastalık Riski:</strong> Hastanın tıbbi verilerine dayanarak, gelecekte belirli bir hastalığa yakalanma olasılığını tahmin eder.</li>
+            <li><strong>Öngörücü Bakım (Predictive Maintenance):</strong> Sensör verilerini analiz ederek bir makinenin veya parçanın ne zaman arızalanacağını tahmin eder. Bu, plansız kesintileri önleyerek milyonlarca dolarlık tasarruf sağlar.</li>
+        </ul>
+
+        
+        <h2>4. Model Değerlendirme: Doğruluktan Öte Metrikler</h2>
+        <p>Bir modelin başarısı sadece 'doğruluk' (Accuracy) ile ölçülmez. Özellikle finans ve sağlık gibi hassas alanlarda, tahminin türü kritiktir.</p>
+
+        <h3>4.1. Sınıflandırma Metrikleri</h3>
+        <p>Sınıflandırma modellerini değerlendirmek için Karmaşıklık Matrisi (Confusion Matrix) kullanılır. Bu matris, gerçek pozitif, gerçek negatif, yanlış pozitif ve yanlış negatif sonuçları gösterir. 
+        </p>
+        <ul>
+            <li><strong>Kesinlik (Precision):</strong> Modelin pozitif olarak tahmin ettiklerinin ne kadarının gerçekten pozitif olduğunu gösterir. (Örn: Spam olarak işaretlediklerimin ne kadarı gerçekten spam?)</li>
+            <li><strong>Geri Çağırma (Recall/Duyarlılık):</strong> Gerçekte pozitif olanların ne kadarını modelin yakalayabildiğini gösterir. (Örn: Gerçekte tüm spam e-postaların ne kadarını yakaladım?)</li>
+            <li><strong>F1 Skoru:</strong> Precision ve Recall'ın harmonik ortalamasıdır. Dengesiz veri setleri için iyi bir ölçümdür.</li>
+        </ul>
+
+        <h3>4.2. Regresyon Metrikleri</h3>
+        <ul>
+            <li><strong>Ortalama Kare Hata (MSE - Mean Squared Error):</strong> Hataların karelerinin ortalamasıdır. Büyük hataları daha fazla cezalandırır.</li>
+            <li><strong>Ortalama Mutlak Hata (MAE - Mean Absolute Error):</strong> Hataların mutlak değerlerinin ortalamasıdır. Tahmin edilen değer ile gerçek değer arasındaki ortalama farkı gösterir.</li>
+        </ul>
+        
+        
+        <h2>Sonuç: Geleceği Şekillendiren Analiz Gücü</h2>
+        <p>Tahminsel analiz, basit istatistiksel modellerden modern Derin Öğrenme mimarilerine kadar geniş bir yelpazede evrim geçirmiştir. Makine Öğrenimi, bu analizi daha doğru, daha hızlı ve daha ölçeklenebilir hale getirerek işletmelerin pazar trendlerini, müşteri davranışlarını ve operasyonel riskleri proaktif bir şekilde yönetmesini sağlamıştır. Veri kalitesine, doğru özellik mühendisliğine ve amaca uygun model seçimine odaklanarak, her kuruluş, gelecekteki başarılarını bugünden tahmin etme ve şekillendirme gücüne sahip olabilir.</p>
 
         <div class="article-meta" style="margin-top: 50px; border-top: 1px solid #30363d; padding-top: 15px;">
-            <span>#YZEtiği #AlgoritmikÖnyargı #VeriGizliliği #ResponsibleAI #XAI #AGI #EUAIAct #YeşilAI</span>
+            <span>#TahminselAnaliz #MakineÖğrenimi #Regresyon #Sınıflandırma #VeriBilimi #EnsembleLearning #PredictiveAnalytics</span>
         </div>
 
     </article>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yeni Nesil CSS Özellikleri: Daha Akıllı ve Güçlü Stiller</title>
-    <link rel="shortcut icon" href="TEKNO GÜNDEM LOGO .png" type="image/x-icon">
+    <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
     <style>
         /* CSS Değişkenleri */
         :root {
@@ -39,13 +39,62 @@
             font-weight: bold;
             color: var(--color-primary);
         }
-        nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
-        nav ul li a { color: var(--color-text-light); text-decoration: none; padding: 10px 15px; display: block; transition: color 0.3s; }
+        nav ul { 
+            list-style: none; 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+        }
+        
+        
+        nav ul li {
+            position: relative; /* Açılır menüyü göreceli olarak konumlandırmak için */
+        }
+        
+        nav ul li a { 
+            color: var(--color-text-light); 
+            text-decoration: none; 
+            padding: 10px 15px; 
+            display: block; 
+            transition: color 0.3s, background-color 0.3s; 
+        }
         nav ul li a:hover, nav ul li a.active {
             color: var(--color-primary);
             background-color: rgba(255, 255, 255, 0.05);
             border-radius: 5px;
         }
+
+        /* YENİ: Dropdown Stilleri */
+        .dropdown-content {
+            display: none; /* Başlangıçta gizli */
+            position: absolute;
+            background-color: #1e1e1e;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.7);
+            z-index: 1;
+            padding: 5px 0;
+            border-top: 3px solid var(--color-primary);
+            border-radius: 0 0 5px 5px;
+        }
+
+        .dropdown-content a {
+            color: var(--color-text-light);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #333;
+            color: var(--color-primary);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block; /* Fare üzerine geldiğinde göster */
+        }
+        /* YENİ: Dropdown Stilleri SONU */
+
 
         /* Ana İçerik Stilleri */
         .main-body-container {
@@ -77,6 +126,21 @@
             color: #aaa;
         }
 
+        /* Yeni alt başlık stili */
+        .article-content-wrapper h4 {
+            color: #4fc3f7; /* Hafif mavi ton */
+            margin-top: 35px;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed #333;
+        }
+        
+        .article-content-wrapper p {
+            line-height: 1.7;
+            color: var(--color-text-light);
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -93,7 +157,15 @@
         <nav>
             <ul>
                 <li><a href="index.html">Ana Sayfa</a></li>
-                <li><a href="donanım.html">Donanım</a></li>
+                
+                <li class="dropdown">
+                    <a href="donanım.html">Donanım</a>
+                    <div class="dropdown-content">
+                        <a href="haberler.html">Haberler</a>
+                        <a href="incelemeler.html">İncelemeler</a>
+                    </div>
+                </li>
+                
                 <li><a href="yazılım.html" class="active">Yazılım</a></li>
                 <li><a href="hakkimizda.html">Hakkımızda</a></li>
             </ul>
@@ -118,17 +190,17 @@
             </p>
             
             <p style="margin-bottom: 25px; line-height: 1.8; color: var(--color-text-light);">
-                CSS, yıllar içinde basit bir stil dili olmaktan çıkıp, karmaşık arayüzlerin temelini oluşturan güçlü bir araç setine dönüştü. Yeni özellikler, geliştiricilere performans, düzen ve etkileşim açısından daha fazla kontrol sağlıyor.
+                CSS, yıllar içinde basit bir stil dili olmaktan çıkıp, karmaşık arayüzlerin temelini oluşturan güçlü bir araç setine dönüştü. Yeni özellikler, geliştiricilere performans, düzen ve etkileşim açısından daha fazla kontrol sağlıyor. Özellikle modern web uygulamalarının modülerleşmesi ve yeniden kullanılabilir bileşen mantığına geçmesi, bu yeni CSS yeteneklerini bir zorunluluk haline getirmiştir. Eski yöntemlerle saatler süren karmaşık hizalama sorunları, artık birkaç satır kodla çözülebilmektedir.
             </p>
 
             <h2 style="color: var(--color-secondary); margin-top: 40px; margin-bottom: 15px;">Modern CSS Düzenleri: Flexbox ve Grid'in Ötesi</h2>
             <p style="margin-bottom: 25px; line-height: 1.8; color: var(--color-text-light);">
-                Flexbox ve Grid zaten web düzeninde devrim yaratmıştı, ancak yeni özellikler adaptif ve karmaşık düzenleri daha da kolaylaştırıyor.
+                Flexbox ve Grid zaten web düzeninde devrim yaratmıştı, ancak yeni özellikler adaptif ve karmaşık düzenleri daha da kolaylaştırıyor. Bu yenilikler, özellikle büyük ve çok seviyeli tasarımlarda "Bileşen Odaklı" mimariye geçişi desteklemektedir.
             </p>
 
             <h3 style="color: #4fc3f7; margin-top: 30px; margin-bottom: 10px;">1. CSS Alt Sorgular (Subgrid)</h3>
             <p style="margin-bottom: 10px; line-height: 1.8; color: var(--color-text-light);">
-                <strong>CSS Grid'in bir uzantısı</strong> olan Subgrid, iç içe geçmiş grid öğelerinin, ana grid'in satır ve sütun tanımlarını miras almasını sağlar. Bu, dikey hizalamanın ve karmaşık, çok seviyeli düzenlerin tutarlı bir şekilde yönetilmesini inanılmaz derecede kolaylaştırır.
+                <strong>CSS Grid'in bir uzantısı</strong> olan Subgrid, iç içe geçmiş grid öğelerinin, ana grid'in satır ve sütun tanımlarını miras almasını sağlar. Geleneksel olarak, iç içe Grid'lerde, içteki Grid kendi satır ve sütun tanımlarını yaratmak zorundaydı, bu da bileşenler arasında dikey uyumu (özellikle kart tasarımlarında) bozuyordu. Subgrid, bu sorunu kökten çözerek, elementlerin ebeveyn Grid yapısını koruyarak hizalanmasını mümkün kılar. Bu, özellikle karmaşık ve veri yoğunluğu yüksek arayüzlerde tutarlılık sağlamak için kritik bir adımdır.
             </p>
             <blockquote style="border-left: 4px solid var(--color-primary); padding-left: 15px; margin: 15px 0; font-style: italic; color: #aaa;">
                 <p>Kullanım Örneği: Bir kart bileşeni içindeki başlıkların ve düğmelerin, kartlar arasında mükemmel şekilde hizalanması.</p>
@@ -136,49 +208,83 @@
 
             <h3 style="color: #4fc3f7; margin-top: 30px; margin-bottom: 10px;">2. Container Queries (Kapsayıcı Sorguları)</h3>
             <p style="margin-bottom: 25px; line-height: 1.8; color: var(--color-text-light);">
-                Geleneksel Medya Sorgularının (`@media`) aksine, Container Queries (`@container`) bir bileşenin stilini <strong>viewport'a (görüntü alanına) göre değil</strong>, <strong>içinde bulunduğu kapsayıcının boyutuna göre</strong> değiştirmesine olanak tanır. Bu, yeniden kullanılabilir ve bağlamdan bağımsız bileşenler oluşturmak için bir dönüm noktasıdır.
+                Geleneksel Medya Sorgularının (`@media`) aksine, Container Queries (`@container`) bir bileşenin stilini viewport'a (görüntü alanına) göre değil, içinde bulunduğu kapsayıcının boyutuna göre değiştirmesine olanak tanır. Bu özellik, bileşen tabanlı mimarinin (React, Vue, Web Components) gerçek potansiyelini ortaya çıkarır. Artık bir bileşen (Örn: Haber Kartı), sayfanın kenar çubuğuna (küçük kapsayıcı) konulduğunda dikey, ana içeriğe (büyük kapsayıcı) konulduğunda ise yatay stilini otomatik olarak alabilir. Bu, CSS'i gerçek anlamda modüler ve kapsayıcıya duyarlı hale getirir.
             </p>
 
             <h2 style="color: var(--color-secondary); margin-top: 40px; margin-bottom: 15px;">Dinamik Stil ve Özelleştirilebilirlik</h2>
             
             <p style="margin-bottom: 25px; line-height: 1.8; color: var(--color-text-light);">
-                CSS değişkenlerinin (`--custom-property`) yaygınlaşmasından sonra, dilin dinamik yetenekleri daha da artmıştır.
+                CSS değişkenlerinin (`--custom-property`) yaygınlaşmasından sonra, dilin dinamik yetenekleri daha da artmıştır. Bu yenilikler, stil çakışmalarını yönetmeyi ve tasarım dilini kod düzeyinde tutmayı kolaylaştırır.
             </p>
             
             <h3 style="color: #4fc3f7; margin-top: 30px; margin-bottom: 10px;">3. Cascade Layers (Basamaklı Katmanlar)</h3>
             <p style="margin-bottom: 25px; line-height: 1.8; color: var(--color-text-light);">
-                CSS'in karmaşık basamaklanma (özelliklerin nasıl önceliklendirildiği) sorununu çözmek için tasarlanmıştır. `@layer` kuralı, geliştiricilerin stillerine açıkça öncelik vermesine izin vererek, üçüncü taraf kütüphanelerden veya temel stillerden gelen beklenmedik stil çakışmalarını ortadan kaldırır. Bu, <strong>büyük projelerde ve tasarım sistemlerinde</strong> stil yönetimine netlik getirir.
+                CSS'in karmaşık basamaklanma (özelliklerin nasıl önceliklendirildiği) sorununu çözmek için tasarlanmıştır. @layer kuralı, geliştiricilerin stillerini mantıksal katmanlara ayırmasına (örneğin: reset, `framework`, `components`, `utilities`) ve bu katmanların birbirine göre önceliğini açıkça belirlemesine izin verir. Bu, üçüncü taraf kütüphanelerden veya temel stillerden gelen beklenmedik stil çakışmalarını ortadan kaldırır. `!important` kullanımını azaltarak büyük projelerde ve tasarım sistemlerinde stil yönetimine netlik ve öngörülebilirlik getirir.
             </p>
 
             <h3 style="color: #4fc3f7; margin-top: 30px; margin-bottom: 10px;">4. Trigonometrik Fonksiyonlar ve Yeni Renk Modelleri</h3>
             <p style="margin-bottom: 10px; line-height: 1.8; color: var(--color-text-light);">
-                CSS artık matematiksel fonksiyonları (`sin()`, `cos()`, `tan()`) destekliyor, bu da geliştiricilerin CSS ile saf geometrik şekiller ve karmaşık animasyon yolları oluşturmasına olanak tanıyor.
+                CSS artık matematiksel fonksiyonları (`sin()`, `cos()`, `tan()`) destekliyor. Bu, geliştiricilerin sadece CSS kullanarak saf geometrik şekiller, spiral düzenler ve karmaşık animasyon yolları oluşturmasına olanak tanır. Bu sayede, eskiden JavaScript ile yapılması gereken karmaşık dönüşümler ve hareketler, doğrudan ve daha performanslı bir şekilde CSS ile kontrol edilebilir.
             </p>
             <p style="margin-bottom: 25px; line-height: 1.8; color: var(--color-text-light);">
-                Ayrıca, LCH ve LAB gibi yeni renk uzayları, insan gözünün algıladığı renklere daha yakın, geniş gamlı ve tutarlı renk geçişleri oluşturulmasına izin vererek tasarım yeteneklerini artırıyor.
+                Ayrıca, LCH ve LAB gibi yeni renk uzayları, tasarım yeteneklerini kökten artırıyor. Bu renk modelleri, gam dışı renkleri yönetebilir ve insan gözünün algıladığı parlaklık ve doygunluk değerlerine daha yakın, geniş gamlı ve tutarlı renk geçişleri oluşturulmasına izin vererek erişilebilirliği ve tasarım kalitesini yükseltir. Artık renk varyasyonları yaratmak çok daha sezgiseldir.
             </p>
 
-            <h2 style="color: var(--color-secondary); margin-top: 40px; margin-bottom: 15px;">Neden Bu Özellikleri Kullanmalısınız?</h2>
+            <h2 style="color: var(--color-secondary); margin-top: 40px; margin-bottom: 15px;">Neden Bu Özellikleri Kullanmalısınız? (Pratik Avantajlar)</h2>
             
             <div style="margin: 25px 0; text-align: center;">
+                
                 <img src="cssin-tarihi.webp" alt="CSS Evrimi Görseli" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);">
             </div>
             
-            <ul style="list-style: none; padding-left: 20px;">
-                <li style="margin-bottom: 8px; border-left: 3px solid var(--color-primary); padding-left: 10px;"><strong>Daha İyi Bileşenler:</strong> Container Queries sayesinde, bileşenleriniz daha taşınabilir ve esnek hale gelir.</li>
-                <li style="margin-bottom: 8px; border-left: 3px solid var(--color-primary); padding-left: 10px;"><strong>Karmaşanın Azalması:</strong> Cascade Layers, CSS dosyalarının basamaklanma önceliğini açıkça kontrol etmenizi sağlar.</li>
-                <li style="margin-bottom: 8px; border-left: 3px solid var(--color-primary); padding-left: 10px;"><strong>Gelişmiş Tasarım:</strong> Yeni renk modelleri ve matematik fonksiyonları, daha yaratıcı ve erişilebilir tasarımlara olanak tanır.</li>
-                <li style="margin-bottom: 8px; border-left: 3px solid var(--color-primary); padding-left: 10px;"><strong>Daha Az JavaScript:</strong> Saf CSS ile daha fazla dinamik ve karmaşık düzen oluşturulabilir, bu da JavaScript ihtiyacını azaltır.</li>
-            </ul>
+            <hr>
+            
+            <h4>🎯 Daha İyi Bileşenler ve Kapsayıcı Mantığı (Container Queries)</h4>
+            <p>
+                Container Queries'in temel faydası, bileşenlerin taşınabilirliğini sağlamaktır. Geleneksel medya sorguları tüm görüntü alanına bakarken, @container kuralı bir bileşenin stilini doğrudan içinde bulunduğu alanın boyutuna göre ayarlar. Bu, bir haber kartını ana sayfada (geniş alanda) farklı, yan menüde (dar alanda) farklı göstermek için tekrar tekrar kod yazma zorunluluğunu ortadan kaldırır. Bu yaklaşım, modern frontend mimarisinin (React, Vue) gerektirdiği modüler yapıyı ve yeniden kullanılabilirliği maksimuma çıkarır, Global CSS etkileşimlerini en aza indirir.
+            </p>
+
+            <h4>🛡️ CSS Karmaşasının Çözümü ve Sürdürülebilirlik (Cascade Layers)</h4>
+            <p>
+                CSS'in geleneksel basamaklanma ve spesifiklik sistemi, büyük projelerde ve kütüphanelerle çalışırken stil yönetimini kabusa çevirebiliyordu. Cascade Layers (@layer), stillerinizi mantıksal katmanlara (örneğin; reset, framework, components, utiliteler) ayırarak, öncelik sırasını kesin olarak belirlemenize olanak tanır. Artık stillerin neden çakıştığını anlamak için derinlemesine spesifiklik puanlarını hesaplamaya gerek kalmaz; katmanlar önceliği netleştirir. Bu özellik, özellikle büyük ekiplerin çalıştığı ve birçok harici kütüphanenin kullanıldığı kurumsal projelerde ve tasarım sistemlerinde (Design System) bakım maliyetini ve geliştirme süresini kökten azaltır.
+            </p>
+
+            <h4>📐 Hassas Tasarım Kontrolü ve Optimizasyon (Matematik Fonksiyonları ve Subgrid)</h4>
+            <p>
+                Trigonometrik fonksiyonların (<code>sin()</code>, <code>cos()</code>, <code>clamp()</code> gibi) CSS'e dahil edilmesi, saf CSS ile karmaşık animasyonlar, dönüşümler ve geometrik düzenler oluşturmanın kapısını açar. Bu, JavaScript'e olan bağımlılığı azaltarak hem kodun okunabilirliğini artırır hem de tarayıcı performansını iyileştirir (çünkü CSS motoru bu işlemleri doğrudan ve daha verimli bir şekilde yapar). Subgrid ise, iç içe geçmiş Grid elemanlarını ana Grid sistemiyle mükemmel senkronize ederek, eskiden "magic number" (rastgele sayı) kullanımı veya karmaşık hesaplamalarla çözülmeye çalışılan yatay/dikey hizalama sorunlarını tamamen ortadan kaldırır.
+            </p>
+
+            <h4>🌈 Yüksek Kaliteli Renk Yönetimi ve Erişilebilirlik (LCH/LAB Renk Modelleri)</h4>
+            <p>
+                Geleneksel RGB/HEX renk uzayları, insan gözünün renkleri algılama şekline tam olarak uymazdı ve genellikle düşük kontrast veya istenmeyen griye dönen geçişler oluştururdu. LCH (Luminance, Chroma, Hue) ve LAB gibi yeni renk uzayları, renkleri parlaklık, doygunluk ve ton bileşenlerine ayırarak bu sorunu çözer. Bu, tasarımcıların renkleri daha sezgisel bir şekilde ayarlamasını, daha canlı ve geniş renk gamlı çıktılar elde etmesini sağlar. En önemlisi, LCH parlaklık (Luminance) değerine odaklandığı için, kontrast hesaplamalarını insan algısına göre yaparak WCAG (Web İçeriği Erişilebilirlik Yönergeleri) standartlarına uyumu kolaylaştırır ve renk körlüğü gibi erişilebilirlik sorunlarını azaltır.
+            </p>
+
+            <h4>⚡ Performans Artışı ve Daha Az Kod Yükü</h4>
+            <p>
+                Bu yeni özelliklerin çoğu, eskiden JavaScript ile manuel olarak hesaplanan ve DOM'a uygulanan stilleri, doğrudan tarayıcının yerel ve optimize edilmiş CSS motoruna taşır. Örneğin, karmaşık düzenler için artık JS tabanlı kütüphanelere gerek kalmaz. Container Queries, sadece ilgili bileşeni yeniden hesapladığı için tüm sayfanın yeniden çizilmesini engelleyerek büyük bir performans kazancı sağlar. Ayrıca, daha az JavaScript kodu, daha küçük dosya boyutları ve daha hızlı sayfa yüklemesi demektir.
+            </p>
+            
+            <hr>
+
+            <h4>📈 Basitleştirilmiş Karmaşık Animasyonlar (Scroll-Driven Animations)</h4>
+            <p>
+                Daha önce scroll (kaydırma) tabanlı animasyonlar oluşturmak, JavaScript'in scroll olaylarını dinlemesini ve yüksek performans sorunlarına yol açabilen sürekli DOM manipülasyonları yapmasını gerektiriyordu. Yeni özellikler, geliştiricilerin bu karmaşık animasyonları sadece CSS kullanarak, kaydırma pozisyonuna veya bir öğenin kapsayıcı içindeki görünürlüğüne bağlamasına olanak tanır. Bu, tarayıcının yerel olarak optimize ettiği bir işlemi kullanmak anlamına gelir, bu da çok daha akıcı, performanslı ve batarya dostu animasyonlar sunar. Artık kaydırmaya bağlı paralaks efektleri, ilerleme çubukları veya öğe dönüşümleri gibi etkileşimler için üçüncü taraf kütüphanelere veya yoğun JS koduna ihtiyaç kalmamıştır.
+            </p>
+
+            <h4>⚙️ Kullanıcı Tercihlerine Duyarlı Gelişmiş Özellikler (`@supports` ve Tercih Sorguları)</h4>
+            <p>
+                CSS, son yıllarda sadece ekran boyutuna değil, aynı zamanda kullanıcının işletim sistemindeki tercihlerine de (Örn: prefers-color-scheme: dark, prefers-reduced-motion) göre stil uygulamada büyük adımlar attı. Bu tercih sorgularına ek olarak, @supports kuralı sayesinde, geliştiriciler yeni CSS özelliklerinin tarayıcı tarafından desteklenip desteklenmediğini kontrol edebilir ve desteklenmeyen durumlarda güvenli geri dönüşler (fallback) sağlayabilir. Bu, geliştiricilere modern özellikleri güvenle kullanma özgürlüğü verirken, eski tarayıcılarda bile düzgün bir kullanıcı deneyimi sunmayı garanti eder. Bu yaklaşım, CSS kodunun geleceğe dönük ve sağlam olmasını sağlar.
+            </p>
+
+            <hr>
 
             <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;">Geleceğe Hazırlık</h2>
             <p style="margin-bottom: 25px; line-height: 1.8; color: var(--color-text-light);">
-                Bu yeni nesil CSS özellikleri, web geliştirmeyi daha verimli ve eğlenceli hale getiriyor. Geliştiricilerin bu yenilikleri öğrenmeleri ve uygulamaları, hem kod kalitelerini hem de kullanıcı deneyimlerini önemli ölçüde artıracaktır. Tarayıcı desteği her geçen gün artarken, projelerinizde bu özelliklere yer vermenin tam zamanı.
+                Bu yeni nesil CSS özellikleri, web geliştirmeyi daha verimli ve eğlenceli hale getirirken, aynı zamanda projelerin uzun ömürlülüğünü ve bakım kolaylığını garanti eder. Geliştiricilerin bu yenilikleri öğrenmeleri ve uygulamaları, hem kod kalitelerini hem de kullanıcı deneyimlerini önemli ölçüde artıracaktır. Tarayıcı desteği (özellikle modern Chromium, Firefox ve Safari versiyonlarında) her geçen gün artarken, projelerinizde bu özelliklere yer vermenin ve CSS'in sunduğu tüm gücü kullanmanın tam zamanıdır. Gelişen bu dil standartlarına uyum sağlamak, güncel frontend geliştirici olmanın en önemli şartlarından biridir.
             </p>
 
         </div>
-
-    </main>
+        </main>
 
     <footer>
         <p>&copy; 2025 TeknoGündem. Tüm Hakları Saklıdır.</p>

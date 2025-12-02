@@ -218,7 +218,7 @@
             <h1 style="color: var(--color-primary); font-size: 3rem;"><i class="fas fa-bolt"></i> REST'ten gRPC'ye Geçiş: Mikroservis İletişimini Işık Hızına Çıkarma Rehberi</h1>
             <div class="review-meta">
                 <span>Yazar: Alp ERDEM</span>
-                <span>Tarih: 12 Ocak 2026</span>
+                <span>Tarih: 12 Ocak 2025</span>
                 <span class="tag">API/Mimari</span>
             </div>
         </section>
@@ -238,7 +238,7 @@
                 </p>
                 <ul class="detail-list">
                     <li><i class="fas fa-network-wired" style="color: var(--color-secondary);"></i> HTTP/2 Kullanımı: gRPC, TCP bağlantısının yeniden kullanımını sağlayan, başlıkları sıkıştıran ve tek bir bağlantı üzerinden birden çok eşzamanlı istek (Multiplexing) yapabilen HTTP/2 üzerinde çalışır. REST genellikle daha yavaş olan HTTP/1.1 kullanır.</li>
-                    <li><i class="fas fa-compress" style="color: var(--color-secondary);"></i>Protocol Buffers (Protobuf):REST'in metin tabanlı (text-based) ve şişkin JSON/XML formatının aksine, gRPC veriyi **ikili (binary)** formatta serileştirir. Bu, veriyi taşıyan paketin boyutunu 3 ila 10 kat azaltır ve serileştirme/seri kaldırma (serialization/deserialization) süresini hızlandırır.</li>
+                    <li><i class="fas fa-compress" style="color: var(--color-secondary);"></i>Protocol Buffers (Protobuf):REST'in metin tabanlı (text-based) ve şişkin JSON/XML formatının aksine, gRPC veriyi ikili (binary) formatta serileştirir. Bu, veriyi taşıyan paketin boyutunu 3 ila 10 kat azaltır ve serileştirme/seri kaldırma (serialization/deserialization) süresini hızlandırır.</li>
                 </ul>
             </div>
             
@@ -264,7 +264,7 @@
                         <tr>
                             <td style="color: var(--color-text-light);">Taşıma Protokolü</td>
                             <td class="rest-cell">Çoğunlukla HTTP/1.1.</td>
-                            <td class="grpc-cell">Zorunlu HTTP/2.**</td>
+                            <td class="grpc-cell">Zorunlu HTTP/2.</td>
                         </tr>
                         <tr>
                             <td style="color: var(--color-text-light);">Veri Formatı</td>
@@ -336,7 +336,7 @@ message UserResponse {
                 </p>
                 <ul class="detail-list">
                     <li><i class="fas fa-bug" style="color: var(--color-rest);"></i> Hata Ayıklama: REST çağrıları tarayıcıda veya cURL ile kolayca test edilir ve hatalar genellikle okunabilir JSON/XML'dir. gRPC trafiğini analiz etmek için özel araçlar (gRPCurl, BloomRPC) ve HTTP/2 proxy'leri gereklidir.</li>
-                    <li><i class="fas fa-tachometer-alt" style="color: var(--color-rest);"></i> Load Balancing: HTTP/2 bağlantıları uzun ömürlü olduğu için, geleneksel L4 (TCP) Load Balancer'lar gRPC yükünü verimli dağıtamaz. Uygulama seviyesinde (L7) Load Balancing veya **Service Mesh (Istio, Linkerd)** kullanılması zorunluluk haline gelir.</li>
+                    <li><i class="fas fa-tachometer-alt" style="color: var(--color-rest);"></i> Load Balancing: HTTP/2 bağlantıları uzun ömürlü olduğu için, geleneksel L4 (TCP) Load Balancer'lar gRPC yükünü verimli dağıtamaz. Uygulama seviyesinde (L7) Load Balancing veya Service Mesh (Istio, Linkerd) kullanılması zorunluluk haline gelir.</li>
                 </ul>
             </div>
 

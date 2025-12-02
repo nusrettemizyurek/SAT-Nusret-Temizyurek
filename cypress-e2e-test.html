@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uçtan Uca Testler (E2E) için Cypress: Neden Yeni Standart? (Derinlemesine İnceleme) - TeknoGündem</title>
-    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
     
     
     <style>
@@ -118,6 +118,43 @@
             color: #666;
             background-color: #1e1e1e;
         }
+
+          .dropdown {
+    position: relative; 
+}
+.dropdown-content {
+    display: none; /* Varsayılan olarak gizli */
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    background-color: #2a2a2a; 
+    min-width: 170px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.7);
+    z-index: 10; 
+    border-top: 3px solid var(--color-primary); 
+    border-radius: 0 0 5px 5px;
+    padding: 0; 
+}
+.dropdown-content a {
+    color: var(--color-text-light);
+    padding: 12px 16px; 
+    text-decoration: none;
+    display: block;
+    text-align: left; 
+    font-size: 0.95rem;
+    border-radius: 0; 
+}
+.dropdown-content a:hover {
+    background-color: #3d3d3d;
+    color: var(--color-secondary);
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+
+
     </style>
 </head>
 <body class="yazilim-sayfa">
@@ -125,10 +162,16 @@
     <div class="logo">TeknoGündem</div>
     <nav>
         <ul>
-            <li><a href="index.html">Ana Sayfa</a></li>
-            <li><a href="donanım.html" class="active">Donanım </a></li>
-            <li><a href="yazılım.html">Yazılım </a></li>
-            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+             <li><a href="index.html">Ana Sayfa</a></li>
+                <li class="dropdown">
+                    <a href="donanım.html">Donanım</a>
+                    <div class="dropdown-content"> 
+                        <a href="haberler.html" class="dropdown-item">Haberler</a>
+                        <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
+                    </div>
+                </li>
+                <li><a href="yazılım.html" class="active">Yazılım</a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
         </ul>
     </nav>
 </header>
@@ -139,7 +182,7 @@
         <h1 style="color: var(--color-cypress); font-size: 3rem;"><i class="fas fa-microscope"></i> Uçtan Uca Testler (E2E) için Cypress: Neden Yeni Standart?</h1>
         <div class="review-meta">
             <span>Yazar: Caner BULUT</span>
-            <span>Tarih: 15 Aralık 2025</span>
+            <span>Tarih: 15 Nisan  2025</span>
             <span class="tag" style="background-color: var(--color-cypress);">Test Otomasyonu/QA</span>
         </div>
     </section>
@@ -155,14 +198,14 @@
         <div class="technical-section">
             <h3>Geleneksel Araçlar (Selenium): Süreçler Arası İletişim</h3>
             <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
-                Selenium gibi eski araçlar, tarayıcı dışında Node.js veya başka bir dil ortamında çalışır ve <span style="color: var(--color-secondary);">WebDriver protokolü</span> aracılığıyla komutları tarayıcıya HTTP üzerinden gönderir. Bu, iki ayrı süreç arasındaki iletişimde kaçınılmaz bir gecikme (latency) ve testlerde güvenilirlik sorunları (flakiness) yaratır. Tarayıcıda bir şeyin olmasını beklemek, sürekli zaman aşımları ve bekleme kodları yazmayı gerektirir.
+                Selenium gibi eski araçlar, tarayıcı dışında Node.js veya başka bir dil ortamında çalışır ve <span style="color:white;">WebDriver protokolü</span> aracılığıyla komutları tarayıcıya HTTP üzerinden gönderir. Bu, iki ayrı süreç arasındaki iletişimde kaçınılmaz bir gecikme (latency) ve testlerde güvenilirlik sorunları (flakiness) yaratır. Tarayıcıda bir şeyin olmasını beklemek, sürekli zaman aşımları ve bekleme kodları yazmayı gerektirir.
             </p>
         </div>
         
         <div class="technical-section">
             <h3>Cypress: Aynı Çalışma Döngüsü (Same Run-Loop)</h3>
             <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
-                Cypress, test kodunuzu **doğrudan tarayıcınızda** çalıştırır. Test kodu, uygulamanızla aynı çalışma döngüsünde (run-loop) bulunur. Bu, Cypress'in DOM'a, pencere nesnesine, yerel depolama alanına ve uygulamanızın koduna doğrudan erişimi olduğu anlamına gelir. Sonuç: Testler daha hızlı, daha deterministik (belirlenimci) ve test yürütülürken ağ trafiğini kolayca izleyebilir veya değiştirebilirsiniz.
+                Cypress, test kodunuzu doğrudan tarayıcınızda çalıştırır. Test kodu, uygulamanızla aynı çalışma döngüsünde (run-loop) bulunur. Bu, Cypress'in DOM'a, pencere nesnesine, yerel depolama alanına ve uygulamanızın koduna doğrudan erişimi olduğu anlamına gelir. Sonuç: Testler daha hızlı, daha deterministik (belirlenimci) ve test yürütülürken ağ trafiğini kolayca izleyebilir veya değiştirebilirsiniz.
             </p>
         </div>
 
@@ -171,7 +214,7 @@
         <div class="technical-section">
             <h3>Otomatik Bekleme (Automatic Waiting) ve Determinizm</h3>
             <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
-                Geleneksel araçlarda test kırılmalarının en büyük nedeni, uygulamanın henüz yüklenmemiş bir DOM öğesiyle etkileşime girmeye çalışmasıdır. Cypress, bu sorunu kendi mimarisiyle çözer. Cypress komutları, bir öğenin görünür, etkileşimli ve mevcut olmasını **otomatik olarak bekler**. Bu, `cy.wait(500)` gibi manuel ve güvenilmez bekleme kodları yazma zorunluluğunu ortadan kaldırır.
+                Geleneksel araçlarda test kırılmalarının en büyük nedeni, uygulamanın henüz yüklenmemiş bir DOM öğesiyle etkileşime girmeye çalışmasıdır. Cypress, bu sorunu kendi mimarisiyle çözer. Cypress komutları, bir öğenin görünür, etkileşimli ve mevcut olmasını otomatik olarak bekler. Bu, `cy.wait(500)` gibi manuel ve güvenilmez bekleme kodları yazma zorunluluğunu ortadan kaldırır.
             </p>
             <pre style="background-color: #2b2b2b; color: #f8f8f2; padding: 15px; border-radius: 6px; overflow-x: auto; font-family: 'Consolas', 'Courier New', monospace; font-size: 0.9em; border: 1px solid #3a3a3a;"><code>// Cypress, "submit" butonu görünür ve etkileşime hazır olana kadar bekler.
 cy.get('button[type="submit"]').click(); 
@@ -184,7 +227,7 @@ cy.get('button[type="submit"]').click();
         <div class="technical-section">
             <h3>Zaman Seyahati (Time Travel) ve Hata Ayıklama</h3>
             <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
-                Cypress'in en güçlü özelliklerinden biri, **Test Çalıştırıcısı (Test Runner)** arayüzüdür. Bu arayüzde, testinizin her adımını görebilirsiniz. Bir komuta tıkladığınızda, Cypress size o anki DOM yapısını, CSS ve JavaScript state'ini gösterir. Buna Zaman Seyahati denir. Bu görsel hata ayıklama yeteneği, test hatalarının nedenini bulma süresini dakikalardan saniyelere düşürür.
+                Cypress'in en güçlü özelliklerinden biri, Test Çalıştırıcısı (Test Runner) arayüzüdür. Bu arayüzde, testinizin her adımını görebilirsiniz. Bir komuta tıkladığınızda, Cypress size o anki DOM yapısını, CSS ve JavaScript state'ini gösterir. Buna Zaman Seyahati denir. Bu görsel hata ayıklama yeteneği, test hatalarının nedenini bulma süresini dakikalardan saniyelere düşürür.
             </p>
         </div>
 
@@ -196,8 +239,8 @@ cy.get('button[type="submit"]').click();
                 Cypress, test yazımını standart JavaScript ve Mocha/Chai sözdizimi ile yapar. API'si, modern JavaScript geliştiricileri için sezgisel ve anlaşılırdır.
             </p>
             <ul class="detail-list" style="list-style: none; padding-left: 20px; margin-top: 15px;">
-                <li style="border-left: 3px solid var(--color-cypress); padding-left: 10px; margin-bottom: 10px; line-height: 1.6;">**Zincirleme (Chaining):** Komutlar, `cy.get().type().click()` şeklinde zincirlenir, bu da kodun okunabilirliğini artırır.</li>
-                <li style="border-left: 3px solid var(--color-cypress); padding-left: 10px; margin-bottom: 10px; line-height: 1.6;">**Fixture ve Komutlar:** Cypress, test verilerini (Fixture) yönetmek ve tekrarlayan görevleri (Custom Commands) soyutlamak için basit ve güçlü mekanizmalar sunar.</li>
+                <li style="border-left: 3px solid var(--color-cypress); padding-left: 10px; margin-bottom: 10px; line-height: 1.6;">Zincirleme (Chaining): Komutlar, `cy.get().type().click()` şeklinde zincirlenir, bu da kodun okunabilirliğini artırır.</li>
+                <li style="border-left: 3px solid var(--color-cypress); padding-left: 10px; margin-bottom: 10px; line-height: 1.6;">Fixture ve Komutlar:Cypress, test verilerini (Fixture) yönetmek ve tekrarlayan görevleri (Custom Commands) soyutlamak için basit ve güçlü mekanizmalar sunar.</li>
             </ul>
         </div>
         
@@ -214,14 +257,14 @@ cy.window().then((win) => {
     win.localStorage.setItem('auth_token', 'mock_token');
 });</code></pre>
             <p style="line-height: 1.7; color: #ddd;">
-                Bu yetenek, testlerinizi <span style="color: var(--color-detail);">sunucu durumundan bağımsız hale getirerek</span>, çok daha hızlı ve güvenilir çalışmasını sağlar.
+                Bu yetenek, testlerinizi <span style="color: white;">sunucu durumundan bağımsız hale getirerek</span>, çok daha hızlı ve güvenilir çalışmasını sağlar.
             </p>
         </div>
 
         <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-check-circle"></i> Sonuç: Test Otomasyonunun Geleceği</h2>
         
         <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
-            Cypress, test etme şeklimizi, E2E testlerini bir geliştiricinin iş akışının doğal bir parçası haline getirerek değiştirdi. Tarayıcıya entegre mimarisi, otomatik bekleme mekanizması ve üstün görsel hata ayıklama yetenekleri sayesinde, Cypress, klasik araçların karşılaştığı güvenilirlik ve hız sorunlarını aşıyor. Hızlı ve güvenilir bir yayın döngüsü arayan her modern yazılım ekibi için <span style="color: var(--color-secondary);">Cypress, artık sadece bir seçenek değil, bir zorunluluktur.</span>
+            Cypress, test etme şeklimizi, E2E testlerini bir geliştiricinin iş akışının doğal bir parçası haline getirerek değiştirdi. Tarayıcıya entegre mimarisi, otomatik bekleme mekanizması ve üstün görsel hata ayıklama yetenekleri sayesinde, Cypress, klasik araçların karşılaştığı güvenilirlik ve hız sorunlarını aşıyor. Hızlı ve güvenilir bir yayın döngüsü arayan her modern yazılım ekibi için <span style="color: white;">Cypress, artık sadece bir seçenek değil, bir zorunluluktur.</span>
         </p>
 
     </div>

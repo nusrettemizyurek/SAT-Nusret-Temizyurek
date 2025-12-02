@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İleri Düzey PostgreSQL İpuçları: Performans, Ölçek ve Mimari Optimizasyon - TeknoGündem</title>
-    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -302,27 +302,27 @@ CREATE TABLE siparisler_2024 PARTITION OF siparisler
                     PostgreSQL'in belleği ve I/O kullanımı, aşağıdaki üç anahtar parametreyle doğrudan kontrol edilir:
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-hdd" style="color: var(--color-postgres-main);"></i>`shared_buffers`:Sistem belleğinin (RAM) büyük bir kısmı buraya ayrılmalıdır (Genellikle toplam RAM'in %25'i). Tüm veritabanı süreçleri tarafından paylaşılan önbellektir.</li>
-                    <li><i class="fas fa-layer-group" style="color: var(--color-postgres-main);"></i>`work_mem`: Karmaşık sorgular (JOIN, SORT, HASH) tarafından geçici bellek olarak kullanılır. Yüksek değerli eşzamanlı sorgularda `work_mem`'i yükseltmek, diskte gerçekleşecek yavaş işlemleri RAM'e taşır.</li>
-                    <li><i class="fas fa-hand-holding-usd" style="color: var(--color-postgres-main);"></i>`effective_cache_size`:Sorgu planlayıcısına (Planner) sunucunun toplam ne kadar belleğe sahip olduğu hakkında bilgi verir. Bu, planlayıcının ne zaman disk erişimi yerine indeks kullanması gerektiğini anlamasına yardımcı olur (Genellikle toplam RAM'in %50-%75'i).</li>
+                    <li><i class="fas fa-hdd" style="color: var(--color-postgres-main);"></i>Shared_Buffers:Sistem belleğinin (RAM) büyük bir kısmı buraya ayrılmalıdır (Genellikle toplam RAM'in %25'i). Tüm veritabanı süreçleri tarafından paylaşılan önbellektir.</li>
+                    <li><i class="fas fa-layer-group" style="color: var(--color-postgres-main);"></i>Work_Mem: Karmaşık sorgular (JOIN, SORT, HASH) tarafından geçici bellek olarak kullanılır. Yüksek değerli eşzamanlı sorgularda work_mem'i yükseltmek, diskte gerçekleşecek yavaş işlemleri RAM'e taşır.</li>
+                    <li><i class="fas fa-hand-holding-usd" style="color: var(--color-postgres-main);"></i>Effective_Cache_Size:Sorgu planlayıcısına (Planner) sunucunun toplam ne kadar belleğe sahip olduğu hakkında bilgi verir. Bu, planlayıcının ne zaman disk erişimi yerine indeks kullanması gerektiğini anlamasına yardımcı olur (Genellikle toplam RAM'in %50-%75'i).</li>
                 </ul>
             </div>
 
             <div class="technical-section">
                 <h3>Adım 3.2: Otomatik Temizlik (Autovacuum) ve Bloat Yönetimi</h3>
                 <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
-                    PostgreSQL'in MVCC (Multi-Version Concurrency Control) mimarisi gereği, her UPDATE ve DELETE işlemi ölü satır (dead tuple) bırakır. `Autovacuum` bu ölü satırları temizlemezse, performans düşüşü (bloat) kaçınılmazdır.
+                    PostgreSQL'in MVCC (Multi-Version Concurrency Control) mimarisi gereği, her UPDATE ve DELETE işlemi ölü satır (dead tuple) bırakır. Autovacuum bu ölü satırları temizlemezse, performans düşüşü (bloat) kaçınılmazdır.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-recycle" style="color: var(--color-optimization);"></i> Ayarlama: `autovacuum_vacuum_scale_factor` ve `autovacuum_analyze_scale_factor` parametrelerini, özellikle yüksek değişim oranına sahip tablolarda, varsayılan değerlerden düşürerek temizliğin daha sık yapılmasını sağlayın.</li>
-                    <li><i class="fas fa-chart-area" style="color: var(--color-optimization);"></i>İzleme: `pg_stat_user_tables` ve `pg_stat_activity` görünümlerini kullanarak uzun süren sorguları ve Autovacuum görevlerini düzenli olarak izleyin.</li>
+                    <li><i class="fas fa-recycle" style="color: var(--color-optimization);"></i> Ayarlama: autovacuum_vacuum_scale_factor ve autovacuum_analyze_scale_factor parametrelerini, özellikle yüksek değişim oranına sahip tablolarda, varsayılan değerlerden düşürerek temizliğin daha sık yapılmasını sağlayın.</li>
+                    <li><i class="fas fa-chart-area" style="color: var(--color-optimization);"></i>İzleme: pg_stat_user_tables ve pg_stat_activity görünümlerini kullanarak uzun süren sorguları ve Autovacuum görevlerini düzenli olarak izleyin.</li>
                 </ul>
             </div>
 
             <h2 style="color: var(--color-primary); margin-top: 40px; margin-bottom: 15px;"><i class="fas fa-graduation-cap"></i> Özet Rehberlik İlkesi</h2>
             
             <p style="margin-bottom: 25px; line-height: 1.8; color: #ddd; font-weight: bold;">
-                İleri düzey PostgreSQL yönetimi, yalnızca SQL yazmaktan ibaret değildir; bir mimari sanatıdır. Kritik performans artışları, büyük tabloları mantıklı parçalara (Partitioning) ayırmaktan, standart B-Tree'nin ötesindeki GIN veya BRIN gibi özel indeks türlerini kullanmaktan ve özellikle`shared_buffers`, `work_mem` ve `effective_cache_size` gibi temel yapılandırma parametrelerini sunucunuzun donanımına göre hassasça ayarlamaktan geçer. Performans her zaman `EXPLAIN ANALYZE` ile kanıtlanmalıdır.
+                İleri düzey PostgreSQL yönetimi, yalnızca SQL yazmaktan ibaret değildir; bir mimari sanatıdır. Kritik performans artışları, büyük tabloları mantıklı parçalara (Partitioning) ayırmaktan, standart B-Tree'nin ötesindeki GIN veya BRIN gibi özel indeks türlerini kullanmaktan ve özellikle shared_buffers, work_mem ve effective_cache_size gibi temel yapılandırma parametrelerini sunucunuzun donanımına göre hassasça ayarlamaktan geçer. Performans her zaman EXPLAIN ANALYZE ile kanıtlanmalıdır.
             </p>
 
         </div>

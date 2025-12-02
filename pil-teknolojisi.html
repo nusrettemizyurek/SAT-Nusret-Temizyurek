@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yeni Pil Teknolojisi İle Dizüstü Bilgisayar Pil Ömrü %50 Arttı | TeknoGündem</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
+    <style>
+
+        :root {
+            --color-primary: #007bff; 
+            --color-secondary: #00bcd4; 
+            --color-background: #1e1e1e; 
+            --color-card-background: #252526; 
+            --color-text: #f0f0f0; 
+            --text-gray: #b0b0b0; 
+            --color-border: #333; 
+            --color-shadow: rgba(0, 0, 0, 0.5);
+            --accent-color: #3498db; 
+        }
+
+        .dark-mode {
+            background-color: var(--color-background);
+            color: var(--color-text);
+        }
+
+        /* --- TEMEL STİLLER --- */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* HEADER ve NAV */
+        header {
+            background-color: #111; 
+            box-shadow: 0 2px 10px var(--color-shadow);
+            color: var(--color-text);
+            padding: 10px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            color: var(--color-text);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--color-secondary);
+        }
+
+        /* --- DROPDOWN STİLİ --- */
+        .dropdown {
+            position: relative; 
+        }
+
+        .dropdown > a {
+            background-color: #4CAF50; 
+            color: #111;
+            font-weight: bold;
+            border-bottom: 3px solid #ff5722; 
+        }
+        
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            background-color: var(--color-card-background); 
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+            z-index: 10; 
+            top: 100%; 
+            left: 0;
+            padding: 10px 0;
+            border-radius: 0 0 5px 5px; 
+        }
+
+        .dropdown-content li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dropdown-content a {
+            color: var(--color-text) !important;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #383838; 
+            color: var(--color-secondary) !important; 
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* --- MAKALEYİ OLUŞTURAN DİĞER STİLLER --- */
+
+        .full-width-section {
+            width: 100%;
+            background-color: var(--color-card-background);
+            box-shadow: 0 4px 15px var(--color-shadow);
+            padding: 40px 0;
+        }
+
+        .content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            gap: 40px;
+        }
+
+        .article-main-text-area {
+            flex: 3; 
+            min-width: 0; 
+        }
+        
+        .article-sidebar {
+            flex: 1; 
+            min-width: 300px;
+            max-width: 400px;
+            padding-top: 50px; 
+        }
+        
+        .featured-image-detail img {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin: 30px 0;
+        }
+        
+        /* GELİŞMİŞ BAŞLIK ALANI (HERO) - Yeşil Tonu Uygulandı */
+        .hero-article-header {
+            width: 100%;
+            padding: 80px 0; 
+            color: #fff; 
+            text-align: center;
+            box-shadow: inset 0 -5px 15px rgba(0, 0, 0, 0.2); 
+            margin-bottom: 40px; 
+            position: relative; 
+            overflow: hidden;
+            
+            background: linear-gradient(135deg, #1d6139, #2ecc71); 
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed; 
+        }
+
+        .hero-header-content {
+            max-width: 1000px; 
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative; 
+            z-index: 2; 
+        }
+        
+        .hero-header-content .tag {
+            background-color: #2ecc71; 
+            border: none;
+            color: #111;
+            padding: 8px 18px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .hero-header-content h1 {
+            font-size: 3.5em; 
+            line-height: 1.1;
+            margin-bottom: 25px;
+            font-weight: 900;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-header-content .article-summary-text {
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            font-weight: 300;
+        }s
+
+        .hero-header-content .article-meta-info {
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.7);
+            border-top: 1px solid rgba(255, 255, 255, 0.3); 
+            padding-top: 15px;
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* İÇERİK METİN STİLLERİ */
+        .article-body-text h2 {
+            font-size: 1.6em; 
+            margin-top: 30px; 
+            color: var(--color-secondary);
+            border-bottom: 2px solid var(--color-border);
+            padding-bottom: 5px;
+        }
+
+        .article-body-text h3 {
+            font-size: 1.3em;
+            margin-top: 20px;
+            color: var(--color-text);
+            border-left: 3px solid var(--accent-color);
+            padding-left: 10px;
+            padding-bottom: 2px;
+        }
+
+        .article-body-text p {
+            margin: 15px 0;
+            color: var(--color-text);
+            text-align: justify;
+        }
+        
+        .article-body-text ul {
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+
+        .article-body-text li {
+            margin-bottom: 10px;
+        }
+
+        /* Blok Alıntı (blockquote) */
+        blockquote {
+            border-left: 5px solid var(--color-primary); 
+            background-color: var(--color-card-background); 
+            padding: 15px 20px; 
+            margin: 25px 0; 
+            font-style: italic; 
+            border-radius: 4px;
+            color: var(--color-text);
+            border-left-color: #2ecc71 !important; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        blockquote cite {
+            display: block; 
+            margin-top: 10px; 
+            font-size: 0.9em; 
+            color: var(--text-gray);
+        }
+
+        /* Okuma Süresi Etiketi */
+        .reading-time {
+            font-size: 0.9em;
+            color: var(--text-gray);
+            font-weight: bold;
+            display: block;
+            margin-bottom: 20px;
+            text-align: right;
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 10px;
+        }
+
+        /* İlgili Haberler Kutusu */
+        .related-articles-box {
+            background-color: var(--color-card-background);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .related-articles-box h3 {
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-secondary);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .related-articles-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .related-articles-box li {
+            margin-bottom: 10px;
+        }
+
+        .related-articles-box a {
+            color: var(--color-text);
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 0.95em;
+        }
+
+        .related-articles-box a:hover {
+            color: var(--color-secondary);
+        }
+
+        /* SOSYAL PAYLAŞIM BUTONLARI */
+        .share-buttons {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        .share-buttons a {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: opacity 0.2s;
+        }
+        .share-buttons a:hover { opacity: 0.8; }
+        .share-buttons .twitter { background-color: #1DA1F2; }
+        .share-buttons .linkedin { background-color: #0077B5; }
+        .share-buttons .facebook { background-color: #4267B2; }
+        .share-buttons svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor; 
+            margin-right: 8px;
+            flex-shrink: 0; 
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #111;
+            color: var(--text-gray);
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 40px;
+            border-top: 1px solid var(--color-border);
+        }
+
+
+        /* Mobil Uyum */
+        @media (max-width: 1024px) {
+            .content-wrapper { flex-direction: column; padding: 0 20px; }
+            .article-sidebar { max-width: 100%; min-width: unset; padding-top: 10px; }
+            .hero-header-content h1 { font-size: 2.5em; }
+            .share-buttons { flex-direction: column; align-items: stretch;}
+        }
+        /* CSS STİLLERİ SONU */
+    </style>
+</head>
+
+<body class="dark-mode"> 
+    <header>
+        <div class="logo">TEKNOGÜNDEM</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li class="dropdown">
+                    <a href="donanim.html">Donanım</a>
+                    <ul class="dropdown-content">
+                        <li><a href="haberler.html">Haberler</a></li>
+                        <li><a href="incelemeler.html">İncelemeler</a></li>
+                    </ul>
+                </li>
+                <li><a href="yazılım.html">Yazılım</a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero-article-header">
+        <div class="hero-header-content">
+            <span class="tag">DONANIM / MOBİL</span>
+            <h1>Yeni Pil Teknolojisi İle Dizüstü Bilgisayar Pil Ömrü %50 Arttı 🔋</h1> 
+            <p class="article-summary-text">Çığır açan katı hal (Solid-State) pil teknolojisi, dizüstü bilgisayarlarda hem performansı hem de güvenliği artırarak pil ömrünü beklenenin %50 üzerine çıkardı. Mobil çalışma kültürü yeni bir döneme giriyor.</p>
+            <div class="article-meta-info">
+                <span>22 Kasım 2025</span> 
+                <span>Yazar: Ali Yılmaz</span>
+            </div>
+        </div>
+    </div>
+    
+    <main class="full-width-section">
+        <div class="content-wrapper">
+            
+            <section class="article-main-text-area"> 
+                <span class="reading-time">Okuma Süresi: 7 Dakika ⏱️</span>
+
+                <figure class="featured-image-detail">
+                    <img src="katı hal pillleri.jpg" alt="Yeni Katı Hal Pil Teknolojisi" loading="lazy">
+                    <figcaption style="font-size: 0.8em; color: var(--text-gray); text-align: center; margin-top: 10px;">Yeni nesil katı hal pilleri, mevcut Lityum-iyon pillere göre çok daha yoğun enerji depolayabiliyor.
+</figcaption>
+                </figure>
+
+                <section class="article-body-text">
+                    
+                    <p>Dizüstü bilgisayar endüstrisi, on yılı aşkın süredir batarya teknolojisinde beklenen büyük sıçramayı nihayet gerçekleştirdi. Mevcut Lityum-iyon (Li-ion) pillerin teorik sınırlarına dayanılması ve yaşanan güvenlik sorunları (şişme, aşırı ısınma riski) nedeniyle, teknoloji devleri uzun zamandır alternatif çözümler arıyordu. Bu arayışın sonucunda, Katı Hal (Solid-State) Pil Teknolojisi ticari olarak mobil cihazlara entegre edilmeye başlandı ve ilk sonuçlar beklentilerin çok üzerinde oldu.</p>
+                    
+                    <p>Bu yeni nesil bataryalar, aynı fiziksel hacim ve ağırlıkta, geleneksel Li-ion pillere göre %50 daha fazla enerji depolayabilme kapasitesine sahip. Bu, piyasaya sürülecek yeni nesil dizüstü bilgisayarların, günlük kullanımda 8 saat yerine 12 saate kadar kesintisiz çalışma performansı sunması anlamına geliyor. Bu durum, özellikle yoğun grafik işleri yapan veya sürekli mobil olmak zorunda olan profesyoneller için ciddi bir verimlilik artışı sağlayacak.</p>
+                    
+                    <h2 id="solid-state">1. Pil Teknolojisindeki Çığır Açan Gelişme 🔋</h2>
+                    <p>Katı hal pilin temel farkı, adından da anlaşıldığı gibi, sıvı veya jel elektrolit yerine katı bir elektrolit malzeme kullanmasıdır. Geleneksel Li-iyon pillerin içindeki organik çözücüler, hem enerji yoğunluğunu sınırlıyor hem de aşırı ısınma durumunda yanıcı olabiliyordu. Katı hal elektroliti, hem daha güvenli hem de daha yoğun bir iyon transferine izin veren seramik veya polimer bazlı bileşenlerden oluşur.</p>
+                    
+                    <p>Bu mimari değişim, pil paketinin içindeki pasif malzemelerin (ayıraçlar, muhafaza) kapladığı hacmi azaltarak, aktif enerji depolama malzemesinin oranını artırır. Bu da doğrudan pilin Wh/kg (Watt-saat/kilogram) değerini yükseltir. Test edilen prototip mobil iş istasyonlarında, pil ömrü artışı, sadece enerji yoğunluğu artışından değil, aynı zamanda pilin daha stabil çalışması ve daha az atık ısı üretmesinden de kaynaklanıyor.</p>
+                    
+                    <h3>1.1. Enerji Yoğunluğu ve Performans Artışı</h3>
+                    <p>Katı hal pillerinin ana avantajı, lityum metal anot kullanabilme potansiyelidir. Lityum metal, mevcut grafit veya silikon-grafit anotlara göre çok daha yüksek teorik enerji kapasitesine sahiptir. Katı elektrolit, bu metal anotta dendrit (ağaç dallanması) oluşumunu engellediği için, pil güvenliğini tehlikeye atmadan aşırı derecede yüksek enerji yoğunluklarına ulaşılabilir.</p>
+                    
+                    <ul>
+                        <li>Kapasite Artışı:Aynı boyut ve ağırlıkta %50 daha fazla çalışma süresi.</li>
+                        <li>Hızlı Şarj Potansiyeli:Katı elektrolitlerin bazı türleri, iyonların daha hızlı hareket etmesine izin vererek, şarj sürelerini 15-20 dakikaya kadar düşürme potansiyeli sunar.</li>
+                        <li>Daha Uzun Döngü Ömrü:Katı yapının stabilitesi sayesinde, pilin yüzlerce şarj/deşarj döngüsü sonrasında kapasite kaybı daha azdır.</li>
+                    </ul>
+                    
+                    <h3>1.2. Güvenlik ve Uzun Ömür</h3>
+                    <p>Katı hal pillerinin belki de en önemli pratik avantajı, güvenliktir. Sıvı elektrolitlerin aksine, katı hal elektrolitleri yanıcı değildir ve aşırı şarj veya kısa devre durumunda bile termal kaçak (thermal runaway) riskini büyük ölçüde ortadan kaldırır. Bu durum, dizüstü bilgisayar üreticilerinin bataryaları kasaya daha entegre etmelerini ve hatta ısı dağıtımı için ek malzemelerden tasarruf etmelerini sağlayabilir, böylece daha ince ve hafif cihazlar mümkün olur.</p>
+
+                    <hr>
+                    
+                    <h2 id="entegrasyon">2. Dizüstü Bilgisayar Pazarına Etkileri 💻</h2>
+                    <p>Bu teknolojinin piyasaya sürülmesi, sadece pil ömrünü artırmakla kalmayacak, aynı zamanda dizüstü bilgisayarların tasarım ve performans standartlarını da yeniden tanımlayacak. Tüketiciler artık "gün boyu pil ömrü" sloganını gerçek anlamda deneyimleyebilecek.</p>
+                    
+                    <h3>2.1. Tüketiciye Yansımaları ve Fiyatlandırma</h3>
+                    <p>İlk aşamada, katı hal pil teknolojisi, yüksek mühendislik ve üretim maliyetleri nedeniyle premium segmentteki dizüstü bilgisayarlara entegre edilecek. Uzmanlar, ilk piyasaya sürülen modellerin, standart Li-ion bataryalı muadillerine göre %25 ila %40 oranında daha pahalı olmasını bekliyor. Ancak, pazarın büyümesi ve üretim hacminin artmasıyla, maliyetlerin hızla düşeceği ve orta segmente yayılacağı öngörülüyor.</p>
+                    
+                    <blockquote>
+                        <p>"Pil ömründeki bu %50'lik artış, sadece bir sayı değil; mobil çalışma modelinin temelini değiştiriyor. Artık kullanıcılar, adaptör taşıma endişesi duymadan tam bir günü geçirebilir. Bu, mobil cihazlar için yeni bir güvenlik ve performans çağıdır."</p>
+                        <cite>— Mobil Enerji Sistemleri Analisti, Dr. Ayşe Kaya</cite>
+                    </blockquote>
+                    
+                    <h3>2.2. İlk Kullanacak Markalar ve Modeller</h3>
+                    <p>Endüstri kaynaklarına göre, büyük markalar (XPC, GlobalTech vb.) bu teknolojiyi öncelikle Ultra Taşınabilir İş Serileri ve Yüksek Performanslı Oyun Dizüstü Bilgisayarlarında test ediyor. Oyun bilgisayarlarında, pil yoğunluğunun artması, ağır güç adaptörlerinin taşınma zorluğunu hafifletirken, Ultra Taşınabilir modellerde ise incelikten ödün vermeden uzun pil ömrü sağlanacak. İlk resmi duyuruların 2026 yılındaki büyük tüketici elektroniği fuarlarında yapılması bekleniyor.</p>
+                    
+                    <hr>
+
+                    <h2 id="sustainability">3. Çevresel Sürdürülebilirlik ve Geri Dönüşüm 🌍</h2>
+                    <p>Katı hal piller, uzun ömürlülük ve daha az toksik malzeme içermeleri sayesinde çevresel açıdan da daha sürdürülebilir bir alternatiftir. Bu teknoloji, sadece tüketici deneyimini iyileştirmekle kalmıyor, aynı zamanda elektronik atıkların çevreye olan yükünü azaltma potansiyeli de taşıyor.</p>
+
+                    <h3>3.1. Azaltılmış Çevresel Ayak İzi</h3>
+                    <p>Katı hal hücreleri, üretim sırasında daha az nadir toprak metali veya tehlikeli solvent gerektirir. Elektrolit olarak sıvı yerine katı malzemenin kullanılması, sızma ve kirlenme riskini tamamen ortadan kaldırır. Ayrıca pilin kullanım ömrü boyunca daha uzun süre kapasite tutması, daha az sıklıkta pil değişimi yapılacağı anlamına gelir ki bu da nihayetinde küresel elektronik atık miktarını düşürmeye yardımcı olacaktır.</p>
+
+                    <h3>3.2. Geri Dönüşüm Süreçlerinin Kolaylaşması</h3>
+                    <p>Lityum-iyon pillerin geri dönüşümü, karmaşık sıvı ayırma işlemlerini gerektirirken, katı hal pillerinin yapısı, değerli lityum ve kobalt gibi metallerin geri kazanılmasını hidro veya piro metalurjik yöntemlerle daha kolay hale getirir. Bu verimlilik artışı, geri dönüşüm tesislerinin maliyetlerini düşürürken, çevresel faydaları maksimize eder.</p>
+
+                    <hr>
+                    
+                    <h2 id="future-impact">4. Teknoloji Diğer Sektörlere Yayılıyor: Mobil ve Otomotiv 🚗📱</h2>
+                    <p>Dizüstü bilgisayarlarda elde edilen bu başarılı entegrasyon, diğer büyük batarya tüketicisi sektörler için de bir dönüm noktasıdır. Katı hal pil teknolojisinin sunduğu enerji yoğunluğu ve güvenlik avantajları, özellikle elektrikli araçlar (EA) ve akıllı telefonlar için büyük fırsatlar yaratmaktadır.</p>
+                    
+                    <p>Elektrikli araçlarda, mevcut Li-ion pillere göre daha hafif ve daha küçük pil paketleri, menzili önemli ölçüde artırabilir ve şarj istasyonlarında geçirilen süreyi kısaltabilir. Akıllı telefonlar için ise, bu teknoloji pil ömrünü 1-2 günlük kullanıma çıkarırken, cihazların inceliğini korumaya veya daha da azaltmaya olanak tanıyacaktır.</p>
+
+                    <p>Özetle, dizüstü bilgisayar teknolojisi batarya alanında bir devrimin eşiğinde. Üretim zorlukları aşıldıkça, katı hal piller mobil cihaz standartlarını kalıcı olarak yükseltecek ve tam gün süren, güvenli mobiliteyi mümkün kılacaktır.</p>
+
+                    <div class="share-buttons">
+                        <a href="https://x.com/intent/tweet?url=URL_BURAYA&text=Yeni Pil Teknolojisi İle Dizüstü Bilgisayar Pil Ömrü %50 Arttı" class="twitter" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M18.9 4.8c-.7.3-1.5.5-2.3.6.8-.5 1.4-1.2 1.7-2.1-.8.5-1.7.9-2.7 1.1-.7-.7-1.7-1.2-2.8-1.2-2.1 0-3.8 1.7-3.8 3.8 0 .3.04.6.1.9C7 8.3 4.5 6.9 2.8 4.7c-.3.6-.5 1.2-.5 1.9 0 1.3.7 2.4 1.7 3.1-.6 0-1.2-.2-1.7-.5v.05c0 1.9 1.4 3.5 3.3 3.8-.3.1-.7.1-1.1.1-.3 0-.6 0-.8-.1 1.4 1.6 3.4 2.7 5.7 2.7-1.7 1.3-3.8 2.1-6.1 2.1-.4 0-.8 0-1.2-.1C4.3 19.3 7 20.2 9.9 20.2c8.2 0 12.7-6.8 12.7-12.7 0-.2 0-.4-.01-.6.9-.6 1.7-1.3 2.3-2.1z"/></svg> 
+                            Twitter'da Paylaş
+                        </a>
+                        <a href="https://www.linkedin.com/shareArticle?mini=true&url=URL_BURAYA&title=Yeni Pil Teknolojisi İle Dizüstü Bilgisayar Pil Ömrü %50 Arttı" class="linkedin" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19h-3v-9h3v9zm-1.5-10h-.01c-.8 0-1.3-.5-1.3-1.2 0-.7.5-1.2 1.3-1.2.8 0 1.3.5 1.3 1.2 0 .7-.5 1.2-1.3 1.2zm13 10h-3v-4.7c0-1.1-.4-1.7-1.3-1.7-.7 0-1.1.4-1.3.8v.9c0 0-.1 4.7-.1 4.7h-3s.1-8.5 0-9h3v1.3c.4-.7 1.2-1.3 2.7-1.3 2 0 3.5 1.3 3.5 4.3V19z"/></svg>
+                            LinkedIn'de Paylaş
+                        </a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=URL_BURAYA" class="facebook" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M14.01 2.016h2.466V4.49H14.01c-.698 0-1.22.427-1.22 1.261v1.615h3.69l-.6 3.696H12.79v8.941h-4.8v-8.941H6.18V7.366h1.81V5.753c0-2.43 1.487-3.766 3.75-3.766h2.27z"/></svg>
+                            Facebook'ta Paylaş
+                        </a>
+                    </div>
+
+                </section>
+            </section>
+            
+            <aside class="article-sidebar">
+                <div class="related-articles-box">
+                    <h3>📢 Diğer Haberler</h3>
+                    <ul>
+                        <li><a href="gpu-zinciri-haber.html">Global GPU Tedarik Zinciri Sorunları Tamamen Çözüldü</a></li>
+                        <li><a href="z890-haberler.html">Z890 Anakartlarda DDR5 Hız Sınırları Yeniden Yazılıyor</a></li>
+                        <li><a href="ddr6-ram-haber.html">DDR6 RAM'ler İçin İlk Resmi Standartlar Açıklandı</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Teknogündem. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+    
+</body>
+</html>

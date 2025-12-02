@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kubernetes'e Giriş Rehberi: Temeller, Mimari ve Konteyner Orkestrasyonu - TeknoGündem</title>
-    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -312,10 +312,10 @@ spec:
             <div class="technical-section">
                 <h3>Adım 3.1: Dış Dünya Erişim Mekanizmaları</h3>
                 <p style="margin-bottom: 15px; line-height: 1.7; color: #ddd;">
-                    Uygulamaların dış dünyadan (kullanıcılardan) erişilebilir olması için `Service` objeleri tek başına yeterli değildir.
+                    Uygulamaların dış dünyadan (kullanıcılardan) erişilebilir olması için Service objeleri tek başına yeterli değildir.
                 </p>
                 <ul class="detail-list">
-                    <li><i class="fas fa-ethernet" style="color: var(--color-k8s-main);"></i> NodePort ve LoadBalancer: `Service` türleri. NodePort, her düğümde sabit bir port açar; LoadBalancer ise bulut sağlayıcınızdan bir harici yük dengeleyici (ELB, ALB) oluşturur.</li>
+                    <li><i class="fas fa-ethernet" style="color: var(--color-k8s-main);"></i> NodePort ve LoadBalancer: Service türleri. NodePort, her düğümde sabit bir port açar; LoadBalancer ise bulut sağlayıcınızdan bir harici yük dengeleyici (ELB, ALB) oluşturur.</li>
                     <li><i class="fas fa-door-open" style="color: var(--color-k8s-main);"></i> Ingress: HTTP/HTTPS trafiği için katman-7 (Layer-7) yönlendirme kurallarını tanımlar. Tek bir IP adresi üzerinden birden fazla uygulamayı host etmeye yarar ve trafik yönetimi için kritik öneme sahiptir.</li>
                 </ul>
                 
@@ -324,7 +324,7 @@ spec:
             <div class="technical-section">
                 <h3>Adım 3.2: Gelişmiş Dağıtım Teknikleri (Canary, Blue/Green)</h3>
                 <p style="margin-bottom: 25px; line-height: 1.7; color: #ddd;">
-                    Kubernetes, `Deployment` ve `Service` objeleriyle entegre çalışan karmaşık dağıtım stratejilerini kolayca destekler.
+                    Kubernetes, Deployment ve Service objeleriyle entegre çalışan karmaşık dağıtım stratejilerini kolayca destekler.
                 </p>
                 
                 <blockquote style="border-left: 5px solid var(--color-secondary); background-color: rgba(255, 152, 0, 0.05); padding: 15px; margin-top: 20px;">

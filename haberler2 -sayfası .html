@@ -4,424 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TÜM DONANIM HABERLERİ - Teknogündem</title>
-    <link rel="shortcut icon" href="TEKNO GÜNDEM   LOGO .png" type="image/x-icon">
+    <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
     <style>
-        /* [Buraya, bir önceki yanıtta yer alan TÜM CSS KODLARI EKLENMELİDİR] */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background-color: #f4f7f9;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* Header Stili */
-        header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 15px 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header h1 {
-            font-size: 1.8em;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        .logo-dot {
-            height: 10px;
-            width: 10px;
-            background-color: #00bcd4;
-            border-radius: 50%;
-            display: inline-block;
-            margin-left: 2px;
-        }
-
-        header nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        header nav ul li a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            display: block;
-            font-weight: 600;
-            transition: background-color 0.3s;
-        }
-
-        header nav ul li a:hover {
-            background-color: #00bcd4;
-            border-radius: 4px;
-        }
+        /* TÜM CSS KODLARI (Aynen korundu, değişiklik yok) */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body { background-color: #f4f7f9; color: #333; line-height: 1.6; }
         
-        /* Dropdown Menü Stilleri (Eski İnceleme Sayfasından Eklendi) */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
+        /* Header */
+        header { background-color: #2c3e50; color: white; padding: 15px 0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+        header h1 { font-size: 1.8em; font-weight: 800; letter-spacing: 1px; }
+        header nav ul { list-style: none; display: flex; }
+        header nav ul li a { color: white; text-decoration: none; padding: 10px 15px; display: block; font-weight: 600; transition: background-color 0.3s; }
+        header nav ul li a:hover { background-color: #00bcd4; border-radius: 4px; }
         
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #2c3e50;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-            padding: 5px 0;
-            border-radius: 4px;
-        }
+        /* Dropdown */
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: #2c3e50; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; padding: 5px 0; border-radius: 4px; }
+        .dropdown-content a { color: white; padding: 12px 16px; text-decoration: none; display: block; text-align: left; }
+        .dropdown-content a:hover { background-color: #00bcd4; }
+        .dropdown:hover .dropdown-content { display: block; }
+
+        /* Main Layout */
+        .main-body-container { max-width: 1200px; margin: 20px auto; padding: 0 20px; }
+        .page-title-section { padding: 20px 0; margin-bottom: 30px; border-bottom: 1px solid #ddd; }
+        .page-title { font-size: 2.2em; color: #2c3e50; margin-bottom: 5px; }
+        .subtitle { color: #7f8c8d; font-size: 1.1em; }
+        .news-layout-system { margin-bottom: 40px; }
+        .section-separator { border: 0; height: 1px; background-color: #ddd; margin: 40px 0; }
+
+        /* Featured Card (Büyük Haber) */
+        .featured-news-area { margin-bottom: 30px; }
+        .featured-card-large { display: flex; background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); transition: transform 0.3s, box-shadow 0.3s; }
+        .featured-card-large:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); }
+        .featured-card-large img { width: 50%; max-height: 350px; object-fit: cover; }
+        .card-text-content { width: 50%; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; }
         
-        .dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
+        /* Kategori Rengini Yeşil yaptım (Monitör için taze bir renk) */
+        .category-tag { display: inline-block; background-color: #27ae60; color: white; padding: 5px 12px; border-radius: 4px; font-size: 0.8em; font-weight: 700; margin-bottom: 15px; text-transform: uppercase; }
         
-        .dropdown-content a:hover {
-            background-color: #00bcd4;
-        }
+        .card-text-content h2 { font-size: 1.8em; color: #2c3e50; margin-bottom: 10px; }
+        .card-text-content p { color: #555; margin-bottom: 20px; flex-grow: 1; }
+        .meta-data { font-size: 0.9em; color: #95a5a6; margin-bottom: 15px; }
+        .read-more-btn { display: inline-block; color: #27ae60; text-decoration: none; font-weight: 700; transition: color 0.3s; }
+        .read-more-btn:hover { color: #2c3e50; }
+
+        /* Sub News Grid (Küçük 3'lü Haber) */
+        .sub-news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .news-card-small { background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); transition: box-shadow 0.3s, transform 0.3s; }
+        .news-card-small:hover { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); transform: translateY(-3px); }
+        .news-card-small img { width: 100%; height: 180px; object-fit: cover; }
+        .card-content-small { padding: 15px; }
+        .category-tag-small { display: inline-block; background-color: #f39c12; color: white; padding: 4px 8px; border-radius: 3px; font-size: 0.7em; font-weight: 600; margin-bottom: 10px; }
+        .card-content-small h4 { font-size: 1.2em; color: #2c3e50; margin-bottom: 8px; }
+        .card-content-small p { font-size: 0.9em; color: #555; }
+        .read-more-link { color: #00bcd4; text-decoration: none; font-weight: 600; margin-left: 5px; }
+
+        /* News Grid (Alt 2'li Haber) */
+        .news-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .news-card-grid { display: flex; background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); transition: background-color 0.3s; }
+        .news-card-grid:hover { background-color: #ecf0f1; }
+        .news-card-grid img { width: 140px; height: 140px; object-fit: cover; flex-shrink: 0; }
+        .card-content { padding: 15px; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
+        .card-content h4 { font-size: 1.1em; color: #2c3e50; margin-bottom: 5px; }
+        .card-content p { font-size: 0.9em; color: #555; margin-bottom: 10px; }
+        .news-meta { font-size: 0.8em; color: #95a5a6; display: block; margin-bottom: 10px; }
+        .read-more { color: #00bcd4; text-decoration: none; font-weight: 600; align-self: flex-start; }
+        .read-more:hover { text-decoration: underline; }
+
+        /* Pagination & Footer */
+        .pagination { display: flex; justify-content: center; margin-top: 50px; padding: 20px 0; }
+        .pagination a { color: #2c3e50; padding: 10px 15px; text-decoration: none; border: 1px solid #ddd; margin: 0 4px; border-radius: 5px; transition: background-color 0.3s, color 0.3s; }
+        .pagination a:hover:not(.active) { background-color: #f0f0f0; }
+        .pagination a.active { background-color: #00bcd4; color: white; border-color: #00bcd4; }
+        footer { background-color: #2c3e50; color: white; text-align: center; padding: 20px 0; margin-top: 40px; }
         
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        /* Dropdown Stilleri SONU */
-
-
-        /* Main İçerik Kapsayıcısı */
-        .main-body-container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-
-        /* Başlık Bölümü */
-        .page-title-section {
-            padding: 20px 0;
-            margin-bottom: 30px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .page-title {
-            font-size: 2.2em;
-            color: #2c3e50;
-            margin-bottom: 5px;
-        }
-
-        .subtitle {
-            color: #7f8c8d;
-            font-size: 1.1em;
-        }
-
-        /* Haber Kartı Düzeni Sistemi */
-        .news-layout-system {
-            margin-bottom: 40px;
-        }
-
-        .section-separator {
-            border: 0;
-            height: 1px;
-            background-color: #ddd;
-            margin: 40px 0;
-        }
-
-        /* Öne Çıkan Haber Alanı (FEATURED CARD LARGE) */
-        .featured-news-area {
-            margin-bottom: 30px;
-        }
-
-        .featured-card-large {
-            display: flex;
-            background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .featured-card-large:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .featured-card-large img {
-            width: 50%;
-            max-height: 350px;
-            object-fit: cover;
-        }
-
-        .card-text-content {
-            width: 50%;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .category-tag {
-            display: inline-block;
-            background-color: #00bcd4;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 4px;
-            font-size: 0.8em;
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        .card-text-content h2 {
-            font-size: 1.8em;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .card-text-content p {
-            color: #555;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .meta-data {
-            font-size: 0.9em;
-            color: #95a5a6;
-            margin-bottom: 15px;
-        }
-
-        .read-more-btn {
-            display: inline-block;
-            color: #00bcd4;
-            text-decoration: none;
-            font-weight: 700;
-            transition: color 0.3s;
-        }
-
-        .read-more-btn:hover {
-            color: #2c3e50;
-        }
-
-        /* Alt Haberler Izgarası (SUB NEWS GRID) */
-        .sub-news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .news-card-small {
-            background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            transition: box-shadow 0.3s, transform 0.3s;
-        }
-
-        .news-card-small:hover {
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transform: translateY(-3px);
-        }
-
-        .news-card-small img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .card-content-small {
-            padding: 15px;
-        }
-
-        .category-tag-small {
-            display: inline-block;
-            background-color: #f39c12;
-            color: white;
-            padding: 4px 8px;
-            border-radius: 3px;
-            font-size: 0.7em;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .card-content-small h4 {
-            font-size: 1.2em;
-            color: #2c3e50;
-            margin-bottom: 8px;
-        }
-
-        .card-content-small p {
-            font-size: 0.9em;
-            color: #555;
-        }
-
-        .read-more-link {
-            color: #00bcd4;
-            text-decoration: none;
-            font-weight: 600;
-            margin-left: 5px;
-        }
-
-        /* Diğer Haberler Izgarası (NEWS GRID) */
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-
-        .news-card-grid {
-            display: flex;
-            background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            transition: background-color 0.3s;
-        }
-
-        .news-card-grid:hover {
-            background-color: #ecf0f1;
-        }
-
-        .news-card-grid img {
-            width: 140px;
-            height: 140px;
-            object-fit: cover;
-            flex-shrink: 0;
-        }
-
-        .card-content {
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            flex-grow: 1;
-        }
-
-        .card-content h4 {
-            font-size: 1.1em;
-            color: #2c3e50;
-            margin-bottom: 5px;
-        }
-
-        .card-content p {
-            font-size: 0.9em;
-            color: #555;
-            margin-bottom: 10px;
-        }
-
-        .news-meta {
-            font-size: 0.8em;
-            color: #95a5a6;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .read-more {
-            color: #00bcd4;
-            text-decoration: none;
-            font-weight: 600;
-            align-self: flex-start;
-        }
-
-        .read-more:hover {
-            text-decoration: underline;
-        }
-
-        /* Sayfalama (PAGINATION) */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            margin-top: 50px;
-            padding: 20px 0;
-        }
-
-        .pagination a {
-            color: #2c3e50;
-            padding: 10px 15px;
-            text-decoration: none;
-            border: 1px solid #ddd;
-            margin: 0 4px;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .pagination a:hover:not(.active) {
-            background-color: #f0f0f0;
-        }
-
-        .pagination a.active {
-            background-color: #00bcd4;
-            color: white;
-            border-color: #00bcd4;
-        }
-
-        /* Footer Stili */
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 40px;
-        }
-        
-        footer .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Duyarlılık Ayarları (Responsive Design) */
+        /* Responsive */
         @media (max-width: 992px) {
-            .featured-card-large {
-                flex-direction: column;
-            }
-            .featured-card-large img, .card-text-content {
-                width: 100%;
-            }
-            .featured-card-large img {
-                max-height: 250px;
-            }
-            .news-grid {
-                grid-template-columns: 1fr;
-            }
-            .news-card-grid img {
-                width: 100px;
-                height: 100px;
-            }
+            .featured-card-large { flex-direction: column; }
+            .featured-card-large img, .card-text-content { width: 100%; }
+            .featured-card-large img { max-height: 250px; }
+            .news-grid { grid-template-columns: 1fr; }
         }
-
         @media (max-width: 600px) {
-            .header-content {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            header nav {
-                margin-top: 10px;
-                width: 100%;
-            }
-            header nav ul {
-                flex-direction: column;
-            }
-            header nav ul li a {
-                padding: 8px 0;
-            }
-            .sub-news-grid {
-                grid-template-columns: 1fr;
-            }
+            .header-content { flex-direction: column; align-items: flex-start; }
+            header nav { margin-top: 10px; width: 100%; }
+            header nav ul { flex-direction: column; }
+            header nav ul li a { padding: 8px 0; }
+            .sub-news-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -429,21 +99,18 @@
 
     <header>
         <div class="header-content">
-            <h1>TEKNOGÜNDEM<span class="logo-dot"></span></h1>
+            <h1>TEKNOGÜNDEM</h1>
             <nav>
                 <ul>
                     <li><a href="index.html">Ana Sayfa</a></li>
-                    
                     <li class="dropdown">
                         <a href="donanim.html">Donanım</a> 
-                        
                         <div class="dropdown-content"> 
                             <a href="haberler.html" class="dropdown-item">Haberler</a> 
                             <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
                         </div>
                     </li>
                     <li><a href="yazılım.html" class="active">Yazılım</a></li>
-                    
                     <li><a href="hakkimizda.html">Hakkımızda</a></li>
                 </ul>
             </nav>
@@ -454,54 +121,53 @@
         <div class="main-body-container">
             <div class="page-title-section">
                 <h1 class="page-title">GÜNCEL DONANIM HABERLERİ MERKEZİ</h1> 
-                <p class="subtitle">İşlemci, ekran kartı, anakart ve bellek teknolojilerine dair en güncel haberler ve gelişmeler. (Sayfa 2)</p>
+                <p class="subtitle">İşlemci, ekran kartı, anakart ve bellek teknolojilerine dair en güncel haberler ve gelişmeler. </p>
             </div>
 
             <section class="news-layout-system">
 
                 <div class="featured-news-area">
                     <article class="featured-card-large">
-                        <img src="img/haber-sogutma-manset.jpg" alt="Yeni sıvı soğutma sistemi" loading="lazy">
+                        <img src="oled 480 hz.jpg" alt="Yeni Nesil OLED Monitör" loading="lazy">
                         <div class="card-text-content">
-                            <span class="category-tag">SOĞUTMA ÖZEL</span>
-                            <h2>540W TDP'ye Hazırız: Yeni Nesil Sıvı Soğutmalar Piyasada!</h2>
-                            <p>Artan güç tüketimine karşı dev üreticiler 420mm radyatörlü sistemleri ana akım haline getiriyor. İlk test sonuçları...</p>
+                            <span class="category-tag">MONİTÖR / GÖRÜNTÜ</span>
+                            <h2>Oyun Dünyasında Yeni Standart: 480Hz OLED Monitörler Satışta!</h2>
+                            <p>IPS ve TN panellere veda zamanı. Yanma riski (burn-in) önleyici yeni teknolojiler ve inanılmaz yenileme hızlarıyla OLED paneller artık e-sporcuların da ilk tercihi oluyor.</p>
                             <div class="meta-data">
-                                <span>01 Kasım 2025</span> | <span>Editör: Ece Tekin</span>
+                                <span>02 Kasım 2025</span> | <span>Editör: Berkant Demir</span>
                             </div>
-                            <a href="detay-sogutma-yeni.html" class="read-more-btn">Haberi Detaylı Oku →</a>
+                            <a href="oled-monitör-haber.html" class="read-more-btn">Haberi Detaylı Oku →</a>
                         </div>
                     </article>
                 </div>
-                
                 <hr class="section-separator">
 
                 <div class="sub-news-grid">
                     
                     <article class="news-card-small">
-                        <img src="img/haber-amd-apu.jpg" alt="AMD APU" loading="lazy">
+                        <img src="amd  strix point  apu   jpg.jpg" alt="AMD APU" loading="lazy">
                         <div class="card-content-small">
                             <span class="category-tag-small">İŞLEMCİ / APU</span>
                             <h4>AMD Strix Point APU'lar Mobil Pazarı Alt Üst Edecek</h4>
-                            <p>Entegre GPU performansında rekor artış bekleniyor, mobil oyunculuk için yeni dönem...<a href="detay-strix-point.html" class="read-more-link">Devamı</a></p>
+                            <p>Entegre GPU performansında rekor artış bekleniyor, mobil oyunculuk için yeni dönem...<a href="amd -strix- haber.html" class="read-more-link">Devamı</a></p>
                         </div>
                     </article>
 
                     <article class="news-card-small">
-                        <img src="img/haber-ray-tracing-donanim.jpg" alt="Ray Tracing" loading="lazy">
+                        <img src="ray tracing.jpg" alt="Ray Tracing" loading="lazy">
                         <div class="card-content-small">
                             <span class="category-tag-small">GPU TEKNOLOJİSİ</span>
                             <h4>Işın İzleme Donanımı Artık Giriş Seviyesine İndi</h4>
-                            <p>Yeni ekonomik kartlar bile kabul edilebilir RT performansı sunuyor...<a href="detay-rt-giriş.html" class="read-more-link">Devamı</a></p>
+                            <p>Yeni ekonomik kartlar bile kabul edilebilir RT performansı sunuyor...<a href="ışın-izleme-haber.html" class="read-more-link">Devamı</a></p>
                         </div>
                     </article>
 
                     <article class="news-card-small">
-                        <img src="img/haber-laptop-batarya.jpg" alt="Laptop Batarya" loading="lazy">
+                        <img src="laptop batarya.webp" alt="Laptop Batarya" loading="lazy">
                         <div class="card-content-small">
                             <span class="category-tag-small">MOBİL TEKNOLOJİ</span>
                             <h4>Yeni Pil Teknolojisi İle Dizüstü Bilgisayar Pil Ömrü %50 Arttı</h4>
-                            <p>Katı hal batarya hücreleri nihayet seri üretime geçiyor...<a href="detay-pil-teknolojisi.html" class="read-more-link">Devamı</a></p>
+                            <p>Katı hal batarya hücreleri nihayet seri üretime geçiyor...<a href="pil-teknolojisi.html" class="read-more-link">Devamı</a></p>
                         </div>
                     </article>
 
@@ -514,26 +180,26 @@
                 <div class="news-grid"> 
                     
                     <article class="news-card-grid">
-                        <img src="img/haber-fiber-genel.jpg" alt="Fiber bağlantı" loading="lazy">
+                        <img src="fiber bağlantı.jpg" loading="lazy">
                         <div class="card-content">
                             <div>
                                 <h4>10 Gigabit Fiber Bağlantı Hızları Avrupa'da Yaygınlaşıyor</h4>
                                 <p>Tüketicilere yönelik fiber optik altyapıda önemli gelişmeler...</p>
-                                <span class="news-meta">30 Ekim 2025 | ALTYAPI | Yorum: 51</span>
+                                <span class="news-meta">30 Ekim 2025 | ALTYAPI |s
                             </div>
-                            <a href="detay-10g-fiber.html" class="read-more">Haberi Oku →</a>
+                            <a href="10gb -fiber -haber.html" class="read-more">Haberi Oku →</a>
                         </div>
                     </article>
                     
                     <article class="news-card-grid">
-                        <img src="img/haber-mini-pc.jpg" alt="Mini PC" loading="lazy">
+                        <img src="mini pc.jpg" alt="Mini PC" loading="lazy">
                         <div class="card-content">
                             <div>
                                 <h4>Mini PC Pazarı Rekor Kırıyor: Güçlü Bileşenler Küçük Kasalarda</h4>
                                 <p>NVIDIA MXM modülleri ve mobil işlemcilerle masaüstü gücü...</p>
-                                <span class="news-meta">28 Ekim 2025 | SİSTEM | Yorum: 9</span>
+                                <span class="news-meta">28 Ekim 2025 | SİSTEM |
                             </div>
-                            <a href="detay-mini-pc.html" class="read-more">Haberi Oku →</a>
+                            <a href="mini-pc-haber.html" class="read-more">Haberi Oku →</a>
                         </div>
                     </article>
 
@@ -542,9 +208,7 @@
                 <div class="pagination">
                     <a href="donanim-sayfasi.html">&laquo; Önceki</a>
                     <a href="haberler.html">1</a>
-                    <a href="habeler2 -sayfası .html" class="active">2</a>
-                    <a href="haberler3- sayfası.html">3</a>
-                    <a href="donanim-sayfasi-3.html">Sonraki &raquo;</a>
+                    <a href="haberler2.html" class="active">2</a>
                 </div>
 
             </section>

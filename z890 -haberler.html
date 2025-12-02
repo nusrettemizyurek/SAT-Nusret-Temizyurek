@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z890 Anakartlar DDR5 Hız Sınırlarını Yeniden Yazıyor: 9000 MHz Eşiği Stabil Olarak Aşıldı! 🚀 | TeknoGündem</title>
+    <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">>
+    
+    <style>
+        /*
+        ====================================================
+        ANAKART HABER STİLİ (Z890) 
+        ====================================================
+        */
+        :root {
+            /* Tema Renkleri (RTX 5070 Tema) */
+            --color-background: #101824; 
+            --color-card-background: #1C2533; 
+            --color-text: #E0E6F0; 
+            --color-primary: #3B82F6; /* Mavi Vurgu */
+            --color-secondary: #06B6D4; /* Turkuaz Vurgu */
+            --color-border: #374151; 
+            --color-shadow: rgba(0, 0, 0, 0.4); 
+            --text-gray: #9CA3AF;
+            --tech-red: #E53935; /* Overclock Başarısı için Kırmızı Vurgu */
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', 'Roboto', sans-serif; }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        /* HEADER & NAVİGASYON STİLLERİ */
+        header {
+            background-color: var(--color-card-background);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            padding: 15px 40px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .logo { font-size: 1.8em; font-weight: 900; color: var(--color-primary); }
+
+        nav ul { list-style: none; display: flex; gap: 25px; }
+        .dropdown { position: relative; }
+        nav a { color: var(--color-text); text-decoration: none; padding: 5px 10px; transition: color 0.3s, border-bottom 0.3s; display: block; }
+        nav a:hover { color: var(--color-secondary); border-bottom: 2px solid var(--color-secondary); }
+
+        .dropdown-content { display: none; position: absolute; background-color: var(--color-card-background); min-width: 180px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5); z-index: 10; list-style: none; padding: 10px 0; border-radius: 6px; border: 1px solid var(--color-border); top: 100%; left: 0; margin-top: 5px; }
+        .dropdown-content a { padding: 10px 20px; text-align: left; border-bottom: none; }
+        .dropdown-content a:hover { background-color: var(--color-primary); color: white; }
+        .dropdown:hover .dropdown-content { display: block; }
+
+        footer { background-color: var(--color-card-background); color: var(--text-gray); text-align: center; padding: 20px 0; margin-top: 50px; border-top: 1px solid var(--color-border); }
+        
+        /* Ana Kapsayıcı - GRID UYGULAMASI */
+        .full-width-section { width: 100%; padding: 40px 0; }
+        .content-wrapper { 
+            max-width: 1300px; 
+            margin: 0 auto; 
+            padding: 0 40px; 
+            display: grid;
+            grid-template-columns: 2fr 1fr; 
+            gap: 40px; 
+        }
+        
+        .article-main-text-area { grid-column: 1 / 2; min-width: 0; }
+        .article-sidebar { grid-column: 2 / 3; min-width: unset; padding-top: 0; }
+        
+        /* GÖRSELLER */
+        .featured-image-detail {
+            grid-column: 1 / -1; 
+            margin: 30px 0;
+            padding: 0 40px; 
+        }
+        .featured-image-detail img { 
+            width: 100%; 
+            height: auto; 
+            max-height: 550px; 
+            object-fit: cover; 
+            border-radius: 6px; 
+            box-shadow: 0 4px 20px var(--color-shadow); 
+            border: 1px solid var(--color-primary); 
+        }
+
+        .article-body-text img { width: 100%; max-width: 800px; height: auto; border-radius: 6px; margin: 20px auto; display: block; box-shadow: 0 4px 15px var(--color-shadow); }
+
+        /* ===========================================================
+        BAŞLIK ALANI (Arka Plan) 
+        ===========================================================
+        */
+        .hero-article-header {
+            width: 100%;
+            padding: 100px 0; 
+            grid-column: 1 / -1; 
+            
+            /* GÖRÜNTÜ TANIMLARI - URL ve GRADYAN kesinlikle ayrı ayrı tanımlanmıştır */
+            background-color: var(--color-background); /* Yedek arka plan rengi */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+                  
+            
+            background-size: cover;      
+            background-position: center;  
+            background-attachment: fixed; 
+            
+            color: #fff; 
+            text-align: center;
+            box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.5);
+            margin-bottom: 40px; 
+            position: relative;
+        }
+
+        .hero-header-content { max-width: 1000px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2;}
+        
+        .hero-header-content .tag {
+            background-color: var(--tech-red); 
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 20px; 
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            font-weight: 900;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .hero-header-content h1 {
+            font-size: 3.5em; 
+            line-height: 1.1;
+            margin-bottom: 25px;
+            font-weight: 900;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            text-transform: uppercase; 
+        }
+        
+        .hero-header-content .article-summary-text {
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-header-content .article-meta-info {
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.7);
+            border-top: 1px solid rgba(255, 255, 255, 0.3); 
+            padding-top: 15px;
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        /* İÇERİK STİLLERİ */
+        .toc-box { 
+            background-color: var(--color-card-background); 
+            padding: 25px; 
+            border-radius: 4px; 
+            border: 3px solid var(--color-primary); 
+            margin: 0 0 30px 0; 
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+        }
+        .toc-box h3 { 
+            color: var(--color-primary); 
+            border-bottom: 2px solid var(--color-secondary); 
+            padding-bottom: 10px; 
+            margin-bottom: 15px; 
+            font-size: 1.3em; 
+            font-weight: 900;
+        }
+        .toc-box a { color: var(--color-text); text-decoration: none; transition: color 0.2s; font-size: 1em; display: block; padding: 7px 0; }
+        .toc-box a:hover { color: var(--color-secondary); } 
+        
+        .article-body-text h2 { 
+            color: var(--color-secondary); 
+            font-size: 2.2em; 
+            margin: 50px 0 20px 0; 
+            border-left: 6px solid var(--tech-red); 
+            padding: 5px 0 5px 15px; 
+            text-transform: uppercase;
+        }
+        .article-body-text h3 { 
+            color: var(--color-primary); 
+            font-size: 1.6em; 
+            margin: 25px 0 15px 0; 
+            border-bottom: 1px dashed var(--color-border);
+            padding-bottom: 5px;
+        }
+        .article-body-text p { margin-bottom: 25px; font-size: 1.05em; text-align: justify; }
+        .article-body-text strong { color: var(--tech-red); font-weight: 900; }
+        .article-body-text ul { padding-left: 25px; margin-bottom: 20px; list-style-type: '⚡ '; }
+        .article-body-text li { margin-bottom: 10px; }
+        
+        /* Sidebar/Specs Box Styling */
+        .article-sidebar { 
+            padding: 25px; 
+            background-color: var(--color-card-background); 
+            border-radius: 8px; 
+            border: 1px solid var(--color-primary); 
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); 
+            height: fit-content; 
+        }
+        
+        .related-articles-box { 
+            background-color: transparent; 
+            padding: 0; 
+            border: none;
+            box-shadow: none;
+            margin-bottom: 30px; 
+        }
+        
+        .related-articles-box h3 { 
+            color: var(--color-primary); 
+            border-bottom: 2px solid var(--color-secondary); 
+            padding-bottom: 10px; 
+            margin-bottom: 15px; 
+            font-size: 1.4em;
+        }
+        
+        .related-articles-box a { color: var(--color-text) !important; text-decoration: none; transition: color 0.2s; font-size: 1em; display: block; padding: 5px 0; }
+        .related-articles-box a:hover { color: var(--color-secondary) !important; text-decoration: underline; }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .content-wrapper { 
+                grid-template-columns: 1fr; 
+                padding: 0 20px; 
+                gap: 20px;
+            }
+            .article-sidebar { 
+                grid-column: 1 / 2;
+                margin-top: 20px;
+            }
+            .hero-header-content h1 { font-size: 2.5em; }
+            .hero-header-content .article-meta-info { flex-direction: column; align-items: center; gap: 10px; }
+            .hero-header-content .article-summary-text { font-size: 1.1em; }
+            .article-body-text h2 { font-size: 1.8em; }
+            header { padding: 15px 20px; }
+        }
+    </style>
+    
+</head>
+<body> 
+
+    <header>
+        <div class="logo">TeknoGündem</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li class="dropdown">
+                    <a href="donanım.html">Donanım </a>
+                    <ul class="dropdown-content">
+                        <li><a href="haberler.html">Haberler</a></li>
+                        <li><a href="incelemeler.html">İncelemeler</a></li>
+                    </ul>
+                </li>
+                <li><a href="yazılım.html">Yazılım </a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="hero-article-header">
+        <div class="hero-header-content">
+            <span class="tag">ANAKART / OVERCLOCK</span>
+            <h1>Z890 Anakartlar DDR5 Hız Sınırlarını Yeniden Yazıyor: 9000 MHz Eşiği Stabil Olarak Aşıldı! 🚀</h1> 
+            <p class="article-summary-text">Intel'in 15. Nesil işlemcileriyle piyasaya sürülecek Z890 yonga setli anakartlar, bellek hız aşırtma (overclock) potansiyelinde çığır açıyor. Üreticiler 9000 MHz hızlarını stabil olarak elde ettiklerini duyurdu.</p>
+            <div class="article-meta-info">
+                <span><i class="fas fa-calendar-alt"></i> 25 Kasım 2025</span> 
+                <span><i class="fas fa-microchip"></i> Kaynak: Anakart Üreticisi Resmi Duyuruları</span>
+            </div>
+        </div>
+    </div>
+    <main class="full-width-section">
+        
+        <div class="content-wrapper">
+            
+            <figure class="featured-image-detail">
+                <img src="z890 anakart  haberler .jpg" alt="Yüksek Performanslı Z890 Anakart Detay Görseli" loading="lazy">
+                <figcaption style="font-size: 0.9em; color: var(--color-primary); text-align: center; padding-top: 10px;">Z890 Anakart (Kavramsal Tasarım) - Güçlü VRM ve Gelişmiş Bellek Yönlendirmesi.</figcaption>
+            </figure>
+
+
+            
+            <section class="article-main-text-area">
+                
+                <div class="toc-box">
+                    <h3>İçindekiler</h3>
+                    <ul>
+                        <li><a href="#9000mhz-nedir">1. 9000 MHz Eşiği Neden Kritik?</a></li>
+                        <li><a href="#donanim-degisiklikleri">2. Anakartlarda Yapılan Donanım Değişiklikleri</a></li>
+                        <li><a href="#yeni-yonga-seti">3. Intel Z890 ve 15. Nesil İşlemcilerin Rolü</a></li>
+                        <li><a href="#xmp-profil">4. XMP 3.0 ve Performans Profil Desteği</a></li>
+                        <li><a href="#sonuc-analiz">5. Stabilite ve Performans Analizi: Gerçek Kullanıcıya Etkisi</a></li>
+                    </ul>
+                </div>
+
+                <section class="article-body-text">
+
+                    <h2 id="9000mhz-nedir">9000 MHz Eşiği Neden Kritik?</h2>
+                    <p>DDR5 teknolojisinin piyasaya sürülmesinden bu yana hız sınırları sürekli zorlanıyor. Ancak 8000 MHz üzerindeki hızlara çıkmak, özellikle <strong>günlük stabiliteyi koruyarak</strong>, son derece zordu. 9000 MHz'in stabil bir şekilde aşılması, yalnızca rekor kırmaktan ibaret değil; aynı zamanda yeni nesil işlemcilerin ve uygulamaların yüksek bant genişliği gereksinimlerini karşılamak için büyük bir adımdır.</p>
+                    
+                    <p>Bu hızlara ulaşmak, bellek kontrolcüsü, anakart VRM (Voltaj Düzenleme Modülleri) kalitesi ve PCB (Baskılı Devre Kartı) üzerindeki sinyal bütünlüğü açısından üreticilerin mühendislik sınırlarını zorladığını gösteriyor. Başarı, Intel'in 15. Nesil işlemcileri ve Z890 yonga seti ile tam bir uyum içinde çalışabilen yeniden tasarlanmış bellek yuvası (slot) topolojileri sayesinde geldi.</p>
+                    
+                    <h3>Performans Kazancı: Oyun ve Üretkenlik</h3>
+                    <p>9000 MHz ve üzeri hızlar, özellikle CPU'nun bellek bant genişliğine duyarlı olduğu senaryolarda (örneğin 1080p düşük çözünürlüklü oyunlar, veri sıkıştırma/açma, video renderlama) önemli performans artışları anlamına gelir. Bu hızlar sayesinde, gecikme (latency) değerleri de ciddi oranda düşürülerek genel sistem tepkiselliği maksimize edilmiştir.</p>
+
+                    <h2 id="donanim-degisiklikleri">Anakartlarda Yapılan Donanım Değişiklikleri</h2>
+                    <p>Z890 serisi anakartlar, bu yüksek hızları desteklemek için seleflerine göre önemli donanımsal iyileştirmeler içeriyor. Anakart üreticileri, özellikle bellek devrelerinin bulunduğu PCB katman sayısını artırdı ve sinyal yollarını daha kısa ve izole hale getirdi.</p>
+
+                    <ul>
+                        <li><strong>VRM Faz Sayısı ve Kalitesi:</strong> Bellek VRM'leri, yüksek voltajlarda bile stabil güç sağlayabilmek için daha fazla faza ve daha yüksek kaliteli kapasitörlere sahip.</li>
+                        <li><strong>Daha Kısa Sinyal Yolları:</strong> Anakartlar, bellek modüllerine giden sinyal yollarını (trace'leri) olabildiğince kısaltarak sinyal bozulmasını (noise) minimize etti. Bu, "Daisy Chain" veya "T-Topology" düzenlemelerinin en optimize edilmiş versiyonlarının kullanılmasıyla sağlandı.</li>
+                        <li><strong>Gelişmiş Soğutma Çözümleri:</strong> Bellek slotları çevresindeki VRM'ler için daha büyük ve daha verimli ısı dağıtıcılar (heatsink) kullanıldı.</li>
+                    </ul>
+
+                    <h2 id="yeni-yonga-seti">Intel Z890 ve 15. Nesil İşlemcilerin Rolü</h2>
+                    <p>Z890 yonga setinin kendisi, bellek kontrolcü kalitesini doğrudan etkilemez, ancak bu anakartlar <strong>Intel'in 15. Nesil (Arrow Lake) işlemcileri</strong> için tasarlandı. Yeni nesil işlemcilerdeki entegre bellek kontrolcüleri (IMC), daha yüksek hızları natif olarak ve daha stabil bir şekilde destekleyebilecek şekilde yeniden tasarlandı. Anakartlar bu yeni IMC'nin potansiyelini serbest bırakmak için bir köprü görevi görüyor.</p>
+                    
+                    <h2 id="xmp-profil">XMP 3.0 ve Performans Profil Desteği</h2>
+                    <p>Bu rekor hızlar, son kullanıcı için XMP 3.0 profilleri aracılığıyla erişilebilir olacak. Yüksek performanslı bellek kitleri, anakart üreticilerinin bu yeni hızları stabil olarak test edip onayladığı XMP profilleri ile satışa sunulacak. Bu sayede, BIOS'ta tek bir ayar değişikliği ile kullanıcılar 9000 MHz'in üzerindeki hızlara kolayca ulaşabilecekler.</p>
+                    <p>Özellikle <strong>"Tek Tıkla OC"</strong> veya <strong>"AI Overclocking"</strong> gibi anakart yazılımları, kullanıcıların sistemlerindeki bellek kitlerinin ve işlemcilerinin kalitesine göre en uygun 9000+ MHz hız ayarlarını otomatik olarak belirleyerek stabiliteyi garantileyecek.</p>
+
+                    <h2 id="sonuc-analiz">Stabilite ve Performans Analizi: Gerçek Kullanıcıya Etkisi</h2>
+                    <p>9000 MHz başarısının gerçek kullanıcıya yansıması, özellikle bütçesi olan ve performansın her milisaniyesini arayan enthusiast (meraklı) kitle için muazzam olacak. Daha önceki nesillerde 6000-7000 MHz bandında kalan stabil hızlar, Z890 ile 8000 MHz üzerine çıkacak ve üst seviye kitler için 9000 MHz'in sıradan hale gelmesi bekleniyor. Bu, bilgisayar toplama dünyası için yüksek hızlı DDR5'in olgunlaştığı anlamına geliyor.</p>
+                    
+                </section>
+                
+            </section>
+            
+            <aside class="article-sidebar">
+                
+                <div class="related-articles-box">
+                    <h3>📢 İLGİLİ HABERLER (Z890 VURGUSU)</h3>
+                    <ul>
+                        <li><a href="#arrow-lake-lansmani">Intel Arrow Lake İşlemciler Sızdırıldı: 8P+16E Çekirdek Yapısı</a></li>
+                        <li><a href="#ddr5-fiyat-analizi">DDR5 Bellek Fiyatları Düşüşe Geçti: OC Kitleri Erişilebilir Oluyor</a></li>
+                        <li><a href="#yeni-nesil-sogutma">Yeni Nesil Sıvı Soğutucular, 15. Nesil İşlemciler İçin Hazır</a></li>
+                    </ul>
+                </div>
+                
+                <div class="related-articles-box">
+                    <h3>⚡ TEKNİK DESTEK</h3>
+                    <p style="font-size: 0.9em; color: var(--text-gray);">Yüksek hızlı belleklerinizle ilgili BIOS ayarları veya uyumluluk sorunlarınız için teknik ekibimizle iletişime geçin.</p>
+                    <a href="#destek" style="color: var(--tech-red); font-weight: bold; display: block; margin-top: 10px; border-bottom: 1px solid var(--color-border); padding-bottom: 5px;">Sorun Giderme Rehberi</a>
+                </div>
+            </aside>
+
+        </div>
+        
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 TeknoGündem. Tüm hakları saklıdır. Tüm hatalar giderildi.</p>
+        </div>
+    </footer>
+    
+</body>
+</html>

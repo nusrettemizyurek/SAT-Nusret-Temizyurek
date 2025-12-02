@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCIe Gen5 SSD'ler Artık Ana Akım | TeknoGündem</title>
+    <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
+    
+    <style>
+        /* --- CSS BAŞLANGIÇ --- */
+        
+        /* Custom CSS Variables (Değişkenler) */
+        :root {
+            --color-primary: #007bff; /* Mavi Vurgu */
+            --color-secondary: #ffc107; /* Sarı/Turuncu Vurgu */
+            --color-text: #333333; /* Koyu Metin */
+            --color-background: #f4f4f9; /* Açık Arka Plan */
+            --color-card-background: #ffffff;
+            --color-shadow: rgba(0, 0, 0, 0.1);
+            --color-border: #eeeeee;
+            --color-footer: #333333;
+            --text-gray: #6c757d;
+        }
+
+        /* Karanlık Mod Değişkenleri (Varsayılan Aktif) */
+        .dark-mode {
+            --color-text: #e0e0e0; /* Açık Gri Metin */
+            --color-background: #121212; /* Koyu Siyah Arka Plan */
+            --color-card-background: #1e1e1e; /* Koyu Kart Arka Planı */
+            --color-shadow: rgba(0, 0, 0, 0.5);
+            --color-border: #333333;
+            --color-footer: #000000;
+        }
+
+        /* 1. TEMEL STİLLER */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* HEADER STİLLERİ */
+        header {
+            background-color: var(--color-card-background);
+            color: var(--color-text);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px var(--color-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 800;
+            color: var(--color-primary);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 0;
+            transition: color 0.2s;
+        }
+
+        nav ul li a:hover {
+            color: var(--color-secondary);
+        }
+
+        /* Dropdown Stilleri */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--color-card-background);
+            min-width: 160px;
+            box-shadow: 0 8px 16px var(--color-shadow);
+            z-index: 1;
+            border-top: 3px solid var(--color-primary);
+            border-radius: 0 0 5px 5px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown-content li { padding: 0; margin: 0; }
+
+        .dropdown-content li a {
+            color: var(--color-text);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block; 
+            font-size: 0.95em;
+            border-left: 3px solid transparent;
+            transition: background-color 0.2s, color 0.2s, border-left 0.2s;
+        }
+
+        .dropdown-content li a:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--color-secondary);
+            border-left: 3px solid var(--color-secondary);
+        }
+        
+        /* FOOTER STİLLERİ */
+        footer {
+            background-color: var(--color-footer);
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+            font-size: 0.9em;
+        }
+
+        /* ARTIKIL DETAY STİLLERİ */
+
+        .full-width-section {
+            width: 100%;
+            background-color: var(--color-card-background);
+            box-shadow: 0 4px 15px var(--color-shadow);
+            padding: 40px 0;
+        }
+
+        .content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            gap: 40px;
+        }
+
+        .article-main-text-area {
+            flex: 3; 
+            min-width: 0; 
+        }
+        
+        .article-sidebar {
+            flex: 1; 
+            min-width: 300px;
+            max-width: 400px;
+            padding-top: 50px; 
+        }
+        
+        /* GÖRSEL STİLİ */
+        .featured-image-detail img {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin: 30px 0;
+            box-shadow: 0 4px 12px var(--color-shadow);
+        }
+        
+        /* ----------------------------------------------------------- */
+        /* 🔥 YENİ GELİŞMİŞ BAŞLIK ALANI (FOTOĞRAFLI HERO) 🔥 */
+        /* ----------------------------------------------------------- */
+        .hero-article-header {
+            width: 100%;
+            padding: 100px 0; /* Yüksekliği artırdık, görsel daha iyi durur */
+            
+            /* ARKA PLAN RESMİ AYARLARI */
+            /* Not: Dosya ismindeki boşluklar web için risklidir ama burada olduğu gibi bıraktım. */
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), /* %75 Siyah Perde (Okunabilirlik için) */
+                url('pcı gen5 .jpg'); /* SENİN RESMİN BURADA */
+            
+            background-color: #222; /* Resim yüklenmezse görünecek renk */
+            background-size: cover;       /* Resmi alana yay */
+            background-position: center;  /* Resmi ortala */
+            background-attachment: fixed; /* PARALLAX EFEKTİ: Sayfa kayarken resim sabit kalır */
+            
+            color: #fff; 
+            text-align: center;
+            box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.5); /* İç gölge */
+            margin-bottom: 40px; 
+            position: relative;
+        }
+
+        .hero-header-content {
+            max-width: 1000px; 
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative; 
+            z-index: 2;
+        }
+        
+        .hero-header-content .tag {
+            background-color: var(--color-primary); 
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .hero-header-content h1 {
+            font-size: 3.5em; 
+            line-height: 1.1;
+            margin-bottom: 25px;
+            font-weight: 900;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Metin gölgesi artırıldı */
+        }
+        
+        .hero-header-content .article-meta-info {
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.3); 
+            padding-top: 20px;
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        /* İÇİNDEKİLER TABLOSU (TOC) */
+        .toc-box {
+            background-color: var(--color-background);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            margin: 0 0 30px 0;
+        }
+        .toc-box h3 {
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-secondary);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        .toc-box a {
+            color: var(--color-text);
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 1em;
+            display: block; 
+            padding: 8px 0;
+        }
+        .toc-box a:hover {
+            color: var(--color-secondary);
+            padding-left: 5px; /* Hover efekti */
+        }
+
+        /* Sosyal Paylaşım Butonları */
+        .share-buttons {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        .share-buttons a {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.95em;
+            font-weight: 600;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+        .share-buttons a:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        .share-buttons .twitter { background-color: #1DA1F2; }
+        .share-buttons .linkedin { background-color: #0077B5; }
+        .share-buttons .facebook { background-color: #4267B2; }
+
+        .share-buttons svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor; 
+            margin-right: 10px;
+        }
+        
+        /* Okuma Süresi */
+        .reading-time {
+            font-size: 0.9em;
+            color: var(--text-gray);
+            font-weight: bold;
+            display: block;
+            margin-bottom: 20px;
+            text-align: right;
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 10px;
+        }
+        
+        /* Sidebar Kutuları */
+        .related-articles-box {
+            background-color: var(--color-background); /* Kartın içinde zıt renk */
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: inset 0 0 10px var(--color-shadow);
+            margin-bottom: 30px;
+            border: 1px solid var(--color-border);
+        }
+        .related-articles-box h3 {
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-border);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+        .related-articles-box ul { list-style: none; }
+        .related-articles-box li {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--color-border);
+        }
+        .related-articles-box li:last-child { border-bottom: none; }
+        
+        .related-articles-box a {
+            color: var(--color-text);
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 0.95em;
+            font-weight: 500;
+            display: block;
+        }
+        .related-articles-box a:hover {
+            color: var(--color-secondary);
+        }
+
+        /* Mobil Uyum */
+        @media (max-width: 1024px) {
+            header { padding: 15px 20px; }
+            nav ul { gap: 15px; }
+            .content-wrapper { flex-direction: column; padding: 0 20px; }
+            .article-sidebar { max-width: 100%; min-width: unset; padding-top: 20px; }
+            .hero-header-content h1 { font-size: 2.5em; }
+        }
+        @media (max-width: 600px) {
+            header { flex-direction: column; gap: 10px; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .hero-article-header { padding: 80px 0; }
+            .hero-header-content h1 { font-size: 2em; }
+            .article-meta-info { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body class="dark-mode"> 
+
+    <header>
+        <div class="logo">TeknoGündem</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li class="dropdown">
+                    <a href="donanım.html">Donanım </a>
+                    <ul class="dropdown-content">
+                        <li><a href="haberler.html">Haberler</a></li>
+                        <li><a href="incelemeler.html">İncelemeler</a></li>
+                    </ul>
+                </li>
+                <li><a href="yazılım.html">Yazılım</a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero-article-header">
+        <div class="hero-header-content">
+            <span class="tag">Donanım & Performans</span>
+            <h1>PCIe Gen5 SSD'ler Ana Akım Oluyor: Okuma Hızında Çift Hane (14 GB/s) Eşiği Geçildi! 🔥</h1> 
+            <div class="article-meta-info">
+                <span>📅 05 Aralık 2025</span> 
+                <span>✍️ Yazar: Deniz Kaya</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="full-width-section">
+        <div class="content-wrapper">
+            
+            <section class="article-main-text-area">
+                
+                <span class="reading-time">Okuma Süresi: 5 Dakika ⏱️</span>
+
+                <div class="toc-box">
+                    <h3>İçindekiler</h3>
+                    <ul>
+                        <li><a href="#toc-hizlar">1. Çift Hane Hızlarının Anlamı</a></li>
+                        <li><a href="#toc-teknoloji">2. Kontrolcü ve NAND Teknolojisindeki Atılımlar</a></li>
+                        <li><a href="#toc-isinma">3. Kaçınılmaz Soğutma Zorlukları</a></li>
+                        <li><a href="#toc-piyasa">4. Piyasa ve Fiyatlandırma Beklentileri</a></li>
+                    </ul>
+                </div>
+
+                <figure class="featured-image-detail">
+                    <img src="pcı gen5 .jpg" 
+                         alt="Yüksek performanslı PCIe Gen5 SSD görseli" 
+                         loading="lazy"
+                         onerror="this.onerror=null; this.style.display='none';">
+                    <figcaption style="font-size: 0.8em; color: var(--text-gray); text-align: center; margin-top: 10px;">
+                        Aktif fan soğutmalı yeni nesil Gen5 SSD mimarisi.
+                    </figcaption>
+                </figure>
+
+                <section class="article-body-text">
+
+                    <h2 id="toc-hizlar" style="font-size: 1.6em; margin-top: 30px; color: var(--color-secondary);">Çift Hane Hızlarının Anlamı</h2>
+                    <p>PCIe Gen5 SSD'ler, teorik bant genişliğinin yaklaşık %70'ini kullanarak 14.000 MB/s okuma ve 12.000 MB/s yazma hızlarına stabil olarak ulaşmaya başladı. Bu, önceki nesil Gen4 SSD'lerin (7.000 MB/s civarı) performansını ikiye katlamak anlamına geliyor.</p>
+                    <br>
+                    <p>Bu hız artışı, sadece büyük dosyaların kopyalanması sırasında değil, aynı zamanda yeni nesil oyunların yükleme sürelerinde (DirectStorage teknolojisi sayesinde) ve profesyonel video düzenleme iş akışlarında (8K ve üzeri) büyük bir fark yaratıyor.</p>
+
+                    <blockquote style="border-left: 5px solid var(--color-primary); background-color: rgba(255,255,255,0.05); padding: 20px; margin: 30px 0; font-style: italic; border-radius: 4px;">
+                        <p>"10 GB/s psikolojik eşiğini geçtikten sonra, üreticiler artık 14 GB/s seviyesine odaklandı. Bu, depolamanın artık CPU'yu bekletmediği bir çağa girdiğimizin en büyük kanıtıdır."</p>
+                        <cite style="display: block; margin-top: 10px; font-size: 0.9em; color: var(--color-secondary); font-weight: bold;">— TeknoGündem Depolama Uzmanı</cite>
+                    </blockquote>
+
+                    <h2 id="toc-teknoloji" style="font-size: 1.6em; margin-top: 30px; color: var(--color-secondary);">Kontrolcü ve NAND Teknolojisindeki Atılımlar</h2>
+                    <p>Bu hız artışı, üç temel teknolojik yeniliğin birleşimiyle mümkün oldu:</p>
+                    <ul style="margin-left: 20px; margin-top: 15px; line-height: 1.8;">
+                        <li><strong>Gelişmiş Denetleyiciler:</strong> Yeni nesil kontrolcüler (örneğin Phison E26/Innogrit) daha yüksek bant genişliğini yönetmek üzere tasarlandı.</li>
+                        <li><strong>232 Katmanlı NAND:</strong> Daha yoğun katmanlı bellek yongaları, hem kapasiteyi hem hızı artırdı.</li>
+                        <li><strong>DRAM Önbellek Optimizasyonu:</strong> Rastgele erişim performansını maksimuma çıkararak küçük dosya işlemlerinde stabilite sağlıyor.</li>
+                    </ul>
+
+                    <h2 id="toc-isinma" style="font-size: 1.6em; margin-top: 30px; color: var(--color-secondary);">Kaçınılmaz Soğutma Zorlukları</h2>
+                    <p>Gen5 SSD'lerin getirdiği muazzam performans, beraberinde önemli bir zorluğu da getiriyor: Isınma. Bu hızlarda çalışan kontrolcüler, ciddi miktarda ısı üretiyor. Artık üst düzey anakartlar, bu SSD'ler için özel olarak tasarlanmış, aktif fanlı veya devasa pasif soğutma bloklarına sahip M.2 yuvalarıyla geliyor.</p>
+
+                    <h2 id="toc-piyasa" style="font-size: 1.6em; margin-top: 30px; color: var(--color-secondary);">Piyasa ve Fiyatlandırma Beklentileri</h2>
+                    <p>Yıl sonuna kadar 1 TB ve 2 TB kapasiteli modellerin Gen4'e göre makul bir primle (yaklaşık %20-30) piyasada yaygınlaşması bekleniyor. Bu fiyat düşüşü, Gen4 SSD'lerin de fiyatlarını aşağı çekerek genel depolama pazarını canlandıracaktır.</p>
+                    
+                </section>
+
+                <div class="share-buttons">
+                    <a href="https://twitter.com" class="twitter" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M18.9 4.8c-.7.3-1.5.5-2.3.6.8-.5 1.4-1.2 1.7-2.1-.8.5-1.7.9-2.7 1.1-.7-.7-1.7-1.2-2.8-1.2-2.1 0-3.8 1.7-3.8 3.8 0 .3.04.6.1.9C7 8.3 4.5 6.9 2.8 4.7c-.3.6-.5 1.2-.5 1.9 0 1.3.7 2.4 1.7 3.1-.6 0-1.2-.2-1.7-.5v.05c0 1.9 1.4 3.5 3.3 3.8-.3.1-.7.1-1.1.1-.3 0-.6 0-.8-.1 1.4 1.6 3.4 2.7 5.7 2.7-1.7 1.3-3.8 2.1-6.1 2.1-.4 0-.8 0-1.2-.1C4.3 19.3 7 20.2 9.9 20.2c8.2 0 12.7-6.8 12.7-12.7 0-.2 0-.4-.01-.6.9-.6 1.7-1.3 2.3-2.1z"/></svg> 
+                        Twitter
+                    </a>
+                    <a href="https://linkedin.com" class="linkedin" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19h-3v-9h3v9zm-1.5-10h-.01c-.8 0-1.3-.5-1.3-1.2 0-.7.5-1.2 1.3-1.2.8 0 1.3.5 1.3 1.2 0 .7-.5 1.2-1.3 1.2zm13 10h-3v-4.7c0-1.1-.4-1.7-1.3-1.7-.7 0-1.1.4-1.3.8v.9c0 0-.1 4.7-.1 4.7h-3s.1-8.5 0-9h3v1.3c.4-.7 1.2-1.3 2.7-1.3 2 0 3.5 1.3 3.5 4.3V19z"/></svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://facebook.com" class="facebook" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M14.01 2.016h2.466V4.49H14.01c-.698 0-1.22.427-1.22 1.261v1.615h3.69l-.6 3.696H12.79v8.941h-4.8v-8.941H6.18V7.366h1.81V5.753c0-2.43 1.487-3.766 3.75-3.766h2.27z"/></svg>
+                        Facebook
+                    </a>
+                </div>
+
+            </section>
+            
+            <aside class="article-sidebar">
+                
+                <div class="related-articles-box">
+                    <h3>📢 İLGİLİ HABERLER</h3>
+                    <ul>
+                        <li><a href="tsmc-2nm-haber.html">TSMC, 2nm Çip Üretiminde Seri Üretime Hazır</a></li>
+                        <li><a href="ışın-izleme-haber.html">Işın İzleme Donanımı Artık Giriş Seviyesine İndi</a></li>
+                        <li><a href="z890 -haberler.html">Z890 Anakartlarda DDR5 Hız Sınırları Yeniden Yazılıyor</a></li>
+                    </ul>
+                </div>
+                
+            </aside>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 TeknoGündem. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+    
+</body>
+</html>
