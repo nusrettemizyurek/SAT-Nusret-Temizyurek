@@ -10,56 +10,15 @@
     --color-footer: #333333;
 }
 
+/* ... Diğer genel stiller (dark-mode, body, container) ... */
 
-.dark-mode {
-    --color-text: #e0e0e0; 
-    --color-background: #121212; 
-    --color-card-background: #1e1e1e; 
-    --color-shadow: rgba(0, 0, 0, 0.5);
-    --color-border: #333333;
-    --color-footer: #000000;
-}
+/* 2. HEADER VE NAVİGASYON (GENEL/ANASAYFA) */
+/* NOT: Anasayfa (index.html) için özel, koyu bir Header stili tanımlanmıştır. */
 
-/* 1. TEMEL STİLLER */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* 👇 DÜZELTME: Sticky Footer için HTML ve BODY ayarları */
-html {
-    height: 100%; /* Tarayıcı penceresinin yüksekliğini tam alır */
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--color-background);
-    color: var(--color-text);
-    line-height: 1.6;
-    transition: background-color 0.5s, color 0.5s; /* Karanlık mod geçişi */
-
-    /* Altbilgiyi aşağı itmek için Flexbox ayarları */
-    display: flex; 
-    flex-direction: column; 
-    min-height: 100vh; /* Ekran yüksekliğinin tamamını kapla */
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* 🚨 EKLE: Ana içeriğin (main) kalan tüm boşluğu doldurması */
-main {
-    flex-grow: 1; 
-}
-/* 👆 DÜZELTME SONU 👆 */
-
-/* 2. HEADER VE NAVİGASYON */
-header { /* DÜZELTME: class yerine element seçici kullanılmış, düzeltildi */
-    background-color: var(--color-footer);
+header { 
+    /* DÜZELTME: class yerine element seçici kullanılmış, düzeltildi */
+    /* Bu, sadece 'body' sınıfı olmayan HTML sayfaları için geçerli olur. */
+    background-color: var(--color-footer); /* #333333 (Genel Footer Rengi) */
     color: white;
     padding: 15px 20px;
     display: flex;
@@ -77,12 +36,12 @@ header { /* DÜZELTME: class yerine element seçici kullanılmış, düzeltildi 
     color: var(--color-primary);
 }
 
-nav ul { /* DÜZELTME: class yerine element seçici kullanılmış, düzeltildi */
+nav ul {
     list-style: none;
     display: flex;
 }
 
-nav ul li a { /* DÜZELTME: class yerine element seçici kullanılmış, düzeltildi */
+nav ul li a {
     color: white;
     text-decoration: none;
     padding: 10px 15px;
@@ -97,7 +56,6 @@ nav ul li a.active {
     background-color: var(--color-primary);
     transform: translateY(-2px);
 }
-
 /* Dark Mode Toggle Button (Kullanılmıyor, olduğu gibi bırakıldı) */
 .mode-toggle {
     position: fixed;
@@ -349,7 +307,8 @@ body.yazilim-sayfa {
 
 /* 2. HEADER VE NAVİGASYON */
 body.yazilim-sayfa header {
-    background-color: var(--color-dark-bg); 
+    /* Yazılım sayfasına özel, koyu arka plan */
+    background-color: var(--color-dark-bg); /* #0d1a2f */
     color: white;
     padding: 15px 20px;
     display: flex;
@@ -362,9 +321,7 @@ body.yazilim-sayfa header {
 }
 
 body.yazilim-sayfa .logo {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--color-primary);
+    color: var(--color-primary); /* #00bcd4 */
 }
 
 body.yazilim-sayfa nav ul {
@@ -384,7 +341,7 @@ body.yazilim-sayfa nav ul li a {
 
 body.yazilim-sayfa nav ul li a:hover,
 body.yazilim-sayfa nav ul li a.active {
-    background-color: var(--color-primary);
+    background-color: var(--color-primary); /* #00bcd4 */
     transform: translateY(-2px);
 }
 
@@ -894,7 +851,7 @@ nav ul li a:hover {
     text-align: center;
     font-size: 1.8em;
     margin-bottom: 30px;
-    color:  #f0f0f0; /* Donanım sayfasında arka plan koyu olduğu için rengi değiştirdim */
+    color:  #f0f0f0; 
 }
 .category-grid {
     display: grid;
@@ -958,9 +915,6 @@ nav ul li a:hover {
     color: #888;
     font-style: italic;
 }
-
-
-
 /* ======================================= */
 /* İNCELEMELER SAYFASI STİLLERİ */
 /* ======================================= */
@@ -1266,8 +1220,6 @@ nav ul li a:hover {
 /* ================================================= */
 
 /* GENEL DÜZELTMELER: HTML'deki inline body stilinin kaldırılması için bu satırlar gereklidir. */
-/* Eğer tüm site dark-mode kullanıyorsa bu gereksiz olabilir ancak tutarlılık için eklenmiştir. */
-/* NOT: Body arka planını #181818 olarak HTML'de tutmaya devam edin. */
 .main-body-container {
     padding-top: 50px;
 }
@@ -1308,7 +1260,6 @@ nav ul li a:hover {
 }
 
 /* Alt Başlıklar ve Ayırıcılar */
-/* Alt Başlıklar ve Ayırıcılar */
 .main-content h2, .technical-specs-box h2 {
     /* Renkler HTML'de inline olarak atanmış olabilir, burada sadece biçimlendirme yapılır */
     border-bottom: 3px solid #3a3a3a; /* Daha kalın ve koyu ayırıcı */
@@ -1345,11 +1296,6 @@ nav ul li a:hover {
 .main-content ul li.negative {
     border-left-color: #e91e63 !important; /* Pembe Vurgu */
 }
-
-
-
-
-
 
 /* Teknik Özellikler ve Puan Kutusu (Sağ Sütun) */
 .technical-specs-box {
@@ -1415,11 +1361,6 @@ nav ul li a:hover {
     height: 100%;
     border: none;
 }
-
-
-
-
-
 /* ================================================= */
 /* 11. MOBİL UYUM (REVIEW-DETAIL) */
 /* ================================================= */
@@ -1445,13 +1386,6 @@ nav ul li a:hover {
         font-size: 1.5em;
     }
 }
-
-
-
-
-
-
-
 /*İnceme sayfası Sonu */ 
 
 
@@ -1540,15 +1474,86 @@ nav ul li a:hover {
     opacity: 0.9;
 }
 
+/* Fotoğrafı Yuvarlak Yapma ve Ortalamak İçin */
+.profile-photo-container {
+    text-align: center;
+    margin: 50px 0; 
+}
+
+.profile-photo {
+    width: 250px; 
+    height: 300px; 
+    object-fit: cover; 
+    border-radius: 50%; /* Yuvarlak şekil */
+    border: 8px solid #e0e0e0; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+/* PROFESYONEL VE MİNİMALİST KURUCU HAKKINDA STİLİ */
+
+.about-author {
+    margin: 40px auto;
+    padding: 30px 40px; /* İç boşluğu artırdık */
+    background-color: #f7f7f7; /* Çok açık gri tonu */
+    border-radius: 16px; /* Daha belirgin yumuşak köşeler */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Daha zarif ve derin bir gölge */
+    max-width: 900px; /* Daha geniş bir kart */
+    position: relative;
+    overflow: hidden; /* Vurgu çizgisi için taşmayı gizle */
+}
+
+.about-author {
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #2a3440; /* Koyu, teknolojik arka plan rengi */
+    border-radius: 20px; /* Daha büyük radius */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25); /* Derin bir gölge efekti */
+    max-width: 850px;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Hafif beyaz çerçeve */
+}
+
+/* Başlık ve Metin Renklerini Açığa Çıkar */
+.about-author h2 {
+    color: #00bcd4; /* Canlı cam mavisi (Cyan) vurgu rengi */
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 2.4em; 
+    font-weight: 900; /* Ekstra kalın */
+    letter-spacing: 1px; /* Harf aralığı */
+    text-transform: uppercase; /* Tüm harfleri büyük yap */
+}
+
+/* Başlık ayırıcı */
+.about-author h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, #00bcd4, #007bff); /* Geçişli (gradient) çizgi */
+    margin: 15px auto 0;
+    border-radius: 4px;
+}
+
+.author-details-box p {
+    line-height: 1.7;
+    color: #e0e0e0; /* Açık gri metin rengi */
+    font-size: 1.1em;
+    padding: 10px 0;
+    text-align: center; /* Metni ortaya hizala (daha farklı bir düzen) */
+}
+
+.author-details-box p strong {
+    color: #ffffff; /* Vurgulanan metni bembeyaz yap */
+    font-weight: 00;
+}
+
 /* =========================
     Hakkımızda sayfası özel stil düzeltme arka plan 
     ========================= */
-/*
- * ANA SAYFADAKİ body dark-mode'a benzetildi, ancak özel bir renk paleti kullanıldı.
- * body.hakkimizda sınıfı, hakkimizda.html dosyası tarafından kullanılır.
- */
+
 body.hakkimizda {
-    /* Yazılım sayfasından esinlenilen daha koyu ve sofistike arka plan */
+   
     background: radial-gradient(circle at top left, #1f2d40, #0a0f1f); 
     background-attachment: fixed; /* Arka planı sabit tutarak derinlik hissi verir */
     color: #e0e0e0; /* Varsayılan Açık Gri Metin Rengi (Okunurluk için aşağıda beyaz ile geçersiz kılınacaktır) */
@@ -1589,7 +1594,6 @@ body.hakkimizda .page-title {
 }
 
 /* OKUNURLUK ÇÖZÜMÜ: Giriş metnini saf beyaza çeviriyoruz */
-/* HTML'inizdeki <p class="main-intro"> etiketini hedef alır. */
 body.hakkimizda .main-intro {
     color: #ffffff !important; 
     font-size: 1.2rem; /* Daha okunaklı bir boyut */
@@ -1695,15 +1699,6 @@ body.hakkimizda .contact-button:hover {
         margin: 10px 0;
     }
 }
-
-
-
-
-
-
-
-
-
 
 /* ÖNE ÇIKAN MAKALE (FEATURED ARTICLE) - Mevcut, olduğu gibi bırakıldı */
 .featured-article {
@@ -1936,13 +1931,3 @@ footer a {
         background-color: #151515;
     }
 }
-
-
-
-
-
-
-
-
-
-
