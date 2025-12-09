@@ -1,78 +1,83 @@
-💻 Teknogündem Web Sitesi 🚀
-Donanım ve Yazılım Dünyasından Güncel Haberler, İncelemeler ve Rehberler.
+## 📖 İçindekiler
 
-✨ Proje Hakkında
-Teknogündem, teknoloji dünyasındaki en son gelişmeleri, derinlemesine incelemeleri ve anlaşılır rehberleri kullanıcılarına sunmayı amaçlayan statik bir web sitesidir.
+- [Proje Hakkında](#-proje-hakkında)
+- [Özellikler](#-özellikler)
+- [Kullanılan Teknolojiler](#-kullanılan-teknolojiler)
+- [Kurulum ve Kullanım](#-kurulum-ve-kullanım)
+- [Dosya Yapısı](#-dosya-yapısı)
 
-Bu depo, tamamen ön yüz (front-end) teknolojileri  HTML , CSS , JAVASCRİPT kullanılarak geliştirilmiş, veritabanı bağımlılığı olmayan web sitesinin kaynak kodlarını barındırmaktadır.
 
-🛠 Kullanılan Teknolojiler Bu projenin temelinde, web'in gücünü oluşturan basit ama etkili teknolojiler yatıyor. Hiçbir karmaşık çerçeveye bağlı kalmadan, tamamen el yapımı bir deneyim sunuyoruz:
 
-HTML5: İçeriğin omurgasını oluşturan, semantik ve erişilebilir yapılarla geleceğe hazır bir iskelet.
+## 💡 Proje Hakkında
 
-CSS3: Sadece güzel görünmekle kalmayan, aynı zamanda her cihazda mükemmel bir deneyim sunan, duyarlı ve modern tasarım harikaları.
+Web sitesimiz adı TeknoGündem dir  bu site genel olarak  kullanıcıların teknoloji dünyasında aradıklarını kolayca bulabilecekleri şekilde bölümlere ayrılmıştır. "Donanım" ve "Yazılım" olmak üzere iki ana kategoriye odaklanırken, ziyaretçileri dinamik bir slider ile karşılar  genel olarak kullanıcıların yazılım ve donanım alacakları bilgileri edinmek için yapılmış sade ve anlaşılır web sitedir.
 
-JavaScript (Vanilla JS): Kullanıcıyla etkileşim kuran, menüden slider'lara kadar her ayrıntıyı canlandıran, hafif ve hızlı dokunuşlar.
+### Sayfa İçerikleri:
+* **Anasayfa:** Sade arayüz, öne çıkan içeriklerin bulunduğu slider ve hızlı erişim menüsü.
+* **Donanım:**
+    * *Haberler:* Güncel donanım gelişmeleri.
+    * *İncelemeler:* Detaylı ürün analizleri.
+* **Yazılım:** Bilgilendirici makaleler ve rehberler içeren bir sayfa.
+* **Hakkımızda:** Proje vizyonu ve kurucu/geliştirici bilgiler hakkında bilgiler ile verildiği yerdir .
 
-📁 Depo Yapısı
-Proje, kolay anlaşılabilirlik ve modülerlik gözetilerek aşağıdaki temel dizin yapısına sahiptir:
+## ✨ Özellikler
 
-teknogundem-website/
-                  # Resimler, ikonlar ve diğer medya dosyaları
+* **Responsive Tasarım:** Farklı ekran boyutlarına uyumlu sade arayüz.
+* **Özel Slider Modülü:** JavaScript ile oluşturulmuş, kendi stil ve script dosyalarına sahip bağımsız slider yapısı.
+* **Kolay Navigasyon:** Sayfalar arası geçişi hızlandıran kullanıcı dostu menü yapısı.
+* **Semantik HTML5:** SEO ve okunabilirlik standartlarına uygun kodlama.
 
-├── css/                     # Tüm stil dosyaları (.css)
-│   ├── style.css            # Ana stiller
-│  
-├── js/                      # Tüm JavaScript dosyaları (.js)
-│   └── style .js              # Temel etkileşim kodları
-├── index.html               # Ana sayfa
-├──yazılım.html              #Yazılım  Sayfası 
-├──donanım.html             #Donanım Sayfası 
-├── haberler.html            # Haberler sayfası
-├── incelemeler.html         # İncelemeler sayfası
-└── images 
-🚀 Yerel Kurulum ve Çalıştırma ( Çalıştırma aşamaları burada )
-Bu proje statik olduğu için herhangi bir sunucu ya da herhangi bir platformdan açma gerekmsinimizi  ve  veritabanı kurulumu gerektirmez.
+## 🛠 Kullanılan Teknolojiler
 
-Depoyu Klonlayın:
+Proje herhangi bir hazır kütüphane (Bootstrap vb.) kullanılmadan, tamamen "Native" (Saf) kodlarla yazılmıştır.
 
-Bash
+* **HTML5:** Sayfa iskeleti ve semantik yapı.
+* **CSS3:** Stil, düzen ve responsive tasarım.
+* **JavaScript (ES6):** Slider fonksiyonları ve interaktif öğeler.
 
-git clone https://github.com/nusrettemizyurek/SAT-Nusret-Temizyurek/tree/main
-Dizine Gidin:
+  ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-Bash
+🚀 Kurulum ve Kullanım
+Bu proje statik bir web sitesi olduğu için herhangi bir sunucu kurulumuna veya veritabanı bağlantısına ihtiyaç duymaz.
 
-cd teknogundem-website
-Çalıştırın:
+Projeyi bilgisayarınıza indirin (Download ZIP veya git clone).
 
-index.html dosyasını tarayıcınızda çift tıklayarak doğrudan açabilirsiniz.
+Klasör içerisindeki index.html dosyasına çift tıklayın.
 
-🗺 Proje Durumu (Part Part Yükleme)
-Proje, aşamalı olarak (part part) GitHub'a yüklenmektedir. Her bir aşama tamamlandığında, ilgili commit mesajlarında ve/veya Releases kısmında belirtilecektir.
+Proje varsayılan tarayıcınızda açılacaktır.
 
-Part 1 - Temel Yapı ve Anasayfa: (Tamamlandı/Devam Ediyor)
+## 🔮 Gelecek Planları (To-Do)
+- [ ] Haberler için JSON tabanlı veri çekme sistemi.
+- [ ] İncelemeler sayfasına yorum yapma özelliği.
 
-Part 2 - CSS Stilleri ve Responsive Tasarım: (Planlandı)
 
-Part 3 - JavaScript Etkileşimleri: (Planlandı)
+## 📂 Dosya Yapısı
 
-🤝 Katkıda Bulunma
-Projenin geliştirilmesine katkıda bulunmaktan memnuniyet duyarız. Katkıda bulunmak için lütfen aşağıdaki adımları izleyin:
+Proje dosyaları, sürdürülebilirlik ve düzen açısından aşağıdaki hiyerarşide organize edilmiştir:
 
-Bu depoyu Fork edin.
+```text
 
-Kendi dalınızı oluşturun (git checkout -b ozellik/yeni-ozellik).
+/ [Proje Ana Dizini]
+│
+├── index.html          # Anasayfa
+├── donanim.html        # Donanım Sayfası (Örnektir)
+├── yazilim.html        # Yazılım Sayfası (Örnektir)
+├── hakkimizda.html     # Hakkımızda Sayfası
+│
+├── css/                # Genel Stil Dosyaları
+│   └── style.css
+│
+├── js/                 # Genel Script Dosyaları
+│   └── style.js
+│
+├── img/                # Site genelindeki görseller
+│   ├── Site İçerisinde Kullanılan fotoğraflar (genel)
 
-Değişikliklerinizi yapın ve commit edin (git commit -m 'feat: yeni özellik eklendi').
-
-Kendi deponuza push edin (git push origin ozellik/yeni-ozellik).
-
-Bir Pull Request (PR) açın.
-
-📧 İletişim
-Geliştirici: [Nüsret Temizyürek ]
-
-GitHub: [nusrettemizyurek]
-
-Web Sitesi: [Web Sitenizin Yayınlandığı Link - Opsiyonel]
+│
+└── slider/             # Slider Modülü (Bağımsız)
+        # Slider geçiş kodları
+    └── [Slider Resimleri]
+│ slide .cs  #Ana sayfad ve yazılım sayfalarında kullanılan sliderın  css dosyası
+│ slide .js  #Ana sayfad ve yazılım sayfalarında kullanılan sliderın  javascript  dosyası
