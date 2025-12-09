@@ -10,7 +10,7 @@
         /* Custom CSS Variables (Değişkenler) */
         :root {
             --color-primary: #007bff; /* Mavi Vurgu */
-            --color-secondary: #28a745; /* Yeşil Vurgu */
+            --color-secondary:  #007bff; /* Yeşil Vurgu */
             --color-text: #333333; 
             --color-background: #f4f4f9; 
             --color-card-background: #ffffff;
@@ -49,7 +49,7 @@
         header {
             background-color: var(--color-card-background);
             color: var(--color-text);
-            padding: 15px 40px;
+            padding: 5px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -177,14 +177,15 @@
         
         /* GELİŞMİŞ BAŞLIK ALANI (HERO) */
         .hero-article-header {
-            width: 100%;
-            padding: 80px 0; 
-            background: linear-gradient(135deg, var(--color-primary) 0%, #1e90ff 100%); 
-            color: #fff; 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img/mini\ pc\ \ haberler.jpg');
+          
+            background-position: center;
+            padding:200px 0;
             text-align: center;
-            box-shadow: inset 0 -5px 15px rgba(0, 0, 0, 0.2); 
-            margin-bottom: 40px; 
+            color: white;
+            border-bottom: 4px solid var(--accent-color);
         }
+
 
         .hero-header-content {
             max-width: 1000px; 
@@ -485,7 +486,7 @@
                 </div>
 
                 <figure class="featured-image-detail">
-                    <img src="mini pc.jpg" 
+                    <img src="img/mini pc.jpg" 
                           alt="Çoklu portlara sahip, modern ve kompakt bir mini PC'nin yakın çekim fotoğrafı" 
                           loading="lazy"
                           onerror="this.onerror=null; this.src='https://placehold.co/1000x500/007bff/ffffff?text=Mini+PC+Pazari+Rekor+Kiriyor';"

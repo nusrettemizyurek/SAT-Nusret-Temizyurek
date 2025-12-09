@@ -9,19 +9,25 @@
     
     <style>
         /* *** KESİN DÜZELTME: HEADER, FOOTER VE NAVIGASYON ARKA PLANLARI *** */
-        header, footer {
+       
+         
+        
+        
+         footer {
             background-color: #151515 !important;
             color: #e0e0e0 !important;
             width: 100%;
         }
-        .header-content {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 15px 20px; 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+   .header-content {
+    display: flex;
+    justify-content: space-between; /* Sol – Sağ hizalama */
+    align-items: center;
+    padding: 5px;
+}
+
+.header-content h1 {
+    margin: 0
+}
         footer {
             padding: 20px 0;
             text-align: center;
@@ -45,7 +51,7 @@
             color: #0a0a0a !important; 
         }
 
-        /* *** YENİ DÜZELTME: METİN ALANI VE ÇİZGİ STİLİ *** */
+        
         .main-content {
             background-color: #1a1a1a; /* Ana içerik alanını biraz daha açık koyu gri yaptık */
             padding: 30px; 
@@ -66,9 +72,7 @@
             background-image: linear-gradient(to right, rgba(0, 188, 212, 0), rgba(0, 188, 212, 0.75), rgba(0, 188, 212, 0));
             margin: 20px 0;
         }
-
-
-        /* *** SAYFA İÇERİĞİ VE VURGU STİLLERİ *** */
+    
         body { 
             background-color: #0a0a0a; 
             color: #e0e0e0; 
@@ -116,14 +120,18 @@
         }
         #detail-pros li { color: #76ff03; } 
         #detail-cons li { color: #e91e63; } 
+        .subtitle {
+          color: #ffffff !important;
+}
+
         
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="header-content">
-            <h1>TEKNOGÜNDEM</h1>
+    <header >
+        <div class="header-content" style="margin: auto;">
+            <h1>TeknoGündem</h1>
             <nav>
                 <ul>
                  <li><a href="index.html">Ana Sayfa</a></li>

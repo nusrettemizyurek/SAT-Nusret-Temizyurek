@@ -13,7 +13,7 @@
             --color-primary: #007bff; /* Mavi */
             --color-secondary: #00bcd4; /* Turkuaz */
             --color-background: #1e1e1e; /* Koyu Gri (Zemin) */
-            --color-card-background: #252526; /* Daha Koyu Kart Arka Planı */
+           --color-card-background: #1e1e1e;
             --color-text: #f0f0f0; /* Açık Metin */
             --text-gray: #b0b0b0; /* Gri Metin */
             --color-border: #333; /* Sınır Çizgileri */
@@ -22,7 +22,7 @@
         }
 
         .dark-mode {
-            background-color: var(--color-background);
+              --color-card-background: #1e1e1e;
             color: var(--color-text);
         }
 
@@ -36,16 +36,23 @@
         }
 
         /* HEADER ve NAV */
-        header {
-            background-color: #111; 
-            box-shadow: 0 2px 10px var(--color-shadow);
-            color: var(--color-text);
-            padding: 10px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
+       /* HEADER & NAVİGASYON STİLLERİ */
+header {
+    --color-card-background: #1e1e1e;
+    /* Eski 'box-shadow' ve 'padding' burada kalabilir */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    
+    /* 👇 ÖNEMLİ SABİTLEME KODLARI BAŞLANGIÇ 👇 */
+    position: fixed; /* Header'ı ekran pozisyonuna sabitle */
+    top: 0; /* Ekranın en üstüne yerleştir */
+    width: 100%; /* Genişliğini tam ekran yap */
+    z-index: 1000; /* Diğer her şeyin üstünde görünmesini sağla */  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-card-background); /* Sabit duracağı için arka plan rengini netleştirdik */
+}
         .logo {
             font-size: 1.8em;
             font-weight: bold;
@@ -168,7 +175,7 @@
             /* GÖRSEL BURAYA EKLENDİ VE SİYAH OVERLAY EKLENDİ */
             background: 
                 linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), /* %65 Siyah Perde */
-                url('fiber bağlantı.jpg'); /* YÜKLEDİĞİNİZ GÖRSELİN DOSYA ADI */
+                url('img/fiber bağlantı.jpg'); /* YÜKLEDİĞİNİZ GÖRSELİN DOSYA ADI */
             background-size: cover;      /* Görseli tam kapla */
             background-position: center;   /* Görseli ortala */
             background-attachment: fixed; /* Parallax efekti için (İsteğe bağlı) */
@@ -379,7 +386,7 @@
 
 <body class="dark-mode"> 
     <header>
-        <div class="logo">TEKNOGÜNDEM</div>
+        <div class="logo">TeknoGündem </div>
         <nav>
             <ul>
                 <li><a href="index.html">Ana Sayfa</a></li>
@@ -412,10 +419,10 @@
         <div class="content-wrapper">
             
             <section class="article-main-text-area"> 
-                <span class="reading-time">Okuma Süresi: 12 Dakika ⏱️</span>
+                <span class="reading-time">Okuma Süresi: 9 Dakika ⏱️</span>
 
                 <figure class="featured-image-detail">
-                    <img src="optif fiber kablolar.png" alt="Optik Fiber Kablolar" loading="lazy">
+                    <img src="img/optif fiber kablolar.png" alt="Optik Fiber Kablolar" loading="lazy">
                     <figcaption style="font-size: 0.8em; color: var(--text-gray); text-align: center; margin-top: 10px;">XGS-PON teknolojisi sayesinde 10 Gigabit hızları artık evlere girmeye hazırlanıyor. Altyapı yatırımları tüm hızıyla devam ediyor. 
 </figcaption>
                 </figure>

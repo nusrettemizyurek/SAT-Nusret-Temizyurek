@@ -34,7 +34,7 @@
         header {
             background-color: #1e1e1e;
             color: white;
-            padding: 15px 50px;
+            padding: 5px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -43,7 +43,7 @@
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
-            color: var(--color-primary);
+            color:#007bff;
         }
         nav ul {
             list-style: none;
@@ -180,6 +180,106 @@
             color: #666;
             background-color: #1e1e1e;
         }
+        @media (max-width: 768px) {
+    
+    /* Header ve Navigasyon */
+    header {
+        flex-direction: column; /* Dikey sıralama */
+        text-align: center;
+        padding: 15px; 
+    }
+
+    nav ul {
+        flex-direction: column; /* Menü öğelerini alt alta sırala */
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    nav ul li {
+        width: 100%;
+        margin-bottom: 5px;
+        position: static; /* Dropdown için position ayarını esnet */
+    }
+    
+    nav ul li a {
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    /* Dropdown Menü Ayarlaması */
+    .dropdown {
+        width: 100%; /* Mobil görünümde tam genişlik */
+    }
+
+    .dropdown-content {
+        position: static; /* Statik yaparak akışa dahil et */
+        transform: none; /* Merkezleme iptali */
+        min-width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    
+    /* Ana İçerik */
+    .main-body-container {
+        margin: 20px 10px;
+        padding: 15px; 
+    }
+
+    h1 {
+        font-size: 2rem !important; /* Başlık boyutunu küçült */
+        line-height: 1.2;
+    }
+
+    .review-meta {
+        flex-direction: column; /* Meta bilgileri alt alta sırala */
+        gap: 5px;
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    /* Paragraf ve Liste Okunurluğu */
+    p {
+        font-size: 1em !important; /* Varsayılan font boyutu */
+        line-height: 1.5 !important;
+    }
+    
+    .detail-list {
+        padding-left: 10px; /* Kenar boşluğunu azalt */
+    }
+}
+
+/* Ekran boyutu 600px ve altı için daha dar ekran ayarlamaları (Telefonlar) */
+@media (max-width: 600px) {
+    
+    /* Başlık boyutunu daha da küçült */
+    h1 {
+        font-size: 1.5rem !important; 
+    }
+
+    /* Tablo Uyumluluğu: Yatay kaydırma */
+    .article-content-wrapper {
+        overflow-x: hidden; /* Genel yatay kaydırmayı engelle */
+    }
+    
+    /* Tablonun yatay kaydırılmasını sağla */
+    .comparison-table {
+        display: block;
+        overflow-x: auto; /* Yatay kaydırmayı etkinleştir */
+        white-space: nowrap; /* Satırları bölme */
+        width: 100%; 
+    }
+    
+    .comparison-table th, .comparison-table td {
+        padding: 10px; /* Hücre dolgusunu azalt */
+        font-size: 0.85em; /* Yazı boyutunu küçült */
+        min-width: 120px; /* Hücrelerin minimum genişliği */
+        white-space: normal;
+    }
+    
+    pre {
+        font-size: 0.8em; /* Kod bloklarında font boyutunu küçült */
+    }
+}
     </style>
 </head>
 <body class="yazilim-sayfa">

@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
     
     <style>
-        /* KOYU TEMA (DARK MODE) RENKLERİ - Pil Teknolojisi makalesi ile birebir aynı renk paleti kullanıldı */
+        /* KOYU TEMA (DARK MODE) RENKLERİ */
         :root {
             --color-primary: #4CAF50; /* Yeşil */
             --color-secondary: #00bcd4; /* Turkuaz */
@@ -29,16 +29,12 @@
             line-height: 1.6; 
             transition: background-color 0.3s, color 0.3s;
         }
-        .dark-mode { 
-            background-color: var(--color-background);
-            color: var(--color-text);
-        }
 
         /* HEADER & NAVİGASYON STİLLERİ */
         header { 
             background-color: var(--color-card-background); 
             color: var(--color-text); 
-            padding: 15px 5%; 
+            padding: 5px; 
             box-shadow: 0 4px 6px var(--color-shadow); 
             display: flex; 
             justify-content: space-between; 
@@ -90,21 +86,25 @@
 
         /* --- İÇERİK STİLLERİ --- */
 
-        /* BAŞLIK ALANI (HERO) - Yeni Overlay Sistemi */
+        /* BAŞLIK ALANI (HERO) - GÜNCELLENDİ */
         .hero-article-header { 
             width: 100%; 
-            padding: 80px 0; 
+            padding: 120px 0; 
             color: #fff; 
             text-align: center; 
             box-shadow: inset 0 -5px 15px rgba(0, 0, 0, 0.2); 
             margin-bottom: 40px; 
             position: relative; 
             overflow: hidden; 
-            background-size: cover;
-            background-attachment: fixed; 
+
+            /* --- GÖRSEL BURAYA EKLENDİ --- */
+            background-image: url('img/tscnm\ banner.jpeg'); 
+            background-size: cover;      
+            background-position: center; 
+            background-attachment: fixed; /* Parallax efekti */
         }
 
-        /* Metin okunurluğunu artırmak için yarı saydam katman (OVERLAY) */
+        /* Overlay (Görsel üzerindeki koyu katman) */
         .hero-article-header::before {
             content: '';
             position: absolute;
@@ -112,12 +112,12 @@
             left: 0;
             right: 0;
             bottom: 0;
-            /* TSMC konusuna uygun koyu mavi/turkuaz geçişli katman */
-            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(0, 188, 212, 0.85));
+            /* TSMC görseliyle uyumlu, yazıyı okunur kılan koyu mavi filtre */
+            background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(0, 100, 120, 0.85));
             z-index: 1;
         }
         
-        /* Başlık içindeki metin stilleri */
+        /* Başlık içerik stilleri */
         .hero-header-content { 
             max-width: 1000px; 
             margin: 0 auto; 
@@ -126,8 +126,8 @@
             z-index: 2; 
         }
         .hero-header-content .tag { 
-            background-color: var(--accent-color); /* Sarı Vurgu */
-            color: #111; /* Koyu Metin */ 
+            background-color: var(--accent-color); 
+            color: #111; 
             padding: 8px 18px; 
             border-radius: 5px; 
             font-size: 0.9em; 
@@ -136,7 +136,7 @@
             margin-bottom: 20px; 
         }
         .hero-header-content h1 { font-size: 3em; line-height: 1.2; margin-bottom: 25px; font-weight: 900; text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8); } 
-        .article-summary-text { font-size: 1.2em; max-width: 800px; margin: 0 auto; opacity: 0.9; }
+        .article-summary-text { font-size: 1.2em; max-width: 800px; margin: 0 auto; opacity: 0.95; font-weight: 500; }
         .hero-header-content .article-meta-info { 
             font-size: 1em; 
             color: rgba(255, 255, 255, 0.95); 
@@ -148,17 +148,17 @@
             gap: 20px; 
         }
         
-        /* Makale İçeriği Genel Yapı */
+        /* Makale İçeriği */
         .full-width-section { 
             width: 100%; 
-            background-color: var(--color-background); /* Dark Mode Kutu Arka Planı (Sayfa Zemini) */ 
+            background-color: var(--color-background); 
             padding: 40px 0; 
         }
         .content-wrapper { max-width: 1400px; margin: 0 auto; padding: 0 40px; display: flex; gap: 40px; }
         .article-main-text-area { flex: 3; min-width: 0; }
         .article-sidebar { flex: 1; min-width: 300px; max-width: 400px; padding-top: 50px; }
         
-        /* İÇİNDEKİLER KUTUSU (TOC) - Dark Mode Uyumlu */
+        /* TOC */
         .toc-box { 
             background-color: var(--color-card-background); 
             padding: 20px; 
@@ -187,7 +187,7 @@
         }
         .toc-box a:hover { color: var(--color-secondary); border-left: 3px solid var(--color-secondary); }
         
-        /* ANA METİN STİLLERİ */
+        /* Metin Stilleri */
         .article-body-text h2 { 
             font-size: 1.6em; 
             margin-top: 30px; 
@@ -201,7 +201,7 @@
         .article-body-text li { margin-bottom: 10px; }
         .article-body-text strong { color: var(--accent-color); } 
         
-        /* Blok Alıntı (blockquote) - Dark Mode Uyumlu */
+        /* Blockquote */
         blockquote {
             border-left: 5px solid var(--accent-color); 
             background-color: var(--color-card-background); 
@@ -212,16 +212,11 @@
             color: var(--color-text);
             box-shadow: 0 2px 8px var(--color-shadow);
         }
-        blockquote cite {
-            display: block; 
-            margin-top: 10px; 
-            font-size: 0.9em; 
-            color: var(--text-gray); 
-        }
+        blockquote cite { display: block; margin-top: 10px; font-size: 0.9em; color: var(--text-gray); }
         
         .reading-time { font-size: 0.9em; color: var(--text-gray); font-weight: bold; display: block; margin-bottom: 20px; text-align: right; border-bottom: 1px solid var(--color-border); padding-bottom: 10px; }
         
-        /* YAN BAR KUTULARI - Dark Mode Uyumlu */
+        /* Yan Bar */
         .related-articles-box {
             background-color: var(--color-card-background);
             padding: 20px;
@@ -247,12 +242,9 @@
             margin-bottom: 8px; 
         }
         .related-articles-box a:hover { color: var(--color-secondary); }
-        .article-sidebar > div:nth-child(2) > p:nth-child(2) {
-            border-bottom: 1px dashed var(--color-border) !important;
-        }
+        .article-sidebar > div:nth-child(2) > p:nth-child(2) { border-bottom: 1px dashed var(--color-border) !important; }
 
-
-        /* SOSYAL PAYLAŞIM BUTONLARI - Küçültülmüş ve Şık Stil */
+        /* Sosyal Butonlar */
         .share-buttons {
             margin-top: 50px;
             padding: 20px 0;
@@ -274,24 +266,13 @@
             transition: all 0.3s ease;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
         }
-        .share-buttons a:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
-        }
-        /* Sosyal Medya Renkleri */
+        .share-buttons a:hover { opacity: 0.9; transform: translateY(-1px); }
         .share-buttons .twitter { background-color: #1DA1F2; } 
         .share-buttons .linkedin { background-color: #0077B5; }
         .share-buttons .facebook { background-color: #4267B2; }
+        .share-buttons svg { width: 20px; height: 20px; fill: white; margin-right: 8px; flex-shrink: 0; }
 
-        /* SVG İkonlarının Boyutlandırılması */
-        .share-buttons svg {
-            width: 20px; 
-            height: 20px;
-            fill: white; 
-            margin-right: 8px;
-            flex-shrink: 0; 
-        }
-        /* FOOTER - Dark Mode Uyumlu */
+        /* Footer */
         footer { 
             background-color: #111; 
             color: var(--text-gray); 
@@ -305,7 +286,6 @@
             .content-wrapper { flex-direction: column; padding: 0 20px; }
             .article-sidebar { max-width: 100%; min-width: unset; padding-top: 10px; }
             .hero-header-content h1 { font-size: 2em; }
-            /* Mobil için paylaşım butonlarını alt alta sırala */
             .share-buttons { flex-direction: column; align-items: stretch; border-bottom: none; }
             .share-buttons a { justify-content: center; } 
         }
@@ -314,7 +294,7 @@
 <body class="dark-mode">
 
     <header>
-        <div class="logo">TEKNOGÜNDEM</div>
+        <div class="logo">TeknoGündem</div>
         <nav>
             <ul>
                 <li><a href="index.html">Ana Sayfa</a></li>
@@ -353,41 +333,55 @@
                     <h3>İçindekiler</h3>
                     <ul>
                         <li><a href="#toc-finfet">1. FinFET Devri Kapanıyor: GAAFET (Nanosheet) Teknolojisi</a></li>
-                        <li><a href="#toc-performans">2. Performans ve Güç Tüketimi Verileri</a></li>
-                        <li><a href="#toc-musteri">3. İlk Müşteriler: Apple ve NVIDIA</a></li>
+                        <li><a href="#toc-mimaridetay">2. GAAFET Mimarisi: Neden Daha Verimli?</a></li>
+                        <li><a href="#toc-performans">3. Performans ve Güç Tüketimi Verileri</a></li>
+                        <li><a href="#toc-musteri">4. İlk Müşteriler: Apple ve NVIDIA</a></li>
+                        <li><a href="#toc-kuresel">5. Küresel Rekabet ve Jeopolitik Etki</a></li>
                     </ul>
                 </div>
 
-             <figure class="featured-image-detail">
-    <img src="gaffet.jpg" alt="GAAFET Nanosheet ve FinFET Transistör Mimarisinin Karşılaştırmalı Görseli" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px;">
-    
-    <figcaption style="font-size: 0.8em; color: var(--text-gray); text-align: center;">GAAFET (Nanosheet) transistör mimarisinin görseli. FinFET'e göre daha yüksek enerji verimliliği sağlar.</figcaption>
-</figure>
-                <section class="article-body-text" style="color: var(--color-text);">
-                    
-                    <p>Teknoloji dünyasının kalbi Tayvan'da atıyor. TSMC, uzun süredir üzerinde çalıştığı ve "N2" olarak adlandırdığı 2 nanometre (nm) üretim sürecinde seri üretim öncesi son aşama olan risk üretimini başarıyla geçtiğini duyurdu. Bu gelişme, sadece daha hızlı telefonlar demek değil; yapay zeka işlemcilerinden otonom araçlara kadar her alanda devrimsel bir sıçrama anlamına geliyor.</p>
+                <figure class="featured-image-detail">
+                    <img src="img/gaffet.jpg" alt="GAAFET Nanosheet ve FinFET Transistör Mimarisinin Karşılaştırmalı Görseli" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px;">
+                    <figcaption style="font-size: 0.8em; color: var(--text-gray); text-align: center;">GAAFET (Nanosheet) transistör mimarisinin görseli. FinFET'e göre daha yüksek enerji verimliliği sağlar.</figcaption>
+                </figure>
+                
+                <section class="article-body-text">
+                    <p>Teknoloji dünyasının kalbi Tayvan'da atıyor. **TSMC**, uzun süredir üzerinde çalıştığı ve "N2" olarak adlandırdığı **2 nanometre (nm)** üretim sürecinde seri üretim öncesi son aşama olan **risk üretimini** başarıyla geçtiğini duyurdu. Bu gelişme, sadece daha hızlı telefonlar demek değil; yapay zeka işlemcilerinden otonom araçlara kadar her alanda devrimsel bir sıçrama anlamına geliyor. N2 sürecinin 2025'in son çeyreğinde ticari üretime başlaması bekleniyor.</p>
 
-                    <h2 id="toc-finfet">FinFET Devri Kapanıyor: GAAFET (Nanosheet) Teknolojisi</h2>
-                    <p>Yaklaşık 10 yıldır endüstri standardı olan FinFET transistör yapısı, fiziksel sınırlarına ulaştı. 3nm ve altı üretimlerde elektron sızıntısını engellemek zorlaştığı için TSMC, 2nm ile birlikte tamamen yeni bir mimariye geçiyor: GAAFET (Gate-All-Around). </p>
+                    <h2 id="toc-finfet">FinFET Devri Kapanıyor: GAAFET (Nanosheet) Teknolojisine Geçiş</h2>
+                    <p>Yaklaşık 10 yıldır endüstri standardı olan **FinFET** transistör yapısı, artık fiziksel sınırlarına dayanmış durumda. Transistör boyutları 3nm ve altına düştüğünde, FinFET mimarisindeki kanaldan istenmeyen **elektron sızıntısını (Leakage Current)** kontrol etmek zorlaşıyor, bu da güç verimliliğini olumsuz etkiliyor. TSMC, 2nm ile birlikte bu zorluğun üstesinden gelmek için köklü bir değişikliğe gidiyor: GAAFET (Gate-All-Around FET) mimarisine geçiş yapıyor.</p>
                     
-                    <p>TSMC bu teknolojiyi "Nanosheet" olarak pazarlıyor. Bu yeni yapıda, transistör kapıları kanalın dört bir yanını sararak akım kontrolünü mükemmelleştiriyor. Bu, daha düşük voltajlarda bile kararlı çalışma sağlıyor. </p>
+                    <p>TSMC bu teknolojiyi "Nanosheet" olarak pazarlıyor. Bu yeni yapı, çip tasarımcılarına hem daha yüksek transistör yoğunluğu hem de daha düşük güç tüketimi vadediyor. FinFET'e göre %15'e kadar daha fazla alansal ölçeklendirme (density) sunarak, tek bir çipe daha fazla hesaplama biriminin sığdırılmasının önünü açıyor. GAAFET'e geçiş, TSMC'nin rekabetçi pozisyonunu koruması için kritik öneme sahiptir.</p>
                     
-                    <blockquote >
-                        <p>"Nanosheet teknolojisine geçiş, sadece bir küçülme değil; transistörün çalışma mantığında yapılan en büyük yapısal değişikliktir. Bu sayede aynı alana %15 daha fazla transistör sığdırabiliyoruz."</p>
+                    <h2 id="toc-mimaridetay">GAAFET Mimarisi: Neden Daha Verimli?</h2>
+                    <p>GAAFET, adından da anlaşılacağı gibi, transistörün kontrol kapısının (Gate), silikon kanalı (Channel) dört bir yanından (360 derece) tamamen sarması esasına dayanır. Oysa FinFET'te bu sarma sadece üç yüzeyle sınırlıydı. Bu tam çevreleme (All-Around) sayesinde, transistör kapalı (OFF) durumdayken dahi akım kontrolü **mükemmelleşir**. Bu, transistörün daha düşük voltajlarda bile kararlı ve güvenilir bir şekilde çalışmasını sağlar.</p>
+                    <p>Daha düşük çalışma voltajı (Vdd) ise doğrudan **güç tüketimini** azaltır, çünkü güç $P \propto V^2 \times f$ formülüyle orantılıdır ($V$: Voltaj, $f$: Frekans). Voltajdaki küçük bir düşüş bile enerji tasarrufunda büyük bir etki yaratır. Ayrıca GAAFET yapısı, daha hızlı geçiş (switching) süreleri sunarak yüksek performans taleplerini de karşılayabilir.</p>
+
+                    <blockquote>
+                        <p>"Nanosheet teknolojisine geçiş, sadece bir küçülme değil; transistörün çalışma mantığında yapılan en büyük yapısal değişikliktir. Bu sayede aynı alana %15 daha fazla transistör sığdırabiliyor ve her transistörden daha fazla verim alabiliyoruz."</p>
                         <cite>— TSMC AR-GE Direktörü</cite>
                     </blockquote>
 
                     <h2 id="toc-performans">Performans ve Güç Tüketimi Verileri</h2>
-                    <p>Resmi verilere göre N2 süreci, mevcut en gelişmiş N3E (3nm) teknolojisine kıyasla şu avantajları sunuyor:</p>
+                    <p>TSMC'nin N2 süreci, mevcut en gelişmiş N3E (3nm Enhanced) teknolojisine kıyasla teorik olarak şu avantajları sunmaktadır:</p>
                     <ul>
-                        <li>Performans Artışı:Aynı güç tüketiminde %10 ila %15 daha yüksek saat hızları.</li>
-                        <li>Enerji Tasarrufu: Aynı performansı verirken güç tüketiminde %25 ila %30 oranında devasa düşüş. Bu, özellikle mobil cihazların pil ömrüne doğrudan yansıyacak.</li>
-                        <li>Daha Yüksek Yoğunluk: Çip başına transistör sayısında rekor artış, bu da daha karmaşık ve güçlü çipler üretilebileceği anlamına geliyor.</li>
+                        <li><strong>Performans Artışı:</strong> Aynı güç bütçesinde (Aynı Güçte), saat hızlarında %10 ila %15 arasında önemli bir artış. Bu, özellikle tek iş parçacığı performansı gerektiren uygulamalar için büyük bir ivme sağlar.</li>
+                        <li><strong>Enerji Tasarrufu:</strong> Aynı performansı verirken (**Aynı Hızda**), güç tüketiminde %25 ila %30 oranında devasa düşüş. Bu verimlilik, mobil cihazların pil ömrünü kayda değer ölçüde uzatacaktır.</li>
+                        <li><strong>Yoğunluk:</strong> Alansal transistör yoğunluğunda (Density) %15'lik artış, daha karmaşık ve büyük önbellekli tasarımlara olanak tanır.</li>
                     </ul>
+                    <p>Bu verimlilik kombinasyonu, HPC (Yüksek Performanslı Hesaplama) ve AI (Yapay Zeka) çiplerinin termal bütçelerini zorlamadan daha fazla işlem gücü elde etmesini sağlayarak, veri merkezlerinin enerji ayak izini azaltma konusunda kritik bir rol oynayacaktır.</p>
 
                     <h2 id="toc-musteri">İlk Müşteriler: Apple ve NVIDIA</h2>
-                    <p>Sektör kaynaklarına göre, TSMC'nin 2nm kapasitesinin ilk partisi 2025 sonu ve 2026 başı için tamamen rezerve edildi. İlk sırada her zamanki gibi teknoloji devi Apple var. iPhone 17 Pro serisinde kullanılması beklenilen A19 işlemcisi, bu teknolojinin ilk meyvesi olacak.</p>
-                    <p>İkinci büyük müşteri ise yapay zeka devi NVIDIA. Yeni nesil Rubin mimarili GPU'ların, 2nm teknolojisi sayesinde benzeri görülmemiş bir yapay zeka işlem gücüne ve enerji verimliliğine ulaşması bekleniyor. Ayrıca AMD'nin Zen 6 mimarili işlemcileri ve Qualcomm'un yeni nesil Snapdragon mobil çiplerinin de N2 sürecini kullanması bekleniyor.</p>
+                    <p>Sektör kaynaklarına göre, TSMC'nin 2nm kapasitesinin ilk partisi 2025 sonu ve 2026 başı için şimdiden tamamen rezerve edildi. Tedarik zincirindeki güvenilir bilgilere göre, 2nm sürecinin ilk ve en büyük müşterileri şunlardır:</p>
+                    <ul>
+                        <li><strong>Apple:</strong> Amiral gemisi iPhone 17 Pro serisinde kullanılması beklenen A19 mobil işlemcisi, N2 teknolojisinin gücünü tüketicilere sunacak ilk ürün olacak. Apple, her yeni düğümde olduğu gibi, üretim kapasitesinin büyük bir kısmını rezerve etmiştir.</li>
+                        <li><strong>NVIDIA:</strong> Yapay zeka ve veri merkezi pazarının devi NVIDIA, yeni nesil Rubin mimarili GPU'larının bir kısmını 2nm süreciyle üretecek. Bu, yapay zeka eğitiminde kullanılan modellerin hem daha hızlı çalışmasına hem de daha az enerji tüketmesine olanak tanıyacak.</li>
+                    </ul>
+                    <p>Ayrıca AMD'nin **Zen 6** mimarili işlemcileri ve Qualcomm'un yeni nesil Snapdragon mobil çiplerinin de N2 sürecini kullanmak için sıraya girdiği biliniyor. 2nm çağı, 2026 yılının en dikkat çekici teknolojik gelişmelerine zemin hazırlayacaktır.</p>
+
+                    <h2 id="toc-kuresel">Küresel Rekabet ve Jeopolitik Etki</h2>
+                    <p>TSMC'nin 2nm başarısı, sadece teknolojik değil, aynı zamanda eopolitik bir öneme de sahiptir. Dünyanın en ileri çip üretim teknolojisine sahip olmak, Tayvan'ın küresel tedarik zincirindeki merkezi rolünü pekiştiriyor. Rakip firmalar Samsung Foundry (Gate-All-Around mimarisine 3nm'de geçti) ve Intel (RibbonFET adını verdiği GAAFET teknolojisiyle 20A ve 18A düğümleriyle rekabete hazırlanıyor) bu alanda büyük yatırımlar yapıyor.</p>
+                    <p>Ancak TSMC, risk üretiminde yüksek verimlilik (yield rate) elde ettiğini iddia ederek rakiplerinin bir adım önünde olduğunu gösteriyor. Bu ileri teknoloji düğümlerindeki liderlik, otonom sürüş sistemlerinden kuantum hesaplamaya kadar geleceğin tüm yüksek teknolojili uygulamalarının temelini oluşturmaktadır. 2nm, teknoloji savaşlarında önemli bir koz olarak görülmektedir.</p>
 
                 </section>
 
@@ -412,12 +406,10 @@
                     <h3>📢 İLGİLİ HABERLER</h3>
                     <ul>
                         <li><a href="z890-haber.html">Z890 Anakartlar: DDR5 9000 MHz Sınırı Aşıldı</a></li>
-                        <li><a href="amd -strix- haber.html">AMD Strix Point APU'lar Mobil Pazarı Alt Üst Edecek</a></li>
-                        <li><a href="z890 -haberler.html">Z890 Anakartlarda DDR5 Hız Sınırları Yeniden Yazılıyor</a></li>
+                        <li><a href="amd-strix-haber.html">AMD Strix Point APU'lar Mobil Pazarı Alt Üst Edecek</a></li>
+                        <li><a href="z890-haberler.html">Z890 Anakartlarda DDR5 Hız Sınırları Yeniden Yazılıyor</a></li>
                     </ul>
                 </div>
-                
-              
             </aside>
 
         </div>
@@ -425,7 +417,7 @@
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2025 TeknoGündem. Tüm hakları saklıdır. Bu sayfa tamamen işlevseldir.</p>
+            <p>&copy; 2025 TeknoGündem. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

@@ -32,15 +32,18 @@
             background-color: #151515;
             width: 100%;
         }
-        .header-content {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 15px 20px; 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header h1 { margin: 0; font-size: 1.5em; }
+      .header-content {
+    display: flex;
+    justify-content: space-between; /* Sol – Sağ hizalama */
+    align-items: center;
+    padding: 5px;
+}
+
+   header h1 { 
+    margin: 0; 
+    font-size: 1.5em; 
+    color:  #007bff /* Burayı blue yerine #00bcd4 yaptık */
+}
       
         
         header nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
@@ -132,7 +135,7 @@
 
     <header>
         <div class="header-content">
-            <h1>TEKNOGÜNDEM</h1>
+            <h1>TeknoGündem</h1>
             <nav>
                 <ul>
                     <li><a href="index.html">Ana Sayfa</a></li>

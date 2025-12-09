@@ -45,7 +45,7 @@
         header {
             background-color: var(--color-card-background);
             color: var(--color-text);
-            padding: 15px 40px;
+            padding: 5px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -57,7 +57,7 @@
 
         .logo { font-size: 1.8em; font-weight: 800; color: var(--color-primary); }
 
-        nav ul { list-style: none; display: flex; gap: 25px; }
+        nav ul { list-style: none; display: flex; gap: 25px; padding: 2px; }
         nav ul li a { color: var(--color-text); text-decoration: none; font-weight: 600; transition: color 0.2s; }
         nav ul li a:hover { color: var(--color-secondary); }
 
@@ -79,7 +79,7 @@
             /* ARKA PLAN RESMİ AYARLARI */
             background: 
                 linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), /* %75 Siyah Perde */
-                url('intel core  ultra 9  haberler.jpg'); /* SENİN GÖRSELİN */
+                url('img/intel\ core\ \ ultra\ 9\ \ haberler.jpg'); /* SENİN GÖRSELİN */
             
             background-color: #00bcd4; /* Resim yüklenmezse Intel mavisi */
             background-size: cover;       
@@ -288,12 +288,7 @@
         .comment-form button:hover { opacity: 0.9; }
 
 
-        /* Mobil Uyum */
-        @media (max-width: 1024px) {
-            .content-wrapper { flex-direction: column; padding: 0 20px; }
-            .article-sidebar { max-width: 100%; min-width: unset; padding-top: 20px; }
-            .hero-header-content h1 { font-size: 2.2em; }
-        }
+       
              .share-section {
     margin-top: 40px;
     padding-top: 20px;
@@ -332,21 +327,97 @@
     margin-right: 8px;
     flex-shrink: 0; 
 }
+/* Mobil Uyum (Tablet ve Daha Büyük Telefonlar) */
+        @media (max-width: 1024px) {
+            .content-wrapper { 
+                flex-direction: column; 
+                padding: 0 20px; 
+            }
+            .article-sidebar { 
+                max-width: 100%; 
+                min-width: unset; 
+                padding-top: 20px; 
+            }
+            .hero-header-content h1 { 
+                font-size: 2.5em; 
+            }
+        }
+        
+        /* Telefon Uyumu (600px ve altı) */
+        @media (max-width: 600px) {
+            /* Header Düzeni */
+            header {
+                flex-direction: column;
+                padding: 10px 20px;
+                align-items: flex-start;
+            }
+            .logo { margin-bottom: 10px; }
+            nav ul { 
+                flex-direction: column; 
+                gap: 5px; 
+                width: 100%; 
+                padding: 0;
+            }
+            nav ul li a { 
+                padding: 8px 0; 
+            }
+            .dropdown-content { 
+                position: static; 
+                width: 100%; 
+                border-top: none; 
+                box-shadow: none; 
+                padding-left: 15px; /* Alt menü içerik girintisi */
+            }
+            .dropdown-content li a {
+                padding: 8px 0;
+            }
+            
+            /* Hero Başlık Düzeni */
+            .hero-article-header {
+                padding: 60px 0;
+            }
+            .hero-header-content h1 {
+                font-size: 1.8em; 
+            }
+            .hero-header-content .article-summary-text {
+                font-size: 1em;
+            }
+            .hero-header-content .article-meta-info {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            /* İçerik Düzeni */
+            .content-wrapper { 
+                padding: 0 15px; /* Kenar boşluklarını azaltma */
+            }
+            .article-body-text h2 {
+                font-size: 1.5em;
+            }
+             .article-body-text p {
+                font-size: 1em;
+            }
+            
+            /* Paylaş Butonları */
+            .share-buttons-container {
+                flex-direction: column; /* Alt alta yığma */
+                gap: 10px;
+            }
+            .share-btn {
+                justify-content: center; /* Buton içeriğini ortalama */
+                width: 100%;
+            }
 
+            .featured-image-detail img {
+                 max-height: 300px; /* Görsel yüksekliğini düşürme */
+            }
 
-
-
-
-
-
-
-
-
+        }
     </style>
 </head>
 <body class="dark-mode"> 
 
-    <header>
+   <header>
         <div class="logo">TeknoGündem</div>
         <nav>
             <ul>
@@ -382,7 +453,7 @@
             <section class="article-main-text-area">
                 
                 <figure class="featured-image-detail">
-                    <img src="intel core  ultra 9  haberler.jpg" 
+                    <img src="img/intel core  ultra 9  haberler.jpg" 
                          alt="Yeni Nesil Intel Core Ultra İşlemcileri" 
                          loading="lazy"
                          onerror="this.style.display='none'">
@@ -391,58 +462,69 @@
 
                 <div class="article-body-text">
                     
-                    <h2 id="npu-entegrasyonu">Yapay Zeka ve NPU Entegrasyonu</h2>
-                    <p>En büyük yenilik, işlemciye entegre edilen özel <strong>Yapay Zeka Çekirdekleri (NPU)</strong>. Bu çekirdekler, video düzenleme, fotoğraf işleme ve arka plan bulanıklaştırma gibi AI görevlerini CPU ve GPU'ya yük bindirmeden çok daha hızlı ve enerji verimli bir şekilde gerçekleştiriyor. Bu sayede, profesyonel mobil iş istasyonlarının performansı yeni bir boyuta taşınıyor.</p>
-                    <p>İlk test sonuçları, <strong>Core Ultra 9'un önceki nesil amiral gemisi mobil işlemcilere kıyasla %30'a varan verimlilik artışı</strong> sunduğunu gösteriyor.</p>
+                    <p>Teknoloji dünyası yıllardır işlemcilerde saat hızı yarışına odaklanmıştı, ancak Intel "Core Ultra" serisiyle bu paradigmayı kökten değiştiriyor. Artık odak noktası sadece saf kas gücü değil; zeka, verimlilik ve entegre sistemlerin uyumu. 2025'in son çeyreğinde raflardaki yerini alacak olan bu işlemciler, özellikle Windows 12 ile beklenen yapay zeka entegrasyonuna tam donanımlı olarak geliyor.</p>
+
+                    <h2 id="npu-entegrasyonu">1. Yapay Zeka ve NPU Devrimi</h2>
+                    <p>Core Ultra 9'u rakiplerinden ayıran en büyük özellik, silikonun kalbine yerleştirilen <strong>Neural Processing Unit (NPU)</strong>. Geleneksel olarak işlemci (CPU) veya ekran kartı (GPU) tarafından yapılan ağır yapay zeka yükleri, artık bu özelleşmiş birim tarafından işleniyor.</p>
                     
-                    <h2 id="hibrit-mimari">Yenilenmiş Hibrit Mimari ve Verimlilik Çekirdekleri</h2>
-                    <p>Core Ultra 9, Intel'in yeni nesil hibrit mimarisini kullanıyor. Bu mimari, yüksek performanslı P-Çekirdekleri (Performance-cores) ve verimli E-Çekirdeklerini (Efficiency-cores) bir araya getiriyor. Ancak asıl fark, verimlilik çekirdeklerinin (E-cores) sayısının artırılması ve NPU ile entegre çalışmasıdır. Bu, günlük görevlerde (web tarama, ofis uygulamaları) daha az güç tüketirken, ağır iş yüklerinde tam performansa ulaşmayı sağlıyor.</p>
-
-                    <h2 id="teknik-detaylar">Teknik Detaylar ve Soğutma Çözümleri</h2>
-                    <p>İşlemci, yeni bir hibrit mimariye sahip ve TDP limitlerini zorlamadan yüksek frekanslara çıkabiliyor. Temel teknik özellikler şunlardır:</p>
+                    <p>NPU'nun pratik hayattaki etkisi muazzam:</p>
                     <ul>
-                        <li>Mimari: Yeni Nesil (Kod Adı: Arrow Lake Mobile)</li>
-                        <li>Maksimum Çekirdek Sayısı: 24 (Tahmini)</li>
-                        <li>Entegre Grafikler: Xe-LPG (Önceki nesillere göre %50'ye varan performans artışı)</li>
-                        <li>Özel Donanım: 1 adet Neural Processing Unit (NPU)</li>
+                        <li><strong>Video Konferans:</strong> Arka plan bulanıklaştırma, gürültü engelleme ve göz teması düzeltme işlemleri pil tüketmeden yapılıyor.</li>
+                        <li><strong>İçerik Üretimi:</strong> Adobe Premiere veya DaVinci Resolve gibi yazılımlarda "Akıllı Sahne Algılama" özellikleri %40 daha hızlı çalışıyor.</li>
+                        <li><strong>Yerel LLM Çalıştırma:</strong> İnternet bağlantısı olmadan çalışan kişisel asistanlar (ChatGPT benzeri modeller) sistem kaynağını tıkamadan arka planda çalışabiliyor.</li>
                     </ul>
-                    <p>Bu yüksek performansı dizüstü bilgisayarlarda tam olarak kullanabilmek için üreticiler, yeni <strong>buhar odacıklı (Vapor Chamber)</strong> soğutma çözümlerine yöneliyor. Tüketicilerin bu gücü ilk olarak Aralık ayında piyasaya sürülecek amiral gemisi dizüstü bilgisayarlarda deneyimlemesi bekleniyor.</p>
 
-                    <h2 id="karsilastirma">Rekabet ve Pazar Beklentisi</h2>
-                    <p>Core Ultra 9'un en büyük rakibi, AMD'nin yakında çıkacak olan Ryzen serisi mobil işlemcileri olacak. Intel, NPU üzerindeki erken avantajını kullanarak, özellikle yapay zeka odaklı uygulamalarda pazar liderliğini korumayı hedefliyor. Mobil içerik üreticileri ve mühendislik öğrencileri için bu işlemcinin getireceği hız ve verimlilik, sektördeki dengeleri tamamen değiştirecek gibi görünüyor.</p>
+                    <h2 id="hibrit-mimari">2. "Foveros" 3D Paketleme ve Hibrit Mimari</h2>
+                    <p>Intel, Core Ultra serisi ile "monolitik" (tek parça) çip tasarımını terk ederek "Chiplet" (karo) tasarımına geçiş yaptı. Foveros 3D paketleme teknolojisi sayesinde, işlemcinin farklı bölümleri (Grafik, SoC, İşlemci, G/Ç) farklı üretim teknolojileriyle üretilip birleştiriliyor.</p>
+                    
+                    
+
+                    <p>Bu mimari beraberinde 3 katmanlı bir çekirdek yapısını getiriyor:</p>
+                    <ul>
+                        <li><strong>P-Cores (Performans):</strong> Oyun ve ağır render işleri için yüksek frekanslı çekirdekler.</li>
+                        <li><strong>E-Cores (Verimlilik):</strong> Arka plan uygulamaları ve çoklu görevler için optimize edilmiş çekirdekler.</li>
+                        <li><strong>LP E-Cores (Düşük Güç):</strong> SoC katmanında bulunan bu yeni çekirdekler, sadece video izlerken veya webde gezinirken devreye girerek ana işlemciyi tamamen uyku moduna sokabiliyor.</li>
+                    </ul>
+
+                    
+
+                    <h2 id="grafik-performansi">3. Oyunculukta Xe-LPG Dönemi</h2>
+                    <p>Core Ultra 9, sadece bir iş işlemcisi değil. İçerisinde barındırdığı <strong>Intel Arc (Xe-LPG)</strong> grafik birimi, entegre grafiklerin kaderini değiştiriyor. Harici bir ekran kartına ihtiyaç duymadan, modern oyunları 1080p çözünürlükte akıcı bir şekilde oynatabiliyor.</p>
+                    <p>Daha da önemlisi, Intel'in DLSS rakibi olan <strong>XeSS (Xe Super Sampling)</strong> teknolojisi donanımsal olarak destekleniyor. Bu sayede yapay zeka destekli ölçeklendirme ile kare hızları (FPS) iki katına kadar çıkabiliyor. Ray Tracing (Işın İzleme) desteğinin de donanım seviyesinde sunulması, ultrabook sınıfı cihazlarda AAA oyun deneyimini mümkün kılıyor.</p>
+
+                    <h2 id="baglanti-ve-teknik">4. Bağlantı: Wi-Fi 7 ve Thunderbolt 5</h2>
+                    <p>Geleceğe yatırım yapan Intel, Core Ultra 9 platformunda bağlantı standartlarını da en üst seviyeye çekiyor. Teknik detaylar şu şekilde:</p>
+                    <ul>
+                        <li><strong>Wi-Fi 7:</strong> 5.8 Gbps'e varan kablosuz hızlar ve ultra düşük gecikme süresi.</li>
+                        <li><strong>Thunderbolt 5:</strong> Tek bir kablo üzerinden 80 Gbps (çift yönlü) veri aktarımı. Bu, harici ekran kartı kutularının veya 8K monitörlerin kayıpsız bağlanabilmesi anlamına geliyor.</li>
+                        <li><strong>Bluetooth 5.4:</strong> Daha yüksek ses kalitesi ve çoklu cihaz bağlantısı için LE Audio desteği.</li>
+                    </ul>
+
+                    <h2 id="karsilastirma">5. Rekabet ve Sonuç</h2>
+                    <p>Core Ultra 9'un en büyük rakibi, AMD'nin Ryzen AI 300 serisi ve Apple'ın M4 çipleri olacak. Intel, NPU üzerindeki yazılım desteği avantajını (OpenVINO ekosistemi) kullanarak özellikle Windows tarafında liderliği hedefliyor.</p>
+                    <p>Aralık ayında piyasaya çıkacak olan MSI, Asus ve Lenovo'nun yeni nesil laptopları, bu işlemcinin gerçek potansiyelini gösterecek ilk cihazlar olacak. Mobilite, pil ömrü ve yapay zeka performansını bir arada arayan profesyoneller için Core Ultra 9, şüphesiz 2025'in en heyecan verici donanımı.</p>
                     
                 </div>
                 
-              <div class="share-section">
-    <h4>Bu Haberi Paylaş:</h4>
-    <div class="share-buttons-container">
-        <a href="https://twitter.com/intent/tweet?url=URL_BURAYA&text=Intel Core Ultra 9: Performans ve Verimlilikte Yeni Standart! TeknoGündem'de okuyun." 
-           target="_blank" 
-           class="share-btn btn-twitter">
-            <svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
-            Twitter
-        </a>
-        <a href="https://www.facebook.com/sharer/sharer.php?u=URL_BURAYA" 
-           target="_blank" 
-           class="share-btn btn-facebook">
-            <svg viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036c-2.148 0-2.971.956-2.971 3.035v.937h4.028l-.385 3.667h-3.643v7.98h-5.844z"/></svg>
-            Facebook
-        </a>
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=URL_BURAYA&title=Intel Core Ultra 9: Yeni Standart!" 
-           target="_blank" 
-           class="share-btn btn-linkedin">
-            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            LinkedIn
-        </a>
-    </div>
-</div>
-               
-
-
-
+                <div class="share-section">
+                    <h4>Bu Haberi Paylaş:</h4>
+                    <div class="share-buttons-container">
+                        <a href="#" class="share-btn btn-twitter">
+                            <svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+                            Twitter
+                        </a>
+                        <a href="#" class="share-btn btn-facebook">
+                            <svg viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036c-2.148 0-2.971.956-2.971 3.035v.937h4.028l-.385 3.667h-3.643v7.98h-5.844z"/></svg>
+                            Facebook
+                        </a>
+                        <a href="#" class="share-btn btn-linkedin">
+                            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
 
             </section>
-            
             <aside class="article-sidebar">
 
                 <div class="toc-box">

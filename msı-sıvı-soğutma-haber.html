@@ -32,7 +32,7 @@
         header {
             background-color: var(--color-card-background);
             border-bottom: 1px solid var(--color-border);
-            padding: 15px 40px;
+            padding: 5px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -91,15 +91,20 @@
         /* --- HERO VE MAIN CONTENT --- */
 
         .hero-article-header {
-            /* Anakart/Teknoloji konseptine uygun bir arka plan */
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('anakart-chipset-background.jpg'); 
-            background-size: cover;
-            background-position: center;
-            padding: 100px 0;
-            text-align: center;
-            color: white;
-            border-bottom: 4px solid var(--accent-color); /* MSI Kırmızısı */
-        }
+    /* Yüklenen resmi Hero arkaplanı olarak kullanıyoruz */
+    background: 
+        /* Koyu renk filtresi (overlay) ekliyoruz ki yazı okunsun */
+        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), 
+        /* Arka plan görseli */
+        url('img/msı\ sıvı\ soğutucu\ haberler\ .png'); 
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding: 100px 0;
+    text-align: center;
+    color: white;
+    border-bottom: 4px solid var(--accent-color); /* MSI Kırmızısı */
+}
 
         .hero-content {
             max-width: 900px;
@@ -296,7 +301,7 @@
 <body>
 
     <header>
-        <div class="logo">TEKNOGÜNDEM</div>
+        <div class="logo">TeknoGündem</div>
         <nav>
             <ul>
                 <li><a href="index.html">Ana Sayfa</a></li>
@@ -328,7 +333,7 @@
             <span style="display:block; text-align:right; margin-bottom:15px; color:var(--accent-color); font-weight:bold;">Okuma Süresi: 12 Dakika ⏱️</span>
 
             <div class="article-media-wrapper">
-                <img src="msı anakart haberler.jpg" alt="MSI Yeni Nesil Anakart Soğutma Sistemi" loading="lazy">
+                <img src="img/msı anakart haberler.jpg" alt="MSI Yeni Nesil Anakart Soğutma Sistemi" loading="lazy">
             </div>
             <div class="caption">Görsel: MSI'ın yenilenen soğutma mimarisini gösteren üst düzey Z890 (varsayımsal) anakart modeli.</div>
 

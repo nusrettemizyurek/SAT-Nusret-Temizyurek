@@ -15,7 +15,7 @@
             --color-secondary: #ffc107; /* Sarı/Turuncu Vurgu */
             --color-text: #333333; /* Koyu Metin */
             --color-background: #f4f4f9; /* Açık Arka Plan */
-            --color-card-background: #ffffff;
+            --color-card-background: #1e1e1e;
             --color-shadow: rgba(0, 0, 0, 0.1);
             --color-border: #eeeeee;
             --color-footer: #333333;
@@ -48,18 +48,25 @@
         }
 
         /* HEADER STİLLERİ */
-        header {
-            background-color: var(--color-card-background);
-            color: var(--color-text);
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px var(--color-shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+        /* HEADER & NAVİGASYON STİLLERİ */
+header {
+    --color-card-background: #1e1e1e;
+    /* Eski 'box-shadow' ve 'padding' burada kalabilir */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    
+    /* 👇 ÖNEMLİ SABİTLEME KODLARI BAŞLANGIÇ 👇 */
+    position: fixed; /* Header'ı ekran pozisyonuna sabitle */
+    top: 0; /* Ekranın en üstüne yerleştir */
+    width: 100%; /* Genişliğini tam ekran yap */
+    z-index: 1000; /* Diğer her şeyin üstünde görünmesini sağla */
+    /* 👇 ÖNEMLİ SABİTLEME KODLARI BİTİŞ 👇 */
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-card-background); /* Sabit duracağı için arka plan rengini netleştirdik */
+}
 
         .logo {
             font-size: 1.8em;
@@ -163,14 +170,14 @@
             padding-top: 50px; 
         }
         
-        /* GÖRSEL STİLİ */
+        /* GÖRSEL STİLİ (Makale içi resim) */
         .featured-image-detail img {
             width: 100%;
-            height: auto;
-            max-height: 600px;
+            height: 100%;
+           
             object-fit: cover;
             border-radius: 6px;
-            margin: 30px 0;
+          
             box-shadow: 0 4px 12px var(--color-shadow);
         }
         
@@ -181,16 +188,15 @@
             width: 100%;
             padding: 100px 0; /* Yüksekliği artırdık, görsel daha iyi durur */
             
-            /* ARKA PLAN RESMİ AYARLARI */
-            /* Not: Dosya ismindeki boşluklar web için risklidir ama burada olduğu gibi bıraktım. */
+            /* ARKA PLAN RESMİ AYARLARI (GÖRSEL BURADA DEĞİŞTİ) */
             background: 
                 linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), /* %75 Siyah Perde (Okunabilirlik için) */
-                url('pcı gen5 .jpg'); /* SENİN RESMİN BURADA */
+                url('img/pcı\ gen5\ ssd\ haberler.jpg'); /* ✅ YENİ GÖRSEL YOLU BURADA */
             
             background-color: #222; /* Resim yüklenmezse görünecek renk */
-            background-size: cover;       /* Resmi alana yay */
-            background-position: center;  /* Resmi ortala */
-            background-attachment: fixed; /* PARALLAX EFEKTİ: Sayfa kayarken resim sabit kalır */
+            background-size: cover;      /* Resmi alana yay */
+            background-position: center;   /* Resmi ortala */
+            background-attachment: fixed; /* PARALLAX EFEKTİ */
             
             color: #fff; 
             text-align: center;
@@ -242,7 +248,7 @@
 
         /* İÇİNDEKİLER TABLOSU (TOC) */
         .toc-box {
-            background-color: var(--color-background);
+            background-color: var(--color-background); /* Kartın içinde zıt renk */
             padding: 25px;
             border-radius: 8px;
             border: 1px solid var(--color-border);
@@ -406,23 +412,26 @@
             
             <section class="article-main-text-area">
                 
-                <span class="reading-time">Okuma Süresi: 5 Dakika ⏱️</span>
+                <span class="reading-time">Okuma Süresi: 8 Dakika ⏱️</span>
 
                 <div class="toc-box">
                     <h3>İçindekiler</h3>
                     <ul>
-                        <li><a href="#toc-hizlar">1. Çift Hane Hızlarının Anlamı</a></li>
-                        <li><a href="#toc-teknoloji">2. Kontrolcü ve NAND Teknolojisindeki Atılımlar</a></li>
-                        <li><a href="#toc-isinma">3. Kaçınılmaz Soğutma Zorlukları</a></li>
-                        <li><a href="#toc-piyasa">4. Piyasa ve Fiyatlandırma Beklentileri</a></li>
+                        <li><a href="#toc-hizlar">1. Çift Hane Hızlarının Anlamı (14 GB/s)</a></li>
+                        <li><a href="#toc-platform">2. Platform Uyumluluğu (Intel vs AMD)</a></li>
+                        <li><a href="#toc-teknoloji">3. Kontrolcü ve NAND Teknolojisindeki Atılımlar</a></li>
+                        <li><a href="#toc-directstorage">4. DirectStorage ve Oyunculukta Yeni Dönem</a></li>
+                        <li><a href="#toc-isinma">5. Kaçınılmaz Soğutma ve "Throttling" Zorlukları</a></li>
+                        <li><a href="#toc-piyasa">6. Piyasa, Fiyatlandırma ve Gelecek Beklentisi</a></li>
+                        <li><a href="#toc-sonuc">7. Sonuç: Geçmeye Değer mi?</a></li>
                     </ul>
                 </div>
 
                 <figure class="featured-image-detail">
-                    <img src="pcı gen5 .jpg" 
-                         alt="Yüksek performanslı PCIe Gen5 SSD görseli" 
-                         loading="lazy"
-                         onerror="this.onerror=null; this.style.display='none';">
+                    <img src="img/pcı gen5 ssd.jpg" 
+                        alt="Yüksek performanslı PCIe Gen5 SSD görseli" 
+                        loading="lazy"
+                        onerror="this.onerror=null; this.style.display='none';">
                     <figcaption style="font-size: 0.8em; color: var(--text-gray); text-align: center; margin-top: 10px;">
                         Aktif fan soğutmalı yeni nesil Gen5 SSD mimarisi.
                     </figcaption>
@@ -430,29 +439,53 @@
 
                 <section class="article-body-text">
 
-                    <h2 id="toc-hizlar" style="font-size: 1.6em; margin-top: 30px; color: var(--color-secondary);">Çift Hane Hızlarının Anlamı</h2>
-                    <p>PCIe Gen5 SSD'ler, teorik bant genişliğinin yaklaşık %70'ini kullanarak 14.000 MB/s okuma ve 12.000 MB/s yazma hızlarına stabil olarak ulaşmaya başladı. Bu, önceki nesil Gen4 SSD'lerin (7.000 MB/s civarı) performansını ikiye katlamak anlamına geliyor.</p>
+                    <p style="font-size: 1.1em; margin-bottom: 20px;">
+                        Bilgisayar donanım dünyasında her birkaç yılda bir yaşanan büyük sıçramalardan birine şahitlik ediyoruz. SATA SSD'lerden NVMe'ye geçiş kadar radikal olmasa da, PCIe Gen5 standardının olgunlaşması, veri aktarım hızlarında daha önce hayal bile edilemeyen kapıları aralıyor. 2025'in sonlarına yaklaşırken, üreticiler artık prototip aşamasını aşıp, son kullanıcıya hitap eden "canavar" modellerini raflara dizmeye başladı.
+                    </p>
+
+                    <h2 id="toc-hizlar" style="font-size: 1.6em; margin-top: 30px; color: var(--color-secondary);">Çift Hane Hızlarının Anlamı (14 GB/s)</h2>
+                    <p>PCIe Gen5 SSD'ler, teorik bant genişliğinin yaklaşık %70'ini kullanarak 14.000 MB/s okuma ve 12.000 MB/s yazma hızlarına stabil olarak ulaşmaya başladı. Bu, önceki nesil Gen4 SSD'lerin (tepe noktası 7.400 MB/s civarı) performansını neredeyse ikiye katlamak anlamına geliyor.</p>
                     <br>
-                    <p>Bu hız artışı, sadece büyük dosyaların kopyalanması sırasında değil, aynı zamanda yeni nesil oyunların yükleme sürelerinde (DirectStorage teknolojisi sayesinde) ve profesyonel video düzenleme iş akışlarında (8K ve üzeri) büyük bir fark yaratıyor.</p>
+                    <p>Ancak mesele sadece "Ardışık Okuma/Yazma" hızları değil. Rastgele okuma performansındaki (4K Random Read) artışlar, işletim sistemi açılış sürelerini milisaniyeler seviyesinde iyileştirirken, veritabanı sorguları gibi yoğun IOPS (Saniye Başına Giriş/Çıkış İşlemi) gerektiren senaryolarda %40'a varan verimlilik artışı sunuyor.</p>
+
+                    <h2 id="toc-platform" style="font-size: 1.6em; margin-top: 30px; color: var(--color-secondary);">Platform Uyumluluğu (Intel vs AMD)</h2>
+                    <p>Bu hızlara ulaşmak için sadece SSD'yi almak yetmiyor; anakartınızın ve işlemcinizin de bu dili konuşması gerekiyor. Şu anki tabloda iki büyük devin yaklaşımı şöyle:</p>
+                    <ul style="margin-left: 20px; margin-top: 15px; line-height: 1.8;">
+                        <li><strong>AMD (AM5):</strong> Ryzen 7000 ve 9000 serisi işlemcilerle kullanılan X670E ve B650E yonga setleri, Gen5 SSD desteğini "yerel" (native) olarak sunuyor. Yani ekran kartınızın bant genişliğinden çalmadan SSD'nizi tam hızda kullanabiliyorsunuz.</li>
+                        <li><strong>Intel (LGA 1700 / 1851):</strong> Intel tarafında, özellikle eski Z690 ve Z790 anakartlarda Gen5 SSD yuvası kullanıldığında, PCIe x16 slotu (ekran kartı yuvası) x8 hızına düşebiliyor. Yeni Z890 yonga setlerinde bu sorun büyük ölçüde giderilmiş olsa da, eski nesil Intel kullanıcılarının anakart kılavuzlarını dikkatle okuması gerekiyor.</li>
+                    </ul>
 
                     <blockquote style="border-left: 5px solid var(--color-primary); background-color: rgba(255,255,255,0.05); padding: 20px; margin: 30px 0; font-style: italic; border-radius: 4px;">
-                        <p>"10 GB/s psikolojik eşiğini geçtikten sonra, üreticiler artık 14 GB/s seviyesine odaklandı. Bu, depolamanın artık CPU'yu bekletmediği bir çağa girdiğimizin en büyük kanıtıdır."</p>
-                        <cite style="display: block; margin-top: 10px; font-size: 0.9em; color: var(--color-secondary); font-weight: bold;">— TeknoGündem Depolama Uzmanı</cite>
+                        <p>"10 GB/s psikolojik eşiğini geçtikten sonra, üreticiler artık 14 GB/s seviyesine odaklandı. Bu, depolamanın artık CPU'yu bekletmediği, aksine CPU'nun veriyi işlemek için ter döktüğü bir çağa girdiğimizin kanıtıdır."</p>
+                        <cite style="display: block; margin-top: 10px; font-size: 0.9em; color: var(--color-secondary); font-weight: bold;">— TeknoGündem Depolama Laboratuvarı</cite>
                     </blockquote>
 
                     <h2 id="toc-teknoloji" style="font-size: 1.6em; margin-top: 30px; color: var(--color-secondary);">Kontrolcü ve NAND Teknolojisindeki Atılımlar</h2>
-                    <p>Bu hız artışı, üç temel teknolojik yeniliğin birleşimiyle mümkün oldu:</p>
+                    <p>Bu hız artışı, üç temel teknolojik yeniliğin mükemmel birleşimiyle mümkün oldu:</p>
                     <ul style="margin-left: 20px; margin-top: 15px; line-height: 1.8;">
-                        <li><strong>Gelişmiş Denetleyiciler:</strong> Yeni nesil kontrolcüler (örneğin Phison E26/Innogrit) daha yüksek bant genişliğini yönetmek üzere tasarlandı.</li>
-                        <li><strong>232 Katmanlı NAND:</strong> Daha yoğun katmanlı bellek yongaları, hem kapasiteyi hem hızı artırdı.</li>
-                        <li><strong>DRAM Önbellek Optimizasyonu:</strong> Rastgele erişim performansını maksimuma çıkararak küçük dosya işlemlerinde stabilite sağlıyor.</li>
+                        <li><strong>Gelişmiş Denetleyiciler (Phison E26 & Innogrit):</strong> Phison E26 kontrolcüsü pazarın hakimi durumunda. Bu yeni silikon, veriyi işlerken daha düşük gecikme süreleri sunuyor ve hata düzeltme (ECC) algoritmalarını donanımsal olarak hızlandırıyor.</li>
+                        <li><strong>232 Katmanlı NAND Flash:</strong> Micron ve SK Hynix gibi devlerin ürettiği 232+ katmanlı bellek yongaları, hem depolama yoğunluğunu artırdı hem de veri yolundaki tıkanıklıkları açtı. Bu sayede tek bir modül üzerinde 4TB ve 8TB kapasitelere ulaşmak kolaylaştı.</li>
+                        <li><strong>LPDDR4 Önbellek:</strong> Yeni sürücüler, harita tablolarını tutmak için daha hızlı DRAM önbellekleri kullanıyor, bu da sürücü dolduğunda bile hızın düşmemesini sağlıyor.</li>
                     </ul>
 
-                    <h2 id="toc-isinma" style="font-size: 1.6em; margin-top: 30px; color: var(--color-secondary);">Kaçınılmaz Soğutma Zorlukları</h2>
-                    <p>Gen5 SSD'lerin getirdiği muazzam performans, beraberinde önemli bir zorluğu da getiriyor: Isınma. Bu hızlarda çalışan kontrolcüler, ciddi miktarda ısı üretiyor. Artık üst düzey anakartlar, bu SSD'ler için özel olarak tasarlanmış, aktif fanlı veya devasa pasif soğutma bloklarına sahip M.2 yuvalarıyla geliyor.</p>
+                    <h2 id="toc-directstorage" style="font-size: 1.6em; margin-top: 30px; color: var(--color-secondary);">DirectStorage ve Oyunculukta Yeni Dönem</h2>
+                    <p>Oyuncular için en büyük devrim, Microsoft'un <strong>DirectStorage 1.2</strong> teknolojisi ile geliyor. Geleneksel yöntemde oyun verileri SSD'den alınıp işlemciye (CPU) gönderilir, orada sıkıştırılması açılır ve sonra ekran kartına (GPU) yollanırdı. Bu işlemci üzerinde büyük bir yük oluşturuyordu.</p>
+                    <p style="margin-top: 10px;">Gen5 SSD'ler ve DirectStorage sayesinde, veri artık doğrudan ekran kartı belleğine (VRAM) akabiliyor. Sonuç mu? Yükleme ekranlarının tamamen ortadan kalktığı, devasa açık dünyaların anlık olarak render edildiği bir oyun deneyimi. 2026 yılında çıkacak AAA oyunların çoğunun bu teknolojiyi zorunlu kılması bekleniyor.</p>
 
-                    <h2 id="toc-piyasa" style="font-size: 1.6em; margin-top: 30px; color: var(--color-secondary);">Piyasa ve Fiyatlandırma Beklentileri</h2>
-                    <p>Yıl sonuna kadar 1 TB ve 2 TB kapasiteli modellerin Gen4'e göre makul bir primle (yaklaşık %20-30) piyasada yaygınlaşması bekleniyor. Bu fiyat düşüşü, Gen4 SSD'lerin de fiyatlarını aşağı çekerek genel depolama pazarını canlandıracaktır.</p>
+                    <h2 id="toc-isinma" style="font-size: 1.6em; margin-top: 30px; color: var(--color-secondary);">Kaçınılmaz Soğutma ve "Throttling" Zorlukları</h2>
+                    <p>Gen5 SSD'lerin getirdiği muazzam performansın bir bedeli var: Isı. Phison E26 gibi kontrolcüler yük altında 80-90 dereceye kadar ısınabiliyor. Bu noktada SSD, kendini korumak için hızını dramatik bir şekilde düşürüyor (Thermal Throttling).</p>
+                    <p style="margin-top: 10px;">Artık anakart üreticileri, M.2 yuvaları için devasa pasif alüminyum bloklar tasarlıyor. Hatta bazı "Extreme" modeller, SSD'nin üzerine takılan minik fanlarla (aktif soğutma) geliyor. Eğer Gen5 bir SSD alacaksanız, kasanızın hava akışının (Airflow) kusursuz olduğundan emin olmalısınız. Soğutucusuz (çıplak) bir Gen5 SSD kullanmak neredeyse imkansız.</p>
+
+                    <h2 id="toc-piyasa" style="font-size: 1.6em; margin-top: 30px; color: var(--color-secondary);">Piyasa, Fiyatlandırma ve Gelecek Beklentisi</h2>
+                    <p>Yıl sonuna kadar 1 TB ve 2 TB kapasiteli modellerin raflarda yerini sağlamlaştırması bekleniyor. Fiyatlar şu an Gen4 SSD'lere göre %40-50 daha pahalı olsa da, üretim verimliliğinin artmasıyla bu farkın %20 seviyelerine inmesi öngörülüyor.</p>
+                    <p style="margin-top: 10px;">Ayrıca bu durum Gen4 SSD'lerin (Samsung 990 Pro, WD SN850X gibi efsane modellerin) fiyatını aşağı çekerek onları "fiyat/performans kralı" haline getirecektir. Bütçe dostu sistem toplayanlar için Gen4 hala en mantıklı tercih olabilir.</p>
+
+                    <h2 id="toc-sonuc" style="font-size: 1.6em; margin-top: 30px; color: var(--color-secondary);">Sonuç: Geçmeye Değer mi?</h2>
+                    <ul style="margin-left: 20px; margin-top: 15px; line-height: 1.8;">
+                        <li><strong>İçerik Üreticileri (Video/3D):</strong> Kesinlikle EVET. 8K RAW video işliyorsanız veya devasa 3D sahneler render alıyorsanız, zaman tasarrufu maliyeti amorti edecektir.</li>
+                        <li><strong>Hardcore Oyuncular:</strong> BELKİ. Geleceğe yatırım yapmak istiyorsanız ve DirectStorage destekli oyunları bekliyorsanız mantıklı. Ancak şu anki oyunlarda Gen4 ile Gen5 arasındaki yükleme süresi farkı sadece 1-2 saniye.</li>
+                        <li><strong>Ev/Ofis Kullanıcısı:</strong> HAYIR. SATA veya Gen3 bir SSD bile günlük işler için fazlasıyla yeterli. Gen5'in getirdiği ısı ve maliyet yüküne girmeye gerek yok.</li>
+                    </ul>
                     
                 </section>
 

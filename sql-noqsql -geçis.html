@@ -30,7 +30,7 @@
     header {
         background-color: #1e1e1e;
         color: white;
-        padding: 15px 50px;
+        padding: 5px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -39,7 +39,7 @@
     .logo {
         font-size: 1.8rem;
         font-weight: bold;
-        color: var(--color-primary);
+        color:#007bff;
     }
     nav ul {
         list-style: none;
@@ -177,6 +177,120 @@
         color: #666;
         background-color: #1e1e1e;
     }
+    /* ================================================= */
+        /* MOBİL UYUMLULUK KODLARI (MAX 768px) */
+        /* ================================================= */
+        @media (max-width: 768px) {
+            
+            /* HEADER ve NAVIGASYON DÜZELTMESİ (Varsa) */
+            header {
+                flex-direction: column; /* Logo ve Navigasyonu alt alta getir */
+                padding: 10px 15px !important; /* Padding'i azalt */
+                align-items: flex-start;
+            }
+            
+            nav {
+                width: 100%;
+                margin-top: 10px;
+            }
+            
+            nav ul {
+                flex-direction: column; /* Menü linklerini alt alta getir */
+                width: 100%;
+                gap: 5px; /* Boşluğu azalt */
+                align-items: flex-start;
+            }
+
+            nav ul li {
+                width: 100%; /* Menü öğelerini tam genişlik yap */
+            }
+
+            nav a {
+                padding: 10px 0; /* Tıklama alanını genişlet */
+                display: block;
+                width: 100%;
+                text-align: left;
+            }
+
+            /* ANA İÇERİK DÜZELTMESİ */
+            /* Makalenin ana içeriğini mobil ekrana sığdırmak için */
+            main {
+                max-width: 100%;
+                margin: auto;
+                padding: 20px 15px !important; /* Mobil için kenar boşluğu */
+            }
+            
+            /* Başlık ve Metin Boyutları */
+            h1 {
+                font-size: 2rem !important; /* Ana başlık boyutunu küçült */
+                padding: 0 5px;
+            }
+
+            h2 {
+                font-size: 1.6rem !important; /* Alt başlık boyutunu küçült */
+                margin-top: 30px !important;
+                margin-bottom: 10px !important;
+            }
+            
+            h3 {
+                font-size: 1.3rem !important; /* Alt başlık boyutunu küçült */
+                margin-top: 25px !important;
+                margin-bottom: 8px !important;
+            }
+
+            p, ul, ol, blockquote {
+                font-size: 1rem !important; /* Paragraf fontunu küçült */
+                line-height: 1.6 !important;
+                margin-bottom: 20px !important;
+                padding: 0 5px; /* Kenar boşluğu ekle */
+            }
+            
+            /* Liste (UL/OL) Düzeltmeleri */
+            ul, ol {
+                padding-left: 20px !important; /* Listelerin girintisini ayarla */
+                padding-right: 5px;
+            }
+            
+            ul li, ol li {
+                margin-bottom: 8px !important;
+            }
+            
+            /* Kod Blokları ve Alıntılar (blockquote) Düzeltmeleri */
+            pre, blockquote {
+                padding: 15px !important;
+                white-space: pre-wrap; /* Uzun satırların taşmasını engelle */
+                overflow-x: auto; /* Yatay kaydırma çubuğunu etkinleştir */
+                font-size: 0.9em;
+            }
+
+            /* Resim Düzeltmesi */
+            img {
+                max-width: 100%; 
+                height: auto;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            /* Özellikle 'technical-section' gibi esnek layout'ları alt alta getir */
+            .technical-section, .migration-steps, .split-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .technical-section > div, .migration-steps > div, .split-content > div {
+                width: 100% !important; /* Tüm bölümleri tam genişlik yap */
+            }
+
+             /* Özel listeler için (detail-list) */
+            .detail-list {
+                padding-left: 0 !important;
+            }
+
+            .detail-list li {
+                padding-left: 15px !important;
+            }
+        } 
 </style>
     
    

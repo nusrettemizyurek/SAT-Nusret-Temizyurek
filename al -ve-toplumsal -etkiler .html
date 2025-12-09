@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veri Setlerinden Öğrenmek: Feature Engineering ve ML Başarısı - TeknoGündem</title>
+    <title>AI ve Toplumsal Etkiler: Fırsatlar, Zorluklar ve Etik Sorumluluklar - TeknoGündem</title>
     <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
     <style>
         body {
@@ -15,7 +15,7 @@
         }
 
         header {
-            background-color: #161b22;
+            background-color: #1e1e1e;
             padding: 15px 40px;
             display: flex;
             justify-content: space-between;
@@ -26,7 +26,7 @@
         .logo {
             font-size: 1.6em;
             font-weight: 700;
-            color: #00c6ff;
+            color: #007bff;
         }
 
         nav ul {
@@ -37,8 +37,7 @@
             padding: 0;
         }
 
-        nav ul li { position: relative; } /* Dropdown için gerekli */
-
+        nav ul li { position: relative; }
 
         nav a {
             color: #ccc;
@@ -53,11 +52,10 @@
             color: #00c6ff;
         }
 
-        /* Yeni Eklenen Dropdown Stilleri */
         .dropdown-content {
-            display: none; 
+            display: none;
             position: absolute;
-            top: 100%; 
+            top: 100%;
             left: 0;
             background-color: #161b22;
             min-width: 160px;
@@ -66,25 +64,23 @@
             border: 1px solid #30363d;
             border-radius: 4px;
             padding: 10px 0;
-            flex-direction: column; 
+            flex-direction: column;
         }
 
         .dropdown:hover .dropdown-content { display: flex; }
 
         .dropdown-content a {
-            color: #ccc; 
-            padding: 10px 15px; 
-            text-decoration: none; 
+            color: #ccc;
+            padding: 10px 15px;
+            text-decoration: none;
             display: block;
         }
 
         .dropdown-content a:hover {
-            background-color: #30363d; 
+            background-color: #30363d;
             color: #00c6ff;
         }
-        /* Dropdown Stilleri Bitişi */
-        
-        /* Makale İçeriği Stil Başlangıcı */
+
         .article-container {
             padding: 40px 8%;
             max-width: 900px;
@@ -139,11 +135,11 @@
             margin-bottom: 20px;
             color: #ccc;
         }
-        
+
         .article-body strong {
             color: #00c6ff;
         }
-        
+
         .article-body em {
             color: #c0c0c0;
         }
@@ -157,7 +153,6 @@
             font-style: italic;
             border-radius: 4px;
         }
-        /* Makale İçeriği Stil Bitişi */
 
         footer {
             text-align: center;
@@ -166,6 +161,95 @@
             background-color: #0d1117;
             color: #777;
             margin-top: 40px;
+        }
+        /* ================================================= */
+        /* MOBİL UYUMLULUK KODLARI (MAX 768px) */
+        /* ================================================= */
+        @media (max-width: 768px) {
+            
+            /* HEADER ve NAVIGASYON DÜZELTMESİ */
+            header {
+                flex-direction: column; /* Logo ve Navigasyonu alt alta getir */
+                padding: 10px 15px !important; /* Padding'i azalt */
+                align-items: flex-start;
+            }
+            
+            nav {
+                width: 100%;
+                margin-top: 10px;
+            }
+            
+            nav ul {
+                flex-direction: column; /* Menü linklerini alt alta getir */
+                width: 100%;
+                gap: 5px; /* Boşluğu azalt */
+                align-items: flex-start;
+            }
+
+            nav ul li {
+                width: 100%; /* Menü öğelerini tam genişlik yap */
+            }
+
+            nav a {
+                padding: 10px 0; /* Tıklama alanını genişlet */
+                display: block;
+                width: 100%;
+                text-align: left;
+            }
+
+            /* ANA İÇERİK DÜZELTMESİ */
+            /* Makalenin ana içeriğini mobil ekrana sığdırmak için */
+            main {
+                /* main etiketinin padding ve margin ayarları yok, bu yüzden body'yi veya bir içeriği sarmalayan div'i (örneğin .content-wrapper) hedeflememiz gerekir. Ancak sayfanızda özel bir sarmalayıcı olmadığı için doğrudan p, h etiketlerine müdahale ediyoruz. */
+                padding: 20px 15px !important;
+                max-width: 100%;
+                margin: auto;
+            }
+            
+            /* Başlık ve Metin Boyutları */
+            h1 {
+                font-size: 2rem !important; /* Ana başlık boyutunu küçült */
+                padding: 0 5px;
+            }
+
+            h2 {
+                font-size: 1.6rem !important; /* Alt başlık boyutunu küçült */
+                margin-top: 30px !important;
+                margin-bottom: 10px !important;
+            }
+            
+            h3 {
+                font-size: 1.3rem !important; /* Alt başlık boyutunu küçült */
+                margin-top: 25px !important;
+                margin-bottom: 8px !important;
+            }
+
+            p {
+                font-size: 1rem !important; /* Paragraf fontunu küçült */
+                line-height: 1.6 !important;
+                margin-bottom: 20px !important;
+                padding: 0 5px; /* Kenar boşluğu ekle */
+            }
+            
+            /* Liste (UL/OL) Düzeltmeleri */
+            ul, ol {
+                padding-left: 20px !important; /* Listelerin girintisini ayarla */
+                font-size: 1rem !important;
+                padding-right: 5px;
+            }
+            
+            ul li, ol li {
+                margin-bottom: 8px !important;
+            }
+            
+            /* Resim Düzeltmesi (Eğer sayfada geniş resim varsa, taşmasını engeller) */
+            img {
+                max-width: 100%; 
+                height: auto;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
     </style>
 </head>
@@ -176,15 +260,15 @@
     <nav>
         <ul>
             <li><a href="index.html">Ana Sayfa</a></li>
-            
+
             <li class="dropdown">
-                <a href="donanım.html">Donanım</a> 
-                <div class="dropdown-content"> 
-                    <a href="haberler.html" class="dropdown-item">Haberler</a> 
+                <a href="donanım.html">Donanım</a>
+                <div class="dropdown-content">
+                    <a href="haberler.html" class="dropdown-item">Haberler</a>
                     <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
                 </div>
             </li>
-            
+
             <li class="dropdown">
                 <a href="yazılım.html">Yazılım</a>
                 <div class="dropdown-content">
@@ -192,8 +276,8 @@
                     <a href="frontend-makaleler.html" class="dropdown-item">Frontend</a>
                 </div>
             </li>
-            
-            <li><a href="ai-makaleler.html" class="active">AI Makaleleri</a></li> 
+
+            <li><a href="ai-makaleler.html" class="active">AI Makaleleri</a></li>
             <li><a href="hakkimizda.html">Hakkımızda</a></li>
         </ul>
     </nav>
@@ -201,79 +285,67 @@
 
 <main class="article-container">
     <article class="article-body">
-        
-        <h1>Veri Setlerinden Öğrenmek: Feature Engineering, Makine Öğrenimi Başarısında Neden Kritik?</h1>
-        
+
+        <h1>Yapay Zeka (AI) ve Toplumsal Etkiler: Eşitsizlikten Otonomiye Etik Sorumlulukların Derin Analizi</h1>
+
         <div class="article-meta">
-            <span>Yazar: Veri Bilimi Uzmanı</span>
-            <span>Tarih: 02 Kasım 2025</span>
-            <span>Okuma Süresi: ~8 dakika</span>
-            <span>Kategori: Makine Öğrenimi (ML), Veri Bilimi</span>
+            <span>Yazar: Etik Teknoloji Analisti & Fütürist</span>
+            <span>Tarih: 07 Aralık 2025</span>
+            <span>Okuma Süresi: ~5 dakika</span>
+            <span>Kategori: Yapay Zeka (AI), Toplum, Etik, Hukuk</span>
         </div>
 
-        <p>Makine Öğrenimi (ML) algoritmalarının başarısı genellikle kullanılan modelin karmaşıklığına değil, modele sunulan verinin kalitesine ve biçimine bağlıdır. Veri biliminde sıklıkla söylenen bir söz vardır: "Çöp Girdi, Çöp Çıktı" (Garbage In, Garbage Out). İşte bu noktada, modelin veriden en iyi şekilde öğrenebilmesi için verinin dönüştürülmesi sanatı olan Öznitelik Mühendisliği (Feature Engineering) devreye girer. Ham veriyi işlenmiş, optimize edilmiş ve modele hazır hale getirme süreci, başarılı bir ML projesinin belki de %80'ini oluşturur.</p>
-        <p>Başarılı bir Feature Engineering süreci, modelin yalnızca verideki mevcut bilgiyi değil, aynı zamanda değişkenler arasındaki gizli, doğrusal olmayan ilişkileri de keşfetmesini sağlar. Örneğin, sadece bir kişinin gelirine bakmak yerine, geliri ve yaşadığı bölgenin ortalama yaşam maliyetini karşılaştıran yeni bir "Göreceli Gelir Endeksi" oluşturmak, tahmin gücünü çarpıcı biçimde artırabilir. Bu yaratıcı süreç, algoritmaların sınırlarını aşmanın ve gerçek dünya sorunlarına daha isabetli çözümler üretmenin anahtarıdır.</p>
-
-        <h2>Öznitelik Mühendisliği Nedir?</h2>
-        <p>Öznitelik Mühendisliği, ham veriyi alıp, modelin öğrenme performansını artırmak için daha anlamlı, ayırt edici özelliklere dönüştürme sürecidir. Bu, veri temizliği, dönüştürme, birleştirme ve yeni değişkenler oluşturmayı içerir. İyi bir öznitelik, karmaşık ilişkileri modelin kolayca anlayabileceği basit bir formata indirger.</p>
+        <p>Yapay Zeka (AI), 21. yüzyılın en çarpıcı teknolojik devrimi olarak kabul edilmektedir. Sadece endüstriyel süreçleri optimize etmekle kalmıyor, aynı zamanda insana ait kabul edilen karar alma, yaratıcılık ve analiz yeteneklerini de taklit ederek toplumsal dokuyu yeniden şekillendiriyor. Bu köklü değişim, kaçınılmaz olarak hem teknolojik ilerlemenin getirdiği heyecanı hem de etik, sosyal ve ekonomik sonuçların yarattığı derin endişeleri beraberinde getirmektedir. AI'ın gücünü toplum yararına kullanmak, artık sadece kod yazmak değil, aynı zamanda hukuki, felsefi ve ahlaki sınırları da belirlemek demektir.</p>
+        <p>Günümüzün AI sistemleri, büyük veri setlerinden öğrenerek çalışır. Bu, sistemin performansını artırsa da, veri setlerindeki tarihsel önyargıların (bias) algoritmalara sızmasına neden olur. Eşitlik, adalet, şeffaflık ve sorumluluk, artık sadece soyut kavramlar değil, başarılı ve sürdürülebilir AI uygulamalarının temel yapı taşlarıdır. AI'ın sunduğu fırsatları maksimize ederken, temel insan haklarını ve toplumsal uyumu korumak, önümüzdeki dönemin en büyük etik meydan okumasıdır.</p>
         
-        <p>Bu süreç, bir veri bilimcinin alan bilgisini (domain expertise) derinlemesine kullanmasını gerektirir. Modelin neyi tahmin etmeye çalıştığını (hedef değişken) ve hangi ham verilerin bu tahminle en güçlü şekilde ilişkili olduğunu anlamak esastır. Örneğin, bir hisse senedi fiyatı tahmin ederken, sadece günlük kapanış fiyatına odaklanmak yerine, "hareketli ortalama" veya "volatilite" gibi finansal türev göstergeleri oluşturmak, modele piyasa dinamikleri hakkında anında bilgi sağlar.</p>
 
-        <p>Öznitelik Mühendisliği, yalnızca performansı artırmakla kalmaz, aynı zamanda modelin yorumlanabilirliğini de yükseltir. İyi tasarlanmış öznitelikler, karmaşık bir Derin Öğrenme modelinin bile tahminlerinin arkasındaki mantığı anlamayı kolaylaştırır. Model, 100 farklı anlamsız sütun yerine, 5-10 tane yüksek korelasyonlu, anlamlı özellik üzerinde eğitildiğinde, çıktıların nedenlerini açıklamak çok daha basit hale gelir.</p>
+        <h2>AI'ın Dönüştürücü Toplumsal Faydaları ve Ekonomik Değişim</h2>
+        <p>AI'ın toplum hayatına getirdiği en büyük değer, daha önce erişilemez olan bilgi ve hizmetlere ulaşımı demokratikleştirmesidir:</p>
+        <hr>
 
-        <p>Kısacası, Feature Engineering; karmaşık, kirli ve eksik ham veriyi, bir makine öğrenimi algoritmasının kolaylıkla sindirebileceği, temiz ve yüksek oranda bilgilendirici bir besine dönüştürme sanatıdır. Bu hazırlık evresi, modelin eğitimine harcanan zamandan çok daha kritiktir.</p>
+        <h3>1. İleri Düzey Sağlık Hizmetleri ve Bireyselleştirilmiş Tıp ⚕️</h3>
+        <p>AI, tıp alanında radyoloji, patoloji ve genomik analizlerde insan hatasını minimuma indirir. Makine öğrenimi algoritmaları, geniş hasta verilerini saniyeler içinde analiz ederek kanser gibi kritik hastalıkların erken teşhisinde %95’in üzerinde doğruluk oranlarına ulaşabilir. Dahası, farmakoloji alanında yeni ilaç moleküllerinin keşif sürecini hızlandırarak ve hassas tıp (Precision Medicine) uygulamalarıyla kişiye özel tedavi planları oluşturarak yaşam kalitesini ve süresini uzatma potansiyeli taşır.</p>
 
-        <h3>Temiz Verinin Temeli: Veri Ön İşleme</h3>
-        <p>Feature Engineering'e başlamadan önce veri ön işlemesi hayati önem taşır:</p>
-        <ul>
-            <li><strong>Kayıp Veri Yönetimi:</strong> Eksik değerleri doldurmak (imputation) veya satırları kaldırmak.</li>
-            <li><strong>Aykırı Değer Tespiti:</strong> Modelin performansını bozan anormal veri noktalarını (outliers) belirlemek ve düzeltmek.</li>
-            <li><strong>Veri Normalizasyonu/Standardizasyonu:</strong> Farklı ölçeklerdeki öznitelikleri (örneğin, yaş ve maaş) aynı ölçeğe getirmek, böylece hiçbir özniteliğin modele gereksiz yere hakim olmamasını sağlamak.</li>
-        </ul>
+        <h3>2. Verimlilik Artışı ve Yeni Ekonomik Alanlar</h3>
+        <p>AI destekli otomasyon, üretimden lojistiğe kadar birçok sektörde operasyonel maliyetleri düşürürken, verimliliği katlar. Öte yandan, AI'ın kendisi de yeni bir ekonomik sektör yaratmıştır. Veri bilimci, AI etik uzmanı, prompt mühendisi gibi yeni meslekler ortaya çıkmakta ve küresel inovasyon hızını artırmaktadır. Bu, iş gücünün düşük vasıflı işlerden, AI sistemlerini geliştiren ve yöneten yüksek vasıflı işlere kaymasına yol açmaktadır.</p>
+
+        <h3>3. Afet Yönetimi ve Kritik Altyapı Güvenliği</h3>
+        <p>AI, büyük ölçekli ve hızlı kararlar gerektiren alanlarda vazgeçilmezdir. Doğal afetlerin (deprem, sel) erken uyarısı, acil durum kurtarma operasyonlarının optimize edilmesi ve enerji şebekeleri gibi kritik altyapıların siber tehditlere karşı korunması, AI algoritmaları sayesinde daha hızlı ve isabetli hale gelmiştir.</p>
+
+        <h2>Derinlemesine Etik İkilemler ve Zorluklar</h2>
+        <p>AI'ın en kritik zorlukları, teknik değil, felsefi ve toplumsal derinliğe sahiptir:</p>
+        <hr>
+
+        <h3>1. Algoritmik Yanlılık (Bias) ve Eşitsizliğin Derinleşmesi</h3>
+        <p>AI'ın karşılaştığı en büyük etik sorun, veri yanlılığıdır. Geçmişteki önyargılı insan kararlarını içeren verilerle eğitilen AI, bu önyargıları öğrenir ve kararlarında sistemli bir şekilde çoğaltır. Bu durum, özellikle adli yargılamada kefalet belirleme, işe alım süreçleri veya kredi değerlendirmeleri gibi sosyal hareketliliği doğrudan etkileyen alanlarda dezavantajlı grupların dışlanmasına yol açar. Yanlılığı gidermek için sentetik veri üretimi, öznitelik dengesi ve model sonrası düzeltme (post-processing) gibi gelişmiş teknikler kullanılsa da, kök neden olan toplumsal eşitsizlikler devam ettikçe risk devam edecektir.</p>
+
+        <h3>2. Kara Kutu (Black Box) Sorunu ve Açıklanabilirlik (XAI)</h3>
+        <p>Derin Öğrenme (DL) modellerinin yüksek performansına rağmen, karmaşık yapısı nedeniyle bir karara nasıl ulaştığını anlamak genellikle imkansızdır. Bu "Kara Kutu" problemi, kritik alanlarda güveni sarsar. Bir doktorun teşhis koyan bir AI sistemine veya bir hakimin ceza öneren bir algoritmanın gerekçesini anlamaya ihtiyacı vardır. **Açıklanabilir AI (XAI)**, modelin kararlarının mantığını, insan uzmanların anlayabileceği formatlarda (örneğin, özellik önem skorları veya örnek karşılaştırmaları ile) sunarak bu sorunu çözmeyi amaçlar. Ancak bu, özellikle en derin sinir ağlarında, hala aktif bir araştırma alanıdır.</p>
         
-        <p>Veri ön işlemesi, bir binanın temelini atmaya benzer. Eğer temel sağlam atılmazsa, üzerinde kurulan en gelişmiş model mimarisi bile çökmeye mahkumdur. Özellikle kayıp verilerin yanlış yöntemlerle doldurulması, modelin öğrenme sırasında ciddi yanlılıklar (bias) geliştirmesine yol açabilir. Örneğin, kayıp yaş değerlerini basit bir ortalama ile doldurmak yerine, aynı medeni durumdaki veya eğitim seviyesindeki kişilerin ortalama yaşını kullanarak daha karmaşık imputation teknikleri uygulamak, veri kalitesini maksimize eder.</p>
-
-        <p>Aykırı değerlerin (Outliers) tespiti ve yönetimi de büyük önem taşır. Lineer regresyon veya destek vektör makineleri gibi bazı algoritmalar bu anormal noktalara karşı oldukça hassastır ve aykırı değerler modelin genel performansını dramatik şekilde bozabilir. Aykırı değerleri doğrudan kaldırmak yerine, onları sıkıştırmak (winsorizing) veya logaritmik dönüşümlerle etkilerini azaltmak, hem veri kaybını önler hem de modelin sağlamlığını artırır.</p>
-        
-        <p>Normalizasyon ve Standardizasyon, veriyi aynı oyun alanına taşır. Büyük ölçekli bir özellik (örneğin yıllık gelir: $100.000) küçük ölçekli bir özelliğe (örneğin çocuk sayısı: 3) göre modele orantısız şekilde hakim olabilir. Standardizasyon (Ortalama: 0, Standart Sapma: 1) veya Normalizasyon(Değerleri 0 ile 1 arasına sıkıştırma) yöntemleri bu dengesizliği giderir, böylece gradyan inişi gibi optimizasyon algoritmaları daha hızlı ve doğru çalışır.</p>
-
         <blockquote>
-            "Model mimarisine harcadığınız zamanın büyük bir kısmı, aslında veri hazırlığına harcadığınız zamanın yanında sönük kalır. Feature Engineering, modelin beynine beslediğiniz 'bilgeliktir'."
+            "Eğer bir AI sistemi, bir insana neden hayati bir hizmetin reddedildiğini açıklayamıyorsa, o sistemin adil olduğunu iddia etmek mümkün değildir. Sorumluluk, şeffaflıkla başlar."
         </blockquote>
 
-        <h2>Öznitelik Yaratma Teknikleri</h2>
-        <p>Yeni ve güçlü öznitelikler yaratmak için kullanılan bazı temel stratejiler:</p>
+        <h3>3. Özerklik, Sorumluluk ve Yasal Çerçeve ⚖️</h3>
+        <p>Otonom sistemlerin, özellikle sürücüsüz araçlar veya savaş dronları gibi uygulamalarda, beklenmedik kararlar vermesi durumunda yasal sorumluluğun kime ait olduğu sorusu (imalatçı, programcı, operatör, yoksa AI'ın kendisi?) hala belirsizdir. Mevcut hukuk sistemleri, bu tür "faili meçhul" algoritmik kararlara uyum sağlamakta zorlanmaktadır. AI'a yasal kişilik (legal personhood) verilmesi gibi radikal öneriler tartışılsa da, yaygın kabul görmemektedir. Sorumluluk, şeffaf bir denetim zinciri ve önceden belirlenmiş risk senaryoları ile tanımlanmalıdır.</p>
 
-        <h3>1. Dönüşümler (Transformations):</h3>
-        <p>Sayısal verileri daha bilgilendirici hale getirmek için matematiksel işlemler uygulamak. Örneğin, iki farklı zaman damgasından (tarihten) **geçen süreyi** hesaplayarak yeni bir "yaş" özniteliği oluşturmak.</p>
-        <p>Dönüşümler, yalnızca zaman hesaplamalarıyla sınırlı değildir. Özellikle çarpık dağılımlı (skewed) değişkenler için logaritmik $(y = \log(x))$ veya karekök dönüşümleri uygulamak, verinin dağılımını normale yaklaştırarak Lineer Regresyon gibi parametrik modellerin varsayımlarına uyum sağlamasına ve böylece daha iyi performans göstermesine olanak tanır. Bu, özellikle gelir, süre veya nüfus gibi pozitif değerlerle sınırlı değişkenlerde yaygındır.</p>
-        <p>Başka bir yaygın dönüşüm tekniği, sayısal değişkenleri gruplara ayırmaktır (binning veya bucketing). Örneğin, sürekli bir yaş değişkenini "Genç", "Orta Yaşlı" ve "Yaşlı" kategorilerine dönüştürmek. Bu işlem, aşırı detaydan kaynaklanan gürültüyü azaltabilir ve modelin aykırı değerlere karşı daha dayanıklı olmasını sağlayarak genelleme yeteneğini artırır.</p>
+        <h2>Gelecekteki Yönetişim ve Düzenleme İhtiyacı</h2>
+        <p>AI'ın etik gelişimi, sadece mühendislere bırakılamayacak kadar önemlidir. Etkili bir küresel yönetişim çerçevesine ihtiyaç vardır:</p>
+        <hr>
 
-        <h3>2. Kodlama (Encoding) Kategorik Veri:</h3>
-        <p>Kategori adlarını (örneğin 'Ankara', 'İstanbul') modelin anlayabileceği sayısal biçime dönüştürmek:</p>
-        <ul>
-            <li><strong>One-Hot Encoding:</strong> Her bir kategori için yeni bir ikili (0 veya 1) öznitelik sütunu oluşturur.</li>
-            <li><strong>Target Encoding:</strong> Kategorik değeri, hedef değişkenin ortalamasıyla kodlar (Örneğin, 'İstanbul'da oturanların ortalama borç riski).</li>
-        </ul>
-        <p>Kategorik verinin doğru kodlanması kritiktir. One-Hot Encoding yöntemi, yüksek kardinaliteli (çok sayıda benzersiz değere sahip) sütunlarda kullanıldığında aşırı miktarda yeni sütun (Curse of Dimensionality) oluşturarak modelin eğitim süresini uzatabilir ve hafıza sorunlarına yol açabilir. Bu sorun, özellikle 100'den fazla benzersiz şehir adı gibi durumlarda ortaya çıkar.</p>
-        <p>Yüksek kardinalite sorununu çözmek için Target Encoding (veya Mean Encoding) güçlü bir alternatiftir. Bu teknik, her kategoriyi, hedef değişkenin o kategoriye karşılık gelen ortalama değeriyle kodlar. Örneğin, bir şehirdeki müşteri churn (ayrılma) oranını kodlamak gibi. Bu, kategori ve hedef değişken arasındaki ilişkiyi tek bir sayısal değişkende yakalar, ancak aşırı öğrenme (overfitting) riskini azaltmak için çapraz doğrulama (cross-validation) ile birlikte dikkatlice kullanılmalıdır.</p>
-        <p>Ordinal Encoding ise doğal bir sıraya sahip kategoriler için kullanılır (Örn: Eğitim Seviyesi: İlkokul < Lise < Üniversite). Bu kodlama, kategorileri doğrudan 1, 2, 3 gibi sıralı sayılarla eşleştirir ve modelin bu sıralı ilişkiyi öğrenmesini kolaylaştırır, böylece gereksiz yeni sütunlar oluşturulmamış olur.</p>
+        <h3>Yasal Düzenlemeler ve Risk Temelli Yaklaşım</h3>
+        <p>Avrupa Birliği'nin AI Yasası (AI Act) gibi düzenlemeler, AI sistemlerini oluşturduğu risk düzeyine göre sınıflandırmayı amaçlamaktadır: kabul edilemez risk (örneğin sosyal puanlama sistemleri), yüksek risk (sağlık, eğitim, hukuk) ve minimal risk. Yüksek riskli sistemler, pazara sunulmadan önce sıkı şeffaflık, veri yönetimi ve insan denetimi gerekliliklerine tabi tutulmalıdır.</p>
 
-        <h3>3. Etkileşim Öznitelikleri (Interaction Features):</h3>
-        <p>Mevcut iki veya daha fazla özniteliği birleştirerek aralarındaki ilişkiyi yansıtan yeni bir öznitelik oluşturmak (örneğin: "Harcama_Oranı" = "Gelir" / "Harcamalar").</p>
-        <p>Etkileşim öznitelikleri, modelin tekil değişkenlerde gizli kalan, doğrusal olmayan karmaşık ilişkileri keşfetmesini sağlar. Örneğin, bir kişinin geliri yüksek olabilir, ancak Harcama/Gelir oranı da yüksekse, bu durum tek başına gelir değişkeni ile anlaşılamayacak yeni bir risk faktörünü ortaya çıkarır. Bu mühendislik tekniği, temel algoritmaların (lineer modeller) varsayımlarını aşmalarını ve verilere daha esnek uyum sağlamalarını sağlar.</p>
-        <p>Sıklıkla kullanılan bir başka etkileşim örneği, iki kategorik değişkeni birleştirmektir. Örneğin, "Cinsiyet" ve "Ürün Kategorisi" özelliklerini birleştirerek "Kadın ve Spor Giyim" gibi yeni bir öznitelik oluşturmak. Bu birleşik öznitelik, modelin kadın müşterilerin spor giyime olan ilgisini, genel olarak kadınlara veya genel olarak spor giyime olan ilgiden daha net bir şekilde ayırt etmesine yardımcı olabilir.</p>
-        <p>Özellikle Ağaç tabanlı modeller (Random Forest, Gradient Boosting) etkileşimleri doğal olarak yakalayabilirken, Lineer Regresyon veya SVM gibi modeller için etkileşim terimlerinin manuel olarak oluşturulması, model performansını artırmanın en etkili yoludur.</p>
+        <h3>Uluslararası İşbirliği ve Standartlar</h3>
+        <p>AI, sınır tanımayan bir teknolojidir. Farklı ülkelerdeki etik ve yasal standartlardaki farklılıklar, küresel AI gelişimini tehlikeye atabilir. UNESCO ve OECD gibi uluslararası kuruluşlar, temel AI Etik Prensipleri konusunda küresel bir mutabakat oluşturmaya çalışmaktadır. Bu standartlar, veri gizliliği, güvenlik ve algoritmik adalet konularında ortak bir zemin sağlamayı hedefler.</p>
 
-        <h2>Otomatik Öznitelik Mühendisliği (AutoFE)</h2>
-        <p>Derin Öğrenme (DL) alanındaki ilerlemeler, öznitelik mühendisliği sürecini otomatikleştirmeye başlamıştır. DL modelleri, özellikle Görü ve NLP gibi alanlarda, ham veriden (piksel, kelime) anlamlı öznitelikleri (Feature Learning**) kendiliğinden çıkarabilme yeteneğine sahiptir. Ancak, tabular (tablo) verilerde, AutoML araçları ve teknikleri (örneğin, Featuretools) hala insan uzmanlığının yerini tamamen alabilmiş değildir; insan müdahalesi kritik kalmaya devam etmektedir.</p>
+        <h3>Eğitim ve Toplumsal Farkındalık</h3>
+        <p>AI'ın toplumsal etkilerinin anlaşılması için teknik bilginin demokratikleştirilmesi şarttır. Okullarda ve üniversitelerde AI okuryazarlığı ve etik derslerinin yaygınlaştırılması, bireylerin algoritmik kararların etkilerini anlamalarına ve sorgulamalarına olanak tanır. AI'ın sadece bir araç değil, aynı zamanda toplumun aynası olduğunu anlamak, sorumlu kullanımın ilk adımıdır.</p>
 
-        <p>AutoFE araçları, temel dönüşümler ve basit etkileşimler oluşturarak veri bilimcilerin iş yükünü hafifletebilir, ancak karmaşık iş mantığına dayanan veya derin alan bilgisi gerektiren özelliklerin (örneğin, "müşterinin son 3 aydaki ortalama sipariş değeri") oluşturulması hala insan analistlerin elindedir. Otomasyon, bir başlangıç noktası sunsa da, en yüksek doğruluk seviyeleri için yaratıcı, uzmanlık gerektiren manuel mühendislik kaçınılmazdır.</p>
-
-        <p>Öznitelik Mühendisliği, bir veri bilimcinin cephaneliğindeki en güçlü araçtır. Modelleri eğitmek ve ayarlamaktan daha fazla zaman ve düşünce gerektirir, ancak nihai model performansındaki kazançlar genellikle bu çabaya değerdir.</p>
+        <p>Sonuç olarak, Yapay Zeka, yalnızca bir teknik araç değil, insanlığın geleceğini şekillendiren bir güçtür. Başarısı, algoritmaların karmaşıklığından ziyade, onları tasarlayan, uygulayan ve denetleyen bizlerin etik bilincine ve toplumsal sorumluluğuna bağlı olacaktır. AI'ın sunduğu devasa potansiyelden tam olarak yararlanmak için, etik ilkelerin teknolojik inovasyonun her aşamasında öncelikli tutulması gerekmektedir.</p>
 
         <div class="article-meta" style="margin-top: 50px; border-top: 1px solid #30363d; padding-top: 15px;">
-            <span>#FeatureEngineering #VeriBilimi #ML #VeriÖnİşleme #AutoML</span>
+            <span>#YapayZeka #AI #Etik #ToplumsalEtki #Yönetişim #Hukuk #AçıklanabilirAI #VeriGizliliği</span>
         </div>
 
     </article>

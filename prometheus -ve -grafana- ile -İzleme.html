@@ -31,10 +31,10 @@
         }
 
         /* HEADER & NAV STİLLERİ */
-        header {
+       header {
             background-color: #1e1e1e;
             color: white;
-            padding: 15px 50px;
+            padding: 5px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -43,7 +43,7 @@
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
-            color: var(--color-primary);
+            color:#007bff;
         }
         nav ul {
             list-style: none;
@@ -210,6 +210,107 @@
             color: #666;
             background-color: #1e1e1e;
         }
+        @media (max-width: 768px) {
+    
+    /* Header ve Navigasyon Yapısı */
+    header {
+        flex-direction: column; /* Yatay menüyü dikey yap */
+        text-align: center;
+        padding: 15px; 
+    }
+
+    nav ul {
+        flex-direction: column; /* Menü öğelerini alt alta sırala */
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    nav ul li {
+        width: 100%;
+        margin-bottom: 5px;
+        position: static; /* Dropdown öğelerin akışta kalmasını sağla */
+    }
+    
+    nav ul li a {
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    /* Dropdown Menülerin Akış Ayarlaması */
+    .dropdown {
+        width: 100%;
+    }
+    
+    .dropdown-content {
+        position: static; /* Dropdown içeriğini akışa dahil et */
+        transform: none; 
+        min-width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    
+    /* Ana İçerik Alanı */
+    .main-body-container {
+        margin: 20px 10px;
+        padding: 15px; 
+    }
+
+    /* Başlıkların Boyut Optimizasyonu */
+    h1 {
+        font-size: 2rem !important; 
+        line-height: 1.2;
+    }
+    h2 {
+        font-size: 1.5rem !important;
+    }
+
+    /* Görsel ve Meta Alanları */
+    .review-meta {
+        flex-direction: column; /* Meta bilgileri alt alta sırala */
+        gap: 5px;
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    /* Paragraf, Liste ve Blockquote Okunurluğu */
+    p {
+        font-size: 1em !important; 
+        line-height: 1.5 !important;
+    }
+    
+    .detail-list {
+        padding-left: 10px;
+    }
+    
+    blockquote {
+        padding: 10px;
+        margin-left: 0; 
+    }
+}
+
+/* Mobil Uyumluluk (Responsive Design) Bitiş: TELEFONLAR (600px altı) */
+@media (max-width: 600px) {
+    
+    /* Daha küçük başlıklar */
+    h1 {
+        font-size: 1.5rem !important; 
+    }
+    
+    /* Görsel Uyumluluğu */
+    img {
+        max-width: 100%; /* Görselin ekranı aşmasını engelle */
+        height: auto;
+    }
+    
+    /* Kod Blokları (PromQL, YAML) Uyumluluğu */
+    pre {
+        font-size: 0.8em; /* Kod font boyutunu küçült */
+        padding: 10px; 
+        overflow-x: auto; /* Yatay kaydırma çubuğu ile taşmayı önler (PromQL için kritik) */
+        white-space: pre-wrap; /* Uzun kod satırlarını sar */
+        word-wrap: break-word; 
+    }
+}
     </style>
 </head>
 <body class="yazilim-sayfa">

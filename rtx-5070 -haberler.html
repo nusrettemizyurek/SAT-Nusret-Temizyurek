@@ -10,7 +10,7 @@
     <style>
         :root {
             --color-background: #101824; 
-            --color-card-background: #1C2533; 
+             --color-card-background: #1e1e1e; 
             --color-text: #E0E6F0; 
             --color-primary: #3B82F6; 
             --color-secondary: #06B6D4; 
@@ -28,14 +28,26 @@
             line-height: 1.6;
         }
 
-        /* HEADER & NAVİGASYON STİLLERİ */
-        header {
-            background-color: var(--color-card-background);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            padding: 15px 40px;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-
+      
+/* HEADER & NAVİGASYON STİLLERİ */
+header {
+    --color-card-background: #1e1e1e;
+    /* Eski 'box-shadow' ve 'padding' burada kalabilir */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    
+    /* 👇 ÖNEMLİ SABİTLEME KODLARI BAŞLANGIÇ 👇 */
+    position: fixed; /* Header'ı ekran pozisyonuna sabitle */
+    top: 0; /* Ekranın en üstüne yerleştir */
+    width: 100%; /* Genişliğini tam ekran yap */
+    z-index: 1000; /* Diğer her şeyin üstünde görünmesini sağla */
+    /* 👇 ÖNEMLİ SABİTLEME KODLARI BİTİŞ 👇 */
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-card-background); /* Sabit duracağı için arka plan rengini netleştirdik */
+}
         .logo { font-size: 1.8em; font-weight: 900; color: var(--color-primary); }
 
         nav ul { list-style: none; display: flex; gap: 25px; }
@@ -67,7 +79,7 @@
             /* Arka plan resmi ve üzerindeki karartma katmanı */
             background: 
                 linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
-                url('rtx 5070   haberler .jpg'); 
+                url('img/rtx\ 5070\ \ \ haberler\ .jpg'); 
             
             background-color: #1a1a1a; /* Resim yüklenmezse */
             background-size: cover;      
@@ -159,14 +171,110 @@
         .share-facebook { background-color: #3B5998; }
         .share-linkedin { background-color: #0077B5; }
 
+     /* Tablet ve büyük telefonlar (max 1024px) */
         @media (max-width: 1024px) {
-            .content-wrapper { flex-direction: column; padding: 0 20px; }
-            .article-sidebar { max-width: 100%; min-width: unset; padding-top: 10px; }
-            .hero-header-content h1 { font-size: 2.5em; }
-            nav ul { flex-direction: row; flex-wrap: wrap; gap: 10px; }
-            header { flex-direction: column; align-items: flex-start; }
-            .dropdown-content { position: relative; margin-top: 0; width: 100%; box-shadow: none; border: none; padding: 5px 0; }
-            .share-buttons { flex-wrap: wrap; }
+            /* Ana içerik ve kenar çubuğunu alt alta yığma */
+            .main-content {
+                flex-direction: column;
+                gap: 20px;
+                padding: 0 15px;
+            }
+            
+            /* Kenar çubuğunun tam genişlik alması */
+            .article-sidebar {
+                max-width: 100%;
+                min-width: unset;
+                order: 2; /* İçeriğin altına kaydırılabilir */
+            }
+
+            /* Ana makale alanının tam genişlik alması */
+            .article-main-text-area {
+                order: 1;
+            }
+
+            /* Başlık fontunu küçültme */
+            .hero-article-header h1 {
+                font-size: 2em;
+            }
+            .article-body-text h2 {
+                font-size: 1.6em;
+            }
+        }
+
+        /* Küçük telefonlar (max 600px) */
+        @media (max-width: 600px) {
+            /* Header Düzeni */
+            .header-content {
+                flex-direction: column;
+                padding: 10px 15px;
+                align-items: flex-start;
+            }
+            .logo {
+                margin-bottom: 10px;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 5px;
+                width: 100%;
+            }
+            nav ul li {
+                width: 100%;
+            }
+            nav ul li a {
+                padding: 8px 0;
+                display: block;
+                text-align: center;
+                border-bottom: 1px solid var(--color-border);
+            }
+            .dropdown-content {
+                position: static;
+                width: 100%;
+                border-top: none;
+                box-shadow: none;
+            }
+            .dropdown-content a {
+                padding-left: 30px; /* Alt menü girintisi */
+            }
+
+            /* Hero Başlık Düzeni */
+            .hero-article-header {
+                padding: 40px 15px;
+            }
+            .hero-article-header h1 {
+                font-size: 1.6em;
+            }
+            .hero-article-header p {
+                font-size: 1em;
+            }
+            
+            /* İçerik Yazı Boyutları */
+            .article-body-text p, .article-body-text ul li {
+                font-size: 0.95em;
+            }
+
+            /* Görsel Yüksekliği */
+            .featured-image-detail img {
+                 max-height: 250px;
+            }
+
+            /* Paylaş Butonları */
+            .share-buttons-container {
+                flex-direction: column; /* Butonları alt alta yığma */
+                gap: 10px;
+            }
+            .share-button {
+                width: 100%; /* Butonların tam genişlik alması */
+                justify-content: center;
+            }
+            
+            /* Teknik Özellikler Tablosu (Horizontal Scroll için kapsayıcı eklemek gerekir, ancak burada sadece tabloyu küçültüyoruz) */
+            .specs-box table {
+                display: block;
+                overflow-x: auto; /* Tablo içeriği sığmazsa kaydırma çubuğu çıkar */
+                white-space: nowrap; /* Satırların kaydırılmasını sağlar */
+                width: 100%;
+            }
+
         }
     </style>
     
@@ -264,7 +372,7 @@
                     <h2 id="gddr7-analiz">Yeni Nesil GDDR7 Belleğin Önemi</h2>
                     
                     <figure style="margin: 20px 0;">
-                        <img src="gddr7  grafiği.png" alt="GDDR7 Bant Genişliği Grafiği" loading="lazy" style="max-width: 650px; margin: 0 auto; display: block;">
+                        <img src="img/gddr7  grafiği.png" alt="GDDR7 Bant Genişliği Grafiği" loading="lazy" style="max-width: 650px; margin: 0 auto; display: block;">
                         <figcaption style="font-size: 0.8em; color: var(--text-gray); text-align: center;">GDDR7'nin bant genişliği potansiyeli (Görsel temsilidir).</figcaption>
                     </figure>
                     <p>Kartın 12 GB GDDR7 bellekle gelmesi, bazı kullanıcıları hayal kırıklığına uğratsa da, asıl dikkat edilmesi gereken nokta kullanılan bellek tipinin hızıdır. GDDR7 standardı, bir önceki nesil GDDR6X'e göre çok daha yüksek bant genişliği sunarak, daha az bit genişliğinde bile yüksek çözünürlüklü ve yüksek hızlı veri transferini mümkün kılıyor.</p>
@@ -348,7 +456,7 @@
                 </section>
 
                 <figure class="featured-image-detail">
-                    <img src="5070 sızınıtı.jpg" alt="NVIDIA RTX 5070 Ekran Kartı Konsepti" loading="lazy">
+                    <img src="img/5070 sızınıtı.jpg" alt="NVIDIA RTX 5070 Ekran Kartı Konsepti" loading="lazy">
                     <figcaption style="font-size: 0.8em; color: var(--text-gray); text-align: center;">Sızdırılan bilgilere göre RTX 5070'in olası tasarım çizgileri.</figcaption>
                 </figure>
                 

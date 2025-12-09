@@ -21,34 +21,34 @@
         }
 
         /* Header Stili */
-        header {
-            background-color: #2c3e50; /* Koyu Mavi/Gri */
-            color: white;
-            padding: 15px 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+       header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 5px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+  .header-content {
+    width: 100%;
+    padding: 0 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header h1 {
-            font-size: 1.8em;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
+header h1 {
+    margin-right: auto;       /* TEKNOGÜNDEM solda */
+    text-align: left;
+    font-size: 28px;
+    font-weight: bold;
+}
 
        
 
-        header nav ul {
-            list-style: none;
-            display: flex;
-        }
+    header nav ul {
+    list-style: none;
+    display: flex;
+    margin-left: auto;     /* ← Menü tamamen sağa yaslanır */
+}
 
         header nav ul li a {
             color: white;
@@ -60,9 +60,9 @@
         }
 
         header nav ul li a:hover {
-            background-color: #00bcd4;
-            border-radius: 4px;
-        }
+    background-color: #00bcd4;
+    border-radius: 4px;
+}
 
         /* Main İçerik Kapsayıcısı */
         .main-body-container {
@@ -351,14 +351,15 @@
                 width: 100%;
             }
             .featured-card-large img {
-                max-height: 750px;
+                max-height: 300px; /* Görseli mobil/tablet için daha makul bir boyuta düşürdük. */
             }
             .news-grid {
                 grid-template-columns: 1fr; /* Tek sütuna düşer */
             }
             .news-card-grid img {
-                width: 100px;
-                height: 100px;
+                width: 150px; /* Yatay listeleme görünümü için görseli biraz büyüttük. */
+                height: 120px;
+                object-fit: cover;
             }
         }
 
@@ -379,6 +380,15 @@
             }
             .sub-news-grid {
                 grid-template-columns: 1fr; /* Tek sütuna düşer */
+            }
+            
+            /* DİĞER HABERLER kartlarını (news-card-grid) tam mobil cihazlarda dikey yığma */
+            .news-card-grid {
+                flex-direction: column; 
+            }
+            .news-card-grid img {
+                width: 100%; /* Görseli tam genişlik yapar */
+                height: 200px;
             }
         }
         
@@ -445,15 +455,15 @@
 
     <header>
         <div class="header-content">
-            <h1>TEKNOGÜNDEM</h1>
+            <h1>TeknoGündem</h1>
             <nav>
                 <ul>
                     <li>
-                        <a href="index.html">ANA SAYFA </a>
+                        <a href="index.html">Ana Sayfa </a>
                     </li>
                  
                     <li class="dropdown">
-                        <a href="donanım.html">DONANIM</a>
+                        <a href="donanım.html">Donanım </a>
                         <ul class="dropdown-content">
                             <li><a href="haberler.html">Haberler</a></li>
                             <li><a href="incelemeler.html">İncelemeler</a></li>
@@ -461,11 +471,11 @@
                     </li>
 
                     <li>
-                        <a href="yazılım.html">YAZILIM</a>
+                        <a href="yazılım.html">Yazılım </a>
                     </li>
                     
                       <li>
-                        <a href="hakkimizda.html">HAKKIMIZDA</a>
+                        <a href="hakkimizda.html">Hakkımızda </a>
                     </li>
                 
                 </ul>
@@ -484,7 +494,7 @@
 
                 <div class="featured-news-area">
                     <article class="featured-card-large">
-                        <img src="intel core  ultra 9  haberler.jpg" alt="Yeni Nesil İşlemciler" loading="lazy">
+                        <img src="img/intel core  ultra 9  haberler.jpg" alt="Yeni Nesil İşlemciler" loading="lazy">
                         <div class="card-text-content">
                             <span class="category-tag">İŞLEMCİ ÖZEL</span>
                             <h2>Intel Core Ultra 9: Performans ve Verimlilikte Yeni Standart!</h2>
@@ -502,7 +512,7 @@
                 <div class="sub-news-grid">
                     
                     <article class="news-card-small">
-                        <img src="rtx 5070   haberler .jpg" alt="RTX 5070 Sızıntısı" loading="lazy">
+                        <img src="img/rtx 5070   haberler .jpg" alt="RTX 5070 Sızıntısı" loading="lazy">
                         <div class="card-content-small">
                             <span class="category-tag-small">GPU / NVIDIA</span>
                             <h4>RTX 5070 Teknik Özellikleri Sızdırıldı: Bellek Miktarı Şaşırttı!</h4>
@@ -511,7 +521,7 @@
                     </article>
 
                     <article class="news-card-small">
-                        <img src="z890 anakart  haberler .jpg" alt="Anakart Z890" loading="lazy">
+                        <img src="img/z890 anakart  haberler .jpg" alt="Anakart Z890" loading="lazy">
                         <div class="card-content-small">
                             <span class="category-tag-small">ANAKART / BELLEK</span>
                             <h4>Z890 Anakartlarda DDR5 Hız Sınırları Yeniden Yazılıyor</h4>
@@ -520,14 +530,13 @@
                     </article>
 
                     <article class="news-card-small">
-                        <img src="pcı gen5 .jpg" alt="Depolama Gen5" loading="lazy">
+                        <img src="img/pcı gen5 .jpg" alt="Depolama Gen5" loading="lazy">
                         <div class="card-content-small">
                             <span class="category-tag-small">DEPOLAMA</span>
                             <h4>PCIe Gen5 SSD'ler Artık Ana Akım: Okuma Hızında Çift Hane</h4>
                             <p>14.000 MB/s okuma hızlarına ulaşan yeni nesil SSD'ler piyasaya çıkıyor...<a href="pcıssd-haber.html" class="read-more-link">Devamı</a></p>
                         </div>
                     </article>
-
                 </div>
 
                 <hr class="section-separator">
@@ -537,7 +546,7 @@
                 <div class="news-grid"> 
                     
                 <article class="news-card-grid">
-           <img src="tscm çip.jpg" alt="TSMC Wafer Üretimi" loading="lazy">
+           <img src="img/tscm çip.jpg" alt="TSMC Wafer Üretimi" loading="lazy">
              <div class="card-content">
                 <div>
              <h4>TSMC, 2nm Çip Üretiminde Seri Üretime Hazır</h4>
@@ -549,7 +558,7 @@
 </article>
                     
                     <article class="news-card-grid">
-                        <img src="msı anakart haberler.jpg" alt="MSI Anakart" loading="lazy">
+                        <img src="img/msı anakart haberler.jpg" alt="MSI Anakart" loading="lazy">
                         <div class="card-content">
                             <div>
                                 <h4>MSI, Yeni Nesil Anakartlarında Soğutma Çözümlerini Yeniledi</h4>
@@ -561,7 +570,7 @@
                     </article>
 
                     <article class="news-card-grid">
-                        <img src="ekran kartı  haberler.jpg" alt="Ekran Kartı Piyasa" loading="lazy">
+                        <img src="img/ekran kartı  haberler.jpg" alt="Ekran Kartı Piyasa" loading="lazy">
                         <div class="card-content">
                             <div>
                                 <h4>Global GPU Tedarik Zinciri Sorunları Tamamen Çözüldü</h4>
@@ -573,7 +582,7 @@
                     </article>
 
                     <article class="news-card-grid">
-                        <img src="ddr6 ram jpg.jpg" alt="DDR6 RAM" loading="lazy">
+                        <img src="img/ddr6 ram .jpg" alt="DDR6 RAM" loading="lazy">
                         <div class="card-content">
                             <div>
                                 <h4>DDR6 RAM'ler İçin İlk Resmi Standartlar Açıklandı</h4>

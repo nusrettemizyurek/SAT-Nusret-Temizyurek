@@ -26,7 +26,7 @@
         .logo {
             font-size: 1.6em;
             font-weight: 700;
-            color: #00c6ff;
+            color:#007bff;
         }
 
         nav ul {
@@ -167,6 +167,91 @@
             color: #777;
             margin-top: 40px;
         }
+          /* ================================================= */
+        /* MOBİL UYUMLULUK KODLARI (MAX 768px) */
+        /* ================================================= */
+        @media (max-width: 768px) {
+            
+            /* HEADER ve NAVIGASYON DÜZELTMESİ */
+            header {
+                flex-direction: column; /* Logo ve Navigasyonu alt alta getir */
+                padding: 10px 15px !important; /* Padding'i azalt */
+                align-items: flex-start;
+            }
+            
+            nav {
+                width: 100%;
+                margin-top: 10px;
+            }
+            
+            nav ul {
+                flex-direction: column; /* Menü linklerini alt alta getir */
+                width: 100%;
+                gap: 5px; /* Boşluğu azalt */
+                align-items: flex-start;
+            }
+
+            nav a {
+                padding: 10px 0; /* Tıklama alanını genişlet */
+                display: block;
+                width: 100%;
+                text-align: left;
+            }
+
+            /* ANA İÇERİK DÜZELTMESİ */
+            /* Makalenin ana içeriğini mobil ekrana sığdırmak için */
+            main {
+                padding: 20px 15px !important; /* İçeriğin kenar boşluklarını ayarla */
+                max-width: 100%;
+                margin: auto;
+            }
+            
+            /* Başlık ve Metin Boyutları */
+            h1 {
+                font-size: 2rem !important; /* Ana başlık boyutunu küçült */
+                padding: 0 5px;
+            }
+
+            h2 {
+                font-size: 1.6rem !important; /* Alt başlık boyutunu küçült */
+                margin-top: 30px !important;
+                margin-bottom: 10px !important;
+            }
+            
+            h3 {
+                font-size: 1.3rem !important; /* Alt başlık boyutunu küçült */
+                margin-top: 25px !important;
+                margin-bottom: 8px !important;
+            }
+
+            p {
+                font-size: 1rem !important; /* Paragraf fontunu küçült */
+                line-height: 1.6 !important;
+                margin-bottom: 20px !important;
+            }
+            
+            /* Liste (UL/OL) Düzeltmeleri */
+            ul, ol {
+                padding-left: 20px !important; /* Listelerin girintisini ayarla */
+                font-size: 1rem !important;
+            }
+            
+            ul li, ol li {
+                margin-bottom: 8px !important;
+            }
+            
+            /* Resim Düzeltmesi (Eğer sayfada geniş resim varsa, taşmasını engeller) */
+            img {
+                max-width: 100%; 
+                height: auto;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+  
+
+
     </style>
 </head>
 <body>

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMD Strix Point APU'lar Mobil Pazarı Alt Üst Edecek | TeknoGündem</title>
-    <link rel="stylesheet" href="css/style.css"> 
     <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
 
     <style>
@@ -13,7 +12,7 @@
             --color-primary: #007bff; /* Mavi */
             --color-secondary: #00bcd4; /* Turkuaz */
             --color-background: #1e1e1e; /* Koyu Gri (Zemin) */
-            --color-card-background: #252526; /* Daha Koyu Kart Arka Planı */
+        --color-card-background: #1e1e1e; 
             --color-text: #f0f0f0; /* Açık Metin */
             --text-gray: #b0b0b0; /* Gri Metin */
             --color-border: #333; /* Sınır Çizgileri */
@@ -26,7 +25,7 @@
             color: var(--color-text);
         }
 
-        /* Temel Tipografi ve Global Ayarlar (style.css'ten varsayılan) */
+        /* Temel Tipografi ve Global Ayarlar */
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
@@ -35,16 +34,25 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        /* HEADER ve NAV */
-        header {
-            background-color: var(--color-card-background);
-            box-shadow: 0 2px 10px var(--color-shadow);
-            color: var(--color-text);
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+      
+     /* HEADER & NAVİGASYON STİLLERİ */
+header {
+    --color-card-background: #1e1e1e;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    
+    /* 👇 ÖNEMLİ SABİTLEME KODLARI BAŞLANGIÇ 👇 */
+    position: fixed; /* Header'ı ekran pozisyonuna sabitle */
+    top: 0; /* Ekranın en üstüne yerleştir */
+    width: 100%; /* Genişliğini tam ekran yap */
+    z-index: 1000; /* Diğer her şeyin üstünde görünmesini sağla */
+    /* 👇 ÖNEMLİ SABİTLEME KODLARI BİTİŞ 👇 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-card-background); /* Sabit duracağı için arka plan rengini netleştirdik */
+}
 
         .logo {
             font-size: 1.8em;
@@ -111,23 +119,39 @@
         
         /* GELİŞMİŞ BAŞLIK ALANI (HERO) */
         .hero-article-header {
-            width: 100%;
-            padding: 80px 0; 
-            color: #fff; 
+            /* BOŞLUKLAR KALDIRILDI */
+            background: url('ryzen apu haberler .jpg') center center no-repeat; 
+            background-size: cover;
+            position: relative; 
+            padding: 100px 0;
             text-align: center;
-            box-shadow: inset 0 -5px 15px rgba(0, 0, 0, 0.2); 
-            margin-bottom: 40px; 
+            color: white;
+            border-bottom: 4px solid var(--color-secondary); 
+        }
+        
+        /* GÖRSEL ÜZERİNDEKİ KOYU KATMAN (OVERLAY) */
+        .hero-article-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            /* Okunabilirlik için koyu katman */ 
+            z-index: 1;
         }
 
         .hero-header-content {
             max-width: 1000px; 
             margin: 0 auto;
             padding: 0 20px;
+            position: relative; 
+            z-index: 2; /* Metin ve bileşenler katmanın üstünde olmalı */
         }
         
         .hero-header-content .tag {
-            background-color: rgba(255, 255, 255, 0.2); 
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            background-color: rgba(243, 156, 18, 0.9); 
+            border: none;
             color: #fff;
             padding: 8px 18px;
             border-radius: 5px;
@@ -143,7 +167,7 @@
             line-height: 1.1;
             margin-bottom: 25px;
             font-weight: 900;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); 
         }
         
         .hero-header-content .article-meta-info {
@@ -167,12 +191,12 @@
         }
 
         .article-body-text h3 {
-             font-size: 1.3em;
-             margin-top: 20px;
-             color: var(--color-text);
-             border-left: 3px solid var(--accent-color);
-             padding-left: 10px;
-             padding-bottom: 2px;
+            font-size: 1.3em;
+            margin-top: 20px;
+            color: var(--color-text);
+            border-left: 3px solid var(--accent-color);
+            padding-left: 10px;
+            padding-bottom: 2px;
         }
 
         .article-body-text p {
@@ -311,12 +335,50 @@
             .hero-header-content h1 { font-size: 2.5em; }
             .share-buttons { flex-direction: column; align-items: stretch;}
         }
+
+        /* EKLENMESİ GEREKEN DROPDOWN STİLLERİ */
+.dropdown {
+    position: relative; /* Alt menünün konumlandırılması için gereklidir */
+}
+
+.dropdown-content {
+    display: none; /* Alt menüyü varsayılan olarak gizler */
+    position: absolute;
+    background-color: var(--color-card-background);
+    min-width: 150px;
+    box-shadow: 0px 8px 16px var(--color-shadow);
+    z-index: 10; /* Diğer her şeyin üstünde görünmesini sağlar */
+    padding: 10px 0;
+    border-radius: 4px;
+    top: 100%; /* Ana menü öğesinin hemen altına yerleştirir */
+    left: 0;
+}
+
+.dropdown-content li a {
+    color: var(--color-text);
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content li a:hover {
+    background-color: #333;
+    color: var(--color-secondary);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Fare üzerine geldiğinde alt menüyü gösterir */
+}
+/* EKLENMESİ GEREKEN DROPDOWN STİLLERİ SONU */
+
+
     </style>
 </head>
 
 <body class="dark-mode"> 
     <header>
-        <div class="logo">TEKNOGÜNDEM</div>
+        <div class="logo">TeknoGündem </div>
         <nav>
             <ul>
                 <li><a href="index.html">Ana Sayfa</a></li>
@@ -333,7 +395,7 @@
         </nav>
     </header>
 
-    <div class="hero-article-header" style="background: linear-gradient(135deg, #9b59b6 0%, #3498db 100%);">
+    <div class="hero-article-header">
         <div class="hero-header-content">
             <span class="tag" style="background-color: #f39c12; border: none;">İŞLEMCİ / APU</span>
             <h1>AMD Strix Point APU'lar Mobil Pazarı Alt Üst Edecek: %50 Entegre GPU Artışı! 🚀</h1> 
@@ -352,7 +414,7 @@
                 <span class="reading-time">Okuma Süresi: 5 Dakika ⏱️</span>
 
                 <figure class="featured-image-detail">
-                    <img src="amd  strix point  apu   jpg.jpg" alt="AMD Strix Point APU Sızıntı Görseli" loading="lazy"> 
+                    <img src="img/amd  strix point  apu   jpg.jpg" alt="AMD Strix Point APU Sızıntı Görseli" loading="lazy"> 
                     <figcaption style="font-size: 0.8em; color: var(--text-gray); text-align: center; margin-top: 10px;">Strix Point, AMD'nin RDNA entegre grafik mimarisini mobil performansta zirveye taşıyacak.</figcaption>
                 </figure>
 
@@ -389,7 +451,7 @@
                     </blockquote>
                     
                     <h2 id="ai-npu">Yapay Zeka (AI) ve NPU Entegrasyonu: Geleceğin Laptopları 🧠</h2>
-                    <p>Strix Point, sadece CPU ve GPU gücüyle değil, aynı zamanda yapay zeka performansı ile de iddialı. Bu APU'lar, Intel'in "AI PC" vizyonuna doğrudan yanıt vererek, çok daha güçlü bir **NPU (Nöral İşlem Birimi) içeriyor. Bu NPU'nun gücünün, rakiplerine kıyasla önemli ölçüde yüksek (örneğin 40 TOPS seviyelerinde) olması bekleniyor.</p>
+                    <p>Strix Point, sadece CPU ve GPU gücüyle değil, aynı zamanda yapay zeka performansı ile de iddialı. Bu APU'lar, Intel'in "AI PC" vizyonuna doğrudan yanıt vererek, çok daha güçlü bir NPU (Nöral İşlem Birimi) içeriyor. Bu NPU'nun gücünün, rakiplerine kıyasla önemli ölçüde yüksek (örneğin 40 TOPSseviyelerinde) olması bekleniyor.</p>
 
                     <h3>NPU'nun Kullanım Alanları ve Faydaları:</h3>
                     <p>Güçlü NPU, modern işletim sistemleri ve uygulamalar için hayati öneme sahiptir:</p>
@@ -420,7 +482,7 @@
             
             <aside class="article-sidebar">
                 <div class="related-articles-box">
-                    <h3>📢 DİĞER  HABERLER</h3>
+                    <h3>📢 DİĞER HABERLER</h3>
                     <ul>
                         <li><a href="tsmc-2nm-haber.html">TSMC, 2nm Çip Üretiminde Seri Üretime Hazır</a></li>
                         <li><a href="pcıssd-haber.html">PCIe Gen5 SSD'ler Artık Ana Akım: Okuma Hızında Çift Hane</a></li>

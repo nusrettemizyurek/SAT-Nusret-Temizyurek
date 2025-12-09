@@ -4,58 +4,91 @@
     --color-secondary: #ffc107; /* Sarı/Turuncu Vurgu */
     --color-text: #333333; /* Koyu Metin */
     --color-background: #f4f4f9; /* Açık Arka Plan */
-    --color-card-background: #ffffff;
+    --color-card-background: #1e1e1e; 
     --color-shadow: rgba(0, 0, 0, 0.1);
     --color-border: #eeeeee;
     --color-footer: #333333;
 }
 
-/* ... Diğer genel stiller (dark-mode, body, container) ... */
 
-/* 2. HEADER VE NAVİGASYON (GENEL/ANASAYFA) */
-/* NOT: Anasayfa (index.html) için özel, koyu bir Header stili tanımlanmıştır. */
-
-header { 
-    /* DÜZELTME: class yerine element seçici kullanılmış, düzeltildi */
-    /* Bu, sadece 'body' sınıfı olmayan HTML sayfaları için geçerli olur. */
-    background-color: var(--color-footer); /* #333333 (Genel Footer Rengi) */
-    color: white;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 10px var(--color-shadow);
-    position: sticky; /* Sticky Navbar */
-    top: 0;
-    z-index: 1000;
+.dark-mode {
+    --color-text: #e0e0e0; 
+    --color-background: #121212; 
+    --color-card-background: #1e1e1e; 
+    --color-shadow: rgba(0, 0, 0, 0.5);
+    --color-border: #333333;
+    --color-footer: #000000;
 }
 
-.logo {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--color-primary);
+/* 1. TEMEL STİLLER */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
+/* 👇 DÜZELTME: Sticky Footer için HTML ve BODY ayarları */
+html {
+    height: 100%; /* Tarayıcı penceresinin yüksekliğini tam alır */
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    margin: 0 5px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    font-weight: 600;
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+    transition: background-color 0.5s, color 0.5s; /* Karanlık mod geçişi */
+
+    /* Altbilgiyi aşağı itmek için Flexbox ayarları */
+    display: flex; 
+    flex-direction: column; 
+    min-height: 300vh; /* Ekran yüksekliğinin tamamını kapla */
 }
 
-nav ul li a:hover,
-nav ul li a.active {
-    background-color: var(--color-primary);
-    transform: translateY(-2px);
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
+
+/* 🚨 EKLE: Ana içeriğin (main) kalan tüm boşluğu doldurması */
+main {
+    flex-grow: 1; 
+}
+body.index header {
+
+      background-color: var(--color-card-background);
+            color: var(--color-text);
+            padding: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px var(--color-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            
+        
+}
+
+body.index .logo {
+              font-size: 1.8rem;
+            font-weight: bold;
+            color:#007bff;
+        }
+body.index nav ul li a {
+    /* Menü linklerinin yazı rengini biraz açalım */
+    color: #f0f0f0;
+    padding: 10px 12px;
+}
+
+body.index nav ul li a:hover,
+body.index nav ul li a.active {
+    background-color: #3f51b5; /* Hafif mor-mavi vurgu rengi */
+    transform: none; /* Hafif animasyonu kaldırdık */
+}
+
 /* Dark Mode Toggle Button (Kullanılmıyor, olduğu gibi bırakıldı) */
 .mode-toggle {
     position: fixed;
@@ -192,13 +225,13 @@ header, main, footer {
 }
 
 .featured-card {
-    background-color: var(--color-card-background);
+    background-color: white;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 15px var(--color-shadow);
     transition: transform 0.3s, box-shadow 0.3s;
     text-decoration: none;
-    color: var(--color-text);
+    color: #3A68A1 !important; 
     display: block; 
     border-left: 5px solid var(--color-border);
 }
@@ -238,7 +271,7 @@ header, main, footer {
 }
 
 .focus-item {
-    background-color: var(--color-card-background);
+    background-color: white;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 15px var(--color-shadow);
@@ -289,6 +322,108 @@ main {
     flex-grow: 1; 
 }
 
+
+/* ================================================= */
+/* 6. MOBİL UYUMLULUK (Anasayfa: body.index için) */
+/* ================================================= */
+@media (max-width: 900px) {
+    
+    /* 1. Genel Konteyner ve Başlıklar */
+    .container {
+        padding: 0 15px; /* Kenar boşluklarını azalt */
+    }
+    
+    .section-title, .page-title {
+        font-size: 2rem; /* Başlık boyutunu küçült */
+        margin: 30px 0 20px;
+    }
+    
+    /* 2. Anasayfa Navigasyon (Header) */
+    body.index header {
+        flex-direction: column; /* Logo ve Navigasyonu alt alta getir */
+        align-items: center;
+        padding: 15px 10px;
+        position: relative; /* Yapışkan kalmasını sağlar, ancak mobil düzeni bozar, bu nedenle pozisyonu sabit tutuyoruz ancak akışı düzenliyoruz */
+    }
+
+    body.index nav {
+        width: 100%; /* Navigasyonun tamamının genişliğini kullan */
+    }
+
+    body.index nav ul {
+        flex-direction: column; /* Menü linklerini alt alta getir */
+        width: 100%;
+        margin-top: 10px;
+        align-items: center;
+    }
+
+    body.index nav ul li {
+        width: 100%; /* Tüm genişliği kapla */
+        text-align: center;
+    }
+
+    body.index nav ul li a {
+        padding: 10px 0; /* Dikey boşluğu artır */
+        width: 90%;
+        display: block; /* Tıklama alanını genişlet */
+        margin: 5px auto;
+    }
+
+    /* Dropdown düzeltmesi (Alt Menü) */
+    body.index .dropdown-content {
+        position: relative; /* Absolute konumdan akışa geri dön */
+        background-color: #333; /* Arka planı koyulaştır */
+        box-shadow: none; /* Gölgeyi kaldır */
+        border-top: none;
+        width: 100%; /* Tüm genişliği kapla */
+        left: 0;
+    }
+    
+    /* 3. HERO Bölümü (Giriş) */
+    .hero-section {
+        padding: 60px 20px; /* Dikey boşluğu azalt */
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem; /* Başlık boyutunu küçült */
+    }
+
+    .hero-section p {
+        font-size: 1.1rem; /* Paragraf boyutunu küçült */
+        margin-bottom: 30px;
+    }
+    
+    /* 4. Kart Izgaraları (Haber Kartları) */
+    .card-grid {
+        grid-template-columns: 1fr; /* Tek sütuna düşür */
+        gap: 20px;
+    }
+
+    /* 5. Kategori Odak Izgarası */
+    .focus-grid {
+        grid-template-columns: 1fr; /* Tek sütuna düşür */
+        gap: 20px;
+    }
+    
+    /* Slide.css'deki kayar görsel alanı için düzeltme */
+    .slideshow-container {
+        max-width: 100%; 
+        margin-top: 10px;
+    }
+    
+    /* Mevcut Yazılım sayfası uyumluluğuna ek olarak donanım ve haberler sayfaları için genel grid yapısı düzeltmesi */
+    .review-grid, .news-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+
+
+
+
 /* ================================================= */
 /* YAZILIM.HTML (SAYFAYA ÖZEL TEMEL STİLLER) */
 /* Tüm sayfayı kapsayan koyu tema ve font rengi */
@@ -299,29 +434,30 @@ body.yazilim-sayfa {
     background-attachment: fixed;
     
     /* Sayfa Özel Renk Paleti (Sadece Referans için, :root değil) */
-    --color-primary: #00bcd4; /* Teal Mavi */
+  
     --color-secondary: #ff9800; /* Turuncu Vurgu */
     --color-dark-bg: #0d1a2f; /* Çok Koyu */
     --color-card-bg: rgba(255, 255, 255, 0.05); /* Yarı Saydam Kart */
 }
 
 /* 2. HEADER VE NAVİGASYON */
+/* 2. HEADER VE NAVİGASYON - HAKKIMIZDA DÜZENİ UYGULANMIŞTIR */
 body.yazilim-sayfa header {
-    /* Yazılım sayfasına özel, koyu arka plan */
-    background-color: var(--color-dark-bg); /* #0d1a2f */
-    color: white;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+      background-color: var(--color-card-background);
+            color: var(--color-text);
+            padding: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px var(--color-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
 }
-
 body.yazilim-sayfa .logo {
-    color: var(--color-primary); /* #00bcd4 */
+   font-size: 1.8rem;
+            font-weight: bold;
+            color:#007bff;
 }
 
 body.yazilim-sayfa nav ul {
@@ -329,10 +465,12 @@ body.yazilim-sayfa nav ul {
     display: flex;
 }
 
+
+
 body.yazilim-sayfa nav ul li a {
     color: white;
     text-decoration: none;
-    padding: 10px 15px;
+    padding: 10px ;
     margin: 0 5px;
     border-radius: 5px;
     transition: background-color 0.3s;
@@ -341,7 +479,7 @@ body.yazilim-sayfa nav ul li a {
 
 body.yazilim-sayfa nav ul li a:hover,
 body.yazilim-sayfa nav ul li a.active {
-    background-color: var(--color-primary); /* #00bcd4 */
+    background-color: var(--color-primary);
     transform: translateY(-2px);
 }
 
@@ -665,28 +803,479 @@ body.yazilim-sayfa footer {
     font-size: 0.9rem;
 }
 
-/* 6. MOBİL UYUM */
+/* ================================================= */
+/* MOBİL UYUM EKLENTİSİ (YAZILIM REACT VS  SAYFASI İÇİN) */
+/* ================================================= */
+
 @media (max-width: 768px) {
-    body.yazilim-sayfa header {
-        flex-direction: column;
+    /* Mevcut Yazılım Sayfası Mobil Kuralları (Eğer varsa) */
+    /* ... */
+    
+    /* NAVİGASYON DÜZELTMESİ (Menünün alt alta sıralanması) */
+    body.yazilim-sayfa nav ul {
+        flex-direction: column; /* Menü linklerini alt alta getir */
+        width: 100%;
+        margin-top: 10px;
+        align-items: center;
+    }
+    
+    body.yazilim-sayfa nav ul li {
+        width: 100%; /* Tüm genişliği kapla */
         text-align: center;
     }
-    body.yazilim-sayfa .software-hero h1 {
-        font-size: 2.5rem;
+    
+    body.yazilim-sayfa nav ul li a {
+        padding: 10px 0; /* Dikey boşluğu artır */
+        width: 90%;
+        display: block; /* Tıklama alanını genişlet */
+        margin: 5px auto;
     }
-    body.yazilim-sayfa .cta-button {
-        margin: 10px 0;
-        text-align: center;
+
+    /* Dropdown düzeltmesi (Alt Menünün akışa dönmesi) */
+    body.yazilim-sayfa .dropdown-content {
+        position: relative; /* Absolute konumdan akışa geri dön */
+        width: 100%; 
+        left: 0;
     }
-    body.yazilim-sayfa .article-list,
-    body.yazilim-sayfa .ecosystem-grid {
-        grid-template-columns: 1fr; 
+
+    /* MAKALE DETAY BAŞLIĞI DÜZENLEMESİ */
+    .detail-header h1 {
+        /* HTML'deki inline stili ezmek için !important kullanıldı */
+        font-size: 2rem !important; 
+        padding: 0 10px;
     }
-    body.yazilim-sayfa .tab-list {
-        flex-direction: column;
-        gap: 10px;
+    
+    /* Yazar/Tarih Meta Bilgilerinin Alt Alta Sıralanması */
+    .review-meta {
+        flex-direction: column; 
+        gap: 5px !important; 
+        align-items: center;
+    }
+
+    /* MAKALE İÇERİĞİ GENEL OKUNABİLİRLİK */
+    .article-content-wrapper {
+        padding: 10px !important; /* İçeriğin kenar boşluklarını azalt */
+        margin: 20px auto !important;
+    }
+    
+    .article-content-wrapper p {
+        font-size: 1rem !important; /* Paragraf fontunu küçült */
+        line-height: 1.6 !important;
+    }
+    
+    .article-content-wrapper h2, .article-content-wrapper h3 {
+         font-size: 1.5rem !important; /* Alt başlık fontunu küçült */
+         margin-top: 30px !important;
+    }
+    
+    /* Madde işaretli listeler için kenar boşluğunu koruma */
+    .article-content-wrapper ul {
+        padding-left: 15px !important;
     }
 }
+
+
+/* ================================================= */
+/* TS DETAY SAYFASI İÇİN KESİN UYUM (768px ve altı) */
+/* ================================================= */
+@media (max-width: 768px) {
+
+    /* Ana İçerik Konteyneri Düzeltmesi */
+    /* typescript.html'de kullanılan .main-body-container sınıfı için */
+    .main-body-container {
+        /* Inline stil ayarlarını mobil için eziyoruz */
+        padding: 10px !important; /* İçeriğin kenar boşluklarını azalt */
+        margin: 20px auto !important;
+        max-width: 100% !important; /* Maksimum genişliği kaldır */
+        border-radius: 0 !important; /* Kenar yuvarlaklığını kaldır */
+    }
+    
+    /* Genel Paragraf ve Liste Metinlerinin Boyutu */
+    .main-body-container p, 
+    .main-body-container li {
+        font-size: 1rem !important; /* Metin fontunu küçült */
+        line-height: 1.6 !important;
+    }
+    
+    /* Özet Bloğu (Gri Arka Planlı, Kalın Yazı) Düzeltmesi */
+    /* Özel arka plan rengiyle özet paragrafını hedefledik */
+    .main-body-container p[style*="background-color: rgba(49, 120, 198, 0.1)"] {
+        font-size: 1rem !important;
+        padding: 10px !important; /* Dikey/yatay boşlukları azalt */
+        line-height: 1.5 !important;
+    }
+    
+    /* H3 ve H2 Başlıkları Düzeltmesi */
+    .main-body-container h2, 
+    .main-body-container h3 {
+         font-size: 1.5rem !important; /* Alt başlık fontunu küçült */
+         margin-top: 25px !important;
+         margin-bottom: 10px !important;
+         padding: 0 5px; /* Başlıkların ekran kenarına yapışmasını engelle */
+    }
+    
+    /* Liste Öğeleri (<ul>) Sol Boşluk Düzeltmesi */
+    .main-body-container ul {
+        padding-left: 10px !important; /* Listelerin sol boşluğunu azaltıyoruz */
+    }
+    
+    /* TypeScript'e özel liste öğeleri için küçük düzeltme (Eğer özel stilleri varsa) */
+    .main-body-container .ts-liste-ogesi {
+        padding-left: 5px !important;
+    }
+
+    /* ****************************************************** */
+    /* NOT: Navigasyon ve diğer genel yazilim-sayfa bileşenleri */
+    /* önceki adımda sağlanan kodlarla uyumlu olmalıdır.       */
+    /* ****************************************************** */
+}
+/* ================================================= */
+/* LIGHTHOUSE DETAY SAYFASI İÇİN KESİN UYUM (768px ve altı) */
+/* ================================================= */
+@media (max-width: 768px) {
+
+    /* Ana İçerik Konteyneri Düzeltmesi (Eğer sayfada bir ana sarmalayıcı varsa) */
+    /* Bu sayfa için doğrudan 'main' ve 'container' sınıflarını hedefleyebiliriz */
+    main.container {
+        padding: 0 10px !important; /* Kenar boşluklarını azalt */
+    }
+
+    /* Makale İçeriği Genel Okunabilirlik */
+    .yazilim-sayfa p {
+        font-size: 1rem !important; /* Paragraf fontunu küçült */
+        line-height: 1.6 !important;
+        padding: 0 5px; /* Paragraflara hafif kenar boşluğu ekle */
+    }
+
+    /* Başlıkların Boyut ve Aralık Düzeltmesi */
+    .yazilim-sayfa h2, 
+    .yazilim-sayfa h3 {
+         font-size: 1.5rem !important; /* Alt başlık fontunu küçült */
+         margin-top: 25px !important;
+         margin-bottom: 10px !important;
+         padding: 0 5px; /* Başlıkların ekran kenarına yapışmasını engelle */
+    }
+    
+    /* ÖZEL LİSTE DÜZENLEMESİ */
+    /* Lighthouse faydaları gibi özel stil verilmiş listeler için */
+    .yazilim-sayfa ul[style*="list-style: none"] {
+        padding-left: 10px !important; /* Mobil için sol boşluğu azalt */
+    }
+    
+    .yazilim-sayfa ul[style*="list-style: none"] li {
+        font-size: 1rem !important; /* Liste elemanı fontunu küçült */
+        padding-left: 10px !important; 
+        margin-bottom: 8px !important;
+    }
+  
+    .yazilim-sayfa pre, 
+    .yazilim-sayfa code, 
+    .yazilim-sayfa div[style*="background-color"] {
+        overflow-x: auto; /* Yatay kaydırma çubuğu ekler */
+        max-width: 100%;
+        display: block;
+    }
+}
+/* ================================================= */
+/* ASTRO DETAY SAYFASI İÇİN KESİN UYUM (768px ve altı) */
+/* ================================================= */
+@media (max-width: 768px) {
+
+    /* Astro Sayfası İçerik Sarmalayıcı Düzeltmesi */
+    /* .main-body-container sınıfını mobil için optimize eder */
+    .main-body-container {
+        padding: 10px !important; /* İçeriğin kenar boşluklarını azalt */
+        margin: 20px auto !important;
+        max-width: 100% !important; /* Maksimum genişliği kaldırarak tam ekran sığdır */
+        border-radius: 0 !important; 
+    }
+    
+    /* Genel Paragraf ve Liste Metinlerinin Boyutu */
+    .main-body-container p, 
+    .main-body-container li {
+        font-size: 1rem !important; /* Metin fontunu küçült */
+        line-height: 1.6 !important;
+    }
+    
+    /* H3 ve H2 Başlıkları Düzeltmesi */
+    .main-body-container h2, 
+    .main-body-container h3 {
+         font-size: 1.5rem !important; /* Alt başlık fontunu küçült */
+         margin-top: 25px !important;
+         margin-bottom: 10px !important;
+         padding: 0 5px; 
+    }
+    
+    /* ASTRO'YA ÖZEL LİSTE ÖĞELERİ DÜZELTMESİ (astro-liste-ogesi) */
+    .main-body-container .astro-liste-ogesi {
+        padding-left: 10px !important; 
+        border-left-width: 2px !important; /* Sol çizgi kalınlığını azalt */
+        font-size: 1rem !important;
+    }
+    
+    /* Listelerin Sol Girinti Düzeltmesi */
+    .main-body-container ul[style*="list-style: none"] {
+        padding-left: 10px !important; 
+    }
+    
+    /* Kod Blokları İçin Genel Düzeltme */
+    /* Uzun kod veya metinlerin taşmasını kesin olarak engeller */
+    .main-body-container pre, 
+    .main-body-container code {
+        overflow-x: auto; /* Yatay kaydırma çubuğu ekler */
+        max-width: 100%;
+        display: block;
+    }
+}
+ /* ================================================= */
+/* ERİŞEBİLİRLİK SAYFASI İÇİN KESİN UYUM (768px ve altı) */
+/* ================================================= */
+@media (max-width: 768px) {
+
+    /* Ana İçerik Konteyneri Düzeltmesi */
+    /* .main-body-container sınıfını mobil için optimize eder */
+    .main-body-container {
+        padding: 10px !important; 
+        margin: 20px auto !important;
+        max-width: 100% !important; 
+        border-radius: 0 !important; 
+    }
+    
+    /* Yan Yana Duran Örnek Blokları Düzeltmesi (POUR İlkesi ve Klavye Testi) */
+    /* flex kullanılarak yan yana hizalanan div sarmalayıcılarını hedefliyoruz */
+    .yazilim-sayfa .main-body-container > div[style*="display: flex"] {
+        flex-direction: column; /* Yan yana duran elemanları alt alta yığ */
+        gap: 5px !important; /* Aralarındaki boşluğu ayarla */
+    }
+    
+    /* İç Bloklar İçin Düzeltme */
+    .yazilim-sayfa .main-body-container > div[style*="display: flex"] > div {
+        flex: none !important; /* Flex'i devre dışı bırak */
+        width: 100%; /* Tüm genişliği kapla */
+    }
+
+    /* Başlıkların Boyut ve Aralık Düzeltmesi */
+    .yazilim-sayfa h2, 
+    .yazilim-sayfa h3,
+    .yazilim-sayfa h4 {
+         font-size: 1.5rem !important; /* Başlık fontunu küçült */
+         margin-top: 25px !important;
+         margin-bottom: 10px !important;
+         padding: 0 5px; 
+    }
+
+    /* Genel Paragraf ve Liste Metinlerinin Boyutu */
+    .yazilim-sayfa p, 
+    .yazilim-sayfa li {
+        font-size: 1rem !important; /* Metin fontunu küçült */
+        line-height: 1.6 !important;
+    }
+    
+    /* Kalın Yazılmış Sonuç Paragrafı Düzeltmesi */
+    .main-body-container p[style*="font-weight: bold"] {
+        padding: 10px;
+    }
+}
+
+/* ================================================= */
+/* SVELTE DETAY SAYFASI İÇİN KESİN UYUM (768px ve altı) */
+/* ================================================= */
+@media (max-width: 768px) {
+
+    /* Ana İçerik Konteyneri Düzeltmesi */
+    /* .main-body-container sınıfını mobil için optimize eder */
+    .main-body-container {
+        padding: 10px !important; /* İçeriğin kenar boşluklarını azalt */
+        margin: 20px auto !important;
+        max-width: 100% !important; /* Maksimum genişliği kaldırarak tam ekran sığdır */
+        border-radius: 0 !important; 
+    }
+
+    /* Sayfaya Özel Teknik Bölüm (.technical-section) Düzeltmesi */
+    /* Eğer yan yana bir düzenleme varsa, alt alta yığar */
+    .technical-section {
+        padding: 15px !important; /* İç boşluğu küçült */
+        margin-bottom: 20px !important;
+        /* Eğer bu bölümün içindeki alt elementler flex kullanıyorsa, buraya ek flex-direction: column eklenebilir. */
+    }
+    
+    /* Genel Paragraf ve Liste Metinlerinin Boyutu */
+    .main-body-container p, 
+    .main-body-container li {
+        font-size: 1rem !important; /* Metin fontunu küçült */
+        line-height: 1.6 !important;
+    }
+    
+    /* H3 ve H2 Başlıkları Düzeltmesi */
+    .main-body-container h2, 
+    .main-body-container h3 {
+         font-size: 1.5rem !important; /* Alt başlık fontunu küçült */
+         margin-top: 25px !important;
+         margin-bottom: 10px !important;
+         padding: 0 5px; 
+    }
+    
+    /* Liste Öğeleri (<ul>) için Düzeltme */
+    .main-body-container ul {
+        padding-left: 10px !important; /* Listelerin sol boşluğunu azaltıyoruz */
+    }
+    
+    /* Kod Blokları İçin Genel Düzeltme */
+    /* Uzun kod veya metinlerin taşmasını kesin olarak engeller */
+    .main-body-container pre, 
+    .main-body-container code {
+        overflow-x: auto; /* Yatay kaydırma çubuğu ekler */
+        max-width: 100%;
+        display: block;
+    }
+    
+    /* Özet Rehberlik İlkesi/Sonuç paragrafı için düzeltme */
+    .main-body-container p[style*="font-weight: bold"] {
+        padding: 10px;
+    }
+}
+/* ================================================= */
+/* VITE VS WEBPACK SAYFASI İÇİN KESİN UYUM (768px ve altı) */
+/* ================================================= */
+@media (max-width: 768px) {
+
+    /* Ana İçerik Konteyneri Düzeltmesi */
+    /* .main-body-container'ın 1000px olan genişliğini mobil için optimize eder */
+    .main-body-container {
+        padding: 10px !important; /* İçeriğin kenar boşluklarını azalt */
+        margin: 20px auto !important;
+        max-width: 100% !important; /* Maksimum genişliği kaldırarak tam ekran sığdır */
+        border-radius: 0 !important; 
+    }
+    
+    /* Başlıkların Boyut ve Aralık Düzeltmesi */
+    .main-body-container h2, 
+    .main-body-container h3 {
+         font-size: 1.5rem !important; /* Alt başlık fontunu küçült */
+         margin-top: 25px !important;
+         margin-bottom: 10px !important;
+         padding: 0 5px; 
+    }
+    
+    /* Genel Paragraf ve Liste Metinlerinin Boyutu */
+    .main-body-container p, 
+    .main-body-container li {
+        font-size: 1rem !important; /* Metin fontunu küçült */
+        line-height: 1.6 !important;
+    }
+
+    /* Kod Blokları İçin Genel Düzeltme */
+    /* Uzun kod veya metinlerin taşmasını kesin olarak engeller */
+    .main-body-container pre, 
+    .main-body-container code {
+        overflow-x: auto; /* Yatay kaydırma çubuğu ekler */
+        max-width: 100%;
+        display: block;
+    }
+    
+    /* Vurgu Paragrafları için Düzeltme */
+    .main-body-container p[style*="font-weight: bold"] {
+        padding: 10px;
+    }
+}
+/* ================================================= */
+/* CYPRESS DETAY SAYFASI İÇİN KESİN UYUM (768px ve altı) */
+/* ================================================= */
+@media (max-width: 768px) {
+
+    /* Ana İçerik Konteyneri Düzeltmesi */
+    /* .main-body-container sınıfını mobil için optimize eder */
+    .main-body-container {
+        padding: 10px !important; /* İçeriğin kenar boşluklarını azalt */
+        margin: 20px auto !important;
+        max-width: 100% !important; /* Maksimum genişliği kaldırarak tam ekran sığdır */
+        border-radius: 0 !important; 
+    }
+    
+    /* Başlıkların Boyut ve Aralık Düzeltmesi */
+    .main-body-container h2, 
+    .main-body-container h3 {
+         font-size: 1.5rem !important; /* Alt başlık fontunu küçült */
+         margin-top: 25px !important;
+         margin-bottom: 10px !important;
+         padding: 0 5px; 
+    }
+    
+    /* Genel Paragraf ve Liste Metinlerinin Boyutu */
+    .main-body-container p, 
+    .main-body-container li {
+        font-size: 1rem !important; /* Metin fontunu küçült */
+        line-height: 1.6 !important;
+    }
+
+    /* KOD BLOKLARI İÇİN KESİN TAŞMA ENGELLEME */
+    /* Sayfadaki tüm <pre> elementlerini (kod bloklarını) hedef alır */
+    .main-body-container pre {
+        padding: 10px !important; /* Kod bloğu iç boşluğunu azalt */
+        font-size: 0.9em !important; /* Kod fontunu küçült */
+        overflow-x: auto !important; /* Yatay kaydırma çubuğu ekler */
+        max-width: 100%;
+        display: block;
+    }
+    
+    /* İnce kod satırlarının ve inline kodların düzeltmesi */
+    .main-body-container code {
+        white-space: pre-wrap; /* Uzun kod satırlarını sarar */
+        word-break: break-word; /* Satır sonu ayarlamasını yapar */
+    }
+
+    /* Vurgu Paragrafları ve Sonuç Paragrafı için Düzeltme */
+    .main-body-container p[style*="font-weight: bold"] {
+        padding: 10px;
+    }
+}
+/* ================================================= */
+/* TASARIM SİSTEMLERİ SAYFASI İÇİN KESİN UYUM (768px ve altı) */
+/* ================================================= */
+@media (max-width: 768px) {
+
+    /* Ana İçerik Konteyneri Düzeltmesi */
+    /* .main-body-container sınıfını mobil için optimize eder */
+    .main-body-container {
+        padding: 10px !important; /* İçeriğin kenar boşluklarını azalt */
+        margin: 20px auto !important;
+        max-width: 100% !important; /* Maksimum genişliği kaldırarak tam ekran sığdır */
+        border-radius: 0 !important; 
+    }
+    
+    /* Başlıkların Boyut ve Aralık Düzeltmesi */
+    .main-body-container h2, 
+    .main-body-container h3 {
+         font-size: 1.5rem !important; /* Alt başlık fontunu küçült */
+         margin-top: 25px !important;
+         margin-bottom: 10px !important;
+         padding: 0 5px; 
+    }
+    
+    /* Genel Paragraf ve Liste Metinlerinin Boyutu */
+    .main-body-container p, 
+    .main-body-container li {
+        font-size: 1rem !important; /* Metin fontunu küçült */
+        line-height: 1.6 !important;
+    }
+
+    /* Özel Detay Listesi (.detail-list) Düzeltmesi (İkonlu listeler) */
+    .main-body-container .detail-list {
+        padding-left: 10px !important; /* Listelerin sol girintisini ayarla */
+    }
+
+    .main-body-container .detail-list li {
+        margin-bottom: 10px !important; /* Liste elemanları arasına boşluk ekle */
+        padding-left: 5px;
+    }
+
+    /* Vurgu Paragrafları ve Sonuç Paragrafı için Düzeltme */
+    .main-body-container p[style*="font-weight: bold"] {
+        padding: 10px;
+    }
+}
+
+
 
 
 
@@ -694,8 +1283,8 @@ body.yazilim-sayfa footer {
 /* Donanım Sayfası CSS */
 /* Genel Stil Resetleri (Mevcut CSS'inizin başına ekleyebilirsiniz) */
 .main-body-container {
-    max-width: 1200px;
-    margin: 40px auto;
+    max-width: 800px;
+    margin: 20px auto;
     padding: 0 20px;
 }
 a {
@@ -704,30 +1293,56 @@ a {
 }
 
 
-/* DÜZELTME: HTML'deki 'donanim-sayfasi' sınıfını hedefleyen stil eklendi */
+
 body.donanim-sayfasi {
     background-color: #181818; /* Koyu arka plan rengi */
     color: #f0f0f0; /* Açık metin rengi */
+    padding: 0px;
 }
-
+body.donanim-header {
+ background-color: var(--color-card-background);
+            color: var(--color-text);
+            padding: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px var(--color-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+}
 
 
 /* HEADER ve NAV Stilleri (Önceki HTML'den gelen üst kısım) */
 header {
-    background-color: #1f1f1f;
-    border-bottom: 3px solid #00bcd4;
-    padding: 15px 0;
-    /* Metnin Kesin Konumlandırması için Gerekli */
-    position: relative; 
+   background-color: var(--color-card-background);
+            color: var(--color-text);
+            padding: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px var(--color-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
 }
+     
+   
 
 .header-content {
     display: flex; /* Flexbox'ı etkinleştir */
     justify-content: space-between; /* Logo'yu (h1) sola, Nav'ı sağa iter */
     align-items: center; /* Öğeleri dikeyde ortalar */
-    width: 90%;
-    margin: 0 auto;
-    padding: 10px 0;
+    width: 100%;
+    margin: auto;
+    padding: 5px;
+    
+   
+}
+.header-content h1{
+    color: var(--color-primary);
+    font-size: 1.8rem;
+    margin: 0;
 }
 
 /* 📢 EKLENDİ: Başlığı sağ alta hizalamak için yeni stil */
@@ -735,29 +1350,21 @@ header {
     position: absolute;
     right: 10px; /* Sağdan 20 piksel boşluk */
     bottom: 10px; /* Alttan 10 piksel boşluk */
-    font-size: 2rem; 
-    font-weight: 900;
+
+    font-weight: 800;
     color: #f0f0f0;
     z-index: 1001;
     letter-spacing: 1px;
     /* Diğer logodan farklı bir renkte nokta isterseniz: */
     /* color: #e91e63; */ 
 }
-/* header h1 BOYUTUNU KÜÇÜK TUTUYORUZ (Artık kullanılmayacağı varsayıldı) */
-/*
-header h1 {
-    font-size: 1.8em; 
-    font-weight: 900;
-    letter-spacing: 1px;
-    color: #f0f0f0;
-    margin: 0;
-}
-*/
 nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
+    gap: 10px
+    ;
 }
 nav ul li {
    
@@ -851,7 +1458,7 @@ nav ul li a:hover {
     text-align: center;
     font-size: 1.8em;
     margin-bottom: 30px;
-    color:  #f0f0f0; 
+    color: #0056b3; /* Donanım sayfasında arka plan koyu olduğu için rengi değiştirdim */
 }
 .category-grid {
     display: grid;
@@ -915,6 +1522,9 @@ nav ul li a:hover {
     color: #888;
     font-style: italic;
 }
+
+
+
 /* ======================================= */
 /* İNCELEMELER SAYFASI STİLLERİ */
 /* ======================================= */
@@ -936,6 +1546,1354 @@ nav ul li a:hover {
     color: #ccc;
     margin-top: 10px;
 }
+
+
+ @media (max-width: 900px) {
+    
+
+    
+    /* ----------------------------------------------- */
+    /* RTX-5090.html (Tek İnceleme Sayfası) İçin Kurallar */
+    /* ----------------------------------------------- */
+
+    /* Ana içerik konteynerine mobil padding uygular */
+    .main-body-container {
+        padding: 0 15px 30px 15px; 
+        /* max-width: 1300px; kuralı zaten HTML içinde tanımlı */
+    }
+
+    /* İnceleme içerik kutularını (performans, teknik özellikler) alt alta yığar */
+    .content-boxes-container {
+        flex-direction: column; 
+    }
+
+    /* Görsel kutusunun genişliğini ayarlar ve sayfa ortalar */
+    .detail-image-box {
+        width: 100%;
+        max-width: 100%;
+        margin: 20px auto; 
+    }
+
+    /* Görüntünün taşmasını engeller */
+    .detail-image-box img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Liste içeriklerini (Teknik Özellikler, Performans) mobil dostu yapar */
+    .specs-list li, .performance-list li {
+        padding: 12px 10px; /* Daha mobil dostu padding */
+        font-size: 0.9em;
+    }
+}
+
+ /* ================================================= */
+@media (max-width: 900px) {
+    
+    /* 1. GENEL DÜZEN VE BAŞLIKLAR */
+    .container, .main-body-container {
+        /* İçeriğin ekran kenarlarına yapışmasını engeller */
+        padding: 0 15px 30px 15px; 
+    }
+    
+    .section-title, .page-title {
+        font-size: 2rem;
+        margin: 30px 0 20px;
+    }
+    
+    /* 2. HEADER VE NAVİGASYON UYUMLULUĞU (Tüm Sayfalar) */
+    header .header-content {
+        flex-direction: column; /* Logo ve Navigasyonu alt alta yığar */
+        align-items: center;
+        padding: 15px 10px;
+    }
+
+    header nav {
+        width: 100%; 
+    }
+
+    header nav ul {
+        flex-direction: column; /* Menü linklerini alt alta getirir */
+        width: 100%;
+        margin-top: 10px;
+        align-items: center;
+    }
+
+    header nav ul li {
+        width: 100%; 
+        text-align: center;
+    }
+
+    header nav ul li a {
+        padding: 10px 0; 
+        width: 90%;
+        display: block; 
+        margin: 5px auto;
+    }
+    /*   Intel Core i9-15900K (Arrow Lake) sayfası mobil uyumluluk */
+    /* Dropdown Menü (Alt Menünün akışa dönmesi) */
+    header .dropdown-content {
+        position: relative; 
+        width: 100%; 
+        left: 0;
+        box-shadow: none;
+        border-top: none;
+    }
+    
+    /* 3. İNCELEMELER LİSTESİ UYUMLULUĞU (incelemeler.html) */
+    .review-grid, .news-grid {
+        /* İnceleme kartlarını 3 sütundan tek sütuna düşürür */
+        grid-template-columns: 1fr; 
+    }
+
+    /* 4. TEKİL İNCELEME SAYFALARI (intel-i9-15900k.html, rtx-5090.html) UYUMLULUĞU */
+
+    /* İnceleme içerik kutularını (Performans, Teknik Özellikler) alt alta yığar */
+    .content-boxes-container {
+        flex-direction: column; 
+    }
+
+    /* Görsel kutusunun tam genişliğe yayılmasını ve ortalanmasını sağlar */
+    .detail-image-box {
+        width: 100%;
+        max-width: 100%;
+        margin: 20px auto; 
+    }
+
+    /* Görüntünün taşmasını engeller */
+    .detail-image-box img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Liste içeriklerini (Teknik Özellikler) mobil dostu yapar */
+    .specs-list li, .performance-list li {
+        padding: 12px 10px; 
+        font-size: 0.9em;
+    }
+}
+ /* PCI 6.0 SSD MOBİL UYUM */
+@media (max-width: 900px) {
+    
+    /* 1. GENEL DÜZEN VE BAŞLIKLAR */
+    .container, .main-body-container {
+        /* İçeriğin ekran kenarlarına yapışmasını engeller */
+        padding: 0 15px 30px 15px; 
+    }
+    
+    /* 2. HEADER VE NAVİGASYON UYUMLULUĞU */
+    header .header-content {
+        flex-direction: column; /* Menü ve logoyu alt alta yığar */
+        align-items: center;
+        padding: 15px 10px;
+    }
+
+    header nav {
+        width: 100%; 
+    }
+
+    header nav ul {
+        flex-direction: column; /* Menü linklerini alt alta getirir */
+        width: 100%;
+        margin-top: 10px;
+        align-items: center;
+    }
+
+    /* 3. TEKİL İNCELEME SAYFALARI (pcie-6-ssd.html) UYUMLULUĞU */
+
+    /* PCIe 6.0 SSD sayfasındaki Performans ve Teknik Özellikler kutularını alt alta yığar */
+    .content-boxes-container {
+        flex-direction: column; 
+    }
+
+    /* Görsel kutusunun tam genişliğe yayılmasını sağlar */
+    .detail-image-box {
+        width: 100%;
+        max-width: 100%;
+        margin: 20px auto; 
+    }
+
+    /* Görüntünün mobil ekranda taşmasını engeller */
+    .detail-image-box img {
+        width: 100%;
+        height: auto;
+    }
+    
+    /* 4. İNCELEMELER LİSTESİ UYUMLULUĞU (incelemeler.html) */
+    .review-grid, .news-grid {
+        /* İnceleme kartlarını tek sütuna düşürür */
+        grid-template-columns: 1fr; 
+    }
+}
+
+/* ================================================= */
+/* 6. MOBİL UYUMLULUK (Tüm Sayfalar İçin Nihai Kurallar) */
+/* ================================================= */
+@media (max-width: 900px) {
+    
+    /* 1. GENEL DÜZEN VE BAŞLIKLAR */
+    .container, .main-body-container {
+        /* İçeriğin ekran kenarlarına yapışmasını engeller ve alt boşluğu korur */
+        padding: 0 15px 30px 15px; 
+    }
+    
+    .section-title, .page-title {
+        /* Başlıkların mobil ekranda daha küçük görünmesini sağlar */
+        font-size: 2rem;
+        margin: 30px 0 20px;
+    }
+    
+    /* ---------------------------------------------------- */
+    /* 2. HEADER VE NAVİGASYON UYUMLULUĞU (Tüm Sayfalar) */
+    /* ---------------------------------------------------- */
+    header .header-content {
+        flex-direction: column; /* Logo ve Navigasyonu alt alta yığar */
+        align-items: center; /* İçeriği ortalar */
+        padding: 15px 10px;
+    }
+
+    header nav {
+        width: 100%; /* Navigasyonun tam genişliği kullanmasını sağlar */
+    }
+
+    header nav ul {
+        flex-direction: column; /* Menü linklerini alt alta getirir */
+        width: 100%;
+        margin-top: 10px;
+        align-items: center;
+    }
+
+    header nav ul li {
+        width: 100%; 
+        text-align: center;
+    }
+
+    header nav ul li a {
+        padding: 10px 0; 
+        width: 90%;
+        display: block; /* Tam tıklanabilir alan sağlar */
+        margin: 5px auto;
+    }
+    
+    /* Dropdown Menü Uyumuluğu */
+    header .dropdown-content {
+        position: relative; /* Absolute konumdan akışa geri dönerek sayfayı bozmasını engeller */
+        width: 100%; 
+        left: 0;
+        box-shadow: none;
+        border-top: none;
+    }
+    
+    /* ---------------------------------------------------- */
+    /* AMD Radeon RX 8900 XT mobil uyumluluk */
+    /* ---------------------------------------------------- */
+    .review-grid, .news-grid {
+        /* Kartları 3 sütundan tek sütuna düşürerek alt alta sıralar */
+        grid-template-columns: 1fr; 
+    }
+
+    /* ---------------------------------------------------------------------------------- */
+    /* 4. TEKİL İNCELEME SAYFALARI (rx-8900-xt.html, rtx-5090.html, i9-15900k.html, pcie-6-ssd.html) */
+    /* ---------------------------------------------------------------------------------- */
+
+    /* Yan yana duran ana içerik kutularını (Performans/Teknik Özellikler) alt alta yığar */
+    .content-boxes-container {
+        flex-direction: column; 
+    }
+
+    /* Görsel Uyum: Görselin tam genişliğe yayılmasını ve taşmamasını sağlar */
+    .detail-image-box {
+        width: 100%;
+        max-width: 100%;
+        margin: 20px auto; 
+    }
+
+    .detail-image-box img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Liste İçerikleri Uyumuluğu (Okunabilirliği artırır) */
+    .specs-list li, .performance-list li {
+        padding: 12px 10px; 
+        font-size: 0.9em;
+    }
+}
+
+ /* ================================================= */
+/* amd ryzen 9  7900 inceleme mobil uyumluluk  */
+/* ================================================= */
+@media (max-width: 900px) {
+    
+    /* 1. GENEL DÜZEN VE BAŞLIKLAR */
+    .container, .main-body-container {
+        /* İçeriği ekran kenarlarına yapışmasını engeller */
+        padding: 0 15px 30px 15px; 
+    }
+    
+    /* 2. HEADER VE NAVİGASYON UYUMLULUĞU */
+    header .header-content {
+        flex-direction: column; /* Logo ve Navigasyonu alt alta yığar */
+        align-items: center; 
+    }
+
+    header nav ul {
+        flex-direction: column; /* Menü linklerini alt alta getirir */
+        width: 100%;
+        align-items: center;
+    }
+
+    /* Dropdown Menü Uyumuluğu */
+    header .dropdown-content {
+        position: relative; /* Akışa geri dönerek mobil menüyü düzeltir */
+        width: 100%; 
+        left: 0;
+        box-shadow: none;
+    }
+    
+    /* 3. İNCELEMELER LİSTESİ UYUMLULUĞU (incelemeler.html) */
+    .review-grid, .news-grid {
+        grid-template-columns: 1fr; /* Kartları tek sütuna düşürür */
+    }
+
+    /* ---------------------------------------------------------------------------------- */
+    /* 4. TEKİL İNCELEME SAYFALARI (amd- ryzen- 7 -9700X .html dahil) UYUMLULUĞU */
+    /* ---------------------------------------------------------------------------------- */
+
+    /* İşlemci incelemesindeki Performance ve Technical Specs kutularını alt alta yığar. */
+    .content-boxes-container {
+        flex-direction: column; 
+    }
+
+    /* Görsel Uyum: Ana görselin tam genişliğe yayılmasını sağlar */
+    .detail-image-box {
+        width: 100%;
+        max-width: 100%;
+        margin: 20px auto; 
+    }
+
+    .detail-image-box img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Liste İçerikleri Uyumuluğu */
+    .specs-list li, .performance-list li {
+        padding: 12px 10px; 
+        font-size: 0.9em;
+    }
+}
+
+/* ================================================= */
+/* MSI Z890 ANAKART MOBİL UYUMLULUK */
+/* ================================================= */
+@media (max-width: 900px) {
+    
+    /* 1. GENEL DÜZEN VE BAŞLIKLAR */
+    .container, .main-body-container {
+        /* İçeriğin ekran kenarlarına yapışmasını engeller ve alt boşluğu korur */
+        padding: 0 15px 30px 15px; 
+    }
+    
+    .section-title, .page-title {
+        /* Başlıkların mobil ekranda daha küçük görünmesini sağlar */
+        font-size: 2rem;
+        margin: 30px 0 20px;
+    }
+    
+    /* ---------------------------------------------------- */
+    /* 2. HEADER VE NAVİGASYON UYUMLULUĞU (Tüm Sayfalar) */
+    /* ---------------------------------------------------- */
+    header .header-content {
+        flex-direction: column; /* Logo ve Navigasyonu alt alta yığar */
+        align-items: center; /* İçeriği ortalar */
+        padding: 15px 10px;
+    }
+
+    header nav {
+        width: 100%; /* Navigasyonun tam genişliği kullanmasını sağlar */
+    }
+
+    header nav ul {
+        flex-direction: column; /* Menü linklerini alt alta getirir */
+        width: 100%;
+        margin-top: 10px;
+        align-items: center;
+    }
+
+    header nav ul li {
+        width: 100%; 
+        text-align: center;
+    }
+
+    header nav ul li a {
+        padding: 10px 0; 
+        width: 90%;
+        display: block; /* Tam tıklanabilir alan sağlar */
+        margin: 5px auto;
+    }
+    
+    /* Dropdown Menü Uyumuluğu */
+    header .dropdown-content {
+        position: relative; /* Absolute konumdan akışa geri dönerek sayfayı bozmasını engeller */
+        width: 100%; 
+        left: 0;
+        box-shadow: none;
+        border-top: none;
+    }
+    
+    /* ---------------------------------------------------- */
+    /* 3. İNCELEMELER LİSTESİ UYUMLULUĞU (incelemeler.html) */
+    /* ---------------------------------------------------- */
+    .review-grid, .news-grid {
+        /* Kartları tek sütuna düşürerek alt alta sıralar */
+        grid-template-columns: 1fr; 
+    }
+
+    /* ---------------------------------------------------------------------------------- */
+    /* 4. TEKİL İNCELEME SAYFALARI (MSI Anakart ve diğerleri) UYUMLULUĞU */
+    /* ---------------------------------------------------------------------------------- */
+
+    /* MSI Anakart sayfasındaki (ve diğer tüm tekil incelemelerdeki) yan yana duran kutuları alt alta yığar */
+    .content-boxes-container {
+        flex-direction: column; 
+    }
+
+    /* Görsel Uyum: Görselin tam genişliğe yayılmasını ve taşmamasını sağlar */
+    .detail-image-box {
+        width: 100%;
+        max-width: 100%;
+        margin: 20px auto; 
+    }
+
+    .detail-image-box img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Liste İçerikleri Uyumuluğu (Okunabilirliği artırır) */
+    .specs-list li, .performance-list li {
+        padding: 12px 10px; 
+        font-size: 0.9em;
+    }
+}
+
+/* ================================================= */
+/* Samsung 990 EVO Plus (4TB) NVMe SSD Mobil Uyumlu  */
+/* ================================================= */
+@media (max-width: 900px) {
+    
+    /* 1. GENEL DÜZEN VE BAŞLIKLAR */
+    .container, .main-body-container {
+        /* İçeriğin ekran kenarlarına yapışmasını engeller */
+        padding: 0 15px 30px 15px; 
+    }
+    
+    .section-title, .page-title {
+        /* Başlık boyutunu ayarlar */
+        font-size: 2rem;
+        margin: 30px 0 20px;
+    }
+    
+    /* ---------------------------------------------------- */
+    /* 2. HEADER VE NAVİGASYON UYUMLULUĞU (Menü Düzeltmesi) */
+    /* ---------------------------------------------------- */
+    header .header-content {
+        flex-direction: column; /* Logo ve Navigasyonu alt alta yığar */
+        align-items: center; 
+        padding: 15px 10px;
+    }
+
+    header nav {
+        width: 100%; 
+    }
+
+    header nav ul {
+        flex-direction: column; /* Menü linklerini alt alta getirir */
+        width: 100%;
+        margin-top: 10px;
+        align-items: center;
+    }
+
+    header nav ul li {
+        width: 100%; 
+        text-align: center;
+    }
+
+    header nav ul li a {
+        padding: 10px 0; 
+        width: 90%;
+        display: block; 
+        margin: 5px auto;
+    }
+    
+    /* Dropdown Menü Uyumuluğu */
+    header .dropdown-content {
+        position: relative; /* Menünün yatay akıştan çıkıp dikey akışa dönmesini sağlar */
+        width: 100%; 
+        left: 0;
+        box-shadow: none;
+        border-top: none;
+    }
+    
+    /* ---------------------------------------------------- */
+    /* 3. İNCELEMELER LİSTESİ UYUMLULUĞU (incelemeler.html) */
+    /* ---------------------------------------------------- */
+    .review-grid, .news-grid {
+        grid-template-columns: 1fr; /* Kartları tek sütuna düşürür */
+    }
+
+    /* ---------------------------------------------------------------------------------- */
+    /* 4. TEKİL İNCELEME SAYFALARI (Samsung SSD dahil tüm incelemeler) UYUMLULUĞU */
+    /* ---------------------------------------------------------------------------------- */
+
+    /* KRİTİK KURAL: Yan yana duran Performans/Özellikler kutularını alt alta yığar. */
+    .content-boxes-container {
+        flex-direction: column; 
+    }
+
+    /* Görsel Uyum: Ana görselin tam genişliğe yayılmasını ve taşmamasını sağlar */
+    .detail-image-box {
+        width: 100%;
+        max-width: 100%;
+        margin: 20px auto; 
+    }
+
+    .detail-image-box img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Liste İçerikleri Uyumuluğu (Okunabilirliği artırır) */
+    .specs-list li, .performance-list li {
+        padding: 12px 10px; 
+        font-size: 0.9em;
+    }
+}
+ /* ================================================= */
+/* RTX 5070 Ti Karşılaştırması Mobil Uyumluluğu*/
+/* ================================================= */
+@media (max-width: 900px) {
+    
+    /* 1. GENEL DÜZEN VE BAŞLIKLAR */
+    .container, .main-body-container {
+        /* İçeriğin ekran kenarlarına yapışmasını engeller */
+        padding: 0 15px 30px 15px; 
+    }
+    
+    .section-title, .page-title {
+        /* Başlık boyutunu ayarlar */
+        font-size: 2rem;
+        margin: 30px 0 20px;
+    }
+    
+    /* ---------------------------------------------------- */
+    /* 2. HEADER VE NAVİGASYON UYUMLULUĞU (Menü Düzeltmesi) */
+    /* ---------------------------------------------------- */
+    header .header-content {
+        flex-direction: column; /* Logo ve Navigasyonu alt alta yığar */
+        align-items: center; 
+        padding: 15px 10px;
+    }
+
+    header nav {
+        width: 100%; 
+    }
+
+    header nav ul {
+        flex-direction: column; /* Menü linklerini alt alta getirir */
+        width: 100%;
+        margin-top: 10px;
+        align-items: center;
+    }
+
+    header nav ul li {
+        width: 100%; 
+        text-align: center;
+    }
+
+    header nav ul li a {
+        padding: 10px 0; 
+        width: 90%;
+        display: block; 
+        margin: 5px auto;
+    }
+    
+    /* Dropdown Menü Uyumuluğu */
+    header .dropdown-content {
+        position: relative; /* Menünün yatay akıştan çıkıp dikey akışa dönmesini sağlar */
+        width: 100%; 
+        left: 0;
+        box-shadow: none;
+        border-top: none;
+    }
+    
+    /* ---------------------------------------------------- */
+    /* 3. İNCELEMELER LİSTESİ UYUMLULUĞU (incelemeler.html) */
+    /* ---------------------------------------------------- */
+    .review-grid, .news-grid {
+        grid-template-columns: 1fr; /* Kartları tek sütuna düşürür */
+    }
+
+    /* ---------------------------------------------------------------------------------- */
+    /* 4. TEKİL İNCELEME SAYFALARI (RTX 5070 Ti dahil tüm incelemeler) UYUMLULUĞU */
+    /* ---------------------------------------------------------------------------------- */
+
+    /* KRİTİK KURAL: Yan yana duran Performans/Özellikler kutularını alt alta yığar. */
+    .content-boxes-container {
+        flex-direction: column; 
+    }
+
+    /* Görsel Uyum: Ana görselin tam genişliğe yayılmasını ve taşmamasını sağlar */
+    .detail-image-box {
+        width: 100%;
+        max-width: 100%;
+        margin: 20px auto; 
+    }
+
+    .detail-image-box img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Liste İçerikleri Uyumuluğu (Okunabilirliği artırır) */
+    .specs-list li, .performance-list li {
+        padding: 12px 10px; 
+        font-size: 0.9em;
+    }
+} 
+/* ================================================= */
+/*Intel Core i5-15600K Oyun Testleri Mobil Uyumlulğu  */
+/* ================================================= */
+@media (max-width: 900px) {
+    
+    /* 1. GENEL DÜZEN VE BAŞLIKLAR */
+    .container, .main-body-container {
+        /* İçeriğin ekran kenarlarına yapışmasını engeller ve yatay boşluk sağlar */
+        padding: 0 15px 30px 15px; 
+    }
+    
+    .section-title, .page-title {
+        /* Başlık boyutunu mobil için ayarlar */
+        font-size: 2rem;
+        margin: 30px 0 20px;
+    }
+    
+    /* ---------------------------------------------------- */
+    /* 2. HEADER VE NAVİGASYON UYUMLULUĞU (Menü Düzeltmesi) */
+    /* ---------------------------------------------------- */
+    header .header-content {
+        flex-direction: column; /* Logo ve Navigasyonu alt alta yığar */
+        align-items: center; 
+        padding: 15px 10px;
+    }
+
+    header nav {
+        width: 100%; 
+    }
+
+    header nav ul {
+        flex-direction: column; /* Menü linklerini alt alta getirir */
+        width: 100%;
+        margin-top: 10px;
+        align-items: center;
+    }
+
+    header nav ul li {
+        width: 100%; 
+        text-align: center;
+    }
+
+    header nav ul li a {
+        padding: 10px 0; 
+        width: 90%;
+        display: block; 
+        margin: 5px auto;
+    }
+    
+    /* Dropdown Menü Uyumuluğu */
+    header .dropdown-content {
+        position: relative; /* Menüyü dikey akışa döndürür */
+        width: 100%; 
+        left: 0;
+        box-shadow: none;
+        border-top: none;
+    }
+    
+    /* ---------------------------------------------------- */
+    /* 3. İNCELEMELER LİSTESİ UYUMLULUĞU */
+    /* ---------------------------------------------------- */
+    .review-grid, .news-grid {
+        grid-template-columns: 1fr; /* Kartları tek sütuna düşürür */
+    }
+
+    /* ---------------------------------------------------------------------------------- */
+    /* 4. TEKİL İNCELEME SAYFALARI (i5-15600K dahil tüm incelemeler) UYUMLULUĞU */
+    /* ---------------------------------------------------------------------------------- */
+
+    /* KRİTİK KURAL: Yan yana duran tüm kutuları (i5-15600K'daki Oyun Testleri ve Özellikler) alt alta yığar. */
+    .content-boxes-container {
+        flex-direction: column; 
+    }
+
+    /* Görsel Uyum: Ana görselin tam genişliğe yayılmasını sağlar */
+    .detail-image-box {
+        width: 100%;
+        max-width: 100%;
+        margin: 20px auto; 
+    }
+
+    .detail-image-box img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Liste İçerikleri Uyumuluğu */
+    .specs-list li, .performance-list li {
+        padding: 12px 10px; 
+        font-size: 0.9em;
+    }
+}
+
+ /* Intel Arc B580 İnceleme Mobil Uyumluluğu*/
+ @media (max-width: 900px) {
+    
+    /* Genel İçerik Boşlukları ve Başlıklar */
+    .container, .main-body-container {
+        padding: 0 15px 30px 15px; 
+    }
+    .section-title, .page-title {
+        font-size: 2rem;
+        margin: 30px 0 20px;
+    }
+    
+    /* Header/Menü Düzeni (Alt alta sıralama) */
+    header .header-content {
+        flex-direction: column; 
+        align-items: center; 
+        padding: 15px 10px;
+    }
+    header nav ul {
+        flex-direction: column; 
+        width: 100%;
+        margin-top: 10px;
+        align-items: center;
+    }
+    header nav ul li, header nav ul li a {
+        width: 100%; 
+        text-align: center;
+        display: block; 
+    }
+    .dropdown-content {
+        position: relative; /* Dropdown menüyü yatay akıştan çıkarır */
+        width: 100%; 
+        left: 0;
+        box-shadow: none;
+        border-top: none;
+    }
+    
+    /* Tekil İnceleme Sayfaları İçin KRİTİK KURAL */
+    /* Arc B580'deki performans ve özellik kutularını alt alta yığar */
+    .content-boxes-container {
+        flex-direction: column; 
+    }
+
+    /* Görsel Uyum: Ana görselin tam genişliğe yayılmasını sağlar */
+    .detail-image-box {
+        width: 100%;
+        max-width: 100%;
+        margin: 20px auto; 
+    }
+    .detail-image-box img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Liste ve Kart Düzenleri */
+    .review-grid, .news-grid {
+        grid-template-columns: 1fr; /* Kartları tek sütuna düşürür */
+    }
+    .specs-list li, .performance-list li {
+        padding: 12px 10px; 
+        font-size: 0.9em;
+    }
+}
+
+
+/*    Ryzen 5 9600X İncelemesi Mobil Uyumluluğu       */
+@media (max-width: 900px) {
+    
+    /* 1. GENEL YAPISAL DÜZELTMELER */
+    
+    /* İçerik Konteynerinin Kenar Boşlukları (Tüm Sayfalar) */
+    .container, .main-body-container {
+        padding: 0 15px 30px 15px !important; /* Önemli: Tüm padding'leri mobil için ayarlar */
+    }
+    .page-title, .section-title {
+        font-size: 2rem;
+        margin: 30px 0 20px;
+    }
+    
+    /* 2. HEADER/MENÜ DÜZENİ */
+    header .header-content {
+        flex-direction: column; /* Logoyu ve menüyü alt alta sıralar */
+        align-items: center; 
+        padding: 15px 10px;
+    }
+    header nav ul {
+        flex-direction: column; /* Navigasyon linklerini alt alta sıralar */
+        width: 100%;
+        margin-top: 10px;
+        align-items: center;
+    }
+    header nav ul li, header nav ul li a {
+        width: 100%; 
+        text-align: center;
+        display: block; 
+    }
+    .dropdown-content {
+        position: relative; /* Dropdown menüyü ekran dışına taşımaktan kurtarır */
+        width: 100%; 
+        left: 0;
+        box-shadow: none;
+        border-top: none;
+    }
+    
+    /* 3. İÇERİK KARTLARI DÜZENİ (incelemeler.html için KRİTİK) */
+    .review-grid, .news-grid {
+        /* İnceleme kartlarını (review-card) tek sütuna düşürür */
+        grid-template-columns: 1fr; 
+    }
+
+    /* 4. İNCELEME SAYFALARI DÜZENİ (rtx-5090, ryzen-9700x, vb. için KRİTİK) */
+    .content-boxes-container {
+        flex-direction: column; /* Yan yana kutuları (Performans/Özellikler) alt alta yığar */
+        gap: 30px; /* Aradaki boşluğu ayarlar */
+    }
+
+    /* Görsel Uyum: Ana görselin tam genişliğe yayılmasını sağlar */
+    .detail-image-box {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 20px auto; 
+    }
+    .detail-image-box img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Liste Öğeleri (Daha Okunabilir Boyut) */
+    .specs-list li, .performance-list li {
+        padding: 12px 10px; 
+        font-size: 0.95em;
+    }
+}
+/*    G.SKILL Trident Z6 DDR5 8000 MHz Mobil Uyumluluk             */ 
+@media (max-width: 900px) {
+    /* Genel İnceleme Sayfası Yapısı */
+    .detail-review-container {
+        flex-direction: column; /* İçerik ve özellik kutularını alt alta dizer */
+        gap: 30px; /* Boşlukları artırır */
+    }
+
+    .detail-review-body, .technical-specs-box {
+        width: 100%; /* Tam genişlik kaplamasını sağlar */
+        max-width: none;
+    }
+
+    /* İnceleme başlığını ortala */
+    .detail-header {
+        text-align: center;
+    }
+
+    /* Puan kutusunu ortalar */
+    .score-large-container {
+        justify-content: center;
+    }
+
+    /* Teknik özellik listesindeki öğeleri alt alta dizar (mobil okuma için) */
+    .specs-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .specs-list li span:first-child {
+        font-weight: bold;
+        color: var(--accent-color);
+        margin-bottom: 4px;
+    }
+    .specs-list li span:last-child {
+        font-weight: normal;
+        font-size: 1em;
+        margin-left: 0;
+    }
+
+    /* Ana sayfa kartları için (incelemeler.html sayfasında kullanılacak) */
+    .reviews-grid {
+        grid-template-columns: 1fr; /* Tüm kartları tek sütuna indirir */
+        padding: 0 15px; /* Yan boşluk bırakır */
+    }
+}
+
+
+/* Telefonlar için ekstra daraltma (Max 600px) */
+@media (max-width: 600px) {
+    /* Başlık ve Footer padding'lerini küçültme */
+    header, footer, .main-body-container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Büyük puan kutusunun boyutunu küçültme */
+    .score-large {
+        padding: 15px 20px;
+        font-size: 1.5em;
+    }
+    .score-large-text {
+        font-size: 0.8em;
+    }
+    
+    /* Navigasyon (Eğer mobil menü yoksa) */
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    nav ul li {
+        margin: 5px 0;
+    }
+}
+/* Mobil Uyumlu Düzenlemeler (wd-black-sn850.html için) */
+@media (max-width: 768px) {
+    /* Genel Kapsayıcıyı Daraltma */
+    .main-body-container {
+        padding: 20px 15px; /* Yanlardan daha fazla boşluk */
+    }
+
+    /* Başlık ve Detay Görünümünü Düzenleme */
+    .detail-header h1 {
+        font-size: 1.8em; /* Başlık boyutunu küçültme */
+        text-align: center;
+    }
+    .main-detail-content {
+        flex-direction: column; /* İçerik ve teknik özellik kutularını alt alta alma */
+    }
+
+    /* İnceleme Kutusu Düzenlemesi */
+    .review-box {
+        padding: 15px;
+        margin-bottom: 20px;
+        /* Mobil cihazlarda gereksiz yan boşlukları azaltma */
+    }
+    .review-box p {
+        font-size: 1em; /* Metin boyutunu standartlaştırma */
+        line-height: 1.6;
+    }
+
+    /* Teknik Özellikler Kutusu Düzenlemesi */
+    .technical-specs-box {
+        padding: 15px;
+        margin-top: 20px; /* Üstte biraz boşluk */
+    }
+
+    /* Teknik Özellikler Listesi (Specs List) Düzenlemesi */
+    .specs-list li {
+        flex-direction: column; /* Özellik adı ve değeri alt alta gelecek */
+        align-items: flex-start; /* Sola hizalama */
+        padding: 10px 0;
+        border-bottom: 1px solid #333;
+    }
+    .specs-list li:last-child {
+        border-bottom: none;
+    }
+    .specs-list li span:first-child {
+        /* Özellik Adı */
+        font-weight: bold;
+        color: var(--accent-color, #2196f3); /* Vurgu rengiyle belirginleştirme */
+        margin-bottom: 5px;
+        font-size: 0.95em;
+    }
+    .specs-list li span:last-child {
+        /* Özellik Değeri */
+        font-size: 1em;
+        color: #f0f0f0; /* Açık renkte değer */
+    }
+}
+
+/* Daha küçük telefonlar için son dokunuş */
+@media (max-width: 480px) {
+    .detail-header h1 {
+        font-size: 1.5em;
+    }
+    /* Gerekirse yazı tipleri bu alanda daha da küçültülebilir */
+}
+/* 900px ve altı (Tablet ve Yatay Telefon Görünümü) */
+@media (max-width: 900px) {
+    /* Header/Navigasyon Düzenlemesi (g8 -oled.html'deki .header-content için) */
+    /* Header içeriğini dikey hizalamayı sağlar (Logo ve Navigasyon alt alta) */
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 20px;
+    }
+    .logo, nav {
+        margin: 5px 0;
+    }
+}
+
+/* 768px ve altı (Telefon Görünümü) */
+@media (max-width: 768px) {
+    /* (1) Genel Kapsayıcıyı Daraltma */
+    .main-body-container {
+        padding: 20px 15px;
+    }
+
+    /* (2) Başlık Düzenlemesi */
+    .detail-header h1 {
+        font-size: 1.8em;
+        text-align: center;
+    }
+
+    /* (3) Temel İçerik Kutularını Alt Alta Alma (Resim, İnceleme, Teknik Özellikler) */
+    .main-detail-content {
+        flex-direction: column;
+    }
+
+    /* (4) Tüm İçerik Kutularının Tam Genişlik Kaplaması */
+    .image-review-container, .technical-specs-box, .product-image-container, .review-box {
+        width: 100%;
+        /* Gerekli olabilecek margin düzenlemeleri */
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* (5) Ürün Resmi Konteyneri Düzenlemesi (G8 OLED için Resim Ortalaması ve Ölçekleme) */
+    .product-image-container {
+        text-align: center; /* Resmi ortalar */
+        margin-bottom: 20px;
+    }
+    .product-image {
+        max-width: 100%; /* Resmi konteyneri aşmayacak şekilde küçültür */
+        height: auto;
+    }
+
+    /* (6) İnceleme Kutusu Düzenlemesi */
+    .review-box {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    .review-box p {
+        font-size: 1em;
+        line-height: 1.6;
+    }
+
+    /* (7) Teknik Özellikler Listesi (Specs List) Düzenlemesi */
+    /* Özellik adı ve değerini alt alta alır */
+    .specs-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 0;
+        border-bottom: 1px solid #333;
+    }
+    .specs-list li:last-child {
+        border-bottom: none;
+    }
+    .specs-list li span:first-child {
+        /* Özellik Adı */
+        font-weight: bold;
+        color: var(--accent-color, #00bcd4); /* Vurgu rengi (G8 OLED sayfasındaki turkuaz ton) */
+        margin-bottom: 5px;
+        font-size: 0.95em;
+    }
+    .specs-list li span:last-child {
+        /* Özellik Değeri */
+        font-size: 1em;
+        color: #f0f0f0;
+    }
+}
+
+/* 480px ve altı (Küçük Telefonlar) */
+@media (max-width: 480px) {
+    .detail-header h1 {
+        font-size: 1.5em;
+    }
+}
+/* Artic Liqud  İncelemesi   Mobil UYUMLULUK*/
+/* 900px ve altı (Tablet ve Yatay Telefon Görünümü) */
+@media (max-width: 900px) {
+    /* Header/Navigasyon Düzenlemesi */
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 20px;
+    }
+    .logo, nav {
+        margin: 5px 0;
+    }
+}
+
+/* 768px ve altı (Telefon Görünümü) */
+@media (max-width: 768px) {
+    /* (1) Genel Kapsayıcıyı Daraltma */
+    .main-body-container {
+        padding: 20px 15px;
+    }
+
+    /* (2) Başlık Düzenlemesi */
+    .detail-header h1 {
+        font-size: 1.8em;
+        text-align: center;
+    }
+
+    /* (3) Temel İçerik Kutularını Alt Alta Alma (Review/Specs/Image) */
+    /* Sayfadaki ana içeriği (flex/grid kullanan) alt alta sıralar */
+    .main-detail-content {
+        flex-direction: column;
+    }
+
+    /* (4) Tüm İçerik Kutularının Tam Genişlik Kaplaması */
+    .image-review-container, .technical-specs-box, .product-image-container, .review-box {
+        width: 100%;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* (5) Ürün Resmi Konteyneri Düzenlemesi */
+    .product-image-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .product-image {
+        max-width: 100%; /* Resmi konteyneri aşmayacak şekilde küçültür */
+        height: auto;
+    }
+
+    /* (6) İnceleme Kutusu Düzenlemesi */
+    .review-box {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    .review-box p {
+        font-size: 1em;
+        line-height: 1.6;
+    }
+
+    /* (7) Teknik Özellikler Listesi (Specs List) Düzenlemesi */
+    /* Özellik adı ve değerini alt alta alır */
+    .specs-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 0;
+        border-bottom: 1px solid #333;
+    }
+    .specs-list li:last-child {
+        border-bottom: none;
+    }
+    .specs-list li span:first-child {
+        /* Özellik Adı */
+        font-weight: bold;
+        color: var(--accent-color, #00bcd4); /* Vurgu rengi */
+        margin-bottom: 5px;
+        font-size: 0.95em;
+    }
+    .specs-list li span:last-child {
+        /* Özellik Değeri */
+        font-size: 1em;
+        color: #f0f0f0;
+    }
+}
+
+/* 480px ve altı (Küçük Telefonlar) */
+@media (max-width: 480px) {
+    .detail-header h1 {
+        font-size: 1.5em;
+    }
+}
+
+/*  ASUS ROG Maximus XIII Extreme Z890 İncelemesi  Mobil Uyumluluk */
+@media (max-width: 900px) {
+    /* Header/Navigasyon Düzenlemesi */
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 20px;
+    }
+    .logo, nav {
+        margin: 5px 0;
+    }
+}
+
+/* 768px ve altı (Telefon Görünümü) */
+@media (max-width: 768px) {
+    /* (1) Genel Kapsayıcıyı Daraltma */
+    .main-body-container {
+        padding: 20px 15px;
+    }
+
+    /* (2) Başlık Düzenlemesi */
+    .detail-header h1 {
+        font-size: 1.8em;
+        text-align: center;
+    }
+
+    /* (3) Temel İçerik Kutularını Alt Alta Alma (Review/Specs/Image) */
+    .main-detail-content {
+        flex-direction: column;
+    }
+
+    /* (4) Tüm İçerik Kutularının Tam Genişlik Kaplaması */
+    .image-review-container, .technical-specs-box, .product-image-container, .review-box {
+        width: 100%;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* (5) Ürün Resmi Konteyneri Düzenlemesi */
+    .product-image-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .product-image {
+        max-width: 100%; /* Resmi konteyneri aşmayacak şekilde küçültür */
+        height: auto;
+    }
+
+    /* (6) İnceleme Kutusu Düzenlemesi */
+    .review-box {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    .review-box p {
+        font-size: 1em;
+        line-height: 1.6;
+    }
+
+    /* (7) Teknik Özellikler Listesi (Specs List) Düzenlemesi */
+    /* Özellik adı ve değerini alt alta alır */
+    .specs-list li {
+        display: flex; /* Varsayılanı Flex tutarız ancak yönü değiştiririz */
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 0;
+        border-bottom: 1px solid #333;
+    }
+    .specs-list li:last-child {
+        border-bottom: none;
+    }
+    .specs-list li span:first-child {
+        /* Özellik Adı */
+        font-weight: bold;
+        color: var(--accent-color, #ff4500); /* ROG kırmızısı gibi bir vurgu rengi varsayımı */
+        margin-bottom: 5px;
+        font-size: 0.95em;
+    }
+    .specs-list li span:last-child {
+        /* Özellik Değeri */
+        font-size: 1em;
+        color: #f0f0f0;
+    }
+}
+
+/* 480px ve altı (Küçük Telefonlar) */
+@media (max-width: 480px) {
+    .detail-header h1 {
+        font-size: 1.5em;
+    }
+}
+ /* Seagate FireCuda 120 SSD (4TB)     */
+ /* 900px ve altı (Tablet ve Yatay Telefon Görünümü) */
+@media (max-width: 900px) {
+    /* Header/Navigasyon Düzenlemesi */
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 20px;
+    }
+    .logo, nav {
+        margin: 5px 0;
+    }
+}
+
+/* 768px ve altı (Telefon Görünümü) */
+@media (max-width: 768px) {
+    /* (1) Genel Kapsayıcıyı Daraltma */
+    .main-body-container {
+        padding: 20px 15px;
+    }
+
+    /* (2) Başlık Düzenlemesi */
+    .detail-header h1 {
+        font-size: 1.8em;
+        text-align: center;
+    }
+
+    /* (3) Temel İçerik Kutularını Alt Alta Alma (Review/Specs/Image) */
+    .main-detail-content {
+        flex-direction: column;
+    }
+
+    /* (4) Tüm İçerik Kutularının Tam Genişlik Kaplaması */
+    .image-review-container, .technical-specs-box, .product-image-container, .review-box {
+        width: 100%;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* (5) Ürün Resmi Konteyneri Düzenlemesi */
+    .product-image-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .product-image {
+        max-width: 100%; /* Resmi konteyneri aşmayacak şekilde küçültür */
+        height: auto;
+    }
+
+    /* (6) İnceleme Kutusu Düzenlemesi */
+    .review-box {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    .review-box p {
+        font-size: 1em;
+        line-height: 1.6;
+    }
+
+    /* (7) Teknik Özellikler Listesi (Specs List) Düzenlemesi */
+    /* Özellik adı ve değerini alt alta alır */
+    .specs-list li {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 0;
+        border-bottom: 1px solid #333;
+    }
+    .specs-list li:last-child {
+        border-bottom: none;
+    }
+    .specs-list li span:first-child {
+        /* Özellik Adı */
+        font-weight: bold;
+        color: var(--accent-color, #00e676); /* Seagate FireCuda vurgu rengi varsayımı */
+        margin-bottom: 5px;
+        font-size: 0.95em;
+    }
+    .specs-list li span:last-child {
+        /* Özellik Değeri */
+        font-size: 1em;
+        color: #f0f0f0;
+    }
+}
+
+/* 480px ve altı (Küçük Telefonlar) */
+@media (max-width: 480px) {
+    .detail-header h1 {
+        font-size: 1.5em;
+    }
+}
+
+
+
 
 /* Donanım sayfası haberler kısmı parçalar           */
 /* ==================================== */
@@ -1195,31 +3153,12 @@ nav ul li a:hover {
 .review-card[data-category="storage"] { border-left-color: #8bc34a; }
 .review-card[data-category="motherboard"] { border-left-color: #9c27b0; } /* Anakart/RAM için mor renk */
 
-/* Daha Fazla Yükle Butonu */
-.load-more-container {
-    text-align: center;
-    margin-top: 30px;
-}
-.load-more-btn {
-    padding: 15px 30px;
-}
 
-/* Mobil Uyumluluk */
-@media (max-width: 768px) {
-    .filter-bar {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    #review-search, #category-filter {
-        max-width: none;
-    }
-    /* review-grid mobil uyum yukarıda genel medya sorgularına taşındı */
-}
 /* ================================================= */
 /* 9. İNCELEME DETAY SAYFASI (REVIEW-DETAIL) STİLLERİ */
 /* ================================================= */
 
-/* GENEL DÜZELTMELER: HTML'deki inline body stilinin kaldırılması için bu satırlar gereklidir. */
+
 .main-body-container {
     padding-top: 50px;
 }
@@ -1260,6 +3199,7 @@ nav ul li a:hover {
 }
 
 /* Alt Başlıklar ve Ayırıcılar */
+/* Alt Başlıklar ve Ayırıcılar */
 .main-content h2, .technical-specs-box h2 {
     /* Renkler HTML'de inline olarak atanmış olabilir, burada sadece biçimlendirme yapılır */
     border-bottom: 3px solid #3a3a3a; /* Daha kalın ve koyu ayırıcı */
@@ -1296,6 +3236,11 @@ nav ul li a:hover {
 .main-content ul li.negative {
     border-left-color: #e91e63 !important; /* Pembe Vurgu */
 }
+
+
+
+
+
 
 /* Teknik Özellikler ve Puan Kutusu (Sağ Sütun) */
 .technical-specs-box {
@@ -1386,7 +3331,97 @@ nav ul li a:hover {
         font-size: 1.5em;
     }
 }
+
+
 /*İnceme sayfası Sonu */ 
+
+/* Mobil Uyumluluk (Responsive Design) Başlangıç Donanım sayfası için  */
+
+/* Ekran boyutu 768px ve altı için genel ayarlamalar (Tabletler ve Dikey Telefonlar) */
+@media (max-width: 768px) {
+    
+    /* Header ve Navigasyon Yapısı */
+    header .header-content {
+        flex-direction: column; /* Dikey sıralama */
+        text-align: center;
+        padding: 15px 0; 
+    }
+
+    /* Ana navigasyon listesi */
+    nav ul {
+        flex-direction: column; /* Menü öğelerini alt alta sırala */
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    nav ul li {
+        width: 100%;
+        margin-bottom: 5px;
+        position: static; /* Dropdown'ın konumlanmasını ayarla */
+    }
+    
+    nav ul li a {
+        padding: 10px 0;
+        text-align: center;
+        display: block; /* Bağlantıların tüm genişliği kaplamasını sağla */
+    }
+
+    /* Dropdown Menü Ayarlaması */
+    .dropdown-content {
+        position: static; /* Statik yaparak akışa dahil et */
+        min-width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    
+    /* Ana İçerik ve Bölüm Ayarlamaları */
+    .simple-hero .container,
+    .donanim-merkezi-ozet,
+    .latest-content {
+        padding: 20px 15px; /* Yatay dolguyu azalt */
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 2.5rem; /* Başlık boyutunu küçült */
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    
+    /* Kategori Kartları Grid Yapısı: Tek Sütuna Geçiş */
+    .category-grid {
+        grid-template-columns: 1fr; /* 3 sütundan tek sütuna düşür */
+        gap: 20px;
+    }
+    
+    .category-card {
+        padding: 20px;
+    }
+}
+
+/* Ekran boyutu 600px ve altı için daha dar ekran ayarlamaları (Telefonlar) */
+@media (max-width: 600px) {
+    
+    /* Başlık boyutunu daha da küçült */
+    h1 {
+        font-size: 2rem; 
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    p {
+        font-size: 0.95em; /* Paragraf fontunu biraz küçült */
+    }
+}
+
+/* Mobil Uyumluluk (Responsive Design) Bitiş */
+
+
+
+
 
 
 /* HAKKIMIZDA.HTML İÇİN EKLENEN STİLLER */
@@ -1474,86 +3509,20 @@ nav ul li a:hover {
     opacity: 0.9;
 }
 
-/* Fotoğrafı Yuvarlak Yapma ve Ortalamak İçin */
-.profile-photo-container {
-    text-align: center;
-    margin: 50px 0; 
-}
 
-.profile-photo {
-    width: 250px; 
-    height: 300px; 
-    object-fit: cover; 
-    border-radius: 50%; /* Yuvarlak şekil */
-    border: 8px solid #e0e0e0; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-/* PROFESYONEL VE MİNİMALİST KURUCU HAKKINDA STİLİ */
 
-.about-author {
-    margin: 40px auto;
-    padding: 30px 40px; /* İç boşluğu artırdık */
-    background-color: #f7f7f7; /* Çok açık gri tonu */
-    border-radius: 16px; /* Daha belirgin yumuşak köşeler */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Daha zarif ve derin bir gölge */
-    max-width: 900px; /* Daha geniş bir kart */
-    position: relative;
-    overflow: hidden; /* Vurgu çizgisi için taşmayı gizle */
-}
 
-.about-author {
-    margin: 50px auto;
-    padding: 40px;
-    background-color: #2a3440; /* Koyu, teknolojik arka plan rengi */
-    border-radius: 20px; /* Daha büyük radius */
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25); /* Derin bir gölge efekti */
-    max-width: 850px;
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Hafif beyaz çerçeve */
-}
 
-/* Başlık ve Metin Renklerini Açığa Çıkar */
-.about-author h2 {
-    color: #00bcd4; /* Canlı cam mavisi (Cyan) vurgu rengi */
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 25px;
-    font-size: 2.4em; 
-    font-weight: 900; /* Ekstra kalın */
-    letter-spacing: 1px; /* Harf aralığı */
-    text-transform: uppercase; /* Tüm harfleri büyük yap */
-}
-
-/* Başlık ayırıcı */
-.about-author h2::after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(to right, #00bcd4, #007bff); /* Geçişli (gradient) çizgi */
-    margin: 15px auto 0;
-    border-radius: 4px;
-}
-
-.author-details-box p {
-    line-height: 1.7;
-    color: #e0e0e0; /* Açık gri metin rengi */
-    font-size: 1.1em;
-    padding: 10px 0;
-    text-align: center; /* Metni ortaya hizala (daha farklı bir düzen) */
-}
-
-.author-details-box p strong {
-    color: #ffffff; /* Vurgulanan metni bembeyaz yap */
-    font-weight: 00;
-}
 
 /* =========================
     Hakkımızda sayfası özel stil düzeltme arka plan 
     ========================= */
-
+/*
+ * ANA SAYFADAKİ body dark-mode'a benzetildi, ancak özel bir renk paleti kullanıldı.
+ * body.hakkimizda sınıfı, hakkimizda.html dosyası tarafından kullanılır.
+ */
 body.hakkimizda {
-   
+    /* Yazılım sayfasından esinlenilen daha koyu ve sofistike arka plan */
     background: radial-gradient(circle at top left, #1f2d40, #0a0f1f); 
     background-attachment: fixed; /* Arka planı sabit tutarak derinlik hissi verir */
     color: #e0e0e0; /* Varsayılan Açık Gri Metin Rengi (Okunurluk için aşağıda beyaz ile geçersiz kılınacaktır) */
@@ -1568,16 +3537,50 @@ body.hakkimizda {
     display: flex; 
     flex-direction: column; 
     min-height: 100vh;
+    
 }
 
 /* Ana İçeriğin kalan tüm boşluğu doldurması (Genel CSS'ten alınmıştır) */
 body.hakkimizda main {
     flex-grow: 1; 
+    
 }
 
 /* Header ve Footer, genel body'deki dark-mode değişkenlerini kullanır, 
    ancak burada renkleri geçersiz kılmak için manuel ayar yapıldı. */
-body.hakkimizda header, body.hakkimizda footer {
+body.hakkimizda header 
+     {
+    
+       color: var(--color-primary);
+   
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px var(--color-shadow);
+    position: sticky; /* Sticky Navbar */
+    top: 0;
+    z-index: 1000;
+     }
+     body.hakkimizda .logo {
+    /* Logo rengini anasayfanın koyu temasına uyumlu yapalım */
+      font-size: 1.8rem;
+            font-weight: bold;
+            color:#007bff;
+}
+
+ body.hakkimizda nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px ;
+    margin: 0 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-weight: 600;
+}
+
+
+body.hakkimizda footer {
     background-color: rgba(0, 0, 0, 0.5); /* Daha şeffaf bir görünüm */
     color: #ffffff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
@@ -1594,6 +3597,7 @@ body.hakkimizda .page-title {
 }
 
 /* OKUNURLUK ÇÖZÜMÜ: Giriş metnini saf beyaza çeviriyoruz */
+/* HTML'inizdeki <p class="main-intro"> etiketini hedef alır. */
 body.hakkimizda .main-intro {
     color: #ffffff !important; 
     font-size: 1.2rem; /* Daha okunaklı bir boyut */
@@ -1699,6 +3703,91 @@ body.hakkimizda .contact-button:hover {
         margin: 10px 0;
     }
 }
+
+
+
+/* Fotoğrafı Yuvarlak Yapma ve Ortalamak İçin */
+.profile-photo-container {
+    text-align: center;
+    margin: 50px 0; 
+}
+
+.profile-photo {
+    width: 250px; 
+    height: 300px; 
+    object-fit: cover; 
+    border-radius: 50%; /* Yuvarlak şekil */
+    border: 8px solid #e0e0e0; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+/* PROFESYONEL VE MİNİMALİST KURUCU HAKKINDA STİLİ */
+
+.about-author {
+    margin: 40px auto;
+    padding: 30px 40px; /* İç boşluğu artırdık */
+    background-color: #f7f7f7; /* Çok açık gri tonu */
+    border-radius: 16px; /* Daha belirgin yumuşak köşeler */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Daha zarif ve derin bir gölge */
+    max-width: 900px; /* Daha geniş bir kart */
+    position: relative;
+    overflow: hidden; /* Vurgu çizgisi için taşmayı gizle */
+}
+
+.about-author {
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #2a3440; /* Koyu, teknolojik arka plan rengi */
+    border-radius: 20px; /* Daha büyük radius */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25); /* Derin bir gölge efekti */
+    max-width: 850px;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Hafif beyaz çerçeve */
+}
+
+/* Başlık ve Metin Renklerini Açığa Çıkar */
+.about-author h2 {
+    color: #00bcd4; /* Canlı cam mavisi (Cyan) vurgu rengi */
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 2.4em; 
+    font-weight: 900; /* Ekstra kalın */
+    letter-spacing: 1px; /* Harf aralığı */
+    text-transform: uppercase; /* Tüm harfleri büyük yap */
+}
+
+/* Başlık ayırıcı */
+.about-author h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, #00bcd4, #007bff); /* Geçişli (gradient) çizgi */
+    margin: 15px auto 0;
+    border-radius: 4px;
+}
+
+.author-details-box p {
+    line-height: 1.7;
+    color: #e0e0e0; /* Açık gri metin rengi */
+    font-size: 1.1em;
+    padding: 10px 0;
+    text-align: center; /* Metni ortaya hizala (daha farklı bir düzen) */
+}
+
+.author-details-box p strong {
+    color: #ffffff; /* Vurgulanan metni bembeyaz yap */
+    font-weight: 00;
+}
+
+
+
+
+
+
+
+
+
 
 /* ÖNE ÇIKAN MAKALE (FEATURED ARTICLE) - Mevcut, olduğu gibi bırakıldı */
 .featured-article {
@@ -1931,3 +4020,13 @@ footer a {
         background-color: #151515;
     }
 }
+
+
+
+
+
+
+
+
+
+

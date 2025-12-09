@@ -9,7 +9,7 @@
     <style>
         :root {
             /* Örnek renkler, orijinal CSS dosyasında tanımlı olmalıdır. */
-            --color-primary: #00bcd4; /* Mavi-Turkuaz - React/Ana Renk */
+              --color-primary: #007bff; /* Mavi-Turkuaz - React/Ana Renk */
             --color-secondary: #ff9800; /* Turuncu - Vue/İkincil Renk */
             --color-typescript: #3178c6; /* TypeScript Mavisi */
             --color-background: #121212; /* Koyu arka plan */
@@ -29,10 +29,70 @@
         .ts-liste-ogesi {
             border-left: 3px solid var(--color-typescript) !important; 
         }
+            /* ================================================= */
+/* TS DETAY SAYFASI İÇİN KESİN UYUM (768px ve altı) */
+/* ================================================= */
+@media (max-width: 768px) {
+
+    /* Ana İçerik Konteyneri Düzeltmesi */
+    /* typescript.html'de kullanılan .main-body-container sınıfı için */
+    .main-body-container {
+        /* Inline stil ayarlarını mobil için eziyoruz */
+        padding: 10px !important; /* İçeriğin kenar boşluklarını azalt */
+        margin: 20px auto !important;
+        max-width: 100% !important; /* Maksimum genişliği kaldır */
+        border-radius: 0 !important; /* Kenar yuvarlaklığını kaldır */
+    }
+    
+    /* Genel Paragraf ve Liste Metinlerinin Boyutu */
+    .main-body-container p, 
+    .main-body-container li {
+        font-size: 1rem !important; /* Metin fontunu küçült */
+        line-height: 1.6 !important;
+    }
+    
+    /* Özet Bloğu (Gri Arka Planlı, Kalın Yazı) Düzeltmesi */
+    /* Özel arka plan rengiyle özet paragrafını hedefledik */
+    .main-body-container p[style*="background-color: rgba(49, 120, 198, 0.1)"] {
+        font-size: 1rem !important;
+        padding: 10px !important; /* Dikey/yatay boşlukları azalt */
+        line-height: 1.5 !important;
+    }
+    
+    /* H3 ve H2 Başlıkları Düzeltmesi */
+    .main-body-container h2, 
+    .main-body-container h3 {
+         font-size: 1.5rem !important; /* Alt başlık fontunu küçült */
+         margin-top: 25px !important;
+         margin-bottom: 10px !important;
+         padding: 0 5px; /* Başlıkların ekran kenarına yapışmasını engelle */
+    }
+    
+    /* Liste Öğeleri (<ul>) Sol Boşluk Düzeltmesi */
+    .main-body-container ul {
+        padding-left: 10px !important; /* Listelerin sol boşluğunu azaltıyoruz */
+    }
+    
+    /* TypeScript'e özel liste öğeleri için küçük düzeltme (Eğer özel stilleri varsa) */
+    .main-body-container .ts-liste-ogesi {
+        padding-left: 5px !important;
+    }
+
+    /* ****************************************************** */
+    /* NOT: Navigasyon ve diğer genel yazilim-sayfa bileşenleri */
+    /* önceki adımda sağlanan kodlarla uyumlu olmalıdır.       */
+    /* ****************************************************** */
+}
+  
+
+ 
+
+
+
     </style>
 </head>
 <body class="yazilim-sayfa">
-    <header>
+    <header style="padding: 5px;">
         <div class="logo">TeknoGündem</div>
         <nav>
             <ul>
@@ -82,7 +142,7 @@
             </p>
             
             <div style="margin: 25px 0; text-align: center;">
-                <img src="typecript  neden zorunlu .jpg" alt="TypeScript Mimarisi Görseli" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);">
+                <img src="img/typecript  neden zorunlu .jpg" alt="TypeScript Mimarisi Görseli" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);">
             </div>
 
             <ul style="list-style: none; padding-left: 20px;">
