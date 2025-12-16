@@ -8,7 +8,11 @@
     <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
     
     <style>
-       
+       body {
+          
+            background: radial-gradient(circle at top right, #0a0f1f, #1b2a4b); 
+            color: #e0e0e0; /* Metin rengi, yeni koyu arka plana uyum sağlaması için açık tutuldu */
+        }
         
         /* Ekran kartı incelemesi için özel renk vurguları ve yapısal düzeltmeler (korundu) */
         .main-body-container { 
@@ -18,6 +22,14 @@
             max-width: 1300px;
             margin: 0 auto;
         }
+
+.detail-review-body p {
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color:#e0e0e0 /* #e0e0e0 */
+}
+
+
 
         .detail-header h1 {
             color: #76ff03; /* Neon Yeşil Vurgu */
@@ -32,10 +44,21 @@
         .detail-review-body h2 {
             color: #76ff03; 
         }
+    
+            footer { 
+    text-align: center;
+    padding: 20px 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ccc;
+    margin-top: 0; /* 🚨 Siyah boşluk kalmaması için sıfırlandı */
+    font-size: 0.9rem;
+}
+
+        
         
     </style>
 </head>
-<body class="dark-mode"> <header>
+<body class=""> <header>
         <div class="header-content">
             <h1>TeknoGündem</h1>
             <nav>
@@ -168,6 +191,10 @@
         </section>
 
     </div>
+     <footer>
+        <p>© 2025 TEKNOGÜNDEM DONANIM. Tüm hakları saklıdır.</p>
+    </footer>
+
 
 </body>
 </html>

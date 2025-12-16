@@ -26,6 +26,7 @@
             padding: 0;
             background-color: var(--color-background);
             color: var(--color-text);
+                background: radial-gradient(circle at top right, #0a0f1f, #1b2a4b);
         }
 
         /* HEADER */
@@ -44,7 +45,7 @@
         .logo {
             font-size: 1.8em;
             font-weight: 700;
-            color: blue;
+                color: #007bff;
             letter-spacing: -1px;
         }
         .logo span {color: blue; }
@@ -55,6 +56,7 @@
             gap: 20px;
             margin: 0;
             padding: 0;
+            gap: 30px;
         }
 
         nav ul li {
@@ -73,47 +75,53 @@
         nav ul li a:hover { color: var(--color-secondary); }
 
         /* --- DROPDOWN (AÇILIR MENÜ) STİLLERİ --- */
-        .dropdown-menu {
-            display: none; 
-            position: absolute;
-            top: 100%; 
-            left: 0;
-            background-color: var(--color-card-background);
-            min-width: 160px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
-            z-index: 1001;
-            border: 1px solid var(--color-border);
-            border-radius: 4px;
-            padding: 10px 0;
-            flex-direction: column; 
-        }
+        /* --- HABERLER 2 STİLİ AÇILIR MENÜ (TAM UYUM) --- */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
 
-        .dropdown-menu li {
-            width: 100%;
-            padding: 0;
-        }
+.dropdown-content {
+    display: none; 
+    position: absolute;
+    background-color: #0d1a2f !important; /* Koyu lacivert arka plan */
+    min-width: 170px;
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    border-radius: 0 0 10px 10px;
+    top: 100%;
+    left: 0;
+    border-top: 3px solid #00bcd4 !important; /* Turkuaz üst çizgi */
+}
 
-        .dropdown-menu li a {
-            padding: 10px 20px;
-            color: var(--color-text);
-            font-size: 0.95em;
-            border-bottom: 1px solid #2a2a2a;
-        }
+.dropdown-content a {
+    color: #f0f0f0 !important;
+    padding: 12px 20px !important;
+    text-decoration: none !important;
+    display: block !important; /* Linkleri alt alta dizer */
+    text-align: left !important;
+    font-size: 14px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: none !important; /* Varsa eski çizgileri kaldırır */
+}
 
-        .dropdown-menu li:last-child a {
-            border-bottom: none;
-        }
+/* Üzerine gelince sağa kayma ve renk değişimi efekti */
+.dropdown-content a:hover {
+    background-color: rgba(0, 188, 212, 0.2) !important;
+    color: #00bcd4 !important;
+    padding-left: 28px !important; /* Haberler 2 sayfasındaki imza hareket */
+}
 
-        .dropdown-menu li a:hover {
-            background-color: #2a2a2a;
-            color: var(--accent-color);
-        }
+/* Menü açılış animasyonu */
+.dropdown:hover .dropdown-content {
+    display: block !important;
+    animation: fadeInMenu 0.3s ease;
+}
 
-        /* Hover veya Dokunma ile Açılma */
-        .dropdown:hover .dropdown-menu {
-            display: flex; 
-        }
-
+@keyframes fadeInMenu {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
         /* --- HERO VE MAIN CONTENT --- */
 
         .hero-article-header {
@@ -304,15 +312,7 @@
         .news-list a { color: var(--color-text); text-decoration: none; font-weight: 600; display: block; }
         .news-list a:hover { color: var(--accent-color); }
         .news-list span { font-size: 0.8em; color: var(--text-gray); display: block; margin-top: 5px; }
-
-        footer {
-            background-color: #0f0f0f;
-            text-align: center;
-            padding: 40px;
-            margin-top: 60px;
-            border-top: 1px solid var(--color-border);
-            color: var(--text-gray);
-        }
+footer { background-color: rgba(0, 0, 0, 0.5); color: white; text-align: center; padding: 5px 0; }
 
         @media (max-width: 900px) {
             .container { flex-direction: column; }
@@ -326,20 +326,20 @@
 
     <header>
         <div class="logo">TeknoGündem</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Ana Sayfa</a></li>
-                <li class="dropdown">
-                    <a href="#">Donanım </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="haberler.html">Haberler</a></li>
-                        <li><a href="incelemeler.html">İncelemeler</a></li>
-                    </ul>
-                </li>
-                <li><a href="yazılım.html">Yazılım</a></li>
-                <li><a href="hakkimizda.html">Hakkımızda</a></li>
-            </ul>
-        </nav>
+       <nav>
+    <ul>
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li class="dropdown">
+            <a href="donanım.html">Donanım</a>
+            <div class="dropdown-content"> 
+                <a href="haberler.html">Haberler</a>
+                <a href="incelemeler.html">İncelemeler</a>
+            </div>
+        </li>
+        <li><a href="yazılım.html">Yazılım</a></li>
+        <li><a href="hakkimizda.html">Hakkımızda</a></li>
+    </ul>
+</nav>
     </header>
 
     <section class="hero-article-header">
@@ -365,7 +365,7 @@
                     allowfullscreen>
                 </iframe>
             </div>
-            <div class="caption">Video: Yeni ışın izleme (Ray Tracing) demosunun yüksek çözünürlüklü görüntüleri.</div>
+            <div class="caption" style="color:white;">Video: Yeni ışın izleme (Ray Tracing) demosunun yüksek çözünürlüklü görüntüleri.</div>
 
             <article class="article-text">
                 <p>Bilgisayar grafikleri dünyasında "Kutsal Kase" olarak nitelendirilen <strong>Işın İzleme (Ray Tracing)</strong> teknolojisi, 2018 yılında hayatımıza girdiğinde sadece en üst düzey, servet değerindeki donanımların ayrıcalığıydı. Işığın fiziksel davranışını simüle eden bu teknoloji, o dönemde 60 FPS barajını aşmak için binlerce dolarlık kartlara ihtiyaç duyuyordu. Performans maliyeti o kadar yüksekti ki, çoğu oyuncu bu özelliği sadece birkaç ekran görüntüsü almak için açıp kapatıyordu. Ancak 2025 yılı itibarıyla bu tablo tamamen değişti. Artık 300 doların altındaki giriş seviyesi ekran kartları bile, bu hesaplama yoğunluklu işlemi kabul edilebilir kare hızlarında başarıyla gerçekleştirebiliyor.</p>
@@ -476,7 +476,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 TeknoGündem Yayıncılık. Her hakkı saklıdır. <br></p>
+        <p>&copy;  2025 TeknoGündem. Tüm hakları saklıdır.  <br></p>
     </footer>
 
 </body>

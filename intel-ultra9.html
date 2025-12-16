@@ -43,31 +43,77 @@
 
         /* HEADER STİLLERİ */
         header {
-            background-color: var(--color-card-background);
+      
+            background-color: #1e1e1e;;
             color: var(--color-text);
-            padding: 5px;
+            padding: 4px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 2px 4px var(--color-shadow);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 1000;  
         }
+          .header-content {
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 
         .logo { font-size: 1.8em; font-weight: 800; color: var(--color-primary); }
 
-        nav ul { list-style: none; display: flex; gap: 25px; padding: 2px; }
+        nav ul { list-style: none; display: flex; gap: 25px; padding: 2px; gap: 10px; }
         nav ul li a { color: var(--color-text); text-decoration: none; font-weight: 600; transition: color 0.2s; }
         nav ul li a:hover { color: var(--color-secondary); }
 
         /* Dropdown */
-        .dropdown { position: relative; display: inline-block; }
-        .dropdown-content { display: none; position: absolute; background-color: var(--color-card-background); min-width: 160px; box-shadow: 0 8px 16px var(--color-shadow); z-index: 1; border-top: 3px solid var(--color-primary); border-radius: 0 0 5px 5px; }
-        .dropdown:hover .dropdown-content { display: block; }
-        .dropdown-content li a { padding: 12px 16px; display: block; border-left: 3px solid transparent; }
-        .dropdown-content li a:hover { background-color: rgba(255,255,255,0.05); color: var(--color-secondary); border-left: 3px solid var(--color-secondary); }
+     /* --- Dropdown Temel Yapısı --- */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
 
+/* --- Açılır İçerik Kutusu --- */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #1e1e1e; /* Koyu arka plan */
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    border-top: 3px solid #007bff; /* Üstteki ana mavi çizgi */
+    border-radius: 0 0 5px 5px;
+    padding: 0;
+    list-style: none;
+}
+
+/* Mouse üzerine gelince göster */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* --- Menü Linkleri --- */
+.dropdown-content li a {
+    color: #e0e0e0 !important;
+    padding: 12px 16px;
+    display: block;
+    text-decoration: none;
+    font-size: 0.95em;
+    border-left: 3px solid transparent; /* Varsayılan şeffaf sol çizgi */
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+/* --- Hover (Üzerine Gelince) Efekti --- */
+.dropdown-content li a:hover {
+    background-color: rgba(255, 255, 255, 0.05); /* Hafif aydınlanma */
+    color: #00bcd4 !important; /* Intel mavisi yazı rengi */
+    border-left: 3px solid #00bcd4; /* Sol tarafta beliren renkli çizgi */
+}
 
         /* ----------------------------------------------------------- */
         /* 🔥 YENİ GELİŞMİŞ BAŞLIK ALANI (FOTOĞRAFLI HERO) 🔥 */
@@ -142,6 +188,7 @@
 
         /* İÇERİK YAPISI */
         .full-width-section {
+            background:  radial-gradient(circle at top right, #0a0f1f, #1b2a4b);
             width: 100%;
             background-color: var(--color-card-background);
             box-shadow: 0 4px 15px var(--color-shadow);
@@ -457,7 +504,7 @@
                          alt="Yeni Nesil Intel Core Ultra İşlemcileri" 
                          loading="lazy"
                          onerror="this.style.display='none'">
-                    <figcaption style="font-size: 0.8em; color: var(--text-gray); text-align: center; padding: 10px;">Core Ultra 9, mobil işlemci pazarında yeni bir dönemin başlangıcı. (Kaynak: Intel)</figcaption>
+                    <figcaption style="font-size: 0.8em; color:white; text-align: center; padding: 10px;">Core Ultra 9, mobil işlemci pazarında yeni bir dönemin başlangıcı. (Kaynak: Intel)</figcaption>
                 </figure>
 
                 <div class="article-body-text">

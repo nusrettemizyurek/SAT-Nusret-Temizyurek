@@ -8,6 +8,8 @@
     <style>
         /* Genel Stil ve Renkler */
         body {
+            background: radial-gradient(circle at top left, #1f2d40, #0a0f1f);
+            background-attachment: fixed;
             background-color: #0d1117;
             color: #f0f0f0;
             font-family: 'Poppins', sans-serif;
@@ -17,8 +19,8 @@
 
         /* HEADER & NAV STİLLERİ */
         header {
-            background-color: #161b22;
-            padding: 15px 40px;
+            background-color: #1e1e1e;
+            padding: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -30,7 +32,7 @@
             color:#007bff;;
         }
         nav ul {
-            list-style: none; display: flex; gap: 20px; margin: 0; padding: 0;
+            list-style: none; display: flex; gap: 30px; margin: 0; padding: 0;
         }
         nav ul li { position: relative; }
         nav a {
@@ -39,18 +41,54 @@
         nav a:hover, nav .active {
             color: #00c6ff;
         }
-        .dropdown-content {
-            display: none; position: absolute; top: 100%; left: 0; background-color: #161b22;
-            min-width: 160px; box-shadow: 0 8px 16px rgba(0,0,0,0.5); z-index: 1001;
-            border: 1px solid #30363d; border-radius: 4px; padding: 10px 0; flex-direction: column;
-        }
-        .dropdown:hover .dropdown-content { display: flex; }
-        .dropdown-content a {
-            color: #ccc; padding: 10px 15px; text-decoration: none; display: block;
-        }
-        .dropdown-content a:hover {
-            background-color: #30363d; color: #00c6ff;
-        }
+       .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none; 
+    position: absolute;
+    background-color: #0d1a2f !important; /* Haberler 2 koyu lacivert */
+    min-width: 170px;
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    border-radius: 0 0 10px 10px;
+    top: 100%;
+    left: 0;
+    border-top: 3px solid #00bcd4 !important; /* Turkuaz üst çizgi */
+    padding: 0 !important;
+}
+
+.dropdown-content a {
+    color: #f0f0f0 !important;
+    padding: 12px 20px !important;
+    text-decoration: none !important;
+    display: block !important; /* Yazıların alt alta gelmesini sağlar */
+    text-align: left !important;
+    font-size: 14px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: none !important;
+}
+
+/* Üzerine gelince sağa kayma efekti */
+.dropdown-content a:hover {
+    background-color: rgba(0, 188, 212, 0.2) !important;
+    color: #00bcd4 !important;
+    padding-left: 28px !important; /* Sağa kayma hareketi */
+}
+
+/* Açılış animasyonu */
+.dropdown:hover .dropdown-content {
+    display: block !important;
+    animation: fadeInMenu 0.3s ease;
+}
+
+@keyframes fadeInMenu {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+  
 
         /* Makale İçeriği Stilleri */
         .article-container {
@@ -62,7 +100,7 @@
         .article-meta {
             font-size: 0.9em; color: #777; margin-bottom: 30px; border-bottom: 1px solid #30363d; padding-bottom: 15px;
         }
-        .article-meta span { margin-right: 20px; }
+        .article-meta span { margin-right: 20px; color: white; }
         .article-body h2 {
             font-size: 1.8em; color: #f0f0f0; margin-top: 40px; margin-bottom: 15px;
             border-left: 4px solid #00c6ff; padding-left: 10px;
@@ -74,10 +112,10 @@
             font-size: 1.2em; color: #f0f0f0; margin-top: 20px; margin-bottom: 10px;
         }
         .article-body p {
-            margin-bottom: 20px; color: #ccc; text-align: justify;
+            margin-bottom: 20px; color: white; text-align: justify;
         }
         .article-body ul {
-            list-style: disc; margin-left: 25px; margin-bottom: 20px; color: #ccc;
+            list-style: disc; margin-left: 25px; margin-bottom: 20px; color: white;
         }
         .article-body strong {
             color: #00c6ff;
@@ -87,7 +125,7 @@
         }
         .article-body blockquote {
             border-left: 5px solid #00c6ff; margin: 25px 0; padding: 10px 20px;
-            background-color: #161b22; color: #ccc; font-style: italic; border-radius: 4px;
+            background-color: #161b22; color: white; font-style: italic; border-radius: 4px;
         }
         /* Kod bloğu stili */
         .article-body code {
@@ -110,8 +148,8 @@
 
         /* FOOTER STİLİ */
         footer {
-            text-align: center; padding: 20px; border-top: 1px solid #30363d;
-            background-color: #0d1117; color: #777; margin-top: 40px;
+            text-align: center; padding: 10px; border-top: 1px solid #30363d;
+            background-color: #0d1a2f; color: white; 
         }
         /* ================================================= */
         /* MOBİL UYUMLULUK KODLARI (MAX 768px) */
@@ -234,7 +272,7 @@
         <div class="article-meta">
             <span>Yazar: Dr. Ali Yılmaz (Veri Bilimi Uzmanı)</span>
             <span>Tarih: 12 Kasım 2025</span>
-            <span>Okuma Süresi: ~18 dakika</span>
+            <span>Okuma Süresi: ~10 dakika</span>
             <span>Kategori:Veri Bilimi, Makine Öğrenimi, İş Zekası</span>
         </div>
 

@@ -54,13 +54,58 @@ header {
         .dropdown { position: relative; }
         nav a { color: var(--color-text); text-decoration: none; padding: 5px 10px; transition: color 0.3s, border-bottom 0.3s; display: block; }
         nav a:hover { color: var(--color-secondary); border-bottom: 2px solid var(--color-secondary); }
+/* Açılır Menü Ana Konteynırı */
+/* Açılır Menü Ana Konteynırı */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
 
-        .dropdown-content { display: none; position: absolute; background-color: var(--color-card-background); min-width: 180px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5); z-index: 10; list-style: none; padding: 10px 0; border-radius: 6px; border: 1px solid var(--color-border); top: 100%; left: 0; margin-top: 5px; }
-        .dropdown-content a { padding: 10px 20px; text-align: left; border-bottom: none; }
-        .dropdown-content a:hover { background-color: var(--color-primary); color: white; }
-        .dropdown:hover .dropdown-content { display: block; }
+.dropdown-content {
+    display: none; 
+    position: absolute;
+    background-color: #0d1a2f !important; /* Haberler 2 koyu lacivert */
+    min-width: 170px;
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    border-radius: 0 0 10px 10px;
+    top: 100%;
+    left: 0;
+    border-top: 3px solid #00bcd4 !important; /* Turkuaz üst çizgi */
+    padding: 0 !important;
+}
 
-        footer { background-color: var(--color-card-background); color: var(--text-gray); text-align: center; padding: 20px 0; margin-top: 50px; border-top: 1px solid var(--color-border); }
+.dropdown-content a {
+    color: #f0f0f0 !important;
+    padding: 12px 20px !important;
+    text-decoration: none !important;
+    display: block !important; /* Yazıların alt alta gelmesini sağlar */
+    text-align: left !important;
+    font-size: 14px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: none !important;
+}
+
+/* Üzerine gelince sağa kayma efekti */
+.dropdown-content a:hover {
+    background-color: rgba(0, 188, 212, 0.2) !important;
+    color: #00bcd4 !important;
+    padding-left: 28px !important; /* Sağa kayma hareketi */
+}
+
+/* Açılış animasyonu */
+.dropdown:hover .dropdown-content {
+    display: block !important;
+    animation: fadeInMenu 0.3s ease;
+}
+
+@keyframes fadeInMenu {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+  
+
+        footer { background-color: rgba(0, 0, 0, 0.5); color: var(--text-gray); text-align: center; padding: 20px 0; margin-top: 50px; border-top: 1px solid var(--color-border); }
         
         /* Ana Kapsayıcı */
         .full-width-section { width: 100%; padding: 40px 0; }
@@ -373,7 +418,7 @@ header {
                     
                     <figure style="margin: 20px 0;">
                         <img src="img/gddr7  grafiği.png" alt="GDDR7 Bant Genişliği Grafiği" loading="lazy" style="max-width: 650px; margin: 0 auto; display: block;">
-                        <figcaption style="font-size: 0.8em; color: var(--text-gray); text-align: center;">GDDR7'nin bant genişliği potansiyeli (Görsel temsilidir).</figcaption>
+                        <figcaption style="font-size: 0.8em; color: white; text-align: center;">GDDR7'nin bant genişliği potansiyeli (Görsel temsilidir).</figcaption>
                     </figure>
                     <p>Kartın 12 GB GDDR7 bellekle gelmesi, bazı kullanıcıları hayal kırıklığına uğratsa da, asıl dikkat edilmesi gereken nokta kullanılan bellek tipinin hızıdır. GDDR7 standardı, bir önceki nesil GDDR6X'e göre çok daha yüksek bant genişliği sunarak, daha az bit genişliğinde bile yüksek çözünürlüklü ve yüksek hızlı veri transferini mümkün kılıyor.</p>
                     

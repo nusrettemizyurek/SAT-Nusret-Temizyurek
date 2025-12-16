@@ -18,28 +18,42 @@
             background-color: #f4f7f9;
             color: #333;
             line-height: 1.6;
+            background: radial-gradient(circle at top right, #0a0f1f, #1b2a4b); 
+    color: #f0f0f0; /* Metin rengini açık ayarla */
+    background-attachment: fixed;
+    
+    /* Yazılım sayfasındaki kartlar ve koyu arka plan için kullanılan değişkenler */
+    --color-dark-bg: #0d1a2f; 
+    --color-card-bg: rgba(255, 255, 255, 0.05);
         }
 
         /* Header Stili */
        header {
-    background-color: #2c3e50;
-    color: white;
-    padding: 5px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   background-color: #1e1e1e;;
+            color: var(--color-text);
+      
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px var(--color-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;  
 }
   .header-content {
     width: 100%;
-    padding: 0 25px;
+    padding: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 header h1 {
-    margin-right: auto;       /* TEKNOGÜNDEM solda */
+          /* TEKNOGÜNDEM solda */
     text-align: left;
-    font-size: 28px;
+    font-size: 1.8re;
     font-weight: bold;
+    color:#007bff;
 }
 
        
@@ -47,7 +61,8 @@ header h1 {
     header nav ul {
     list-style: none;
     display: flex;
-    margin-left: auto;     /* ← Menü tamamen sağa yaslanır */
+    margin-left: auto; 
+        /* ← Menü tamamen sağa yaslanır */
 }
 
         header nav ul li a {
@@ -57,11 +72,14 @@ header h1 {
             display: block;
             font-weight: 600;
             transition: background-color 0.3s;
+            margin: 0 5px;
+            gap: 10px;
         }
 
         header nav ul li a:hover {
-    background-color: #00bcd4;
-    border-radius: 4px;
+ background-color: var(--color-primary);
+    transform: translateY(-2px);
+   
 }
 
         /* Main İçerik Kapsayıcısı */
@@ -69,7 +87,9 @@ header h1 {
             max-width: 1200px;
             margin: 20px auto;
             padding: 0 20px;
+      
         }
+        
 
         /* Başlık Bölümü */
         .page-title-section {
@@ -80,12 +100,12 @@ header h1 {
 
         .page-title {
             font-size: 2.2em;
-            color: #2c3e50;
+            color: white;
             margin-bottom: 5px;
         }
 
         .subtitle {
-            color: #7f8c8d;
+            color: white;
             font-size: 1.1em;
         }
 
@@ -132,6 +152,8 @@ header h1 {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+          background-color: var(--color-dark-bg);
+            
         }
 
         .category-tag {
@@ -148,19 +170,19 @@ header h1 {
 
         .card-text-content h2 {
             font-size: 1.8em;
-            color: #2c3e50;
+            color: white;
             margin-bottom: 10px;
         }
 
         .card-text-content p {
-            color: #555;
+            color: white;
             margin-bottom: 20px;
             flex-grow: 1; /* Metnin kart içinde esnek büyümesini sağlar */
         }
 
         .meta-data {
             font-size: 0.9em;
-            color: #95a5a6;
+            color: white;
             margin-bottom: 15px;
         }
 
@@ -184,7 +206,7 @@ header h1 {
         }
 
         .news-card-small {
-            background-color: #fff;
+            background-color: black;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -204,6 +226,7 @@ header h1 {
 
         .card-content-small {
             padding: 15px;
+         background-color: var(--color-dark-bg);
         }
 
         .category-tag-small {
@@ -219,13 +242,13 @@ header h1 {
         
         .card-content-small h4 {
             font-size: 1.2em;
-            color: #2c3e50;
+            color: white;
             margin-bottom: 8px;
         }
 
         .card-content-small p {
             font-size: 0.9em;
-            color: #555;
+            color: white;
         }
 
         .read-more-link {
@@ -244,7 +267,7 @@ header h1 {
 
         .news-card-grid {
             display: flex;
-            background-color: #fff;
+           
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
@@ -268,23 +291,24 @@ header h1 {
             flex-direction: column;
             justify-content: space-between;
             flex-grow: 1;
+           background-color: var(--color-dark-bg);
         }
 
         .card-content h4 {
             font-size: 1.1em;
-            color: #2c3e50;
+            color: white;
             margin-bottom: 5px;
         }
 
         .card-content p {
             font-size: 0.9em;
-            color: #555;
+            color:white;
             margin-bottom: 10px;
         }
 
         .news-meta {
             font-size: 0.8em;
-            color: #95a5a6;
+            color: white;
             display: block;
             margin-bottom: 10px;
         }
@@ -309,7 +333,7 @@ header h1 {
         }
 
         .pagination a {
-            color: #2c3e50;
+            color: white;
             padding: 10px 15px;
             text-decoration: none;
             border: 1px solid #ddd;
@@ -330,7 +354,7 @@ header h1 {
 
         /* Footer Stili */
         footer {
-            background-color: #2c3e50;
+            background-color:#0d1a2f;
             color: white;
             text-align: center;
             padding: 20px 0;
@@ -395,49 +419,54 @@ header h1 {
         /* DROPDOWN MENU CSS BAŞLANGICI */
 
         /* Açılır menü ana konteynerını göreceli yapar */
-        .dropdown {
-            position: relative; 
-        }
+       /* Açılır Menü Ana Yapısı */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
 
-          .dropdown > a {
-    display: block; /* Tam alan hover olur */
-      }
-
-
-        /* Açılır menü içeriği (Gizlenen kısım) */
-       .dropdown-content {
-    display: none;
+/* Donanım ve Ana Sayfa Stiliyle Açılır Panel */
+.dropdown-content {
+    display: none; 
     position: absolute;
-    background-color: #2c3e50;
-    min-width: 150px;
+    background-color: #0d1a2f; /* Ana sayfanın koyu lacivert tonu */
+    min-width: 200px;
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.7);
     z-index: 1000;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    padding: 0;
-    
-    top: 100%; /* Menü tam altında */
-    left: 0;   /* Hizalama */
-     }
+    border-radius: 0 0 10px 10px;
+    top: 100%;
+    left: 0;
+    border-top: 3px solid #00bcd4; /* Ana sayfadaki turkuaz vurgu rengi */
+}
 
-
-        /* Açılır menüdeki linkler */
-        .dropdown-content a {
-            color: white !important; /* Önemli: Bağlantı rengini Header'daki renge sabitle */
-            padding: 10px 15px;
-            text-decoration: none;
-            display: block;
-            font-weight: 400; /* Normal yazı fontu */
-            transition: background-color 0.3s;
-        }
-
-        /* Açılır menü linklerinin hover efekti */
-        .dropdown-content a:hover {
-            background-color: #00bcd4; /* Vurgulama rengi */
-            border-radius: 0; /* Köşeleri düz tut */
-        }
-
-        /* KRİTİK: Ana menü öğesinin üzerine gelindiğinde açılır içeriği göster */
-        .dropdown:hover .dropdown-content {
+/* Menü İçindeki Linkler */
+.dropdown-content a {
+    color: #f0f0f0 !important;
+    padding: 14px 20px;
+    text-decoration: none;
     display: block;
+    text-align: left;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Üzerine Gelince (Hover) Oluşacak Efekt */
+.dropdown-content a:hover {
+    background-color: rgba(0, 188, 212, 0.2); /* Hafif turkuaz arka plan */
+    color: #00bcd4 !important; /* Yazı rengi turkuaz olur */
+    padding-left: 28px; /* Donanım sayfasındaki o meşhur sağa kayma hareketi */
+}
+
+/* Fare üzerine geldiğinde menüyü göster */
+.dropdown:hover .dropdown-content {
+    display: block;
+    animation: fadeInMenu 0.3s ease;
+}
+
+/* Menü için Yumuşak Belirme Animasyonu */
+@keyframes fadeInMenu {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
         /* Mobil görünümde menülerin alt alta gelmesi için ek ayar */
@@ -570,7 +599,7 @@ header h1 {
                     </article>
 
                     <article class="news-card-grid">
-                        <img src="img/ekran kartı  haberler.jpg" alt="Ekran Kartı Piyasa" loading="lazy">
+                        <img src="img/gpu zinciri.jpg" alt="Ekran Kartı Piyasa" loading="lazy">
                         <div class="card-content">
                             <div>
                                 <h4>Global GPU Tedarik Zinciri Sorunları Tamamen Çözüldü</h4>

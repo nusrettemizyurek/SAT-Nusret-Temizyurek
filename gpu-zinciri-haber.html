@@ -69,14 +69,19 @@ header {
         .logo {
             font-size: 1.8em;
             font-weight: 800;
-            color: blue;
+                color: #007bff;
         }
 
         nav ul {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-        }
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+nav {
+    position: relative; /* Menünün referans noktası burası olmalı */
+}
 
         nav ul li a {
             color: var(--color-text);
@@ -90,52 +95,59 @@ header {
             color: var(--color-secondary);
         }
 
-        /* Dropdown Stilleri */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
         .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: var(--color-card-background);
-            min-width: 160px;
-            box-shadow: 0 8px 16px var(--color-shadow);
-            z-index: 1;
-            border-top: 3px solid var(--color-primary);
-            border-radius: 0 0 5px 5px;
-        }
+    display: none; 
+    position: absolute;
+    background-color: #0d1a2f; /* Haberler sayfasındaki koyu lacivert tonu */
+    min-width: 200px;
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    border-radius: 0 0 10px 10px;
+    top: 100%;
+    left: 0;
+    border-top: 3px solid #00bcd4; /* Haberler sayfasındaki turkuaz vurgu */
+}
 
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        
-        .dropdown-content li {
-            padding: 0;
-            margin: 0;
-        }
+/* Menü İçindeki Linkler */
+.dropdown-content li {
+    display: block;
+    width: 100%;
+}
 
-        .dropdown-content li a {
-            color: var(--color-text);
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block; 
-            font-size: 0.95em;
-            border-left: 3px solid transparent;
-            transition: background-color 0.2s, color 0.2s, border-left 0.2s;
-        }
+.dropdown-content li a {
+    color: #f0f0f0 !important;
+    padding: 14px 20px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 0.95rem;
+    border-left: none !important; /* Eski stilden kalan çizgiyi kaldırır */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
 
-        .dropdown-content li a:hover {
-            background-color: #2a2a2a;
-            color: var(--color-secondary);
-            border-left: 3px solid var(--color-secondary);
-        }
+/* Üzerine Gelince (Hover) Oluşacak Efekt */
+.dropdown-content li a:hover {
+    background-color: rgba(0, 188, 212, 0.2) !important; /* Hafif turkuaz arka plan */
+    color: #00bcd4 !important; /* Yazı rengi turkuaz olur */
+    padding-left: 28px !important; /* Haberler sayfasındaki sağa kayma hareketi */
+}
+
+/* Fare üzerine geldiğinde menüyü göster */
+.dropdown:hover .dropdown-content {
+    display: block;
+    animation: fadeInMenu 0.3s ease;
+}
+
+/* Menü için Yumuşak Belirme Animasyonu */
+@keyframes fadeInMenu {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
         
         /* FOOTER STİLLERİ */
         footer {
-            background-color: var(--color-footer);
-            color: #ffffff;
+            background-color:#0d1a2f;
+            color: white;
             text-align: center;
             padding: 20px 0;
             margin-top: 50px;
@@ -150,6 +162,7 @@ header {
             background-color: var(--color-card-background);
             box-shadow: 0 4px 15px var(--color-shadow);
             padding: 40px 0;
+        background: radial-gradient(circle at top right, #0a0f1f, #1b2a4b);
         }
 
         .content-wrapper {

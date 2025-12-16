@@ -28,6 +28,7 @@
             color: var(--color-text); 
             line-height: 1.6; 
             transition: background-color 0.3s, color 0.3s;
+           background:  radial-gradient(circle at top right, #0a0f1f, #1b2a4b);
         }
 
         /* HEADER & NAVİGASYON STİLLERİ */
@@ -44,7 +45,7 @@
             font-size: 1.5em; 
             font-weight: 800; 
             letter-spacing: 1px; 
-            color: blue;
+                color: #007bff;
         }
         header nav ul { list-style: none; display: flex; margin: 0; padding: 0; }
         header nav ul li { position: relative; }
@@ -60,27 +61,57 @@
             background-color: var(--color-secondary); 
             color: var(--color-card-background); 
         }
-        .dropdown-content { 
-            display: none; 
-            position: absolute; 
-            background-color: var(--color-card-background); 
-            min-width: 160px; 
-            z-index: 1000; 
-            box-shadow: 0 8px 16px rgba(0,0,0,0.5); 
-            list-style: none; 
-            padding: 0; 
-            margin-top: 0; 
-        }
-        .dropdown:hover .dropdown-content { display: block; }
-        .dropdown-content li a { 
-            padding: 12px 16px; 
-            color: var(--color-text); 
-            border-bottom: 1px solid var(--color-border);
-        }
-        .dropdown-content li a:hover { 
-            background-color: var(--accent-color); 
-            color: #111; 
-        }
+       /* --- HABERLER SAYFASIYLA BİREBİR AYNI ŞIK MENÜ --- */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Açılır Kutu: Genişlik, Lacivert Arka Plan ve Turkuaz Üst Çizgi */
+.dropdown-content {
+    display: none; 
+    position: absolute;
+    background-color: #0d1a2f !important; /* Haberler sayfasındaki koyu ton */
+    min-width: 240px !important; /* Ferah görünüm için genişlik artırıldı */
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.7) !important;
+    z-index: 10000;
+    border-radius: 0 0 10px 10px;
+    top: 100%;
+    left: 0;
+    border-top: 4px solid #00bcd4 !important; /* Sayfanın imzası olan turkuaz çizgi */
+    padding: 10px 0 !important;
+}
+
+/* Menü Linkleri: Geniş Boşluklar ve Yazı Tipi */
+.dropdown-content a {
+    color: #f0f0f0 !important;
+    padding: 16px 24px !important; /* Bitişikliği önleyen dikey ve yatay boşluk */
+    text-decoration: none !important;
+    display: block !important;
+    text-align: left !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+/* Üzerine Gelince: Sağa Kayma ve Turkuaz Renk Vurgusu */
+.dropdown-content a:hover {
+    background-color: rgba(0, 188, 212, 0.15) !important; 
+    color: #00bcd4 !important; 
+    padding-left: 35px !important; /* İstediğin o meşhur sağa kayma efekti */
+}
+
+/* Menü Açılış Efekti */
+.dropdown:hover .dropdown-content {
+    display: block !important;
+    animation: fadeInMenu 0.3s ease-out;
+}
+
+@keyframes fadeInMenu {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
         .dropdown-content li:last-child a { border-bottom: none; }
 
 
@@ -153,6 +184,7 @@
             width: 100%; 
             background-color: var(--color-background); 
             padding: 40px 0; 
+            background: radial-gradient(circle at top right, #0a0f1f, #1b2a4b);
         }
         .content-wrapper { max-width: 1400px; margin: 0 auto; padding: 0 40px; display: flex; gap: 40px; }
         .article-main-text-area { flex: 3; min-width: 0; }
@@ -274,8 +306,8 @@
 
         /* Footer */
         footer { 
-            background-color: #111; 
-            color: var(--text-gray); 
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white; 
             text-align: center; 
             padding: 30px 0; 
             margin-top: 40px; 
@@ -342,20 +374,20 @@
 
                 <figure class="featured-image-detail">
                     <img src="img/gaffet.jpg" alt="GAAFET Nanosheet ve FinFET Transistör Mimarisinin Karşılaştırmalı Görseli" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px;">
-                    <figcaption style="font-size: 0.8em; color: var(--text-gray); text-align: center;">GAAFET (Nanosheet) transistör mimarisinin görseli. FinFET'e göre daha yüksek enerji verimliliği sağlar.</figcaption>
+                    <figcaption style="font-size: 0.8em; color: white; text-align: center;padding: 4px;">GAAFET (Nanosheet) transistör mimarisinin görseli. FinFET'e göre daha yüksek enerji verimliliği sağlar.</figcaption>
                 </figure>
                 
                 <section class="article-body-text">
-                    <p>Teknoloji dünyasının kalbi Tayvan'da atıyor. **TSMC**, uzun süredir üzerinde çalıştığı ve "N2" olarak adlandırdığı **2 nanometre (nm)** üretim sürecinde seri üretim öncesi son aşama olan **risk üretimini** başarıyla geçtiğini duyurdu. Bu gelişme, sadece daha hızlı telefonlar demek değil; yapay zeka işlemcilerinden otonom araçlara kadar her alanda devrimsel bir sıçrama anlamına geliyor. N2 sürecinin 2025'in son çeyreğinde ticari üretime başlaması bekleniyor.</p>
+                    <p>Teknoloji dünyasının kalbi Tayvan'da atıyor. TSMC, uzun süredir üzerinde çalıştığı ve "N2" olarak adlandırdığı 2 nanometre (nm) üretim sürecinde seri üretim öncesi son aşama olan risk üretimini başarıyla geçtiğini duyurdu. Bu gelişme, sadece daha hızlı telefonlar demek değil; yapay zeka işlemcilerinden otonom araçlara kadar her alanda devrimsel bir sıçrama anlamına geliyor. N2 sürecinin 2025'in son çeyreğinde ticari üretime başlaması bekleniyor.</p>
 
                     <h2 id="toc-finfet">FinFET Devri Kapanıyor: GAAFET (Nanosheet) Teknolojisine Geçiş</h2>
-                    <p>Yaklaşık 10 yıldır endüstri standardı olan **FinFET** transistör yapısı, artık fiziksel sınırlarına dayanmış durumda. Transistör boyutları 3nm ve altına düştüğünde, FinFET mimarisindeki kanaldan istenmeyen **elektron sızıntısını (Leakage Current)** kontrol etmek zorlaşıyor, bu da güç verimliliğini olumsuz etkiliyor. TSMC, 2nm ile birlikte bu zorluğun üstesinden gelmek için köklü bir değişikliğe gidiyor: GAAFET (Gate-All-Around FET) mimarisine geçiş yapıyor.</p>
+                    <p>Yaklaşık 10 yıldır endüstri standardı olan FinFET transistör yapısı, artık fiziksel sınırlarına dayanmış durumda. Transistör boyutları 3nm ve altına düştüğünde, FinFET mimarisindeki kanaldan istenmeyen elektron sızıntısını (Leakage Current) kontrol etmek zorlaşıyor, bu da güç verimliliğini olumsuz etkiliyor. TSMC, 2nm ile birlikte bu zorluğun üstesinden gelmek için köklü bir değişikliğe gidiyor: GAAFET (Gate-All-Around FET) mimarisine geçiş yapıyor.</p>
                     
                     <p>TSMC bu teknolojiyi "Nanosheet" olarak pazarlıyor. Bu yeni yapı, çip tasarımcılarına hem daha yüksek transistör yoğunluğu hem de daha düşük güç tüketimi vadediyor. FinFET'e göre %15'e kadar daha fazla alansal ölçeklendirme (density) sunarak, tek bir çipe daha fazla hesaplama biriminin sığdırılmasının önünü açıyor. GAAFET'e geçiş, TSMC'nin rekabetçi pozisyonunu koruması için kritik öneme sahiptir.</p>
                     
                     <h2 id="toc-mimaridetay">GAAFET Mimarisi: Neden Daha Verimli?</h2>
-                    <p>GAAFET, adından da anlaşılacağı gibi, transistörün kontrol kapısının (Gate), silikon kanalı (Channel) dört bir yanından (360 derece) tamamen sarması esasına dayanır. Oysa FinFET'te bu sarma sadece üç yüzeyle sınırlıydı. Bu tam çevreleme (All-Around) sayesinde, transistör kapalı (OFF) durumdayken dahi akım kontrolü **mükemmelleşir**. Bu, transistörün daha düşük voltajlarda bile kararlı ve güvenilir bir şekilde çalışmasını sağlar.</p>
-                    <p>Daha düşük çalışma voltajı (Vdd) ise doğrudan **güç tüketimini** azaltır, çünkü güç $P \propto V^2 \times f$ formülüyle orantılıdır ($V$: Voltaj, $f$: Frekans). Voltajdaki küçük bir düşüş bile enerji tasarrufunda büyük bir etki yaratır. Ayrıca GAAFET yapısı, daha hızlı geçiş (switching) süreleri sunarak yüksek performans taleplerini de karşılayabilir.</p>
+                    <p>GAAFET, adından da anlaşılacağı gibi, transistörün kontrol kapısının (Gate), silikon kanalı (Channel) dört bir yanından (360 derece) tamamen sarması esasına dayanır. Oysa FinFET'te bu sarma sadece üç yüzeyle sınırlıydı. Bu tam çevreleme (All-Around) sayesinde, transistör kapalı (OFF) durumdayken dahi akım kontrolü mükemmelleşir. Bu, transistörün daha düşük voltajlarda bile kararlı ve güvenilir bir şekilde çalışmasını sağlar.</p>
+                    <p>Daha düşük çalışma voltajı (Vdd) ise doğrudan güç tüketimini azaltır, çünkü güç $P \propto V^2 \times f$ formülüyle orantılıdır ($V$: Voltaj, $f$: Frekans). Voltajdaki küçük bir düşüş bile enerji tasarrufunda büyük bir etki yaratır. Ayrıca GAAFET yapısı, daha hızlı geçiş (switching) süreleri sunarak yüksek performans taleplerini de karşılayabilir.</p>
 
                     <blockquote>
                         <p>"Nanosheet teknolojisine geçiş, sadece bir küçülme değil; transistörün çalışma mantığında yapılan en büyük yapısal değişikliktir. Bu sayede aynı alana %15 daha fazla transistör sığdırabiliyor ve her transistörden daha fazla verim alabiliyoruz."</p>
@@ -366,7 +398,7 @@
                     <p>TSMC'nin N2 süreci, mevcut en gelişmiş N3E (3nm Enhanced) teknolojisine kıyasla teorik olarak şu avantajları sunmaktadır:</p>
                     <ul>
                         <li><strong>Performans Artışı:</strong> Aynı güç bütçesinde (Aynı Güçte), saat hızlarında %10 ila %15 arasında önemli bir artış. Bu, özellikle tek iş parçacığı performansı gerektiren uygulamalar için büyük bir ivme sağlar.</li>
-                        <li><strong>Enerji Tasarrufu:</strong> Aynı performansı verirken (**Aynı Hızda**), güç tüketiminde %25 ila %30 oranında devasa düşüş. Bu verimlilik, mobil cihazların pil ömrünü kayda değer ölçüde uzatacaktır.</li>
+                        <li><strong>Enerji Tasarrufu:</strong> Aynı performansı verirken (Aynı Hızda), güç tüketiminde %25 ila %30 oranında devasa düşüş. Bu verimlilik, mobil cihazların pil ömrünü kayda değer ölçüde uzatacaktır.</li>
                         <li><strong>Yoğunluk:</strong> Alansal transistör yoğunluğunda (Density) %15'lik artış, daha karmaşık ve büyük önbellekli tasarımlara olanak tanır.</li>
                     </ul>
                     <p>Bu verimlilik kombinasyonu, HPC (Yüksek Performanslı Hesaplama) ve AI (Yapay Zeka) çiplerinin termal bütçelerini zorlamadan daha fazla işlem gücü elde etmesini sağlayarak, veri merkezlerinin enerji ayak izini azaltma konusunda kritik bir rol oynayacaktır.</p>
@@ -377,7 +409,7 @@
                         <li><strong>Apple:</strong> Amiral gemisi iPhone 17 Pro serisinde kullanılması beklenen A19 mobil işlemcisi, N2 teknolojisinin gücünü tüketicilere sunacak ilk ürün olacak. Apple, her yeni düğümde olduğu gibi, üretim kapasitesinin büyük bir kısmını rezerve etmiştir.</li>
                         <li><strong>NVIDIA:</strong> Yapay zeka ve veri merkezi pazarının devi NVIDIA, yeni nesil Rubin mimarili GPU'larının bir kısmını 2nm süreciyle üretecek. Bu, yapay zeka eğitiminde kullanılan modellerin hem daha hızlı çalışmasına hem de daha az enerji tüketmesine olanak tanıyacak.</li>
                     </ul>
-                    <p>Ayrıca AMD'nin **Zen 6** mimarili işlemcileri ve Qualcomm'un yeni nesil Snapdragon mobil çiplerinin de N2 sürecini kullanmak için sıraya girdiği biliniyor. 2nm çağı, 2026 yılının en dikkat çekici teknolojik gelişmelerine zemin hazırlayacaktır.</p>
+                    <p>Ayrıca AMD'nin Zen 6 mimarili işlemcileri ve Qualcomm'un yeni nesil Snapdragon mobil çiplerinin de N2 sürecini kullanmak için sıraya girdiği biliniyor. 2nm çağı, 2026 yılının en dikkat çekici teknolojik gelişmelerine zemin hazırlayacaktır.</p>
 
                     <h2 id="toc-kuresel">Küresel Rekabet ve Jeopolitik Etki</h2>
                     <p>TSMC'nin 2nm başarısı, sadece teknolojik değil, aynı zamanda eopolitik bir öneme de sahiptir. Dünyanın en ileri çip üretim teknolojisine sahip olmak, Tayvan'ın küresel tedarik zincirindeki merkezi rolünü pekiştiriyor. Rakip firmalar Samsung Foundry (Gate-All-Around mimarisine 3nm'de geçti) ve Intel (RibbonFET adını verdiği GAAFET teknolojisiyle 20A ve 18A düğümleriyle rekabete hazırlanıyor) bu alanda büyük yatırımlar yapıyor.</p>

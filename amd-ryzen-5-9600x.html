@@ -26,7 +26,7 @@
         }
 
          footer {
-            background-color: #151515 !important; 
+            background-color: rgba(0, 0, 0, 0.5);
             color: #e0e0e0 !important;
             width: 100%;
         }
@@ -152,14 +152,66 @@
         }
 
         /* Dropdown stilleri */
-        .dropdown-content {
-            display: none; position: absolute; background-color: #2a2a2a; 
-            min-width: 150px; z-index: 1; border: 1px solid #00bcd4; padding: 5px 0;
-        }
-        .dropdown-content a { color: #e0e0e0 !important; background-color: #2a2a2a !important; padding: 10px 15px !important; }
-      .dropdown-content a:hover {
-            background-color: #00bcd4 !important; color: #0a0a0a !important; 
-        }
+        .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none; 
+    position: absolute;
+    background-color: #0d1a2f; /* Haberler sayfası koyu lacivert */
+    min-width: 200px;
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    border-radius: 0 0 10px 10px;
+    top: 100%;
+    left: 0;
+    border-top: 3px solid #00bcd4; /* Turkuaz çizgi */
+    
+    /* 👇 Noktaları ve kaymaları silen kritik kısım 👇 */
+    list-style-type: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.dropdown-content li {
+    display: block !important;
+    width: 100%;
+    list-style: none !important; /* Noktaları burada da engelliyoruz */
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.dropdown-content li a {
+    color: #f0f0f0 !important;
+    padding: 12px 20px !important;
+    text-decoration: none !important;
+    display: block !important;
+    font-size: 14px;
+    text-align: left !important;
+    background: transparent !important;
+    transition: all 0.3s ease;
+    border: none !important;
+}
+
+/* Üzerine gelince sağa kayma ve turkuaz efekt */
+.dropdown-content li a:hover {
+    background-color: rgba(0, 188, 212, 0.2) !important;
+    color: #00bcd4 !important;
+    padding-left: 28px !important; /* Görseldeki sağa kayma hareketi */
+}
+
+/* Gösterim */
+.dropdown:hover .dropdown-content {
+    display: block !important;
+    animation: fadeInMenu 0.2s ease-out;
+}
+
+@keyframes fadeInMenu {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
         /* Mobil uyumlu grid */
         @media (max-width: 900px) {
@@ -273,7 +325,7 @@
 </div>
 
 <footer>
-    <p>© 2025 TEKNOGÜNDEM DONANIM. Tüm hakları saklıdır.</p>
+    <p>© 2025 TeknoGündem Tüm hakları saklıdır.</p>
 </footer>
 
 <script src="js/script.js"></script> 

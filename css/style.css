@@ -8,6 +8,7 @@
     --color-shadow: rgba(0, 0, 0, 0.1);
     --color-border: #eeeeee;
     --color-footer: #333333;
+    
 }
 
 
@@ -18,6 +19,7 @@
     --color-shadow: rgba(0, 0, 0, 0.5);
     --color-border: #333333;
     --color-footer: #000000;
+    
 }
 
 /* 1. TEMEL STİLLER */
@@ -25,14 +27,19 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color:white
+    
 }
 
 /* 👇 DÜZELTME: Sticky Footer için HTML ve BODY ayarları */
 html {
-    height: 100%; /* Tarayıcı penceresinin yüksekliğini tam alır */
+    height: 100%;
+     /* Tarayıcı penceresinin yüksekliğini tam alır */
+     background: radial-gradient(circle at top right, #0a0f1f, #1b2a4b);
 }
 
 body {
+    background: radial-gradient(circle at top right, #0a0f1f, #1b2a4b);;
     font-family: 'Poppins', sans-serif;
     background-color: var(--color-background);
     color: var(--color-text);
@@ -58,7 +65,7 @@ main {
 }
 body.index header {
 
-      background-color: var(--color-card-background);
+        background-color: var(--color-card-background);
             color: var(--color-text);
             padding: 5px;
             display: flex;
@@ -67,7 +74,7 @@ body.index header {
             box-shadow: 0 2px 4px var(--color-shadow);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 1000;  
             
         
 }
@@ -80,13 +87,14 @@ body.index .logo {
 body.index nav ul li a {
     /* Menü linklerinin yazı rengini biraz açalım */
     color: #f0f0f0;
-    padding: 10px 12px;
+    padding: 10px;
+    
 }
 
 body.index nav ul li a:hover,
 body.index nav ul li a.active {
-    background-color: #3f51b5; /* Hafif mor-mavi vurgu rengi */
-    transform: none; /* Hafif animasyonu kaldırdık */
+     background-color: var(--color-primary);
+    transform: translateY(-2px);
 }
 
 /* Dark Mode Toggle Button (Kullanılmıyor, olduğu gibi bırakıldı) */
@@ -226,6 +234,7 @@ header, main, footer {
 
 .featured-card {
     background-color: white;
+   background:  radial-gradient(circle at top right, #0a0f1f, #1b2a4b);
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 15px var(--color-shadow);
@@ -271,7 +280,7 @@ header, main, footer {
 }
 
 .focus-item {
-    background-color: white;
+   background:  radial-gradient(circle at top right, #0a0f1f, #1b2a4b);
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 15px var(--color-shadow);
@@ -298,6 +307,7 @@ color: black;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 
 html {
@@ -321,7 +331,54 @@ body {
 main {
     flex-grow: 1; 
 }
+/* --- HABERLER 2 STİLİ DROPDOWN --- */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
 
+.dropdown-content {
+    display: none; 
+    position: absolute;
+    background-color: #0d1a2f !important; /* Haberler 2 koyu lacivert */
+    min-width: 170px;
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    border-radius: 0 0 10px 10px;
+    top: 100%;
+    left: 0;
+    border-top: 3px solid #00bcd4 !important; /* Turkuaz üst çizgi */
+    padding: 0 !important;
+}
+
+.dropdown-content a {
+    color: #f0f0f0 !important;
+    padding: 12px 20px !important;
+    text-decoration: none !important;
+    display: block !important; /* Yazıların alt alta gelmesini sağlar */
+    text-align: left !important;
+    font-size: 14px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: none !important;
+}
+
+/* Üzerine gelince sağa kayma efekti */
+.dropdown-content a:hover {
+    background-color: rgba(0, 188, 212, 0.2) !important;
+    color: #00bcd4 !important;
+    padding-left: 28px !important; /* Sağa kayma hareketi */
+}
+
+/* Açılış animasyonu */
+.dropdown:hover .dropdown-content {
+    display: block !important;
+    animation: fadeInMenu 0.3s ease;
+}
+
+@keyframes fadeInMenu {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
 /* ================================================= */
 /* 6. MOBİL UYUMLULUK (Anasayfa: body.index için) */
@@ -417,7 +474,14 @@ main {
     }
 }
 
-
+footer {
+        text-align: center;
+    padding: 20px 0;
+    background-color: var(--color-dark-bg);
+    color: #ccc;
+    margin-top: 0;
+    font-size: 0.9rem;
+}
 
 
 
@@ -429,7 +493,7 @@ main {
 /* Tüm sayfayı kapsayan koyu tema ve font rengi */
 body.yazilim-sayfa {
     /* Özel Arka Plan ve Ana Renkler */
-    background: radial-gradient(circle at top right, #0a0f1f, #1b2a4b); 
+    background: radial-gradient(circle at top right, #0a0f1f, #1b2a4b);
     color: #f0f0f0; 
     background-attachment: fixed;
     
@@ -463,6 +527,7 @@ body.yazilim-sayfa .logo {
 body.yazilim-sayfa nav ul {
     list-style: none;
     display: flex;
+    gap: 10px;
 }
 
 
@@ -1286,6 +1351,7 @@ body.yazilim-sayfa footer {
     max-width: 800px;
     margin: 20px auto;
     padding: 0 20px;
+    
 }
 a {
     text-decoration: none;
@@ -1295,8 +1361,12 @@ a {
 
 
 body.donanim-sayfasi {
-    background-color: #181818; /* Koyu arka plan rengi */
-    color: #f0f0f0; /* Açık metin rengi */
+ background: radial-gradient(circle at top right, #0a0f1f, #1b2a4b);
+    color: #f0f0f0;
+    background-attachment: fixed;
+    --color-secondary: #ff9800;
+    --color-dark-bg: #0d1a2f;
+    --color-card-bg: rgba(255, 255, 255, 0.05);
     padding: 0px;
 }
 body.donanim-header {
@@ -1315,9 +1385,9 @@ body.donanim-header {
 
 /* HEADER ve NAV Stilleri (Önceki HTML'den gelen üst kısım) */
 header {
-   background-color: var(--color-card-background);
+   background-color: #1e1e1e;
             color: var(--color-text);
-            padding: 5px;
+            
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -1341,8 +1411,10 @@ header {
 }
 .header-content h1{
     color: var(--color-primary);
-    font-size: 1.8rem;
+
     margin: 0;
+    font-size: 1.8rem;
+    font-weight: bold;
 }
 
 /* 📢 EKLENDİ: Başlığı sağ alta hizalamak için yeni stil */
@@ -1363,8 +1435,8 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    gap: 10px
-    ;
+    gap: 10px;
+    
 }
 nav ul li {
    
@@ -1375,9 +1447,10 @@ nav ul li {
 nav ul li a {
     color: #ccc;
     font-weight: 600;
-    padding: 10px 0;
+    padding: 10px ;
     display: block;
     transition: color 0.3s;
+   
 }
 nav ul li a:hover {
     color: #00bcd4;
@@ -1439,6 +1512,13 @@ nav ul li a:hover {
     background: linear-gradient(135deg, #1f1f1f, #2a2a2a); /* Hafif gradyan */
     border-bottom: 1px solid #333;
     margin-bottom: 40px;
+        background: radial-gradient(circle at top right, #0a0f1f, #1b2a4b);
+    color: #f0f0f0;
+    background-attachment: fixed;
+    --color-secondary: #ff9800;
+    --color-dark-bg: #0d1a2f;
+    --color-card-bg: rgba(255, 255, 255, 0.05);
+    
 }
 .simple-hero h2 {
     font-size: 2.5em;
@@ -1467,12 +1547,14 @@ nav ul li a:hover {
     margin-bottom: 60px;
 }
 .category-card {
-    background-color: #1f1f1f;
+background-color: var(--color-card-bg)
+rgba(255, 255, 255, 0.05)
+;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s, box-shadow 0.3s;
-    border-left: 5px solid transparent;
+        border-left: 5px solid var(--color-primary);
 }
 .category-card:hover {
     transform: translateY(-5px);
@@ -1489,7 +1571,7 @@ nav ul li a:hover {
     color: #f0f0f0;
 }
 .category-card p {
-    color: #b0b0b0;
+    color: white;
     line-height: 1.6;
     margin-bottom: 20px;
 }
@@ -1546,6 +1628,7 @@ nav ul li a:hover {
     color: #ccc;
     margin-top: 10px;
 }
+ 
 
 
  @media (max-width: 900px) {
@@ -3084,7 +3167,8 @@ nav ul li a:hover {
 }
 
 .review-card {
-    background-color: #1f1f1f;
+    
+    background-color:rgba(255, 255, 255, 0.05);;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -3103,7 +3187,7 @@ nav ul li a:hover {
     margin: 10px 0;
 }
 .review-card p {
-    color: #b0b0b0;
+    color: white;
     line-height: 1.5;
     margin-bottom: 15px;
 }
@@ -3120,7 +3204,7 @@ nav ul li a:hover {
     font-size: 1.1em;
 }
 .read-more {
-    color: #e91e63; /* Pembe oku */
+    color: orange; /* Pembe oku */
     font-weight: bold;
 }
 .read-more:hover {
@@ -3179,7 +3263,7 @@ nav ul li a:hover {
 
 .detail-header .subtitle {
     font-size: 1.2em;
-    color: var(--color-text); /* #e0e0e0 */
+    color: #e0e0e0; /* #e0e0e0 */
 }
 
 /* Büyük Puan Gösterimi */
@@ -3550,17 +3634,17 @@ body.hakkimizda main {
    ancak burada renkleri geçersiz kılmak için manuel ayar yapıldı. */
 body.hakkimizda header 
      {
-    
-       color: var(--color-primary);
-   
-    padding: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 10px var(--color-shadow);
-    position: sticky; /* Sticky Navbar */
-    top: 0;
-    z-index: 1000;
+       background-color: var(--color-card-background);
+            color: var(--color-text);
+            padding: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px var(--color-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;  
+  
      }
      body.hakkimizda .logo {
     /* Logo rengini anasayfanın koyu temasına uyumlu yapalım */
@@ -3572,7 +3656,7 @@ body.hakkimizda header
  body.hakkimizda nav ul li a {
     color: white;
     text-decoration: none;
-    padding: 10px ;
+    padding: 5px ;
     margin: 0 5px;
     border-radius: 5px;
     transition: background-color 0.3s;
@@ -3736,7 +3820,7 @@ body.hakkimizda .contact-button:hover {
 .about-author {
     margin: 50px auto;
     padding: 40px;
-    background-color: #2a3440; /* Koyu, teknolojik arka plan rengi */
+    background-color: #121A2A; /* Koyu, teknolojik arka plan rengi */
     border-radius: 20px; /* Daha büyük radius */
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25); /* Derin bir gölge efekti */
     max-width: 850px;
@@ -3807,8 +3891,8 @@ body.hakkimizda .contact-button:hover {
 footer { 
     text-align: center;
     padding: 20px 0;
-    background-color: var(--color-footer);
-    color: #ccc;
+    background-color: rgba(0, 0, 0, 0.5);;
+    color: white;
     margin-top: 0; /* 🚨 Siyah boşluk kalmaması için sıfırlandı */
     font-size: 0.9rem;
 }

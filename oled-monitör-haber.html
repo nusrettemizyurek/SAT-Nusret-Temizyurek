@@ -26,6 +26,7 @@
             padding: 0;
             background-color: var(--color-background);
             color: var(--color-text);
+            background: radial-gradient(circle at top right, #0a0f1f, #1b2a4b);;
         }
 
         /* HEADER */
@@ -44,7 +45,7 @@
         .logo {
             font-size: 1.6em;
             font-weight: 800;
-            color:blue;
+           color: #007bff;;
             letter-spacing: -1px;
         }
        
@@ -70,26 +71,53 @@
 
         nav ul li a:hover { color: var(--color-secondary); }
 
-        /* DROPDOWN */
-        .dropdown-menu {
-            display: none; 
-            position: absolute;
-            top: 100%; 
-            left: 0;
-            background-color: var(--color-card-background);
-            min-width: 160px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
-            z-index: 1001;
-            border: 1px solid var(--color-border);
-            border-radius: 4px;
-            padding: 10px 0;
-            flex-direction: column; 
-        }
 
-        .dropdown:hover .dropdown-menu { display: flex; }
+    /* Donanım Menüsü İçin Haberler 2 Sayfası Stili */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
 
-        /* --- HERO VE MAIN CONTENT --- */
+.dropdown-content {
+    display: none; 
+    position: absolute;
+    background-color: #0d1a2f; /* Görseldeki lacivert tonu */
+    min-width: 170px;
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    border-radius: 0 0 10px 10px;
+    top: 100%;
+    left: 0;
+    border-top: 3px solid #00bcd4; /* O meşhur turkuaz çizgi */
+}
 
+.dropdown-content a {
+    color: #f0f0f0 !important;
+    padding: 12px 20px !important;
+    text-decoration: none !important;
+    display: block !important; /* Bu satır yan yana durmayı engeller, alt alta dizer */
+    text-align: left !important;
+    font-size: 14px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Üzerine gelince sağa kayma efekti */
+.dropdown-content a:hover {
+    background-color: rgba(0, 188, 212, 0.2) !important;
+    color: #00bcd4 !important;
+    padding-left: 28px !important; /* Sağa kayma hareketi */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+    animation: fadeInMenu 0.3s ease;
+}
+
+@keyframes fadeInMenu {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+       
         .hero-article-header {
             width: 100%;
             padding: 100px 0; 
@@ -141,6 +169,7 @@
         }
 
         .container {
+            background: radial-gradient(circle at top right, #0a0f1f, #1b2a4b);;
             max-width: 1200px;
             margin: 40px auto;
             display: flex;
@@ -148,8 +177,8 @@
             padding: 0 20px;
         }
 
-        .main-content { flex: 3; }
-        .sidebar { flex: 1; }
+        .main-content { flex: 3; background: radial-gradient(circle at top right, #0a0f1f, #1b2a4b);; }
+        .sidebar { flex: 1;background: radial-gradient(circle at top right, #0a0f1f, #1b2a4b);;  }
 
         .article-media-wrapper { 
             position: relative;
@@ -288,14 +317,7 @@
         .news-list a:hover { color: var(--accent-color); }
         .news-list span { font-size: 0.8em; color: var(--text-gray); display: block; margin-top: 5px; }
 
-        footer {
-            background-color: #0f0f0f;
-            text-align: center;
-            padding: 40px;
-            margin-top: 60px;
-            border-top: 1px solid var(--color-border);
-            color: var(--text-gray);
-        }
+       footer { background-color: rgba(0, 0, 0, 0.5); color: white; text-align: center; padding: 5px 0; }
 
         @media (max-width: 900px) {
             .container { flex-direction: column; }
@@ -307,20 +329,21 @@
 
     <header>
         <div class="logo">TeknoGündem</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Ana Sayfa</a></li>
-                <li class="dropdown">
-                    <a href="#">Donanım </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="haberler.html">Haberler</a></li>
-                        <li><a href="incelemeler.html">İncelemeler</a></li>
-                    </ul>
-                </li>
-                <li><a href="yazılım.html">Yazılım</a></li>
-                <li><a href="hakkimizda.html">Hakkımızda</a></li>
-            </ul>
-        </nav>
+       <nav>
+    <nav>
+    <ul>
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li class="dropdown">
+            <a href="donanım.html">Donanım</a>
+            <div class="dropdown-content"> 
+                <a href="haberler.html">Haberler</a>
+                <a href="incelemeler.html">İncelemeler</a>
+            </div>
+        </li>
+        <li><a href="yazılım.html">Yazılım</a></li>
+        <li><a href="hakkimizda.html">Hakkımızda</a></li>
+    </ul>
+</nav>
     </header>
 
     <section class="hero-article-header">
@@ -340,7 +363,7 @@
             <div class="article-media-wrapper">
                 <img src="img/480 hz oled monitör.jpg" alt="480Hz OLED Monitör" loading="lazy">
             </div>
-            <div class="caption">Görsel: Piyasaya sürülen ilk 480Hz QHD OLED panelin sunduğu akıcı görüntü kalitesi, özellikle rekabetçi oyunlarda fark yaratıyor.</div>
+            <div class="caption" style="color: white;">Görsel: Piyasaya sürülen ilk 480Hz QHD OLED panelin sunduğu akıcı görüntü kalitesi, özellikle rekabetçi oyunlarda fark yaratıyor.</div>
 
             <article class="article-text">
                 <p>E-spor dünyasında ve rekabetçi oyunculukta saniyeler değil, milisaniyeler önemlidir. Oyuncuların yıllardır hayalini kurduğu iki özellik – yüksek yenileme hızı ve OLED panelin kusursuz renkleri – nihayet birleşti. İlk etapta üst düzey markaların piyasaya sürdüğü 480Hz yenileme hızına sahip OLED monitörler, oyun deneyiminde bugüne kadarki en büyük görsel sıçramayı vadediyor. Bu yeni teknoloji, sadece rekabetçi oyuncular için değil, aynı zamanda hareket netliğine önem veren tüm kullanıcılar için de yeni bir dönem başlatıyor. Eski nesil LCD panellerin neden olduğu "Ghosting" (Hayaletlenme) ve "Motion Blur" (Hareket Bulanıklığı) sorunları artık tamamen tarih oluyor.</p>
@@ -377,12 +400,12 @@
                 <p>480Hz yenileme hızının tüm potansiyelini kullanabilmek, beraberinde ciddi donanım ve bağlantı band genişliği gereksinimleri getirir. Monitör ne kadar hızlı olursa olsun, bilgisayarınızın bu hızı karşılayacak kadar kare (FPS) üretmesi ve bu veriyi monitöre iletmesi gerekir.</p>
 
                 <h3>3.1. Gerekli Grafik Kartı Gücü (GPU)</h3>
-                <p>Bu monitörler genellikle **2560x1440 (QHD)çözünürlüğünde piyasaya sürülmektedir. Bu çözünürlükte, e-spor oyunlarında (CS2, Valorant vb.) 480 FPS ve üzeri kare hızlarına ulaşabilmek için güncel nesil amiral gemisi veya üst orta segment kartlar gereklidir. Örneğin, popüler E-spor oyunlarında 480 FPS'yi yakalamak için NVIDIA RTX 4080 serisi ve üzeri ya da AMD RX 7900 XT serisi ve üzeri ekran kartları şarttır. Daha zorlayıcı (AAA) oyunlarda ise, 480Hz'i yakalamak imkansıza yakındır, ancak OLED'in hızlı tepki süresi sayesinde 120-144 FPS bile çok daha akıcı hissettirecektir.</p>
+                <p>Bu monitörler genellikle 2560x1440 (QHD)çözünürlüğünde piyasaya sürülmektedir. Bu çözünürlükte, e-spor oyunlarında (CS2, Valorant vb.) 480 FPS ve üzeri kare hızlarına ulaşabilmek için güncel nesil amiral gemisi veya üst orta segment kartlar gereklidir. Örneğin, popüler E-spor oyunlarında 480 FPS'yi yakalamak için NVIDIA RTX 4080 serisi ve üzeri ya da AMD RX 7900 XT serisi ve üzeri ekran kartları şarttır. Daha zorlayıcı (AAA) oyunlarda ise, 480Hz'i yakalamak imkansıza yakındır, ancak OLED'in hızlı tepki süresi sayesinde 120-144 FPS bile çok daha akıcı hissettirecektir.</p>
                 
                 <h3>3.2. DisplayPort 2.1 ve HDMI 2.1 Bağlantıları</h3>
                 <p>QHD çözünürlükte 480Hz yenileme hızı, muazzam bir veri akışı gerektirir. Bu veri akışını, görsel kaliteden ödün vermeden (örneğin renk derinliğini düşürmeden) aktarabilmek için en son bağlantı standartları zorunludur:</p>
                 <ul>
-                    <li>DisplayPort 2.1 (UHBR 13.5 veya 20): Bu standart, QHD @ 480Hz sinyalini genellikle **Görüntü Akışı Sıkıştırma (DSC)** teknolojisi kullanmadan, tam band genişliğinde ve tam renk derinliğinde (10-bit HDR) iletebilen tek yoldur.</li>
+                    <li>DisplayPort 2.1 (UHBR 13.5 veya 20): Bu standart, QHD @ 480Hz sinyalini genellikle Görüntü Akışı Sıkıştırma (DSC) teknolojisi kullanmadan, tam band genişliğinde ve tam renk derinliğinde (10-bit HDR) iletebilen tek yoldur.</li>
                     <li>HDMI 2.1 (48 Gbps): HDMI 2.1, bu band genişliğini destekler, ancak monitörün ve grafik kartının tam özellikli HDMI 2.1 portlarına sahip olması gerekir. Konsol oyuncuları için 120Hz üzeri hızları desteklemesi açısından önemlidir, ancak 480Hz için DisplayPort tercih sebebidir.</li>
                 </ul>
                 
@@ -390,7 +413,7 @@
                 <p>Hız, bu monitörlerin ana özelliği olsa da, bir OLED panel olmaları sebebiyle renk ve kontrast konusunda da rakipsiz bir deneyim sunarlar. Yüksek hız, kusursuz renk performansı ile birleşince, sadece rekabetçi değil, aynı zamanda görsel açıdan zengin bir deneyim de sunulur.</p>
 
                 <h3>4.1. Gerçek Siyahlar ve Sonsuz Kontrast</h3>
-                <p>OLED piksellerinin tamamen kapanabilmesi, "Gerçek Siyahlar" ve dolayısıyla teorik olarak Sonsuz Kontrast Oranı sunar. Bu, özellikle karanlık sahnelerin (uzay oyunları veya korku oyunları) gerçekçiliğini LCD'lerin ulaşamayacağı bir seviyeye taşır. HDR (Yüksek Dinamik Aralık) içeriklerde, parlak noktalar (örneğin patlamalar veya güneş ışığı) son derece canlı ve çarpıcı görünürken, gölgeler detayını kaybetmeden derin kalır. Bu monitörler, genellikle **DisplayHDR True Black 400/500** sertifikalarıyla gelir.</p>
+                <p>OLED piksellerinin tamamen kapanabilmesi, "Gerçek Siyahlar" ve dolayısıyla teorik olarak Sonsuz Kontrast Oranı sunar. Bu, özellikle karanlık sahnelerin (uzay oyunları veya korku oyunları) gerçekçiliğini LCD'lerin ulaşamayacağı bir seviyeye taşır. HDR (Yüksek Dinamik Aralık) içeriklerde, parlak noktalar (örneğin patlamalar veya güneş ışığı) son derece canlı ve çarpıcı görünürken, gölgeler detayını kaybetmeden derin kalır. Bu monitörler, genellikle DisplayHDR True Black 400/500 sertifikalarıyla gelir.</p>
 
                 <h2>5. 🎮 Adaptive Sync ve Ekosistem Uyumluluğu</h2>
                 <p>480Hz, çok yüksek bir hedef olsa da, çoğu oyunda bu hızın altına düşmek kaçınılmazdır. Bu noktada, ekranın yırtılmasını ve takılmayı önleyen Adaptive Sync teknolojileri devreye girer. Bu yeni nesil monitörler, hem NVIDIA hem de AMD ekosistemleri için tam uyumluluk sunmak üzere tasarlanmıştır.</p>
@@ -450,7 +473,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 TeknoGündem Yayıncılık. Her hakkı saklıdır. <br></p>
+        <p>&copy;  2025 TeknoGündem. Tüm hakları saklıdır.  <br></p>
     </footer>
 
 </body>

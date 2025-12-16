@@ -16,7 +16,7 @@
             padding: 0;
         }
         .main-body-container { 
-            background-color: transparent; 
+            background: radial-gradient(circle at top right, #0a0f1f, #1b2a4b);;
             padding-top: 50px; 
             max-width: 1300px;
             margin: 0 auto;
@@ -36,7 +36,7 @@
         }
              header {
  width: 100%;
-    background-color: #151515;
+    background-color: #1e1e1e;
 }
      .header-content {
     width: 100%;
@@ -64,21 +64,56 @@
         header nav ul li a {
             color: #e0e0e0; text-decoration: none; padding: 10px 0; display: block; transition: color 0.2s;
         }
-        header nav ul li a:hover { color: #ff003c; }
+       
 
         /* Dropdown */
-       .dropdown-content {
-            display: none; position: absolute; background-color: #2a2a2a; 
-            min-width: 150px; z-index: 1; border: 1px solid #00bcd4; padding: 5px 0;
-        }
-        .dropdown:hover .dropdown-content { display: block; }
-        .dropdown-content a {
-            color: #e0e0e0 !important; background-color: #2a2a2a !important; padding: 10px 15px !important; display: block;
-        }
-        .dropdown-content a:hover {
-            background-color: #00bcd4 !important; color: #0a0a0a !important;
-        }
+       .dropdown {
+    position: relative;
+    display: inline-block;
+}
 
+.dropdown-content {
+    display: none; 
+    position: absolute;
+    background-color: #0d1a2f !important; /* Haberler 2 koyu lacivert */
+    min-width: 170px;
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    border-radius: 0 0 10px 10px;
+    top: 100%;
+    left: 0;
+    border-top: 3px solid #00bcd4 !important; /* Turkuaz üst çizgi */
+    padding: 0 !important;
+}
+
+.dropdown-content a {
+    color: #f0f0f0 !important;
+    padding: 12px 20px !important;
+    text-decoration: none !important;
+    display: block !important; /* Yazıların alt alta gelmesini sağlar */
+    text-align: left !important;
+    font-size: 14px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: none !important;
+}
+
+/* Üzerine gelince sağa kayma efekti */
+.dropdown-content a:hover {
+    background-color: rgba(0, 188, 212, 0.2) !important;
+    color: #00bcd4 !important;
+    padding-left: 28px !important; /* Sağa kayma hareketi */
+}
+
+/* Açılış animasyonu */
+.dropdown:hover .dropdown-content {
+    display: block !important;
+    animation: fadeInMenu 0.3s ease;
+}
+
+@keyframes fadeInMenu {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
         /* Başlık ve Puan (Ortalanmış) */
         .detail-header {
             text-align: center; /* Başlık ve puanı ortalar */
@@ -141,7 +176,7 @@
         
         /* Genel İnceleme Sayfası Yerleşimi */
         .review-content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-top: 30px; }
-        .main-content { grid-column: 1 / 2; background-color: #1a1a1a; padding: 30px; border-radius: 8px; }
+        .main-content { grid-column: 1 / 2; background-color: #1a1a1a; padding: 30px; border-radius: 8px; background: radial-gradient(circle at top right, #0a0f1f, #1b2a4b);; }
         .technical-specs-box { grid-column: 2 / 3; padding: 20px; background-color: #1a1a1a; border-radius: 8px; height: fit-content; }
         #pros-cons-container { display: flex; gap: 40px; margin-top: 30px; }
         #pros-cons-container ul { list-style: none; padding: 0; }
@@ -154,7 +189,7 @@
 
         /* Footer */
         footer {
-            background-color: #151515;
+            background-color: rgba(0, 0, 0, 0.5);
             padding: 20px 0; text-align: center; border-top: 1px solid #333; margin-top: 50px;
         }
 
@@ -269,7 +304,7 @@
 </div>
 
 <footer>
-    <p>© 2025 TEKNOGÜNDEM DONANIM. Tüm hakları saklıdır. </p>
+    <p>© 2025 TeknoGündem. Tüm hakları saklıdır. </p>
 </footer>
 
 <script src="js/script.js"></script> 

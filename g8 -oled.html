@@ -9,13 +9,14 @@
     <style>
         /* Genel Stiller ve Sıfırlamalar */
         body { 
-            background-color: #0a0a0a; 
+         background: radial-gradient(circle at top right, #0a0f1f, #1b2a4b);
             color: #e0e0e0; 
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
         }
-        .main-body-container { 
+        .main-body-container {
+            background:  radial-gradient(circle at top right, #0a0f1f, #1b2a4b); 
             padding-top: 50px; 
             max-width: 1300px;
             margin: 0 auto;
@@ -29,19 +30,20 @@
         
         /* HEADER & NAV STİLLERİ */
         header, footer {
-            background-color: #151515;
+            background-color: #1e1e1e;
             width: 100%;
         }
       .header-content {
+        background: #1e1e1e;;
     display: flex;
     justify-content: space-between; /* Sol – Sağ hizalama */
     align-items: center;
-    padding: 5px;
+    padding: 10px;
 }
 
    header h1 { 
-    margin: 0; 
-    font-size: 1.5em; 
+   font-size: 1.8rem;
+    margin: 0;
     color:  #007bff /* Burayı blue yerine #00bcd4 yaptık */
 }
       
@@ -53,22 +55,60 @@
         }
         header nav ul li a:hover { color: #00bcd4; }
         
-        /* Dropdown */
-        .dropdown-content {
-            display: none; position: absolute; background-color: #2a2a2a; 
-            min-width: 150px; z-index: 1; border: 1px solid #00bcd4; padding: 5px 0;
-        }
-        .dropdown:hover .dropdown-content { display: block; }
-        .dropdown-content a {
-            color: #e0e0e0 !important; background-color: #2a2a2a !important; padding: 10px 15px !important; display: block;
-        }
-        .dropdown-content a:hover {
-            background-color: #00bcd4 !important; color: #0a0a0a !important; 
-        }
+       /* --- HABERLER 2 STİLİ DROPDOWN (TAM UYUM) --- */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
 
+.dropdown-content {
+    display: none; 
+    position: absolute;
+    background-color: #0d1a2f !important; /* Koyu lacivert panel */
+    min-width: 170px;
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    border-radius: 0 0 10px 10px;
+    top: 100%;
+    left: 0;
+    border-top: 3px solid #00bcd4 !important; /* İmza turkuaz çizgi */
+    padding: 0 !important;
+}
+
+.dropdown-content a {
+    color: #f0f0f0 !important;
+    padding: 12px 20px !important;
+    text-decoration: none !important;
+    display: block !important; /* Linklerin alt alta dizilmesini sağlar */
+    text-align: left !important;
+    font-size: 14px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: none !important;
+}
+
+/* Sağa kayma efekti */
+.dropdown-content a:hover {
+    background-color: rgba(0, 188, 212, 0.2) !important;
+    color: #00bcd4 !important;
+    padding-left: 28px !important; /* Görseldeki sağa kayma hareketi */
+}
+
+/* Menü açılış animasyonu */
+.dropdown:hover .dropdown-content {
+    display: block !important;
+    animation: fadeInMenu 0.3s ease;
+}
+
+@keyframes fadeInMenu {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
         /* İÇERİK ve VURGU STİLLERİ */
         .main-content {
-            background-color: #1a1a1a; padding: 30px; border-radius: 8px; 
+            padding: 30px; border-radius: 8px;
+            background: radial-gradient(circle at top right, #0a0f1f, #1b2a4b);
+             
+             
         }
         .review-content-grid { 
             display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-top: 30px; 
@@ -126,9 +166,14 @@
         .specs-list span:first-child { color: #ccc; }
 
         /* Footer */
-        footer {
-            padding: 20px 0; text-align: center; border-top: 1px solid #333; margin-top: 50px;
-        }
+       footer{
+            text-align: center;
+    padding: 7px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ccc;
+    margin-top: 0;
+    font-size: 0.9rem;
+       }
     </style>
 </head>
 <body>
@@ -136,22 +181,20 @@
     <header>
         <div class="header-content">
             <h1>TeknoGündem</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Ana Sayfa</a></li>
-            
-            <li class="dropdown">
-                <a href="donanım.html">Donanım</a> 
-                <div class="dropdown-content"> 
-                    <a href="haberler.html" class="dropdown-item">Haberler</a> 
-                    <a href="incelemeler.html" class="dropdown-item">İncelemeler</a>
-                </div>
-            </li>
-            <li><a href="yazılım.html" >Yazılım</a></li>
-            
-            <li><a href="hakkimizda.html">Hakkımızda</a></li>
-                </ul>
-            </nav>
+         <nav>
+    <ul>
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li class="dropdown">
+            <a href="donanım.html">Donanım</a>
+            <div class="dropdown-content"> 
+                <a href="haberler.html">Haberler</a>
+                <a href="incelemeler.html">İncelemeler</a>
+            </div>
+        </li>
+        <li><a href="yazılım.html">Yazılım</a></li>
+        <li><a href="hakkimizda.html">Hakkımızda</a></li>
+    </ul>
+</nav>
         </div>
     </header>
 
@@ -252,7 +295,7 @@
     </div>
     
     <footer>
-        <p>© 2025 TEKNOGÜNDEM DONANIM. Tüm hakları saklıdır.</p>
+        <p>© 2025 TeknoGündem. Tüm hakları saklıdır.</p>
     </footer>
 </body>
 </html>

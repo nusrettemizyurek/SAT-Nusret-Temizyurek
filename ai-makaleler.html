@@ -7,6 +7,7 @@
    <link rel="shortcut icon" href="site logo.jpg" type="image/x-icon">
     <style>
         body {
+            background: radial-gradient(circle at top left, #1f2d40, #0a0f1f);;
             background-color: #0d1117;
             color: #f0f0f0;
             font-family: 'Poppins', sans-serif;
@@ -15,12 +16,16 @@
         }
 
         header {
-            background-color: #161b22;
-            padding: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #30363d;
+            background-color: #1e1e1e;
+    color: var(--color-text);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px var(--color-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
         }
 
         .logo {
@@ -32,7 +37,7 @@
         nav ul {
             list-style: none;
             display: flex;
-            gap: 20px;
+            gap: 30px;
             margin: 0;
             padding: 0;
         }
@@ -128,7 +133,7 @@
         }
 
         .article-card {
-            background-color: #161b22;
+            background-color: rgba(255, 255, 255, 0.05);
             border: 1px solid #30363d;
             border-radius: 12px;
             padding: 20px;
@@ -168,12 +173,12 @@
         }
 
         footer {
-            text-align: center;
-            padding: 20px;
-            border-top: 1px solid #30363d;
-            background-color: #0d1117;
-            color: #777;
-            margin-top: 40px;
+          text-align: center;
+    padding: 10px 0;
+    background-color: #0d1a2f;
+    color: white;
+    margin-top: 0;
+    font-size: 0.9rem;
         }
     </style>
 </head>
@@ -193,14 +198,7 @@
                 </div>
             </li>
             
-            <li class="dropdown">
-                <a href="yazılım.html">Yazılım</a>
-                <div class="dropdown-content">
-                    <a href="backend-makaleler.html" class="dropdown-item">Backend</a>
-                    <a href="frontend-makaleler.html" class="dropdown-item">Frontend</a>
-                </div>
-            </li>
-            
+            <li><a href="yazılım.html">Yazılım</a></li>
             <li><a href="ai-makaleler.html" class="active">AI Makaleleri</a></li> 
             <li><a href="hakkimizda.html">Hakkımızda</a></li>
         </ul>

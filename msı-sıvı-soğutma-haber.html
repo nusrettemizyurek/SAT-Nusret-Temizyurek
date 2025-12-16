@@ -26,6 +26,7 @@
             padding: 0;
             background-color: var(--color-background);
             color: var(--color-text);
+            background: radial-gradient(circle at top right, #0a0f1f, #1b2a4b);
         }
 
         /* HEADER */
@@ -44,49 +45,93 @@
         .logo {
             font-size: 1.6em;
             font-weight: 800;
-            color: blue;
+            color: #007bff;
             letter-spacing: -1px;
         }
         
 
         nav ul {
+            padding: 0px;
+            margin: 0px;
             list-style: none;
-            display: flex;
-            gap: 20px;
-            margin: 0;
-            padding: 0;
+    display: flex;
+    margin-left: auto;
         }
 
         nav ul li { position: relative; }
 
         nav ul li a {
-            color: var(--text-gray);
+             color: white;
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
+            padding: 10px 15px;
             display: block;
-            padding: 5px 0;
+            font-weight: 600;
+            transition: background-color 0.3s;
         }
 
         nav ul li a:hover { color: var(--color-secondary); }
 
         /* DROPDOWN */
-        .dropdown-menu {
-            display: none; 
-            position: absolute;
-            top: 100%; 
-            left: 0;
-            background-color: var(--color-card-background);
-            min-width: 160px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
-            z-index: 1001;
-            border: 1px solid var(--color-border);
-            border-radius: 4px;
-            padding: 10px 0;
-            flex-direction: column; 
-        }
+        .dropdown {
+    position: relative;
+    display: inline-block;
+}
 
-        .dropdown:hover .dropdown-menu { display: flex; }
+.dropdown-content {
+    display: none; 
+    position: absolute;
+    background-color: #0d1a2f; /* Haberler sayfası koyu lacivert */
+    min-width: 200px;
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    border-radius: 0 0 10px 10px;
+    top: 100%;
+    left: 0;
+    border-top: 3px solid #00bcd4; /* Turkuaz çizgi */
+    
+    /* 👇 Noktaları ve kaymaları silen kritik kısım 👇 */
+    list-style-type: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.dropdown-content li {
+    display: block !important;
+    width: 100%;
+    list-style: none !important; /* Noktaları burada da engelliyoruz */
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.dropdown-content li a {
+    color: #f0f0f0 !important;
+    padding: 12px 20px !important;
+    text-decoration: none !important;
+    display: block !important;
+    font-size: 14px;
+    text-align: left !important;
+    background: transparent !important;
+    transition: all 0.3s ease;
+    border: none !important;
+}
+
+/* Üzerine gelince sağa kayma ve turkuaz efekt */
+.dropdown-content li a:hover {
+    background-color: rgba(0, 188, 212, 0.2) !important;
+    color: #00bcd4 !important;
+    padding-left: 28px !important; /* Görseldeki sağa kayma hareketi */
+}
+
+/* Gösterim */
+.dropdown:hover .dropdown-content {
+    display: block !important;
+    animation: fadeInMenu 0.2s ease-out;
+}
+
+@keyframes fadeInMenu {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
         /* --- HERO VE MAIN CONTENT --- */
 
@@ -110,6 +155,7 @@
             max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
+            
         }
 
         .category-tag {
@@ -141,6 +187,7 @@
             display: flex;
             gap: 50px;
             padding: 0 20px;
+           
         }
 
         .main-content { flex: 3; }
@@ -284,10 +331,10 @@
         .news-list span { font-size: 0.8em; color: var(--text-gray); display: block; margin-top: 5px; }
 
         footer {
-            background-color: #0f0f0f;
+            background-color: rgba(0, 0, 0, 0.5);
             text-align: center;
-            padding: 40px;
-            margin-top: 60px;
+            padding: 7px;
+
             border-top: 1px solid var(--color-border);
             color: var(--text-gray);
         }
@@ -302,20 +349,20 @@
 
     <header>
         <div class="logo">TeknoGündem</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Ana Sayfa</a></li>
-                <li class="dropdown">
-                    <a href="#">Donanım </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="haberler.html">Haberler</a></li>
-                        <li><a href="incelemeler.html">İncelemeler</a></li>
-                    </ul>
-                </li>
-                <li><a href="yazılım.html">Yazılım</a></li>
-                <li><a href="hakkimizda.html">Hakkımızda</a></li>
-            </ul>
-        </nav>
+       <nav>
+    <ul>
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li class="dropdown">
+            <a href="donanım.html">Donanım</a>
+            <div class="dropdown-content"> 
+                <a href="haberler.html">Haberler</a>
+                <a href="incelemeler.html">İncelemeler</a>
+            </div>
+        </li>
+        <li><a href="yazılım.html">Yazılım</a></li>
+        <li><a href="hakkimizda.html">Hakkımızda</a></li>
+    </ul>
+</nav>
     </header>
 
     <section class="hero-article-header">
@@ -335,7 +382,7 @@
             <div class="article-media-wrapper">
                 <img src="img/msı anakart haberler.jpg" alt="MSI Yeni Nesil Anakart Soğutma Sistemi" loading="lazy">
             </div>
-            <div class="caption">Görsel: MSI'ın yenilenen soğutma mimarisini gösteren üst düzey Z890 (varsayımsal) anakart modeli.</div>
+            <div class="caption " style="color: white;">Görsel: MSI'ın yenilenen soğutma mimarisini gösteren üst düzey Z890 (varsayımsal) anakart modeli.</div>
 
             <article class="article-text">
                 <p>Yeni nesil CPU'lar, çekirdek sayısındaki artış ve sürekli yükselen saat hızlarıyla birlikte, güç tüketimini ve dolayısıyla ısı üretimini rekor seviyelere taşıdı. Anakart üreticileri arasında bu termal zorluklara en hızlı cevap verenlerden biri olan MSI, yeni anakart serilerinde soğutma çözümlerini sıfırdan tasarlayarak önemli bir mühendislik atılımı gerçekleştirdi. Bu yenilikler, sadece hız aşırtma (Overclock) tutkunlarını değil, aynı zamanda sistemlerinin uzun ömürlü ve stabil çalışmasını isteyen tüm kullanıcıları hedefliyor.</p>
@@ -423,7 +470,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 TeknoGündem Yayıncılık. Her hakkı saklıdır. <br></p>
+        <p>&copy; 2025 TeknoGünd Her hakkı saklıdır. <br></p>
     </footer>
 
 </body>
