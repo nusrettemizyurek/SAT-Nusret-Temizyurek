@@ -41,57 +41,7 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
-    /* ☝️ VÜCUT (BODY) ARKA PLAN DEĞİŞİKLİĞİ BİTİŞ ☝️ */
     
-    /* HEADER VE FOOTER STİLLERİ */
-    /* HEADER & NAVİGASYON STİLLERİ */
-header {
-    --color-card-background: #1e1e1e;
-    /* Eski 'box-shadow' ve 'padding' burada kalabilir */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    padding: 5px;
-    
-    /* 👇 ÖNEMLİ SABİTLEME KODLARI BAŞLANGIÇ 👇 */
-    position: fixed; /* Header'ı ekran pozisyonuna sabitle */
-    top: 0; /* Ekranın en üstüne yerleştir */
-    width: 100%; /* Genişliğini tam ekran yap */
-    z-index: 1000; /* Diğer her şeyin üstünde görünmesini sağla */
-    /* 👇 ÖNEMLİ SABİTLEME KODLARI BİTİŞ 👇 */
-    
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--color-card-background); /* Sabit duracağı için arka plan rengini netleştirdik */
-}
-    .logo {
-        font-size: 1.5rem;
-        font-weight: 700;
-          color: #007bff;
-    }
-    header nav ul {
-        display: flex;
-        gap: 1.5rem;
-        list-style: none;
-        gap: 30px;
-    }
-    header nav ul li a {
-        color: white;
-        text-decoration: none;
-        padding: 0.5rem 0;
-        border-bottom: 2px solid transparent;
-        transition: border-bottom 0.3s ease;
-        display: flex;
-        align-items: center;
-    }
-    header nav ul li a:hover {
-        border-bottom: 2px solid theme('colors.primary');
-        color: blue;
-    }
-    .hero-article-header {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img/ddr6\ \ ram\ banner.jpg');
-    /* ... diğer stil kuralları ... */
-}
-
     /* NAV DROPDOWN DÜZELTMESİ VE STABİLİZASYON */
    .dropdown {
     position: relative;
@@ -145,18 +95,57 @@ header {
     display: block;
     animation: fadeInMenu 0.3s ease;
 }
-
-/* Yumuşak belirme animasyonu */
-@keyframes fadeInMenu {
-    from { 
-        opacity: 0; 
-        transform: translate(-50%, 10px); 
-    }
-    to { 
-        opacity: 1; 
-        transform: translate(-50%, 0); 
-    }
+    /* ☝️ VÜCUT (BODY) ARKA PLAN DEĞİŞİKLİĞİ BİTİŞ ☝️ */
+    
+    /* HEADER VE FOOTER STİLLERİ */
+    /* HEADER & NAVİGASYON STİLLERİ */
+header {
+    --color-card-background: #1e1e1e;
+    /* Eski 'box-shadow' ve 'padding' burada kalabilir */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    
+    /* 👇 ÖNEMLİ SABİTLEME KODLARI BAŞLANGIÇ 👇 */
+    position: fixed; /* Header'ı ekran pozisyonuna sabitle */
+    top: 0; /* Ekranın en üstüne yerleştir */
+    width: 100%; /* Genişliğini tam ekran yap */
+    z-index: 1000; /* Diğer her şeyin üstünde görünmesini sağla */
+    /* 👇 ÖNEMLİ SABİTLEME KODLARI BİTİŞ 👇 */
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-card-background); /* Sabit duracağı için arka plan rengini netleştirdik */
 }
+    .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+          color: #007bff;
+    }
+    header nav ul {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+        gap: 30px;
+    }
+    header nav ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 0;
+        border-bottom: 2px solid transparent;
+        transition: border-bottom 0.3s ease;
+        display: flex;
+        align-items: center;
+    }
+    header nav ul li a:hover {
+        border-bottom: 2px solid theme('colors.primary');
+        color: blue;
+    }
+    .hero-article-header {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img/ddr6\ \ ram\ banner.jpg');
+    /* ... diğer stil kuralları ... */
+}
+
 
     footer {
         background-color:rgba(0, 0, 0, 0.5);

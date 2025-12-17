@@ -1601,7 +1601,7 @@ rgba(255, 255, 255, 0.05)
     border-radius: 8px;
 }
 .content-list-placeholder p {
-    color: #888;
+    color: white;
     font-style: italic;
 }
 
@@ -3328,7 +3328,7 @@ rgba(255, 255, 255, 0.05)
 
 /* Teknik Özellikler ve Puan Kutusu (Sağ Sütun) */
 .technical-specs-box {
-    background-color: var(--color-card-background); /* #1e1e1e (Dark Mode) */
+    background-color: rgba(0, 0, 0, 0.5); /* #1e1e1e (Dark Mode) */
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 4px 10px var(--color-shadow);
