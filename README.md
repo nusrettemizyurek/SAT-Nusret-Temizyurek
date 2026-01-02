@@ -1,12 +1,17 @@
+
+ <img width="1024" height="1024" alt="site logo" src="https://github.com/user-attachments/assets/53ccdbdf-30ec-4492-95a1-b8f8258af1e3" />
+
+
 ## 📖 İçindekiler
 
-- [Proje Hakkında](#-proje-hakkında)
-- [Özellikler](#-özellikler)
-- [Kullanılan Teknolojiler](#-kullanılan-teknolojiler)
-- [Kurulum ve Kullanım](#-kurulum-ve-kullanım)
-- [Dosya Yapısı](#-dosya-yapısı)
-
-
+- Proje Hakkında
+- Sayfa İçerikleri 
+- Özellikler
+- Kullanılan Teknolojiler
+- Kurulum ve Kullanım
+- Gelecek Planları (To-Do) 
+- Siteden Ekran Görüntüleri
+- Dosya Yapısı
 
 ## 💡 Proje Hakkında
 
@@ -52,6 +57,15 @@ Proje varsayılan tarayıcınızda açılacaktır.
 - [ ] Haberler için JSON tabanlı veri çekme sistemi.
 - [ ] İncelemeler sayfasına yorum yapma özelliği.
 
+ ## 📸 SİTEDEN EKRAN GÖRÜNTÜLERİ 
+ <img width="1903" height="852" alt="konulacak  kısım " src="https://github.com/user-attachments/assets/79b15576-c3d3-433d-999c-18f9c33080f6" /><br>
+ 
+ <img width="1907" height="868" alt="YAPAY ZEKA BÖLÜMÜ " src="https://github.com/user-attachments/assets/930340a1-a2aa-4dc5-bf91-9d8ff3968f1d" />  <br>
+
+<img width="1900" height="861" alt="HABERLER EKRAN GÖRÜNTÜSÜ " src="https://github.com/user-attachments/assets/a3e0acab-9f97-4227-b1e8-468e78fad04b" />  <br>
+
+  <img width="1920" height="861" alt="TeknoGündem - Yazılım ve Donanım Dünyası Merkezi - Google Chrome 2 01 2026 11_03_11" src="https://github.com/user-attachments/assets/35c87f7e-4a23-4bec-b4ce-974b58229f12" />
+
 
 ## 📂 Dosya Yapısı
 
@@ -62,9 +76,10 @@ Proje dosyaları, sürdürülebilirlik ve düzen açısından aşağıdaki hiyer
 / [Proje Ana Dizini]
 │
 ├── index.html          # Anasayfa
-├── donanim.html        # Donanım Sayfası (Örnektir)
-├── yazilim.html        # Yazılım Sayfası (Örnektir)
+├── donanım.html        # Donanım Sayfası
+├── yazılım.html        # Yazılım Sayfası 
 ├── hakkimizda.html     # Hakkımızda Sayfası
+├── diğer .html'ler     #Diğer Html  Dosyaları
 │
 ├── css/                # Genel Stil Dosyaları
 │   └── style.css
@@ -79,5 +94,5 @@ Proje dosyaları, sürdürülebilirlik ve düzen açısından aşağıdaki hiyer
 └── slider/             # Slider Modülü (Bağımsız)
         # Slider geçiş kodları
     └── [Slider Resimleri]
-│ slide .cs  #Ana sayfad ve yazılım sayfalarında kullanılan sliderın  css dosyası
-│ slide .js  #Ana sayfad ve yazılım sayfalarında kullanılan sliderın  javascript  dosyası
+│ slide .cs  #Ana sayfa ve yazılım sayfalarında kullanılan sliderın  css dosyası
+│ slide .js  #Ana sayfa ve yazılım sayfalarında kullanılan sliderın  javascript  dosyası
